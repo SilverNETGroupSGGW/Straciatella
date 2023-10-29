@@ -18,6 +18,16 @@ class ClassCard extends StatelessWidget {
     }
   }
 
+  double elevationStatus(double progress) {
+    if (progress == 0) {
+      return 1;
+    } else if (progress == 1) {
+      return 0;
+    } else {
+      return 8;
+    }
+  }
+
   Widget iconWithText(
       BuildContext context, IconData icon, String text, bool reverse) {
     Widget iconBox = Padding(
@@ -54,6 +64,7 @@ class ClassCard extends StatelessWidget {
           ),
           Expanded(
             child: Card(
+              elevation: elevationStatus(progress),
               margin: const EdgeInsets.only(
                 left: 12,
                 right: 12,
