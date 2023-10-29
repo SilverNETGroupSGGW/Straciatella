@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+
 import 'package:psggw/timeline.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
@@ -6,17 +8,28 @@ void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
+Timer? timer;
+
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  ThemeMode currentTheme = ThemeMode.system;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       darkTheme: ThemeData(
+        colorSchemeSeed: Colors.green,
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
       theme: ThemeData(
+        colorSchemeSeed: Colors.green,
         useMaterial3: true,
         brightness: Brightness.light,
       ),

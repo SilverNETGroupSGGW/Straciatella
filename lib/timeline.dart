@@ -20,7 +20,13 @@ class _TimelineState extends State<Timeline> {
   void initState() {
     super.initState();
     timer = Timer.periodic(
-        const Duration(seconds: 5), (Timer t) => now = DateTime.now());
+      const Duration(seconds: 1),
+      (Timer t) {
+        setState(() {
+          now = DateTime.now();
+        });
+      },
+    );
   }
 
   @override
@@ -30,11 +36,14 @@ class _TimelineState extends State<Timeline> {
         for (Class currentClass in lectures)
           ClassCard(
             currentClass,
-            currentClass.start.timeBetween(Time(
-                  hour: now.hour,
-                  minute: now.minute,
-                )) /
-                currentClass.start.timeBetween(currentClass.end),
+            (currentClass.start.timeBetween(
+                      Time(
+                        hour: now.hour,
+                        minute: now.minute,
+                      ),
+                    ) /
+                    currentClass.start.timeBetween(currentClass.end))
+                .clamp(0, 1),
           ),
       ],
     );
