@@ -6,8 +6,6 @@
 //   "name": "Grupa 1"
 // },
 
-import 'package:psggw/models/schedule.dart';
-
 class Group {
   String id;
   String created;
