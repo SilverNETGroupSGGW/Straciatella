@@ -36,14 +36,7 @@ class _TimelineState extends State<Timeline> {
         for (Class currentClass in lectures)
           ClassCard(
             currentClass,
-            (currentClass.start.timeBetween(
-                      Time(
-                        hour: now.hour,
-                        minute: now.minute,
-                      ),
-                    ) /
-                    currentClass.start.timeBetween(currentClass.end))
-                .clamp(0, 1),
+            0.4,
           ),
       ],
     );
