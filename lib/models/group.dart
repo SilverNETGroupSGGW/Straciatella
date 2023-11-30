@@ -20,27 +20,4 @@ class Group {
     required this.scheduleId,
     required this.name,
   });
-
-  factory Group.fromJson(Map<String, dynamic> json) {
-    return Group(
-      id: json['id'],
-      created: json['created'],
-      updated: json['updated'],
-      scheduleId: json['scheduleId'],
-      name: json['name'],
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'created': created,
-        'updated': updated,
-        'scheduleId': scheduleId,
-        'name': name,
-      };
-
-  @override
-  String toString() {
-    return 'Group{id: $id, created: $created, updated: $updated, scheduleId: $scheduleId, name: $name}';
-  }
 }

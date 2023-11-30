@@ -1,57 +1,50 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:psggw/timeline.dart';
-import 'package:material_symbols_icons/symbols.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:psggw/models/lesson.dart';
+import 'package:psggw/models/settings.dart';
+import 'package:psggw/models/adapters.dart';
+import 'package:psggw/screens/timeline.dart';
 
 void main() {
-  runApp(const MainApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  Hive.initFlutter();
+  Hive.registerAdapter(SettingsAdapter());
+  runApp(ProviderScope(child: MainApp()));
 }
 
-Timer? timer;
-
-class MainApp extends StatefulWidget {
-  const MainApp({super.key});
+class MainApp extends ConsumerStatefulWidget {
+  MainApp({super.key});
 
   @override
-  State<MainApp> createState() => _MainAppState();
+  ConsumerState<MainApp> createState() => _MainAppState();
 }
 
-class _MainAppState extends State<MainApp> {
-  ThemeMode currentTheme = ThemeMode.system;
+class _MainAppState extends ConsumerState<MainApp> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(lessonsDataProvider.notifier).init();
+  }
 
   @override
   Widget build(BuildContext context) {
+    Settings settings = ref.watch(settingsDataProvider);
     return MaterialApp(
       darkTheme: ThemeData(
-        colorSchemeSeed: Colors.green,
-        useMaterial3: true,
-        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: settings.themeColor,
+          brightness: Brightness.dark,
+        ),
       ),
       theme: ThemeData(
-        colorSchemeSeed: Colors.green,
-        useMaterial3: true,
-        brightness: Brightness.light,
-      ),
-      themeMode: ThemeMode.light,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Plan Zajęć"),
-        ),
-        body: const Timeline(),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Symbols.view_timeline),
-              label: "Plan",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Symbols.abc),
-              label: "Second",
-            ),
-          ],
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: settings.themeColor,
+          brightness: Brightness.light,
         ),
       ),
+      themeMode: settings.themeMode,
+      home: Timeline(),
     );
   }
 }

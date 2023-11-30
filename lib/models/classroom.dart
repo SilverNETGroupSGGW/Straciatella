@@ -11,6 +11,7 @@ class Classroom {
   String created;
   String updated;
   String name;
+  int floor;
   String building;
 
   Classroom({
@@ -18,29 +19,7 @@ class Classroom {
     required this.created,
     required this.updated,
     required this.name,
+    required this.floor,
     required this.building,
   });
-
-  factory Classroom.fromJson(Map<String, dynamic> json) {
-    return Classroom(
-      id: json['id'],
-      created: json['created'],
-      updated: json['updated'],
-      name: json['name'],
-      building: json['building'],
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'created': created,
-        'updated': updated,
-        'name': name,
-        'building': building,
-      };
-
-  @override
-  String toString() {
-    return 'Classroom{id: $id, created: $created, updated: $updated, name: $name, building: $building}';
-  }
 }

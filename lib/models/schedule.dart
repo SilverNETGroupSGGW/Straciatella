@@ -1,41 +1,27 @@
-// {
-//   "id": "acd7aebf-1b75-4f9f-8edf-733d021b5d13",
-//   "created": "2023-11-20T21:03:00.853938",
-//   "updated": "2023-11-20T21:03:00.8539778",
-//   "name": "Informatyka R3S5"
-// }
+import 'package:psggw/models/degree.dart';
+import 'package:psggw/models/group.dart';
+import 'package:psggw/models/lesson.dart';
 
 class Schedule {
   String id;
-  String created;
-  String updated;
+  DateTime created;
+  DateTime updated;
   String name;
+  int year;
+  int semester;
+  Degree degree;
+  List<Group> groups;
+  List<Lesson> lessons;
 
   Schedule({
     required this.id,
     required this.created,
     required this.updated,
     required this.name,
+    required this.year,
+    required this.semester,
+    required this.degree,
+    required this.groups,
+    required this.lessons,
   });
-
-  factory Schedule.fromJson(Map<String, dynamic> json) {
-    return Schedule(
-      id: json['id'],
-      created: json['created'],
-      updated: json['updated'],
-      name: json['name'],
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'created': created,
-        'updated': updated,
-        'name': name,
-      };
-
-  @override
-  String toString() {
-    return 'Schedule{id: $id, created: $created, updated: $updated, name: $name}';
-  }
 }

@@ -8,13 +8,15 @@
 //   "email": "x@x.pl"
 // }
 
+import 'package:psggw/models/degree.dart';
+
 class Lecturer {
   String id;
   String created;
   String updated;
   String firstName;
   String surname;
-  String academicDegree;
+  Degree degree;
   String email;
 
   Lecturer({
@@ -23,34 +25,7 @@ class Lecturer {
     required this.updated,
     required this.firstName,
     required this.surname,
-    required this.academicDegree,
+    required this.degree,
     required this.email,
   });
-
-  factory Lecturer.fromJson(Map<String, dynamic> json) {
-    return Lecturer(
-      id: json['id'],
-      created: json['created'],
-      updated: json['updated'],
-      firstName: json['firstName'],
-      surname: json['surname'],
-      academicDegree: json['academicDegree'],
-      email: json['email'],
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'created': created,
-        'updated': updated,
-        'firstName': firstName,
-        'surname': surname,
-        'academicDegree': academicDegree,
-        'email': email,
-      };
-
-  @override
-  String toString() {
-    return 'Lecturer{id: $id, created: $created, updated: $updated, firstName: $firstName, surname: $surname, academicDegree: $academicDegree, email: $email}';
-  }
 }
