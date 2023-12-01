@@ -5,12 +5,26 @@ import 'package:psggw/models/lesson.dart';
 import 'package:psggw/models/settings.dart';
 import 'package:psggw/models/adapters.dart';
 import 'package:psggw/screens/timeline.dart';
+import 'package:easy_localization/easy_localization.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Hive.initFlutter();
+  await Hive.initFlutter();
   Hive.registerAdapter(SettingsAdapter());
-  runApp(ProviderScope(child: MainApp()));
+  await EasyLocalization.ensureInitialized();
+  runApp(
+    EasyLocalization(
+      child: ProviderScope(
+        child: MainApp(),
+      ),
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('pl', 'PL'),
+      ],
+      path: 'assets/translations',
+      fallbackLocale: Locale('en', 'US'),
+    ),
+  );
 }
 
 class MainApp extends ConsumerStatefulWidget {
@@ -31,6 +45,9 @@ class _MainAppState extends ConsumerState<MainApp> {
   Widget build(BuildContext context) {
     Settings settings = ref.watch(settingsDataProvider);
     return MaterialApp(
+      locale: settings.locale,
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
       darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: settings.themeColor,

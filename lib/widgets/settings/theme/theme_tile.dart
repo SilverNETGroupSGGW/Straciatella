@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:psggw/models/settings.dart';
@@ -13,8 +14,8 @@ class ThemeSwitcher extends ConsumerWidget {
 
     return ListTile(
       enabled: currentThemeMode != ThemeMode.system,
-      title: const Text("Tryb Ciemny"),
-      subtitle: const Text("Przejdź na ciemną stronę mocy"),
+      title: Text('theme_dark'.tr()),
+      subtitle: Text('theme_dark_desc'.tr()),
       trailing: Switch(
         value: currentThemeMode != ThemeMode.light,
         onChanged: currentThemeMode == ThemeMode.system

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:psggw/models/settings.dart';
@@ -8,24 +9,24 @@ class RevokeTokenTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
-      title: const Text('Wyloguj'),
-      subtitle: const Text('Wyloguj się z konta'),
+      title: Text('logout'.tr()),
+      subtitle: Text('logout_desc'.tr()),
       trailing: IconButton(
         onPressed: () async {
           // Show dialog to confirm
           bool confirm = await showDialog(
             context: context,
             builder: (context) => AlertDialog(
-              title: const Text('Wylogowywanie'),
-              content: const Text('Czy na pewno chcesz się wylogować?'),
+              title: Text('logout'.tr()),
+              content: Text('logout_confirm'.tr()),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(false),
-                  child: const Text('Nie'),
+                  child: Text('no'.tr()),
                 ),
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(true),
-                  child: const Text('Tak'),
+                  child: Text('yes'.tr()),
                 ),
               ],
             ),
@@ -35,14 +36,14 @@ class RevokeTokenTile extends ConsumerWidget {
             ScaffoldMessenger.of(context).clearSnackBars();
             if (await ref.read(settingsDataProvider.notifier).revokeToken()) {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Wylogowano'),
+                SnackBar(
+                  content: Text('logout_success'.tr()),
                 ),
               );
             } else {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Nie udało się wylogować'),
+                SnackBar(
+                  content: Text('logout_failed'.tr()),
                 ),
               );
             }

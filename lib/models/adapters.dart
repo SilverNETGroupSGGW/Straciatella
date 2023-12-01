@@ -13,6 +13,7 @@ class SettingsAdapter extends TypeAdapter<Settings> {
       accessToken: "",
       apiUrl: reader.read() as String,
       themeColor: Color(reader.read() as int),
+      locale: Locale(reader.read() as String, reader.read() as String),
     );
   }
 
@@ -21,5 +22,7 @@ class SettingsAdapter extends TypeAdapter<Settings> {
     writer.write(obj.themeMode.index);
     writer.write(obj.apiUrl);
     writer.write(obj.themeColor.value);
+    writer.write(obj.locale.languageCode);
+    writer.write(obj.locale.countryCode);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,15 +14,15 @@ class ColorTile extends ConsumerWidget {
     Settings settings = ref.watch(settingsDataProvider);
     Color currentColor = settings.themeColor;
     return ListTile(
-      title: Text('Kolor motywu'),
-      subtitle: Text('Wybierz kolor motywu'),
+      title: Text('theme_color'.tr()),
+      subtitle: Text('theme_color_desc'.tr()),
       trailing: Icon(Icons.colorize),
       onTap: () {
         // Show dialog
         showAdaptiveDialog(
           context: context,
           builder: (context) => AlertDialog.adaptive(
-            title: Text('Kolor motywu'),
+            title: Text('theme_color'.tr()),
             content: BlockPicker(
               pickerColor: settings.themeColor,
               onColorChanged: (color) {
@@ -36,7 +37,7 @@ class ColorTile extends ConsumerWidget {
                       .setThemeColor(Colors.red);
                   Navigator.of(context).pop();
                 },
-                child: Text('Ustaw domyślny'),
+                child: Text('default'.tr()),
               ),
               TextButton(
                 onPressed: () {
@@ -45,13 +46,13 @@ class ColorTile extends ConsumerWidget {
                       .setThemeColor(currentColor);
                   Navigator.of(context).pop();
                 },
-                child: Text('Anuluj'),
+                child: Text('cancel'.tr()),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Zapisz'),
+                child: Text('confirm'.tr()),
               ),
             ],
             icon: Icon(Icons.colorize),

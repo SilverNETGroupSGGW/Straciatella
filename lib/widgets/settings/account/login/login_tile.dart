@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:psggw/models/settings.dart';
@@ -23,9 +24,9 @@ class _LoginTileState extends ConsumerState<LoginTile> {
     Settings settingsData = ref.watch(settingsDataProvider);
 
     return ListTile(
-      title: Text('Account'),
+      title: Text('account'.tr()),
       subtitle: Text(
-        settingsData.accessToken == '' ? 'Not logged in' : 'Logged in!',
+        settingsData.accessToken == '' ? 'logged_out'.tr() : 'logged_in'.tr(),
       ),
       onTap: () {
         // Show dialog

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:psggw/widgets/settings/theme/color_tile.dart';
 import 'package:psggw/widgets/settings/account/login/login_tile.dart';
@@ -14,18 +15,18 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: Text('settings'.tr()),
         automaticallyImplyLeading: false,
       ),
       floatingActionButton: SaveFab(),
       body: Center(
         child: ListView(
           children: [
-            ListCategoryLabel(label: "Wygląd"),
+            ListCategoryLabel(label: 'theme'.tr()),
             ColorTile(),
             AutoThemeSwitcher(),
             ThemeSwitcher(),
-            ListCategoryLabel(label: "Konto"),
+            ListCategoryLabel(label: 'account'.tr()),
             LoginTile(),
             RefreshTokenTile(),
             RevokeTokenTile(),

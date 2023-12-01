@@ -1,6 +1,6 @@
 name: psggw
 description: A new Flutter project.
-publish_to: "none"
+publish_to: " "
 version: 0.1.0
 
 environment:
@@ -20,6 +20,7 @@ dependencies:
   hive_flutter: ^1.1.0
   dio: ^5.3.4
   flutter_colorpicker: ^1.0.3
+  easy_localization: ^3.0.3
 
 
 dev_dependencies:
@@ -36,4 +37,6 @@ dev_dependencies:
 
 
 flutter:
+  assets:
+    - assets/translations/
   uses-material-design: true

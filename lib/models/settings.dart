@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 class Settings {
   String apiUrl;
   bool ranSetup = false;
+  Locale locale;
   ThemeMode themeMode;
   Color themeColor;
   String accessToken;
@@ -14,6 +15,7 @@ class Settings {
     this.themeMode = ThemeMode.system,
     this.themeColor = Colors.green,
     this.accessToken = '',
+    this.locale = const Locale('en', 'US'),
     this.apiUrl = 'https://kampus-sggw-api.azurewebsites.net/api',
   });
 

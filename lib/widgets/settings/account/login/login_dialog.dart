@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -39,7 +40,7 @@ class LoginDialog extends ConsumerWidget {
               if (token.isNotEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('Login successful'),
+                    content: Text('login_successful'.tr()),
                   ),
                 );
                 settingsData.saveToStorage();
@@ -50,7 +51,7 @@ class LoginDialog extends ConsumerWidget {
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('Login failed'),
+                    content: Text('login_failed'.tr()),
                   ),
                 );
               }
@@ -70,7 +71,7 @@ class LoginDialog extends ConsumerWidget {
                         Expanded(
                           child: TextFormField(
                             decoration: InputDecoration(
-                              labelText: 'API URL',
+                              labelText: 'api_url'.tr(),
                             ),
                             initialValue: settingsData.apiUrl,
                             autofillHints: const [AutofillHints.url],
@@ -86,7 +87,7 @@ class LoginDialog extends ConsumerWidget {
                               if (value == null ||
                                   value.isEmpty ||
                                   !Uri.parse(value).isAbsolute) {
-                                return 'Please enter API URL';
+                                return 'api_url_empty'.tr();
                               }
                               return null;
                             },
@@ -103,7 +104,7 @@ class LoginDialog extends ConsumerWidget {
                     ),
                     TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'Username',
+                        labelText: 'Email',
                       ),
                       initialValue: credentials['email'] ?? '',
                       autofillHints: const [AutofillHints.username],
@@ -112,14 +113,14 @@ class LoginDialog extends ConsumerWidget {
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your login';
+                          return 'email_empty'.tr();
                         }
                         return null;
                       },
                     ),
                     TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'Password',
+                        labelText: 'password'.tr(),
                       ),
                       autofillHints: const [AutofillHints.password],
                       obscureText: true,
@@ -135,7 +136,7 @@ class LoginDialog extends ConsumerWidget {
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
+                          return 'password_empty'.tr();
                         }
                         return null;
                       },
@@ -149,11 +150,11 @@ class LoginDialog extends ConsumerWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Cancel'),
+                child: Text('cancel'.tr()),
               ),
               TextButton(
                 onPressed: onSave,
-                child: Text('Save'),
+                child: Text('save'.tr()),
               ),
             ],
           );

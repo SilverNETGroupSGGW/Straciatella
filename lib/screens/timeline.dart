@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:psggw/models/lesson.dart';
@@ -12,7 +13,7 @@ class Timeline extends ConsumerWidget {
     List<Lesson> lessons = ref.watch(lessonsDataProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Timeline'),
+        title: Text('timeline'.tr()),
         actions: [
           IconButton(
             onPressed: () {
