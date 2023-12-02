@@ -40,7 +40,7 @@ class LessonCard extends StatelessWidget {
           child: Row(
             children: [
               RotatedBox(
-                quarterTurns: 3,
+                quarterTurns: 1,
                 child: LinearProgressIndicator(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -49,6 +49,7 @@ class LessonCard extends StatelessWidget {
               Expanded(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       lesson.name,
