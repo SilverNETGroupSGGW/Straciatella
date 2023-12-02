@@ -8,16 +8,11 @@
 
 class Group {
   String id;
-  String created;
-  String updated;
-  String scheduleId;
+
   String name;
 
   Group({
     required this.id,
-    required this.created,
-    required this.updated,
-    required this.scheduleId,
     required this.name,
   });
 }

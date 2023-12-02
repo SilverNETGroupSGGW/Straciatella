@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:psggw/models/classroom.dart';
+import 'package:psggw/models/group.dart';
+import 'package:psggw/models/lecturers.dart';
 import 'package:psggw/models/settings.dart';
 
 enum LessonType {
@@ -26,8 +29,7 @@ enum Day {
 
 class Lesson {
   String id;
-  DateTime created;
-  DateTime updated;
+
   String scheduleId;
   String name;
   LessonType type;
@@ -35,14 +37,12 @@ class Lesson {
   Day dayOfWeek;
   Duration duration;
   String comment;
-  List<String> groupsIds;
-  String classroomId;
-  List<String> lecturersIds;
+  List<Group> groups;
+  Classroom? classroom;
+  List<Lecturer> lecturers;
 
   Lesson({
     this.id = '',
-    required this.created,
-    required this.updated,
     this.scheduleId = '',
     this.name = '',
     this.type = LessonType.unknown,
@@ -50,16 +50,14 @@ class Lesson {
     this.dayOfWeek = Day.monday,
     this.duration = const Duration(hours: 0),
     this.comment = '',
-    this.groupsIds = const [],
-    this.classroomId = '',
-    this.lecturersIds = const [],
+    this.groups = const [],
+    this.classroom,
+    this.lecturers = const [],
   });
 
   factory Lesson.fromJson(Map<String, dynamic> json) {
     return Lesson(
       id: json['id'],
-      created: json['created'],
-      updated: json['updated'],
       scheduleId: json['scheduleId'],
       name: json['name'],
       type: json['type'],
@@ -67,15 +65,10 @@ class Lesson {
       dayOfWeek: json['dayOfWeek'],
       duration: json['duration'],
       comment: json['comment'],
-      groupsIds: json['groupsIds'],
-      classroomId: json['classroomId'],
-      lecturersIds: json['lecturersIds'],
+      groups: json['groupsIds'],
+      classroom: json['classroomId'],
+      lecturers: json['lecturersIds'],
     );
-  }
-
-  @override
-  String toString() {
-    return 'Lesson{id: $id, created: $created, updated: $updated, scheduleId: $scheduleId, name: $name, type: $type, startTime: $startTime, dayOfWeek: $dayOfWeek, duration: $duration, comment: $comment, groupsIds: $groupsIds, classroomId: $classroomId, lecturersIds: $lecturersIds}';
   }
 }
 

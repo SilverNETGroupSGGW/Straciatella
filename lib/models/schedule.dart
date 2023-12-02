@@ -1,11 +1,12 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:psggw/data/schedules.dart';
 import 'package:psggw/models/degree.dart';
 import 'package:psggw/models/group.dart';
 import 'package:psggw/models/lesson.dart';
 
 class Schedule {
   String id;
-  DateTime created;
-  DateTime updated;
+
   String name;
   int year;
   int semester;
@@ -15,8 +16,6 @@ class Schedule {
 
   Schedule({
     required this.id,
-    required this.created,
-    required this.updated,
     required this.name,
     required this.year,
     required this.semester,
@@ -25,3 +24,12 @@ class Schedule {
     required this.lessons,
   });
 }
+
+class ScheduelsNotifier extends StateNotifier<List<Schedule>> {
+  ScheduelsNotifier() : super(schedules);
+}
+
+final schedulesDataProvider =
+    StateNotifierProvider<ScheduelsNotifier, List<Schedule>>(
+  (ref) => ScheduelsNotifier(),
+);

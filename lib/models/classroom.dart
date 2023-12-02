@@ -8,16 +8,13 @@
 
 class Classroom {
   String id;
-  String created;
-  String updated;
+
   String name;
   int floor;
   String building;
 
   Classroom({
     required this.id,
-    required this.created,
-    required this.updated,
     required this.name,
     required this.floor,
     required this.building,

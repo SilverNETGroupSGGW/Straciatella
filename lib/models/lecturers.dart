@@ -12,8 +12,7 @@ import 'package:psggw/models/degree.dart';
 
 class Lecturer {
   String id;
-  String created;
-  String updated;
+
   String firstName;
   String surname;
   Degree degree;
@@ -21,8 +20,6 @@ class Lecturer {
 
   Lecturer({
     required this.id,
-    required this.created,
-    required this.updated,
     required this.firstName,
     required this.surname,
     required this.degree,
