@@ -4,17 +4,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:psggw/models/settings.dart';
 
-class LoginDialog extends ConsumerWidget {
+class LoginDialog extends ConsumerStatefulWidget {
   LoginDialog({super.key});
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final Future<Box> loginCredentialsBox = Hive.openBox('login_credentials');
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<LoginDialog> createState() => _LoginDialogState();
+}
+
+class _LoginDialogState extends ConsumerState<LoginDialog> {
+  @override
+  Widget build(BuildContext context) {
     var settingsData = ref.watch(settingsDataProvider);
+    bool isUpdating = false;
+
+    void changeUpdateState() => setState(() {
+          isUpdating = true;
+        });
 
     return FutureBuilder(
-      future: loginCredentialsBox,
+      future: widget.loginCredentialsBox,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           final Map credentialsRaw = snapshot.data!.get(
@@ -31,7 +41,8 @@ class LoginDialog extends ConsumerWidget {
           );
 
           void onSave() async {
-            final form = formKey.currentState as FormState;
+            changeUpdateState();
+            final form = widget.formKey.currentState as FormState;
             if (form.validate()) {
               form.save();
               String token = await ref
@@ -56,11 +67,12 @@ class LoginDialog extends ConsumerWidget {
                 );
               }
             }
+            changeUpdateState();
           }
 
           return AlertDialog.adaptive(
             content: Form(
-              key: formKey,
+              key: widget.formKey,
               child: AutofillGroup(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -73,6 +85,7 @@ class LoginDialog extends ConsumerWidget {
                             decoration: InputDecoration(
                               labelText: 'api_url'.tr(),
                             ),
+                            enabled: !isUpdating,
                             initialValue: settingsData.apiUrl,
                             autofillHints: const [AutofillHints.url],
                             onSaved: (value) {
@@ -81,7 +94,7 @@ class LoginDialog extends ConsumerWidget {
                                   .setApiUrl(value ?? '');
                             },
                             onChanged: (value) {
-                              formKey.currentState!.reset();
+                              widget.formKey.currentState!.reset();
                             },
                             validator: (value) {
                               if (value == null ||
@@ -94,15 +107,18 @@ class LoginDialog extends ConsumerWidget {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {
-                            ref.read(settingsDataProvider.notifier).setApiUrl(
-                                'https://kampus-sggw-api.azurewebsites.net/api');
-                          },
+                          onPressed: isUpdating
+                              ? null
+                              : () {
+                                  ref.read(settingsDataProvider.notifier).setApiUrl(
+                                      'https://kampus-sggw-api.azurewebsites.net/api');
+                                },
                           icon: const Icon(Icons.restore),
                         ),
                       ],
                     ),
                     TextFormField(
+                      enabled: !isUpdating,
                       decoration: InputDecoration(
                         labelText: 'Email',
                       ),
@@ -119,6 +135,7 @@ class LoginDialog extends ConsumerWidget {
                       },
                     ),
                     TextFormField(
+                      enabled: !isUpdating,
                       decoration: InputDecoration(
                         labelText: 'password'.tr(),
                       ),
@@ -129,10 +146,10 @@ class LoginDialog extends ConsumerWidget {
                       },
                       initialValue: credentials['password'] ?? '',
                       onChanged: (value) {
-                        if (formKey.currentState == null) {
+                        if (widget.formKey.currentState == null) {
                           return;
                         }
-                        formKey.currentState!.reset();
+                        widget.formKey.currentState!.reset();
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -147,13 +164,12 @@ class LoginDialog extends ConsumerWidget {
             ),
             actions: [
               TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+                onPressed:
+                    isUpdating ? null : () => Navigator.of(context).pop(),
                 child: Text('cancel'.tr()),
               ),
               TextButton(
-                onPressed: onSave,
+                onPressed: isUpdating ? null : onSave,
                 child: Text('save'.tr()),
               ),
             ],

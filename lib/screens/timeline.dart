@@ -14,27 +14,36 @@ class Timeline extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     List<Lesson> lessons = ref.watch(schedulesDataProvider)[0].lessons;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('timeline'.tr()),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SettingsScreen(),
-                ),
-              );
-            },
-            icon: Icon(Icons.settings),
-          ),
-        ],
-      ),
-      body: ListView(
-        children: [
-          for (Lesson lesson in lessons) LessonTile(lesson: lesson),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: Text('timeline'.tr()),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingsScreen(),
+                  ),
+                );
+              },
+              icon: Icon(Icons.settings),
+            ),
+          ],
+        ),
+        body: ListView(
+          children: [
+            LessonTile(
+              lesson: lessons[0],
+            ),
+            LessonTile(
+              lesson: lessons[0],
+              elevation: 0.6,
+            ),
+            LessonTile(
+              lesson: lessons[0],
+              elevation: 2,
+            ),
+          ],
+        ));
   }
 }
