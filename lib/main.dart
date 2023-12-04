@@ -6,6 +6,7 @@ import 'package:psggw/models/settings.dart';
 import 'package:psggw/models/adapters.dart';
 import 'package:psggw/screens/timeline.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:psggw/screens/welcome_screen/welcome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,17 +14,16 @@ void main() async {
   Hive.registerAdapter(SettingsAdapter());
   await EasyLocalization.ensureInitialized();
   runApp(
-    EasyLocalization(
-      child: ProviderScope(
-        child: MainApp(),
-      ),
+    ProviderScope(
+        child: EasyLocalization(
+      child: MainApp(),
       supportedLocales: [
         Locale('en', 'US'),
         Locale('pl', 'PL'),
       ],
       path: 'assets/translations',
       fallbackLocale: Locale('en', 'US'),
-    ),
+    )),
   );
 }
 
@@ -61,7 +61,7 @@ class _MainAppState extends ConsumerState<MainApp> {
         ),
       ),
       themeMode: settings.themeMode,
-      home: Timeline(),
+      home: WelcomeScreen(),
     );
   }
 }
