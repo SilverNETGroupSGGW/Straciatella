@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,12 +33,10 @@ class Settings {
     String? apiUrl,
     ThemeMode? themeMode,
     String? accessToken,
-    Locale? locale,
     Color? themeColor,
   }) {
     return Settings(
       themeColor: themeColor ?? this.themeColor,
-      locale: locale ?? this.locale,
       apiUrl: apiUrl ?? this.apiUrl,
       themeMode: themeMode ?? this.themeMode,
       accessToken: accessToken ?? this.accessToken,
@@ -60,11 +57,6 @@ void saveSettingsToStorage(Settings settingsData) async {
 
 class SettingsDataNotifier extends StateNotifier<Settings> {
   SettingsDataNotifier(super.state);
-
-  void setLocale(Locale locale, BuildContext context) {
-    context.setLocale(locale);
-    state = state.copyWith(locale: locale);
-  }
 
   void setThemeMode(ThemeMode themeMode) {
     state = state.copyWith(themeMode: themeMode);
