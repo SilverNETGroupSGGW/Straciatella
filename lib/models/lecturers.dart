@@ -25,4 +25,8 @@ class Lecturer {
     required this.degree,
     required this.email,
   });
+
+  String toString() {
+    return "$firstName $surname";
+  }
 }
