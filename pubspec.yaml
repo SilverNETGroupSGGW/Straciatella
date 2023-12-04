@@ -1,6 +1,5 @@
 name: psggw
 description: A new Flutter project.
-publish_to: " "
 version: 0.1.0
 
 environment:
