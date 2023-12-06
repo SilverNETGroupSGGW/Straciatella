@@ -1,6 +1,9 @@
 {
+    "app_desc": "A schedule app made by {creator} for students and employees of Warsaw University of Life Sciences. Remade from scrach with love and brand news theme!",
     "timeline": "Timeline",
     "settings": "Settings",
+    "language": "Language",
+    "start": "Start",
     "theme": "Theme",
     "theme_color": "Theme Color",
     "theme_color_desc": "Choose color of the app",
