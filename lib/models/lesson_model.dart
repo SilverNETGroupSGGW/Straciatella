@@ -77,13 +77,6 @@ class LessonsNotifier extends StateNotifier<List<Lesson>> {
   LessonsNotifier(this.ref) : super([]);
   final Ref ref;
 
-  Future<bool> init() async {
-    loadLessonsFromStorage();
-    await ref.watch(settingsProvider.notifier).init();
-    loadLessonsFromApi();
-    return true;
-  }
-
   Future<void> loadLessonsFromStorage() async {
     final lessonsBox = await Hive.openBox('lessons');
     final lessonsData = lessonsBox.get(
