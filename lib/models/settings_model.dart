@@ -13,7 +13,7 @@ class Settings {
     this.themeColor = Colors.green,
     this.accessToken = '',
     this.locale = const Locale('en', 'US'),
-    this.apiUrl = 'https://kampus-sggw-api.azurewebsites.net/api',
+    this.apiUrl = '',
     this.firstRun = true,
   });
 
