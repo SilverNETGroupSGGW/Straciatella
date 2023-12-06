@@ -27,7 +27,7 @@ class CredentialsNotifier extends StateNotifier<Credentials> {
   }
 
   Future<void> init() async {
-    ref.read(settingsProvider.notifier).init();
+    await ref.read(settingsProvider.notifier).init();
     await loadCredentialsFromStorage();
   }
 
