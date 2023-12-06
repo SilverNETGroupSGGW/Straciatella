@@ -11,91 +11,86 @@ class LoginForm extends ConsumerWidget {
   const LoginForm({
     super.key,
     required this.formKey,
-    required this.onChanged,
   });
 
   final GlobalKey<FormState> formKey;
-  final void Function() onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Settings settings = ref.watch(settingsProvider);
     Credentials credentials = ref.watch(credentialsProvider);
     return Form(
-      onChanged: () {
-        formKey.currentState!.reset();
-      },
       key: formKey,
-      child: AutofillGroup(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'api_url'.tr(),
-                    ),
-                    initialValue: settings.apiUrl,
-                    autofillHints: const [AutofillHints.url],
-                    onSaved: (value) {
-                      ref
-                          .read(settingsProvider.notifier)
-                          .setApiUrl(value ?? '');
-                    },
-                    onChanged: (value) {
-                      formKey.currentState!.reset();
-                    },
-                    validator: (value) {
-                      if (value == null ||
-                          value.isEmpty ||
-                          !Uri.parse(value).isAbsolute) {
-                        return 'api_url_empty'.tr();
-                      }
-                      return null;
-                    },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: TextFormField(
+                  key: ValueKey(settings.apiUrl), // to reset form on change
+                  decoration: InputDecoration(
+                    labelText: 'api_url'.tr(),
                   ),
+                  initialValue: settings.apiUrl,
+                  keyboardType: TextInputType.url,
+                  autofillHints: const [AutofillHints.url],
+                  onSaved: (value) {
+                    ref.read(settingsProvider.notifier).setApiUrl(value ?? '');
+                  },
+                  onChanged: (value) {
+                    formKey.currentState!.reset();
+                  },
+                  validator: (value) {
+                    if (value == null ||
+                        value.isEmpty ||
+                        !Uri.parse(value).isAbsolute) {
+                      return 'api_url_empty'.tr();
+                    }
+                    return null;
+                  },
                 ),
-                ShowOfficialApisButton(),
-              ],
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: 'Email',
               ),
-              initialValue: credentials.email,
-              autofillHints: const [AutofillHints.username],
-              onSaved: (value) {
-                ref.read(credentialsProvider.notifier).setEmail(value ?? '');
-              },
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'email_empty'.tr();
-                }
-                return null;
-              },
+              ShowOfficialApisButton(),
+            ],
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: 'Email',
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: 'password'.tr(),
-              ),
-              autofillHints: const [AutofillHints.password],
-              obscureText: true,
-              onSaved: (value) {
-                ref.read(credentialsProvider.notifier).setPassword(value ?? '');
-              },
-              initialValue: credentials.password,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'password_empty'.tr();
-                }
-                return null;
-              },
+            initialValue: credentials.email,
+            autofillHints: const [AutofillHints.email],
+            keyboardType: TextInputType.emailAddress,
+            onSaved: (value) {
+              ref.read(credentialsProvider.notifier).setEmail(value ?? '');
+            },
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'email_empty'.tr();
+              }
+              return null;
+            },
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: 'password'.tr(),
             ),
-          ],
-        ),
+            autofillHints: const [AutofillHints.password],
+            keyboardType: TextInputType.visiblePassword,
+            obscureText: true,
+            onSaved: (value) {
+              ref.read(credentialsProvider.notifier).setPassword(value ?? '');
+            },
+            initialValue: credentials.password == "" ? "" : "**********",
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'password_empty'.tr();
+              }
+              return null;
+            },
+          ),
+        ],
       ),
     );
   }
@@ -192,7 +187,7 @@ class ApiEntryTile extends ConsumerWidget {
         overflow: TextOverflow.fade,
       ),
       onTap: () {
-        ref.read(settingsProvider.notifier).setApiUrl(
+        ref.watch(settingsProvider.notifier).setApiUrl(
               url,
             );
         Navigator.of(context).pop();

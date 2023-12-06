@@ -22,7 +22,6 @@ class _LoginDialogState extends ConsumerState<LoginDialog> {
     Settings settings = ref.watch(settingsProvider);
     return AlertDialog.adaptive(
       content: LoginForm(
-        onChanged: () {},
         formKey: widget.formKey,
       ),
       actions: [

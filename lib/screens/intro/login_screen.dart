@@ -45,14 +45,7 @@ class LoginCard extends ConsumerStatefulWidget {
 }
 
 class _LoginCardState extends ConsumerState<LoginCard> {
-  bool isButtonEnabled = false;
-
-  void enableButton() {
-    if (!isButtonEnabled)
-      setState(() {
-        isButtonEnabled = true;
-      });
-  }
+  bool isButtonEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +57,6 @@ class _LoginCardState extends ConsumerState<LoginCard> {
           children: [
             LoginForm(
               formKey: widget.formKey,
-              onChanged: enableButton,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -97,10 +89,11 @@ class _LoginCardState extends ConsumerState<LoginCard> {
                                   .read(settingsProvider.notifier)
                                   .setFirstRun(false);
                               settings.saveToStorage();
-                              Navigator.of(context).pushReplacement(
+                              Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
                                   builder: (context) => Timeline(),
                                 ),
+                                (route) => false,
                               );
                             } else
                               ScaffoldMessenger.of(context).showSnackBar(
