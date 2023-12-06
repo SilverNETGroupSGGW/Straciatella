@@ -36,23 +36,26 @@ class MainApp extends ConsumerWidget {
     Future<void> appStarted = ref.read(credentialsProvider.notifier).init();
 
     Settings settings = ref.read(settingsProvider);
+    var darkThemeData = ThemeData(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: settings.themeColor,
+        brightness: Brightness.dark,
+      ),
+    );
+    var lightThemeData = ThemeData(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: settings.themeColor,
+        brightness: Brightness.light,
+      ),
+    );
+
     return MaterialApp(
       title: "Plan WZIM",
       locale: settings.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: settings.themeColor,
-          brightness: Brightness.dark,
-        ),
-      ),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: settings.themeColor,
-          brightness: Brightness.light,
-        ),
-      ),
+      darkTheme: darkThemeData,
+      theme: lightThemeData,
       themeMode: settings.themeMode,
       home: FutureBuilder(
         future: appStarted,
