@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:psggw/models/lesson.dart';
-import 'package:psggw/models/settings.dart';
-import 'package:psggw/models/adapters.dart';
-import 'package:psggw/screens/timeline.dart';
+import 'package:psggw/models/settings_model.dart';
+import 'package:psggw/adapters/settings_adapter.dart';
+import 'package:psggw/notifiers/credentials_provder.dart';
+import 'package:psggw/notifiers/settings_provider.dart';
+import 'package:psggw/screens/intro/welcome_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:psggw/screens/welcome_screen/welcome.dart';
+import 'package:psggw/screens/timeline_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,24 +28,16 @@ void main() async {
   );
 }
 
-class MainApp extends ConsumerStatefulWidget {
+class MainApp extends ConsumerWidget {
   MainApp({super.key});
 
   @override
-  ConsumerState<MainApp> createState() => _MainAppState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    Future<void> appStarted = ref.read(credentialsProvider.notifier).init();
 
-class _MainAppState extends ConsumerState<MainApp> {
-  @override
-  void initState() {
-    super.initState();
-    ref.read(lessonsDataProvider.notifier).init();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    Settings settings = ref.watch(settingsDataProvider);
+    Settings settings = ref.read(settingsProvider);
     return MaterialApp(
+      title: "Plan WZIM",
       locale: settings.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
@@ -61,7 +54,17 @@ class _MainAppState extends ConsumerState<MainApp> {
         ),
       ),
       themeMode: settings.themeMode,
-      home: WelcomeScreen(),
+      home: FutureBuilder(
+        future: appStarted,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return settings.firstRun ? WelcomeScreen() : Timeline();
+        },
+      ),
     );
   }
 }
