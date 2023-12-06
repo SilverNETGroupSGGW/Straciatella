@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:psggw/models/classroom.dart';
-import 'package:psggw/models/degree.dart';
-import 'package:psggw/models/group.dart';
-import 'package:psggw/models/lecturers.dart';
-import 'package:psggw/models/lesson.dart';
-import 'package:psggw/models/schedule.dart';
+import 'package:psggw/models/classroom_model.dart';
+import 'package:psggw/models/degree_enum.dart';
+import 'package:psggw/models/group_model.dart';
+import 'package:psggw/models/lecturers_model.dart';
+import 'package:psggw/models/lesson_model.dart';
+import 'package:psggw/models/schedule_model.dart';
 
 final List<Schedule> schedules = [
   Schedule(

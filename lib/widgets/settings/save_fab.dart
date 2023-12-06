@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:psggw/models/settings.dart';
+import 'package:psggw/notifiers/settings_provider.dart';
 
 class SaveFab extends ConsumerWidget {
   const SaveFab({
@@ -12,7 +12,7 @@ class SaveFab extends ConsumerWidget {
     return FloatingActionButton(
       onPressed: () async {
         ScaffoldMessenger.of(context).clearSnackBars();
-        if (await ref.read(settingsDataProvider).saveToStorage()) {
+        if (await ref.read(settingsProvider).saveToStorage()) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Zapisano ustawienia'),

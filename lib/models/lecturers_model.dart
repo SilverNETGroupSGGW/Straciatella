@@ -8,7 +8,7 @@
 //   "email": "x@x.pl"
 // }
 
-import 'package:psggw/models/degree.dart';
+import 'package:psggw/models/degree_enum.dart';
 
 class Lecturer {
   String id;

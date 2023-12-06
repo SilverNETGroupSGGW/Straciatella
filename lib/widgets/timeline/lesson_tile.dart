@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:psggw/models/lesson.dart';
+import 'package:psggw/models/lesson_model.dart';
 
 class LessonTile extends StatelessWidget {
   const LessonTile({

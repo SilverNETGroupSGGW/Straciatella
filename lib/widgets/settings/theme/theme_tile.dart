@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:psggw/models/settings.dart';
+import 'package:psggw/notifiers/settings_provider.dart';
 
 class ThemeSwitcher extends ConsumerWidget {
   const ThemeSwitcher({
@@ -10,7 +10,7 @@ class ThemeSwitcher extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ThemeMode currentThemeMode = ref.watch(settingsDataProvider).themeMode;
+    ThemeMode currentThemeMode = ref.watch(settingsProvider).themeMode;
 
     return ListTile(
       enabled: currentThemeMode != ThemeMode.system,
@@ -23,11 +23,11 @@ class ThemeSwitcher extends ConsumerWidget {
             : (bool value) {
                 if (value) {
                   ref
-                      .read(settingsDataProvider.notifier)
+                      .read(settingsProvider.notifier)
                       .setThemeMode(ThemeMode.dark);
                 } else {
                   ref
-                      .read(settingsDataProvider.notifier)
+                      .read(settingsProvider.notifier)
                       .setThemeMode(ThemeMode.light);
                 }
               },

@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:psggw/data/schedules.dart';
-import 'package:psggw/models/degree.dart';
-import 'package:psggw/models/group.dart';
-import 'package:psggw/models/lesson.dart';
+import 'package:psggw/models/degree_enum.dart';
+import 'package:psggw/models/group_model.dart';
+import 'package:psggw/models/lesson_model.dart';
 
 class Schedule {
   String id;

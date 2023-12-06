@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:psggw/models/classroom.dart';
-import 'package:psggw/models/group.dart';
-import 'package:psggw/models/lecturers.dart';
-import 'package:psggw/models/settings.dart';
+import 'package:psggw/models/classroom_model.dart';
+import 'package:psggw/models/group_model.dart';
+import 'package:psggw/models/lecturers_model.dart';
+import 'package:psggw/models/settings_model.dart';
+import 'package:psggw/notifiers/settings_provider.dart';
 
 enum LessonType {
   lecture,
@@ -78,7 +79,7 @@ class LessonsNotifier extends StateNotifier<List<Lesson>> {
 
   Future<bool> init() async {
     loadLessonsFromStorage();
-    await ref.watch(settingsDataProvider.notifier).init();
+    await ref.watch(settingsProvider.notifier).init();
     loadLessonsFromApi();
     return true;
   }
@@ -98,7 +99,7 @@ class LessonsNotifier extends StateNotifier<List<Lesson>> {
         validateStatus: (status) => true,
       ),
     );
-    final Settings settings = ref.watch(settingsDataProvider);
+    final Settings settings = ref.watch(settingsProvider);
     print(settings.accessToken);
     try {
       final response = await dio.get(

@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:psggw/models/lesson.dart';
-import 'package:psggw/models/schedule.dart';
-import 'package:psggw/screens/settings.dart';
+import 'package:psggw/models/lesson_model.dart';
+import 'package:psggw/models/schedule_model.dart';
+import 'package:psggw/screens/settings_screen.dart';
 
 import 'package:psggw/widgets/timeline/lesson_tile.dart';
 
