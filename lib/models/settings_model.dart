@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 class Settings {
   String apiUrl;
   bool firstRun = true;
+  bool debugMode = true;
   Locale locale;
   ThemeMode themeMode;
   Color themeColor;
@@ -20,7 +21,7 @@ class Settings {
   Future<bool> saveToStorage() async {
     final settingsBox = await Hive.openBox('settings');
     try {
-      await settingsBox.put('currentSettings', this);
+      await settingsBox.put('settings', this);
       return true;
     } catch (e) {
       return false;
@@ -49,5 +50,10 @@ class Settings {
     return {
       "Authorization": "Bearer ${this.accessToken}",
     };
+  }
+
+  @override
+  String toString() {
+    return 'Settings(apiUrl: $apiUrl, firstRun: $firstRun, locale: $locale, themeMode: $themeMode, themeColor: $themeColor, accessToken: $accessToken)';
   }
 }
