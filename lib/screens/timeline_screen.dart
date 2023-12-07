@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:psggw/models/lesson_model.dart';
 import 'package:psggw/models/schedule_model.dart';
-import 'package:psggw/screens/settings_screen.dart';
 
 import 'package:psggw/widgets/timeline/lesson_tile.dart';
 
@@ -13,37 +12,68 @@ class Timeline extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     List<Lesson> lessons = ref.watch(schedulesDataProvider)[0].lessons;
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('timeline'.tr()),
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SettingsScreen(),
-                  ),
-                );
-              },
-              icon: Icon(Icons.settings),
-            ),
-          ],
+    return ListView(
+      children: [
+        LessonTile(
+          lesson: lessons[0],
         ),
-        body: ListView(
-          children: [
-            LessonTile(
-              lesson: lessons[0],
-            ),
-            LessonTile(
-              lesson: lessons[0],
-              elevation: 0.6,
-            ),
-            LessonTile(
-              lesson: lessons[0],
-              elevation: 2,
-            ),
-          ],
-        ));
+        BreakDivider(
+          duration: Duration(minutes: 15),
+        ),
+        LessonTile(
+          lesson: lessons[0],
+          elevation: 0.6,
+        ),
+        BreakDivider(
+          duration: Duration(minutes: 15),
+        ),
+        LessonTile(
+          lesson: lessons[0],
+          elevation: 2,
+        ),
+      ],
+    );
+  }
+}
+
+class BreakDivider extends StatelessWidget {
+  const BreakDivider({
+    super.key,
+    required this.duration,
+  });
+
+  final Duration duration;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16.0,
+            vertical: 4.0,
+          ),
+          child: Text(
+            duration.inMinutes.toString() + ' ' + 'minutes'.tr(),
+            style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                  fontStyle: FontStyle.italic,
+                ),
+          ),
+        ),
+        Expanded(child: Divider()),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16.0,
+            vertical: 4.0,
+          ),
+          child: Text(
+            'break'.tr(),
+            style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                  fontStyle: FontStyle.italic,
+                ),
+          ),
+        ),
+      ],
+    );
   }
 }
