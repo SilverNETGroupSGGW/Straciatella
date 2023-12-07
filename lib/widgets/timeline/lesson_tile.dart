@@ -218,14 +218,20 @@ class TimeDivider extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(lesson.startTime.format(context)),
+          child: Text(
+            lesson.startTime.format(context),
+            style: Theme.of(context).textTheme.labelSmall,
+          ),
         ),
         Expanded(
           child: VerticalDivider(),
         ),
         Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Text(_getEndTime().format(context)),
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            _getEndTime().format(context),
+            style: Theme.of(context).textTheme.labelSmall,
+          ),
         ),
       ],
     );

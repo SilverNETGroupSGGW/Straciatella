@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:psggw/notifiers/settings_provider.dart';
 
-class AutoThemeSwitcher extends ConsumerWidget {
-  const AutoThemeSwitcher({
+class AutoThemeModeTile extends ConsumerWidget {
+  const AutoThemeModeTile({
     super.key,
   });
 
