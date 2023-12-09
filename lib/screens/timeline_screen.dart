@@ -1,17 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:psggw/models/lesson_model.dart';
-import 'package:psggw/models/schedule_model.dart';
+import 'package:psggw/models/lesson_model/lesson.dart';
 
 import 'package:psggw/widgets/timeline/lesson_tile.dart';
 
-class Timeline extends ConsumerWidget {
+class Timeline extends StatelessWidget {
   const Timeline({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    List<Lesson> lessons = ref.watch(schedulesDataProvider)[0].lessons;
+  Widget build(BuildContext context) {
+    // TODO: Add handling
+    List<Lesson> lessons = [];
     return ListView(
       children: [
         LessonTile(

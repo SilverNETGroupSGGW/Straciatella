@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:psggw/models/classroom_model.dart';
-import 'package:psggw/models/degree_enum.dart';
-import 'package:psggw/models/group_model.dart';
-import 'package:psggw/models/lecturers_model.dart';
-import 'package:psggw/models/lesson_model.dart';
-import 'package:psggw/models/schedule_model.dart';
+import 'package:psggw/models/classroom_model/classroom.dart';
+import 'package:psggw/models/degree_model.dart';
+import 'package:psggw/models/group_model/group.dart';
+import 'package:psggw/models/lecturer_model/lecturer.dart';
+import 'package:psggw/models/lesson_model/lesson.dart';
+import 'package:psggw/models/schedule_model/schedule.dart';
 
 final List<Schedule> schedules = [
   Schedule(
@@ -28,7 +28,7 @@ final List<Schedule> schedules = [
         name: 'lesson 1 name',
         comment: 'lesson 1 comment',
         id: 'lesson 1 id',
-        dayOfWeek: Day.monday,
+        dayOfWeek: DayOfWeek.monday,
         classroom: Classroom(
           id: "1",
           name: "3/40",
@@ -57,7 +57,7 @@ final List<Schedule> schedules = [
         name: 'lesson 2 name',
         comment: 'lesson 2 comment',
         id: 'lesson 2 id',
-        dayOfWeek: Day.monday,
+        dayOfWeek: DayOfWeek.monday,
         classroom: Classroom(
           id: "2",
           name: "3/40",

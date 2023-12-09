@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:psggw/models/lesson_model.dart';
+import 'package:psggw/models/lesson_model/lesson.dart';
 
 class LessonTile extends StatelessWidget {
   const LessonTile({
@@ -109,7 +109,7 @@ class LessonCard extends StatelessWidget {
                             children: [
                               IconWithText(
                                 icon: Icons.location_on,
-                                text: lesson.classroom?.name ?? 'Brak sali',
+                                text: lesson.classroom.name,
                                 textStyle:
                                     Theme.of(context).textTheme.bodySmall,
                               ),

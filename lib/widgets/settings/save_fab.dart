@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:psggw/notifiers/settings_provider.dart';
 
-class SaveFab extends ConsumerWidget {
+class SaveFab extends StatelessWidget {
   const SaveFab({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () async {
         ScaffoldMessenger.of(context).clearSnackBars();
-        if (await ref.read(settingsProvider).saveToStorage()) {
+        // TODO: Add save settings to storage logic
+        if (await true) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Zapisano ustawienia'),

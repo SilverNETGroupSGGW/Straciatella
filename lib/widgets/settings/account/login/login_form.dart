@@ -1,13 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:psggw/data/apis.dart';
-import 'package:psggw/models/credentials_model.dart';
-import 'package:psggw/models/settings_model.dart';
-import 'package:psggw/notifiers/credentials_provder.dart';
-import 'package:psggw/notifiers/settings_provider.dart';
+import 'package:psggw/models/account_model/account.dart';
+import 'package:psggw/models/settings_model/settings.dart';
 
-class LoginForm extends ConsumerWidget {
+class LoginForm extends StatelessWidget {
   const LoginForm({
     super.key,
     required this.formKey,
@@ -16,9 +13,10 @@ class LoginForm extends ConsumerWidget {
   final GlobalKey<FormState> formKey;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    Settings settings = ref.watch(settingsProvider);
-    Credentials credentials = ref.watch(credentialsProvider);
+  Widget build(BuildContext context) {
+    // TODO: Add login logic
+    Settings settings;
+    Account account;
     return Form(
       key: formKey,
       child: Column(
@@ -37,7 +35,7 @@ class LoginForm extends ConsumerWidget {
                   keyboardType: TextInputType.url,
                   autofillHints: const [AutofillHints.url],
                   onSaved: (value) {
-                    ref.read(settingsProvider.notifier).setApiUrl(value ?? '');
+                    // TODO: Set new api url
                   },
                   onChanged: (value) {
                     formKey.currentState!.reset();
@@ -59,11 +57,11 @@ class LoginForm extends ConsumerWidget {
             decoration: InputDecoration(
               labelText: 'Email',
             ),
-            initialValue: credentials.email,
+            initialValue: account.email,
             autofillHints: const [AutofillHints.email],
             keyboardType: TextInputType.emailAddress,
             onSaved: (value) {
-              ref.read(credentialsProvider.notifier).setEmail(value ?? '');
+              // TODO: Set email
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -80,9 +78,9 @@ class LoginForm extends ConsumerWidget {
             keyboardType: TextInputType.visiblePassword,
             obscureText: true,
             onSaved: (value) {
-              ref.read(credentialsProvider.notifier).setPassword(value ?? '');
+              // TODO: Set password
             },
-            initialValue: credentials.password == "" ? "" : "**********",
+            initialValue: account.password == "" ? "" : "**********",
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'password_empty'.tr();
@@ -96,13 +94,13 @@ class LoginForm extends ConsumerWidget {
   }
 }
 
-class ShowOfficialApisButton extends ConsumerWidget {
+class ShowOfficialApisButton extends StatelessWidget {
   const ShowOfficialApisButton({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
         showAdaptiveDialog(
@@ -168,7 +166,7 @@ class ApiListDialog extends StatelessWidget {
   }
 }
 
-class ApiEntryTile extends ConsumerWidget {
+class ApiEntryTile extends StatelessWidget {
   const ApiEntryTile({
     super.key,
     required this.name,
@@ -177,7 +175,7 @@ class ApiEntryTile extends ConsumerWidget {
   final String name, url;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListTile(
       title: Text(
         name,
@@ -187,9 +185,7 @@ class ApiEntryTile extends ConsumerWidget {
         overflow: TextOverflow.fade,
       ),
       onTap: () {
-        ref.watch(settingsProvider.notifier).setApiUrl(
-              url,
-            );
+        // TODO: Set api url
         Navigator.of(context).pop();
       },
     );

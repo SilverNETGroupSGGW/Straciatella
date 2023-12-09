@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:psggw/models/settings_model.dart';
 import 'package:psggw/adapters/settings_adapter.dart';
-import 'package:psggw/notifiers/credentials_provder.dart';
-import 'package:psggw/notifiers/settings_provider.dart';
+import 'package:psggw/models/settings_model/settings.dart';
 import 'package:psggw/screens/intro_screen/login_screen.dart';
 import 'package:psggw/screens/intro_screen/welcome_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -17,8 +14,7 @@ void main() async {
   Hive.registerAdapter(SettingsAdapter());
   await EasyLocalization.ensureInitialized();
   runApp(
-    ProviderScope(
-        child: EasyLocalization(
+    EasyLocalization(
       child: MainApp(),
       supportedLocales: [
         Locale('en', 'US'),
@@ -26,21 +22,21 @@ void main() async {
       ],
       path: 'assets/translations',
       fallbackLocale: Locale('en', 'US'),
-    )),
+    ),
   );
 }
 
-class MainApp extends ConsumerStatefulWidget {
+class MainApp extends StatefulWidget {
   MainApp({super.key});
 
   @override
-  ConsumerState<MainApp> createState() => _MainAppState();
+  State<MainApp> createState() => _MainAppState();
 }
 
-class _MainAppState extends ConsumerState<MainApp> {
+class _MainAppState extends State<MainApp> {
   @override
   void initState() {
-    appSettings = ref.read(credentialsProvider.notifier).init();
+    // TODO: implement initState
     super.initState();
   }
 
@@ -56,7 +52,8 @@ class _MainAppState extends ConsumerState<MainApp> {
             child: CircularProgressIndicator(),
           );
         }
-        Settings settings = ref.watch(settingsProvider);
+        // TODO: implement Settings handling
+        Settings settings;
         var darkThemeData = ThemeData(
           colorScheme: ColorScheme.fromSeed(
             seedColor: settings.themeColor,
@@ -86,7 +83,7 @@ class _MainAppState extends ConsumerState<MainApp> {
           darkTheme: darkThemeData,
           theme: lightThemeData,
           themeMode: settings.themeMode,
-          home: settings.firstRun ? WelcomeScreen() : NavbarScreen(index: 0),
+          home: settings.isFirstRun ? WelcomeScreen() : NavbarScreen(index: 0),
         );
       },
     );

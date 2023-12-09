@@ -1,18 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:psggw/models/settings_model.dart';
-import 'package:psggw/notifiers/settings_provider.dart';
+import 'package:psggw/models/settings_model/settings.dart';
 
-class ColorTile extends ConsumerWidget {
+class ColorTile extends StatelessWidget {
   const ColorTile({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    Settings settings = ref.watch(settingsProvider);
+  Widget build(BuildContext context) {
+    // TODO: Handle settings
+    Settings settings;
     Color currentColor = settings.themeColor;
     return ListTile(
       title: Text('theme_color'.tr()),
@@ -27,22 +26,20 @@ class ColorTile extends ConsumerWidget {
             content: BlockPicker(
               pickerColor: settings.themeColor,
               onColorChanged: (color) {
-                ref.read(settingsProvider.notifier).setThemeColor(color);
+                // TODO: Set choosen color
               },
             ),
             actions: [
               TextButton(
                 onPressed: () {
-                  ref.read(settingsProvider.notifier).setThemeColor(Colors.red);
+                  // TODO: Add default color (red)
                   Navigator.of(context).pop();
                 },
                 child: Text('default'.tr()),
               ),
               TextButton(
                 onPressed: () {
-                  ref
-                      .read(settingsProvider.notifier)
-                      .setThemeColor(currentColor);
+                  // TODO: Set color to 'current' color
                   Navigator.of(context).pop();
                 },
                 child: Text('cancel'.tr()),

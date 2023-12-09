@@ -1,16 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:psggw/notifiers/settings_provider.dart';
 
-class DarkThemeModeTile extends ConsumerWidget {
+class DarkThemeModeTile extends StatelessWidget {
   const DarkThemeModeTile({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ThemeMode currentThemeMode = ref.watch(settingsProvider).themeMode;
+  Widget build(BuildContext context) {
+    // TODO: Add ThemeMode handling
+    ThemeMode currentThemeMode;
 
     return ListTile(
       enabled: currentThemeMode != ThemeMode.system,
@@ -22,13 +21,9 @@ class DarkThemeModeTile extends ConsumerWidget {
             ? null
             : (bool value) {
                 if (value) {
-                  ref
-                      .read(settingsProvider.notifier)
-                      .setThemeMode(ThemeMode.dark);
+                  // TODO: Add dark theme
                 } else {
-                  ref
-                      .read(settingsProvider.notifier)
-                      .setThemeMode(ThemeMode.light);
+                  // TODO: Add light theme
                 }
               },
       ),

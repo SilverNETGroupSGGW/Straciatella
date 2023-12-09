@@ -1,16 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:psggw/models/settings_model.dart';
-import 'package:psggw/notifiers/credentials_provder.dart';
-import 'package:psggw/notifiers/settings_provider.dart';
+import 'package:psggw/models/settings_model/settings.dart';
+
 import 'package:psggw/widgets/settings/account/login/login_form.dart';
 
-class LoginScreen extends ConsumerWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -32,7 +30,7 @@ class LoginScreen extends ConsumerWidget {
   }
 }
 
-class LoginCard extends ConsumerStatefulWidget {
+class LoginCard extends StatefulWidget {
   LoginCard({
     super.key,
   });
@@ -40,10 +38,10 @@ class LoginCard extends ConsumerStatefulWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
-  ConsumerState<LoginCard> createState() => _LoginCardState();
+  State<LoginCard> createState() => _LoginCardState();
 }
 
-class _LoginCardState extends ConsumerState<LoginCard> {
+class _LoginCardState extends State<LoginCard> {
   bool isButtonEnabled = true;
 
   @override

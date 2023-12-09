@@ -1,18 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:psggw/notifiers/settings_provider.dart';
 import 'package:psggw/screens/intro_screen/login_screen.dart';
 
-class WelcomeScreen extends ConsumerStatefulWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
   @override
-  ConsumerState<WelcomeScreen> createState() => _WelcomeScreenState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends ConsumerState<WelcomeScreen>
+class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
     duration: const Duration(seconds: 3),
@@ -63,13 +61,13 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen>
   }
 }
 
-class ButtonsRow extends ConsumerWidget {
+class ButtonsRow extends StatelessWidget {
   const ButtonsRow({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

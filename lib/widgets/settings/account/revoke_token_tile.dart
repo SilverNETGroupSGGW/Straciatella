@@ -2,15 +2,12 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:psggw/models/settings_model.dart';
-import 'package:psggw/notifiers/settings_provider.dart';
 
-class RevokeTokenTile extends ConsumerWidget {
+class RevokeTokenTile extends StatelessWidget {
   const RevokeTokenTile({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListTile(
       title: Text('logout'.tr()),
       subtitle: Text('logout_desc'.tr()),
@@ -37,7 +34,8 @@ class RevokeTokenTile extends ConsumerWidget {
 
           if (confirm) {
             ScaffoldMessenger.of(context).clearSnackBars();
-            if (await ref.read(settingsProvider.notifier).revokeToken()) {
+            // TODO: Add logout logic
+            if (await true) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text('logout_success'.tr()),

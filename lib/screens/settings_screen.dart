@@ -1,9 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:psggw/models/settings_model.dart';
-import 'package:psggw/notifiers/settings_provider.dart';
+import 'package:psggw/models/settings_model/settings.dart';
 import 'package:psggw/widgets/settings/theme/auto_theme_tile.dart';
 import 'package:psggw/widgets/settings/theme/color_tile.dart';
 import 'package:psggw/widgets/settings/account/login/login_tile.dart';
@@ -12,12 +10,13 @@ import 'package:psggw/widgets/settings/account/refresh_token_tile.dart';
 import 'package:psggw/widgets/settings/save_fab.dart';
 import 'package:psggw/widgets/settings/theme/theme_tile.dart';
 
-class SettingsScreen extends ConsumerWidget {
+class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    Settings settings = ref.watch(settingsProvider);
+  Widget build(BuildContext context) {
+    // TODO: Handle Settings
+    Settings settings;
     return Scaffold(
       appBar: AppBar(
         title: Text('settings'.tr()),
@@ -34,7 +33,7 @@ class SettingsScreen extends ConsumerWidget {
             LoginTile(),
             RefreshTokenTile(),
             RevokeTokenTile(),
-            ...settings.debugMode
+            ...settings.isDebugMode
                 ? [
                     ListCategoryLabel(label: 'debug'.tr()),
                     DebugInfoTile(),
