@@ -47,15 +47,14 @@ class _LoginCardState extends State<LoginCard> {
   @override
   Widget build(BuildContext context) {
     void endFirstRun() async {
-      ref.read(settingsProvider.notifier).setFirstRun(false);
-      await ref.read(credentialsProvider).saveToStorage();
+      // TODO: implement endFirstRun
       Navigator.of(context).pushNamedAndRemoveUntil(
         '/timeline',
         (route) => false,
       );
     }
 
-    Settings settings = ref.watch(settingsProvider);
+    Settings settings;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -80,15 +79,14 @@ class _LoginCardState extends State<LoginCard> {
                               isButtonEnabled = false;
                             });
                             widget.formKey.currentState!.save();
-                            if (await ref
-                                .read(credentialsProvider.notifier)
-                                .login(settings.apiUrl)) {
+                            if ( // TODO: implement login
+                                "true" == "true") {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text('login_success'.tr()),
                                 ),
                               );
-                              ref.read(credentialsProvider).saveToStorage();
+                              // TODO: save credentials to storage
 
                               endFirstRun();
                             } else
@@ -102,10 +100,8 @@ class _LoginCardState extends State<LoginCard> {
                             });
                           }
 
-                          if (settings.firstRun) {
-                            ref
-                                .read(settingsProvider.notifier)
-                                .setFirstRun(false);
+                          if (settings.isFirstRun) {
+                            // TODO: set first run to false
                           }
                         }
                       : null,

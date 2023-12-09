@@ -8,7 +8,6 @@ class Account with _$Account {
   factory Account({
     required String name,
     required String email,
-    required String accessToken,
     required String password,
     required String deviceToken,
   }) = _Account;

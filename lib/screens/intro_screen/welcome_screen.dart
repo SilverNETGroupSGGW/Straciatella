@@ -84,18 +84,14 @@ class ButtonsRow extends StatelessWidget {
                       ListTile(
                         title: Text('polish'.tr()),
                         onTap: () {
-                          ref
-                              .read(settingsProvider.notifier)
-                              .setLocale(Locale('pl', 'PL'), context);
+                          // TODO: implement change language to polish
                           Navigator.of(context).pop();
                         },
                       ),
                       ListTile(
                         title: Text('english'.tr()),
                         onTap: () {
-                          ref
-                              .read(settingsProvider.notifier)
-                              .setLocale(Locale('en', 'US'), context);
+                          // TODO: implement change language to english
                           Navigator.of(context).pop();
                         },
                       ),

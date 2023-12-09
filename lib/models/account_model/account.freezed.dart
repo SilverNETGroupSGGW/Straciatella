@@ -22,7 +22,6 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
 mixin _$Account {
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get accessToken => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String get deviceToken => throw _privateConstructorUsedError;
 
@@ -36,12 +35,7 @@ abstract class $AccountCopyWith<$Res> {
   factory $AccountCopyWith(Account value, $Res Function(Account) then) =
       _$AccountCopyWithImpl<$Res, Account>;
   @useResult
-  $Res call(
-      {String name,
-      String email,
-      String accessToken,
-      String password,
-      String deviceToken});
+  $Res call({String name, String email, String password, String deviceToken});
 }
 
 /// @nodoc
@@ -59,7 +53,6 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   $Res call({
     Object? name = null,
     Object? email = null,
-    Object? accessToken = null,
     Object? password = null,
     Object? deviceToken = null,
   }) {
@@ -71,10 +64,6 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      accessToken: null == accessToken
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -95,12 +84,7 @@ abstract class _$$AccountImplCopyWith<$Res> implements $AccountCopyWith<$Res> {
       __$$AccountImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String email,
-      String accessToken,
-      String password,
-      String deviceToken});
+  $Res call({String name, String email, String password, String deviceToken});
 }
 
 /// @nodoc
@@ -116,7 +100,6 @@ class __$$AccountImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? email = null,
-    Object? accessToken = null,
     Object? password = null,
     Object? deviceToken = null,
   }) {
@@ -128,10 +111,6 @@ class __$$AccountImplCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      accessToken: null == accessToken
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -151,7 +130,6 @@ class _$AccountImpl implements _Account {
   _$AccountImpl(
       {required this.name,
       required this.email,
-      required this.accessToken,
       required this.password,
       required this.deviceToken});
 
@@ -163,15 +141,13 @@ class _$AccountImpl implements _Account {
   @override
   final String email;
   @override
-  final String accessToken;
-  @override
   final String password;
   @override
   final String deviceToken;
 
   @override
   String toString() {
-    return 'Account(name: $name, email: $email, accessToken: $accessToken, password: $password, deviceToken: $deviceToken)';
+    return 'Account(name: $name, email: $email, password: $password, deviceToken: $deviceToken)';
   }
 
   @override
@@ -181,8 +157,6 @@ class _$AccountImpl implements _Account {
             other is _$AccountImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.accessToken, accessToken) ||
-                other.accessToken == accessToken) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.deviceToken, deviceToken) ||
@@ -192,7 +166,7 @@ class _$AccountImpl implements _Account {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, email, accessToken, password, deviceToken);
+      Object.hash(runtimeType, name, email, password, deviceToken);
 
   @JsonKey(ignore: true)
   @override
@@ -212,7 +186,6 @@ abstract class _Account implements Account {
   factory _Account(
       {required final String name,
       required final String email,
-      required final String accessToken,
       required final String password,
       required final String deviceToken}) = _$AccountImpl;
 
@@ -222,8 +195,6 @@ abstract class _Account implements Account {
   String get name;
   @override
   String get email;
-  @override
-  String get accessToken;
   @override
   String get password;
   @override
