@@ -11,8 +11,10 @@ part 'settings_bloc.freezed.dart';
 part 'settings_bloc.g.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
+  late Box box;
+
   SettingsBloc() : super(_Initial()) {
-    on<_LoadRequested>(_onLoadRequested);
+    on<_Init>(_onInit);
     on<_SaveRequested>(_onSaveRequested);
     on<_AutoThemeModeChanged>(_onAutoThemeModeChanged);
     on<_ThemeModeChanged>(_onThemeModeChanged);
@@ -21,10 +23,10 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     on<_FirstRunChanged>(_onFirstRunChanged);
   }
 
-  void _onLoadRequested(
-      _LoadRequested event, Emitter<SettingsState> emit) async {
-    await Hive.openBox<SettingsState>('settings');
-    final loadedSettings = Hive.box<SettingsState>('settings').get('settings');
+  void _onInit(_Init event, Emitter<SettingsState> emit) async {
+    box = await Hive.openBox('settings');
+    final loadedSettings = box.get('settings');
+      emit(SettingsState.loaded());
     if (loadedSettings == null) {
       emit(SettingsState.loaded());
     } else {
@@ -33,10 +35,8 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   }
 
   void _onSaveRequested(
-      _SaveRequested event, Emitter<SettingsState> emit) async {
-    await Hive.openBox('settings').then(
-      (value) => value.put('settings', state),
-    );
+      _SaveRequested event, Emitter<SettingsState> emit) {
+    box.put('settings', state);
   }
 
   void _onAutoThemeModeChanged(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psggw/logic/settings/settings_bloc.dart';
 
 class SaveFab extends StatelessWidget {
@@ -10,7 +11,7 @@ class SaveFab extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () async {
-        SettingsEvent.saveRequested();
+        context.read<SettingsBloc>().add(SettingsEvent.saveRequested());
       },
       child: const Icon(Icons.save_outlined),
     );

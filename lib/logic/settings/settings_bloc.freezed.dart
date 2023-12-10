@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRequested,
+    required TResult Function() init,
     required TResult Function() saveRequested,
     required TResult Function(bool isAuto) autoThemeModeChanged,
     required TResult Function(ThemeMode themeMode) darkThemeModeChanged,
@@ -29,7 +29,7 @@ mixin _$SettingsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRequested,
+    TResult? Function()? init,
     TResult? Function()? saveRequested,
     TResult? Function(bool isAuto)? autoThemeModeChanged,
     TResult? Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -40,7 +40,7 @@ mixin _$SettingsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRequested,
+    TResult Function()? init,
     TResult Function()? saveRequested,
     TResult Function(bool isAuto)? autoThemeModeChanged,
     TResult Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -52,7 +52,7 @@ mixin _$SettingsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadRequested value) loadRequested,
+    required TResult Function(_Init value) init,
     required TResult Function(_SaveRequested value) saveRequested,
     required TResult Function(_AutoThemeModeChanged value) autoThemeModeChanged,
     required TResult Function(_ThemeModeChanged value) darkThemeModeChanged,
@@ -63,7 +63,7 @@ mixin _$SettingsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadRequested value)? loadRequested,
+    TResult? Function(_Init value)? init,
     TResult? Function(_SaveRequested value)? saveRequested,
     TResult? Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult? Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -74,7 +74,7 @@ mixin _$SettingsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadRequested value)? loadRequested,
+    TResult Function(_Init value)? init,
     TResult Function(_SaveRequested value)? saveRequested,
     TResult Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -105,35 +105,34 @@ class _$SettingsEventCopyWithImpl<$Res, $Val extends SettingsEvent>
 }
 
 /// @nodoc
-abstract class _$$LoadRequestedImplCopyWith<$Res> {
-  factory _$$LoadRequestedImplCopyWith(
-          _$LoadRequestedImpl value, $Res Function(_$LoadRequestedImpl) then) =
-      __$$LoadRequestedImplCopyWithImpl<$Res>;
+abstract class _$$InitImplCopyWith<$Res> {
+  factory _$$InitImplCopyWith(
+          _$InitImpl value, $Res Function(_$InitImpl) then) =
+      __$$InitImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadRequestedImplCopyWithImpl<$Res>
-    extends _$SettingsEventCopyWithImpl<$Res, _$LoadRequestedImpl>
-    implements _$$LoadRequestedImplCopyWith<$Res> {
-  __$$LoadRequestedImplCopyWithImpl(
-      _$LoadRequestedImpl _value, $Res Function(_$LoadRequestedImpl) _then)
+class __$$InitImplCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res, _$InitImpl>
+    implements _$$InitImplCopyWith<$Res> {
+  __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadRequestedImpl implements _LoadRequested {
-  const _$LoadRequestedImpl();
+class _$InitImpl implements _Init {
+  const _$InitImpl();
 
   @override
   String toString() {
-    return 'SettingsEvent.loadRequested()';
+    return 'SettingsEvent.init()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadRequestedImpl);
+        (other.runtimeType == runtimeType && other is _$InitImpl);
   }
 
   @override
@@ -142,7 +141,7 @@ class _$LoadRequestedImpl implements _LoadRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRequested,
+    required TResult Function() init,
     required TResult Function() saveRequested,
     required TResult Function(bool isAuto) autoThemeModeChanged,
     required TResult Function(ThemeMode themeMode) darkThemeModeChanged,
@@ -150,13 +149,13 @@ class _$LoadRequestedImpl implements _LoadRequested {
     required TResult Function(bool isDebugMode) debugModeChanged,
     required TResult Function(bool completed) firstRunEnded,
   }) {
-    return loadRequested();
+    return init();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRequested,
+    TResult? Function()? init,
     TResult? Function()? saveRequested,
     TResult? Function(bool isAuto)? autoThemeModeChanged,
     TResult? Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -164,13 +163,13 @@ class _$LoadRequestedImpl implements _LoadRequested {
     TResult? Function(bool isDebugMode)? debugModeChanged,
     TResult? Function(bool completed)? firstRunEnded,
   }) {
-    return loadRequested?.call();
+    return init?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRequested,
+    TResult Function()? init,
     TResult Function()? saveRequested,
     TResult Function(bool isAuto)? autoThemeModeChanged,
     TResult Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -179,8 +178,8 @@ class _$LoadRequestedImpl implements _LoadRequested {
     TResult Function(bool completed)? firstRunEnded,
     required TResult orElse(),
   }) {
-    if (loadRequested != null) {
-      return loadRequested();
+    if (init != null) {
+      return init();
     }
     return orElse();
   }
@@ -188,7 +187,7 @@ class _$LoadRequestedImpl implements _LoadRequested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadRequested value) loadRequested,
+    required TResult Function(_Init value) init,
     required TResult Function(_SaveRequested value) saveRequested,
     required TResult Function(_AutoThemeModeChanged value) autoThemeModeChanged,
     required TResult Function(_ThemeModeChanged value) darkThemeModeChanged,
@@ -196,13 +195,13 @@ class _$LoadRequestedImpl implements _LoadRequested {
     required TResult Function(_DebugModeChanged value) debugModeChanged,
     required TResult Function(_FirstRunChanged value) firstRunEnded,
   }) {
-    return loadRequested(this);
+    return init(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadRequested value)? loadRequested,
+    TResult? Function(_Init value)? init,
     TResult? Function(_SaveRequested value)? saveRequested,
     TResult? Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult? Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -210,13 +209,13 @@ class _$LoadRequestedImpl implements _LoadRequested {
     TResult? Function(_DebugModeChanged value)? debugModeChanged,
     TResult? Function(_FirstRunChanged value)? firstRunEnded,
   }) {
-    return loadRequested?.call(this);
+    return init?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadRequested value)? loadRequested,
+    TResult Function(_Init value)? init,
     TResult Function(_SaveRequested value)? saveRequested,
     TResult Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -225,15 +224,15 @@ class _$LoadRequestedImpl implements _LoadRequested {
     TResult Function(_FirstRunChanged value)? firstRunEnded,
     required TResult orElse(),
   }) {
-    if (loadRequested != null) {
-      return loadRequested(this);
+    if (init != null) {
+      return init(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadRequested implements SettingsEvent {
-  const factory _LoadRequested() = _$LoadRequestedImpl;
+abstract class _Init implements SettingsEvent {
+  const factory _Init() = _$InitImpl;
 }
 
 /// @nodoc
@@ -274,7 +273,7 @@ class _$SaveRequestedImpl implements _SaveRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRequested,
+    required TResult Function() init,
     required TResult Function() saveRequested,
     required TResult Function(bool isAuto) autoThemeModeChanged,
     required TResult Function(ThemeMode themeMode) darkThemeModeChanged,
@@ -288,7 +287,7 @@ class _$SaveRequestedImpl implements _SaveRequested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRequested,
+    TResult? Function()? init,
     TResult? Function()? saveRequested,
     TResult? Function(bool isAuto)? autoThemeModeChanged,
     TResult? Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -302,7 +301,7 @@ class _$SaveRequestedImpl implements _SaveRequested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRequested,
+    TResult Function()? init,
     TResult Function()? saveRequested,
     TResult Function(bool isAuto)? autoThemeModeChanged,
     TResult Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -320,7 +319,7 @@ class _$SaveRequestedImpl implements _SaveRequested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadRequested value) loadRequested,
+    required TResult Function(_Init value) init,
     required TResult Function(_SaveRequested value) saveRequested,
     required TResult Function(_AutoThemeModeChanged value) autoThemeModeChanged,
     required TResult Function(_ThemeModeChanged value) darkThemeModeChanged,
@@ -334,7 +333,7 @@ class _$SaveRequestedImpl implements _SaveRequested {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadRequested value)? loadRequested,
+    TResult? Function(_Init value)? init,
     TResult? Function(_SaveRequested value)? saveRequested,
     TResult? Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult? Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -348,7 +347,7 @@ class _$SaveRequestedImpl implements _SaveRequested {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadRequested value)? loadRequested,
+    TResult Function(_Init value)? init,
     TResult Function(_SaveRequested value)? saveRequested,
     TResult Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -434,7 +433,7 @@ class _$AutoThemeModeChangedImpl implements _AutoThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRequested,
+    required TResult Function() init,
     required TResult Function() saveRequested,
     required TResult Function(bool isAuto) autoThemeModeChanged,
     required TResult Function(ThemeMode themeMode) darkThemeModeChanged,
@@ -448,7 +447,7 @@ class _$AutoThemeModeChangedImpl implements _AutoThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRequested,
+    TResult? Function()? init,
     TResult? Function()? saveRequested,
     TResult? Function(bool isAuto)? autoThemeModeChanged,
     TResult? Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -462,7 +461,7 @@ class _$AutoThemeModeChangedImpl implements _AutoThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRequested,
+    TResult Function()? init,
     TResult Function()? saveRequested,
     TResult Function(bool isAuto)? autoThemeModeChanged,
     TResult Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -480,7 +479,7 @@ class _$AutoThemeModeChangedImpl implements _AutoThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadRequested value) loadRequested,
+    required TResult Function(_Init value) init,
     required TResult Function(_SaveRequested value) saveRequested,
     required TResult Function(_AutoThemeModeChanged value) autoThemeModeChanged,
     required TResult Function(_ThemeModeChanged value) darkThemeModeChanged,
@@ -494,7 +493,7 @@ class _$AutoThemeModeChangedImpl implements _AutoThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadRequested value)? loadRequested,
+    TResult? Function(_Init value)? init,
     TResult? Function(_SaveRequested value)? saveRequested,
     TResult? Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult? Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -508,7 +507,7 @@ class _$AutoThemeModeChangedImpl implements _AutoThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadRequested value)? loadRequested,
+    TResult Function(_Init value)? init,
     TResult Function(_SaveRequested value)? saveRequested,
     TResult Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -600,7 +599,7 @@ class _$ThemeModeChangedImpl implements _ThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRequested,
+    required TResult Function() init,
     required TResult Function() saveRequested,
     required TResult Function(bool isAuto) autoThemeModeChanged,
     required TResult Function(ThemeMode themeMode) darkThemeModeChanged,
@@ -614,7 +613,7 @@ class _$ThemeModeChangedImpl implements _ThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRequested,
+    TResult? Function()? init,
     TResult? Function()? saveRequested,
     TResult? Function(bool isAuto)? autoThemeModeChanged,
     TResult? Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -628,7 +627,7 @@ class _$ThemeModeChangedImpl implements _ThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRequested,
+    TResult Function()? init,
     TResult Function()? saveRequested,
     TResult Function(bool isAuto)? autoThemeModeChanged,
     TResult Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -646,7 +645,7 @@ class _$ThemeModeChangedImpl implements _ThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadRequested value) loadRequested,
+    required TResult Function(_Init value) init,
     required TResult Function(_SaveRequested value) saveRequested,
     required TResult Function(_AutoThemeModeChanged value) autoThemeModeChanged,
     required TResult Function(_ThemeModeChanged value) darkThemeModeChanged,
@@ -660,7 +659,7 @@ class _$ThemeModeChangedImpl implements _ThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadRequested value)? loadRequested,
+    TResult? Function(_Init value)? init,
     TResult? Function(_SaveRequested value)? saveRequested,
     TResult? Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult? Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -674,7 +673,7 @@ class _$ThemeModeChangedImpl implements _ThemeModeChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadRequested value)? loadRequested,
+    TResult Function(_Init value)? init,
     TResult Function(_SaveRequested value)? saveRequested,
     TResult Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -766,7 +765,7 @@ class _$ThemeColorChangedImpl implements _ThemeColorChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRequested,
+    required TResult Function() init,
     required TResult Function() saveRequested,
     required TResult Function(bool isAuto) autoThemeModeChanged,
     required TResult Function(ThemeMode themeMode) darkThemeModeChanged,
@@ -780,7 +779,7 @@ class _$ThemeColorChangedImpl implements _ThemeColorChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRequested,
+    TResult? Function()? init,
     TResult? Function()? saveRequested,
     TResult? Function(bool isAuto)? autoThemeModeChanged,
     TResult? Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -794,7 +793,7 @@ class _$ThemeColorChangedImpl implements _ThemeColorChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRequested,
+    TResult Function()? init,
     TResult Function()? saveRequested,
     TResult Function(bool isAuto)? autoThemeModeChanged,
     TResult Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -812,7 +811,7 @@ class _$ThemeColorChangedImpl implements _ThemeColorChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadRequested value) loadRequested,
+    required TResult Function(_Init value) init,
     required TResult Function(_SaveRequested value) saveRequested,
     required TResult Function(_AutoThemeModeChanged value) autoThemeModeChanged,
     required TResult Function(_ThemeModeChanged value) darkThemeModeChanged,
@@ -826,7 +825,7 @@ class _$ThemeColorChangedImpl implements _ThemeColorChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadRequested value)? loadRequested,
+    TResult? Function(_Init value)? init,
     TResult? Function(_SaveRequested value)? saveRequested,
     TResult? Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult? Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -840,7 +839,7 @@ class _$ThemeColorChangedImpl implements _ThemeColorChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadRequested value)? loadRequested,
+    TResult Function(_Init value)? init,
     TResult Function(_SaveRequested value)? saveRequested,
     TResult Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -932,7 +931,7 @@ class _$DebugModeChangedImpl implements _DebugModeChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRequested,
+    required TResult Function() init,
     required TResult Function() saveRequested,
     required TResult Function(bool isAuto) autoThemeModeChanged,
     required TResult Function(ThemeMode themeMode) darkThemeModeChanged,
@@ -946,7 +945,7 @@ class _$DebugModeChangedImpl implements _DebugModeChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRequested,
+    TResult? Function()? init,
     TResult? Function()? saveRequested,
     TResult? Function(bool isAuto)? autoThemeModeChanged,
     TResult? Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -960,7 +959,7 @@ class _$DebugModeChangedImpl implements _DebugModeChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRequested,
+    TResult Function()? init,
     TResult Function()? saveRequested,
     TResult Function(bool isAuto)? autoThemeModeChanged,
     TResult Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -978,7 +977,7 @@ class _$DebugModeChangedImpl implements _DebugModeChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadRequested value) loadRequested,
+    required TResult Function(_Init value) init,
     required TResult Function(_SaveRequested value) saveRequested,
     required TResult Function(_AutoThemeModeChanged value) autoThemeModeChanged,
     required TResult Function(_ThemeModeChanged value) darkThemeModeChanged,
@@ -992,7 +991,7 @@ class _$DebugModeChangedImpl implements _DebugModeChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadRequested value)? loadRequested,
+    TResult? Function(_Init value)? init,
     TResult? Function(_SaveRequested value)? saveRequested,
     TResult? Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult? Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -1006,7 +1005,7 @@ class _$DebugModeChangedImpl implements _DebugModeChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadRequested value)? loadRequested,
+    TResult Function(_Init value)? init,
     TResult Function(_SaveRequested value)? saveRequested,
     TResult Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -1098,7 +1097,7 @@ class _$FirstRunChangedImpl implements _FirstRunChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadRequested,
+    required TResult Function() init,
     required TResult Function() saveRequested,
     required TResult Function(bool isAuto) autoThemeModeChanged,
     required TResult Function(ThemeMode themeMode) darkThemeModeChanged,
@@ -1112,7 +1111,7 @@ class _$FirstRunChangedImpl implements _FirstRunChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadRequested,
+    TResult? Function()? init,
     TResult? Function()? saveRequested,
     TResult? Function(bool isAuto)? autoThemeModeChanged,
     TResult? Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -1126,7 +1125,7 @@ class _$FirstRunChangedImpl implements _FirstRunChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadRequested,
+    TResult Function()? init,
     TResult Function()? saveRequested,
     TResult Function(bool isAuto)? autoThemeModeChanged,
     TResult Function(ThemeMode themeMode)? darkThemeModeChanged,
@@ -1144,7 +1143,7 @@ class _$FirstRunChangedImpl implements _FirstRunChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadRequested value) loadRequested,
+    required TResult Function(_Init value) init,
     required TResult Function(_SaveRequested value) saveRequested,
     required TResult Function(_AutoThemeModeChanged value) autoThemeModeChanged,
     required TResult Function(_ThemeModeChanged value) darkThemeModeChanged,
@@ -1158,7 +1157,7 @@ class _$FirstRunChangedImpl implements _FirstRunChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LoadRequested value)? loadRequested,
+    TResult? Function(_Init value)? init,
     TResult? Function(_SaveRequested value)? saveRequested,
     TResult? Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult? Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -1172,7 +1171,7 @@ class _$FirstRunChangedImpl implements _FirstRunChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadRequested value)? loadRequested,
+    TResult Function(_Init value)? init,
     TResult Function(_SaveRequested value)? saveRequested,
     TResult Function(_AutoThemeModeChanged value)? autoThemeModeChanged,
     TResult Function(_ThemeModeChanged value)? darkThemeModeChanged,
@@ -1216,24 +1215,33 @@ mixin _$SettingsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ThemeMode themeMode, bool isFirstRun,
-            bool isDebugMode, @ColorConverter() Color themeColor)
+    required TResult Function(
+            @HiveField(0) ThemeMode themeMode,
+            @HiveField(1) bool isFirstRun,
+            @HiveField(2) bool isDebugMode,
+            @ColorConverter() @HiveField(3) Color themeColor)
         loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ThemeMode themeMode, bool isFirstRun, bool isDebugMode,
-            @ColorConverter() Color themeColor)?
+    TResult? Function(
+            @HiveField(0) ThemeMode themeMode,
+            @HiveField(1) bool isFirstRun,
+            @HiveField(2) bool isDebugMode,
+            @ColorConverter() @HiveField(3) Color themeColor)?
         loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ThemeMode themeMode, bool isFirstRun, bool isDebugMode,
-            @ColorConverter() Color themeColor)?
+    TResult Function(
+            @HiveField(0) ThemeMode themeMode,
+            @HiveField(1) bool isFirstRun,
+            @HiveField(2) bool isDebugMode,
+            @ColorConverter() @HiveField(3) Color themeColor)?
         loaded,
     required TResult orElse(),
   }) =>
@@ -1296,8 +1304,11 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl({final String? $type}) : $type = $type ?? 'initial';
+@HiveType(typeId: 0, adapterName: "SettingsStateInitialAdapter")
+class _$InitialImpl extends _Initial {
+  _$InitialImpl({final String? $type})
+      : $type = $type ?? 'initial',
+        super._();
 
   factory _$InitialImpl.fromJson(Map<String, dynamic> json) =>
       _$$InitialImplFromJson(json);
@@ -1324,8 +1335,11 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ThemeMode themeMode, bool isFirstRun,
-            bool isDebugMode, @ColorConverter() Color themeColor)
+    required TResult Function(
+            @HiveField(0) ThemeMode themeMode,
+            @HiveField(1) bool isFirstRun,
+            @HiveField(2) bool isDebugMode,
+            @ColorConverter() @HiveField(3) Color themeColor)
         loaded,
   }) {
     return initial();
@@ -1335,8 +1349,11 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ThemeMode themeMode, bool isFirstRun, bool isDebugMode,
-            @ColorConverter() Color themeColor)?
+    TResult? Function(
+            @HiveField(0) ThemeMode themeMode,
+            @HiveField(1) bool isFirstRun,
+            @HiveField(2) bool isDebugMode,
+            @ColorConverter() @HiveField(3) Color themeColor)?
         loaded,
   }) {
     return initial?.call();
@@ -1346,8 +1363,11 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ThemeMode themeMode, bool isFirstRun, bool isDebugMode,
-            @ColorConverter() Color themeColor)?
+    TResult Function(
+            @HiveField(0) ThemeMode themeMode,
+            @HiveField(1) bool isFirstRun,
+            @HiveField(2) bool isDebugMode,
+            @ColorConverter() @HiveField(3) Color themeColor)?
         loaded,
     required TResult orElse(),
   }) {
@@ -1396,8 +1416,9 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements SettingsState {
-  const factory _Initial() = _$InitialImpl;
+abstract class _Initial extends SettingsState {
+  factory _Initial() = _$InitialImpl;
+  _Initial._() : super._();
 
   factory _Initial.fromJson(Map<String, dynamic> json) = _$InitialImpl.fromJson;
 }
@@ -1409,10 +1430,10 @@ abstract class _$$LoadedImplCopyWith<$Res> {
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {ThemeMode themeMode,
-      bool isFirstRun,
-      bool isDebugMode,
-      @ColorConverter() Color themeColor});
+      {@HiveField(0) ThemeMode themeMode,
+      @HiveField(1) bool isFirstRun,
+      @HiveField(2) bool isDebugMode,
+      @ColorConverter() @HiveField(3) Color themeColor});
 }
 
 /// @nodoc
@@ -1454,30 +1475,36 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(
-      {this.themeMode = ThemeMode.system,
-      this.isFirstRun = true,
-      this.isDebugMode = false,
-      @ColorConverter() this.themeColor = Colors.red,
+@HiveType(typeId: 1, adapterName: "SettingsStateLoadedAdapter")
+class _$LoadedImpl extends _Loaded {
+  _$LoadedImpl(
+      {@HiveField(0) this.themeMode = ThemeMode.system,
+      @HiveField(1) this.isFirstRun = true,
+      @HiveField(2) this.isDebugMode = false,
+      @ColorConverter() @HiveField(3) this.themeColor = Colors.red,
       final String? $type})
-      : $type = $type ?? 'loaded';
+      : $type = $type ?? 'loaded',
+        super._();
 
   factory _$LoadedImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoadedImplFromJson(json);
 
   @override
   @JsonKey()
+  @HiveField(0)
   final ThemeMode themeMode;
   @override
   @JsonKey()
+  @HiveField(1)
   final bool isFirstRun;
   @override
   @JsonKey()
+  @HiveField(2)
   final bool isDebugMode;
   @override
   @JsonKey()
   @ColorConverter()
+  @HiveField(3)
   final Color themeColor;
 
   @JsonKey(name: 'runtimeType')
@@ -1518,8 +1545,11 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ThemeMode themeMode, bool isFirstRun,
-            bool isDebugMode, @ColorConverter() Color themeColor)
+    required TResult Function(
+            @HiveField(0) ThemeMode themeMode,
+            @HiveField(1) bool isFirstRun,
+            @HiveField(2) bool isDebugMode,
+            @ColorConverter() @HiveField(3) Color themeColor)
         loaded,
   }) {
     return loaded(themeMode, isFirstRun, isDebugMode, themeColor);
@@ -1529,8 +1559,11 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(ThemeMode themeMode, bool isFirstRun, bool isDebugMode,
-            @ColorConverter() Color themeColor)?
+    TResult? Function(
+            @HiveField(0) ThemeMode themeMode,
+            @HiveField(1) bool isFirstRun,
+            @HiveField(2) bool isDebugMode,
+            @ColorConverter() @HiveField(3) Color themeColor)?
         loaded,
   }) {
     return loaded?.call(themeMode, isFirstRun, isDebugMode, themeColor);
@@ -1540,8 +1573,11 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ThemeMode themeMode, bool isFirstRun, bool isDebugMode,
-            @ColorConverter() Color themeColor)?
+    TResult Function(
+            @HiveField(0) ThemeMode themeMode,
+            @HiveField(1) bool isFirstRun,
+            @HiveField(2) bool isDebugMode,
+            @ColorConverter() @HiveField(3) Color themeColor)?
         loaded,
     required TResult orElse(),
   }) {
@@ -1590,19 +1626,24 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements SettingsState {
-  const factory _Loaded(
-      {final ThemeMode themeMode,
-      final bool isFirstRun,
-      final bool isDebugMode,
-      @ColorConverter() final Color themeColor}) = _$LoadedImpl;
+abstract class _Loaded extends SettingsState {
+  factory _Loaded(
+      {@HiveField(0) final ThemeMode themeMode,
+      @HiveField(1) final bool isFirstRun,
+      @HiveField(2) final bool isDebugMode,
+      @ColorConverter() @HiveField(3) final Color themeColor}) = _$LoadedImpl;
+  _Loaded._() : super._();
 
   factory _Loaded.fromJson(Map<String, dynamic> json) = _$LoadedImpl.fromJson;
 
+  @HiveField(0)
   ThemeMode get themeMode;
+  @HiveField(1)
   bool get isFirstRun;
+  @HiveField(2)
   bool get isDebugMode;
   @ColorConverter()
+  @HiveField(3)
   Color get themeColor;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>

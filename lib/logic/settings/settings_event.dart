@@ -2,7 +2,7 @@ part of 'settings_bloc.dart';
 
 @freezed
 class SettingsEvent with _$SettingsEvent {
-  const factory SettingsEvent.loadRequested() = _LoadRequested;
+  const factory SettingsEvent.init() = _Init;
   const factory SettingsEvent.saveRequested() = _SaveRequested;
   const factory SettingsEvent.autoThemeModeChanged(
     bool isAuto,
