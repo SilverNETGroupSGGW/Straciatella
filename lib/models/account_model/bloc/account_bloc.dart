@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:psggw/models/account_model/account.dart';
@@ -15,6 +16,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     on<_LogoutRequested>(_onLogoutRequested);
     on<_refreshToken>(_onRefreshToken);
     on<_RefreshTokenFromStorageRequested>(_onRefreshTokenFromStorageRequested);
+    on<_SaveToStorage>(_onSaveToStorage);
   }
 
   void _onApiURLChanged(_ApiURLChanged event, Emitter<AccountState> emit) {
@@ -30,22 +32,19 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   void _onLoginRequested(
       _LoginRequested event, Emitter<AccountState> emit) async {
     emit(AccountState.loggingIn());
-    String apiURL = state.maybeMap(
-      loggedIn: (state) => state.account.apiURL,
-      orElse: () => '',
-    );
     try {
       dio.Response response = await dio.Dio().post(
-        apiURL + '/login',
+        event.apiURL + '/Tokens/login',
         data: {
           'email': event.email,
           'password': event.password,
+          'deviceToken': event.deviceToken,
         },
-      ).onError((error, stackTrace) {
-        throw "asdf";
-      });
+      );
       if (response.statusCode == 200) {
-        emit(AccountState.loggedIn(account: Account.fromJson(response.data)));
+        Map<String, dynamic> data = response.data;
+        data['apiURL'] = event.apiURL;
+        emit(AccountState.loggedIn(account: Account.fromJson(data)));
       } else {
         emit(AccountState.loggedOut());
       }
@@ -98,6 +97,21 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       emit(AccountState.loggedOut());
     } else {
       emit(AccountState.loggedIn(account: account));
+    }
+  }
+
+  Future<void> _onSaveToStorage(
+      _SaveToStorage event, Emitter<AccountState> emit) async {
+    Account? account = state.maybeMap(
+      loggedIn: (state) => state.account,
+      orElse: () => null,
+    );
+    final box = await Hive.openBox<Account>('account');
+    if (account != null) {
+      box.put(
+        'account',
+        account,
+      );
     }
   }
 }
