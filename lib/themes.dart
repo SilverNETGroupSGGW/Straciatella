@@ -9,7 +9,7 @@ ThemeData getLightTheme(Color seedColor) {
   );
 }
 
-ThemeData geDarkTheme(Color seedColor) {
+ThemeData getDarkTheme(Color seedColor) {
   return ThemeData(
     colorScheme: ColorScheme.fromSeed(
       seedColor: seedColor,
