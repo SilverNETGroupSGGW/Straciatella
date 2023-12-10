@@ -23,6 +23,7 @@ mixin _$Settings {
   ThemeMode get themeMode => throw _privateConstructorUsedError;
   bool get isFirstRun => throw _privateConstructorUsedError;
   bool get isDebugMode => throw _privateConstructorUsedError;
+  String get deviceToken => throw _privateConstructorUsedError;
   @ColorConverter()
   Color get themeColor => throw _privateConstructorUsedError;
   @LocaleConverter()
@@ -43,6 +44,7 @@ abstract class $SettingsCopyWith<$Res> {
       {ThemeMode themeMode,
       bool isFirstRun,
       bool isDebugMode,
+      String deviceToken,
       @ColorConverter() Color themeColor,
       @LocaleConverter() Locale locale});
 }
@@ -63,6 +65,7 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
     Object? themeMode = null,
     Object? isFirstRun = null,
     Object? isDebugMode = null,
+    Object? deviceToken = null,
     Object? themeColor = null,
     Object? locale = null,
   }) {
@@ -79,6 +82,10 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
           ? _value.isDebugMode
           : isDebugMode // ignore: cast_nullable_to_non_nullable
               as bool,
+      deviceToken: null == deviceToken
+          ? _value.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
+              as String,
       themeColor: null == themeColor
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
@@ -103,6 +110,7 @@ abstract class _$$SettingsImplCopyWith<$Res>
       {ThemeMode themeMode,
       bool isFirstRun,
       bool isDebugMode,
+      String deviceToken,
       @ColorConverter() Color themeColor,
       @LocaleConverter() Locale locale});
 }
@@ -121,6 +129,7 @@ class __$$SettingsImplCopyWithImpl<$Res>
     Object? themeMode = null,
     Object? isFirstRun = null,
     Object? isDebugMode = null,
+    Object? deviceToken = null,
     Object? themeColor = null,
     Object? locale = null,
   }) {
@@ -137,6 +146,10 @@ class __$$SettingsImplCopyWithImpl<$Res>
           ? _value.isDebugMode
           : isDebugMode // ignore: cast_nullable_to_non_nullable
               as bool,
+      deviceToken: null == deviceToken
+          ? _value.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
+              as String,
       themeColor: null == themeColor
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
@@ -156,6 +169,7 @@ class _$SettingsImpl extends _Settings {
       {required this.themeMode,
       required this.isFirstRun,
       required this.isDebugMode,
+      required this.deviceToken,
       @ColorConverter() required this.themeColor,
       @LocaleConverter() required this.locale})
       : super._();
@@ -170,6 +184,8 @@ class _$SettingsImpl extends _Settings {
   @override
   final bool isDebugMode;
   @override
+  final String deviceToken;
+  @override
   @ColorConverter()
   final Color themeColor;
   @override
@@ -178,7 +194,7 @@ class _$SettingsImpl extends _Settings {
 
   @override
   String toString() {
-    return 'Settings(themeMode: $themeMode, isFirstRun: $isFirstRun, isDebugMode: $isDebugMode, themeColor: $themeColor, locale: $locale)';
+    return 'Settings(themeMode: $themeMode, isFirstRun: $isFirstRun, isDebugMode: $isDebugMode, deviceToken: $deviceToken, themeColor: $themeColor, locale: $locale)';
   }
 
   @override
@@ -192,6 +208,8 @@ class _$SettingsImpl extends _Settings {
                 other.isFirstRun == isFirstRun) &&
             (identical(other.isDebugMode, isDebugMode) ||
                 other.isDebugMode == isDebugMode) &&
+            (identical(other.deviceToken, deviceToken) ||
+                other.deviceToken == deviceToken) &&
             (identical(other.themeColor, themeColor) ||
                 other.themeColor == themeColor) &&
             (identical(other.locale, locale) || other.locale == locale));
@@ -199,8 +217,8 @@ class _$SettingsImpl extends _Settings {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, themeMode, isFirstRun, isDebugMode, themeColor, locale);
+  int get hashCode => Object.hash(runtimeType, themeMode, isFirstRun,
+      isDebugMode, deviceToken, themeColor, locale);
 
   @JsonKey(ignore: true)
   @override
@@ -221,6 +239,7 @@ abstract class _Settings extends Settings {
       {required final ThemeMode themeMode,
       required final bool isFirstRun,
       required final bool isDebugMode,
+      required final String deviceToken,
       @ColorConverter() required final Color themeColor,
       @LocaleConverter() required final Locale locale}) = _$SettingsImpl;
   _Settings._() : super._();
@@ -234,6 +253,8 @@ abstract class _Settings extends Settings {
   bool get isFirstRun;
   @override
   bool get isDebugMode;
+  @override
+  String get deviceToken;
   @override
   @ColorConverter()
   Color get themeColor;

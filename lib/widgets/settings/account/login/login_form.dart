@@ -2,10 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psggw/data/apis.dart';
-import 'package:psggw/models/account_model/account.dart';
 import 'package:psggw/models/account_model/bloc/account_bloc.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     super.key,
     required this.formKey,
@@ -14,14 +13,36 @@ class LoginForm extends StatelessWidget {
 
   final GlobalKey<FormState> formKey;
   final Map<String, String> credentials;
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  void changeApiURL(String newApiURL) {
+    setState(() {
+      apiURL = newApiURL;
+    });
+  }
+
+  @override
+  void initState() {
+    apiURL = widget.credentials['apiURL'] ?? '';
+    super.initState();
+  }
+
+  String apiURL = '';
+
   @override
   Widget build(BuildContext context) {
-    Account account = context.select((AccountBloc bloc) => bloc.state.maybeMap(
-          loggedIn: (state) => state.account,
-          orElse: () => Account.empty(),
-        ));
+    if (apiURL.isEmpty) {
+      apiURL = context.read<AccountBloc>().state.maybeMap(
+            orElse: () => '',
+            loggedIn: (state) => state.account.apiURL,
+          );
+    }
     return Form(
-      key: formKey,
+      key: widget.formKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -30,18 +51,18 @@ class LoginForm extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
-                  key: ValueKey(account.apiURL), // to reset form on change
+                  key: ValueKey(apiURL), // to reset form on change
                   decoration: InputDecoration(
                     labelText: 'api_url'.tr(),
                   ),
-                  initialValue: account.apiURL,
+                  initialValue: apiURL,
                   keyboardType: TextInputType.url,
                   autofillHints: const [AutofillHints.url],
                   onSaved: (value) {
-                    AccountEvent.apiURLChanged(value!);
+                    widget.credentials['apiURL'] = value!;
                   },
                   onChanged: (value) {
-                    formKey.currentState!.reset();
+                    widget.formKey.currentState!.reset();
                   },
                   validator: (value) {
                     if (value == null ||
@@ -53,11 +74,13 @@ class LoginForm extends StatelessWidget {
                   },
                 ),
               ),
-              ShowOfficialApisButton(),
+              ShowOfficialApisButton(
+                onPressed: changeApiURL,
+              ),
             ],
           ),
-          EmailFormField(credentials: credentials),
-          PasswordFormField(credentials: credentials),
+          EmailFormField(credentials: widget.credentials),
+          PasswordFormField(credentials: widget.credentials),
         ],
       ),
     );
@@ -128,7 +151,10 @@ class EmailFormField extends StatelessWidget {
 class ShowOfficialApisButton extends StatelessWidget {
   const ShowOfficialApisButton({
     super.key,
+    required this.onPressed,
   });
+
+  final void Function(String) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +163,9 @@ class ShowOfficialApisButton extends StatelessWidget {
         showAdaptiveDialog(
           context: context,
           builder: (context) {
-            return ApiListDialog();
+            return ApiListDialog(
+              onPressed: onPressed,
+            );
           },
         );
       },
@@ -151,7 +179,10 @@ class ShowOfficialApisButton extends StatelessWidget {
 class ApiListDialog extends StatelessWidget {
   const ApiListDialog({
     super.key,
+    required this.onPressed,
   });
+
+  final void Function(String) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -177,6 +208,7 @@ class ApiListDialog extends StatelessWidget {
                       (e) => ApiEntryTile(
                         name: e.key,
                         url: e.value,
+                        onPressed: onPressed,
                       ),
                     )
                     .toList(),
@@ -202,8 +234,10 @@ class ApiEntryTile extends StatelessWidget {
     super.key,
     required this.name,
     required this.url,
+    required this.onPressed,
   });
   final String name, url;
+  final void Function(String) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -216,7 +250,7 @@ class ApiEntryTile extends StatelessWidget {
         overflow: TextOverflow.fade,
       ),
       onTap: () {
-        context.read<AccountBloc>().add(AccountEvent.apiURLChanged(url));
+        onPressed(url);
         Navigator.of(context).pop();
       },
     );
