@@ -4,11 +4,10 @@ import 'package:psggw/adapters/settings_adapter.dart';
 import 'package:psggw/models/account_model/bloc/account_bloc.dart';
 import 'package:psggw/models/settings_model/bloc/settings_bloc.dart';
 import 'package:psggw/models/settings_model/settings.dart';
-import 'package:psggw/screens/intro_screen/login_screen.dart';
+import 'package:psggw/router.dart';
 import 'package:psggw/screens/intro_screen/welcome_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:psggw/screens/navbar_screen.dart';
-import 'package:psggw/screens/settings_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
@@ -29,8 +28,15 @@ void main() async {
   );
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -84,16 +90,10 @@ class MainApp extends StatelessWidget {
                 localizationsDelegates: context.localizationDelegates,
                 supportedLocales: context.supportedLocales,
                 locale: settings.locale,
-                home: settings.isFirstRun
-                    ? WelcomeScreen()
-                    : NavBarScreen(index: 0),
-                routes: {
-                  '/login': (context) => LoginScreen(),
-                  '/welcome': (context) => WelcomeScreen(),
-                  '/timeline': (context) => NavBarScreen(index: 0),
-                  '/map': (context) => NavBarScreen(index: 1),
-                  '/settings': (context) => SettingsScreen(),
-                },
+                onGenerateRoute: _appRouter.onGenerateRoute,
+                initialRoute: settings.isFirstRun
+                    ? RouteNames.welcome
+                    : RouteNames.timeline,
               );
             },
           );
