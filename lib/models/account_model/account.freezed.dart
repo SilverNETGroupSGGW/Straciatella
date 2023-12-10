@@ -23,7 +23,6 @@ mixin _$Account {
   String get apiURL => throw _privateConstructorUsedError;
   String get accessToken => throw _privateConstructorUsedError;
   String get refreshToken => throw _privateConstructorUsedError;
-  String get deviceToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,11 +34,7 @@ abstract class $AccountCopyWith<$Res> {
   factory $AccountCopyWith(Account value, $Res Function(Account) then) =
       _$AccountCopyWithImpl<$Res, Account>;
   @useResult
-  $Res call(
-      {String apiURL,
-      String accessToken,
-      String refreshToken,
-      String deviceToken});
+  $Res call({String apiURL, String accessToken, String refreshToken});
 }
 
 /// @nodoc
@@ -58,7 +53,6 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
     Object? apiURL = null,
     Object? accessToken = null,
     Object? refreshToken = null,
-    Object? deviceToken = null,
   }) {
     return _then(_value.copyWith(
       apiURL: null == apiURL
@@ -73,10 +67,6 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
-      deviceToken: null == deviceToken
-          ? _value.deviceToken
-          : deviceToken // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -88,11 +78,7 @@ abstract class _$$AccountImplCopyWith<$Res> implements $AccountCopyWith<$Res> {
       __$$AccountImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String apiURL,
-      String accessToken,
-      String refreshToken,
-      String deviceToken});
+  $Res call({String apiURL, String accessToken, String refreshToken});
 }
 
 /// @nodoc
@@ -109,7 +95,6 @@ class __$$AccountImplCopyWithImpl<$Res>
     Object? apiURL = null,
     Object? accessToken = null,
     Object? refreshToken = null,
-    Object? deviceToken = null,
   }) {
     return _then(_$AccountImpl(
       apiURL: null == apiURL
@@ -124,10 +109,6 @@ class __$$AccountImplCopyWithImpl<$Res>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
-      deviceToken: null == deviceToken
-          ? _value.deviceToken
-          : deviceToken // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -138,8 +119,7 @@ class _$AccountImpl extends _Account {
   _$AccountImpl(
       {required this.apiURL,
       required this.accessToken,
-      required this.refreshToken,
-      required this.deviceToken})
+      required this.refreshToken})
       : super._();
 
   factory _$AccountImpl.fromJson(Map<String, dynamic> json) =>
@@ -151,12 +131,10 @@ class _$AccountImpl extends _Account {
   final String accessToken;
   @override
   final String refreshToken;
-  @override
-  final String deviceToken;
 
   @override
   String toString() {
-    return 'Account(apiURL: $apiURL, accessToken: $accessToken, refreshToken: $refreshToken, deviceToken: $deviceToken)';
+    return 'Account(apiURL: $apiURL, accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -168,15 +146,13 @@ class _$AccountImpl extends _Account {
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken) &&
-            (identical(other.deviceToken, deviceToken) ||
-                other.deviceToken == deviceToken));
+                other.refreshToken == refreshToken));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, apiURL, accessToken, refreshToken, deviceToken);
+      Object.hash(runtimeType, apiURL, accessToken, refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -196,8 +172,7 @@ abstract class _Account extends Account {
   factory _Account(
       {required final String apiURL,
       required final String accessToken,
-      required final String refreshToken,
-      required final String deviceToken}) = _$AccountImpl;
+      required final String refreshToken}) = _$AccountImpl;
   _Account._() : super._();
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$AccountImpl.fromJson;
@@ -208,8 +183,6 @@ abstract class _Account extends Account {
   String get accessToken;
   @override
   String get refreshToken;
-  @override
-  String get deviceToken;
   @override
   @JsonKey(ignore: true)
   _$$AccountImplCopyWith<_$AccountImpl> get copyWith =>

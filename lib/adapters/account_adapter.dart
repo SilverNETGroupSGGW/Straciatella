@@ -11,7 +11,6 @@ class AccountAdapter extends TypeAdapter<Account> {
       apiURL: reader.read() as String,
       accessToken: "",
       refreshToken: reader.read() as String,
-      deviceToken: reader.read() as String,
     );
   }
 
@@ -19,6 +18,5 @@ class AccountAdapter extends TypeAdapter<Account> {
   void write(BinaryWriter writer, Account obj) {
     writer.write(obj.apiURL);
     writer.write(obj.refreshToken);
-    writer.write(obj.deviceToken);
   }
 }

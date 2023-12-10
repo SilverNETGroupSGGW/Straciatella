@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 part 'settings.freezed.dart';
 part 'settings.g.dart';
@@ -40,12 +41,14 @@ class Settings with _$Settings {
     required ThemeMode themeMode,
     required bool isFirstRun,
     required bool isDebugMode,
+    required String deviceToken,
     @ColorConverter() required Color themeColor,
     @LocaleConverter() required Locale locale,
   }) = _Settings;
 
   factory Settings.empty() => Settings(
         themeMode: ThemeMode.system,
+        deviceToken: Uuid().v8(),
         isFirstRun: true,
         isDebugMode: false,
         themeColor: Colors.red,

@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uuid/uuid.dart';
 
 part 'account.freezed.dart';
 part 'account.g.dart';
@@ -11,7 +10,6 @@ class Account with _$Account {
     required String apiURL,
     required String accessToken,
     required String refreshToken,
-    required String deviceToken,
   }) = _Account;
 
   factory Account.fromJson(Map<String, dynamic> json) =>
@@ -21,7 +19,6 @@ class Account with _$Account {
         apiURL: '',
         accessToken: '',
         refreshToken: '',
-        deviceToken: Uuid().v8(),
       );
 
   Future<void> saveToStorage() async {}

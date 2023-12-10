@@ -14,6 +14,7 @@ class SettingsAdapter extends TypeAdapter<Settings> {
       locale: Locale(reader.read() as String, reader.read() as String),
       isFirstRun: reader.read() as bool,
       isDebugMode: reader.read() as bool,
+      deviceToken: reader.read() as String,
     );
   }
 
@@ -25,5 +26,6 @@ class SettingsAdapter extends TypeAdapter<Settings> {
     writer.write(obj.locale.countryCode);
     writer.write(obj.isFirstRun);
     writer.write(obj.isDebugMode);
+    writer.write(obj.deviceToken);
   }
 }

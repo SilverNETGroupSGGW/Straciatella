@@ -11,7 +11,6 @@ _$AccountImpl _$$AccountImplFromJson(Map<String, dynamic> json) =>
       apiURL: json['apiURL'] as String,
       accessToken: json['accessToken'] as String,
       refreshToken: json['refreshToken'] as String,
-      deviceToken: json['deviceToken'] as String,
     );
 
 Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) =>
@@ -19,5 +18,4 @@ Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) =>
       'apiURL': instance.apiURL,
       'accessToken': instance.accessToken,
       'refreshToken': instance.refreshToken,
-      'deviceToken': instance.deviceToken,
     };
