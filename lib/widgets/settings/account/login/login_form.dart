@@ -1,22 +1,25 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psggw/data/apis.dart';
 import 'package:psggw/models/account_model/account.dart';
-import 'package:psggw/models/settings_model/settings.dart';
+import 'package:psggw/models/account_model/bloc/account_bloc.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
     super.key,
     required this.formKey,
+    required this.credentials,
   });
 
   final GlobalKey<FormState> formKey;
-
+  final Map<String, String> credentials;
   @override
   Widget build(BuildContext context) {
-    // TODO: Add login logic
-    Settings settings;
-    Account account;
+    Account account = context.select((AccountBloc bloc) => bloc.state.maybeMap(
+          loggedIn: (state) => state.account,
+          orElse: () => Account.empty(),
+        ));
     return Form(
       key: formKey,
       child: Column(
@@ -27,15 +30,15 @@ class LoginForm extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
-                  key: ValueKey(settings.apiUrl), // to reset form on change
+                  key: ValueKey(account.apiURL), // to reset form on change
                   decoration: InputDecoration(
                     labelText: 'api_url'.tr(),
                   ),
-                  initialValue: settings.apiUrl,
+                  initialValue: account.apiURL,
                   keyboardType: TextInputType.url,
                   autofillHints: const [AutofillHints.url],
                   onSaved: (value) {
-                    // TODO: Set new api url
+                    AccountEvent.apiURLChanged(value!);
                   },
                   onChanged: (value) {
                     formKey.currentState!.reset();
@@ -53,43 +56,71 @@ class LoginForm extends StatelessWidget {
               ShowOfficialApisButton(),
             ],
           ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Email',
-            ),
-            initialValue: account.email,
-            autofillHints: const [AutofillHints.email],
-            keyboardType: TextInputType.emailAddress,
-            onSaved: (value) {
-              // TODO: Set email
-            },
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'email_empty'.tr();
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: 'password'.tr(),
-            ),
-            autofillHints: const [AutofillHints.password],
-            keyboardType: TextInputType.visiblePassword,
-            obscureText: true,
-            onSaved: (value) {
-              // TODO: Set password
-            },
-            initialValue: account.password == "" ? "" : "**********",
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'password_empty'.tr();
-              }
-              return null;
-            },
-          ),
+          EmailFormField(credentials: credentials),
+          PasswordFormField(credentials: credentials),
         ],
       ),
+    );
+  }
+}
+
+class PasswordFormField extends StatelessWidget {
+  const PasswordFormField({
+    super.key,
+    required this.credentials,
+  });
+
+  final Map<String, String> credentials;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: 'password'.tr(),
+        hintText: '********'.tr(),
+      ),
+      autofillHints: const [AutofillHints.password],
+      keyboardType: TextInputType.visiblePassword,
+      obscureText: true,
+      onSaved: (value) {
+        credentials['password'] = value!;
+      },
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'password_empty'.tr();
+        }
+        return null;
+      },
+    );
+  }
+}
+
+class EmailFormField extends StatelessWidget {
+  const EmailFormField({
+    super.key,
+    required this.credentials,
+  });
+
+  final Map<String, String> credentials;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: 'Email',
+        hintText: 'email_hint'.tr(),
+      ),
+      autofillHints: const [AutofillHints.email],
+      keyboardType: TextInputType.emailAddress,
+      onSaved: (value) {
+        credentials['email'] = value!;
+      },
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'email_empty'.tr();
+        }
+        return null;
+      },
     );
   }
 }
@@ -185,7 +216,7 @@ class ApiEntryTile extends StatelessWidget {
         overflow: TextOverflow.fade,
       ),
       onTap: () {
-        // TODO: Set api url
+        context.read<AccountBloc>().add(AccountEvent.apiURLChanged(url));
         Navigator.of(context).pop();
       },
     );

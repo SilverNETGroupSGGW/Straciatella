@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:psggw/data/schedules.dart';
 import 'package:psggw/models/lesson_model/lesson.dart';
 
 import 'package:psggw/widgets/timeline/lesson_tile.dart';
@@ -10,7 +11,7 @@ class Timeline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: Add handling
-    List<Lesson> lessons = [];
+    List<Lesson> lessons = schedules[0].lessons;
     return ListView(
       children: [
         LessonTile(

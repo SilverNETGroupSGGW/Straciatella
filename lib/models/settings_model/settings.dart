@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'settings.freezed.dart';
 part 'settings.g.dart';
@@ -36,14 +35,22 @@ class LocaleConverter implements JsonConverter<Locale, String> {
 
 @freezed
 class Settings with _$Settings {
+  const Settings._();
   factory Settings({
     required ThemeMode themeMode,
-    required String apiUrl,
     required bool isFirstRun,
     required bool isDebugMode,
     @ColorConverter() required Color themeColor,
     @LocaleConverter() required Locale locale,
   }) = _Settings;
+
+  factory Settings.empty() => Settings(
+        themeMode: ThemeMode.system,
+        isFirstRun: true,
+        isDebugMode: false,
+        themeColor: Colors.red,
+        locale: Locale('en', 'US'),
+      );
 
   factory Settings.fromJson(Map<String, dynamic> json) =>
       _$SettingsFromJson(json);

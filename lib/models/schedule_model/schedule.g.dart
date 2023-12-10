@@ -13,8 +13,12 @@ _$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
       year: json['year'] as int,
       semester: json['semester'] as int,
       degree: $enumDecode(_$DegreeEnumMap, json['degree']),
-      groups: json['groups'] as List<dynamic>,
-      lessons: json['lessons'] as List<dynamic>,
+      groups: (json['groups'] as List<dynamic>)
+          .map((e) => Group.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      lessons: (json['lessons'] as List<dynamic>)
+          .map((e) => Lesson.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$ScheduleImplToJson(_$ScheduleImpl instance) =>

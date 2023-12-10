@@ -25,8 +25,8 @@ mixin _$Schedule {
   int get year => throw _privateConstructorUsedError;
   int get semester => throw _privateConstructorUsedError;
   Degree get degree => throw _privateConstructorUsedError;
-  List<dynamic> get groups => throw _privateConstructorUsedError;
-  List<dynamic> get lessons => throw _privateConstructorUsedError;
+  List<Group> get groups => throw _privateConstructorUsedError;
+  List<Lesson> get lessons => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,8 +45,8 @@ abstract class $ScheduleCopyWith<$Res> {
       int year,
       int semester,
       Degree degree,
-      List<dynamic> groups,
-      List<dynamic> lessons});
+      List<Group> groups,
+      List<Lesson> lessons});
 }
 
 /// @nodoc
@@ -94,11 +94,11 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
       groups: null == groups
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<Group>,
       lessons: null == lessons
           ? _value.lessons
           : lessons // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<Lesson>,
     ) as $Val);
   }
 }
@@ -117,8 +117,8 @@ abstract class _$$ScheduleImplCopyWith<$Res>
       int year,
       int semester,
       Degree degree,
-      List<dynamic> groups,
-      List<dynamic> lessons});
+      List<Group> groups,
+      List<Lesson> lessons});
 }
 
 /// @nodoc
@@ -164,11 +164,11 @@ class __$$ScheduleImplCopyWithImpl<$Res>
       groups: null == groups
           ? _value._groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<Group>,
       lessons: null == lessons
           ? _value._lessons
           : lessons // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<Lesson>,
     ));
   }
 }
@@ -182,8 +182,8 @@ class _$ScheduleImpl implements _Schedule {
       required this.year,
       required this.semester,
       required this.degree,
-      required final List<dynamic> groups,
-      required final List<dynamic> lessons})
+      required final List<Group> groups,
+      required final List<Lesson> lessons})
       : _groups = groups,
         _lessons = lessons;
 
@@ -200,17 +200,17 @@ class _$ScheduleImpl implements _Schedule {
   final int semester;
   @override
   final Degree degree;
-  final List<dynamic> _groups;
+  final List<Group> _groups;
   @override
-  List<dynamic> get groups {
+  List<Group> get groups {
     if (_groups is EqualUnmodifiableListView) return _groups;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_groups);
   }
 
-  final List<dynamic> _lessons;
+  final List<Lesson> _lessons;
   @override
-  List<dynamic> get lessons {
+  List<Lesson> get lessons {
     if (_lessons is EqualUnmodifiableListView) return _lessons;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_lessons);
@@ -269,8 +269,8 @@ abstract class _Schedule implements Schedule {
       required final int year,
       required final int semester,
       required final Degree degree,
-      required final List<dynamic> groups,
-      required final List<dynamic> lessons}) = _$ScheduleImpl;
+      required final List<Group> groups,
+      required final List<Lesson> lessons}) = _$ScheduleImpl;
 
   factory _Schedule.fromJson(Map<String, dynamic> json) =
       _$ScheduleImpl.fromJson;
@@ -286,9 +286,9 @@ abstract class _Schedule implements Schedule {
   @override
   Degree get degree;
   @override
-  List<dynamic> get groups;
+  List<Group> get groups;
   @override
-  List<dynamic> get lessons;
+  List<Lesson> get lessons;
   @override
   @JsonKey(ignore: true)
   _$$ScheduleImplCopyWith<_$ScheduleImpl> get copyWith =>

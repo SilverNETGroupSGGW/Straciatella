@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:psggw/models/settings_model/bloc/settings_bloc.dart';
 import 'package:psggw/models/settings_model/settings.dart';
 import 'package:psggw/widgets/settings/theme/auto_theme_tile.dart';
 import 'package:psggw/widgets/settings/theme/color_tile.dart';
@@ -15,8 +17,12 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Handle Settings
-    Settings settings;
+    Settings settings = context.select(
+      (SettingsBloc settingsBloc) => settingsBloc.state.maybeMap(
+        loaded: (state) => state.settings,
+        orElse: () => Settings.empty(),
+      ),
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text('settings'.tr()),

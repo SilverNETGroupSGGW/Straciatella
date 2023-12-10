@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:psggw/models/settings_model/bloc/settings_bloc.dart';
 import 'package:psggw/models/settings_model/settings.dart';
 
 class ColorTile extends StatelessWidget {
@@ -10,9 +12,13 @@ class ColorTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Handle settings
-    Settings settings;
-    Color currentColor = settings.themeColor;
+    Settings settings =
+        context.select((SettingsBloc bloc) => bloc.state.maybeMap(
+              loaded: (state) => state.settings,
+              orElse: () => Settings.empty(),
+            ));
+    Color prevColor = settings
+        .themeColor; // This color will be set if the user cancels the picker.
     return ListTile(
       title: Text('theme_color'.tr()),
       subtitle: Text('theme_color_desc'.tr()),
@@ -26,20 +32,20 @@ class ColorTile extends StatelessWidget {
             content: BlockPicker(
               pickerColor: settings.themeColor,
               onColorChanged: (color) {
-                // TODO: Set choosen color
+                SettingsEvent.themeColorChanged(themeColor: color);
               },
             ),
             actions: [
               TextButton(
                 onPressed: () {
-                  // TODO: Add default color (red)
+                  SettingsEvent.themeColorChanged(themeColor: Colors.red);
                   Navigator.of(context).pop();
                 },
                 child: Text('default'.tr()),
               ),
               TextButton(
                 onPressed: () {
-                  // TODO: Set color to 'current' color
+                  SettingsEvent.themeColorChanged(themeColor: prevColor);
                   Navigator.of(context).pop();
                 },
                 child: Text('cancel'.tr()),

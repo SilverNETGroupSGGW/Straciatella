@@ -8,16 +8,16 @@ part of 'account.dart';
 
 _$AccountImpl _$$AccountImplFromJson(Map<String, dynamic> json) =>
     _$AccountImpl(
-      name: json['name'] as String,
-      email: json['email'] as String,
-      password: json['password'] as String,
+      apiURL: json['apiURL'] as String,
+      accessToken: json['accessToken'] as String,
+      refreshToken: json['refreshToken'] as String,
       deviceToken: json['deviceToken'] as String,
     );
 
 Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'email': instance.email,
-      'password': instance.password,
+      'apiURL': instance.apiURL,
+      'accessToken': instance.accessToken,
+      'refreshToken': instance.refreshToken,
       'deviceToken': instance.deviceToken,
     };

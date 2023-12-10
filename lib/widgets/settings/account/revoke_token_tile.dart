@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:psggw/models/account_model/bloc/account_bloc.dart';
 
 class RevokeTokenTile extends StatelessWidget {
   const RevokeTokenTile({super.key});
@@ -33,21 +34,7 @@ class RevokeTokenTile extends StatelessWidget {
           );
 
           if (confirm) {
-            ScaffoldMessenger.of(context).clearSnackBars();
-            // TODO: Add logout logic
-            if (await true) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('logout_success'.tr()),
-                ),
-              );
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('logout_failed'.tr()),
-                ),
-              );
-            }
+            AccountEvent.logoutReqested();
           }
         },
         icon: const Icon(Icons.logout_outlined),

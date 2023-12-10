@@ -20,9 +20,9 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Account {
-  String get name => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  String get apiURL => throw _privateConstructorUsedError;
+  String get accessToken => throw _privateConstructorUsedError;
+  String get refreshToken => throw _privateConstructorUsedError;
   String get deviceToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,11 @@ abstract class $AccountCopyWith<$Res> {
   factory $AccountCopyWith(Account value, $Res Function(Account) then) =
       _$AccountCopyWithImpl<$Res, Account>;
   @useResult
-  $Res call({String name, String email, String password, String deviceToken});
+  $Res call(
+      {String apiURL,
+      String accessToken,
+      String refreshToken,
+      String deviceToken});
 }
 
 /// @nodoc
@@ -51,23 +55,23 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? password = null,
+    Object? apiURL = null,
+    Object? accessToken = null,
+    Object? refreshToken = null,
     Object? deviceToken = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      apiURL: null == apiURL
+          ? _value.apiURL
+          : apiURL // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
       deviceToken: null == deviceToken
           ? _value.deviceToken
@@ -84,7 +88,11 @@ abstract class _$$AccountImplCopyWith<$Res> implements $AccountCopyWith<$Res> {
       __$$AccountImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String email, String password, String deviceToken});
+  $Res call(
+      {String apiURL,
+      String accessToken,
+      String refreshToken,
+      String deviceToken});
 }
 
 /// @nodoc
@@ -98,23 +106,23 @@ class __$$AccountImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? password = null,
+    Object? apiURL = null,
+    Object? accessToken = null,
+    Object? refreshToken = null,
     Object? deviceToken = null,
   }) {
     return _then(_$AccountImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      apiURL: null == apiURL
+          ? _value.apiURL
+          : apiURL // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
       deviceToken: null == deviceToken
           ? _value.deviceToken
@@ -126,28 +134,29 @@ class __$$AccountImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AccountImpl implements _Account {
+class _$AccountImpl extends _Account {
   _$AccountImpl(
-      {required this.name,
-      required this.email,
-      required this.password,
-      required this.deviceToken});
+      {required this.apiURL,
+      required this.accessToken,
+      required this.refreshToken,
+      required this.deviceToken})
+      : super._();
 
   factory _$AccountImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccountImplFromJson(json);
 
   @override
-  final String name;
+  final String apiURL;
   @override
-  final String email;
+  final String accessToken;
   @override
-  final String password;
+  final String refreshToken;
   @override
   final String deviceToken;
 
   @override
   String toString() {
-    return 'Account(name: $name, email: $email, password: $password, deviceToken: $deviceToken)';
+    return 'Account(apiURL: $apiURL, accessToken: $accessToken, refreshToken: $refreshToken, deviceToken: $deviceToken)';
   }
 
   @override
@@ -155,10 +164,11 @@ class _$AccountImpl implements _Account {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
+            (identical(other.apiURL, apiURL) || other.apiURL == apiURL) &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken) &&
             (identical(other.deviceToken, deviceToken) ||
                 other.deviceToken == deviceToken));
   }
@@ -166,7 +176,7 @@ class _$AccountImpl implements _Account {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, email, password, deviceToken);
+      Object.hash(runtimeType, apiURL, accessToken, refreshToken, deviceToken);
 
   @JsonKey(ignore: true)
   @override
@@ -182,21 +192,22 @@ class _$AccountImpl implements _Account {
   }
 }
 
-abstract class _Account implements Account {
+abstract class _Account extends Account {
   factory _Account(
-      {required final String name,
-      required final String email,
-      required final String password,
+      {required final String apiURL,
+      required final String accessToken,
+      required final String refreshToken,
       required final String deviceToken}) = _$AccountImpl;
+  _Account._() : super._();
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$AccountImpl.fromJson;
 
   @override
-  String get name;
+  String get apiURL;
   @override
-  String get email;
+  String get accessToken;
   @override
-  String get password;
+  String get refreshToken;
   @override
   String get deviceToken;
   @override

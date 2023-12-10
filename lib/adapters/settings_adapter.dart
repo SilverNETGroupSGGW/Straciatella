@@ -10,7 +10,6 @@ class SettingsAdapter extends TypeAdapter<Settings> {
   Settings read(BinaryReader reader) {
     return Settings(
       themeMode: ThemeMode.values[reader.read() as int],
-      apiUrl: reader.read() as String,
       themeColor: Color(reader.read() as int),
       locale: Locale(reader.read() as String, reader.read() as String),
       isFirstRun: reader.read() as bool,
@@ -21,7 +20,6 @@ class SettingsAdapter extends TypeAdapter<Settings> {
   @override
   void write(BinaryWriter writer, Settings obj) {
     writer.write(obj.themeMode.index);
-    writer.write(obj.apiUrl);
     writer.write(obj.themeColor.value);
     writer.write(obj.locale.languageCode);
     writer.write(obj.locale.countryCode);

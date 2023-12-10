@@ -9,7 +9,6 @@ part of 'settings.dart';
 _$SettingsImpl _$$SettingsImplFromJson(Map<String, dynamic> json) =>
     _$SettingsImpl(
       themeMode: $enumDecode(_$ThemeModeEnumMap, json['themeMode']),
-      apiUrl: json['apiUrl'] as String,
       isFirstRun: json['isFirstRun'] as bool,
       isDebugMode: json['isDebugMode'] as bool,
       themeColor: const ColorConverter().fromJson(json['themeColor'] as int),
@@ -19,7 +18,6 @@ _$SettingsImpl _$$SettingsImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$SettingsImplToJson(_$SettingsImpl instance) =>
     <String, dynamic>{
       'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,
-      'apiUrl': instance.apiUrl,
       'isFirstRun': instance.isFirstRun,
       'isDebugMode': instance.isDebugMode,
       'themeColor': const ColorConverter().toJson(instance.themeColor),

@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:psggw/models/settings_model/bloc/settings_bloc.dart';
 
 class DarkThemeModeTile extends StatelessWidget {
   const DarkThemeModeTile({
@@ -8,8 +10,10 @@ class DarkThemeModeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Add ThemeMode handling
-    ThemeMode currentThemeMode;
+    ThemeMode currentThemeMode = context.select((SettingsBloc bloc) =>
+        bloc.state.maybeMap(
+            loaded: (state) => state.settings.themeMode,
+            orElse: () => ThemeMode.system));
 
     return ListTile(
       enabled: currentThemeMode != ThemeMode.system,
@@ -20,11 +24,9 @@ class DarkThemeModeTile extends StatelessWidget {
         onChanged: currentThemeMode == ThemeMode.system
             ? null
             : (bool value) {
-                if (value) {
-                  // TODO: Add dark theme
-                } else {
-                  // TODO: Add light theme
-                }
+                SettingsEvent.darkThemeModeChanged(
+                  themeMode: value ? ThemeMode.dark : ThemeMode.light,
+                );
               },
       ),
     );

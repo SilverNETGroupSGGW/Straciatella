@@ -21,7 +21,6 @@ Settings _$SettingsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Settings {
   ThemeMode get themeMode => throw _privateConstructorUsedError;
-  String get apiUrl => throw _privateConstructorUsedError;
   bool get isFirstRun => throw _privateConstructorUsedError;
   bool get isDebugMode => throw _privateConstructorUsedError;
   @ColorConverter()
@@ -42,7 +41,6 @@ abstract class $SettingsCopyWith<$Res> {
   @useResult
   $Res call(
       {ThemeMode themeMode,
-      String apiUrl,
       bool isFirstRun,
       bool isDebugMode,
       @ColorConverter() Color themeColor,
@@ -63,7 +61,6 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
   @override
   $Res call({
     Object? themeMode = null,
-    Object? apiUrl = null,
     Object? isFirstRun = null,
     Object? isDebugMode = null,
     Object? themeColor = null,
@@ -74,10 +71,6 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
               as ThemeMode,
-      apiUrl: null == apiUrl
-          ? _value.apiUrl
-          : apiUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       isFirstRun: null == isFirstRun
           ? _value.isFirstRun
           : isFirstRun // ignore: cast_nullable_to_non_nullable
@@ -108,7 +101,6 @@ abstract class _$$SettingsImplCopyWith<$Res>
   @useResult
   $Res call(
       {ThemeMode themeMode,
-      String apiUrl,
       bool isFirstRun,
       bool isDebugMode,
       @ColorConverter() Color themeColor,
@@ -127,7 +119,6 @@ class __$$SettingsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? themeMode = null,
-    Object? apiUrl = null,
     Object? isFirstRun = null,
     Object? isDebugMode = null,
     Object? themeColor = null,
@@ -138,10 +129,6 @@ class __$$SettingsImplCopyWithImpl<$Res>
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
               as ThemeMode,
-      apiUrl: null == apiUrl
-          ? _value.apiUrl
-          : apiUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       isFirstRun: null == isFirstRun
           ? _value.isFirstRun
           : isFirstRun // ignore: cast_nullable_to_non_nullable
@@ -164,22 +151,20 @@ class __$$SettingsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SettingsImpl implements _Settings {
+class _$SettingsImpl extends _Settings {
   _$SettingsImpl(
       {required this.themeMode,
-      required this.apiUrl,
       required this.isFirstRun,
       required this.isDebugMode,
       @ColorConverter() required this.themeColor,
-      @LocaleConverter() required this.locale});
+      @LocaleConverter() required this.locale})
+      : super._();
 
   factory _$SettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$SettingsImplFromJson(json);
 
   @override
   final ThemeMode themeMode;
-  @override
-  final String apiUrl;
   @override
   final bool isFirstRun;
   @override
@@ -193,7 +178,7 @@ class _$SettingsImpl implements _Settings {
 
   @override
   String toString() {
-    return 'Settings(themeMode: $themeMode, apiUrl: $apiUrl, isFirstRun: $isFirstRun, isDebugMode: $isDebugMode, themeColor: $themeColor, locale: $locale)';
+    return 'Settings(themeMode: $themeMode, isFirstRun: $isFirstRun, isDebugMode: $isDebugMode, themeColor: $themeColor, locale: $locale)';
   }
 
   @override
@@ -203,7 +188,6 @@ class _$SettingsImpl implements _Settings {
             other is _$SettingsImpl &&
             (identical(other.themeMode, themeMode) ||
                 other.themeMode == themeMode) &&
-            (identical(other.apiUrl, apiUrl) || other.apiUrl == apiUrl) &&
             (identical(other.isFirstRun, isFirstRun) ||
                 other.isFirstRun == isFirstRun) &&
             (identical(other.isDebugMode, isDebugMode) ||
@@ -215,8 +199,8 @@ class _$SettingsImpl implements _Settings {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, themeMode, apiUrl, isFirstRun,
-      isDebugMode, themeColor, locale);
+  int get hashCode => Object.hash(
+      runtimeType, themeMode, isFirstRun, isDebugMode, themeColor, locale);
 
   @JsonKey(ignore: true)
   @override
@@ -232,22 +216,20 @@ class _$SettingsImpl implements _Settings {
   }
 }
 
-abstract class _Settings implements Settings {
+abstract class _Settings extends Settings {
   factory _Settings(
       {required final ThemeMode themeMode,
-      required final String apiUrl,
       required final bool isFirstRun,
       required final bool isDebugMode,
       @ColorConverter() required final Color themeColor,
       @LocaleConverter() required final Locale locale}) = _$SettingsImpl;
+  _Settings._() : super._();
 
   factory _Settings.fromJson(Map<String, dynamic> json) =
       _$SettingsImpl.fromJson;
 
   @override
   ThemeMode get themeMode;
-  @override
-  String get apiUrl;
   @override
   bool get isFirstRun;
   @override

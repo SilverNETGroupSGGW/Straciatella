@@ -1,10 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:psggw/models/account_model/bloc/account_bloc.dart';
 
+import 'login_button.dart';
 import 'login_form.dart';
 
 class LoginDialog extends StatefulWidget {
   LoginDialog({super.key});
+  // Must stay stateful to keep form working!
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -12,47 +16,51 @@ class LoginDialog extends StatefulWidget {
 }
 
 class _LoginDialogState extends State<LoginDialog> {
-  bool isButtonEnabled = true;
+  Map<String, String> credentials = {
+    'email': '',
+    'password': '',
+  };
   @override
   Widget build(BuildContext context) {
-    // TODO: Add login logic
-    return AlertDialog.adaptive(
-      content: LoginForm(
-        formKey: widget.formKey,
-      ),
-      actions: [
-        TextButton(
-          onPressed: () {
+    return BlocListener<AccountBloc, AccountState>(
+      listener: (context, state) {
+        state.maybeMap(
+          orElse: () {},
+          loggedIn: (_) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('login_successful'.tr()),
+              ),
+            );
             Navigator.of(context).pop();
           },
-          child: Text('cancel'.tr()),
+          loggedOut: (_) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('login_failed'.tr()),
+              ),
+            );
+          },
+        );
+      },
+      child: AlertDialog.adaptive(
+        content: LoginForm(
+          formKey: widget.formKey,
+          credentials: credentials,
         ),
-        TextButton(
-          onPressed: isButtonEnabled
-              ? () async {
-                  if (widget.formKey.currentState!.validate()) {
-                    setState(() {
-                      isButtonEnabled = false;
-                    });
-                    widget.formKey.currentState!.save();
-                    // TODO: Add login logic
-                    if ("login" == "login") {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('login_success'.tr()),
-                        ),
-                      );
-                      Navigator.of(context).pop();
-                    }
-                    setState(() {
-                      isButtonEnabled = true;
-                    });
-                  }
-                }
-              : null,
-          child: isButtonEnabled ? Text('save'.tr()) : Text('logging_in'.tr()),
-        ),
-      ],
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('cancel'.tr()),
+          ),
+          LoginButton(
+            formKey: widget.formKey,
+            credentials: credentials,
+          ),
+        ],
+      ),
     );
   }
 }

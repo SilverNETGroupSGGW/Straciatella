@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:psggw/models/settings_model/settings.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:psggw/models/account_model/bloc/account_bloc.dart';
+import 'package:psggw/models/settings_model/bloc/settings_bloc.dart';
+import 'package:psggw/widgets/settings/account/login/login_button.dart';
 import 'package:psggw/widgets/settings/account/login/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -20,7 +22,7 @@ class LoginScreen extends StatelessWidget {
               SliverToBoxAdapter(child: LoginCard()),
               SliverFillRemaining(
                 hasScrollBody: false,
-                child: TitleCard(),
+                child: LoginTitleCard(),
               ),
             ],
           ),
@@ -34,7 +36,7 @@ class LoginCard extends StatefulWidget {
   LoginCard({
     super.key,
   });
-
+  // Must be stateful to use formKey
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -42,84 +44,90 @@ class LoginCard extends StatefulWidget {
 }
 
 class _LoginCardState extends State<LoginCard> {
-  bool isButtonEnabled = true;
-
   @override
   Widget build(BuildContext context) {
-    void endFirstRun() async {
-      // TODO: implement endFirstRun
-      Navigator.of(context).pushNamedAndRemoveUntil(
-        '/timeline',
-        (route) => false,
-      );
-    }
+    bool isButtonEnabled = context.select(
+      (AccountBloc accountBloc) => accountBloc.state != AccountState.loggedOut,
+    );
 
-    Settings settings;
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          children: [
-            LoginForm(
-              formKey: widget.formKey,
-            ),
-            const SizedBox(height: 12.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  onPressed: endFirstRun,
-                  child: Text('skip'.tr()),
-                ),
-                FilledButton(
-                  onPressed: isButtonEnabled
-                      ? () async {
-                          if (widget.formKey.currentState!.validate()) {
-                            setState(() {
-                              isButtonEnabled = false;
-                            });
-                            widget.formKey.currentState!.save();
-                            if ( // TODO: implement login
-                                "true" == "true") {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('login_success'.tr()),
-                                ),
-                              );
-                              // TODO: save credentials to storage
-
-                              endFirstRun();
-                            } else
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('login_failed'.tr()),
-                                ),
-                              );
-                            setState(() {
-                              isButtonEnabled = true;
-                            });
+    Map<String, String> credentials = {
+      'email': '',
+      'password': '',
+    };
+    return BlocListener<AccountBloc, AccountState>(
+      listener: (context, state) {
+        state.maybeMap(
+          orElse: () {},
+          loggedIn: (_) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('login_success'.tr()),
+              ),
+            );
+            context.read<SettingsBloc>().add(
+                  SettingsEvent.firstRunEnded(completed: true),
+                );
+            context.read<SettingsBloc>().add(
+                  SettingsEvent.saveRequested(),
+                );
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              '/timeline',
+              (route) => false,
+            );
+          },
+          loggedOut: (_) {
+            context.read<SettingsBloc>().add(
+                  SettingsEvent.firstRunEnded(completed: true),
+                );
+            context.read<SettingsBloc>().add(
+                  SettingsEvent.saveRequested(),
+                );
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('login_failed'.tr()),
+              ),
+            );
+          },
+        );
+      },
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            children: [
+              LoginForm(
+                formKey: widget.formKey,
+                credentials: credentials,
+              ),
+              const SizedBox(height: 12.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: isButtonEnabled
+                        ? () {
+                            Navigator.of(context)
+                                .pushReplacementNamed('/timeline');
                           }
-
-                          if (settings.isFirstRun) {
-                            // TODO: set first run to false
-                          }
-                        }
-                      : null,
-                  child: isButtonEnabled
-                      ? Text('login'.tr())
-                      : Text('logging_in'.tr()),
-                ),
-              ],
-            ),
-          ],
+                        : null,
+                    child: Text('skip'.tr()),
+                  ),
+                  LoginButton(
+                    credentials: credentials,
+                    formKey: widget.formKey,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-class TitleCard extends StatelessWidget {
-  const TitleCard({
+class LoginTitleCard extends StatelessWidget {
+  const LoginTitleCard({
     super.key,
   });
 

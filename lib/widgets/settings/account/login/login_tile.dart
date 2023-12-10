@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:psggw/models/account_model/account.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:psggw/models/account_model/bloc/account_bloc.dart';
 
 import 'package:psggw/widgets/settings/account/login/login_dialog.dart';
 
@@ -11,16 +12,16 @@ class LoginTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Handle account
-    Account account;
-
+    bool isLoggedIn = context.select((AccountBloc bloc) => bloc.state.maybeMap(
+          loggedIn: (state) => true,
+          orElse: () => false,
+        ));
     return ListTile(
       title: Text('account'.tr()),
       subtitle: Text(
-        account.accessToken == '' ? 'logged_out'.tr() : 'logged_in'.tr(),
+        isLoggedIn ? 'logged_in'.tr() : 'logged_out'.tr(),
       ),
       onTap: () {
-        // Show dialog
         showAdaptiveDialog(
           context: context,
           builder: (context) => LoginDialog(),
