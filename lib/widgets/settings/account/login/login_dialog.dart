@@ -32,6 +32,9 @@ class _LoginDialogState extends State<LoginDialog> {
                 content: Text('login_successful'.tr()),
               ),
             );
+            context.read<AccountBloc>().add(
+                  AccountEvent.saveToStorage(),
+                );
             Navigator.of(context).pop();
           },
           loggedOut: (_) {
