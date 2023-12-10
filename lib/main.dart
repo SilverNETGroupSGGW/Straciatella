@@ -5,10 +5,9 @@ import 'package:psggw/models/account_model/bloc/account_bloc.dart';
 import 'package:psggw/models/settings_model/bloc/settings_bloc.dart';
 import 'package:psggw/models/settings_model/settings.dart';
 import 'package:psggw/router.dart';
-import 'package:psggw/screens/intro_screen/welcome_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:psggw/screens/navbar_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:psggw/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,24 +67,10 @@ class _MainAppState extends State<MainApp> {
                 orElse: () => Settings.empty(),
               );
 
-              var darkThemeData = ThemeData(
-                colorScheme: ColorScheme.fromSeed(
-                  seedColor: settings.themeColor,
-                  brightness: Brightness.dark,
-                ),
-              );
-
-              var lightThemeData = ThemeData(
-                colorScheme: ColorScheme.fromSeed(
-                  seedColor: settings.themeColor,
-                  brightness: Brightness.light,
-                ),
-              );
-
               return MaterialApp(
                 title: 'PSGGW',
-                theme: lightThemeData,
-                darkTheme: darkThemeData,
+                theme: getLightTheme(settings.themeColor),
+                darkTheme: getLightTheme(settings.themeColor),
                 themeMode: settings.themeMode,
                 localizationsDelegates: context.localizationDelegates,
                 supportedLocales: context.supportedLocales,
