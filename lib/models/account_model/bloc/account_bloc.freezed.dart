@@ -19,31 +19,40 @@ mixin _$AccountEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String email, String password) loginRequested,
+    required TResult Function(
+            String apiURL, String email, String password, String deviceToken)
+        loginRequested,
     required TResult Function() logoutReqested,
     required TResult Function(String apiURL) apiURLChanged,
     required TResult Function(String refreshToken) refreshToken,
     required TResult Function() refreshTokenFromStorageRequested,
+    required TResult Function() saveToStorage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String email, String password)? loginRequested,
+    TResult? Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult? Function()? logoutReqested,
     TResult? Function(String apiURL)? apiURLChanged,
     TResult? Function(String refreshToken)? refreshToken,
     TResult? Function()? refreshTokenFromStorageRequested,
+    TResult? Function()? saveToStorage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String email, String password)? loginRequested,
+    TResult Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult Function()? logoutReqested,
     TResult Function(String apiURL)? apiURLChanged,
     TResult Function(String refreshToken)? refreshToken,
     TResult Function()? refreshTokenFromStorageRequested,
+    TResult Function()? saveToStorage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +65,7 @@ mixin _$AccountEvent {
     required TResult Function(_refreshToken value) refreshToken,
     required TResult Function(_RefreshTokenFromStorageRequested value)
         refreshTokenFromStorageRequested,
+    required TResult Function(_SaveToStorage value) saveToStorage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +77,7 @@ mixin _$AccountEvent {
     TResult? Function(_refreshToken value)? refreshToken,
     TResult? Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult? Function(_SaveToStorage value)? saveToStorage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +89,7 @@ mixin _$AccountEvent {
     TResult Function(_refreshToken value)? refreshToken,
     TResult Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult Function(_SaveToStorage value)? saveToStorage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,11 +152,14 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String email, String password) loginRequested,
+    required TResult Function(
+            String apiURL, String email, String password, String deviceToken)
+        loginRequested,
     required TResult Function() logoutReqested,
     required TResult Function(String apiURL) apiURLChanged,
     required TResult Function(String refreshToken) refreshToken,
     required TResult Function() refreshTokenFromStorageRequested,
+    required TResult Function() saveToStorage,
   }) {
     return started();
   }
@@ -153,11 +168,14 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String email, String password)? loginRequested,
+    TResult? Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult? Function()? logoutReqested,
     TResult? Function(String apiURL)? apiURLChanged,
     TResult? Function(String refreshToken)? refreshToken,
     TResult? Function()? refreshTokenFromStorageRequested,
+    TResult? Function()? saveToStorage,
   }) {
     return started?.call();
   }
@@ -166,11 +184,14 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String email, String password)? loginRequested,
+    TResult Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult Function()? logoutReqested,
     TResult Function(String apiURL)? apiURLChanged,
     TResult Function(String refreshToken)? refreshToken,
     TResult Function()? refreshTokenFromStorageRequested,
+    TResult Function()? saveToStorage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -189,6 +210,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_refreshToken value) refreshToken,
     required TResult Function(_RefreshTokenFromStorageRequested value)
         refreshTokenFromStorageRequested,
+    required TResult Function(_SaveToStorage value) saveToStorage,
   }) {
     return started(this);
   }
@@ -203,6 +225,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_refreshToken value)? refreshToken,
     TResult? Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult? Function(_SaveToStorage value)? saveToStorage,
   }) {
     return started?.call(this);
   }
@@ -217,6 +240,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_refreshToken value)? refreshToken,
     TResult Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult Function(_SaveToStorage value)? saveToStorage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -236,7 +260,7 @@ abstract class _$$LoginRequestedImplCopyWith<$Res> {
           $Res Function(_$LoginRequestedImpl) then) =
       __$$LoginRequestedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String apiURL, String email, String password, String deviceToken});
 }
 
 /// @nodoc
@@ -250,10 +274,16 @@ class __$$LoginRequestedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? apiURL = null,
     Object? email = null,
     Object? password = null,
+    Object? deviceToken = null,
   }) {
     return _then(_$LoginRequestedImpl(
+      apiURL: null == apiURL
+          ? _value.apiURL
+          : apiURL // ignore: cast_nullable_to_non_nullable
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -262,6 +292,10 @@ class __$$LoginRequestedImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      deviceToken: null == deviceToken
+          ? _value.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -269,16 +303,24 @@ class __$$LoginRequestedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginRequestedImpl implements _LoginRequested {
-  const _$LoginRequestedImpl({required this.email, required this.password});
+  const _$LoginRequestedImpl(
+      {required this.apiURL,
+      required this.email,
+      required this.password,
+      required this.deviceToken});
 
+  @override
+  final String apiURL;
   @override
   final String email;
   @override
   final String password;
+  @override
+  final String deviceToken;
 
   @override
   String toString() {
-    return 'AccountEvent.loginRequested(email: $email, password: $password)';
+    return 'AccountEvent.loginRequested(apiURL: $apiURL, email: $email, password: $password, deviceToken: $deviceToken)';
   }
 
   @override
@@ -286,13 +328,17 @@ class _$LoginRequestedImpl implements _LoginRequested {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginRequestedImpl &&
+            (identical(other.apiURL, apiURL) || other.apiURL == apiURL) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.deviceToken, deviceToken) ||
+                other.deviceToken == deviceToken));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode =>
+      Object.hash(runtimeType, apiURL, email, password, deviceToken);
 
   @JsonKey(ignore: true)
   @override
@@ -305,41 +351,50 @@ class _$LoginRequestedImpl implements _LoginRequested {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String email, String password) loginRequested,
+    required TResult Function(
+            String apiURL, String email, String password, String deviceToken)
+        loginRequested,
     required TResult Function() logoutReqested,
     required TResult Function(String apiURL) apiURLChanged,
     required TResult Function(String refreshToken) refreshToken,
     required TResult Function() refreshTokenFromStorageRequested,
+    required TResult Function() saveToStorage,
   }) {
-    return loginRequested(email, password);
+    return loginRequested(apiURL, email, password, deviceToken);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String email, String password)? loginRequested,
+    TResult? Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult? Function()? logoutReqested,
     TResult? Function(String apiURL)? apiURLChanged,
     TResult? Function(String refreshToken)? refreshToken,
     TResult? Function()? refreshTokenFromStorageRequested,
+    TResult? Function()? saveToStorage,
   }) {
-    return loginRequested?.call(email, password);
+    return loginRequested?.call(apiURL, email, password, deviceToken);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String email, String password)? loginRequested,
+    TResult Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult Function()? logoutReqested,
     TResult Function(String apiURL)? apiURLChanged,
     TResult Function(String refreshToken)? refreshToken,
     TResult Function()? refreshTokenFromStorageRequested,
+    TResult Function()? saveToStorage,
     required TResult orElse(),
   }) {
     if (loginRequested != null) {
-      return loginRequested(email, password);
+      return loginRequested(apiURL, email, password, deviceToken);
     }
     return orElse();
   }
@@ -354,6 +409,7 @@ class _$LoginRequestedImpl implements _LoginRequested {
     required TResult Function(_refreshToken value) refreshToken,
     required TResult Function(_RefreshTokenFromStorageRequested value)
         refreshTokenFromStorageRequested,
+    required TResult Function(_SaveToStorage value) saveToStorage,
   }) {
     return loginRequested(this);
   }
@@ -368,6 +424,7 @@ class _$LoginRequestedImpl implements _LoginRequested {
     TResult? Function(_refreshToken value)? refreshToken,
     TResult? Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult? Function(_SaveToStorage value)? saveToStorage,
   }) {
     return loginRequested?.call(this);
   }
@@ -382,6 +439,7 @@ class _$LoginRequestedImpl implements _LoginRequested {
     TResult Function(_refreshToken value)? refreshToken,
     TResult Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult Function(_SaveToStorage value)? saveToStorage,
     required TResult orElse(),
   }) {
     if (loginRequested != null) {
@@ -393,11 +451,15 @@ class _$LoginRequestedImpl implements _LoginRequested {
 
 abstract class _LoginRequested implements AccountEvent {
   const factory _LoginRequested(
-      {required final String email,
-      required final String password}) = _$LoginRequestedImpl;
+      {required final String apiURL,
+      required final String email,
+      required final String password,
+      required final String deviceToken}) = _$LoginRequestedImpl;
 
+  String get apiURL;
   String get email;
   String get password;
+  String get deviceToken;
   @JsonKey(ignore: true)
   _$$LoginRequestedImplCopyWith<_$LoginRequestedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -442,11 +504,14 @@ class _$LogoutRequestedImpl implements _LogoutRequested {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String email, String password) loginRequested,
+    required TResult Function(
+            String apiURL, String email, String password, String deviceToken)
+        loginRequested,
     required TResult Function() logoutReqested,
     required TResult Function(String apiURL) apiURLChanged,
     required TResult Function(String refreshToken) refreshToken,
     required TResult Function() refreshTokenFromStorageRequested,
+    required TResult Function() saveToStorage,
   }) {
     return logoutReqested();
   }
@@ -455,11 +520,14 @@ class _$LogoutRequestedImpl implements _LogoutRequested {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String email, String password)? loginRequested,
+    TResult? Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult? Function()? logoutReqested,
     TResult? Function(String apiURL)? apiURLChanged,
     TResult? Function(String refreshToken)? refreshToken,
     TResult? Function()? refreshTokenFromStorageRequested,
+    TResult? Function()? saveToStorage,
   }) {
     return logoutReqested?.call();
   }
@@ -468,11 +536,14 @@ class _$LogoutRequestedImpl implements _LogoutRequested {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String email, String password)? loginRequested,
+    TResult Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult Function()? logoutReqested,
     TResult Function(String apiURL)? apiURLChanged,
     TResult Function(String refreshToken)? refreshToken,
     TResult Function()? refreshTokenFromStorageRequested,
+    TResult Function()? saveToStorage,
     required TResult orElse(),
   }) {
     if (logoutReqested != null) {
@@ -491,6 +562,7 @@ class _$LogoutRequestedImpl implements _LogoutRequested {
     required TResult Function(_refreshToken value) refreshToken,
     required TResult Function(_RefreshTokenFromStorageRequested value)
         refreshTokenFromStorageRequested,
+    required TResult Function(_SaveToStorage value) saveToStorage,
   }) {
     return logoutReqested(this);
   }
@@ -505,6 +577,7 @@ class _$LogoutRequestedImpl implements _LogoutRequested {
     TResult? Function(_refreshToken value)? refreshToken,
     TResult? Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult? Function(_SaveToStorage value)? saveToStorage,
   }) {
     return logoutReqested?.call(this);
   }
@@ -519,6 +592,7 @@ class _$LogoutRequestedImpl implements _LogoutRequested {
     TResult Function(_refreshToken value)? refreshToken,
     TResult Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult Function(_SaveToStorage value)? saveToStorage,
     required TResult orElse(),
   }) {
     if (logoutReqested != null) {
@@ -597,11 +671,14 @@ class _$ApiURLChangedImpl implements _ApiURLChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String email, String password) loginRequested,
+    required TResult Function(
+            String apiURL, String email, String password, String deviceToken)
+        loginRequested,
     required TResult Function() logoutReqested,
     required TResult Function(String apiURL) apiURLChanged,
     required TResult Function(String refreshToken) refreshToken,
     required TResult Function() refreshTokenFromStorageRequested,
+    required TResult Function() saveToStorage,
   }) {
     return apiURLChanged(apiURL);
   }
@@ -610,11 +687,14 @@ class _$ApiURLChangedImpl implements _ApiURLChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String email, String password)? loginRequested,
+    TResult? Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult? Function()? logoutReqested,
     TResult? Function(String apiURL)? apiURLChanged,
     TResult? Function(String refreshToken)? refreshToken,
     TResult? Function()? refreshTokenFromStorageRequested,
+    TResult? Function()? saveToStorage,
   }) {
     return apiURLChanged?.call(apiURL);
   }
@@ -623,11 +703,14 @@ class _$ApiURLChangedImpl implements _ApiURLChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String email, String password)? loginRequested,
+    TResult Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult Function()? logoutReqested,
     TResult Function(String apiURL)? apiURLChanged,
     TResult Function(String refreshToken)? refreshToken,
     TResult Function()? refreshTokenFromStorageRequested,
+    TResult Function()? saveToStorage,
     required TResult orElse(),
   }) {
     if (apiURLChanged != null) {
@@ -646,6 +729,7 @@ class _$ApiURLChangedImpl implements _ApiURLChanged {
     required TResult Function(_refreshToken value) refreshToken,
     required TResult Function(_RefreshTokenFromStorageRequested value)
         refreshTokenFromStorageRequested,
+    required TResult Function(_SaveToStorage value) saveToStorage,
   }) {
     return apiURLChanged(this);
   }
@@ -660,6 +744,7 @@ class _$ApiURLChangedImpl implements _ApiURLChanged {
     TResult? Function(_refreshToken value)? refreshToken,
     TResult? Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult? Function(_SaveToStorage value)? saveToStorage,
   }) {
     return apiURLChanged?.call(this);
   }
@@ -674,6 +759,7 @@ class _$ApiURLChangedImpl implements _ApiURLChanged {
     TResult Function(_refreshToken value)? refreshToken,
     TResult Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult Function(_SaveToStorage value)? saveToStorage,
     required TResult orElse(),
   }) {
     if (apiURLChanged != null) {
@@ -758,11 +844,14 @@ class _$refreshTokenImpl implements _refreshToken {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String email, String password) loginRequested,
+    required TResult Function(
+            String apiURL, String email, String password, String deviceToken)
+        loginRequested,
     required TResult Function() logoutReqested,
     required TResult Function(String apiURL) apiURLChanged,
     required TResult Function(String refreshToken) refreshToken,
     required TResult Function() refreshTokenFromStorageRequested,
+    required TResult Function() saveToStorage,
   }) {
     return refreshToken(this.refreshToken);
   }
@@ -771,11 +860,14 @@ class _$refreshTokenImpl implements _refreshToken {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String email, String password)? loginRequested,
+    TResult? Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult? Function()? logoutReqested,
     TResult? Function(String apiURL)? apiURLChanged,
     TResult? Function(String refreshToken)? refreshToken,
     TResult? Function()? refreshTokenFromStorageRequested,
+    TResult? Function()? saveToStorage,
   }) {
     return refreshToken?.call(this.refreshToken);
   }
@@ -784,11 +876,14 @@ class _$refreshTokenImpl implements _refreshToken {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String email, String password)? loginRequested,
+    TResult Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult Function()? logoutReqested,
     TResult Function(String apiURL)? apiURLChanged,
     TResult Function(String refreshToken)? refreshToken,
     TResult Function()? refreshTokenFromStorageRequested,
+    TResult Function()? saveToStorage,
     required TResult orElse(),
   }) {
     if (refreshToken != null) {
@@ -807,6 +902,7 @@ class _$refreshTokenImpl implements _refreshToken {
     required TResult Function(_refreshToken value) refreshToken,
     required TResult Function(_RefreshTokenFromStorageRequested value)
         refreshTokenFromStorageRequested,
+    required TResult Function(_SaveToStorage value) saveToStorage,
   }) {
     return refreshToken(this);
   }
@@ -821,6 +917,7 @@ class _$refreshTokenImpl implements _refreshToken {
     TResult? Function(_refreshToken value)? refreshToken,
     TResult? Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult? Function(_SaveToStorage value)? saveToStorage,
   }) {
     return refreshToken?.call(this);
   }
@@ -835,6 +932,7 @@ class _$refreshTokenImpl implements _refreshToken {
     TResult Function(_refreshToken value)? refreshToken,
     TResult Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult Function(_SaveToStorage value)? saveToStorage,
     required TResult orElse(),
   }) {
     if (refreshToken != null) {
@@ -897,11 +995,14 @@ class _$RefreshTokenFromStorageRequestedImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String email, String password) loginRequested,
+    required TResult Function(
+            String apiURL, String email, String password, String deviceToken)
+        loginRequested,
     required TResult Function() logoutReqested,
     required TResult Function(String apiURL) apiURLChanged,
     required TResult Function(String refreshToken) refreshToken,
     required TResult Function() refreshTokenFromStorageRequested,
+    required TResult Function() saveToStorage,
   }) {
     return refreshTokenFromStorageRequested();
   }
@@ -910,11 +1011,14 @@ class _$RefreshTokenFromStorageRequestedImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String email, String password)? loginRequested,
+    TResult? Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult? Function()? logoutReqested,
     TResult? Function(String apiURL)? apiURLChanged,
     TResult? Function(String refreshToken)? refreshToken,
     TResult? Function()? refreshTokenFromStorageRequested,
+    TResult? Function()? saveToStorage,
   }) {
     return refreshTokenFromStorageRequested?.call();
   }
@@ -923,11 +1027,14 @@ class _$RefreshTokenFromStorageRequestedImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String email, String password)? loginRequested,
+    TResult Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
     TResult Function()? logoutReqested,
     TResult Function(String apiURL)? apiURLChanged,
     TResult Function(String refreshToken)? refreshToken,
     TResult Function()? refreshTokenFromStorageRequested,
+    TResult Function()? saveToStorage,
     required TResult orElse(),
   }) {
     if (refreshTokenFromStorageRequested != null) {
@@ -946,6 +1053,7 @@ class _$RefreshTokenFromStorageRequestedImpl
     required TResult Function(_refreshToken value) refreshToken,
     required TResult Function(_RefreshTokenFromStorageRequested value)
         refreshTokenFromStorageRequested,
+    required TResult Function(_SaveToStorage value) saveToStorage,
   }) {
     return refreshTokenFromStorageRequested(this);
   }
@@ -960,6 +1068,7 @@ class _$RefreshTokenFromStorageRequestedImpl
     TResult? Function(_refreshToken value)? refreshToken,
     TResult? Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult? Function(_SaveToStorage value)? saveToStorage,
   }) {
     return refreshTokenFromStorageRequested?.call(this);
   }
@@ -974,6 +1083,7 @@ class _$RefreshTokenFromStorageRequestedImpl
     TResult Function(_refreshToken value)? refreshToken,
     TResult Function(_RefreshTokenFromStorageRequested value)?
         refreshTokenFromStorageRequested,
+    TResult Function(_SaveToStorage value)? saveToStorage,
     required TResult orElse(),
   }) {
     if (refreshTokenFromStorageRequested != null) {
@@ -986,6 +1096,147 @@ class _$RefreshTokenFromStorageRequestedImpl
 abstract class _RefreshTokenFromStorageRequested implements AccountEvent {
   const factory _RefreshTokenFromStorageRequested() =
       _$RefreshTokenFromStorageRequestedImpl;
+}
+
+/// @nodoc
+abstract class _$$SaveToStorageImplCopyWith<$Res> {
+  factory _$$SaveToStorageImplCopyWith(
+          _$SaveToStorageImpl value, $Res Function(_$SaveToStorageImpl) then) =
+      __$$SaveToStorageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SaveToStorageImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$SaveToStorageImpl>
+    implements _$$SaveToStorageImplCopyWith<$Res> {
+  __$$SaveToStorageImplCopyWithImpl(
+      _$SaveToStorageImpl _value, $Res Function(_$SaveToStorageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SaveToStorageImpl implements _SaveToStorage {
+  const _$SaveToStorageImpl();
+
+  @override
+  String toString() {
+    return 'AccountEvent.saveToStorage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SaveToStorageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(
+            String apiURL, String email, String password, String deviceToken)
+        loginRequested,
+    required TResult Function() logoutReqested,
+    required TResult Function(String apiURL) apiURLChanged,
+    required TResult Function(String refreshToken) refreshToken,
+    required TResult Function() refreshTokenFromStorageRequested,
+    required TResult Function() saveToStorage,
+  }) {
+    return saveToStorage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
+    TResult? Function()? logoutReqested,
+    TResult? Function(String apiURL)? apiURLChanged,
+    TResult? Function(String refreshToken)? refreshToken,
+    TResult? Function()? refreshTokenFromStorageRequested,
+    TResult? Function()? saveToStorage,
+  }) {
+    return saveToStorage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(
+            String apiURL, String email, String password, String deviceToken)?
+        loginRequested,
+    TResult Function()? logoutReqested,
+    TResult Function(String apiURL)? apiURLChanged,
+    TResult Function(String refreshToken)? refreshToken,
+    TResult Function()? refreshTokenFromStorageRequested,
+    TResult Function()? saveToStorage,
+    required TResult orElse(),
+  }) {
+    if (saveToStorage != null) {
+      return saveToStorage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_LoginRequested value) loginRequested,
+    required TResult Function(_LogoutRequested value) logoutReqested,
+    required TResult Function(_ApiURLChanged value) apiURLChanged,
+    required TResult Function(_refreshToken value) refreshToken,
+    required TResult Function(_RefreshTokenFromStorageRequested value)
+        refreshTokenFromStorageRequested,
+    required TResult Function(_SaveToStorage value) saveToStorage,
+  }) {
+    return saveToStorage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_LoginRequested value)? loginRequested,
+    TResult? Function(_LogoutRequested value)? logoutReqested,
+    TResult? Function(_ApiURLChanged value)? apiURLChanged,
+    TResult? Function(_refreshToken value)? refreshToken,
+    TResult? Function(_RefreshTokenFromStorageRequested value)?
+        refreshTokenFromStorageRequested,
+    TResult? Function(_SaveToStorage value)? saveToStorage,
+  }) {
+    return saveToStorage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_LoginRequested value)? loginRequested,
+    TResult Function(_LogoutRequested value)? logoutReqested,
+    TResult Function(_ApiURLChanged value)? apiURLChanged,
+    TResult Function(_refreshToken value)? refreshToken,
+    TResult Function(_RefreshTokenFromStorageRequested value)?
+        refreshTokenFromStorageRequested,
+    TResult Function(_SaveToStorage value)? saveToStorage,
+    required TResult orElse(),
+  }) {
+    if (saveToStorage != null) {
+      return saveToStorage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveToStorage implements AccountEvent {
+  const factory _SaveToStorage() = _$SaveToStorageImpl;
 }
 
 /// @nodoc
