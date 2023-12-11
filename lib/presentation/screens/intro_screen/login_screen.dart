@@ -48,14 +48,11 @@ class _LoginCardState extends State<LoginCard> {
   @override
   Widget build(BuildContext context) {
     // TODO: Ta zmienne isButtonEnabled jest używana przez TextButton głęboko w tym widgecie.
-    // funckja select powoduje, że cały widget LoginCard będzie rerenderowany kiedy AccountBloc się zmieni 
-    // Trzeba użyć BlocBuildera tak by był jak najbiżej użycia tego stanu z bloca. 
+    // funckja select powoduje, że cały widget LoginCard będzie rerenderowany kiedy AccountBloc się zmieni
+    // Trzeba użyć BlocBuildera tak by był jak najbiżej użycia tego stanu z bloca.
     // W tym przypadku otaczamy widget TextButton, dzięki temu tylko ten TextButton będzie renderował się ponownie, a nie cały LoginCard
     // TODO: raczej używaj .map bo porównanie do AccountState.loggedOut nie zadziała
     // AccountState.loggedOut jest funkcją, a nie obiektem (state też nie jest typem tylko obiektem), więc ten bool będzie zawsze równy true
-    bool isButtonEnabled = context.select(
-      (AccountBloc accountBloc) => accountBloc.state != AccountState.loggedOut,
-    );
 
     Map<String, String> credentials = {
       'email': '',
@@ -100,14 +97,24 @@ class _LoginCardState extends State<LoginCard> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(
-                    onPressed: isButtonEnabled
-                        ? () {
-                            Navigator.of(context)
-                                .pushReplacementNamed(RouteNames.timeline);
-                          }
-                        : null,
-                    child: Text('skip'.tr()),
+                  BlocBuilder<SettingsCubit, SettingsState>(
+                    builder: (context, state) {
+                      bool isButtonEnabled = context.select(
+                        (AccountBloc accountBloc) => accountBloc.state.maybeMap(
+                          orElse: () => false,
+                          loggingIn: (value) => true,
+                        ),
+                      );
+                      return TextButton(
+                        onPressed: isButtonEnabled
+                            ? () {
+                                Navigator.of(context)
+                                    .pushReplacementNamed(RouteNames.timeline);
+                              }
+                            : null,
+                        child: Text('skip'.tr()),
+                      );
+                    },
                   ),
                   LoginButton(
                     credentials: credentials,
