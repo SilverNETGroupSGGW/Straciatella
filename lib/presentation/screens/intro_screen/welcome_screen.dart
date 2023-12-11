@@ -27,10 +27,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     // TODO: czcionki powinny być dodane poprzez assety, a potem w TextStyle zmienić fontFamily, jak chce się użyć innej czcioni niż domyślna
-    TextStyle hugeTitle = GoogleFonts.rubik().copyWith(
-      color: Theme.of(context).colorScheme.primary,
-      height: 0.9,
-    );
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -45,7 +42,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   children: [
                     TitleText(
                       controller: _controller,
-                      hugeTitle: hugeTitle,
                     ),
                     SizedBox(
                       height: 24,
@@ -199,7 +195,6 @@ class TitleText extends StatelessWidget {
   TitleText({
     super.key,
     required this.controller,
-    required this.hugeTitle,
   })  : firstAnimation = CurvedAnimation(
           parent: controller,
           curve: Interval(
@@ -218,12 +213,16 @@ class TitleText extends StatelessWidget {
         );
 
   final AnimationController controller;
-  final TextStyle hugeTitle;
   final Animation<double> firstAnimation;
   final Animation<double> secondAnimation;
 
   @override
   Widget build(BuildContext context) {
+    TextStyle hugeTitle = GoogleFonts.rubik().copyWith(
+      color: Theme.of(context).colorScheme.primary,
+      height: 0.9,
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
