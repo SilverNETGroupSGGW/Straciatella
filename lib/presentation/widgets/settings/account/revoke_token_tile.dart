@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psggw/logic/account/account_bloc.dart';
 
 class RevokeTokenTile extends StatelessWidget {
@@ -14,8 +15,9 @@ class RevokeTokenTile extends StatelessWidget {
       subtitle: Text('logout_desc'.tr()),
       trailing: IconButton(
         onPressed: () async {
+          // * używaj .then() na Future'ach dla czytelności kodu
           // Show dialog to confirm
-          bool confirm = await showDialog(
+          showDialog<bool>(
             context: context,
             builder: (context) => AlertDialog(
               title: Text('logout'.tr()),
@@ -31,11 +33,13 @@ class RevokeTokenTile extends StatelessWidget {
                 ),
               ],
             ),
-          );
-
-          if (confirm) {
-            AccountEvent.logoutReqested();
-          }
+          ).then((confirm) {
+            if (confirm ?? false) {
+              context.read<AccountBloc>().add(
+                    AccountEvent.refreshTokenFromStorageRequested(),
+                  );
+            }
+          });
         },
         icon: const Icon(Icons.logout_outlined),
       ),

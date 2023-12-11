@@ -44,35 +44,31 @@ class BreakDivider extends StatelessWidget {
 
   final Duration duration;
 
+  _genBreak(BuildContext context, String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 4.0,
+      ),
+      child: Text(
+        text,
+        style: Theme.of(context).textTheme.labelMedium!.copyWith(
+              fontStyle: FontStyle.italic,
+            ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-            vertical: 4.0,
-          ),
-          child: Text(
-            duration.inMinutes.toString() + ' ' + 'minutes'.tr(),
-            style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                  fontStyle: FontStyle.italic,
-                ),
-          ),
+        _genBreak(
+          context,
+          duration.inMinutes.toString() + ' ' + 'minutes'.tr(),
         ),
         Expanded(child: Divider()),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-            vertical: 4.0,
-          ),
-          child: Text(
-            'break'.tr(),
-            style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                  fontStyle: FontStyle.italic,
-                ),
-          ),
-        ),
+        _genBreak(context, 'break'.tr()),
       ],
     );
   }
