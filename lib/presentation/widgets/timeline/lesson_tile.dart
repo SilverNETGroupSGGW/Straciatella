@@ -92,7 +92,6 @@ class LessonCard extends StatelessWidget {
               SizedBox(width: 12),
               Expanded(
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FadedText(
@@ -102,8 +101,7 @@ class LessonCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
-                          flex: 4,
+                        Flexible(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -116,7 +114,7 @@ class LessonCard extends StatelessWidget {
                               IconWithText(
                                 icon: Icons.person,
                                 text: lesson.lecturers.isNotEmpty
-                                    ? lesson.lecturers.first.toString()
+                                    ? lesson.lecturers.first.toDisplayString()
                                     : 'Brak prowadzącego',
                                 textStyle:
                                     Theme.of(context).textTheme.bodySmall,
@@ -124,9 +122,7 @@ class LessonCard extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Expanded(child: Container()),
-                        Expanded(
-                          flex: 4,
+                        Flexible(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [

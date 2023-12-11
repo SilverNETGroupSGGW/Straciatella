@@ -149,13 +149,14 @@ class __$$LecturerImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LecturerImpl implements _Lecturer {
+class _$LecturerImpl extends _Lecturer {
   _$LecturerImpl(
       {required this.degree,
       required this.email,
       required this.surname,
       required this.id,
-      required this.firstName});
+      required this.firstName})
+      : super._();
 
   factory _$LecturerImpl.fromJson(Map<String, dynamic> json) =>
       _$$LecturerImplFromJson(json);
@@ -208,13 +209,14 @@ class _$LecturerImpl implements _Lecturer {
   }
 }
 
-abstract class _Lecturer implements Lecturer {
+abstract class _Lecturer extends Lecturer {
   factory _Lecturer(
       {required final Degree degree,
       required final String email,
       required final String surname,
       required final String id,
       required final String firstName}) = _$LecturerImpl;
+  _Lecturer._() : super._();
 
   factory _Lecturer.fromJson(Map<String, dynamic> json) =
       _$LecturerImpl.fromJson;

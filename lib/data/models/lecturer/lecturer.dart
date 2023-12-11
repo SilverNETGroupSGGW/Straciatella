@@ -6,6 +6,8 @@ part 'lecturer.g.dart';
 
 @freezed
 class Lecturer with _$Lecturer {
+  Lecturer._();
+
   factory Lecturer({
     required Degree degree,
     required String email,
@@ -16,4 +18,8 @@ class Lecturer with _$Lecturer {
 
   factory Lecturer.fromJson(Map<String, dynamic> json) =>
       _$LecturerFromJson(json);
+
+  String toDisplayString() {
+    return "${degree.name} $firstName $surname";
+  }
 }
