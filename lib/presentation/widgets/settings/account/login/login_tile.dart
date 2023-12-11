@@ -12,6 +12,10 @@ class LoginTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: Ta zmienne isLoggedIn jest używana przez TextButton głęboko w tym widgecie.
+    // funckja select powoduje, że cały widget LoginTile będzie rerenderowany kiedy AccountBloc się zmieni 
+    // Trzeba użyć BlocBuildera tak by był jak najbiżej użycia tego stanu z bloca. 
+    // W tym przypadku otaczamy widget w subtitle (Text), dzięki temu tylko ten Text będzie renderował się ponownie, a nie cały LoginCard
     bool isLoggedIn = context.select((AccountBloc bloc) => bloc.state.maybeMap(
           loggedIn: (state) => true,
           orElse: () => false,

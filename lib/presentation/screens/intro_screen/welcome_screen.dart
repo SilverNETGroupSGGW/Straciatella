@@ -26,6 +26,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    // TODO: czcionki powinny być dodane poprzez assety, a potem w TextStyle zmienić fontFamily, jak chce się użyć innej czcioni niż domyślna
     TextStyle hugeTitle = GoogleFonts.rubik().copyWith(
       color: Theme.of(context).colorScheme.primary,
       height: 0.9,

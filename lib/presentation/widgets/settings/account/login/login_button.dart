@@ -15,12 +15,14 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: raczej używaj .map bo porównanie do AccountState.loggedOut nie zadziała
+    // AccountState.loggedOut jest funkcją, a nie obiektem (state też nie jest typem tylko obiektem), więc ten bool będzie zawsze równy true
     bool isButtonEnabled = context.select(
       (AccountBloc accountBloc) => accountBloc.state != AccountState.loggedOut,
     );
     return FilledButton(
       onPressed: isButtonEnabled
-          ? () async {
+          ? () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
                 context.read<AccountBloc>().add(
