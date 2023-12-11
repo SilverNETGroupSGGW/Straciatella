@@ -35,8 +35,13 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
 
   void _onLogoutRequested(_LogoutRequested event, Emitter<AccountState> emit) {
     state.maybeMap(
-      loggedIn: (state) {
-        emit(AccountState.loggedOut());
+      loggedIn: (state) async {
+        emit(AccountState.loggingOut());
+        await Hive.openBox<Account>('account').then((box) {
+          box.delete('account');
+          emit(AccountState.loggedOut());
+          box.close();
+        });
       },
       orElse: () {},
     );
@@ -50,6 +55,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Account? account = box.get(
       'account',
     );
+    box.close();
     if (account == null) {
       emit(AccountState.loggedOut());
     } else {
@@ -70,5 +76,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         account,
       );
     }
+    box.close();
   }
 }
