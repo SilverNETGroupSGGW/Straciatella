@@ -1,104 +1,79 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:psggw/adapters/settings_adapter.dart';
-import 'package:psggw/models/account_model/bloc/account_bloc.dart';
-import 'package:psggw/models/settings_model/bloc/settings_bloc.dart';
-import 'package:psggw/models/settings_model/settings.dart';
-import 'package:psggw/screens/intro_screen/login_screen.dart';
-import 'package:psggw/screens/intro_screen/welcome_screen.dart';
+import 'package:psggw/constants.dart';
+import 'package:psggw/data/adapters/register_adapters.dart';
+import 'package:psggw/logic/account/account_bloc.dart';
+import 'package:psggw/logic/settings/settings_cubit.dart';
+import 'package:psggw/router.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:psggw/screens/navbar_screen.dart';
-import 'package:psggw/screens/settings_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:psggw/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(SettingsAdapter());
+  registerSettingsAdapters();
+  registerDataAdapters();
+  await Hive.openBox(hiveBoxName);
   await EasyLocalization.ensureInitialized();
+  SettingsCubit settings = SettingsCubit()..loadSettings();
+
   runApp(
     EasyLocalization(
-      child: MainApp(key: GlobalKey()),
-      supportedLocales: [
-        Locale('en', 'US'),
-        Locale('pl', 'PL'),
-      ],
+      child: MainApp(settings: settings),
+      supportedLocales: supportedLocale.map((e) => e.locale).toList(),
       path: 'assets/translations',
-      fallbackLocale: Locale('en', 'US'),
+      fallbackLocale: fallbackLocale,
     ),
   );
 }
 
-class MainApp extends StatelessWidget {
-  MainApp({super.key});
+class MainApp extends StatefulWidget {
+  final SettingsCubit settings;
+
+  MainApp({super.key, required this.settings});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<SettingsBloc>(
-          create: (context) =>
-              SettingsBloc()..add(SettingsEvent.loadRequested()),
+        BlocProvider<SettingsCubit>.value(
+          value: widget.settings,
         ),
         BlocProvider<AccountBloc>(
           create: (context) => AccountBloc()
             ..add(AccountEvent.refreshTokenFromStorageRequested()),
         )
       ],
-      child: BlocBuilder<SettingsBloc, SettingsState>(
-        builder: (context, state) {
-          return state.maybeMap(
-            orElse: () => MaterialApp(
-              title: 'PSGGW',
-              home: Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
-            ),
-            loaded: (state) {
-              Settings settings = state.maybeMap(
-                loaded: (state) => state.settings,
-                orElse: () => Settings.empty(),
-              );
-
-              var darkThemeData = ThemeData(
-                colorScheme: ColorScheme.fromSeed(
-                  seedColor: settings.themeColor,
-                  brightness: Brightness.dark,
-                ),
-              );
-
-              var lightThemeData = ThemeData(
-                colorScheme: ColorScheme.fromSeed(
-                  seedColor: settings.themeColor,
-                  brightness: Brightness.light,
-                ),
-              );
-
-              return MaterialApp(
-                title: 'PSGGW',
-                theme: lightThemeData,
-                darkTheme: darkThemeData,
-                themeMode: settings.themeMode,
-                localizationsDelegates: context.localizationDelegates,
-                supportedLocales: context.supportedLocales,
-                locale: settings.locale,
-                home: settings.isFirstRun
-                    ? WelcomeScreen()
-                    : NavBarScreen(index: 0),
-                routes: {
-                  '/login': (context) => LoginScreen(),
-                  '/welcome': (context) => WelcomeScreen(),
-                  '/timeline': (context) => NavBarScreen(index: 0),
-                  '/map': (context) => NavBarScreen(index: 1),
-                  '/settings': (context) => SettingsScreen(),
-                },
-              );
-            },
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, settings) {
+          return MaterialApp(
+            title: appName,
+            theme: getLightTheme(settings.themeColor),
+            darkTheme: getDarkTheme(settings.themeColor),
+            themeMode: settings.themeMode,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            onGenerateRoute: _appRouter.onGenerateRoute,
+            initialRoute:
+                settings.isFirstRun ? RouteNames.welcome : RouteNames.timeline,
           );
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    widget.settings.close();
+    super.dispose();
   }
 }
