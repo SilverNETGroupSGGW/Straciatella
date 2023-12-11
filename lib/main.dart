@@ -1,94 +1,79 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:psggw/models/settings_model.dart';
-import 'package:psggw/adapters/settings_adapter.dart';
-import 'package:psggw/notifiers/credentials_provder.dart';
-import 'package:psggw/notifiers/settings_provider.dart';
-import 'package:psggw/screens/intro_screen/login_screen.dart';
-import 'package:psggw/screens/intro_screen/welcome_screen.dart';
+import 'package:psggw/constants.dart';
+import 'package:psggw/data/adapters/register_adapters.dart';
+import 'package:psggw/logic/account/account_bloc.dart';
+import 'package:psggw/logic/settings/settings_cubit.dart';
+import 'package:psggw/router.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:psggw/screens/navbar_screen.dart';
-import 'package:psggw/screens/settings_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:psggw/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(SettingsAdapter());
+  registerSettingsAdapters();
+  registerDataAdapters();
+  await Hive.openBox(hiveBoxName);
   await EasyLocalization.ensureInitialized();
+  SettingsCubit settings = SettingsCubit()..loadSettings();
+
   runApp(
-    ProviderScope(
-        child: EasyLocalization(
-      child: MainApp(),
-      supportedLocales: [
-        Locale('en', 'US'),
-        Locale('pl', 'PL'),
-      ],
+    EasyLocalization(
+      child: MainApp(settings: settings),
+      supportedLocales: supportedLocale.map((e) => e.locale).toList(),
       path: 'assets/translations',
-      fallbackLocale: Locale('en', 'US'),
-    )),
+      fallbackLocale: fallbackLocale,
+    ),
   );
 }
 
-class MainApp extends ConsumerStatefulWidget {
-  MainApp({super.key});
+class MainApp extends StatefulWidget {
+  final SettingsCubit settings;
+
+  MainApp({super.key, required this.settings});
 
   @override
-  ConsumerState<MainApp> createState() => _MainAppState();
+  State<MainApp> createState() => _MainAppState();
 }
 
-class _MainAppState extends ConsumerState<MainApp> {
-  @override
-  void initState() {
-    appSettings = ref.read(credentialsProvider.notifier).init();
-    super.initState();
-  }
-
-  late Future<void> appSettings;
+class _MainAppState extends State<MainApp> {
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: appSettings,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-            child: CircularProgressIndicator(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SettingsCubit>.value(
+          value: widget.settings,
+        ),
+        BlocProvider<AccountBloc>(
+          create: (context) => AccountBloc()
+            ..add(AccountEvent.refreshTokenFromStorageRequested()),
+        )
+      ],
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, settings) {
+          return MaterialApp(
+            title: appName,
+            theme: getLightTheme(settings.themeColor),
+            darkTheme: getDarkTheme(settings.themeColor),
+            themeMode: settings.themeMode,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            onGenerateRoute: _appRouter.onGenerateRoute,
+            initialRoute:
+                settings.isFirstRun ? RouteNames.welcome : RouteNames.timeline,
           );
-        }
-        Settings settings = ref.watch(settingsProvider);
-        var darkThemeData = ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: settings.themeColor,
-            brightness: Brightness.dark,
-          ),
-        );
-        var lightThemeData = ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: settings.themeColor,
-            brightness: Brightness.light,
-          ),
-        );
-
-        return MaterialApp(
-          initialRoute: '/',
-          routes: {
-            '/timeline': (context) => NavbarScreen(index: 0),
-            '/map': (context) => NavbarScreen(index: 1),
-            '/welcome/intro': (context) => WelcomeScreen(),
-            '/welcome/login': (context) => LoginScreen(),
-            '/settings': (context) => SettingsScreen(),
-          },
-          title: "Plan WZIM",
-          locale: settings.locale,
-          supportedLocales: context.supportedLocales,
-          localizationsDelegates: context.localizationDelegates,
-          darkTheme: darkThemeData,
-          theme: lightThemeData,
-          themeMode: settings.themeMode,
-          home: settings.firstRun ? WelcomeScreen() : NavbarScreen(index: 0),
-        );
-      },
+        },
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    widget.settings.close();
+    super.dispose();
   }
 }
