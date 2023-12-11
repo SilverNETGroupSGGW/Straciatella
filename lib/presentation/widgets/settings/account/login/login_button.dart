@@ -15,26 +15,29 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: raczej używaj .map bo porównanie do AccountState.loggedOut nie zadziała
-    // AccountState.loggedOut jest funkcją, a nie obiektem (state też nie jest typem tylko obiektem), więc ten bool będzie zawsze równy true
-    bool isButtonEnabled = context.select(
-      (AccountBloc accountBloc) => accountBloc.state != AccountState.loggedOut,
-    );
-    return FilledButton(
-      onPressed: isButtonEnabled
-          ? () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                context.read<AccountBloc>().add(
-                      AccountEvent.loginRequested(
-                        email: credentials['email'] ?? '',
-                        password: credentials['password'] ?? '',
-                      ),
-                    );
-              }
-            }
-          : null,
-      child: isButtonEnabled ? Text('login'.tr()) : Text('logging_in'.tr()),
+    return BlocBuilder<AccountBloc, AccountState>(
+      builder: (context, state) {
+        bool isButtonEnabled = state.maybeMap(
+          loggingIn: (value) => true,
+          orElse: () => false,
+        );
+        return FilledButton(
+          onPressed: isButtonEnabled
+              ? () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    context.read<AccountBloc>().add(
+                          AccountEvent.loginRequested(
+                            email: credentials['email'] ?? '',
+                            password: credentials['password'] ?? '',
+                          ),
+                        );
+                  }
+                }
+              : null,
+          child: isButtonEnabled ? Text('login'.tr()) : Text('logging_in'.tr()),
+        );
+      },
     );
   }
 }
