@@ -2,13 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:psggw/logic/settings/settings_bloc.dart';
+import 'package:psggw/logic/settings/settings_cubit.dart';
 import 'package:psggw/presentation/widgets/settings/theme/auto_theme_tile.dart';
 import 'package:psggw/presentation/widgets/settings/theme/color_tile.dart';
 import 'package:psggw/presentation/widgets/settings/account/login/login_tile.dart';
 import 'package:psggw/presentation/widgets/settings/account/revoke_token_tile.dart';
 import 'package:psggw/presentation/widgets/settings/account/refresh_token_tile.dart';
-import 'package:psggw/presentation/widgets/settings/save_fab.dart';
 import 'package:psggw/presentation/widgets/settings/theme/theme_tile.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -20,9 +19,8 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('settings'.tr()),
       ),
-      floatingActionButton: SaveFab(),
       body: Center(
-        child: BlocBuilder<SettingsBloc, SettingsState>(
+        child: BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, settings) {
             return ListView(
               children: [
@@ -34,15 +32,10 @@ class SettingsScreen extends StatelessWidget {
                 LoginTile(),
                 RefreshTokenTile(),
                 RevokeTokenTile(),
-                ...settings.maybeMap(
-                  orElse: () => false,
-                  loaded: (settings) => settings.isDebugMode,
-                )
-                    ? [
-                        ListCategoryLabel(label: 'debug'.tr()),
-                        DebugInfoTile(),
-                      ]
-                    : [],
+                if (settings.isDebugMode) ...[
+                  ListCategoryLabel(label: 'debug'.tr()),
+                  DebugInfoTile(),
+                ]
               ],
             );
           },

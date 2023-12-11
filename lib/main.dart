@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:psggw/constants.dart';
 import 'package:psggw/data/adapters/register_adapters.dart';
 import 'package:psggw/logic/account/account_bloc.dart';
-import 'package:psggw/logic/settings/settings_bloc.dart';
+import 'package:psggw/logic/settings/settings_cubit.dart';
 import 'package:psggw/router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,10 +14,13 @@ void main() async {
   await Hive.initFlutter();
   registerSettingsAdapters();
   registerDataAdapters();
+  await Hive.openBox(hiveBoxName);
   await EasyLocalization.ensureInitialized();
+  SettingsCubit settings = SettingsCubit()..loadSettings();
+
   runApp(
     EasyLocalization(
-      child: MainApp(),
+      child: MainApp(settings: settings),
       supportedLocales: supportedLocale.map((e) => e.locale).toList(),
       path: 'assets/translations',
       fallbackLocale: fallbackLocale,
@@ -26,7 +29,9 @@ void main() async {
 }
 
 class MainApp extends StatefulWidget {
-  MainApp({super.key});
+  final SettingsCubit settings;
+
+  MainApp({super.key, required this.settings});
 
   @override
   State<MainApp> createState() => _MainAppState();
@@ -39,34 +44,36 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<SettingsBloc>(
-          create: (context) => SettingsBloc()..add(SettingsEvent.init()),
+        BlocProvider<SettingsCubit>.value(
+          value: widget.settings,
         ),
         BlocProvider<AccountBloc>(
           create: (context) => AccountBloc()
             ..add(AccountEvent.refreshTokenFromStorageRequested()),
         )
       ],
-      child: BlocBuilder<SettingsBloc, SettingsState>(
-        builder: (context, state) {
-          final theme = state.mapOrNull(
-              loaded: (settings) => getLightTheme(settings.themeColor));
-          final darkTheme = state.mapOrNull(
-              loaded: (settings) => getDarkTheme(settings.themeColor));
-          final themeMode =
-              state.mapOrNull(loaded: (settings) => settings.themeMode);
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, settings) {
           return MaterialApp(
-              title: appName,
-              theme: theme,
-              darkTheme: darkTheme,
-              themeMode: themeMode,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              onGenerateRoute: _appRouter.onGenerateRoute,
-              initialRoute: RouteNames.loading);
+            title: appName,
+            theme: getLightTheme(settings.themeColor),
+            darkTheme: getDarkTheme(settings.themeColor),
+            themeMode: settings.themeMode,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            onGenerateRoute: _appRouter.onGenerateRoute,
+            initialRoute:
+                settings.isFirstRun ? RouteNames.welcome : RouteNames.timeline,
+          );
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    widget.settings.close();
+    super.dispose();
   }
 }

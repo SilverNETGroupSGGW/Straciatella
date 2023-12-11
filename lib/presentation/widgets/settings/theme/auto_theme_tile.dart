@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:psggw/logic/settings/settings_bloc.dart';
+import 'package:psggw/logic/settings/settings_cubit.dart';
 
 class AutoThemeModeTile extends StatelessWidget {
   const AutoThemeModeTile({
@@ -13,18 +14,20 @@ class AutoThemeModeTile extends StatelessWidget {
     return ListTile(
       title: Text('theme_auto_dark'.tr()),
       subtitle: Text('theme_auto_dark_desc'.tr()),
-      trailing: BlocBuilder<SettingsBloc, SettingsState>(
+      trailing: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, settings) {
           return Switch(
-            value: settings.maybeMap(
-                  orElse: () => ThemeMode.system,
-                  loaded: (settings) => settings.themeMode,
-                ) ==
-                ThemeMode.system,
+            value: settings.themeMode == ThemeMode.system,
             onChanged: (value) {
-              context
-                  .read<SettingsBloc>()
-                  .add(SettingsEvent.autoThemeModeChanged(value));
+              final brightness = SchedulerBinding
+                  .instance.platformDispatcher.platformBrightness;
+
+              context.read<SettingsCubit>().changeThemeMode(value
+                  ? ThemeMode.system
+                  : switch (brightness) {
+                      Brightness.dark => ThemeMode.dark,
+                      Brightness.light => ThemeMode.light,
+                    });
             },
           );
         },

@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:psggw/logic/settings/settings_bloc.dart';
+import 'package:psggw/logic/settings/settings_cubit.dart';
 
 class ColorTile extends StatefulWidget {
   const ColorTile({super.key});
@@ -17,15 +17,11 @@ class _ColorTileState extends State<ColorTile> {
   @override
   void initState() {
     super.initState();
-    origColor = context.read<SettingsBloc>().state.mapOrNull(
-              loaded: (value) => value.themeColor,
-            ) ??
-        Theme.of(context).colorScheme.primary;
+    origColor = context.read<SettingsCubit>().state.themeColor;
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: fix adding events
     return ListTile(
       title: Text('theme_color'.tr()),
       subtitle: Text('theme_color_desc'.tr()),
@@ -38,21 +34,19 @@ class _ColorTileState extends State<ColorTile> {
             title: Text('theme_color'.tr()),
             content: BlockPicker(
               pickerColor: Theme.of(context).colorScheme.primary,
-              onColorChanged: (color) {
-                SettingsEvent.themeColorChanged(themeColor: color);
-              },
+              onColorChanged: context.read<SettingsCubit>().changeThemeColor,
             ),
             actions: [
               TextButton(
                 onPressed: () {
-                  SettingsEvent.themeColorChanged(themeColor: Colors.red);
+                  context.read<SettingsCubit>().changeThemeColor(Colors.red);
                   Navigator.of(context).pop();
                 },
                 child: Text('default'.tr()),
               ),
               TextButton(
                 onPressed: () {
-                  SettingsEvent.themeColorChanged(themeColor: origColor);
+                  context.read<SettingsCubit>().changeThemeColor(origColor);
                   Navigator.of(context).pop();
                 },
                 child: Text('cancel'.tr()),

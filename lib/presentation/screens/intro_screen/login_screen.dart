@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psggw/logic/account/account_bloc.dart';
-import 'package:psggw/logic/settings/settings_bloc.dart';
+import 'package:psggw/logic/settings/settings_cubit.dart';
 import 'package:psggw/presentation/widgets/settings/account/login/login_button.dart';
 import 'package:psggw/presentation/widgets/settings/account/login/login_form.dart';
 import 'package:psggw/router.dart';
@@ -65,24 +65,14 @@ class _LoginCardState extends State<LoginCard> {
                 content: Text('login_success'.tr()),
               ),
             );
-            context.read<SettingsBloc>().add(
-                  SettingsEvent.firstRunEnded(completed: true),
-                );
-            context.read<SettingsBloc>().add(
-                  SettingsEvent.saveRequested(),
-                );
+            context.read<SettingsCubit>().completeFirstRun();
             Navigator.of(context).pushNamedAndRemoveUntil(
               RouteNames.timeline,
               (route) => false,
             );
           },
           loggedOut: (_) {
-            context.read<SettingsBloc>().add(
-                  SettingsEvent.firstRunEnded(completed: true),
-                );
-            context.read<SettingsBloc>().add(
-                  SettingsEvent.saveRequested(),
-                );
+            context.read<SettingsCubit>().completeFirstRun();
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text('login_failed'.tr()),

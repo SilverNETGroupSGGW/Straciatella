@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:psggw/presentation/screens/intro_screen/login_screen.dart';
 import 'package:psggw/presentation/screens/intro_screen/welcome_screen.dart';
-import 'package:psggw/presentation/screens/loading_screen.dart';
 import 'package:psggw/presentation/screens/navbar_screen.dart';
 import 'package:psggw/presentation/screens/settings_screen.dart';
 
@@ -11,7 +10,6 @@ sealed class RouteNames {
   static const welcome = "/welcome";
   static const map = "/map";
   static const settings = "/settings";
-  static const loading = "/loading";
 }
 
 class AppRouter {
@@ -23,7 +21,6 @@ class AppRouter {
         RouteNames.welcome => WelcomeScreen(),
         RouteNames.map => NavBarScreen(index: 1),
         RouteNames.settings => SettingsScreen(),
-        RouteNames.loading => LoadingScreen(),
         _ => RouteNotFoundScreen(),
       },
     );
