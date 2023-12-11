@@ -1,9 +1,10 @@
 import 'package:hive/hive.dart';
+import 'package:psggw/data/hiveTypeIds.dart';
 import 'package:psggw/data/models/account/account.dart';
 
 class AccountAdapter extends TypeAdapter<Account> {
   @override
-  final typeId = 0;
+  final typeId = HiveTypeIds.account;
 
   @override
   Account read(BinaryReader reader) {

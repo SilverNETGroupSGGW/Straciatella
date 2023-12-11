@@ -4,7 +4,10 @@ part of 'settings_cubit.dart';
 class SettingsState extends HiveObject with _$SettingsState {
   SettingsState._();
 
-  @HiveType(typeId: 0, adapterName: "SettingsStateAdapter")
+  @HiveType(
+    typeId: HiveTypeIds.settingsState,
+    adapterName: "SettingsStateAdapter",
+  )
   factory SettingsState({
     @Default(ThemeMode.system) @HiveField(0) ThemeMode themeMode,
     @Default(true) @HiveField(1) bool isFirstRun,

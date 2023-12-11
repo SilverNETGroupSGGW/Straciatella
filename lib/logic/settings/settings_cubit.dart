@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:psggw/constants.dart';
+import 'package:psggw/data/hiveTypeIds.dart';
 
 part 'settings_state.dart';
 part 'settings_cubit.freezed.dart';

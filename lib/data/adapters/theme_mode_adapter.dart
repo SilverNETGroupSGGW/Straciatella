@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:psggw/data/hiveTypeIds.dart';
 
 class ThemeModeAdapter extends TypeAdapter<ThemeMode> {
   @override
-  final typeId = 2;
+  final typeId = HiveTypeIds.themeMode;
 
   @override
   ThemeMode read(BinaryReader reader) {

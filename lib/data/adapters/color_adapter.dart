@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:psggw/data/hiveTypeIds.dart';
 
 class ColorAdapter extends TypeAdapter<Color> {
   @override
-  final typeId = 3;
+  final typeId = HiveTypeIds.color;
 
   @override
   Color read(BinaryReader reader) {

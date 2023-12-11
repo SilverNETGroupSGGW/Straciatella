@@ -136,7 +136,8 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@HiveType(typeId: 0, adapterName: "SettingsStateAdapter")
+@HiveType(
+    typeId: HiveTypeIds.settingsState, adapterName: "SettingsStateAdapter")
 class _$SettingsStateImpl extends _SettingsState {
   _$SettingsStateImpl(
       {@HiveField(0) this.themeMode = ThemeMode.system,
