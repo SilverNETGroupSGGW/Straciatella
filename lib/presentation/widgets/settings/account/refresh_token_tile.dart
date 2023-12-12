@@ -14,7 +14,6 @@ class RefreshTokenTile extends StatelessWidget {
       trailing: IconButton(
         onPressed: () {
           // * używaj .then() na Future'ach dla czytelności kodu
-          // Show dialog to confirm
           showDialog<bool>(
             context: context,
             builder: (context) => AlertDialog(
