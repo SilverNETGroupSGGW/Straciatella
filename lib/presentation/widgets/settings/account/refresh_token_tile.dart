@@ -13,7 +13,6 @@ class RefreshTokenTile extends StatelessWidget {
       subtitle: Text('refresh_token_desc'.tr()),
       trailing: IconButton(
         onPressed: () {
-          // * używaj .then() na Future'ach dla czytelności kodu
           showDialog<bool>(
             context: context,
             builder: (context) => AlertDialog(
