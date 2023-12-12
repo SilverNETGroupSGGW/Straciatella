@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:psggw/constants.dart';
-import 'package:psggw/presentation/screens/intro_screen/login_screen.dart';
+import 'package:psggw/router.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -26,8 +26,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    // TODO: czcionki powinny być dodane poprzez assety, a potem w TextStyle zmienić fontFamily, jak chce się użyć innej czcioni niż domyślna
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -84,27 +82,12 @@ class GoToLoginScreenButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilledButton.icon(
-      onPressed: () => Navigator.of(context).push(
-        PageRouteBuilder(
-          transitionDuration: Duration(milliseconds: 330),
-          pageBuilder: (context, animation, secondaryAnimation) =>
-              LoginScreen(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            var begin = Offset(1.0, 0.0);
-            var end = Offset.zero;
-            var curve = Curves.ease;
-
-            var tween = Tween(begin: begin, end: end).chain(
-              CurveTween(curve: curve),
-            );
-
-            return SlideTransition(
-              position: animation.drive(tween),
-              child: child,
-            );
-          },
-        ),
-      ),
+      onPressed: () {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          RouteNames.timeline,
+          (route) => false,
+        );
+      },
       icon: Icon(Icons.play_arrow),
       label: Text("start".tr()),
     );
