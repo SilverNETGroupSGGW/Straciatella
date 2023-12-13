@@ -8,80 +8,130 @@ import 'package:psggw/data/models/schedule/schedule.dart';
 
 final List<Schedule> schedules = [
   Schedule(
-    id: "1",
-    name: "Schedule Name",
+    id: "asdf1234",
+    name: "Plan zajęć 2020/2021",
     year: 1,
     semester: 1,
-    degree: Degree.bachelor,
+    degree: Degree.doctor,
     groups: [
       Group(
-        id: "group 1 id",
-        name: "group 1 name",
-      ),
-      Group(
-        id: "group 2 id",
-        name: "group 2 name",
-      ),
+        id: "asdf1234",
+        name: "Grupa 1",
+      )
     ],
     lessons: [
       Lesson(
-        name: 'lesson 1 name',
-        comment: 'lesson 1 comment',
-        id: 'lesson 1 id',
-        dayOfWeek: DayOfWeek.monday,
-        classroom: Classroom(
-          id: "1",
-          name: "3/40",
-          floor: 3,
-          building: "34",
-        ),
-        duration: Duration(hours: 1, minutes: 30),
-        startTime: TimeOfDay(hour: 8, minute: 0),
-        groups: [
-          Group(
-            id: "group 1 id",
-            name: "Group 1 name",
-          )
-        ],
+        id: "asdf1234",
+        name: "Przedmiot 1",
         lecturers: [
           Lecturer(
-            degree: Degree.master,
-            email: "Lecturer 1 email",
-            surname: "Lecturer 1 surname",
-            id: "Lecturer 1 id",
-            firstName: "Lecturer 1 name",
+            id: "asdf1234",
+            firstName: "Jan",
+            surname: "Kowalski",
+            degree: Degree.doctor,
+            email: "jan@kowalki.com",
           ),
+        ],
+        classroom: Classroom(
+          building: "A",
+          floor: 1,
+          id: "asdf1234",
+          name: "A1",
+        ),
+        day: DayOfWeek.monday,
+        time: TimeOfDay(hour: 8, minute: 0),
+        duration: Duration(hours: 1, minutes: 30),
+        groups: [
+          Group(
+            id: "asdf1234",
+            name: "Grupa 1",
+          )
         ],
       ),
       Lesson(
-        name: 'lesson 2 name',
-        comment: 'lesson 2 comment',
-        id: 'lesson 2 id',
-        dayOfWeek: DayOfWeek.monday,
-        classroom: Classroom(
-          id: "2",
-          name: "3/40",
-          floor: 3,
-          building: "34",
-        ),
-        duration: Duration(hours: 1, minutes: 30),
-        startTime: TimeOfDay(hour: 10, minute: 0),
-        groups: [
-          Group(
-            id: "group 2 id",
-            name: "Group 2 name",
-          )
-        ],
+        id: "asdf1234",
+        name: "Przedmiot 2",
         lecturers: [
           Lecturer(
-            degree: Degree.master,
-            email: "Lecturer 2 email",
-            surname: "Lecturer 2 surname",
-            id: "Lecturer 2 id",
-            firstName: "Lecturer 2 name",
+            id: "asdf1234",
+            firstName: "Jan",
+            surname: "Kowalski",
+            degree: Degree.doctor,
+            email: "",
           ),
+        ],
+        classroom: Classroom(
+          building: "A",
+          floor: 1,
+          id: "asdf1234",
+          name: "A1",
+        ),
+        day: DayOfWeek.monday,
+        time: TimeOfDay(hour: 10, minute: 0),
+        duration: Duration(hours: 1, minutes: 30),
+        groups: [
+          Group(
+            id: "asdf1234",
+            name: "Grupa 1",
+          )
+        ],
+      ),
+      Lesson(
+        id: "asdf1234",
+        name: "Przedmiot 3",
+        lecturers: [
+          Lecturer(
+            id: "asdf1234",
+            firstName: "Jan",
+            surname: "Kowalski",
+            degree: Degree.doctor,
+            email: "",
+          ),
+        ],
+        classroom: Classroom(
+          building: "A",
+          floor: 1,
+          id: "asdf1234",
+          name: "A1",
+        ),
+        day: DayOfWeek.monday,
+        time: TimeOfDay(hour: 12, minute: 0),
+        duration: Duration(hours: 1, minutes: 30),
+        groups: [
+          Group(
+            id: "asdf1234",
+            name: "Grupa 1",
+          )
+        ],
+      ),
+      Lesson(
+        id: "asdf1234",
+        name: "Przedmiot 4",
+        lecturers: [
+          Lecturer(
+            id: "asdf1234",
+            firstName: "Jan",
+            surname: "Kowalski",
+            degree: Degree.doctor,
+            email: "",
+          ),
+        ],
+        classroom: Classroom(
+          building: "A",
+          floor: 1,
+          id: "asdf1234",
+          name: "A1",
+        ),
+        day: DayOfWeek.thursday,
+        time: TimeOfDay(hour: 14, minute: 0),
+        duration: Duration(hours: 1, minutes: 30),
+        groups: [
+          Group(
+            id: "asdf1234",
+            name: "Grupa 1",
+          )
         ],
       ),
     ],
-  ),
+  )
 ];
