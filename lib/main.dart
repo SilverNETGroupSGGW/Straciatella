@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:psggw/constants.dart';
 import 'package:psggw/data/adapters/register_adapters.dart';
-import 'package:psggw/logic/account/account_bloc.dart';
 import 'package:psggw/logic/settings/settings_cubit.dart';
 import 'package:psggw/router.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -47,10 +46,6 @@ class _MainAppState extends State<MainApp> {
         BlocProvider<SettingsCubit>.value(
           value: widget.settings,
         ),
-        BlocProvider<AccountBloc>(
-          create: (context) => AccountBloc()
-            ..add(AccountEvent.refreshTokenFromStorageRequested()),
-        )
       ],
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, settings) {

@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:psggw/logic/account/account_bloc.dart';
 import 'package:psggw/presentation/screens/timeline_screen.dart';
 
 class NavBarScreen extends StatefulWidget {
@@ -23,60 +21,31 @@ class _NavBarScreenState extends State<NavBarScreen> {
   @override
   Widget build(BuildContext context) {
     bool isTimeline = selectedIndex == 0;
-    return BlocListener<AccountBloc, AccountState>(
-      listener: (context, state) {
-        state.maybeMap(
-          orElse: () {},
-          loggedOut: (_) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('not_logged_in'.tr()),
-              ),
-            );
-          },
-          loggedIn: (_) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('login_successful'.tr()),
-              ),
-            );
-          },
-        );
-      },
-      listenWhen: (previous, current) {
-        return current.maybeMap(
-          orElse: () => false,
-          loggedOut: (_) => true,
-          loggedIn: (_) => true,
-        );
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(isTimeline ? 'timeline'.tr() : 'map'.tr()),
-          actions: [
-            SettingsButton(),
-          ],
-        ),
-        body: isTimeline ? Timeline() : Placeholder(),
-        bottomNavigationBar: NavigationBar(
-          destinations: [
-            NavigationDestination(
-              icon:
-                  Icon(isTimeline ? Icons.dashboard : Icons.dashboard_outlined),
-              label: 'timeline'.tr(),
-            ),
-            NavigationDestination(
-              icon: Icon(isTimeline ? Icons.map_outlined : Icons.map),
-              label: 'map'.tr(),
-            ),
-          ],
-          selectedIndex: selectedIndex,
-          onDestinationSelected: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(isTimeline ? 'timeline'.tr() : 'map'.tr()),
+        actions: [
+          SettingsButton(),
+        ],
+      ),
+      body: isTimeline ? Timeline() : Placeholder(),
+      bottomNavigationBar: NavigationBar(
+        destinations: [
+          NavigationDestination(
+            icon: Icon(isTimeline ? Icons.dashboard : Icons.dashboard_outlined),
+            label: 'timeline'.tr(),
+          ),
+          NavigationDestination(
+            icon: Icon(isTimeline ? Icons.map_outlined : Icons.map),
+            label: 'map'.tr(),
+          ),
+        ],
+        selectedIndex: selectedIndex,
+        onDestinationSelected: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
       ),
     );
   }
