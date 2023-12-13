@@ -40,9 +40,9 @@ class Lesson with _$Lesson {
   factory Lesson({
     required String id,
     required String name,
-    required String comment,
-    required DayOfWeek dayOfWeek,
-    @TimeOfDayConverter() required TimeOfDay startTime,
+    String? comment,
+    required DayOfWeek day,
+    @TimeOfDayConverter() required TimeOfDay time,
     required Duration duration,
     required Classroom classroom,
     required List<Group> groups,
