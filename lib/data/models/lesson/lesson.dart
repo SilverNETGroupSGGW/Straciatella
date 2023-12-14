@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:psggw/data/models/classroom/classroom.dart';
 import 'package:psggw/data/models/group/group.dart';
 import 'package:psggw/data/models/lecturer/lecturer.dart';
+import 'package:psggw/data/extentions/time_of_day.dart  ';
 
 part 'lesson.freezed.dart';
 part 'lesson.g.dart';
@@ -37,6 +38,8 @@ class TimeOfDayConverter implements JsonConverter<TimeOfDay, String> {
 
 @freezed
 class Lesson with _$Lesson {
+  const Lesson._();
+
   factory Lesson({
     required String id,
     required String name,
@@ -48,6 +51,10 @@ class Lesson with _$Lesson {
     required List<Group> groups,
     required List<Lecturer> lecturers,
   }) = _Lesson;
+
+  TimeOfDay endTime() {
+    return time + duration;
+  }
 
   factory Lesson.fromJson(Map<String, dynamic> json) => _$LessonFromJson(json);
 }
