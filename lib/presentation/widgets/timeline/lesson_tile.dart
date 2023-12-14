@@ -138,9 +138,7 @@ class LessonCard extends StatelessWidget {
                               IconWithText(
                                 reverse: true,
                                 icon: Icons.comment,
-                                text: lesson.comment.isNotEmpty
-                                    ? lesson.comment
-                                    : 'Brak komentarza',
+                                text: lesson.comment ?? 'Brak komentarza',
                                 textStyle:
                                     Theme.of(context).textTheme.bodySmall,
                               ),
@@ -195,18 +193,6 @@ class TimeDivider extends StatelessWidget {
 
   final Lesson lesson;
 
-  TimeOfDay _getEndTime() {
-    TimeOfDay endTime = TimeOfDay(
-      hour: lesson.startTime.hour +
-          lesson.duration.inHours +
-          (lesson.startTime.minute + lesson.duration.inMinutes) ~/
-              60, // (a ~/ b) == (a / b).floor()
-      minute: lesson.startTime.minute + lesson.duration.inMinutes % 60,
-    );
-    endTime = endTime.replacing(hour: endTime.hourOfPeriod);
-    return endTime;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -215,7 +201,7 @@ class TimeDivider extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            lesson.startTime.format(context),
+            lesson.time.format(context),
             style: Theme.of(context).textTheme.labelSmall,
           ),
         ),
@@ -225,7 +211,7 @@ class TimeDivider extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            _getEndTime().format(context),
+            lesson.endTime().format(context),
             style: Theme.of(context).textTheme.labelSmall,
           ),
         ),

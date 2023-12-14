@@ -9,10 +9,9 @@ part of 'lesson.dart';
 _$LessonImpl _$$LessonImplFromJson(Map<String, dynamic> json) => _$LessonImpl(
       id: json['id'] as String,
       name: json['name'] as String,
-      comment: json['comment'] as String,
-      dayOfWeek: $enumDecode(_$DayOfWeekEnumMap, json['dayOfWeek']),
-      startTime:
-          const TimeOfDayConverter().fromJson(json['startTime'] as String),
+      comment: json['comment'] as String?,
+      day: $enumDecode(_$DayOfWeekEnumMap, json['day']),
+      time: const TimeOfDayConverter().fromJson(json['time'] as String),
       duration: Duration(microseconds: json['duration'] as int),
       classroom: Classroom.fromJson(json['classroom'] as Map<String, dynamic>),
       groups: (json['groups'] as List<dynamic>)
@@ -28,8 +27,8 @@ Map<String, dynamic> _$$LessonImplToJson(_$LessonImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'comment': instance.comment,
-      'dayOfWeek': _$DayOfWeekEnumMap[instance.dayOfWeek]!,
-      'startTime': const TimeOfDayConverter().toJson(instance.startTime),
+      'day': _$DayOfWeekEnumMap[instance.day]!,
+      'time': const TimeOfDayConverter().toJson(instance.time),
       'duration': instance.duration.inMicroseconds,
       'classroom': instance.classroom,
       'groups': instance.groups,

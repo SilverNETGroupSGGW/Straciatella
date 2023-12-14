@@ -22,10 +22,10 @@ Lesson _$LessonFromJson(Map<String, dynamic> json) {
 mixin _$Lesson {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get comment => throw _privateConstructorUsedError;
-  DayOfWeek get dayOfWeek => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  DayOfWeek get day => throw _privateConstructorUsedError;
   @TimeOfDayConverter()
-  TimeOfDay get startTime => throw _privateConstructorUsedError;
+  TimeOfDay get time => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
   Classroom get classroom => throw _privateConstructorUsedError;
   List<Group> get groups => throw _privateConstructorUsedError;
@@ -44,9 +44,9 @@ abstract class $LessonCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      String comment,
-      DayOfWeek dayOfWeek,
-      @TimeOfDayConverter() TimeOfDay startTime,
+      String? comment,
+      DayOfWeek day,
+      @TimeOfDayConverter() TimeOfDay time,
       Duration duration,
       Classroom classroom,
       List<Group> groups,
@@ -70,9 +70,9 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? comment = null,
-    Object? dayOfWeek = null,
-    Object? startTime = null,
+    Object? comment = freezed,
+    Object? day = null,
+    Object? time = null,
     Object? duration = null,
     Object? classroom = null,
     Object? groups = null,
@@ -87,17 +87,17 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      comment: null == comment
+      comment: freezed == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as String,
-      dayOfWeek: null == dayOfWeek
-          ? _value.dayOfWeek
-          : dayOfWeek // ignore: cast_nullable_to_non_nullable
+              as String?,
+      day: null == day
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
               as DayOfWeek,
-      startTime: null == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
       duration: null == duration
           ? _value.duration
@@ -137,9 +137,9 @@ abstract class _$$LessonImplCopyWith<$Res> implements $LessonCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      String comment,
-      DayOfWeek dayOfWeek,
-      @TimeOfDayConverter() TimeOfDay startTime,
+      String? comment,
+      DayOfWeek day,
+      @TimeOfDayConverter() TimeOfDay time,
       Duration duration,
       Classroom classroom,
       List<Group> groups,
@@ -162,9 +162,9 @@ class __$$LessonImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? comment = null,
-    Object? dayOfWeek = null,
-    Object? startTime = null,
+    Object? comment = freezed,
+    Object? day = null,
+    Object? time = null,
     Object? duration = null,
     Object? classroom = null,
     Object? groups = null,
@@ -179,17 +179,17 @@ class __$$LessonImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      comment: null == comment
+      comment: freezed == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as String,
-      dayOfWeek: null == dayOfWeek
-          ? _value.dayOfWeek
-          : dayOfWeek // ignore: cast_nullable_to_non_nullable
+              as String?,
+      day: null == day
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
               as DayOfWeek,
-      startTime: null == startTime
-          ? _value.startTime
-          : startTime // ignore: cast_nullable_to_non_nullable
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as TimeOfDay,
       duration: null == duration
           ? _value.duration
@@ -213,19 +213,20 @@ class __$$LessonImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LessonImpl implements _Lesson {
+class _$LessonImpl extends _Lesson {
   _$LessonImpl(
       {required this.id,
       required this.name,
-      required this.comment,
-      required this.dayOfWeek,
-      @TimeOfDayConverter() required this.startTime,
+      this.comment,
+      required this.day,
+      @TimeOfDayConverter() required this.time,
       required this.duration,
       required this.classroom,
       required final List<Group> groups,
       required final List<Lecturer> lecturers})
       : _groups = groups,
-        _lecturers = lecturers;
+        _lecturers = lecturers,
+        super._();
 
   factory _$LessonImpl.fromJson(Map<String, dynamic> json) =>
       _$$LessonImplFromJson(json);
@@ -235,12 +236,12 @@ class _$LessonImpl implements _Lesson {
   @override
   final String name;
   @override
-  final String comment;
+  final String? comment;
   @override
-  final DayOfWeek dayOfWeek;
+  final DayOfWeek day;
   @override
   @TimeOfDayConverter()
-  final TimeOfDay startTime;
+  final TimeOfDay time;
   @override
   final Duration duration;
   @override
@@ -263,7 +264,7 @@ class _$LessonImpl implements _Lesson {
 
   @override
   String toString() {
-    return 'Lesson(id: $id, name: $name, comment: $comment, dayOfWeek: $dayOfWeek, startTime: $startTime, duration: $duration, classroom: $classroom, groups: $groups, lecturers: $lecturers)';
+    return 'Lesson(id: $id, name: $name, comment: $comment, day: $day, time: $time, duration: $duration, classroom: $classroom, groups: $groups, lecturers: $lecturers)';
   }
 
   @override
@@ -274,10 +275,8 @@ class _$LessonImpl implements _Lesson {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.comment, comment) || other.comment == comment) &&
-            (identical(other.dayOfWeek, dayOfWeek) ||
-                other.dayOfWeek == dayOfWeek) &&
-            (identical(other.startTime, startTime) ||
-                other.startTime == startTime) &&
+            (identical(other.day, day) || other.day == day) &&
+            (identical(other.time, time) || other.time == time) &&
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
             (identical(other.classroom, classroom) ||
@@ -294,8 +293,8 @@ class _$LessonImpl implements _Lesson {
       id,
       name,
       comment,
-      dayOfWeek,
-      startTime,
+      day,
+      time,
       duration,
       classroom,
       const DeepCollectionEquality().hash(_groups),
@@ -315,17 +314,18 @@ class _$LessonImpl implements _Lesson {
   }
 }
 
-abstract class _Lesson implements Lesson {
+abstract class _Lesson extends Lesson {
   factory _Lesson(
       {required final String id,
       required final String name,
-      required final String comment,
-      required final DayOfWeek dayOfWeek,
-      @TimeOfDayConverter() required final TimeOfDay startTime,
+      final String? comment,
+      required final DayOfWeek day,
+      @TimeOfDayConverter() required final TimeOfDay time,
       required final Duration duration,
       required final Classroom classroom,
       required final List<Group> groups,
       required final List<Lecturer> lecturers}) = _$LessonImpl;
+  _Lesson._() : super._();
 
   factory _Lesson.fromJson(Map<String, dynamic> json) = _$LessonImpl.fromJson;
 
@@ -334,12 +334,12 @@ abstract class _Lesson implements Lesson {
   @override
   String get name;
   @override
-  String get comment;
+  String? get comment;
   @override
-  DayOfWeek get dayOfWeek;
+  DayOfWeek get day;
   @override
   @TimeOfDayConverter()
-  TimeOfDay get startTime;
+  TimeOfDay get time;
   @override
   Duration get duration;
   @override
