@@ -30,8 +30,8 @@ App can be downloaded from [Google Play](https://play.google.com/store/apps/deta
 - [x] Dark mode
 - [x] Customizable theme
 - [ ] Native look ([#14](https://github.com/SilverNETGroupSGGW/psggw/issues/14))
-- [x] Material You support on Android 12+ ([#21](https://github.com/SilverNETGroupSGGW/psggw/issues/21))
-- [x] Retro colors available ([#9](https://github.com/SilverNETGroupSGGW/psggw/issues/9))
+- [ ] Material You support on Android 12+ ([#21](https://github.com/SilverNETGroupSGGW/psggw/issues/21))
+- [ ] Retro colors available ([#9](https://github.com/SilverNETGroupSGGW/psggw/issues/9))
 - [ ] Google Maps integration ([#2](https://github.com/SilverNETGroupSGGW/psggw/issues/2))
 - [ ] Global search ([#7](https://github.com/SilverNETGroupSGGW/psggw/issues/7))
 - [ ] Timetable widget ([#23](https://github.com/SilverNETGroupSGGW/psggw/issues/23))
