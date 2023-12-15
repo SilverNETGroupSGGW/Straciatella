@@ -5,7 +5,7 @@
 ## Description
 
 > [!IMPORTANT]
-> We are ***not*** creating plans that are available in the app. We are only creating the app itself, so do not blame us for mistakes in plans.
+> We are ***not*** creating plans that are available in the app. We are only creating the app itself, so do not blame us if current plans are not like you want them to be.
 
 This project is a mobile/web application that allows you to create a plan for your classes. It is designed for students of Warsaw University of Life Sciences (SGGW) but can be used by anyone. The application is written in Flutter and Dart. It uses a custom API with database made by Us. There is also a creator panel for plannists to add plans to the database. The application is available on Android, iOS and Web.
 
