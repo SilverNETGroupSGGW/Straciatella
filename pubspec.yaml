@@ -1,5 +1,5 @@
 name: silvertimetable
-description: Sggw schedule app
+description: SGGW schedule app
 version: 4.3.0+430000
 
 environment:
@@ -8,6 +8,9 @@ environment:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
+  web:
+    generate: true
+    image_path: "assets/icon/icon.png"
   image_path: "assets/icon/icon.png"
 
 dependencies:

@@ -1,4 +1,4 @@
-package com.example.psggw
+package com.silvernet.silvertimetable
 
 import io.flutter.embedding.android.FlutterActivity
 

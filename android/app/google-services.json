@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "494093391066",
+    "firebase_url": "https://silvertimetable-bea41.firebaseio.com",
+    "project_id": "silvertimetable-bea41",
+    "storage_bucket": "silvertimetable-bea41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494093391066:android:94ffbd475ce051c9e201e3",
+        "android_client_info": {
+          "package_name": "com.silvernet.silvertimetable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494093391066-4m7smaahmcrm5iq058bb0tsp99974fm8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBHFbeHrHfbcPVB_rxloBIJiybvgpxzo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494093391066-4m7smaahmcrm5iq058bb0tsp99974fm8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
