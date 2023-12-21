@@ -10,7 +10,6 @@ class Timeline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Add handling
     List<Lesson> lessons = schedules[0].lessons;
     return ListView(
       children: [

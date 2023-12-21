@@ -6,9 +6,6 @@ import 'package:psggw/constants.dart';
 import 'package:psggw/logic/settings/settings_cubit.dart';
 import 'package:psggw/presentation/widgets/settings/theme/auto_theme_tile.dart';
 import 'package:psggw/presentation/widgets/settings/theme/color_tile.dart';
-import 'package:psggw/presentation/widgets/settings/account/login/login_tile.dart';
-import 'package:psggw/presentation/widgets/settings/account/revoke_token_tile.dart';
-import 'package:psggw/presentation/widgets/settings/account/refresh_token_tile.dart';
 import 'package:psggw/presentation/widgets/settings/theme/theme_tile.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -30,9 +27,6 @@ class SettingsScreen extends StatelessWidget {
                 DarkThemeModeTile(),
                 ColorTile(),
                 ListCategoryLabel(label: 'account'.tr()),
-                LoginTile(),
-                RefreshTokenTile(),
-                RevokeTokenTile(),
                 if (settings.isDebugMode) ...[
                   ListCategoryLabel(label: 'debug'.tr()),
                   DebugInfoTile(),
