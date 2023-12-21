@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/router.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -7,7 +8,16 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Text("settings screen"),
+      body: Column(
+        children: [
+          Text("settings screen"),
+          TextButton.icon(
+            onPressed: () => Navigator.of(context).pushNamed(RouteNames.debug),
+            icon: Icon(Icons.settings),
+            label: Text("debug screen"),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -13,7 +13,7 @@ class TimetableScreen extends StatelessWidget {
             onPressed: () =>
                 Navigator.of(context).pushNamed(RouteNames.settings),
             icon: Icon(Icons.settings),
-          )
+          ),
         ],
       ),
       body: Text("home screen"),

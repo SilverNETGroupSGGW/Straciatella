@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/presentation/screens/debug/debug.dart';
 import 'package:silvertimetable/presentation/screens/timetable/timetable.dart';
 import 'package:silvertimetable/presentation/screens/settings/settings.dart';
 
 sealed class RouteNames {
   static const timeline = "/";
   static const settings = "/settings";
+  static const debug = "/debug";
 }
 
 class AppRouter {
@@ -13,6 +15,7 @@ class AppRouter {
       builder: (context) => switch (settings.name) {
         RouteNames.timeline => TimetableScreen(),
         RouteNames.settings => SettingsScreen(),
+        RouteNames.debug => DebugScreen(),
         _ => RouteNotFoundScreen(),
       },
     );
