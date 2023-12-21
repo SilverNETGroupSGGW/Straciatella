@@ -1,17 +1,17 @@
-# SGGW Plan Mobile/Web
+# SGGW Schedule Mobile
 
 *When there is no plan, you have to make one.*
 
 ## Description
 
 > [!IMPORTANT]
-> We are ***not*** creating plans that are available in the app. We are only creating the app itself, so do not blame us if current plans are not like you want them to be.
+> We are ***not*** creating schedules that are available in the app. We are only creating the app itself, so do not blame us if current schedules are not like you want them to be or incorrect.
 
-This project is a mobile/web application that allows you to create a plan for your classes. It is designed for students of Warsaw University of Life Sciences (SGGW) but can be used by anyone. The application is written in Flutter and Dart. It uses a custom API with database made by Us. There is also a creator panel for plannists to add plans to the database. The application is available on Android, iOS and Web.
+This project is a mobile application that allows you to view schedules for your classes. It is designed for students of Warsaw University of Life Sciences (SGGW) but can be used by anyone. The application is written in Flutter and Dart. It uses a custom API with database made by Us. There is also a creator panel for plannists to create schedules in the database. The application is available on Android, iOS and Web.
 
 ## Table of Contents
 
-- [SGGW Plan Mobile/Web](#sggw-plan-mobileweb)
+- [SGGW Schedule Mobile](#sggw-plan-mobileweb)
   - [Description](#description)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
@@ -24,19 +24,15 @@ App can be downloaded from [Google Play](https://play.google.com/store/apps/deta
 
 ## Features
 
-- [ ] View plans
-- [ ] Map with classrooms [#5](https://github.com/SilverNETGroupSGGW/psggw/issues/5)
-- [ ] Notifications [#22](https://github.com/SilverNETGroupSGGW/psggw/issues/22)
+- [ ] View schedules
+- [ ] Map with classrooms
+- [ ] Notifications
 - [x] Dark mode
 - [x] Customizable theme
-- [ ] Native look ([#14](https://github.com/SilverNETGroupSGGW/psggw/issues/14))
-- [ ] Material You support on Android 12+ ([#21](https://github.com/SilverNETGroupSGGW/psggw/issues/21))
-- [ ] Retro colors available ([#9](https://github.com/SilverNETGroupSGGW/psggw/issues/9))
-- [ ] Google Maps integration ([#2](https://github.com/SilverNETGroupSGGW/psggw/issues/2))
-- [ ] Global search ([#7](https://github.com/SilverNETGroupSGGW/psggw/issues/7))
-- [ ] Timetable widget ([#23](https://github.com/SilverNETGroupSGGW/psggw/issues/23))
+- [ ] Native look
+- [ ] Material You support on Android 12+
+- [ ] Retro colors available
 - [x] 100% lactose free
-- [ ] ECTS multiplier
 
 ## Contributing
 
