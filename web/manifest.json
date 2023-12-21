@@ -1,11 +1,11 @@
 {
-    "name": "psggw",
-    "short_name": "psggw",
+    "name": "silvertimetable",
+    "short_name": "silvertimetable",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "SGGW schedule app",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
