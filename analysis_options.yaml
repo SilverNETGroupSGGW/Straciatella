@@ -3,5 +3,5 @@ analyzer:
     - custom_lint
   errors:
     invalid_annotation_target: ignore
-  exclude:
-  - lib/**/*.g.dart 
+  # exclude:
+  # - lib/**/*.g.dart 
