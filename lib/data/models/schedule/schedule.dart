@@ -29,7 +29,7 @@ class Schedule with _$Schedule {
     required int year,
     required int semester,
     required String faculty,
-    required String fieldofStudy,
+    required String? fieldofStudy, // When empty string, this field is null
     required String studyMode,
     required String degreeOfStudy,
     required List<String>? subjects,

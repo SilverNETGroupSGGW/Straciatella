@@ -28,7 +28,8 @@ mixin _$Schedule {
   int get year => throw _privateConstructorUsedError;
   int get semester => throw _privateConstructorUsedError;
   String get faculty => throw _privateConstructorUsedError;
-  String get fieldofStudy => throw _privateConstructorUsedError;
+  String? get fieldofStudy =>
+      throw _privateConstructorUsedError; // When empty string, this field is null
   String get studyMode => throw _privateConstructorUsedError;
   String get degreeOfStudy => throw _privateConstructorUsedError;
   List<String>? get subjects => throw _privateConstructorUsedError;
@@ -53,7 +54,7 @@ abstract class $ScheduleCopyWith<$Res> {
       int year,
       int semester,
       String faculty,
-      String fieldofStudy,
+      String? fieldofStudy,
       String studyMode,
       String degreeOfStudy,
       List<String>? subjects});
@@ -80,7 +81,7 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
     Object? year = null,
     Object? semester = null,
     Object? faculty = null,
-    Object? fieldofStudy = null,
+    Object? fieldofStudy = freezed,
     Object? studyMode = null,
     Object? degreeOfStudy = null,
     Object? subjects = freezed,
@@ -118,10 +119,10 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
           ? _value.faculty
           : faculty // ignore: cast_nullable_to_non_nullable
               as String,
-      fieldofStudy: null == fieldofStudy
+      fieldofStudy: freezed == fieldofStudy
           ? _value.fieldofStudy
           : fieldofStudy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       studyMode: null == studyMode
           ? _value.studyMode
           : studyMode // ignore: cast_nullable_to_non_nullable
@@ -155,7 +156,7 @@ abstract class _$$ScheduleImplCopyWith<$Res>
       int year,
       int semester,
       String faculty,
-      String fieldofStudy,
+      String? fieldofStudy,
       String studyMode,
       String degreeOfStudy,
       List<String>? subjects});
@@ -180,7 +181,7 @@ class __$$ScheduleImplCopyWithImpl<$Res>
     Object? year = null,
     Object? semester = null,
     Object? faculty = null,
-    Object? fieldofStudy = null,
+    Object? fieldofStudy = freezed,
     Object? studyMode = null,
     Object? degreeOfStudy = null,
     Object? subjects = freezed,
@@ -218,10 +219,10 @@ class __$$ScheduleImplCopyWithImpl<$Res>
           ? _value.faculty
           : faculty // ignore: cast_nullable_to_non_nullable
               as String,
-      fieldofStudy: null == fieldofStudy
+      fieldofStudy: freezed == fieldofStudy
           ? _value.fieldofStudy
           : fieldofStudy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       studyMode: null == studyMode
           ? _value.studyMode
           : studyMode // ignore: cast_nullable_to_non_nullable
@@ -276,7 +277,8 @@ class _$ScheduleImpl implements _Schedule {
   @override
   final String faculty;
   @override
-  final String fieldofStudy;
+  final String? fieldofStudy;
+// When empty string, this field is null
   @override
   final String studyMode;
   @override
@@ -297,7 +299,7 @@ class _$ScheduleImpl implements _Schedule {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ScheduleImpl &&
@@ -361,7 +363,7 @@ abstract class _Schedule implements Schedule {
       required final int year,
       required final int semester,
       required final String faculty,
-      required final String fieldofStudy,
+      required final String? fieldofStudy,
       required final String studyMode,
       required final String degreeOfStudy,
       required final List<String>? subjects}) = _$ScheduleImpl;
@@ -386,8 +388,8 @@ abstract class _Schedule implements Schedule {
   @override
   String get faculty;
   @override
-  String get fieldofStudy;
-  @override
+  String? get fieldofStudy;
+  @override // When empty string, this field is null
   String get studyMode;
   @override
   String get degreeOfStudy;
