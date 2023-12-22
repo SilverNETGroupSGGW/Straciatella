@@ -1,4 +1,4 @@
-// *** values have to be unique
+// *** values must be unique
 class HiveTypeIds {
   static const settingsState = 0;
   static const themeMode = 2;

@@ -41,12 +41,8 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<SettingsCubit>.value(
-          value: widget.settings,
-        ),
-      ],
+    return BlocProvider<SettingsCubit>.value(
+      value: widget.settings,
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, settings) {
           return MaterialApp(
