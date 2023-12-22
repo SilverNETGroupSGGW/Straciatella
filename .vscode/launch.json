@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "psggw",
+            "name": "silvertimetable",
             "request": "launch",
             "type": "dart",
             "args": [
@@ -14,13 +14,13 @@
             ]
         },
         {
-            "name": "psggw (profile mode)",
+            "name": "silvertimetable (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "psggw (release mode)",
+            "name": "silvertimetable (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

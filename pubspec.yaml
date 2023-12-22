@@ -1,9 +1,17 @@
-name: psggw
-description: A new Flutter project.
-version: 0.1.0
+name: silvertimetable
+description: SGGW schedule app
+version: 4.3.0+430000
 
 environment:
   sdk: ">=3.1.4 <4.0.0"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  web:
+    generate: true
+    image_path: "assets/icon/icon.png"
+  image_path: "assets/icon/icon.png"
 
 dependencies:
   cupertino_icons: ^1.0.2
@@ -24,6 +32,7 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.4.6
   custom_lint: ^0.5.7
+  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter

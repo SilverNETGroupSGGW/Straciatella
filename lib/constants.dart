@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const String appName = "psggw";
-const String hiveBoxName = "psggw";
+const String appName = "silvertimetable";
+const String hiveBoxName = "silvertimetable";
 
 const List<({Locale locale, String name})> supportedLocale = [
   (locale: Locale('en', 'US'), name: "English"),

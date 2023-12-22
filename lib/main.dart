@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:psggw/constants.dart';
-import 'package:psggw/data/adapters/register_adapters.dart';
-import 'package:psggw/logic/account/account_bloc.dart';
-import 'package:psggw/logic/settings/settings_cubit.dart';
-import 'package:psggw/router.dart';
+import 'package:silvertimetable/constants.dart';
+import 'package:silvertimetable/data/adapters/register_adapters.dart';
+import 'package:silvertimetable/logic/settings/settings_cubit.dart';
+import 'package:silvertimetable/router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:psggw/themes.dart';
+import 'package:silvertimetable/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,29 +41,20 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<SettingsCubit>.value(
-          value: widget.settings,
-        ),
-        BlocProvider<AccountBloc>(
-          create: (context) => AccountBloc()
-            ..add(AccountEvent.refreshTokenFromStorageRequested()),
-        )
-      ],
+    return BlocProvider<SettingsCubit>.value(
+      value: widget.settings,
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, settings) {
           return MaterialApp(
             title: appName,
-            theme: getLightTheme(settings.themeColor),
-            darkTheme: getDarkTheme(settings.themeColor),
+            theme: getTheme(ThemeTypes.normal, false, settings.themeColor),
+            darkTheme: getTheme(ThemeTypes.normal, true, settings.themeColor),
             themeMode: settings.themeMode,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
             onGenerateRoute: _appRouter.onGenerateRoute,
-            initialRoute:
-                settings.isFirstRun ? RouteNames.welcome : RouteNames.timeline,
+            initialRoute: RouteNames.timeline,
           );
         },
       ),
