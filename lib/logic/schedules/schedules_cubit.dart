@@ -24,14 +24,19 @@ class SchedulesCubit extends Cubit<SchedulesState> {
     emit(SchedulesState.loading());
     await Hive.openBox(_boxKey);
     final box = Hive.box(_boxKey);
+    bool isApiAccessible = true;
     try {
       final loadedSchedules = box.get(_boxKey);
-      // TODO: Skip update if not connected to internet
       if (loadedSchedules != null) {
-        emit(SchedulesState.updating(loadedSchedules));
+        if (!isApiAccessible) {
+          emit(SchedulesState.done(loadedSchedules, isOffline: true));
+        } else {
+          emit(SchedulesState.updating(loadedSchedules));
+          getFromApi();
+        }
       }
     } catch (e) {
-      emit(SchedulesState.updating([]));
+      print("Could not load schedules");
     }
   }
 
