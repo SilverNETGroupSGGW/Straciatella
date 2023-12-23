@@ -10,9 +10,10 @@ class SettingsState extends HiveObject with _$SettingsState {
   )
   factory SettingsState({
     @Default(ThemeMode.system) @HiveField(0) ThemeMode themeMode,
-    @Default(true) @HiveField(1) bool isFirstRun,
-    @Default(false) @HiveField(2) bool isDebugMode,
-    @Default(Colors.red) @HiveField(3) Color themeColor,
+    @Default(ThemeType.normal) @HiveField(1) ThemeType themeType,
+    @Default(true) @HiveField(2) bool isFirstRun,
+    @Default(false) @HiveField(3) bool isDebugMode,
+    @Default(Colors.red) @HiveField(4) Color themeColor,
   }) = _SettingsState;
 }
 

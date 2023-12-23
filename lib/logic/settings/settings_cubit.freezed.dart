@@ -19,10 +19,12 @@ mixin _$SettingsState {
   @HiveField(0)
   ThemeMode get themeMode => throw _privateConstructorUsedError;
   @HiveField(1)
-  bool get isFirstRun => throw _privateConstructorUsedError;
+  ThemeType get themeType => throw _privateConstructorUsedError;
   @HiveField(2)
-  bool get isDebugMode => throw _privateConstructorUsedError;
+  bool get isFirstRun => throw _privateConstructorUsedError;
   @HiveField(3)
+  bool get isDebugMode => throw _privateConstructorUsedError;
+  @HiveField(4)
   Color get themeColor => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -38,9 +40,10 @@ abstract class $SettingsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {@HiveField(0) ThemeMode themeMode,
-      @HiveField(1) bool isFirstRun,
-      @HiveField(2) bool isDebugMode,
-      @HiveField(3) Color themeColor});
+      @HiveField(1) ThemeType themeType,
+      @HiveField(2) bool isFirstRun,
+      @HiveField(3) bool isDebugMode,
+      @HiveField(4) Color themeColor});
 }
 
 /// @nodoc
@@ -57,6 +60,7 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
   @override
   $Res call({
     Object? themeMode = null,
+    Object? themeType = null,
     Object? isFirstRun = null,
     Object? isDebugMode = null,
     Object? themeColor = null,
@@ -66,6 +70,10 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
               as ThemeMode,
+      themeType: null == themeType
+          ? _value.themeType
+          : themeType // ignore: cast_nullable_to_non_nullable
+              as ThemeType,
       isFirstRun: null == isFirstRun
           ? _value.isFirstRun
           : isFirstRun // ignore: cast_nullable_to_non_nullable
@@ -92,9 +100,10 @@ abstract class _$$SettingsStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {@HiveField(0) ThemeMode themeMode,
-      @HiveField(1) bool isFirstRun,
-      @HiveField(2) bool isDebugMode,
-      @HiveField(3) Color themeColor});
+      @HiveField(1) ThemeType themeType,
+      @HiveField(2) bool isFirstRun,
+      @HiveField(3) bool isDebugMode,
+      @HiveField(4) Color themeColor});
 }
 
 /// @nodoc
@@ -109,6 +118,7 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? themeMode = null,
+    Object? themeType = null,
     Object? isFirstRun = null,
     Object? isDebugMode = null,
     Object? themeColor = null,
@@ -118,6 +128,10 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
               as ThemeMode,
+      themeType: null == themeType
+          ? _value.themeType
+          : themeType // ignore: cast_nullable_to_non_nullable
+              as ThemeType,
       isFirstRun: null == isFirstRun
           ? _value.isFirstRun
           : isFirstRun // ignore: cast_nullable_to_non_nullable
@@ -141,9 +155,10 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
 class _$SettingsStateImpl extends _SettingsState {
   _$SettingsStateImpl(
       {@HiveField(0) this.themeMode = ThemeMode.system,
-      @HiveField(1) this.isFirstRun = true,
-      @HiveField(2) this.isDebugMode = false,
-      @HiveField(3) this.themeColor = Colors.red})
+      @HiveField(1) this.themeType = ThemeType.normal,
+      @HiveField(2) this.isFirstRun = true,
+      @HiveField(3) this.isDebugMode = false,
+      @HiveField(4) this.themeColor = Colors.red})
       : super._();
 
   @override
@@ -153,19 +168,23 @@ class _$SettingsStateImpl extends _SettingsState {
   @override
   @JsonKey()
   @HiveField(1)
-  final bool isFirstRun;
+  final ThemeType themeType;
   @override
   @JsonKey()
   @HiveField(2)
-  final bool isDebugMode;
+  final bool isFirstRun;
   @override
   @JsonKey()
   @HiveField(3)
+  final bool isDebugMode;
+  @override
+  @JsonKey()
+  @HiveField(4)
   final Color themeColor;
 
   @override
   String toString() {
-    return 'SettingsState(themeMode: $themeMode, isFirstRun: $isFirstRun, isDebugMode: $isDebugMode, themeColor: $themeColor)';
+    return 'SettingsState(themeMode: $themeMode, themeType: $themeType, isFirstRun: $isFirstRun, isDebugMode: $isDebugMode, themeColor: $themeColor)';
   }
 
   @override
@@ -175,6 +194,8 @@ class _$SettingsStateImpl extends _SettingsState {
             other is _$SettingsStateImpl &&
             (identical(other.themeMode, themeMode) ||
                 other.themeMode == themeMode) &&
+            (identical(other.themeType, themeType) ||
+                other.themeType == themeType) &&
             (identical(other.isFirstRun, isFirstRun) ||
                 other.isFirstRun == isFirstRun) &&
             (identical(other.isDebugMode, isDebugMode) ||
@@ -184,8 +205,8 @@ class _$SettingsStateImpl extends _SettingsState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, themeMode, isFirstRun, isDebugMode, themeColor);
+  int get hashCode => Object.hash(
+      runtimeType, themeMode, themeType, isFirstRun, isDebugMode, themeColor);
 
   @JsonKey(ignore: true)
   @override
@@ -197,9 +218,10 @@ class _$SettingsStateImpl extends _SettingsState {
 abstract class _SettingsState extends SettingsState {
   factory _SettingsState(
       {@HiveField(0) final ThemeMode themeMode,
-      @HiveField(1) final bool isFirstRun,
-      @HiveField(2) final bool isDebugMode,
-      @HiveField(3) final Color themeColor}) = _$SettingsStateImpl;
+      @HiveField(1) final ThemeType themeType,
+      @HiveField(2) final bool isFirstRun,
+      @HiveField(3) final bool isDebugMode,
+      @HiveField(4) final Color themeColor}) = _$SettingsStateImpl;
   _SettingsState._() : super._();
 
   @override
@@ -207,12 +229,15 @@ abstract class _SettingsState extends SettingsState {
   ThemeMode get themeMode;
   @override
   @HiveField(1)
-  bool get isFirstRun;
+  ThemeType get themeType;
   @override
   @HiveField(2)
-  bool get isDebugMode;
+  bool get isFirstRun;
   @override
   @HiveField(3)
+  bool get isDebugMode;
+  @override
+  @HiveField(4)
   Color get themeColor;
   @override
   @JsonKey(ignore: true)
