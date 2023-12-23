@@ -9,7 +9,8 @@ class SavedSchedulesState with _$SavedSchedulesState {
     adapterName: "SavedSchedulesStateAdapter",
   )
   factory SavedSchedulesState({
-    @Default({}) @HiveField(0) Set<String> savedSchedules,
+    @Default({}) @HiveField(0) Set<Schedule> savedSchedules,
+    @Default(null) @HiveField(1) Schedule? selectedSchedule,
   }) = _SavedSchedulesState;
 }
 

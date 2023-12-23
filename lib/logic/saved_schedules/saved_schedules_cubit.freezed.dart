@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SavedSchedulesState {
   @HiveField(0)
-  Set<String> get savedSchedules => throw _privateConstructorUsedError;
+  Set<Schedule> get savedSchedules => throw _privateConstructorUsedError;
+  @HiveField(1)
+  Schedule? get selectedSchedule => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SavedSchedulesStateCopyWith<SavedSchedulesState> get copyWith =>
@@ -30,7 +32,11 @@ abstract class $SavedSchedulesStateCopyWith<$Res> {
           SavedSchedulesState value, $Res Function(SavedSchedulesState) then) =
       _$SavedSchedulesStateCopyWithImpl<$Res, SavedSchedulesState>;
   @useResult
-  $Res call({@HiveField(0) Set<String> savedSchedules});
+  $Res call(
+      {@HiveField(0) Set<Schedule> savedSchedules,
+      @HiveField(1) Schedule? selectedSchedule});
+
+  $ScheduleCopyWith<$Res>? get selectedSchedule;
 }
 
 /// @nodoc
@@ -47,13 +53,30 @@ class _$SavedSchedulesStateCopyWithImpl<$Res, $Val extends SavedSchedulesState>
   @override
   $Res call({
     Object? savedSchedules = null,
+    Object? selectedSchedule = freezed,
   }) {
     return _then(_value.copyWith(
       savedSchedules: null == savedSchedules
           ? _value.savedSchedules
           : savedSchedules // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
+              as Set<Schedule>,
+      selectedSchedule: freezed == selectedSchedule
+          ? _value.selectedSchedule
+          : selectedSchedule // ignore: cast_nullable_to_non_nullable
+              as Schedule?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ScheduleCopyWith<$Res>? get selectedSchedule {
+    if (_value.selectedSchedule == null) {
+      return null;
+    }
+
+    return $ScheduleCopyWith<$Res>(_value.selectedSchedule!, (value) {
+      return _then(_value.copyWith(selectedSchedule: value) as $Val);
+    });
   }
 }
 
@@ -65,7 +88,12 @@ abstract class _$$SavedSchedulesStateImplCopyWith<$Res>
       __$$SavedSchedulesStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@HiveField(0) Set<String> savedSchedules});
+  $Res call(
+      {@HiveField(0) Set<Schedule> savedSchedules,
+      @HiveField(1) Schedule? selectedSchedule});
+
+  @override
+  $ScheduleCopyWith<$Res>? get selectedSchedule;
 }
 
 /// @nodoc
@@ -80,12 +108,17 @@ class __$$SavedSchedulesStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? savedSchedules = null,
+    Object? selectedSchedule = freezed,
   }) {
     return _then(_$SavedSchedulesStateImpl(
       savedSchedules: null == savedSchedules
           ? _value._savedSchedules
           : savedSchedules // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
+              as Set<Schedule>,
+      selectedSchedule: freezed == selectedSchedule
+          ? _value.selectedSchedule
+          : selectedSchedule // ignore: cast_nullable_to_non_nullable
+              as Schedule?,
     ));
   }
 }
@@ -97,23 +130,29 @@ class __$$SavedSchedulesStateImplCopyWithImpl<$Res>
     adapterName: "SavedSchedulesStateAdapter")
 class _$SavedSchedulesStateImpl extends _SavedSchedulesState {
   _$SavedSchedulesStateImpl(
-      {@HiveField(0) final Set<String> savedSchedules = const {}})
+      {@HiveField(0) final Set<Schedule> savedSchedules = const {},
+      @HiveField(1) this.selectedSchedule = null})
       : _savedSchedules = savedSchedules,
         super._();
 
-  final Set<String> _savedSchedules;
+  final Set<Schedule> _savedSchedules;
   @override
   @JsonKey()
   @HiveField(0)
-  Set<String> get savedSchedules {
+  Set<Schedule> get savedSchedules {
     if (_savedSchedules is EqualUnmodifiableSetView) return _savedSchedules;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableSetView(_savedSchedules);
   }
 
   @override
+  @JsonKey()
+  @HiveField(1)
+  final Schedule? selectedSchedule;
+
+  @override
   String toString() {
-    return 'SavedSchedulesState(savedSchedules: $savedSchedules)';
+    return 'SavedSchedulesState(savedSchedules: $savedSchedules, selectedSchedule: $selectedSchedule)';
   }
 
   @override
@@ -122,12 +161,14 @@ class _$SavedSchedulesStateImpl extends _SavedSchedulesState {
         (other.runtimeType == runtimeType &&
             other is _$SavedSchedulesStateImpl &&
             const DeepCollectionEquality()
-                .equals(other._savedSchedules, _savedSchedules));
+                .equals(other._savedSchedules, _savedSchedules) &&
+            (identical(other.selectedSchedule, selectedSchedule) ||
+                other.selectedSchedule == selectedSchedule));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_savedSchedules));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_savedSchedules), selectedSchedule);
 
   @JsonKey(ignore: true)
   @override
@@ -139,13 +180,17 @@ class _$SavedSchedulesStateImpl extends _SavedSchedulesState {
 
 abstract class _SavedSchedulesState extends SavedSchedulesState {
   factory _SavedSchedulesState(
-          {@HiveField(0) final Set<String> savedSchedules}) =
+          {@HiveField(0) final Set<Schedule> savedSchedules,
+          @HiveField(1) final Schedule? selectedSchedule}) =
       _$SavedSchedulesStateImpl;
   _SavedSchedulesState._() : super._();
 
   @override
   @HiveField(0)
-  Set<String> get savedSchedules;
+  Set<Schedule> get savedSchedules;
+  @override
+  @HiveField(1)
+  Schedule? get selectedSchedule;
   @override
   @JsonKey(ignore: true)
   _$$SavedSchedulesStateImplCopyWith<_$SavedSchedulesStateImpl> get copyWith =>

@@ -18,14 +18,17 @@ class SavedSchedulesStateAdapter
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return _$SavedSchedulesStateImpl(
-      savedSchedules: (fields[0] as Set).cast<String>(),
+      savedSchedules: (fields[0] as List).cast<Schedule>(),
+      selectedSchedule: fields[1] as Schedule?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$SavedSchedulesStateImpl obj) {
     writer
+      ..writeByte(2)
       ..writeByte(1)
+      ..write(obj.selectedSchedule)
       ..writeByte(0)
       ..write(obj.savedSchedules.toList());
   }
