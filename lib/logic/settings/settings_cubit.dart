@@ -10,7 +10,7 @@ part 'settings_cubit.freezed.dart';
 part 'settings_cubit.g.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  static const _boxKey = "settings";  
+  static const _boxKey = "settings";
   final Box box = Hive.box(hiveBoxName);
   SettingsCubit() : super(SettingsState());
 

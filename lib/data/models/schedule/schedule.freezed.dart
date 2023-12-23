@@ -28,8 +28,7 @@ mixin _$Schedule {
   int? get year => throw _privateConstructorUsedError;
   int? get semester => throw _privateConstructorUsedError;
   String? get faculty => throw _privateConstructorUsedError;
-  String? get fieldofStudy =>
-      throw _privateConstructorUsedError; // When empty string, this field is null
+  String? get fieldofStudy => throw _privateConstructorUsedError;
   String? get studyMode => throw _privateConstructorUsedError;
   String? get degreeOfStudy => throw _privateConstructorUsedError;
   List<String>? get subjects => throw _privateConstructorUsedError;
@@ -278,7 +277,6 @@ class _$ScheduleImpl implements _Schedule {
   final String? faculty;
   @override
   final String? fieldofStudy;
-// When empty string, this field is null
   @override
   final String? studyMode;
   @override
@@ -389,7 +387,7 @@ abstract class _Schedule implements Schedule {
   String? get faculty;
   @override
   String? get fieldofStudy;
-  @override // When empty string, this field is null
+  @override
   String? get studyMode;
   @override
   String? get degreeOfStudy;
