@@ -18,7 +18,7 @@ class SavedSchedulesStateAdapter
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return _$SavedSchedulesStateImpl(
-      savedSchedules: (fields[0] as List).cast<Schedule>(),
+      savedSchedules: (fields[0] as Set).cast<Schedule>(),
       selectedSchedule: fields[1] as Schedule?,
     );
   }
