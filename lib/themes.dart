@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-enum ThemeTypes { normal, retro }
+enum ThemeType { normal, retro }
 
-ThemeData getTheme(ThemeTypes type, bool isDark, Color seedColor) {
+ThemeData getTheme(ThemeType type, bool isDark, Color seedColor) {
   return switch ((type, isDark)) {
-    (ThemeTypes.normal, false) => getLightTheme(seedColor),
-    (ThemeTypes.normal, true) => getDarkTheme(seedColor),
-    (ThemeTypes.retro, false) => getRetroLightTheme(),
-    (ThemeTypes.retro, true) => getRetroDarkTheme(),
+    (ThemeType.normal, false) => getLightTheme(seedColor),
+    (ThemeType.normal, true) => getDarkTheme(seedColor),
+    (ThemeType.retro, false) => getRetroLightTheme(),
+    (ThemeType.retro, true) => getRetroDarkTheme(),
   };
 }
 
