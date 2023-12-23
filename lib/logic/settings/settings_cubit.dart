@@ -11,25 +11,21 @@ part 'settings_cubit.g.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
   static const _boxKey = "settings";
-  final Box box = Hive.box(hiveBoxName);
+  final Box<SettingsState> box = Hive.box(hiveBoxName);
   SettingsCubit() : super(SettingsState());
 
   @override
   void onChange(Change<SettingsState> change) {
-    // Always call super.onChange with the current change
     super.onChange(change);
-
-    // Custom onChange logic goes here
     box.put(_boxKey, change.nextState);
   }
 
   loadSettings() {
     try {
-      final loadedSettings = box.get(_boxKey);
-      if (loadedSettings != null) {
-        emit(loadedSettings);
-      }
+      final SettingsState loadedSettingsState = box.get(_boxKey) ?? state;
+      emit(loadedSettingsState);
     } catch (e) {
+      // TODO: handle exception
       print("Could not load settings");
     }
   }
