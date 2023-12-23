@@ -35,9 +35,7 @@ class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
   }
 
   addSchedule(Schedule schedule) {
-    emit(state.copyWith(
-      savedSchedules: state.savedSchedules..add(schedule),
-    ));
+    emit(state.copyWith(savedSchedules: {...state.savedSchedules, schedule}));
   }
 
   removeSchedule(Schedule schedule) {
