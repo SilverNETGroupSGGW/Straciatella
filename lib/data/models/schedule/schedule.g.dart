@@ -8,17 +8,23 @@ part of 'schedule.dart';
 
 _$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
     _$ScheduleImpl(
-      id: json['id'] as String,
-      created: DateTime.parse(json['created'] as String),
-      updated: DateTime.parse(json['updated'] as String),
-      startDate: DateTime.parse(json['startDate'] as String),
-      name: json['name'] as String,
-      year: json['year'] as int,
-      semester: json['semester'] as int,
-      faculty: json['faculty'] as String,
+      id: json['id'] as String?,
+      created: json['created'] == null
+          ? null
+          : DateTime.parse(json['created'] as String),
+      updated: json['updated'] == null
+          ? null
+          : DateTime.parse(json['updated'] as String),
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      name: json['name'] as String?,
+      year: json['year'] as int?,
+      semester: json['semester'] as int?,
+      faculty: json['faculty'] as String?,
       fieldofStudy: json['fieldofStudy'] as String?,
-      studyMode: json['studyMode'] as String,
-      degreeOfStudy: json['degreeOfStudy'] as String,
+      studyMode: json['studyMode'] as String?,
+      degreeOfStudy: json['degreeOfStudy'] as String?,
       subjects: (json['subjects'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -27,9 +33,9 @@ _$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$ScheduleImplToJson(_$ScheduleImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'created': instance.created.toIso8601String(),
-      'updated': instance.updated.toIso8601String(),
-      'startDate': instance.startDate.toIso8601String(),
+      'created': instance.created?.toIso8601String(),
+      'updated': instance.updated?.toIso8601String(),
+      'startDate': instance.startDate?.toIso8601String(),
       'name': instance.name,
       'year': instance.year,
       'semester': instance.semester,

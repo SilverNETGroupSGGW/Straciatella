@@ -20,18 +20,18 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Schedule {
-  String get id => throw _privateConstructorUsedError;
-  DateTime get created => throw _privateConstructorUsedError;
-  DateTime get updated => throw _privateConstructorUsedError;
-  DateTime get startDate => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  int get year => throw _privateConstructorUsedError;
-  int get semester => throw _privateConstructorUsedError;
-  String get faculty => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  DateTime? get created => throw _privateConstructorUsedError;
+  DateTime? get updated => throw _privateConstructorUsedError;
+  DateTime? get startDate => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  int? get year => throw _privateConstructorUsedError;
+  int? get semester => throw _privateConstructorUsedError;
+  String? get faculty => throw _privateConstructorUsedError;
   String? get fieldofStudy =>
       throw _privateConstructorUsedError; // When empty string, this field is null
-  String get studyMode => throw _privateConstructorUsedError;
-  String get degreeOfStudy => throw _privateConstructorUsedError;
+  String? get studyMode => throw _privateConstructorUsedError;
+  String? get degreeOfStudy => throw _privateConstructorUsedError;
   List<String>? get subjects => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,17 +46,17 @@ abstract class $ScheduleCopyWith<$Res> {
       _$ScheduleCopyWithImpl<$Res, Schedule>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      DateTime startDate,
-      String name,
-      int year,
-      int semester,
-      String faculty,
+      {String? id,
+      DateTime? created,
+      DateTime? updated,
+      DateTime? startDate,
+      String? name,
+      int? year,
+      int? semester,
+      String? faculty,
       String? fieldofStudy,
-      String studyMode,
-      String degreeOfStudy,
+      String? studyMode,
+      String? degreeOfStudy,
       List<String>? subjects});
 }
 
@@ -73,64 +73,64 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
-    Object? startDate = null,
-    Object? name = null,
-    Object? year = null,
-    Object? semester = null,
-    Object? faculty = null,
+    Object? id = freezed,
+    Object? created = freezed,
+    Object? updated = freezed,
+    Object? startDate = freezed,
+    Object? name = freezed,
+    Object? year = freezed,
+    Object? semester = freezed,
+    Object? faculty = freezed,
     Object? fieldofStudy = freezed,
-    Object? studyMode = null,
-    Object? degreeOfStudy = null,
+    Object? studyMode = freezed,
+    Object? degreeOfStudy = freezed,
     Object? subjects = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
+              as String?,
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
+              as DateTime?,
+      updated: freezed == updated
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      startDate: null == startDate
+              as DateTime?,
+      startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      name: null == name
+              as DateTime?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      year: null == year
+              as String?,
+      year: freezed == year
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
-              as int,
-      semester: null == semester
+              as int?,
+      semester: freezed == semester
           ? _value.semester
           : semester // ignore: cast_nullable_to_non_nullable
-              as int,
-      faculty: null == faculty
+              as int?,
+      faculty: freezed == faculty
           ? _value.faculty
           : faculty // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       fieldofStudy: freezed == fieldofStudy
           ? _value.fieldofStudy
           : fieldofStudy // ignore: cast_nullable_to_non_nullable
               as String?,
-      studyMode: null == studyMode
+      studyMode: freezed == studyMode
           ? _value.studyMode
           : studyMode // ignore: cast_nullable_to_non_nullable
-              as String,
-      degreeOfStudy: null == degreeOfStudy
+              as String?,
+      degreeOfStudy: freezed == degreeOfStudy
           ? _value.degreeOfStudy
           : degreeOfStudy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       subjects: freezed == subjects
           ? _value.subjects
           : subjects // ignore: cast_nullable_to_non_nullable
@@ -148,17 +148,17 @@ abstract class _$$ScheduleImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      DateTime startDate,
-      String name,
-      int year,
-      int semester,
-      String faculty,
+      {String? id,
+      DateTime? created,
+      DateTime? updated,
+      DateTime? startDate,
+      String? name,
+      int? year,
+      int? semester,
+      String? faculty,
       String? fieldofStudy,
-      String studyMode,
-      String degreeOfStudy,
+      String? studyMode,
+      String? degreeOfStudy,
       List<String>? subjects});
 }
 
@@ -173,64 +173,64 @@ class __$$ScheduleImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
-    Object? startDate = null,
-    Object? name = null,
-    Object? year = null,
-    Object? semester = null,
-    Object? faculty = null,
+    Object? id = freezed,
+    Object? created = freezed,
+    Object? updated = freezed,
+    Object? startDate = freezed,
+    Object? name = freezed,
+    Object? year = freezed,
+    Object? semester = freezed,
+    Object? faculty = freezed,
     Object? fieldofStudy = freezed,
-    Object? studyMode = null,
-    Object? degreeOfStudy = null,
+    Object? studyMode = freezed,
+    Object? degreeOfStudy = freezed,
     Object? subjects = freezed,
   }) {
     return _then(_$ScheduleImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
+              as String?,
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
+              as DateTime?,
+      updated: freezed == updated
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      startDate: null == startDate
+              as DateTime?,
+      startDate: freezed == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      name: null == name
+              as DateTime?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      year: null == year
+              as String?,
+      year: freezed == year
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
-              as int,
-      semester: null == semester
+              as int?,
+      semester: freezed == semester
           ? _value.semester
           : semester // ignore: cast_nullable_to_non_nullable
-              as int,
-      faculty: null == faculty
+              as int?,
+      faculty: freezed == faculty
           ? _value.faculty
           : faculty // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       fieldofStudy: freezed == fieldofStudy
           ? _value.fieldofStudy
           : fieldofStudy // ignore: cast_nullable_to_non_nullable
               as String?,
-      studyMode: null == studyMode
+      studyMode: freezed == studyMode
           ? _value.studyMode
           : studyMode // ignore: cast_nullable_to_non_nullable
-              as String,
-      degreeOfStudy: null == degreeOfStudy
+              as String?,
+      degreeOfStudy: freezed == degreeOfStudy
           ? _value.degreeOfStudy
           : degreeOfStudy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       subjects: freezed == subjects
           ? _value._subjects
           : subjects // ignore: cast_nullable_to_non_nullable
@@ -243,46 +243,46 @@ class __$$ScheduleImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ScheduleImpl implements _Schedule {
   _$ScheduleImpl(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      required this.startDate,
-      required this.name,
-      required this.year,
-      required this.semester,
-      required this.faculty,
-      required this.fieldofStudy,
-      required this.studyMode,
-      required this.degreeOfStudy,
-      required final List<String>? subjects})
+      {this.id,
+      this.created,
+      this.updated,
+      this.startDate,
+      this.name,
+      this.year,
+      this.semester,
+      this.faculty,
+      this.fieldofStudy,
+      this.studyMode,
+      this.degreeOfStudy,
+      final List<String>? subjects})
       : _subjects = subjects;
 
   factory _$ScheduleImpl.fromJson(Map<String, dynamic> json) =>
       _$$ScheduleImplFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final DateTime created;
+  final DateTime? created;
   @override
-  final DateTime updated;
+  final DateTime? updated;
   @override
-  final DateTime startDate;
+  final DateTime? startDate;
   @override
-  final String name;
+  final String? name;
   @override
-  final int year;
+  final int? year;
   @override
-  final int semester;
+  final int? semester;
   @override
-  final String faculty;
+  final String? faculty;
   @override
   final String? fieldofStudy;
 // When empty string, this field is null
   @override
-  final String studyMode;
+  final String? studyMode;
   @override
-  final String degreeOfStudy;
+  final String? degreeOfStudy;
   final List<String>? _subjects;
   @override
   List<String>? get subjects {
@@ -355,44 +355,44 @@ class _$ScheduleImpl implements _Schedule {
 
 abstract class _Schedule implements Schedule {
   factory _Schedule(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      required final DateTime startDate,
-      required final String name,
-      required final int year,
-      required final int semester,
-      required final String faculty,
-      required final String? fieldofStudy,
-      required final String studyMode,
-      required final String degreeOfStudy,
-      required final List<String>? subjects}) = _$ScheduleImpl;
+      {final String? id,
+      final DateTime? created,
+      final DateTime? updated,
+      final DateTime? startDate,
+      final String? name,
+      final int? year,
+      final int? semester,
+      final String? faculty,
+      final String? fieldofStudy,
+      final String? studyMode,
+      final String? degreeOfStudy,
+      final List<String>? subjects}) = _$ScheduleImpl;
 
   factory _Schedule.fromJson(Map<String, dynamic> json) =
       _$ScheduleImpl.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
-  DateTime get created;
+  DateTime? get created;
   @override
-  DateTime get updated;
+  DateTime? get updated;
   @override
-  DateTime get startDate;
+  DateTime? get startDate;
   @override
-  String get name;
+  String? get name;
   @override
-  int get year;
+  int? get year;
   @override
-  int get semester;
+  int? get semester;
   @override
-  String get faculty;
+  String? get faculty;
   @override
   String? get fieldofStudy;
   @override // When empty string, this field is null
-  String get studyMode;
+  String? get studyMode;
   @override
-  String get degreeOfStudy;
+  String? get degreeOfStudy;
   @override
   List<String>? get subjects;
   @override
