@@ -94,4 +94,3 @@ class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
     ));
   }
 }
-w
