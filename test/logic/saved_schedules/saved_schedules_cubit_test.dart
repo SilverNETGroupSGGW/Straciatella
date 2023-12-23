@@ -6,12 +6,13 @@ import 'package:silvertimetable/logic/saved_schedules/saved_schedules_cubit.dart
 void main() async {
   await Hive.openBox<SavedSchedulesState>(
     hiveBoxName,
-    path: "test/logic/saved_schedules",
+    path: testingLocation,
   );
+  registerSavedSchedulesAdapters();
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
-    'emits empty SavedScheduleState when loaded saved schedules.',
+    'emits empty SavedScheduleState',
     build: () => SavedSchedulesCubit(),
-    act: (bloc) => bloc.loadSavedSchedules(),
+    act: (bloc) => bloc.clearSavedSchedules(),
     expect: () => [
       SavedSchedulesState(
         savedSchedules: [],
