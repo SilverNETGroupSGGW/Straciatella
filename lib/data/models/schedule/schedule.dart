@@ -21,18 +21,18 @@ part 'schedule.g.dart';
 @freezed
 class Schedule with _$Schedule {
   factory Schedule({
-    String? id,
-    DateTime? created,
-    DateTime? updated,
-    DateTime? startDate,
-    String? name,
-    int? year,
-    int? semester,
-    String? faculty,
-    String? fieldofStudy,
-    String? studyMode,
-    String? degreeOfStudy,
-    List<String>? subjects,
+    required String id,
+    required DateTime created,
+    required DateTime updated,
+    required DateTime startDate,
+    required String name,
+    required int year,
+    required int semester,
+    required String faculty,
+    required String fieldofStudy,
+    required String studyMode,
+    required String degreeOfStudy,
+    required List<String> subjects,
   }) = _Schedule;
 
   factory Schedule.fromJson(Map<String, dynamic> json) =>
