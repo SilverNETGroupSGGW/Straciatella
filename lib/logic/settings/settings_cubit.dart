@@ -11,7 +11,7 @@ part 'settings_cubit.g.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
   static const _boxKey = "settings";
-  final Box<SettingsState> box = Hive.box(hiveBoxName);
+  final Box box = Hive.box(hiveBoxName);
   SettingsCubit() : super(SettingsState());
 
   @override

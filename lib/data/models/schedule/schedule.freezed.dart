@@ -28,7 +28,7 @@ mixin _$Schedule {
   int get year => throw _privateConstructorUsedError;
   int get semester => throw _privateConstructorUsedError;
   String get faculty => throw _privateConstructorUsedError;
-  String get fieldofStudy => throw _privateConstructorUsedError;
+  String get fieldOfStudy => throw _privateConstructorUsedError;
   String get studyMode => throw _privateConstructorUsedError;
   String get degreeOfStudy => throw _privateConstructorUsedError;
   List<String> get subjects => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $ScheduleCopyWith<$Res> {
       int year,
       int semester,
       String faculty,
-      String fieldofStudy,
+      String fieldOfStudy,
       String studyMode,
       String degreeOfStudy,
       List<String> subjects});
@@ -80,7 +80,7 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
     Object? year = null,
     Object? semester = null,
     Object? faculty = null,
-    Object? fieldofStudy = null,
+    Object? fieldOfStudy = null,
     Object? studyMode = null,
     Object? degreeOfStudy = null,
     Object? subjects = null,
@@ -118,9 +118,9 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
           ? _value.faculty
           : faculty // ignore: cast_nullable_to_non_nullable
               as String,
-      fieldofStudy: null == fieldofStudy
-          ? _value.fieldofStudy
-          : fieldofStudy // ignore: cast_nullable_to_non_nullable
+      fieldOfStudy: null == fieldOfStudy
+          ? _value.fieldOfStudy
+          : fieldOfStudy // ignore: cast_nullable_to_non_nullable
               as String,
       studyMode: null == studyMode
           ? _value.studyMode
@@ -155,7 +155,7 @@ abstract class _$$ScheduleImplCopyWith<$Res>
       int year,
       int semester,
       String faculty,
-      String fieldofStudy,
+      String fieldOfStudy,
       String studyMode,
       String degreeOfStudy,
       List<String> subjects});
@@ -180,7 +180,7 @@ class __$$ScheduleImplCopyWithImpl<$Res>
     Object? year = null,
     Object? semester = null,
     Object? faculty = null,
-    Object? fieldofStudy = null,
+    Object? fieldOfStudy = null,
     Object? studyMode = null,
     Object? degreeOfStudy = null,
     Object? subjects = null,
@@ -218,9 +218,9 @@ class __$$ScheduleImplCopyWithImpl<$Res>
           ? _value.faculty
           : faculty // ignore: cast_nullable_to_non_nullable
               as String,
-      fieldofStudy: null == fieldofStudy
-          ? _value.fieldofStudy
-          : fieldofStudy // ignore: cast_nullable_to_non_nullable
+      fieldOfStudy: null == fieldOfStudy
+          ? _value.fieldOfStudy
+          : fieldOfStudy // ignore: cast_nullable_to_non_nullable
               as String,
       studyMode: null == studyMode
           ? _value.studyMode
@@ -250,7 +250,7 @@ class _$ScheduleImpl implements _Schedule {
       required this.year,
       required this.semester,
       required this.faculty,
-      required this.fieldofStudy,
+      required this.fieldOfStudy,
       required this.studyMode,
       required this.degreeOfStudy,
       required final List<String> subjects})
@@ -276,7 +276,7 @@ class _$ScheduleImpl implements _Schedule {
   @override
   final String faculty;
   @override
-  final String fieldofStudy;
+  final String fieldOfStudy;
   @override
   final String studyMode;
   @override
@@ -291,7 +291,7 @@ class _$ScheduleImpl implements _Schedule {
 
   @override
   String toString() {
-    return 'Schedule(id: $id, created: $created, updated: $updated, startDate: $startDate, name: $name, year: $year, semester: $semester, faculty: $faculty, fieldofStudy: $fieldofStudy, studyMode: $studyMode, degreeOfStudy: $degreeOfStudy, subjects: $subjects)';
+    return 'Schedule(id: $id, created: $created, updated: $updated, startDate: $startDate, name: $name, year: $year, semester: $semester, faculty: $faculty, fieldOfStudy: $fieldOfStudy, studyMode: $studyMode, degreeOfStudy: $degreeOfStudy, subjects: $subjects)';
   }
 
   @override
@@ -309,8 +309,8 @@ class _$ScheduleImpl implements _Schedule {
             (identical(other.semester, semester) ||
                 other.semester == semester) &&
             (identical(other.faculty, faculty) || other.faculty == faculty) &&
-            (identical(other.fieldofStudy, fieldofStudy) ||
-                other.fieldofStudy == fieldofStudy) &&
+            (identical(other.fieldOfStudy, fieldOfStudy) ||
+                other.fieldOfStudy == fieldOfStudy) &&
             (identical(other.studyMode, studyMode) ||
                 other.studyMode == studyMode) &&
             (identical(other.degreeOfStudy, degreeOfStudy) ||
@@ -330,7 +330,7 @@ class _$ScheduleImpl implements _Schedule {
       year,
       semester,
       faculty,
-      fieldofStudy,
+      fieldOfStudy,
       studyMode,
       degreeOfStudy,
       const DeepCollectionEquality().hash(_subjects));
@@ -359,7 +359,7 @@ abstract class _Schedule implements Schedule {
       required final int year,
       required final int semester,
       required final String faculty,
-      required final String fieldofStudy,
+      required final String fieldOfStudy,
       required final String studyMode,
       required final String degreeOfStudy,
       required final List<String> subjects}) = _$ScheduleImpl;
@@ -384,7 +384,7 @@ abstract class _Schedule implements Schedule {
   @override
   String get faculty;
   @override
-  String get fieldofStudy;
+  String get fieldOfStudy;
   @override
   String get studyMode;
   @override

@@ -16,7 +16,7 @@ _$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
       year: json['year'] as int,
       semester: json['semester'] as int,
       faculty: json['faculty'] as String,
-      fieldofStudy: json['fieldofStudy'] as String,
+      fieldOfStudy: json['fieldOfStudy'] as String,
       studyMode: json['studyMode'] as String,
       degreeOfStudy: json['degreeOfStudy'] as String,
       subjects:
@@ -33,7 +33,7 @@ Map<String, dynamic> _$$ScheduleImplToJson(_$ScheduleImpl instance) =>
       'year': instance.year,
       'semester': instance.semester,
       'faculty': instance.faculty,
-      'fieldofStudy': instance.fieldofStudy,
+      'fieldOfStudy': instance.fieldOfStudy,
       'studyMode': instance.studyMode,
       'degreeOfStudy': instance.degreeOfStudy,
       'subjects': instance.subjects,

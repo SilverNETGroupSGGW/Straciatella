@@ -11,9 +11,10 @@ part 'saved_schedules_cubit.g.dart';
 
 class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
   static const _boxKey = "savedSchedules";
-  final Box<SavedSchedulesState> box = Hive.box(hiveBoxName);
+  final Box box = Hive.box(hiveBoxName);
 
   SavedSchedulesCubit() : super(SavedSchedulesState());
+  // For Copilot: Create new lists instead of mutating them
 
   @override
   void onChange(Change<SavedSchedulesState> change) {
@@ -26,30 +27,27 @@ class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
 
   loadSavedSchedules() {
     try {
-      SavedSchedulesState loadedState = box.get(_boxKey) ?? state;
-      emit(loadedState);
+      SavedSchedulesState? loadedState = box.get(_boxKey);
+      if (loadedState != null) emit(loadedState);
     } catch (e) {
       print("Could not load saved schedules");
       // TODO: handle exception
-      emit(
-        SavedSchedulesState(
-          savedSchedules: [],
-          selectedSchedule: null,
-        ),
-      );
     }
   }
 
   addSchedule(Schedule schedule) {
+    print(state.savedSchedules);
+    // TODO: savedSchedules are not updated in the state
+    if (this.state.savedSchedules.contains(schedule)) return;
     emit(
       state.copyWith(
-        savedSchedules: state.savedSchedules..add(schedule),
+        savedSchedules: [...state.savedSchedules, schedule],
       ),
     );
   }
 
   removeSchedule(Schedule schedule) {
-    final newSavedSchedules = state.savedSchedules;
+    List<Schedule> newSavedSchedules = [...state.savedSchedules];
     newSavedSchedules.remove(schedule);
     if (state.selectedSchedule == schedule) {
       emit(state.copyWith(
@@ -70,22 +68,28 @@ class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
     ));
   }
 
-  overwriteSavedSchedules(List<Schedule> savedSchedules) {
-    if (savedSchedules.contains(state.selectedSchedule))
+  overwriteSavedSchedules(List<Schedule> schedules) {
+    if (schedules.contains(state.selectedSchedule))
       emit(state.copyWith(
-        savedSchedules: savedSchedules,
+        savedSchedules: schedules,
       ));
     else
       emit(state.copyWith(
-        savedSchedules: savedSchedules,
+        savedSchedules: schedules,
         selectedSchedule: null,
       ));
   }
 
   selectSchedule(Schedule schedule) {
-    emit(state.copyWith(
-      selectedSchedule: schedule,
-    ));
+    if (state.savedSchedules.contains(schedule))
+      emit(state.copyWith(
+        selectedSchedule: schedule,
+      ));
+    else
+      emit(state.copyWith(
+        selectedSchedule: schedule,
+        savedSchedules: [...state.savedSchedules, schedule],
+      ));
   }
 
   unselectSchedule() {
