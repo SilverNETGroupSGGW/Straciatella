@@ -43,8 +43,8 @@ void main() async {
         selectedSchedule: null,
       ),
     ],
+    tearDown: () => box.clear(),
   );
-  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'checks if there can be double schedule',
@@ -59,23 +59,21 @@ void main() async {
         selectedSchedule: null,
       ),
     ],
+    tearDown: () => box.clear(),
   );
-  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'select schedule from SavedScheduleState',
     build: () => SavedSchedulesCubit(),
-    act: (bloc) {
-      bloc.selectSchedule(testSchedule);
-    },
+    act: (bloc) => bloc.selectSchedule(testSchedule),
     expect: () => [
       SavedSchedulesState(
         savedSchedules: [testSchedule],
         selectedSchedule: testSchedule,
       ),
     ],
+    tearDown: () => box.clear(),
   );
-  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'remove schedule from SavedScheduleState',
@@ -84,14 +82,15 @@ void main() async {
       bloc.addSchedule(testSchedule);
       bloc.removeSchedule(testSchedule);
     },
+    skip: 1,
     expect: () => [
       SavedSchedulesState(
         savedSchedules: [],
         selectedSchedule: null,
       ),
     ],
+    tearDown: () => box.clear(),
   );
-  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'overwrite SavedScheduleState with one schedule',
@@ -103,25 +102,25 @@ void main() async {
         selectedSchedule: null,
       ),
     ],
+    tearDown: () => box.clear(),
   );
-  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'clear SavedScheduleState',
     build: () => SavedSchedulesCubit(),
     act: (bloc) async {
       bloc.addSchedule(testSchedule);
-      await Future.delayed(Duration(seconds: 1));
       bloc.clearSchedules();
     },
+    skip: 1,
     expect: () => [
       SavedSchedulesState(
         savedSchedules: [],
         selectedSchedule: null,
       ),
     ],
+    tearDown: () => box.clear(),
   );
-  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'loads SavedScheduleState from hive',
@@ -131,12 +130,13 @@ void main() async {
       bloc.selectSchedule(testSchedule);
       bloc.loadSavedSchedules();
     },
+    skip: 1,
     expect: () => [
       SavedSchedulesState(
         savedSchedules: [testSchedule],
         selectedSchedule: testSchedule,
       ),
     ],
+    tearDown: () => box.clear(),
   );
-  box.clear();
 }
