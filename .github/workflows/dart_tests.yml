@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Setup Flutter SDK
+        # You may pin to the exact commit or the version.
+        # uses: flutter-actions/setup-flutter@4fd02585c76876e31a810dcc631864fe1c96c3bf
+        uses: flutter-actions/setup-flutter@v2.3
+        
       - uses: actions/checkout@v3
 
       # Note: This workflow uses the latest stable version of the Dart SDK.
