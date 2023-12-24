@@ -18,13 +18,13 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SettingsState {
   @HiveField(0)
   ThemeMode get themeMode => throw _privateConstructorUsedError;
-  @HiveField(1)
-  ThemeType get themeType => throw _privateConstructorUsedError;
-  @HiveField(2)
-  bool get isFirstRun => throw _privateConstructorUsedError;
-  @HiveField(3)
-  bool get isDebugMode => throw _privateConstructorUsedError;
   @HiveField(4)
+  ThemeType get themeType => throw _privateConstructorUsedError;
+  @HiveField(1)
+  bool get isFirstRun => throw _privateConstructorUsedError;
+  @HiveField(2)
+  bool get isDebugMode => throw _privateConstructorUsedError;
+  @HiveField(3)
   Color get themeColor => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,10 +40,10 @@ abstract class $SettingsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {@HiveField(0) ThemeMode themeMode,
-      @HiveField(1) ThemeType themeType,
-      @HiveField(2) bool isFirstRun,
-      @HiveField(3) bool isDebugMode,
-      @HiveField(4) Color themeColor});
+      @HiveField(4) ThemeType themeType,
+      @HiveField(1) bool isFirstRun,
+      @HiveField(2) bool isDebugMode,
+      @HiveField(3) Color themeColor});
 }
 
 /// @nodoc
@@ -100,10 +100,10 @@ abstract class _$$SettingsStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {@HiveField(0) ThemeMode themeMode,
-      @HiveField(1) ThemeType themeType,
-      @HiveField(2) bool isFirstRun,
-      @HiveField(3) bool isDebugMode,
-      @HiveField(4) Color themeColor});
+      @HiveField(4) ThemeType themeType,
+      @HiveField(1) bool isFirstRun,
+      @HiveField(2) bool isDebugMode,
+      @HiveField(3) Color themeColor});
 }
 
 /// @nodoc
@@ -155,10 +155,10 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
 class _$SettingsStateImpl extends _SettingsState {
   _$SettingsStateImpl(
       {@HiveField(0) this.themeMode = ThemeMode.system,
-      @HiveField(1) this.themeType = ThemeType.normal,
-      @HiveField(2) this.isFirstRun = true,
-      @HiveField(3) this.isDebugMode = false,
-      @HiveField(4) this.themeColor = Colors.red})
+      @HiveField(4) this.themeType = ThemeType.normal,
+      @HiveField(1) this.isFirstRun = true,
+      @HiveField(2) this.isDebugMode = false,
+      @HiveField(3) this.themeColor = Colors.red})
       : super._();
 
   @override
@@ -167,19 +167,19 @@ class _$SettingsStateImpl extends _SettingsState {
   final ThemeMode themeMode;
   @override
   @JsonKey()
-  @HiveField(1)
+  @HiveField(4)
   final ThemeType themeType;
   @override
   @JsonKey()
-  @HiveField(2)
+  @HiveField(1)
   final bool isFirstRun;
   @override
   @JsonKey()
-  @HiveField(3)
+  @HiveField(2)
   final bool isDebugMode;
   @override
   @JsonKey()
-  @HiveField(4)
+  @HiveField(3)
   final Color themeColor;
 
   @override
@@ -218,26 +218,26 @@ class _$SettingsStateImpl extends _SettingsState {
 abstract class _SettingsState extends SettingsState {
   factory _SettingsState(
       {@HiveField(0) final ThemeMode themeMode,
-      @HiveField(1) final ThemeType themeType,
-      @HiveField(2) final bool isFirstRun,
-      @HiveField(3) final bool isDebugMode,
-      @HiveField(4) final Color themeColor}) = _$SettingsStateImpl;
+      @HiveField(4) final ThemeType themeType,
+      @HiveField(1) final bool isFirstRun,
+      @HiveField(2) final bool isDebugMode,
+      @HiveField(3) final Color themeColor}) = _$SettingsStateImpl;
   _SettingsState._() : super._();
 
   @override
   @HiveField(0)
   ThemeMode get themeMode;
   @override
-  @HiveField(1)
+  @HiveField(4)
   ThemeType get themeType;
   @override
-  @HiveField(2)
+  @HiveField(1)
   bool get isFirstRun;
   @override
-  @HiveField(3)
+  @HiveField(2)
   bool get isDebugMode;
   @override
-  @HiveField(4)
+  @HiveField(3)
   Color get themeColor;
   @override
   @JsonKey(ignore: true)
