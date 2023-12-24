@@ -15,7 +15,7 @@ void main() {
       "fieldOfStudy": "",
       "studyMode": "Unknown",
       "degreeOfStudy": "AssociateDegree",
-      "subjects": null
+      "subjects": [],
     };
 
     final schedule = Schedule.fromJson(json);

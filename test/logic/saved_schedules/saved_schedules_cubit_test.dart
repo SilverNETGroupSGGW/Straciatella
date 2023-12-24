@@ -13,6 +13,9 @@ void main() async {
     hiveBoxName,
     path: testingLocation,
   );
+
+  Box box = Hive.box(hiveBoxName);
+  box.clear();
   Schedule testSchedule = Schedule.fromJson(
     {
       "id": "ba0d9a27-3078-4709-81e6-2d8b4e1c8a71",
@@ -41,15 +44,15 @@ void main() async {
       ),
     ],
   );
+  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'checks if there can be double schedule',
     build: () => SavedSchedulesCubit(),
-    setUp: () {
-      SavedSchedulesCubit().addSchedule(testSchedule);
-      SavedSchedulesCubit().addSchedule(testSchedule);
+    act: (bloc) {
+      bloc.addSchedule(testSchedule);
+      bloc.addSchedule(testSchedule);
     },
-    act: (bloc) => bloc.selectSchedule(testSchedule),
     expect: () => [
       SavedSchedulesState(
         savedSchedules: [testSchedule],
@@ -57,11 +60,14 @@ void main() async {
       ),
     ],
   );
+  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'select schedule from SavedScheduleState',
     build: () => SavedSchedulesCubit(),
-    act: (bloc) => bloc.selectSchedule(testSchedule),
+    act: (bloc) {
+      bloc.selectSchedule(testSchedule);
+    },
     expect: () => [
       SavedSchedulesState(
         savedSchedules: [testSchedule],
@@ -69,12 +75,15 @@ void main() async {
       ),
     ],
   );
+  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'remove schedule from SavedScheduleState',
     build: () => SavedSchedulesCubit(),
-    setUp: () => SavedSchedulesCubit().addSchedule(testSchedule),
-    act: (bloc) => bloc.removeSchedule(testSchedule),
+    act: (bloc) {
+      bloc.addSchedule(testSchedule);
+      bloc.removeSchedule(testSchedule);
+    },
     expect: () => [
       SavedSchedulesState(
         savedSchedules: [],
@@ -82,11 +91,11 @@ void main() async {
       ),
     ],
   );
+  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'overwrite SavedScheduleState with one schedule',
     build: () => SavedSchedulesCubit(),
-    setUp: () => SavedSchedulesCubit().addSchedule(testSchedule),
     act: (bloc) => bloc.overwriteSavedSchedules([testSchedule]),
     expect: () => [
       SavedSchedulesState(
@@ -95,12 +104,16 @@ void main() async {
       ),
     ],
   );
+  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'clear SavedScheduleState',
     build: () => SavedSchedulesCubit(),
-    setUp: () => SavedSchedulesCubit().addSchedule(testSchedule),
-    act: (bloc) => bloc.clearSavedSchedules(),
+    act: (bloc) async {
+      bloc.addSchedule(testSchedule);
+      await Future.delayed(Duration(seconds: 1));
+      bloc.clearSchedules();
+    },
     expect: () => [
       SavedSchedulesState(
         savedSchedules: [],
@@ -108,15 +121,16 @@ void main() async {
       ),
     ],
   );
+  box.clear();
 
   blocTest<SavedSchedulesCubit, SavedSchedulesState>(
     'loads SavedScheduleState from hive',
     build: () => SavedSchedulesCubit(),
-    setUp: () {
-      SavedSchedulesCubit().addSchedule(testSchedule);
-      SavedSchedulesCubit().selectSchedule(testSchedule);
+    act: (bloc) {
+      bloc.addSchedule(testSchedule);
+      bloc.selectSchedule(testSchedule);
+      bloc.loadSavedSchedules();
     },
-    act: (bloc) => bloc.loadSavedSchedules(),
     expect: () => [
       SavedSchedulesState(
         savedSchedules: [testSchedule],
@@ -124,4 +138,5 @@ void main() async {
       ),
     ],
   );
+  box.clear();
 }

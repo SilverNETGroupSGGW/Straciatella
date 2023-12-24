@@ -36,9 +36,7 @@ class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
   }
 
   addSchedule(Schedule schedule) {
-    print(state.savedSchedules);
-    // TODO: savedSchedules are not updated in the state
-    if (this.state.savedSchedules.contains(schedule)) return;
+    if (state.savedSchedules.contains(schedule)) return;
     emit(
       state.copyWith(
         savedSchedules: [...state.savedSchedules, schedule],
@@ -61,7 +59,7 @@ class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
     }
   }
 
-  clearSavedSchedules() {
+  clearSchedules() {
     emit(state.copyWith(
       savedSchedules: [],
       selectedSchedule: null,
