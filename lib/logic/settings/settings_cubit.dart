@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/themes.dart';
 
 part 'settings_state.dart';
 part 'settings_cubit.freezed.dart';
@@ -37,6 +38,12 @@ class SettingsCubit extends Cubit<SettingsState> {
   changeThemeMode(ThemeMode themeMode) {
     emit(state.copyWith(
       themeMode: themeMode,
+    ));
+  }
+
+  changeThemeType(ThemeType themeType) {
+    emit(state.copyWith(
+      themeType: themeType,
     ));
   }
 

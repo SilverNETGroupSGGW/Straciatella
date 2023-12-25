@@ -47,8 +47,8 @@ class _MainAppState extends State<MainApp> {
         builder: (context, settings) {
           return MaterialApp(
             title: appName,
-            theme: getTheme(ThemeTypes.normal, false, settings.themeColor),
-            darkTheme: getTheme(ThemeTypes.normal, true, settings.themeColor),
+            theme: getTheme(settings.themeType, false, settings.themeColor),
+            darkTheme: getTheme(settings.themeType, true, settings.themeColor),
             themeMode: settings.themeMode,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
