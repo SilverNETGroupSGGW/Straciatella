@@ -36,4 +36,4 @@ App can be downloaded from [Google Play](https://play.google.com/store/apps/deta
 
 ## Contributing
 
-This app is being developed by compuer science club of Warsaw University of Life Sciences (SGGW). If you want to contribute, you can join our [Discord](https://discord.gg/8QXQ5q9) server. You can also contribute by creating an issue or pull request on GitHub, but we encourage you to join our club first.
+This app is being developed by computer science club of Warsaw University of Life Sciences (SGGW). If you want to contribute, you can join our [Discord](https://discord.gg/8QXQ5q9) server. You can also contribute by creating an issue or pull request on GitHub, but we encourage you to join our club first.

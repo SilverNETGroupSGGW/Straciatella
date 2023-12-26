@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/adapters/register_adapters.dart';
+import 'package:silvertimetable/logic/saved_schedules/saved_schedules_cubit.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/router.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -11,6 +12,7 @@ import 'package:silvertimetable/themes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  registerSavedSchedulesAdapters();
   registerSettingsAdapters();
   registerDataAdapters();
   await Hive.openBox(hiveBoxName);
@@ -47,8 +49,8 @@ class _MainAppState extends State<MainApp> {
         builder: (context, settings) {
           return MaterialApp(
             title: appName,
-            theme: getTheme(ThemeTypes.normal, false, settings.themeColor),
-            darkTheme: getTheme(ThemeTypes.normal, true, settings.themeColor),
+            theme: getTheme(settings.themeType, false, settings.themeColor),
+            darkTheme: getTheme(settings.themeType, true, settings.themeColor),
             themeMode: settings.themeMode,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
