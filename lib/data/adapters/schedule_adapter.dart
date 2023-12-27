@@ -18,7 +18,6 @@ class ScheduleAdapeter extends TypeAdapter<Schedule> {
       faculty: reader.readString(),
       semester: reader.readInt(),
       studyMode: reader.readString(),
-      subjects: reader.readStringList(),
       year: reader.readInt(),
       fieldOfStudy: reader.readString(),
     );
@@ -36,7 +35,6 @@ class ScheduleAdapeter extends TypeAdapter<Schedule> {
       ..writeString(obj.faculty)
       ..writeInt(obj.semester)
       ..writeString(obj.studyMode)
-      ..writeStringList(obj.subjects)
       ..writeInt(obj.year)
       ..writeString(obj.fieldOfStudy);
   }

@@ -21,7 +21,9 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Schedule {
   String get id => throw _privateConstructorUsedError;
+  @DateTimeConverter()
   DateTime get created => throw _privateConstructorUsedError;
+  @DateTimeConverter()
   DateTime get updated => throw _privateConstructorUsedError;
   DateTime get startDate => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -31,7 +33,6 @@ mixin _$Schedule {
   String get fieldOfStudy => throw _privateConstructorUsedError;
   String get studyMode => throw _privateConstructorUsedError;
   String get degreeOfStudy => throw _privateConstructorUsedError;
-  List<String> get subjects => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,8 +47,8 @@ abstract class $ScheduleCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      DateTime created,
-      DateTime updated,
+      @DateTimeConverter() DateTime created,
+      @DateTimeConverter() DateTime updated,
       DateTime startDate,
       String name,
       int year,
@@ -55,8 +56,7 @@ abstract class $ScheduleCopyWith<$Res> {
       String faculty,
       String fieldOfStudy,
       String studyMode,
-      String degreeOfStudy,
-      List<String> subjects});
+      String degreeOfStudy});
 }
 
 /// @nodoc
@@ -83,7 +83,6 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
     Object? fieldOfStudy = null,
     Object? studyMode = null,
     Object? degreeOfStudy = null,
-    Object? subjects = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -130,10 +129,6 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
           ? _value.degreeOfStudy
           : degreeOfStudy // ignore: cast_nullable_to_non_nullable
               as String,
-      subjects: null == subjects
-          ? _value.subjects
-          : subjects // ignore: cast_nullable_to_non_nullable
-              as List<String>,
     ) as $Val);
   }
 }
@@ -148,8 +143,8 @@ abstract class _$$ScheduleImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      DateTime created,
-      DateTime updated,
+      @DateTimeConverter() DateTime created,
+      @DateTimeConverter() DateTime updated,
       DateTime startDate,
       String name,
       int year,
@@ -157,8 +152,7 @@ abstract class _$$ScheduleImplCopyWith<$Res>
       String faculty,
       String fieldOfStudy,
       String studyMode,
-      String degreeOfStudy,
-      List<String> subjects});
+      String degreeOfStudy});
 }
 
 /// @nodoc
@@ -183,7 +177,6 @@ class __$$ScheduleImplCopyWithImpl<$Res>
     Object? fieldOfStudy = null,
     Object? studyMode = null,
     Object? degreeOfStudy = null,
-    Object? subjects = null,
   }) {
     return _then(_$ScheduleImpl(
       id: null == id
@@ -230,10 +223,6 @@ class __$$ScheduleImplCopyWithImpl<$Res>
           ? _value.degreeOfStudy
           : degreeOfStudy // ignore: cast_nullable_to_non_nullable
               as String,
-      subjects: null == subjects
-          ? _value._subjects
-          : subjects // ignore: cast_nullable_to_non_nullable
-              as List<String>,
     ));
   }
 }
@@ -243,8 +232,8 @@ class __$$ScheduleImplCopyWithImpl<$Res>
 class _$ScheduleImpl implements _Schedule {
   _$ScheduleImpl(
       {required this.id,
-      required this.created,
-      required this.updated,
+      @DateTimeConverter() required this.created,
+      @DateTimeConverter() required this.updated,
       required this.startDate,
       required this.name,
       required this.year,
@@ -252,9 +241,7 @@ class _$ScheduleImpl implements _Schedule {
       required this.faculty,
       required this.fieldOfStudy,
       required this.studyMode,
-      required this.degreeOfStudy,
-      required final List<String> subjects})
-      : _subjects = subjects;
+      required this.degreeOfStudy});
 
   factory _$ScheduleImpl.fromJson(Map<String, dynamic> json) =>
       _$$ScheduleImplFromJson(json);
@@ -262,8 +249,10 @@ class _$ScheduleImpl implements _Schedule {
   @override
   final String id;
   @override
+  @DateTimeConverter()
   final DateTime created;
   @override
+  @DateTimeConverter()
   final DateTime updated;
   @override
   final DateTime startDate;
@@ -281,17 +270,10 @@ class _$ScheduleImpl implements _Schedule {
   final String studyMode;
   @override
   final String degreeOfStudy;
-  final List<String> _subjects;
-  @override
-  List<String> get subjects {
-    if (_subjects is EqualUnmodifiableListView) return _subjects;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_subjects);
-  }
 
   @override
   String toString() {
-    return 'Schedule(id: $id, created: $created, updated: $updated, startDate: $startDate, name: $name, year: $year, semester: $semester, faculty: $faculty, fieldOfStudy: $fieldOfStudy, studyMode: $studyMode, degreeOfStudy: $degreeOfStudy, subjects: $subjects)';
+    return 'Schedule(id: $id, created: $created, updated: $updated, startDate: $startDate, name: $name, year: $year, semester: $semester, faculty: $faculty, fieldOfStudy: $fieldOfStudy, studyMode: $studyMode, degreeOfStudy: $degreeOfStudy)';
   }
 
   @override
@@ -314,26 +296,13 @@ class _$ScheduleImpl implements _Schedule {
             (identical(other.studyMode, studyMode) ||
                 other.studyMode == studyMode) &&
             (identical(other.degreeOfStudy, degreeOfStudy) ||
-                other.degreeOfStudy == degreeOfStudy) &&
-            const DeepCollectionEquality().equals(other._subjects, _subjects));
+                other.degreeOfStudy == degreeOfStudy));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      created,
-      updated,
-      startDate,
-      name,
-      year,
-      semester,
-      faculty,
-      fieldOfStudy,
-      studyMode,
-      degreeOfStudy,
-      const DeepCollectionEquality().hash(_subjects));
+  int get hashCode => Object.hash(runtimeType, id, created, updated, startDate,
+      name, year, semester, faculty, fieldOfStudy, studyMode, degreeOfStudy);
 
   @JsonKey(ignore: true)
   @override
@@ -352,8 +321,8 @@ class _$ScheduleImpl implements _Schedule {
 abstract class _Schedule implements Schedule {
   factory _Schedule(
       {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
+      @DateTimeConverter() required final DateTime created,
+      @DateTimeConverter() required final DateTime updated,
       required final DateTime startDate,
       required final String name,
       required final int year,
@@ -361,8 +330,7 @@ abstract class _Schedule implements Schedule {
       required final String faculty,
       required final String fieldOfStudy,
       required final String studyMode,
-      required final String degreeOfStudy,
-      required final List<String> subjects}) = _$ScheduleImpl;
+      required final String degreeOfStudy}) = _$ScheduleImpl;
 
   factory _Schedule.fromJson(Map<String, dynamic> json) =
       _$ScheduleImpl.fromJson;
@@ -370,8 +338,10 @@ abstract class _Schedule implements Schedule {
   @override
   String get id;
   @override
+  @DateTimeConverter()
   DateTime get created;
   @override
+  @DateTimeConverter()
   DateTime get updated;
   @override
   DateTime get startDate;
@@ -389,8 +359,6 @@ abstract class _Schedule implements Schedule {
   String get studyMode;
   @override
   String get degreeOfStudy;
-  @override
-  List<String> get subjects;
   @override
   @JsonKey(ignore: true)
   _$$ScheduleImplCopyWith<_$ScheduleImpl> get copyWith =>

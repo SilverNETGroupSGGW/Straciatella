@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:silvertimetable/data/converters/datetime_converter.dart';
 
 part 'schedule.freezed.dart';
 part 'schedule.g.dart';
@@ -22,8 +23,8 @@ part 'schedule.g.dart';
 class Schedule with _$Schedule {
   factory Schedule({
     required String id,
-    required DateTime created,
-    required DateTime updated,
+    @DateTimeConverter() required DateTime created,
+    @DateTimeConverter() required DateTime updated,
     required DateTime startDate,
     required String name,
     required int year,
@@ -32,7 +33,6 @@ class Schedule with _$Schedule {
     required String fieldOfStudy,
     required String studyMode,
     required String degreeOfStudy,
-    required List<String> subjects,
   }) = _Schedule;
 
   factory Schedule.fromJson(Map<String, dynamic> json) =>
