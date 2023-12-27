@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'lecturer.dart';
+part of 'lecturer_base.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class LecturerAdapter extends TypeAdapter<_$LecturerImpl> {
+class LecturerBaseAdapter extends TypeAdapter<_$LecturerBaseImpl> {
   @override
-  final int typeId = 9;
+  final int typeId = 8;
 
   @override
-  _$LecturerImpl read(BinaryReader reader) {
+  _$LecturerBaseImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$LecturerImpl(
+    return _$LecturerBaseImpl(
       id: fields[0] as String,
       created: fields[1] as DateTime,
       updated: fields[2] as DateTime,
@@ -24,14 +24,13 @@ class LecturerAdapter extends TypeAdapter<_$LecturerImpl> {
       surname: fields[4] as String,
       academicDegree: fields[5] as String,
       email: fields[6] as String,
-      subjects: (fields[7] as List).cast<Subject>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$LecturerImpl obj) {
+  void write(BinaryWriter writer, _$LecturerBaseImpl obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -45,9 +44,7 @@ class LecturerAdapter extends TypeAdapter<_$LecturerImpl> {
       ..writeByte(5)
       ..write(obj.academicDegree)
       ..writeByte(6)
-      ..write(obj.email)
-      ..writeByte(7)
-      ..write(obj.subjects);
+      ..write(obj.email);
   }
 
   @override
@@ -56,7 +53,7 @@ class LecturerAdapter extends TypeAdapter<_$LecturerImpl> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LecturerAdapter &&
+      other is LecturerBaseAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -65,8 +62,8 @@ class LecturerAdapter extends TypeAdapter<_$LecturerImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LecturerImpl _$$LecturerImplFromJson(Map<String, dynamic> json) =>
-    _$LecturerImpl(
+_$LecturerBaseImpl _$$LecturerBaseImplFromJson(Map<String, dynamic> json) =>
+    _$LecturerBaseImpl(
       id: json['id'] as String,
       created: const DateTimeConverter().fromJson(json['created'] as String),
       updated: const DateTimeConverter().fromJson(json['updated'] as String),
@@ -74,12 +71,9 @@ _$LecturerImpl _$$LecturerImplFromJson(Map<String, dynamic> json) =>
       surname: json['surname'] as String,
       academicDegree: json['academicDegree'] as String,
       email: json['email'] as String,
-      subjects: (json['subjects'] as List<dynamic>)
-          .map((e) => Subject.fromJson(e as Map<String, dynamic>))
-          .toList(),
     );
 
-Map<String, dynamic> _$$LecturerImplToJson(_$LecturerImpl instance) =>
+Map<String, dynamic> _$$LecturerBaseImplToJson(_$LecturerBaseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': const DateTimeConverter().toJson(instance.created),
@@ -88,5 +82,4 @@ Map<String, dynamic> _$$LecturerImplToJson(_$LecturerImpl instance) =>
       'surname': instance.surname,
       'academicDegree': instance.academicDegree,
       'email': instance.email,
-      'subjects': instance.subjects,
     };

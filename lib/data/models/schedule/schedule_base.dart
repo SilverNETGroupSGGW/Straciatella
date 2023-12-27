@@ -1,21 +1,20 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:silvertimetable/data/converters/datetime_converter.dart';
 import 'package:hive/hive.dart';
-import 'package:silvertimetable/data/models/subject/subject.dart';
+import 'package:silvertimetable/data/converters/datetime_converter.dart';
 import 'package:silvertimetable/data/hiveTypeIds.dart';
 
-part 'schedule.freezed.dart';
-part 'schedule.g.dart';
+part 'schedule_base.freezed.dart';
+part 'schedule_base.g.dart';
 
 @freezed
-class Schedule with _$Schedule {
-  Schedule._();
+class ScheduleBase with _$ScheduleBase {
+  ScheduleBase._();
 
   @HiveType(
-    typeId: HiveTypeIds.schedule,
-    adapterName: "ScheduleAdapter",
+    typeId: HiveTypeIds.scheduleBase,
+    adapterName: "ScheduleBaseAdapter",
   )
-  factory Schedule({
+  factory ScheduleBase({
     @HiveField(0) required String id,
     @HiveField(1) @DateTimeConverter() required DateTime created,
     @HiveField(2) @DateTimeConverter() required DateTime updated,
@@ -27,9 +26,8 @@ class Schedule with _$Schedule {
     @HiveField(8) required String fieldOfStudy,
     @HiveField(9) required String studyMode,
     @HiveField(10) required String degreeOfStudy,
-    @HiveField(11) required List<Subject> subjects,
-  }) = _Schedule;
+  }) = _ScheduleBase;
 
-  factory Schedule.fromJson(Map<String, dynamic> json) =>
-      _$ScheduleFromJson(json);
+  factory ScheduleBase.fromJson(Map<String, dynamic> json) =>
+      _$ScheduleBaseFromJson(json);
 }
