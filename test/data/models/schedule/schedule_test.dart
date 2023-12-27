@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:silvertimetable/data/models/schedule/schedule.dart';
+import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 
 void main() {
   testWidgets('schedule ...', (tester) async {
@@ -18,7 +18,7 @@ void main() {
       "subjects": [],
     };
 
-    final schedule = Schedule.fromJson(json);
+    final schedule = ScheduleBase.fromJson(json);
     print(schedule);
   });
 }

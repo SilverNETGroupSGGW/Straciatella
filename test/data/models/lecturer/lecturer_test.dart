@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
+import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 
 void main() {
   test('Creates Lecturer object using Lecturer.fromJson(...)', () {
     final String json =
         '{"id": "8a563599-4a25-470e-0547-08dbeeaa6ca9", "created": "2023-11-26T18:06:33.7820837", "updated": "2023-11-26T18:06:33.7821303","firstName": "Aleksandra", "surname": "Konopka","academicDegree": "", "email": ""}';
 
-    final lecturer = Lecturer.fromJson(jsonDecode(json));
+    final lecturer = LecturerBase.fromJson(jsonDecode(json));
 
-    final correctLecturer = Lecturer(
+    final correctLecturer = LecturerBase(
         id: "8a563599-4a25-470e-0547-08dbeeaa6ca9",
         created: DateTime(2023, 11, 26, 18, 6, 33, 782, 83),
         updated: DateTime(2023, 11, 26, 18, 6, 33, 782, 130),

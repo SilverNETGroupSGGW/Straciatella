@@ -5,5 +5,12 @@ class HiveTypeIds {
   static const themeMode = 2;
   static const color = 3;
   static const savedSchedulesState = 4;
-  static const schedule = 5;
+  static const scheduleBase = 5;
+  static const schedule = 6;
+  static const classroom = 7;
+  static const lecturerBase = 8;
+  static const lecturer = 9;
+  static const subject = 10;
+  static const subjectLesson = 11;
+  static const subjectGroup = 12;
 }

@@ -16,7 +16,3 @@ class SettingsState extends HiveObject with _$SettingsState {
     @Default(Colors.red) @HiveField(3) Color themeColor,
   }) = _SettingsState;
 }
-
-registerSettingsAdapters() {
-  Hive.registerAdapter(SettingsStateAdapter());
-}

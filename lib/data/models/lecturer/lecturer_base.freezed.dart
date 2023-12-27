@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'lecturer.dart';
+part of 'lecturer_base.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Lecturer _$LecturerFromJson(Map<String, dynamic> json) {
-  return _Lecturer.fromJson(json);
+LecturerBase _$LecturerBaseFromJson(Map<String, dynamic> json) {
+  return _LecturerBase.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Lecturer {
+mixin _$LecturerBase {
   @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @HiveField(1)
@@ -36,19 +36,18 @@ mixin _$Lecturer {
   String get academicDegree => throw _privateConstructorUsedError;
   @HiveField(6)
   String get email => throw _privateConstructorUsedError;
-  @HiveField(7)
-  List<Subject> get subjects => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LecturerCopyWith<Lecturer> get copyWith =>
+  $LecturerBaseCopyWith<LecturerBase> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LecturerCopyWith<$Res> {
-  factory $LecturerCopyWith(Lecturer value, $Res Function(Lecturer) then) =
-      _$LecturerCopyWithImpl<$Res, Lecturer>;
+abstract class $LecturerBaseCopyWith<$Res> {
+  factory $LecturerBaseCopyWith(
+          LecturerBase value, $Res Function(LecturerBase) then) =
+      _$LecturerBaseCopyWithImpl<$Res, LecturerBase>;
   @useResult
   $Res call(
       {@HiveField(0) String id,
@@ -57,14 +56,13 @@ abstract class $LecturerCopyWith<$Res> {
       @HiveField(3) String firstName,
       @HiveField(4) String surname,
       @HiveField(5) String academicDegree,
-      @HiveField(6) String email,
-      @HiveField(7) List<Subject> subjects});
+      @HiveField(6) String email});
 }
 
 /// @nodoc
-class _$LecturerCopyWithImpl<$Res, $Val extends Lecturer>
-    implements $LecturerCopyWith<$Res> {
-  _$LecturerCopyWithImpl(this._value, this._then);
+class _$LecturerBaseCopyWithImpl<$Res, $Val extends LecturerBase>
+    implements $LecturerBaseCopyWith<$Res> {
+  _$LecturerBaseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -81,7 +79,6 @@ class _$LecturerCopyWithImpl<$Res, $Val extends Lecturer>
     Object? surname = null,
     Object? academicDegree = null,
     Object? email = null,
-    Object? subjects = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -112,20 +109,16 @@ class _$LecturerCopyWithImpl<$Res, $Val extends Lecturer>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      subjects: null == subjects
-          ? _value.subjects
-          : subjects // ignore: cast_nullable_to_non_nullable
-              as List<Subject>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$LecturerImplCopyWith<$Res>
-    implements $LecturerCopyWith<$Res> {
-  factory _$$LecturerImplCopyWith(
-          _$LecturerImpl value, $Res Function(_$LecturerImpl) then) =
-      __$$LecturerImplCopyWithImpl<$Res>;
+abstract class _$$LecturerBaseImplCopyWith<$Res>
+    implements $LecturerBaseCopyWith<$Res> {
+  factory _$$LecturerBaseImplCopyWith(
+          _$LecturerBaseImpl value, $Res Function(_$LecturerBaseImpl) then) =
+      __$$LecturerBaseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -135,16 +128,15 @@ abstract class _$$LecturerImplCopyWith<$Res>
       @HiveField(3) String firstName,
       @HiveField(4) String surname,
       @HiveField(5) String academicDegree,
-      @HiveField(6) String email,
-      @HiveField(7) List<Subject> subjects});
+      @HiveField(6) String email});
 }
 
 /// @nodoc
-class __$$LecturerImplCopyWithImpl<$Res>
-    extends _$LecturerCopyWithImpl<$Res, _$LecturerImpl>
-    implements _$$LecturerImplCopyWith<$Res> {
-  __$$LecturerImplCopyWithImpl(
-      _$LecturerImpl _value, $Res Function(_$LecturerImpl) _then)
+class __$$LecturerBaseImplCopyWithImpl<$Res>
+    extends _$LecturerBaseCopyWithImpl<$Res, _$LecturerBaseImpl>
+    implements _$$LecturerBaseImplCopyWith<$Res> {
+  __$$LecturerBaseImplCopyWithImpl(
+      _$LecturerBaseImpl _value, $Res Function(_$LecturerBaseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -157,9 +149,8 @@ class __$$LecturerImplCopyWithImpl<$Res>
     Object? surname = null,
     Object? academicDegree = null,
     Object? email = null,
-    Object? subjects = null,
   }) {
-    return _then(_$LecturerImpl(
+    return _then(_$LecturerBaseImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -188,32 +179,26 @@ class __$$LecturerImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      subjects: null == subjects
-          ? _value._subjects
-          : subjects // ignore: cast_nullable_to_non_nullable
-              as List<Subject>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: HiveTypeIds.lecturer, adapterName: "LecturerAdapter")
-class _$LecturerImpl extends _Lecturer {
-  _$LecturerImpl(
+@HiveType(typeId: HiveTypeIds.lecturerBase, adapterName: "LecturerBaseAdapter")
+class _$LecturerBaseImpl extends _LecturerBase {
+  _$LecturerBaseImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() required this.created,
       @HiveField(2) @DateTimeConverter() required this.updated,
       @HiveField(3) required this.firstName,
       @HiveField(4) required this.surname,
       @HiveField(5) required this.academicDegree,
-      @HiveField(6) required this.email,
-      @HiveField(7) required final List<Subject> subjects})
-      : _subjects = subjects,
-        super._();
+      @HiveField(6) required this.email})
+      : super._();
 
-  factory _$LecturerImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LecturerImplFromJson(json);
+  factory _$LecturerBaseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LecturerBaseImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -238,25 +223,17 @@ class _$LecturerImpl extends _Lecturer {
   @override
   @HiveField(6)
   final String email;
-  final List<Subject> _subjects;
-  @override
-  @HiveField(7)
-  List<Subject> get subjects {
-    if (_subjects is EqualUnmodifiableListView) return _subjects;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_subjects);
-  }
 
   @override
   String toString() {
-    return 'Lecturer(id: $id, created: $created, updated: $updated, firstName: $firstName, surname: $surname, academicDegree: $academicDegree, email: $email, subjects: $subjects)';
+    return 'LecturerBase(id: $id, created: $created, updated: $updated, firstName: $firstName, surname: $surname, academicDegree: $academicDegree, email: $email)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LecturerImpl &&
+            other is _$LecturerBaseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
@@ -265,51 +242,41 @@ class _$LecturerImpl extends _Lecturer {
             (identical(other.surname, surname) || other.surname == surname) &&
             (identical(other.academicDegree, academicDegree) ||
                 other.academicDegree == academicDegree) &&
-            (identical(other.email, email) || other.email == email) &&
-            const DeepCollectionEquality().equals(other._subjects, _subjects));
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      created,
-      updated,
-      firstName,
-      surname,
-      academicDegree,
-      email,
-      const DeepCollectionEquality().hash(_subjects));
+  int get hashCode => Object.hash(runtimeType, id, created, updated, firstName,
+      surname, academicDegree, email);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LecturerImplCopyWith<_$LecturerImpl> get copyWith =>
-      __$$LecturerImplCopyWithImpl<_$LecturerImpl>(this, _$identity);
+  _$$LecturerBaseImplCopyWith<_$LecturerBaseImpl> get copyWith =>
+      __$$LecturerBaseImplCopyWithImpl<_$LecturerBaseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LecturerImplToJson(
+    return _$$LecturerBaseImplToJson(
       this,
     );
   }
 }
 
-abstract class _Lecturer extends Lecturer {
-  factory _Lecturer(
+abstract class _LecturerBase extends LecturerBase {
+  factory _LecturerBase(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() required final DateTime created,
       @HiveField(2) @DateTimeConverter() required final DateTime updated,
       @HiveField(3) required final String firstName,
       @HiveField(4) required final String surname,
       @HiveField(5) required final String academicDegree,
-      @HiveField(6) required final String email,
-      @HiveField(7) required final List<Subject> subjects}) = _$LecturerImpl;
-  _Lecturer._() : super._();
+      @HiveField(6) required final String email}) = _$LecturerBaseImpl;
+  _LecturerBase._() : super._();
 
-  factory _Lecturer.fromJson(Map<String, dynamic> json) =
-      _$LecturerImpl.fromJson;
+  factory _LecturerBase.fromJson(Map<String, dynamic> json) =
+      _$LecturerBaseImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -335,10 +302,7 @@ abstract class _Lecturer extends Lecturer {
   @HiveField(6)
   String get email;
   @override
-  @HiveField(7)
-  List<Subject> get subjects;
-  @override
   @JsonKey(ignore: true)
-  _$$LecturerImplCopyWith<_$LecturerImpl> get copyWith =>
+  _$$LecturerBaseImplCopyWith<_$LecturerBaseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

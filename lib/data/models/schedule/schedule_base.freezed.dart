@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'schedule.dart';
+part of 'schedule_base.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
-  return _Schedule.fromJson(json);
+ScheduleBase _$ScheduleBaseFromJson(Map<String, dynamic> json) {
+  return _ScheduleBase.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Schedule {
+mixin _$ScheduleBase {
   @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @HiveField(1)
@@ -44,19 +44,18 @@ mixin _$Schedule {
   String get studyMode => throw _privateConstructorUsedError;
   @HiveField(10)
   String get degreeOfStudy => throw _privateConstructorUsedError;
-  @HiveField(11)
-  List<Subject> get subjects => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ScheduleCopyWith<Schedule> get copyWith =>
+  $ScheduleBaseCopyWith<ScheduleBase> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ScheduleCopyWith<$Res> {
-  factory $ScheduleCopyWith(Schedule value, $Res Function(Schedule) then) =
-      _$ScheduleCopyWithImpl<$Res, Schedule>;
+abstract class $ScheduleBaseCopyWith<$Res> {
+  factory $ScheduleBaseCopyWith(
+          ScheduleBase value, $Res Function(ScheduleBase) then) =
+      _$ScheduleBaseCopyWithImpl<$Res, ScheduleBase>;
   @useResult
   $Res call(
       {@HiveField(0) String id,
@@ -69,14 +68,13 @@ abstract class $ScheduleCopyWith<$Res> {
       @HiveField(7) String faculty,
       @HiveField(8) String fieldOfStudy,
       @HiveField(9) String studyMode,
-      @HiveField(10) String degreeOfStudy,
-      @HiveField(11) List<Subject> subjects});
+      @HiveField(10) String degreeOfStudy});
 }
 
 /// @nodoc
-class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
-    implements $ScheduleCopyWith<$Res> {
-  _$ScheduleCopyWithImpl(this._value, this._then);
+class _$ScheduleBaseCopyWithImpl<$Res, $Val extends ScheduleBase>
+    implements $ScheduleBaseCopyWith<$Res> {
+  _$ScheduleBaseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -97,7 +95,6 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
     Object? fieldOfStudy = null,
     Object? studyMode = null,
     Object? degreeOfStudy = null,
-    Object? subjects = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -144,20 +141,16 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
           ? _value.degreeOfStudy
           : degreeOfStudy // ignore: cast_nullable_to_non_nullable
               as String,
-      subjects: null == subjects
-          ? _value.subjects
-          : subjects // ignore: cast_nullable_to_non_nullable
-              as List<Subject>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ScheduleImplCopyWith<$Res>
-    implements $ScheduleCopyWith<$Res> {
-  factory _$$ScheduleImplCopyWith(
-          _$ScheduleImpl value, $Res Function(_$ScheduleImpl) then) =
-      __$$ScheduleImplCopyWithImpl<$Res>;
+abstract class _$$ScheduleBaseImplCopyWith<$Res>
+    implements $ScheduleBaseCopyWith<$Res> {
+  factory _$$ScheduleBaseImplCopyWith(
+          _$ScheduleBaseImpl value, $Res Function(_$ScheduleBaseImpl) then) =
+      __$$ScheduleBaseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -171,16 +164,15 @@ abstract class _$$ScheduleImplCopyWith<$Res>
       @HiveField(7) String faculty,
       @HiveField(8) String fieldOfStudy,
       @HiveField(9) String studyMode,
-      @HiveField(10) String degreeOfStudy,
-      @HiveField(11) List<Subject> subjects});
+      @HiveField(10) String degreeOfStudy});
 }
 
 /// @nodoc
-class __$$ScheduleImplCopyWithImpl<$Res>
-    extends _$ScheduleCopyWithImpl<$Res, _$ScheduleImpl>
-    implements _$$ScheduleImplCopyWith<$Res> {
-  __$$ScheduleImplCopyWithImpl(
-      _$ScheduleImpl _value, $Res Function(_$ScheduleImpl) _then)
+class __$$ScheduleBaseImplCopyWithImpl<$Res>
+    extends _$ScheduleBaseCopyWithImpl<$Res, _$ScheduleBaseImpl>
+    implements _$$ScheduleBaseImplCopyWith<$Res> {
+  __$$ScheduleBaseImplCopyWithImpl(
+      _$ScheduleBaseImpl _value, $Res Function(_$ScheduleBaseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -197,9 +189,8 @@ class __$$ScheduleImplCopyWithImpl<$Res>
     Object? fieldOfStudy = null,
     Object? studyMode = null,
     Object? degreeOfStudy = null,
-    Object? subjects = null,
   }) {
-    return _then(_$ScheduleImpl(
+    return _then(_$ScheduleBaseImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -244,19 +235,15 @@ class __$$ScheduleImplCopyWithImpl<$Res>
           ? _value.degreeOfStudy
           : degreeOfStudy // ignore: cast_nullable_to_non_nullable
               as String,
-      subjects: null == subjects
-          ? _value._subjects
-          : subjects // ignore: cast_nullable_to_non_nullable
-              as List<Subject>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: HiveTypeIds.schedule, adapterName: "ScheduleAdapter")
-class _$ScheduleImpl extends _Schedule {
-  _$ScheduleImpl(
+@HiveType(typeId: HiveTypeIds.scheduleBase, adapterName: "ScheduleBaseAdapter")
+class _$ScheduleBaseImpl extends _ScheduleBase {
+  _$ScheduleBaseImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() required this.created,
       @HiveField(2) @DateTimeConverter() required this.updated,
@@ -267,13 +254,11 @@ class _$ScheduleImpl extends _Schedule {
       @HiveField(7) required this.faculty,
       @HiveField(8) required this.fieldOfStudy,
       @HiveField(9) required this.studyMode,
-      @HiveField(10) required this.degreeOfStudy,
-      @HiveField(11) required final List<Subject> subjects})
-      : _subjects = subjects,
-        super._();
+      @HiveField(10) required this.degreeOfStudy})
+      : super._();
 
-  factory _$ScheduleImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ScheduleImplFromJson(json);
+  factory _$ScheduleBaseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ScheduleBaseImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -310,25 +295,17 @@ class _$ScheduleImpl extends _Schedule {
   @override
   @HiveField(10)
   final String degreeOfStudy;
-  final List<Subject> _subjects;
-  @override
-  @HiveField(11)
-  List<Subject> get subjects {
-    if (_subjects is EqualUnmodifiableListView) return _subjects;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_subjects);
-  }
 
   @override
   String toString() {
-    return 'Schedule(id: $id, created: $created, updated: $updated, startDate: $startDate, name: $name, year: $year, semester: $semester, faculty: $faculty, fieldOfStudy: $fieldOfStudy, studyMode: $studyMode, degreeOfStudy: $degreeOfStudy, subjects: $subjects)';
+    return 'ScheduleBase(id: $id, created: $created, updated: $updated, startDate: $startDate, name: $name, year: $year, semester: $semester, faculty: $faculty, fieldOfStudy: $fieldOfStudy, studyMode: $studyMode, degreeOfStudy: $degreeOfStudy)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ScheduleImpl &&
+            other is _$ScheduleBaseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
@@ -344,43 +321,30 @@ class _$ScheduleImpl extends _Schedule {
             (identical(other.studyMode, studyMode) ||
                 other.studyMode == studyMode) &&
             (identical(other.degreeOfStudy, degreeOfStudy) ||
-                other.degreeOfStudy == degreeOfStudy) &&
-            const DeepCollectionEquality().equals(other._subjects, _subjects));
+                other.degreeOfStudy == degreeOfStudy));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      created,
-      updated,
-      startDate,
-      name,
-      year,
-      semester,
-      faculty,
-      fieldOfStudy,
-      studyMode,
-      degreeOfStudy,
-      const DeepCollectionEquality().hash(_subjects));
+  int get hashCode => Object.hash(runtimeType, id, created, updated, startDate,
+      name, year, semester, faculty, fieldOfStudy, studyMode, degreeOfStudy);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ScheduleImplCopyWith<_$ScheduleImpl> get copyWith =>
-      __$$ScheduleImplCopyWithImpl<_$ScheduleImpl>(this, _$identity);
+  _$$ScheduleBaseImplCopyWith<_$ScheduleBaseImpl> get copyWith =>
+      __$$ScheduleBaseImplCopyWithImpl<_$ScheduleBaseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ScheduleImplToJson(
+    return _$$ScheduleBaseImplToJson(
       this,
     );
   }
 }
 
-abstract class _Schedule extends Schedule {
-  factory _Schedule(
+abstract class _ScheduleBase extends ScheduleBase {
+  factory _ScheduleBase(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() required final DateTime created,
       @HiveField(2) @DateTimeConverter() required final DateTime updated,
@@ -391,12 +355,11 @@ abstract class _Schedule extends Schedule {
       @HiveField(7) required final String faculty,
       @HiveField(8) required final String fieldOfStudy,
       @HiveField(9) required final String studyMode,
-      @HiveField(10) required final String degreeOfStudy,
-      @HiveField(11) required final List<Subject> subjects}) = _$ScheduleImpl;
-  _Schedule._() : super._();
+      @HiveField(10) required final String degreeOfStudy}) = _$ScheduleBaseImpl;
+  _ScheduleBase._() : super._();
 
-  factory _Schedule.fromJson(Map<String, dynamic> json) =
-      _$ScheduleImpl.fromJson;
+  factory _ScheduleBase.fromJson(Map<String, dynamic> json) =
+      _$ScheduleBaseImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -434,10 +397,7 @@ abstract class _Schedule extends Schedule {
   @HiveField(10)
   String get degreeOfStudy;
   @override
-  @HiveField(11)
-  List<Subject> get subjects;
-  @override
   @JsonKey(ignore: true)
-  _$$ScheduleImplCopyWith<_$ScheduleImpl> get copyWith =>
+  _$$ScheduleBaseImplCopyWith<_$ScheduleBaseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

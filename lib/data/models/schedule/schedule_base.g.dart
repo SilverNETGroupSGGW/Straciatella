@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'schedule.dart';
+part of 'schedule_base.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ScheduleAdapter extends TypeAdapter<_$ScheduleImpl> {
+class ScheduleBaseAdapter extends TypeAdapter<_$ScheduleBaseImpl> {
   @override
-  final int typeId = 6;
+  final int typeId = 5;
 
   @override
-  _$ScheduleImpl read(BinaryReader reader) {
+  _$ScheduleBaseImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$ScheduleImpl(
+    return _$ScheduleBaseImpl(
       id: fields[0] as String,
       created: fields[1] as DateTime,
       updated: fields[2] as DateTime,
@@ -28,14 +28,13 @@ class ScheduleAdapter extends TypeAdapter<_$ScheduleImpl> {
       fieldOfStudy: fields[8] as String,
       studyMode: fields[9] as String,
       degreeOfStudy: fields[10] as String,
-      subjects: (fields[11] as List).cast<Subject>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$ScheduleImpl obj) {
+  void write(BinaryWriter writer, _$ScheduleBaseImpl obj) {
     writer
-      ..writeByte(12)
+      ..writeByte(11)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -57,9 +56,7 @@ class ScheduleAdapter extends TypeAdapter<_$ScheduleImpl> {
       ..writeByte(9)
       ..write(obj.studyMode)
       ..writeByte(10)
-      ..write(obj.degreeOfStudy)
-      ..writeByte(11)
-      ..write(obj.subjects);
+      ..write(obj.degreeOfStudy);
   }
 
   @override
@@ -68,7 +65,7 @@ class ScheduleAdapter extends TypeAdapter<_$ScheduleImpl> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ScheduleAdapter &&
+      other is ScheduleBaseAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -77,8 +74,8 @@ class ScheduleAdapter extends TypeAdapter<_$ScheduleImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
-    _$ScheduleImpl(
+_$ScheduleBaseImpl _$$ScheduleBaseImplFromJson(Map<String, dynamic> json) =>
+    _$ScheduleBaseImpl(
       id: json['id'] as String,
       created: const DateTimeConverter().fromJson(json['created'] as String),
       updated: const DateTimeConverter().fromJson(json['updated'] as String),
@@ -90,12 +87,9 @@ _$ScheduleImpl _$$ScheduleImplFromJson(Map<String, dynamic> json) =>
       fieldOfStudy: json['fieldOfStudy'] as String,
       studyMode: json['studyMode'] as String,
       degreeOfStudy: json['degreeOfStudy'] as String,
-      subjects: (json['subjects'] as List<dynamic>)
-          .map((e) => Subject.fromJson(e as Map<String, dynamic>))
-          .toList(),
     );
 
-Map<String, dynamic> _$$ScheduleImplToJson(_$ScheduleImpl instance) =>
+Map<String, dynamic> _$$ScheduleBaseImplToJson(_$ScheduleBaseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': const DateTimeConverter().toJson(instance.created),
@@ -108,5 +102,4 @@ Map<String, dynamic> _$$ScheduleImplToJson(_$ScheduleImpl instance) =>
       'fieldOfStudy': instance.fieldOfStudy,
       'studyMode': instance.studyMode,
       'degreeOfStudy': instance.degreeOfStudy,
-      'subjects': instance.subjects,
     };

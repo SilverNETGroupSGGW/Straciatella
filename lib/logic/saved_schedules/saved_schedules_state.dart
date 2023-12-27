@@ -13,7 +13,3 @@ class SavedSchedulesState with _$SavedSchedulesState {
     @Default(null) @HiveField(1) Schedule? selectedSchedule,
   }) = _SavedSchedulesState;
 }
-
-registerSavedSchedulesAdapters() {
-  Hive.registerAdapter(SavedSchedulesStateAdapter());
-}

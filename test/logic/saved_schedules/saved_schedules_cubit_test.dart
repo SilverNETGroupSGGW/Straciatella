@@ -1,12 +1,13 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
-import 'package:silvertimetable/data/adapters/register_adapters.dart';
+import 'package:silvertimetable/data/register_adapters.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
+import 'package:silvertimetable/logic/register_adapters.dart';
 import 'package:silvertimetable/logic/saved_schedules/saved_schedules_cubit.dart';
 
 void main() async {
-  registerSavedSchedulesAdapters();
+  registerLogicDataAdapters();
   registerDataAdapters();
 
   await Hive.openBox(
