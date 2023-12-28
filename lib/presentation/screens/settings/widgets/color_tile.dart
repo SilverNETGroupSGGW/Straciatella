@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
+import 'package:silvertimetable/themes.dart';
+
+import 'theme_type_buttons.dart';
 
 class ColorTile extends StatelessWidget {
   const ColorTile({super.key});
@@ -34,9 +37,25 @@ class ChangeThemeColorAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog.adaptive(
       title: Text('theme_color'.tr()),
-      content: BlockPicker(
-        pickerColor: Theme.of(context).colorScheme.primary,
-        onColorChanged: context.read<SettingsCubit>().changeThemeColor,
+      content: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, state) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ThemeTypeButtons(selected: state.themeType),
+              SizedBox(
+                height: 12,
+              ),
+              state.themeType == ThemeType.normal
+                  ? BlockPicker(
+                      pickerColor: Theme.of(context).colorScheme.primary,
+                      onColorChanged:
+                          context.read<SettingsCubit>().changeThemeColor,
+                    )
+                  : Container(),
+            ],
+          );
+        },
       ),
       actions: [
         TextButton(
