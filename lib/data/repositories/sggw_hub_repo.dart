@@ -1,7 +1,8 @@
+import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
+import 'package:silvertimetable/data/models/schedule/schedule.dart';
+import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/providers/sggw_hub_api.dart';
-
-import '../models/schedule/schedule_base.dart';
 
 class SggwHubRepo {
   final sggwHubApi = SggwHubApi();
@@ -26,6 +27,16 @@ class SggwHubRepo {
     }
 
     return schedules;
+  }
+
+  Future<Schedule> getSchedule(String id) async {
+    final response = await sggwHubApi.getSchedule(id);
+    return Schedule.fromJson(response.data);
+  }
+
+  Future<Lecturer> getLecturer(String id) async {
+    final response = await sggwHubApi.getLecturer(id);
+    return Lecturer.fromJson(response.data);
   }
 
 }
