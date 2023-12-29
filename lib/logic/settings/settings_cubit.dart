@@ -37,6 +37,12 @@ class SettingsCubit extends Cubit<SettingsState> {
     ));
   }
 
+  toggleFabVisibility() {
+    emit(state.copyWith(
+      isFabHidden: !state.isFabHidden,
+    ));
+  }
+
   changeThemeType(ThemeType themeType) {
     emit(state.copyWith(
       themeType: themeType,
@@ -51,7 +57,7 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   toggleDebugMode() {
     emit(state.copyWith(
-      isDebugMode: state.isDebugMode,
+      isDebugMode: !state.isDebugMode,
     ));
   }
 
