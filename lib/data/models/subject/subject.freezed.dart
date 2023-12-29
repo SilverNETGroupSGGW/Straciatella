@@ -37,8 +37,10 @@ mixin _$Subject {
   @HiveField(6)
   String get startTime => throw _privateConstructorUsedError;
   @HiveField(7)
-  String get dayOfWeek => throw _privateConstructorUsedError;
+  @DayOfWeekConverter()
+  DayOfWeek get dayOfWeek => throw _privateConstructorUsedError;
   @HiveField(8)
+  @ApiDurationConverter()
   String get duration => throw _privateConstructorUsedError;
   @HiveField(9)
   bool get isRemote => throw _privateConstructorUsedError;
@@ -71,8 +73,8 @@ abstract class $SubjectCopyWith<$Res> {
       @HiveField(4) String name,
       @HiveField(5) String type,
       @HiveField(6) String startTime,
-      @HiveField(7) String dayOfWeek,
-      @HiveField(8) String duration,
+      @HiveField(7) @DayOfWeekConverter() DayOfWeek dayOfWeek,
+      @HiveField(8) @ApiDurationConverter() String duration,
       @HiveField(9) bool isRemote,
       @HiveField(10) String comment,
       @HiveField(11) ScheduleBase schedule,
@@ -145,7 +147,7 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
       dayOfWeek: null == dayOfWeek
           ? _value.dayOfWeek
           : dayOfWeek // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DayOfWeek,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -209,8 +211,8 @@ abstract class _$$SubjectImplCopyWith<$Res> implements $SubjectCopyWith<$Res> {
       @HiveField(4) String name,
       @HiveField(5) String type,
       @HiveField(6) String startTime,
-      @HiveField(7) String dayOfWeek,
-      @HiveField(8) String duration,
+      @HiveField(7) @DayOfWeekConverter() DayOfWeek dayOfWeek,
+      @HiveField(8) @ApiDurationConverter() String duration,
       @HiveField(9) bool isRemote,
       @HiveField(10) String comment,
       @HiveField(11) ScheduleBase schedule,
@@ -283,7 +285,7 @@ class __$$SubjectImplCopyWithImpl<$Res>
       dayOfWeek: null == dayOfWeek
           ? _value.dayOfWeek
           : dayOfWeek // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DayOfWeek,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -328,8 +330,8 @@ class _$SubjectImpl extends _Subject {
       @HiveField(4) required this.name,
       @HiveField(5) required this.type,
       @HiveField(6) required this.startTime,
-      @HiveField(7) required this.dayOfWeek,
-      @HiveField(8) required this.duration,
+      @HiveField(7) @DayOfWeekConverter() required this.dayOfWeek,
+      @HiveField(8) @ApiDurationConverter() required this.duration,
       @HiveField(9) required this.isRemote,
       @HiveField(10) required this.comment,
       @HiveField(11) required this.schedule,
@@ -368,9 +370,11 @@ class _$SubjectImpl extends _Subject {
   final String startTime;
   @override
   @HiveField(7)
-  final String dayOfWeek;
+  @DayOfWeekConverter()
+  final DayOfWeek dayOfWeek;
   @override
   @HiveField(8)
+  @ApiDurationConverter()
   final String duration;
   @override
   @HiveField(9)
@@ -472,22 +476,22 @@ class _$SubjectImpl extends _Subject {
 
 abstract class _Subject extends Subject {
   factory _Subject(
-          {@HiveField(0) required final String id,
-          @HiveField(1) @DateTimeConverter() required final DateTime created,
-          @HiveField(2) @DateTimeConverter() required final DateTime updated,
-          @HiveField(3) required final String scheduleId,
-          @HiveField(4) required final String name,
-          @HiveField(5) required final String type,
-          @HiveField(6) required final String startTime,
-          @HiveField(7) required final String dayOfWeek,
-          @HiveField(8) required final String duration,
-          @HiveField(9) required final bool isRemote,
-          @HiveField(10) required final String comment,
-          @HiveField(11) required final ScheduleBase schedule,
-          @HiveField(12) required final Classroom classroom,
-          @HiveField(13) required final List<_SubjectLesson> lessons,
-          @HiveField(14) required final List<_SubjectGroup> groups}) =
-      _$SubjectImpl;
+      {@HiveField(0) required final String id,
+      @HiveField(1) @DateTimeConverter() required final DateTime created,
+      @HiveField(2) @DateTimeConverter() required final DateTime updated,
+      @HiveField(3) required final String scheduleId,
+      @HiveField(4) required final String name,
+      @HiveField(5) required final String type,
+      @HiveField(6) required final String startTime,
+      @HiveField(7) @DayOfWeekConverter() required final DayOfWeek dayOfWeek,
+      @HiveField(8) @ApiDurationConverter() required final String duration,
+      @HiveField(9) required final bool isRemote,
+      @HiveField(10) required final String comment,
+      @HiveField(11) required final ScheduleBase schedule,
+      @HiveField(12) required final Classroom classroom,
+      @HiveField(13) required final List<_SubjectLesson> lessons,
+      @HiveField(14)
+      required final List<_SubjectGroup> groups}) = _$SubjectImpl;
   _Subject._() : super._();
 
   factory _Subject.fromJson(Map<String, dynamic> json) = _$SubjectImpl.fromJson;
@@ -517,9 +521,11 @@ abstract class _Subject extends Subject {
   String get startTime;
   @override
   @HiveField(7)
-  String get dayOfWeek;
+  @DayOfWeekConverter()
+  DayOfWeek get dayOfWeek;
   @override
   @HiveField(8)
+  @ApiDurationConverter()
   String get duration;
   @override
   @HiveField(9)
@@ -565,6 +571,7 @@ mixin _$SubjectLesson {
   @DateTimeConverter()
   DateTime get startTime => throw _privateConstructorUsedError;
   @HiveField(5)
+  @ApiDurationConverter()
   String get duration => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -585,7 +592,7 @@ abstract class _$SubjectLessonCopyWith<$Res> {
       @HiveField(2) @DateTimeConverter() DateTime updated,
       @HiveField(3) int numberOfLesson,
       @HiveField(4) @DateTimeConverter() DateTime startTime,
-      @HiveField(5) String duration});
+      @HiveField(5) @ApiDurationConverter() String duration});
 }
 
 /// @nodoc
@@ -651,7 +658,7 @@ abstract class _$$_SubjectLessonImplCopyWith<$Res>
       @HiveField(2) @DateTimeConverter() DateTime updated,
       @HiveField(3) int numberOfLesson,
       @HiveField(4) @DateTimeConverter() DateTime startTime,
-      @HiveField(5) String duration});
+      @HiveField(5) @ApiDurationConverter() String duration});
 }
 
 /// @nodoc
@@ -712,7 +719,7 @@ class _$_SubjectLessonImpl extends __SubjectLesson {
       @HiveField(2) @DateTimeConverter() required this.updated,
       @HiveField(3) required this.numberOfLesson,
       @HiveField(4) @DateTimeConverter() required this.startTime,
-      @HiveField(5) required this.duration})
+      @HiveField(5) @ApiDurationConverter() required this.duration})
       : super._();
 
   factory _$_SubjectLessonImpl.fromJson(Map<String, dynamic> json) =>
@@ -738,6 +745,7 @@ class _$_SubjectLessonImpl extends __SubjectLesson {
   final DateTime startTime;
   @override
   @HiveField(5)
+  @ApiDurationConverter()
   final String duration;
 
   @override
@@ -788,7 +796,9 @@ abstract class __SubjectLesson extends _SubjectLesson {
       @HiveField(2) @DateTimeConverter() required final DateTime updated,
       @HiveField(3) required final int numberOfLesson,
       @HiveField(4) @DateTimeConverter() required final DateTime startTime,
-      @HiveField(5) required final String duration}) = _$_SubjectLessonImpl;
+      @HiveField(5)
+      @ApiDurationConverter()
+      required final String duration}) = _$_SubjectLessonImpl;
   __SubjectLesson._() : super._();
 
   factory __SubjectLesson.fromJson(Map<String, dynamic> json) =
@@ -814,6 +824,7 @@ abstract class __SubjectLesson extends _SubjectLesson {
   DateTime get startTime;
   @override
   @HiveField(5)
+  @ApiDurationConverter()
   String get duration;
   @override
   @JsonKey(ignore: true)

@@ -2,7 +2,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/data/converters/api_duration_converter.dart';
 import 'package:silvertimetable/data/converters/datetime_converter.dart';
+import 'package:silvertimetable/data/converters/day_of_week_converter.dart';
 import 'package:silvertimetable/data/models/classroom/classroom.dart';
+import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/hiveTypeIds.dart';
 
@@ -25,7 +27,7 @@ class Subject with _$Subject {
     @HiveField(4) required String name,
     @HiveField(5) required String type,
     @HiveField(6) required String startTime,
-    @HiveField(7) required String dayOfWeek,
+    @HiveField(7) @DayOfWeekConverter() required DayOfWeek dayOfWeek,
     @HiveField(8) @ApiDurationConverter() required String duration,
     @HiveField(9) required bool isRemote,
     @HiveField(10) required String comment,

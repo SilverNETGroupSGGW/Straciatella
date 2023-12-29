@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/data/adapters/color_adapter.dart';
+import 'package:silvertimetable/data/adapters/day_of_week_adapter.dart';
 import 'package:silvertimetable/data/adapters/theme_mode_adapter.dart';
 import 'package:silvertimetable/data/adapters/theme_type_adapter.dart';
 import 'package:silvertimetable/data/models/classroom/classroom.dart';
@@ -13,6 +14,7 @@ registerDataAdapters() {
   Hive.registerAdapter(ColorAdapter());
   Hive.registerAdapter(ThemeModeAdapter());
   Hive.registerAdapter(ThemeTypeAdapter());
+  Hive.registerAdapter(DayOfWeekAdapter());
   Hive.registerAdapter(ClassroomAdapter());
   Hive.registerAdapter(LecturerAdapter());
   Hive.registerAdapter(LecturerBaseAdapter());
