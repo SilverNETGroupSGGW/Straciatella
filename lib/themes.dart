@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
-enum ThemeType { normal, retro }
+enum ThemeType { custom, retro, adaptive }
 
 ThemeData getTheme(ThemeType type, bool isDark, Color seedColor) {
   return switch ((type, isDark)) {
-    (ThemeType.normal, false) => getLightTheme(seedColor),
-    (ThemeType.normal, true) => getDarkTheme(seedColor),
+    (ThemeType.custom, false) => getLightTheme(seedColor),
+    (ThemeType.custom, true) => getDarkTheme(seedColor),
+    // TODO: implement adaptive theme
+    (ThemeType.adaptive, false) => getLightTheme(seedColor),
+    (ThemeType.adaptive, true) => getDarkTheme(seedColor),
     (ThemeType.retro, false) => getRetroLightTheme(),
     (ThemeType.retro, true) => getRetroDarkTheme(),
   };
