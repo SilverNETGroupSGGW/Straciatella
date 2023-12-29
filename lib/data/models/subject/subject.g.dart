@@ -25,13 +25,13 @@ class SubjectAdapter extends TypeAdapter<_$SubjectImpl> {
       type: fields[5] as String,
       startTime: fields[6] as String,
       dayOfWeek: fields[7] as DayOfWeek,
-      duration: fields[8] as String,
+      duration: fields[8] as Duration,
       isRemote: fields[9] as bool,
       comment: fields[10] as String,
       schedule: fields[11] as ScheduleBase,
       classroom: fields[12] as Classroom,
-      lessons: (fields[13] as List).cast<_SubjectLesson>(),
-      groups: (fields[14] as List).cast<_SubjectGroup>(),
+      lessons: (fields[13] as List).cast<SubjectLesson>(),
+      groups: (fields[14] as List).cast<SubjectGroup>(),
     );
   }
 
@@ -82,28 +82,28 @@ class SubjectAdapter extends TypeAdapter<_$SubjectImpl> {
           typeId == other.typeId;
 }
 
-class SubjectLessonAdapter extends TypeAdapter<_$_SubjectLessonImpl> {
+class SubjectLessonAdapter extends TypeAdapter<_$SubjectLessonImpl> {
   @override
   final int typeId = 11;
 
   @override
-  _$_SubjectLessonImpl read(BinaryReader reader) {
+  _$SubjectLessonImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_SubjectLessonImpl(
+    return _$SubjectLessonImpl(
       id: fields[0] as String,
       created: fields[1] as DateTime,
       updated: fields[2] as DateTime,
       numberOfLesson: fields[3] as int,
       startTime: fields[4] as DateTime,
-      duration: fields[5] as String,
+      duration: fields[5] as Duration,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$_SubjectLessonImpl obj) {
+  void write(BinaryWriter writer, _$SubjectLessonImpl obj) {
     writer
       ..writeByte(6)
       ..writeByte(0)
@@ -131,17 +131,17 @@ class SubjectLessonAdapter extends TypeAdapter<_$_SubjectLessonImpl> {
           typeId == other.typeId;
 }
 
-class SubjectGroupAdapter extends TypeAdapter<_$_SubjectGroupImpl> {
+class SubjectGroupAdapter extends TypeAdapter<_$SubjectGroupImpl> {
   @override
   final int typeId = 12;
 
   @override
-  _$_SubjectGroupImpl read(BinaryReader reader) {
+  _$SubjectGroupImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_SubjectGroupImpl(
+    return _$SubjectGroupImpl(
       id: fields[0] as String,
       created: fields[1] as DateTime,
       updated: fields[2] as DateTime,
@@ -151,7 +151,7 @@ class SubjectGroupAdapter extends TypeAdapter<_$_SubjectGroupImpl> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_SubjectGroupImpl obj) {
+  void write(BinaryWriter writer, _$SubjectGroupImpl obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
@@ -192,16 +192,17 @@ _$SubjectImpl _$$SubjectImplFromJson(Map<String, dynamic> json) =>
       startTime: json['startTime'] as String,
       dayOfWeek:
           const DayOfWeekConverter().fromJson(json['dayOfWeek'] as String),
-      duration: json['duration'] as String,
+      duration:
+          const ApiDurationConverter().fromJson(json['duration'] as String),
       isRemote: json['isRemote'] as bool,
       comment: json['comment'] as String,
       schedule: ScheduleBase.fromJson(json['schedule'] as Map<String, dynamic>),
       classroom: Classroom.fromJson(json['classroom'] as Map<String, dynamic>),
       lessons: (json['lessons'] as List<dynamic>)
-          .map((e) => _SubjectLesson.fromJson(e as Map<String, dynamic>))
+          .map((e) => SubjectLesson.fromJson(e as Map<String, dynamic>))
           .toList(),
       groups: (json['groups'] as List<dynamic>)
-          .map((e) => _SubjectGroup.fromJson(e as Map<String, dynamic>))
+          .map((e) => SubjectGroup.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -215,7 +216,7 @@ Map<String, dynamic> _$$SubjectImplToJson(_$SubjectImpl instance) =>
       'type': instance.type,
       'startTime': instance.startTime,
       'dayOfWeek': const DayOfWeekConverter().toJson(instance.dayOfWeek),
-      'duration': instance.duration,
+      'duration': const ApiDurationConverter().toJson(instance.duration),
       'isRemote': instance.isRemote,
       'comment': instance.comment,
       'schedule': instance.schedule,
@@ -224,30 +225,30 @@ Map<String, dynamic> _$$SubjectImplToJson(_$SubjectImpl instance) =>
       'groups': instance.groups,
     };
 
-_$_SubjectLessonImpl _$$_SubjectLessonImplFromJson(Map<String, dynamic> json) =>
-    _$_SubjectLessonImpl(
+_$SubjectLessonImpl _$$SubjectLessonImplFromJson(Map<String, dynamic> json) =>
+    _$SubjectLessonImpl(
       id: json['id'] as String,
       created: const DateTimeConverter().fromJson(json['created'] as String),
       updated: const DateTimeConverter().fromJson(json['updated'] as String),
       numberOfLesson: json['numberOfLesson'] as int,
       startTime:
           const DateTimeConverter().fromJson(json['startTime'] as String),
-      duration: json['duration'] as String,
+      duration:
+          const ApiDurationConverter().fromJson(json['duration'] as String),
     );
 
-Map<String, dynamic> _$$_SubjectLessonImplToJson(
-        _$_SubjectLessonImpl instance) =>
+Map<String, dynamic> _$$SubjectLessonImplToJson(_$SubjectLessonImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': const DateTimeConverter().toJson(instance.created),
       'updated': const DateTimeConverter().toJson(instance.updated),
       'numberOfLesson': instance.numberOfLesson,
       'startTime': const DateTimeConverter().toJson(instance.startTime),
-      'duration': instance.duration,
+      'duration': const ApiDurationConverter().toJson(instance.duration),
     };
 
-_$_SubjectGroupImpl _$$_SubjectGroupImplFromJson(Map<String, dynamic> json) =>
-    _$_SubjectGroupImpl(
+_$SubjectGroupImpl _$$SubjectGroupImplFromJson(Map<String, dynamic> json) =>
+    _$SubjectGroupImpl(
       id: json['id'] as String,
       created: const DateTimeConverter().fromJson(json['created'] as String),
       updated: const DateTimeConverter().fromJson(json['updated'] as String),
@@ -255,7 +256,7 @@ _$_SubjectGroupImpl _$$_SubjectGroupImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$_SubjectGroupImplToJson(_$_SubjectGroupImpl instance) =>
+Map<String, dynamic> _$$SubjectGroupImplToJson(_$SubjectGroupImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': const DateTimeConverter().toJson(instance.created),

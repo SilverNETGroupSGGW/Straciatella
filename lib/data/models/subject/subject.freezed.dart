@@ -41,7 +41,7 @@ mixin _$Subject {
   DayOfWeek get dayOfWeek => throw _privateConstructorUsedError;
   @HiveField(8)
   @ApiDurationConverter()
-  String get duration => throw _privateConstructorUsedError;
+  Duration get duration => throw _privateConstructorUsedError;
   @HiveField(9)
   bool get isRemote => throw _privateConstructorUsedError;
   @HiveField(10)
@@ -51,9 +51,9 @@ mixin _$Subject {
   @HiveField(12)
   Classroom get classroom => throw _privateConstructorUsedError;
   @HiveField(13)
-  List<_SubjectLesson> get lessons => throw _privateConstructorUsedError;
+  List<SubjectLesson> get lessons => throw _privateConstructorUsedError;
   @HiveField(14)
-  List<_SubjectGroup> get groups => throw _privateConstructorUsedError;
+  List<SubjectGroup> get groups => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -74,13 +74,13 @@ abstract class $SubjectCopyWith<$Res> {
       @HiveField(5) String type,
       @HiveField(6) String startTime,
       @HiveField(7) @DayOfWeekConverter() DayOfWeek dayOfWeek,
-      @HiveField(8) @ApiDurationConverter() String duration,
+      @HiveField(8) @ApiDurationConverter() Duration duration,
       @HiveField(9) bool isRemote,
       @HiveField(10) String comment,
       @HiveField(11) ScheduleBase schedule,
       @HiveField(12) Classroom classroom,
-      @HiveField(13) List<_SubjectLesson> lessons,
-      @HiveField(14) List<_SubjectGroup> groups});
+      @HiveField(13) List<SubjectLesson> lessons,
+      @HiveField(14) List<SubjectGroup> groups});
 
   $ScheduleBaseCopyWith<$Res> get schedule;
   $ClassroomCopyWith<$Res> get classroom;
@@ -151,7 +151,7 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Duration,
       isRemote: null == isRemote
           ? _value.isRemote
           : isRemote // ignore: cast_nullable_to_non_nullable
@@ -171,11 +171,11 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
       lessons: null == lessons
           ? _value.lessons
           : lessons // ignore: cast_nullable_to_non_nullable
-              as List<_SubjectLesson>,
+              as List<SubjectLesson>,
       groups: null == groups
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<_SubjectGroup>,
+              as List<SubjectGroup>,
     ) as $Val);
   }
 
@@ -212,13 +212,13 @@ abstract class _$$SubjectImplCopyWith<$Res> implements $SubjectCopyWith<$Res> {
       @HiveField(5) String type,
       @HiveField(6) String startTime,
       @HiveField(7) @DayOfWeekConverter() DayOfWeek dayOfWeek,
-      @HiveField(8) @ApiDurationConverter() String duration,
+      @HiveField(8) @ApiDurationConverter() Duration duration,
       @HiveField(9) bool isRemote,
       @HiveField(10) String comment,
       @HiveField(11) ScheduleBase schedule,
       @HiveField(12) Classroom classroom,
-      @HiveField(13) List<_SubjectLesson> lessons,
-      @HiveField(14) List<_SubjectGroup> groups});
+      @HiveField(13) List<SubjectLesson> lessons,
+      @HiveField(14) List<SubjectGroup> groups});
 
   @override
   $ScheduleBaseCopyWith<$Res> get schedule;
@@ -289,7 +289,7 @@ class __$$SubjectImplCopyWithImpl<$Res>
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Duration,
       isRemote: null == isRemote
           ? _value.isRemote
           : isRemote // ignore: cast_nullable_to_non_nullable
@@ -309,11 +309,11 @@ class __$$SubjectImplCopyWithImpl<$Res>
       lessons: null == lessons
           ? _value._lessons
           : lessons // ignore: cast_nullable_to_non_nullable
-              as List<_SubjectLesson>,
+              as List<SubjectLesson>,
       groups: null == groups
           ? _value._groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<_SubjectGroup>,
+              as List<SubjectGroup>,
     ));
   }
 }
@@ -336,8 +336,8 @@ class _$SubjectImpl extends _Subject {
       @HiveField(10) required this.comment,
       @HiveField(11) required this.schedule,
       @HiveField(12) required this.classroom,
-      @HiveField(13) required final List<_SubjectLesson> lessons,
-      @HiveField(14) required final List<_SubjectGroup> groups})
+      @HiveField(13) required final List<SubjectLesson> lessons,
+      @HiveField(14) required final List<SubjectGroup> groups})
       : _lessons = lessons,
         _groups = groups,
         super._();
@@ -375,7 +375,7 @@ class _$SubjectImpl extends _Subject {
   @override
   @HiveField(8)
   @ApiDurationConverter()
-  final String duration;
+  final Duration duration;
   @override
   @HiveField(9)
   final bool isRemote;
@@ -388,19 +388,19 @@ class _$SubjectImpl extends _Subject {
   @override
   @HiveField(12)
   final Classroom classroom;
-  final List<_SubjectLesson> _lessons;
+  final List<SubjectLesson> _lessons;
   @override
   @HiveField(13)
-  List<_SubjectLesson> get lessons {
+  List<SubjectLesson> get lessons {
     if (_lessons is EqualUnmodifiableListView) return _lessons;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_lessons);
   }
 
-  final List<_SubjectGroup> _groups;
+  final List<SubjectGroup> _groups;
   @override
   @HiveField(14)
-  List<_SubjectGroup> get groups {
+  List<SubjectGroup> get groups {
     if (_groups is EqualUnmodifiableListView) return _groups;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_groups);
@@ -484,14 +484,13 @@ abstract class _Subject extends Subject {
       @HiveField(5) required final String type,
       @HiveField(6) required final String startTime,
       @HiveField(7) @DayOfWeekConverter() required final DayOfWeek dayOfWeek,
-      @HiveField(8) @ApiDurationConverter() required final String duration,
+      @HiveField(8) @ApiDurationConverter() required final Duration duration,
       @HiveField(9) required final bool isRemote,
       @HiveField(10) required final String comment,
       @HiveField(11) required final ScheduleBase schedule,
       @HiveField(12) required final Classroom classroom,
-      @HiveField(13) required final List<_SubjectLesson> lessons,
-      @HiveField(14)
-      required final List<_SubjectGroup> groups}) = _$SubjectImpl;
+      @HiveField(13) required final List<SubjectLesson> lessons,
+      @HiveField(14) required final List<SubjectGroup> groups}) = _$SubjectImpl;
   _Subject._() : super._();
 
   factory _Subject.fromJson(Map<String, dynamic> json) = _$SubjectImpl.fromJson;
@@ -526,7 +525,7 @@ abstract class _Subject extends Subject {
   @override
   @HiveField(8)
   @ApiDurationConverter()
-  String get duration;
+  Duration get duration;
   @override
   @HiveField(9)
   bool get isRemote;
@@ -541,18 +540,18 @@ abstract class _Subject extends Subject {
   Classroom get classroom;
   @override
   @HiveField(13)
-  List<_SubjectLesson> get lessons;
+  List<SubjectLesson> get lessons;
   @override
   @HiveField(14)
-  List<_SubjectGroup> get groups;
+  List<SubjectGroup> get groups;
   @override
   @JsonKey(ignore: true)
   _$$SubjectImplCopyWith<_$SubjectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-_SubjectLesson _$SubjectLessonFromJson(Map<String, dynamic> json) {
-  return __SubjectLesson.fromJson(json);
+SubjectLesson _$SubjectLessonFromJson(Map<String, dynamic> json) {
+  return _SubjectLesson.fromJson(json);
 }
 
 /// @nodoc
@@ -572,19 +571,19 @@ mixin _$SubjectLesson {
   DateTime get startTime => throw _privateConstructorUsedError;
   @HiveField(5)
   @ApiDurationConverter()
-  String get duration => throw _privateConstructorUsedError;
+  Duration get duration => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$SubjectLessonCopyWith<_SubjectLesson> get copyWith =>
+  $SubjectLessonCopyWith<SubjectLesson> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$SubjectLessonCopyWith<$Res> {
-  factory _$SubjectLessonCopyWith(
-          _SubjectLesson value, $Res Function(_SubjectLesson) then) =
-      __$SubjectLessonCopyWithImpl<$Res, _SubjectLesson>;
+abstract class $SubjectLessonCopyWith<$Res> {
+  factory $SubjectLessonCopyWith(
+          SubjectLesson value, $Res Function(SubjectLesson) then) =
+      _$SubjectLessonCopyWithImpl<$Res, SubjectLesson>;
   @useResult
   $Res call(
       {@HiveField(0) String id,
@@ -592,13 +591,13 @@ abstract class _$SubjectLessonCopyWith<$Res> {
       @HiveField(2) @DateTimeConverter() DateTime updated,
       @HiveField(3) int numberOfLesson,
       @HiveField(4) @DateTimeConverter() DateTime startTime,
-      @HiveField(5) @ApiDurationConverter() String duration});
+      @HiveField(5) @ApiDurationConverter() Duration duration});
 }
 
 /// @nodoc
-class __$SubjectLessonCopyWithImpl<$Res, $Val extends _SubjectLesson>
-    implements _$SubjectLessonCopyWith<$Res> {
-  __$SubjectLessonCopyWithImpl(this._value, this._then);
+class _$SubjectLessonCopyWithImpl<$Res, $Val extends SubjectLesson>
+    implements $SubjectLessonCopyWith<$Res> {
+  _$SubjectLessonCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -639,17 +638,17 @@ class __$SubjectLessonCopyWithImpl<$Res, $Val extends _SubjectLesson>
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Duration,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_SubjectLessonImplCopyWith<$Res>
-    implements _$SubjectLessonCopyWith<$Res> {
-  factory _$$_SubjectLessonImplCopyWith(_$_SubjectLessonImpl value,
-          $Res Function(_$_SubjectLessonImpl) then) =
-      __$$_SubjectLessonImplCopyWithImpl<$Res>;
+abstract class _$$SubjectLessonImplCopyWith<$Res>
+    implements $SubjectLessonCopyWith<$Res> {
+  factory _$$SubjectLessonImplCopyWith(
+          _$SubjectLessonImpl value, $Res Function(_$SubjectLessonImpl) then) =
+      __$$SubjectLessonImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -658,15 +657,15 @@ abstract class _$$_SubjectLessonImplCopyWith<$Res>
       @HiveField(2) @DateTimeConverter() DateTime updated,
       @HiveField(3) int numberOfLesson,
       @HiveField(4) @DateTimeConverter() DateTime startTime,
-      @HiveField(5) @ApiDurationConverter() String duration});
+      @HiveField(5) @ApiDurationConverter() Duration duration});
 }
 
 /// @nodoc
-class __$$_SubjectLessonImplCopyWithImpl<$Res>
-    extends __$SubjectLessonCopyWithImpl<$Res, _$_SubjectLessonImpl>
-    implements _$$_SubjectLessonImplCopyWith<$Res> {
-  __$$_SubjectLessonImplCopyWithImpl(
-      _$_SubjectLessonImpl _value, $Res Function(_$_SubjectLessonImpl) _then)
+class __$$SubjectLessonImplCopyWithImpl<$Res>
+    extends _$SubjectLessonCopyWithImpl<$Res, _$SubjectLessonImpl>
+    implements _$$SubjectLessonImplCopyWith<$Res> {
+  __$$SubjectLessonImplCopyWithImpl(
+      _$SubjectLessonImpl _value, $Res Function(_$SubjectLessonImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -679,7 +678,7 @@ class __$$_SubjectLessonImplCopyWithImpl<$Res>
     Object? startTime = null,
     Object? duration = null,
   }) {
-    return _then(_$_SubjectLessonImpl(
+    return _then(_$SubjectLessonImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -703,7 +702,7 @@ class __$$_SubjectLessonImplCopyWithImpl<$Res>
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Duration,
     ));
   }
 }
@@ -712,8 +711,8 @@ class __$$_SubjectLessonImplCopyWithImpl<$Res>
 @JsonSerializable()
 @HiveType(
     typeId: HiveTypeIds.subjectLesson, adapterName: "SubjectLessonAdapter")
-class _$_SubjectLessonImpl extends __SubjectLesson {
-  _$_SubjectLessonImpl(
+class _$SubjectLessonImpl extends _SubjectLesson {
+  _$SubjectLessonImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() required this.created,
       @HiveField(2) @DateTimeConverter() required this.updated,
@@ -722,8 +721,8 @@ class _$_SubjectLessonImpl extends __SubjectLesson {
       @HiveField(5) @ApiDurationConverter() required this.duration})
       : super._();
 
-  factory _$_SubjectLessonImpl.fromJson(Map<String, dynamic> json) =>
-      _$$_SubjectLessonImplFromJson(json);
+  factory _$SubjectLessonImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubjectLessonImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -746,18 +745,18 @@ class _$_SubjectLessonImpl extends __SubjectLesson {
   @override
   @HiveField(5)
   @ApiDurationConverter()
-  final String duration;
+  final Duration duration;
 
   @override
   String toString() {
-    return '_SubjectLesson(id: $id, created: $created, updated: $updated, numberOfLesson: $numberOfLesson, startTime: $startTime, duration: $duration)';
+    return 'SubjectLesson(id: $id, created: $created, updated: $updated, numberOfLesson: $numberOfLesson, startTime: $startTime, duration: $duration)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SubjectLessonImpl &&
+            other is _$SubjectLessonImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
@@ -777,20 +776,19 @@ class _$_SubjectLessonImpl extends __SubjectLesson {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SubjectLessonImplCopyWith<_$_SubjectLessonImpl> get copyWith =>
-      __$$_SubjectLessonImplCopyWithImpl<_$_SubjectLessonImpl>(
-          this, _$identity);
+  _$$SubjectLessonImplCopyWith<_$SubjectLessonImpl> get copyWith =>
+      __$$SubjectLessonImplCopyWithImpl<_$SubjectLessonImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SubjectLessonImplToJson(
+    return _$$SubjectLessonImplToJson(
       this,
     );
   }
 }
 
-abstract class __SubjectLesson extends _SubjectLesson {
-  factory __SubjectLesson(
+abstract class _SubjectLesson extends SubjectLesson {
+  factory _SubjectLesson(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() required final DateTime created,
       @HiveField(2) @DateTimeConverter() required final DateTime updated,
@@ -798,11 +796,11 @@ abstract class __SubjectLesson extends _SubjectLesson {
       @HiveField(4) @DateTimeConverter() required final DateTime startTime,
       @HiveField(5)
       @ApiDurationConverter()
-      required final String duration}) = _$_SubjectLessonImpl;
-  __SubjectLesson._() : super._();
+      required final Duration duration}) = _$SubjectLessonImpl;
+  _SubjectLesson._() : super._();
 
-  factory __SubjectLesson.fromJson(Map<String, dynamic> json) =
-      _$_SubjectLessonImpl.fromJson;
+  factory _SubjectLesson.fromJson(Map<String, dynamic> json) =
+      _$SubjectLessonImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -825,15 +823,15 @@ abstract class __SubjectLesson extends _SubjectLesson {
   @override
   @HiveField(5)
   @ApiDurationConverter()
-  String get duration;
+  Duration get duration;
   @override
   @JsonKey(ignore: true)
-  _$$_SubjectLessonImplCopyWith<_$_SubjectLessonImpl> get copyWith =>
+  _$$SubjectLessonImplCopyWith<_$SubjectLessonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-_SubjectGroup _$SubjectGroupFromJson(Map<String, dynamic> json) {
-  return __SubjectGroup.fromJson(json);
+SubjectGroup _$SubjectGroupFromJson(Map<String, dynamic> json) {
+  return _SubjectGroup.fromJson(json);
 }
 
 /// @nodoc
@@ -853,15 +851,15 @@ mixin _$SubjectGroup {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$SubjectGroupCopyWith<_SubjectGroup> get copyWith =>
+  $SubjectGroupCopyWith<SubjectGroup> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$SubjectGroupCopyWith<$Res> {
-  factory _$SubjectGroupCopyWith(
-          _SubjectGroup value, $Res Function(_SubjectGroup) then) =
-      __$SubjectGroupCopyWithImpl<$Res, _SubjectGroup>;
+abstract class $SubjectGroupCopyWith<$Res> {
+  factory $SubjectGroupCopyWith(
+          SubjectGroup value, $Res Function(SubjectGroup) then) =
+      _$SubjectGroupCopyWithImpl<$Res, SubjectGroup>;
   @useResult
   $Res call(
       {@HiveField(0) String id,
@@ -872,9 +870,9 @@ abstract class _$SubjectGroupCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SubjectGroupCopyWithImpl<$Res, $Val extends _SubjectGroup>
-    implements _$SubjectGroupCopyWith<$Res> {
-  __$SubjectGroupCopyWithImpl(this._value, this._then);
+class _$SubjectGroupCopyWithImpl<$Res, $Val extends SubjectGroup>
+    implements $SubjectGroupCopyWith<$Res> {
+  _$SubjectGroupCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -916,11 +914,11 @@ class __$SubjectGroupCopyWithImpl<$Res, $Val extends _SubjectGroup>
 }
 
 /// @nodoc
-abstract class _$$_SubjectGroupImplCopyWith<$Res>
-    implements _$SubjectGroupCopyWith<$Res> {
-  factory _$$_SubjectGroupImplCopyWith(
-          _$_SubjectGroupImpl value, $Res Function(_$_SubjectGroupImpl) then) =
-      __$$_SubjectGroupImplCopyWithImpl<$Res>;
+abstract class _$$SubjectGroupImplCopyWith<$Res>
+    implements $SubjectGroupCopyWith<$Res> {
+  factory _$$SubjectGroupImplCopyWith(
+          _$SubjectGroupImpl value, $Res Function(_$SubjectGroupImpl) then) =
+      __$$SubjectGroupImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -932,11 +930,11 @@ abstract class _$$_SubjectGroupImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SubjectGroupImplCopyWithImpl<$Res>
-    extends __$SubjectGroupCopyWithImpl<$Res, _$_SubjectGroupImpl>
-    implements _$$_SubjectGroupImplCopyWith<$Res> {
-  __$$_SubjectGroupImplCopyWithImpl(
-      _$_SubjectGroupImpl _value, $Res Function(_$_SubjectGroupImpl) _then)
+class __$$SubjectGroupImplCopyWithImpl<$Res>
+    extends _$SubjectGroupCopyWithImpl<$Res, _$SubjectGroupImpl>
+    implements _$$SubjectGroupImplCopyWith<$Res> {
+  __$$SubjectGroupImplCopyWithImpl(
+      _$SubjectGroupImpl _value, $Res Function(_$SubjectGroupImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -948,7 +946,7 @@ class __$$_SubjectGroupImplCopyWithImpl<$Res>
     Object? scheduleId = null,
     Object? name = null,
   }) {
-    return _then(_$_SubjectGroupImpl(
+    return _then(_$SubjectGroupImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -976,8 +974,8 @@ class __$$_SubjectGroupImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: HiveTypeIds.subjectGroup, adapterName: "SubjectGroupAdapter")
-class _$_SubjectGroupImpl extends __SubjectGroup {
-  _$_SubjectGroupImpl(
+class _$SubjectGroupImpl extends _SubjectGroup {
+  _$SubjectGroupImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() required this.created,
       @HiveField(2) @DateTimeConverter() required this.updated,
@@ -985,8 +983,8 @@ class _$_SubjectGroupImpl extends __SubjectGroup {
       @HiveField(4) required this.name})
       : super._();
 
-  factory _$_SubjectGroupImpl.fromJson(Map<String, dynamic> json) =>
-      _$$_SubjectGroupImplFromJson(json);
+  factory _$SubjectGroupImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubjectGroupImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -1008,14 +1006,14 @@ class _$_SubjectGroupImpl extends __SubjectGroup {
 
   @override
   String toString() {
-    return '_SubjectGroup(id: $id, created: $created, updated: $updated, scheduleId: $scheduleId, name: $name)';
+    return 'SubjectGroup(id: $id, created: $created, updated: $updated, scheduleId: $scheduleId, name: $name)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SubjectGroupImpl &&
+            other is _$SubjectGroupImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
@@ -1032,28 +1030,28 @@ class _$_SubjectGroupImpl extends __SubjectGroup {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SubjectGroupImplCopyWith<_$_SubjectGroupImpl> get copyWith =>
-      __$$_SubjectGroupImplCopyWithImpl<_$_SubjectGroupImpl>(this, _$identity);
+  _$$SubjectGroupImplCopyWith<_$SubjectGroupImpl> get copyWith =>
+      __$$SubjectGroupImplCopyWithImpl<_$SubjectGroupImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SubjectGroupImplToJson(
+    return _$$SubjectGroupImplToJson(
       this,
     );
   }
 }
 
-abstract class __SubjectGroup extends _SubjectGroup {
-  factory __SubjectGroup(
+abstract class _SubjectGroup extends SubjectGroup {
+  factory _SubjectGroup(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() required final DateTime created,
       @HiveField(2) @DateTimeConverter() required final DateTime updated,
       @HiveField(3) required final String scheduleId,
-      @HiveField(4) required final String name}) = _$_SubjectGroupImpl;
-  __SubjectGroup._() : super._();
+      @HiveField(4) required final String name}) = _$SubjectGroupImpl;
+  _SubjectGroup._() : super._();
 
-  factory __SubjectGroup.fromJson(Map<String, dynamic> json) =
-      _$_SubjectGroupImpl.fromJson;
+  factory _SubjectGroup.fromJson(Map<String, dynamic> json) =
+      _$SubjectGroupImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -1074,6 +1072,6 @@ abstract class __SubjectGroup extends _SubjectGroup {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_SubjectGroupImplCopyWith<_$_SubjectGroupImpl> get copyWith =>
+  _$$SubjectGroupImplCopyWith<_$SubjectGroupImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
