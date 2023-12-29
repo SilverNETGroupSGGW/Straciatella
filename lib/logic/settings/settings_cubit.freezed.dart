@@ -26,6 +26,8 @@ mixin _$SettingsState {
   bool get isDebugMode => throw _privateConstructorUsedError;
   @HiveField(3)
   Color get themeColor => throw _privateConstructorUsedError;
+  @HiveField(5)
+  bool get isFabHidden => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SettingsStateCopyWith<SettingsState> get copyWith =>
@@ -43,7 +45,8 @@ abstract class $SettingsStateCopyWith<$Res> {
       @HiveField(4) ThemeType themeType,
       @HiveField(1) bool isFirstRun,
       @HiveField(2) bool isDebugMode,
-      @HiveField(3) Color themeColor});
+      @HiveField(3) Color themeColor,
+      @HiveField(5) bool isFabHidden});
 }
 
 /// @nodoc
@@ -64,6 +67,7 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
     Object? isFirstRun = null,
     Object? isDebugMode = null,
     Object? themeColor = null,
+    Object? isFabHidden = null,
   }) {
     return _then(_value.copyWith(
       themeMode: null == themeMode
@@ -86,6 +90,10 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
               as Color,
+      isFabHidden: null == isFabHidden
+          ? _value.isFabHidden
+          : isFabHidden // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -103,7 +111,8 @@ abstract class _$$SettingsStateImplCopyWith<$Res>
       @HiveField(4) ThemeType themeType,
       @HiveField(1) bool isFirstRun,
       @HiveField(2) bool isDebugMode,
-      @HiveField(3) Color themeColor});
+      @HiveField(3) Color themeColor,
+      @HiveField(5) bool isFabHidden});
 }
 
 /// @nodoc
@@ -122,6 +131,7 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
     Object? isFirstRun = null,
     Object? isDebugMode = null,
     Object? themeColor = null,
+    Object? isFabHidden = null,
   }) {
     return _then(_$SettingsStateImpl(
       themeMode: null == themeMode
@@ -144,6 +154,10 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
               as Color,
+      isFabHidden: null == isFabHidden
+          ? _value.isFabHidden
+          : isFabHidden // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -155,10 +169,11 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
 class _$SettingsStateImpl extends _SettingsState {
   _$SettingsStateImpl(
       {@HiveField(0) this.themeMode = ThemeMode.system,
-      @HiveField(4) this.themeType = ThemeType.normal,
+      @HiveField(4) this.themeType = ThemeType.custom,
       @HiveField(1) this.isFirstRun = true,
       @HiveField(2) this.isDebugMode = false,
-      @HiveField(3) this.themeColor = Colors.red})
+      @HiveField(3) this.themeColor = Colors.red,
+      @HiveField(5) this.isFabHidden = false})
       : super._();
 
   @override
@@ -181,14 +196,18 @@ class _$SettingsStateImpl extends _SettingsState {
   @JsonKey()
   @HiveField(3)
   final Color themeColor;
+  @override
+  @JsonKey()
+  @HiveField(5)
+  final bool isFabHidden;
 
   @override
   String toString() {
-    return 'SettingsState(themeMode: $themeMode, themeType: $themeType, isFirstRun: $isFirstRun, isDebugMode: $isDebugMode, themeColor: $themeColor)';
+    return 'SettingsState(themeMode: $themeMode, themeType: $themeType, isFirstRun: $isFirstRun, isDebugMode: $isDebugMode, themeColor: $themeColor, isFabHidden: $isFabHidden)';
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SettingsStateImpl &&
@@ -201,12 +220,14 @@ class _$SettingsStateImpl extends _SettingsState {
             (identical(other.isDebugMode, isDebugMode) ||
                 other.isDebugMode == isDebugMode) &&
             (identical(other.themeColor, themeColor) ||
-                other.themeColor == themeColor));
+                other.themeColor == themeColor) &&
+            (identical(other.isFabHidden, isFabHidden) ||
+                other.isFabHidden == isFabHidden));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, themeMode, themeType, isFirstRun, isDebugMode, themeColor);
+  int get hashCode => Object.hash(runtimeType, themeMode, themeType, isFirstRun,
+      isDebugMode, themeColor, isFabHidden);
 
   @JsonKey(ignore: true)
   @override
@@ -221,7 +242,8 @@ abstract class _SettingsState extends SettingsState {
       @HiveField(4) final ThemeType themeType,
       @HiveField(1) final bool isFirstRun,
       @HiveField(2) final bool isDebugMode,
-      @HiveField(3) final Color themeColor}) = _$SettingsStateImpl;
+      @HiveField(3) final Color themeColor,
+      @HiveField(5) final bool isFabHidden}) = _$SettingsStateImpl;
   _SettingsState._() : super._();
 
   @override
@@ -239,6 +261,9 @@ abstract class _SettingsState extends SettingsState {
   @override
   @HiveField(3)
   Color get themeColor;
+  @override
+  @HiveField(5)
+  bool get isFabHidden;
   @override
   @JsonKey(ignore: true)
   _$$SettingsStateImplCopyWith<_$SettingsStateImpl> get copyWith =>

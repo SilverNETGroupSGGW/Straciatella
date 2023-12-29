@@ -408,7 +408,7 @@ class _$SubjectImpl extends _Subject {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SubjectImpl &&
@@ -746,7 +746,7 @@ class _$_SubjectLessonImpl extends __SubjectLesson {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SubjectLessonImpl &&
@@ -1001,7 +1001,7 @@ class _$_SubjectGroupImpl extends __SubjectGroup {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SubjectGroupImpl &&

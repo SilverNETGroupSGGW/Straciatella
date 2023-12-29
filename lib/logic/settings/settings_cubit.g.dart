@@ -22,13 +22,14 @@ class SettingsStateAdapter extends TypeAdapter<_$SettingsStateImpl> {
       isFirstRun: fields[1] as bool,
       isDebugMode: fields[2] as bool,
       themeColor: fields[3] as Color,
+      isFabHidden: fields[5] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$SettingsStateImpl obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.themeMode)
       ..writeByte(4)
@@ -38,7 +39,9 @@ class SettingsStateAdapter extends TypeAdapter<_$SettingsStateImpl> {
       ..writeByte(2)
       ..write(obj.isDebugMode)
       ..writeByte(3)
-      ..write(obj.themeColor);
+      ..write(obj.themeColor)
+      ..writeByte(5)
+      ..write(obj.isFabHidden);
   }
 
   @override

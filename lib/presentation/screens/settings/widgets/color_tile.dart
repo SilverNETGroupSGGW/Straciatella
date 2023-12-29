@@ -46,7 +46,7 @@ class ChangeThemeColorAlertDialog extends StatelessWidget {
               SizedBox(
                 height: 12,
               ),
-              state.themeType == ThemeType.normal
+              state.themeType == ThemeType.custom
                   ? BlockPicker(
                       pickerColor: Theme.of(context).colorScheme.primary,
                       onColorChanged:
