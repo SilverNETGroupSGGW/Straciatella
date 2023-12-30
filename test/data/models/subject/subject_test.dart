@@ -131,23 +131,25 @@ void main() {
       ),
     ],
   );
-  test('subject json parsing', () {
-    expect(Subject.fromJson(json), subject);
-  });
+  group("Subject tests", () {
+    test('Subject json parsing', () {
+      expect(Subject.fromJson(json), subject);
+    });
 
-  test('subject hive save/load', () async {
-    registerDataAdapters();
-    await Hive.openBox(
-      hiveBoxName,
-      path: testingLocation,
-    );
+    test('Subject hive save/load', () async {
+      registerDataAdapters();
+      await Hive.openBox(
+        hiveBoxName,
+        path: testingLocation,
+      );
 
-    final box = Hive.box(hiveBoxName);
+      final box = Hive.box(hiveBoxName);
 
-    box.put("test_subject", subject);
-    final subjectRead = box.get("test_subject");
-    expect(subjectRead, subject);
+      box.put("test_subject", subject);
+      final subjectRead = box.get("test_subject");
+      expect(subjectRead, subject);
 
-    await Hive.box(hiveBoxName).clear();
+      await Hive.box(hiveBoxName).clear();
+    });
   });
 }
