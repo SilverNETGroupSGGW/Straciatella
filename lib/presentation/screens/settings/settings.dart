@@ -1,11 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/color_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/dark_theme_mode_tile.dart';
-import 'package:silvertimetable/router.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/category_label.dart';
 import 'widgets/debug_widgets_tile.dart';

@@ -1,3 +1,4 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:silvertimetable/constants.dart';
@@ -46,16 +47,24 @@ class _MainAppState extends State<MainApp> {
       value: widget.settings,
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, settings) {
-          return MaterialApp(
-            title: appName,
-            theme: getTheme(settings.themeType, false, settings.themeColor),
-            darkTheme: getTheme(settings.themeType, true, settings.themeColor),
-            themeMode: settings.themeMode,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            onGenerateRoute: _appRouter.onGenerateRoute,
-            initialRoute: RouteNames.timeline,
+          return DynamicColorBuilder(
+            builder: (lightDynamic, darkDynamic) {
+              return MaterialApp(
+                title: appName,
+                theme: settings.themeType == ThemeType.adaptive
+                    ? ThemeData(colorScheme: lightDynamic)
+                    : getTheme(settings.themeType, false, settings.themeColor),
+                darkTheme: settings.themeType == ThemeType.adaptive
+                    ? ThemeData(colorScheme: darkDynamic)
+                    : getTheme(settings.themeType, true, settings.themeColor),
+                themeMode: settings.themeMode,
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: context.locale,
+                onGenerateRoute: _appRouter.onGenerateRoute,
+                initialRoute: RouteNames.timeline,
+              );
+            },
           );
         },
       ),

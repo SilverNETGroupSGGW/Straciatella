@@ -16,6 +16,7 @@ flutter_launcher_icons:
 dependencies:
   cupertino_icons: ^1.0.2
   dio: ^5.3.4
+  dynamic_color: ^1.6.9
   easy_localization: ^3.0.3
   flutter:
     sdk: flutter

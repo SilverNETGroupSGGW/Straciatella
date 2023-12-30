@@ -6,7 +6,6 @@ ThemeData getTheme(ThemeType type, bool isDark, Color seedColor) {
   return switch ((type, isDark)) {
     (ThemeType.custom, false) => getLightTheme(seedColor),
     (ThemeType.custom, true) => getDarkTheme(seedColor),
-    // TODO: implement adaptive theme
     (ThemeType.adaptive, false) => getLightTheme(seedColor),
     (ThemeType.adaptive, true) => getDarkTheme(seedColor),
     (ThemeType.retro, false) => getRetroLightTheme(),
