@@ -37,7 +37,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     ));
   }
 
-  toggleFabVisibility() {
+  toggleHideFab() {
     emit(state.copyWith(
       isFabHidden: !state.isFabHidden,
     ));

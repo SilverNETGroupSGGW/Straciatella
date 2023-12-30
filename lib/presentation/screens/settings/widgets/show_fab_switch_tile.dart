@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 
 class ShowFabSwitchTile extends StatelessWidget {
   const ShowFabSwitchTile({
@@ -8,12 +10,16 @@ class ShowFabSwitchTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SwitchListTile.adaptive(
-      value: true,
-      title: Text('show_fab'.tr()),
-      subtitle: Text('show_fab_desc'.tr()),
-      onChanged: (value) {
-        // TODO: handle onChanged and value
+    return BlocBuilder<SettingsCubit, SettingsState>(
+      builder: (context, state) {
+        return SwitchListTile.adaptive(
+          value: state.isFabHidden,
+          title: Text('hide_fab'.tr()),
+          subtitle: Text('hide_fab_desc'.tr()),
+          onChanged: (value) {
+            context.read<SettingsCubit>().toggleHideFab();
+          },
+        );
       },
     );
   }
