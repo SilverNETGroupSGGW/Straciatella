@@ -38,5 +38,4 @@ class SggwHubRepo {
     final response = await sggwHubApi.getLecturer(id);
     return Lecturer.fromJson(response.data);
   }
-
 }
