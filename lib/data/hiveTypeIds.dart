@@ -13,4 +13,6 @@ class HiveTypeIds {
   static const subject = 10;
   static const subjectLesson = 11;
   static const subjectGroup = 12;
+  static const dayOfWeek = 13;
+  static const duration = 14;
 }
