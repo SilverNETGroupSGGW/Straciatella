@@ -30,7 +30,7 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
       FavedSchedulesState? loadedState = box.get(boxKey);
       if (loadedState != null) emit(loadedState);
     } catch (e) {
-      print("Could not load saved schedules");
+      print("Could not load faved schedules");
       // TODO: handle exception
     }
   }
