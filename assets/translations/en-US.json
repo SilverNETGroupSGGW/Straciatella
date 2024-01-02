@@ -46,5 +46,21 @@
     "api_empty": "API URL cannot be empty",
     "email": "Email",
     "email_desc": "Email address for your account",
-    "email_empty": "Email cannot be empty"
+    "email_empty": "Email cannot be empty",
+    "schedulses": "Schedulses",
+    "preferences": "Preferences",
+    "debug": "Debug",
+    "about": "About",
+    "manage_schedules": "Manage Schedules",
+    "manage_schedules_desc": "Add, edit or remove schedules",
+    "notifications": "Notifications",
+    "notifications_desc": "Manage notifications",
+    "language_desc": "Change language of the app",
+    "hide_fab": "Hide Action Button",
+    "hide_fab_desc": "Hide floating action button on the bottom right",
+    "show_widgets": "Show Widgets",
+    "show_widgets_desc": "Show all widgets of the app",
+    "privacy_policy": "Privacy Policy",
+    "app_name": "WULS Schedule",
+    "about_app_desc": "A schedule app made by students of Warsaw University of Life Sciences. Remade from scrach with love and brand news theme!"
 }
