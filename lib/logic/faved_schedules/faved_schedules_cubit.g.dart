@@ -18,8 +18,8 @@ class FavedSchedulesStateAdapter
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return _$FavedSchedulesStateImpl(
-      favedSchedules: (fields[0] as List).cast<ScheduleBase>(),
-      selectedSchedule: fields[1] as ScheduleBase?,
+      favedSchedules: (fields[0] as List).cast<FavableSchedule>(),
+      selectedSchedule: fields[1] as FavableSchedule?,
     );
   }
 

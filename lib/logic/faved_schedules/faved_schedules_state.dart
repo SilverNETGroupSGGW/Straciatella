@@ -9,7 +9,7 @@ class FavedSchedulesState with _$FavedSchedulesState {
     adapterName: "FavedSchedulesStateAdapter",
   )
   factory FavedSchedulesState({
-    @Default([]) @HiveField(0) List<ScheduleBase> favedSchedules,
-    @Default(null) @HiveField(1) ScheduleBase? selectedSchedule,
+    @Default([]) @HiveField(0) List<FavableSchedule> favedSchedules,
+    @Default(null) @HiveField(1) FavableSchedule? selectedSchedule,
   }) = _FavedSchedulesState;
 }
