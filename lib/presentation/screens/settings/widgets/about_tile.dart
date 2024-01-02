@@ -12,7 +12,6 @@ class AboutTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AboutListTile(
-      applicationName: 'app_name'.tr(),
       applicationIcon: DebugImageSwitch(),
       applicationVersion: appVersion,
       applicationLegalese: '© 2024 Silver .NET',
