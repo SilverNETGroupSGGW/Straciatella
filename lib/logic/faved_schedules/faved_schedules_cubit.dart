@@ -10,7 +10,7 @@ part 'faved_schedules_cubit.freezed.dart';
 part 'faved_schedules_cubit.g.dart';
 
 class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
-  static const _boxKey = "favedSchedules";
+  static const boxKey = "favedSchedules";
   final Box box = Hive.box(hiveBoxName);
 
   FavedSchedulesCubit() : super(FavedSchedulesState());
@@ -22,12 +22,12 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
     super.onChange(change);
 
     // Custom onChange logic goes here
-    box.put(_boxKey, change.nextState);
+    box.put(boxKey, change.nextState);
   }
 
   loadFavedSchedules() {
     try {
-      FavedSchedulesState? loadedState = box.get(_boxKey);
+      FavedSchedulesState? loadedState = box.get(boxKey);
       if (loadedState != null) emit(loadedState);
     } catch (e) {
       print("Could not load saved schedules");

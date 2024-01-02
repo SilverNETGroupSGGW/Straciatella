@@ -39,7 +39,6 @@ void main() async {
     "surname": "Lastname",
     "academicDegree": "",
     "email": "",
-    "subjects": null,
   });
 
   blocTest<FavedSchedulesCubit, FavedSchedulesState>(
@@ -134,13 +133,14 @@ void main() async {
   blocTest<FavedSchedulesCubit, FavedSchedulesState>(
     'loads FavedSchedulestate from hive',
     build: () => FavedSchedulesCubit(),
-    act: (bloc) {
-      bloc.addSchedule(testSchedule);
-      bloc.addSchedule(testLecturer);
-      bloc.selectSchedule(testSchedule);
-      bloc.loadFavedSchedules();
-    },
-    skip: 2,
+    setUp: () => box.put(
+      FavedSchedulesCubit.boxKey,
+      FavedSchedulesState(
+        favedSchedules: [testSchedule, testLecturer],
+        selectedSchedule: testSchedule,
+      ),
+    ),
+    act: (bloc) => bloc.loadFavedSchedules(),
     expect: () => [
       FavedSchedulesState(
         favedSchedules: [testSchedule, testLecturer],
