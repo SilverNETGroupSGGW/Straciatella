@@ -12,10 +12,8 @@ class PrivacyPolicyTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text('privacy_policy'.tr()),
-      onTap: () async {
-        if (!await launchUrl(privacyPolicyUrl)) {
-          throw Exception("Error");
-        }
+      onTap: () {
+        launchUrl(privacyPolicyUrl);
       },
     );
   }
