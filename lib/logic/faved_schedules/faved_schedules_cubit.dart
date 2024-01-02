@@ -3,21 +3,21 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hiveTypeIds.dart';
-import 'package:silvertimetable/data/models/schedule/schedule.dart';
+import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 
-part 'saved_schedules_state.dart';
-part 'saved_schedules_cubit.freezed.dart';
-part 'saved_schedules_cubit.g.dart';
+part 'faved_schedules_state.dart';
+part 'faved_schedules_cubit.freezed.dart';
+part 'faved_schedules_cubit.g.dart';
 
-class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
-  static const _boxKey = "savedSchedules";
+class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
+  static const _boxKey = "favedSchedules";
   final Box box = Hive.box(hiveBoxName);
 
-  SavedSchedulesCubit() : super(SavedSchedulesState());
+  FavedSchedulesCubit() : super(FavedSchedulesState());
   // For Copilot: Create new lists instead of mutating them
 
   @override
-  void onChange(Change<SavedSchedulesState> change) {
+  void onChange(Change<FavedSchedulesState> change) {
     // Always call super.onChange with the current change
     super.onChange(change);
 
@@ -25,9 +25,9 @@ class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
     box.put(_boxKey, change.nextState);
   }
 
-  loadSavedSchedules() {
+  loadFavedSchedules() {
     try {
-      SavedSchedulesState? loadedState = box.get(_boxKey);
+      FavedSchedulesState? loadedState = box.get(_boxKey);
       if (loadedState != null) emit(loadedState);
     } catch (e) {
       print("Could not load saved schedules");
@@ -35,58 +35,58 @@ class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
     }
   }
 
-  addSchedule(Schedule schedule) {
-    if (state.savedSchedules.contains(schedule)) return;
+  addSchedule(ScheduleBase schedule) {
+    if (state.favedSchedules.contains(schedule)) return;
     emit(
       state.copyWith(
-        savedSchedules: [...state.savedSchedules, schedule],
+        favedSchedules: [...state.favedSchedules, schedule],
       ),
     );
   }
 
-  removeSchedule(Schedule schedule) {
-    List<Schedule> newSavedSchedules = [...state.savedSchedules];
-    newSavedSchedules.remove(schedule);
+  removeSchedule(ScheduleBase schedule) {
+    List<ScheduleBase> newFavedSchedules = [...state.favedSchedules];
+    newFavedSchedules.remove(schedule);
     if (state.selectedSchedule == schedule) {
       emit(state.copyWith(
-        savedSchedules: newSavedSchedules,
+        favedSchedules: newFavedSchedules,
         selectedSchedule: null,
       ));
     } else {
       emit(state.copyWith(
-        savedSchedules: newSavedSchedules,
+        favedSchedules: newFavedSchedules,
       ));
     }
   }
 
   clearSchedules() {
     emit(state.copyWith(
-      savedSchedules: [],
+      favedSchedules: [],
       selectedSchedule: null,
     ));
   }
 
-  overwriteSavedSchedules(List<Schedule> schedules) {
+  overwriteFavedSchedules(List<ScheduleBase> schedules) {
     if (schedules.contains(state.selectedSchedule))
       emit(state.copyWith(
-        savedSchedules: schedules,
+        favedSchedules: schedules,
       ));
     else
       emit(state.copyWith(
-        savedSchedules: schedules,
+        favedSchedules: schedules,
         selectedSchedule: null,
       ));
   }
 
-  selectSchedule(Schedule schedule) {
-    if (state.savedSchedules.contains(schedule))
+  selectSchedule(ScheduleBase schedule) {
+    if (state.favedSchedules.contains(schedule))
       emit(state.copyWith(
         selectedSchedule: schedule,
       ));
     else
       emit(state.copyWith(
         selectedSchedule: schedule,
-        savedSchedules: [...state.savedSchedules, schedule],
+        favedSchedules: [...state.favedSchedules, schedule],
       ));
   }
 

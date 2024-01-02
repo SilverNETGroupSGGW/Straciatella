@@ -1,10 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
+import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/register_adapters.dart';
-import 'package:silvertimetable/data/models/schedule/schedule.dart';
+import 'package:silvertimetable/logic/faved_schedules/faved_schedules_cubit.dart';
 import 'package:silvertimetable/logic/register_adapters.dart';
-import 'package:silvertimetable/logic/saved_schedules/saved_schedules_cubit.dart';
 
 void main() async {
   registerLogicDataAdapters();
@@ -17,7 +17,7 @@ void main() async {
 
   Box box = Hive.box(hiveBoxName);
   box.clear();
-  Schedule testSchedule = Schedule.fromJson(
+  ScheduleBase testSchedule = ScheduleBase.fromJson(
     {
       "id": "ba0d9a27-3078-4709-81e6-2d8b4e1c8a71",
       "created": "2023-11-27T00:00:06.6281617",
@@ -30,111 +30,110 @@ void main() async {
       "fieldOfStudy": "ASD",
       "studyMode": "Unknown",
       "degreeOfStudy": "AssociateDegree",
-      "subjects": [],
     },
   );
 
-  blocTest<SavedSchedulesCubit, SavedSchedulesState>(
-    'add schedule to SavedScheduleState',
-    build: () => SavedSchedulesCubit(),
+  blocTest<FavedSchedulesCubit, FavedSchedulesState>(
+    'add schedule to FavedSchedulestate',
+    build: () => FavedSchedulesCubit(),
     act: (bloc) => bloc.addSchedule(testSchedule),
     expect: () => [
-      SavedSchedulesState(
-        savedSchedules: [testSchedule],
+      FavedSchedulesState(
+        favedSchedules: [testSchedule],
         selectedSchedule: null,
       ),
     ],
     tearDown: () => box.clear(),
   );
 
-  blocTest<SavedSchedulesCubit, SavedSchedulesState>(
+  blocTest<FavedSchedulesCubit, FavedSchedulesState>(
     'checks if there can be double schedule',
-    build: () => SavedSchedulesCubit(),
+    build: () => FavedSchedulesCubit(),
     act: (bloc) {
       bloc.addSchedule(testSchedule);
       bloc.addSchedule(testSchedule);
     },
     expect: () => [
-      SavedSchedulesState(
-        savedSchedules: [testSchedule],
+      FavedSchedulesState(
+        favedSchedules: [testSchedule],
         selectedSchedule: null,
       ),
     ],
     tearDown: () => box.clear(),
   );
 
-  blocTest<SavedSchedulesCubit, SavedSchedulesState>(
-    'select schedule from SavedScheduleState',
-    build: () => SavedSchedulesCubit(),
+  blocTest<FavedSchedulesCubit, FavedSchedulesState>(
+    'select schedule from FavedSchedulestate',
+    build: () => FavedSchedulesCubit(),
     act: (bloc) => bloc.selectSchedule(testSchedule),
     expect: () => [
-      SavedSchedulesState(
-        savedSchedules: [testSchedule],
+      FavedSchedulesState(
+        favedSchedules: [testSchedule],
         selectedSchedule: testSchedule,
       ),
     ],
     tearDown: () => box.clear(),
   );
 
-  blocTest<SavedSchedulesCubit, SavedSchedulesState>(
-    'remove schedule from SavedScheduleState',
-    build: () => SavedSchedulesCubit(),
+  blocTest<FavedSchedulesCubit, FavedSchedulesState>(
+    'remove schedule from FavedSchedulestate',
+    build: () => FavedSchedulesCubit(),
     act: (bloc) {
       bloc.addSchedule(testSchedule);
       bloc.removeSchedule(testSchedule);
     },
     skip: 1,
     expect: () => [
-      SavedSchedulesState(
-        savedSchedules: [],
+      FavedSchedulesState(
+        favedSchedules: [],
         selectedSchedule: null,
       ),
     ],
     tearDown: () => box.clear(),
   );
 
-  blocTest<SavedSchedulesCubit, SavedSchedulesState>(
-    'overwrite SavedScheduleState with one schedule',
-    build: () => SavedSchedulesCubit(),
-    act: (bloc) => bloc.overwriteSavedSchedules([testSchedule]),
+  blocTest<FavedSchedulesCubit, FavedSchedulesState>(
+    'overwrite FavedSchedulestate with one schedule',
+    build: () => FavedSchedulesCubit(),
+    act: (bloc) => bloc.overwriteFavedSchedules([testSchedule]),
     expect: () => [
-      SavedSchedulesState(
-        savedSchedules: [testSchedule],
+      FavedSchedulesState(
+        favedSchedules: [testSchedule],
         selectedSchedule: null,
       ),
     ],
     tearDown: () => box.clear(),
   );
 
-  blocTest<SavedSchedulesCubit, SavedSchedulesState>(
-    'clear SavedScheduleState',
-    build: () => SavedSchedulesCubit(),
+  blocTest<FavedSchedulesCubit, FavedSchedulesState>(
+    'clear FavedSchedulestate',
+    build: () => FavedSchedulesCubit(),
     act: (bloc) async {
       bloc.addSchedule(testSchedule);
       bloc.clearSchedules();
     },
     skip: 1,
     expect: () => [
-      SavedSchedulesState(
-        savedSchedules: [],
+      FavedSchedulesState(
+        favedSchedules: [],
         selectedSchedule: null,
       ),
     ],
     tearDown: () => box.clear(),
   );
 
-  blocTest<SavedSchedulesCubit, SavedSchedulesState>(
-    'loads SavedScheduleState from hive',
-    build: () => SavedSchedulesCubit(),
+  blocTest<FavedSchedulesCubit, FavedSchedulesState>(
+    'loads FavedSchedulestate from hive',
+    build: () => FavedSchedulesCubit(),
     act: (bloc) {
       bloc.addSchedule(testSchedule);
       bloc.selectSchedule(testSchedule);
-      bloc.loadSavedSchedules();
+      bloc.loadFavedSchedules();
     },
     skip: 1,
     expect: () => [
-      SavedSchedulesState(
-        savedSchedules: [testSchedule],
+      FavedSchedulesState(
+        favedSchedules: [testSchedule],
         selectedSchedule: testSchedule,
       ),
     ],
