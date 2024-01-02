@@ -1,5 +1,11 @@
+// ignore_for_file: unused_import
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:silvertimetable/constants.dart';
+import 'package:silvertimetable/logic/settings/settings_cubit.dart';
+import 'package:silvertimetable/presentation/screens/settings/widgets/about_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/color_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/dark_theme_mode_tile.dart';
@@ -37,7 +43,7 @@ class SettingsScreen extends StatelessWidget {
           DebugWidgetsTile(),
           CategoryLabel(text: 'about'.tr()),
           PrivacyPolicyTile(),
-          AboutListTile(),
+          AboutTile(),
         ],
       ),
     );
