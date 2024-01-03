@@ -1,74 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/constants.dart';
+import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 
 enum ThemeType { custom, retro, adaptive }
 
-ThemeData getTheme(ThemeType type, bool isDark, Color seedColor) {
-  return switch ((type, isDark)) {
-    (ThemeType.custom, false) => getLightTheme(seedColor),
-    (ThemeType.custom, true) => getDarkTheme(seedColor),
-    (ThemeType.adaptive, false) => getLightTheme(seedColor),
-    (ThemeType.adaptive, true) => getDarkTheme(seedColor),
-    (ThemeType.retro, false) => getRetroLightTheme(),
-    (ThemeType.retro, true) => getRetroDarkTheme(),
-  };
-}
-
-// ** Normal theme
-ThemeData getLightTheme(Color seedColor) {
-  return ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: seedColor,
-      brightness: Brightness.light,
-    ),
-  );
-}
-
-ThemeData getDarkTheme(Color seedColor) {
-  return ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: seedColor,
-      brightness: Brightness.dark,
-    ),
-  );
-}
-
-// ** Retro theme
-ThemeData getRetroLightTheme() {
-  return ThemeData(
-    colorScheme: ColorScheme(
-      brightness: Brightness.light,
-      shadow: Colors.black,
-      primary: Colors.red,
-      surfaceTint: Colors.grey.shade800,
-      onPrimary: Colors.white,
-      secondary: Colors.red,
-      onSecondary: Colors.white,
-      error: Colors.red,
-      onError: Colors.white,
-      background: Colors.grey.shade900,
-      onBackground: Colors.grey,
-      surface: Colors.black54,
-      onSurface: Colors.white,
-    ),
-  );
-}
-
-ThemeData getRetroDarkTheme() {
-  return ThemeData(
-    colorScheme: ColorScheme(
-      brightness: Brightness.dark,
-      shadow: Colors.black,
-      primary: Colors.red,
-      surfaceTint: Colors.grey.shade800,
-      onPrimary: Colors.white,
-      secondary: Colors.red,
-      onSecondary: Colors.white,
-      error: Colors.red,
-      onError: Colors.white,
-      background: Colors.grey.shade900,
-      onBackground: Colors.grey,
-      surface: Colors.black54,
-      onSurface: Colors.white,
-    ),
-  );
+ThemeData getThemeData(
+  SettingsState settings, {
+  required ColorScheme? deviceColorScheme,
+  bool isDark = false,
+}) {
+  switch (settings.themeType) {
+    case ThemeType.custom:
+      return ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: settings.themeColor,
+          brightness: isDark ? Brightness.dark : Brightness.light,
+        ),
+      );
+    case ThemeType.retro:
+      return ThemeData(
+        colorScheme: isDark ? retroDarkTheme : retroLightTheme,
+        brightness: isDark ? Brightness.dark : Brightness.light,
+      );
+    case ThemeType.adaptive:
+      return ThemeData(
+        colorScheme: deviceColorScheme!,
+        brightness: isDark ? Brightness.dark : Brightness.light,
+      );
+  }
 }
