@@ -13,28 +13,19 @@ class DarkThemeModeTile extends StatelessWidget {
       builder: (context, systemBrightness) {
         return BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, settings) {
-            ({bool enabled, bool isDark}) state = switch (settings.themeMode) {
-              ThemeMode.system => (
-                  enabled: false,
-                  isDark: systemBrightness == Brightness.dark
-                ),
-              ThemeMode.dark => (enabled: true, isDark: true),
-              ThemeMode.light => (enabled: true, isDark: false),
-            };
-            return ListTile(
-              enabled: state.enabled,
+            bool isAutoThemeMode = settings.themeMode == ThemeMode.system;
+            bool isSystemDarkMode = systemBrightness == Brightness.dark;
+            return SwitchListTile.adaptive(
               title: Text('theme_dark'.tr()),
+              onChanged: isAutoThemeMode
+                  ? null
+                  : (bool value) {
+                      context.read<SettingsCubit>().toggleThemeMode();
+                    },
+              value: isAutoThemeMode
+                  ? isSystemDarkMode
+                  : settings.themeMode == ThemeMode.dark,
               subtitle: Text('theme_dark_desc'.tr()),
-              trailing: Switch(
-                value: state.isDark,
-                onChanged: state.enabled
-                    ? (bool value) {
-                        context.read<SettingsCubit>().changeThemeMode(
-                              value ? ThemeMode.dark : ThemeMode.light,
-                            );
-                      }
-                    : null,
-              ),
             );
           },
         );
