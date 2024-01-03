@@ -21,7 +21,8 @@ class LanguageTile extends StatelessWidget {
   Future<dynamic> showLanguageDialog(BuildContext context) {
     return showAdaptiveDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (context) => AlertDialog.adaptive(
+        contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 24),
         title: Text('language'.tr()),
         icon: Icon(Icons.language),
         content: SingleChildScrollView(
