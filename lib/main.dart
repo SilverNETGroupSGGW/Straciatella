@@ -51,12 +51,15 @@ class _MainAppState extends State<MainApp> {
             builder: (lightDynamic, darkDynamic) {
               return MaterialApp(
                 title: appName,
-                theme: settings.themeType == ThemeType.adaptive
-                    ? ThemeData(colorScheme: lightDynamic)
-                    : getTheme(settings.themeType, false, settings.themeColor),
-                darkTheme: settings.themeType == ThemeType.adaptive
-                    ? ThemeData(colorScheme: darkDynamic)
-                    : getTheme(settings.themeType, true, settings.themeColor),
+                theme: getThemeData(
+                  settings,
+                  deviceColorScheme: lightDynamic,
+                ),
+                darkTheme: getThemeData(
+                  settings,
+                  isDark: true,
+                  deviceColorScheme: darkDynamic,
+                ),
                 themeMode: settings.themeMode,
                 localizationsDelegates: context.localizationDelegates,
                 supportedLocales: context.supportedLocales,
