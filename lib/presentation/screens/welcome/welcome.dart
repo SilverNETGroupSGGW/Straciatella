@@ -45,6 +45,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         desc: 'welcome_stage_desc'.tr(),
       ),
       WelcomeStage(
+        // T
         header: Icon(
           Icons.search,
           size: iconSize,
