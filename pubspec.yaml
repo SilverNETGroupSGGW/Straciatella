@@ -30,6 +30,7 @@ dependencies:
   hive_flutter: ^1.1.0
   hive_generator: ^2.0.1
   json_annotation: ^4.8.1
+  package_info_plus: ^5.0.1
   url_launcher: ^6.2.2
   uuid: ^4.2.1
 

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 const String appName = "silvertimetable";
 const String hiveBoxName = "silvertimetable";
 const String testingLocation = "./.test_data/";
-const String appVersion = "1.0.0";
 
 const List<({Locale locale, String name})> supportedLocale = [
   (locale: Locale('en', 'US'), name: "English"),

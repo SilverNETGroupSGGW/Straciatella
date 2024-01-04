@@ -105,13 +105,12 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
   }
 
-  bool toggleDebugMode() {
+  void toggleDebugMode() {
     emit(
       state.copyWith(
         isDebugMode: !state.isDebugMode,
       ),
     );
-    return state.isDebugMode;
   }
 
   void completeFirstRun() {
