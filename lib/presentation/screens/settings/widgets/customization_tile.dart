@@ -10,8 +10,8 @@ class CustomizationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text('theme_screen'.tr()),
-      subtitle: Text('theme_screen_desc'.tr()),
+      title: Text('customization'.tr()),
+      subtitle: Text('customization_desc'.tr()),
       onTap: () {
         Navigator.pushNamed(context, RouteNames.theme);
       },
