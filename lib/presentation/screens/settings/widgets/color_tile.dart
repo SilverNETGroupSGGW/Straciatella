@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/themes.dart';
 
@@ -15,7 +14,7 @@ class ColorTile extends StatelessWidget {
     return ListTile(
       title: Text('theme_color'.tr()),
       subtitle: Text('theme_color_desc'.tr()),
-      trailing: Icon(Icons.colorize),
+      trailing: const Icon(Icons.colorize),
       onTap: () {
         // Show dialog
         showAdaptiveDialog(
@@ -39,32 +38,25 @@ class ChangeThemeColorAlertDialog extends StatelessWidget {
       title: Text('theme_color'.tr()),
       content: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ThemeTypeButtons(selected: state.themeType),
-              SizedBox(
-                height: 12,
-              ),
-              state.themeType == ThemeType.custom
-                  ? BlockPicker(
-                      pickerColor: Theme.of(context).colorScheme.primary,
-                      onColorChanged:
-                          context.read<SettingsCubit>().changeThemeColor,
-                    )
-                  : Container(),
-            ],
+          return SizedBox(
+            width: double.maxFinite,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ThemeTypeButtons(selected: state.themeType),
+                const SizedBox(
+                  height: 12,
+                ),
+                state.themeType == ThemeType.custom
+                    ? const Placeholder()
+                    : Container(),
+              ],
+            ),
           );
         },
       ),
       actions: [
-        TextButton(
-          onPressed: () {
-            context.read<SettingsCubit>().changeThemeColor(Colors.red);
-            Navigator.of(context).pop();
-          },
-          child: Text('default'.tr()),
-        ),
         TextButton(
           onPressed: () {
             context.read<SettingsCubit>().changeThemeColor(originalColor);
@@ -72,14 +64,14 @@ class ChangeThemeColorAlertDialog extends StatelessWidget {
           },
           child: Text('cancel'.tr()),
         ),
-        TextButton(
+        FilledButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           child: Text('confirm'.tr()),
         ),
       ],
-      icon: Icon(Icons.colorize),
+      icon: const Icon(Icons.colorize),
     );
   }
 }

@@ -67,27 +67,29 @@ class SavedSchedulesCubit extends Cubit<SavedSchedulesState> {
   }
 
   overwriteSavedSchedules(List<Schedule> schedules) {
-    if (schedules.contains(state.selectedSchedule))
+    if (schedules.contains(state.selectedSchedule)) {
       emit(state.copyWith(
         savedSchedules: schedules,
       ));
-    else
+    } else {
       emit(state.copyWith(
         savedSchedules: schedules,
         selectedSchedule: null,
       ));
+    }
   }
 
   selectSchedule(Schedule schedule) {
-    if (state.savedSchedules.contains(schedule))
+    if (state.savedSchedules.contains(schedule)) {
       emit(state.copyWith(
         selectedSchedule: schedule,
       ));
-    else
+    } else {
       emit(state.copyWith(
         selectedSchedule: schedule,
         savedSchedules: [...state.savedSchedules, schedule],
       ));
+    }
   }
 
   unselectSchedule() {

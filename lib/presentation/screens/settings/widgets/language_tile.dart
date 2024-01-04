@@ -22,9 +22,9 @@ class LanguageTile extends StatelessWidget {
     return showAdaptiveDialog(
       context: context,
       builder: (context) => AlertDialog.adaptive(
-        contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 24),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 24),
         title: Text('language'.tr()),
-        icon: Icon(Icons.language),
+        icon: const Icon(Icons.language),
         content: SingleChildScrollView(
           child: Column(
             children: [

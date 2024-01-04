@@ -21,10 +21,10 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      child: MainApp(settings: settings),
       supportedLocales: supportedLocale.map((e) => e.locale).toList(),
       path: 'assets/translations',
       fallbackLocale: fallbackLocale,
+      child: MainApp(settings: settings),
     ),
   );
 }
@@ -32,7 +32,7 @@ void main() async {
 class MainApp extends StatefulWidget {
   final SettingsCubit settings;
 
-  MainApp({super.key, required this.settings});
+  const MainApp({super.key, required this.settings});
 
   @override
   State<MainApp> createState() => _MainAppState();

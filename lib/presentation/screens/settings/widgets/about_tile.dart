@@ -12,7 +12,7 @@ class AboutTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AboutListTile(
-      applicationIcon: DebugImageSwitch(),
+      applicationIcon: const DebugImageSwitch(),
       applicationVersion: appVersion,
       applicationLegalese: '© 2024 Silver .NET',
       aboutBoxChildren: [
@@ -29,26 +29,26 @@ class DebugImageSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int _debugTapCount = 0;
+    int debugTapCount = 0;
 
     // Enable Debug mode when image is tapped 7 times
     return GestureDetector(
       onTap: () {
-        _debugTapCount++;
-        if (_debugTapCount == 7) {
+        debugTapCount++;
+        if (debugTapCount == 7) {
           bool newDebug = context.read<SettingsCubit>().toggleDebugMode();
           // Show SnackBar
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                'debug_mode_switched_to'.tr() + ': ' + newDebug.toString(),
+                '${'debug_mode_switched_to'.tr()}: $newDebug',
               ),
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
             ),
           );
 
           // Reset tap count
-          _debugTapCount = 0;
+          debugTapCount = 0;
         }
       },
       child: Image.asset(

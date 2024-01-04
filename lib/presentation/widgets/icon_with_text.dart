@@ -23,7 +23,7 @@ class IconWithText extends StatelessWidget {
 
     final rowItems = [
       Icon(icon),
-      SizedBox(width: 8),
+      const SizedBox(width: 8),
       FadedText(
         textStyle: textStyle,
         text: text,

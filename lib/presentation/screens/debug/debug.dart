@@ -12,7 +12,7 @@ class DebugScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: ListView(
-        children: [
+        children: const [
           LessonTile(
             classroom: "3/77",
             comment:

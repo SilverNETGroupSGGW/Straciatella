@@ -24,10 +24,10 @@ class ApiDurationConverter extends JsonConverter<Duration, String> {
     int hours = minutes ~/ 60;
     minutes %= 60;
 
-    _pad(int val) {
+    pad(int val) {
       return val.toString().padLeft(2, "0");
     }
 
-    return "${_pad(hours)}:${_pad(minutes)}:${_pad(seconds)}";
+    return "${pad(hours)}:${pad(minutes)}:${pad(seconds)}";
   }
 }

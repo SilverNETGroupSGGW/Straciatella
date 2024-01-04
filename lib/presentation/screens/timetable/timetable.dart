@@ -16,19 +16,19 @@ class TimetableScreen extends StatelessWidget {
           IconButton(
             onPressed: () =>
                 Navigator.of(context).pushNamed(RouteNames.settings),
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
           ),
         ],
       ),
       floatingActionButton: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
           return !state.isFabHidden
-              ? TimetableFab()
+              ? const TimetableFab()
               // Official way to hide FAB according to stackoverflow
-              : SizedBox.shrink();
+              : const SizedBox.shrink();
         },
       ),
-      body: Text("home screen"),
+      body: const Text("home screen"),
     );
   }
 }
