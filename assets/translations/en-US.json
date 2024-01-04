@@ -48,15 +48,17 @@
     "email_desc": "Email address for your account",
     "email_empty": "Email cannot be empty",
     "welcome_stage_text": "SGGW Schedule",
-    "welcome_stage_desc": "Welcome to SGGW Schedule app! We've made this app from scratch with latest technologies and clean code. We hope you'll enjoy it as much as we enjoyed making it!",
+    "welcome_stage_desc": "Your schedule on the go!",
     "schedules_stage_text": "Browse schedules",
-    "schedules_stage_desc": "All schedules are always up to date. Schedules for students and employees are available.",
+    "schedules_stage_desc": "Finally an official app where you can browse all your schedules in one place!",
     "notifications_stage_text": "Update notifications",
-    "notifications_stage_desc": "You can enable notifications for schedule updates. You'll be notified when schedule is updated.",
-    "customize_stage_text": "Customize app",
-    "customize_stage_desc": "You can customize app to your liking. You can change theme, language and more!",
+    "notifications_stage_desc": "We have to ask you for permission to send notifications to send you updates about your schedule as soon as possible.",
+    "allow_notifications": "Allow notifications",
+    "customization_stage_text": "Customize app",
+    "customization_stage_desc": "Make the app Yours! You can customize theme, language and more!",
     "map_stage_text": "Campus and indoor maps",
     "map_stage_desc": "You can browse campus and indoor maps. You can also search for rooms and buildings.",
     "final_stage_text": "That's it!",
-    "final_stage_desc": "You're ready to use SGGW Schedule app! We hope you'll enjoy it!"
+    "final_stage_desc": "We hope you'll enjoy it!",
+    "customize": "Customize"
 }
