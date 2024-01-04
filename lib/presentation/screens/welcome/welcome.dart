@@ -21,12 +21,18 @@ class MyApp extends StatelessWidget {
 
 class WelcomeScreen extends StatefulWidget {
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  final controller = PageController(viewportFraction: 0.8, keepPage: true);
-  var pages = <Widget>[
+  final controller = PageController(
+    viewportFraction: 0.8,
+    keepPage: true,
+  );
+
+  int currentPage = 0;
+
+  final pages = <Widget>[
     WelcomeStage(),
     WelcomeStage(),
     WelcomeStage(),
@@ -43,46 +49,86 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               child: PageView(
                 controller: controller,
                 children: pages,
+                onPageChanged: (index) {
+                  setState(() {
+                    currentPage = index;
+                  });
+                },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      controller.previousPage(
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.ease,
-                      );
-                    },
-                    child: Text("Previous"),
-                  ),
-                  SmoothPageIndicator(
-                    controller: controller,
-                    count: pages.length,
-                    effect: WormEffect(
-                      dotHeight: 8,
-                      dotWidth: 8,
-                      dotColor: Theme.of(context).colorScheme.onBackground,
-                      activeDotColor: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
-                  FilledButton(
-                    onPressed: () {
-                      controller.nextPage(
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.ease,
-                      );
-                    },
-                    child: Text("Next"),
-                  ),
-                ],
-              ),
+            PageDots(
+              currentPage: currentPage,
+              controller: controller,
+              dotCount: pages.length,
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PageDots extends StatelessWidget {
+  const PageDots({
+    super.key,
+    required this.controller,
+    required this.dotCount,
+    required this.currentPage,
+  });
+
+  final PageController controller;
+  final int dotCount, currentPage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(24.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: currentPage != 0
+                  ? TextButton(
+                      onPressed: () async {
+                        await controller.previousPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.ease,
+                        );
+                        print(controller.page);
+                      },
+                      child: Text("Previous"),
+                    )
+                  : Container(),
+            ),
+          ),
+          SmoothPageIndicator(
+            controller: controller,
+            count: dotCount,
+            effect: WormEffect(
+              dotHeight: 8,
+              dotWidth: 8,
+              dotColor: Theme.of(context).colorScheme.onBackground,
+              activeDotColor: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              alignment: Alignment.centerRight,
+              child: FilledButton(
+                onPressed: () {
+                  controller.nextPage(
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.ease,
+                  );
+                },
+                child: Text("Next"),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
