@@ -12,11 +12,11 @@ class TimetableScreen extends StatelessWidget {
           IconButton.filled(
             onPressed: () =>
                 Navigator.of(context).pushNamed(RouteNames.settings),
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
           ),
         ],
       ),
-      body: Text("home screen"),
+      body: const Text("home screen"),
     );
   }
 }

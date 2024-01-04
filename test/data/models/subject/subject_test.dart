@@ -79,7 +79,7 @@ void main() {
     type: "PracticalClasses",
     startTime: "12:00:00",
     dayOfWeek: DayOfWeek.tuesday,
-    duration: Duration(hours: 1, minutes: 30),
+    duration: const Duration(hours: 1, minutes: 30),
     isRemote: false,
     comment: "",
     schedule: ScheduleBase(
@@ -110,7 +110,7 @@ void main() {
         updated: DateTime.parse("2023-12-22T17:49:28.7739208"),
         numberOfLesson: 1,
         startTime: DateTime.parse("2024-05-01T10:00:00"),
-        duration: Duration(hours: 1, minutes: 30),
+        duration: const Duration(hours: 1, minutes: 30),
       ),
       SubjectLesson(
         id: "cea2f0ef-66cc-4ba4-9a21-5ec586d6ec1b",
@@ -118,7 +118,7 @@ void main() {
         updated: DateTime.parse("2023-12-22T17:49:28.7739372"),
         numberOfLesson: 2,
         startTime: DateTime.parse("2024-02-28T01:00:00"),
-        duration: Duration(hours: 1, minutes: 45),
+        duration: const Duration(hours: 1, minutes: 45),
       ),
     ],
     groups: [

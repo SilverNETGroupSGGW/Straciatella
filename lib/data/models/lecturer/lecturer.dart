@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:silvertimetable/data/converters/datetime_converter.dart';
 import 'package:silvertimetable/data/models/subject/subject.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:hive/hive.dart';
 
 part 'lecturer.freezed.dart';

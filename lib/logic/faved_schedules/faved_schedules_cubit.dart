@@ -1,8 +1,9 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/favable_schedule.dart';
 
 part 'faved_schedules_state.dart';
@@ -30,7 +31,9 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
       FavedSchedulesState? loadedState = box.get(boxKey);
       if (loadedState != null) emit(loadedState);
     } catch (e) {
-      print("Could not load faved schedules");
+      if (kDebugMode) {
+        print("Could not load faved schedules");
+      }
       // TODO: handle exception
     }
   }
@@ -67,27 +70,29 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
   }
 
   overwriteFavedSchedules(List<FavableSchedule> schedules) {
-    if (schedules.contains(state.selectedSchedule))
+    if (schedules.contains(state.selectedSchedule)) {
       emit(state.copyWith(
         favedSchedules: schedules,
       ));
-    else
+    } else {
       emit(state.copyWith(
         favedSchedules: schedules,
         selectedSchedule: null,
       ));
+    }
   }
 
   selectSchedule(FavableSchedule schedule) {
-    if (state.favedSchedules.contains(schedule))
+    if (state.favedSchedules.contains(schedule)) {
       emit(state.copyWith(
         selectedSchedule: schedule,
       ));
-    else
+    } else {
       emit(state.copyWith(
         selectedSchedule: schedule,
         favedSchedules: [...state.favedSchedules, schedule],
       ));
+    }
   }
 
   unselectSchedule() {

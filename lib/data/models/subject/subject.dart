@@ -6,7 +6,7 @@ import 'package:silvertimetable/data/converters/day_of_week_converter.dart';
 import 'package:silvertimetable/data/models/classroom/classroom.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 
 part 'subject.freezed.dart';
 part 'subject.g.dart';
