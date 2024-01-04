@@ -61,7 +61,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         title: 'notifications_stage_text'.tr(),
         desc: 'notifications_stage_desc'.tr(),
         leading: FilledButton(
-            onPressed: () {}, child: Text('allow_notifications'.tr())),
+            onPressed: () {
+              // TODO: Ask for notification permission
+            },
+            child: Text('allow_notifications'.tr())),
       ),
       WelcomeStage(
         header: Icon(
