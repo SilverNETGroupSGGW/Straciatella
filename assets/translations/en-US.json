@@ -61,5 +61,19 @@
     "show_widgets": "Show Widgets",
     "show_widgets_desc": "Show all widgets of the app",
     "privacy_policy": "Privacy Policy",
-    "about_app_desc": "A schedule app made by students of Warsaw University of Life Sciences. Remade from scrach with love and brand news theme!"
+    "about_app_desc": "A schedule app made by students of Warsaw University of Life Sciences. Remade from scrach with love and brand news theme!",
+    "customization": "Customization",
+    "customization_desc": "Customize the app to your liking",
+    "colors": "Colors",
+    "dynamic_colors": "Dynamic Colors",
+    "dynamic_colors_desc": "Use device accent color for the app",
+    "retro_colors": "Retro Colors",
+    "retro_colors_desc": "Color scheme from based on the old version of the app",
+    "custom_colors": "Custom Colors",
+    "custom_colors_desc": "Choose your own accent color",
+    "lecturer": "Lecturer",
+    "classroom": "Classroom",
+    "group": "Group",
+    "comment": "Comment",
+    "preview": "Preview"
 }
