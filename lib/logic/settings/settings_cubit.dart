@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
-import 'package:silvertimetable/themes.dart';
+import 'package:silvertimetable/data/models/enums.dart';
 
 part 'settings_cubit.freezed.dart';
 part 'settings_cubit.g.dart';

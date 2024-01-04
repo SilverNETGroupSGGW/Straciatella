@@ -57,8 +57,8 @@ class _MainAppState extends State<MainApp> {
                 ),
                 darkTheme: getThemeData(
                   settings,
-                  isDark: true,
                   deviceColorScheme: darkDynamic,
+                  brightness: Brightness.dark,
                 ),
                 themeMode: settings.themeMode,
                 localizationsDelegates: context.localizationDelegates,
