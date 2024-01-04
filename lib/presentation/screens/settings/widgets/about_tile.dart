@@ -11,23 +11,20 @@ class AboutTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<PackageInfo>(
-      future: PackageInfo.fromPlatform(),
-      builder: (context, snapshot) {
-        return switch ((snapshot.connectionState, snapshot.hasData)) {
-          (ConnectionState.done, true) => AboutListTile(
-              applicationIcon: const DebugImageSwitch(),
-              applicationVersion:
-                  "v${snapshot.data!.version}+${snapshot.data!.buildNumber}",
-              applicationLegalese: '© ${DateTime.now().year} Silver .NET',
-              applicationName: snapshot.data!.appName,
-              aboutBoxChildren: [
-                Text('about_app_desc'.tr()),
-              ],
-            ),
-          (_, _) => Container(),
-        };
-      },
+    return ListTile(
+      title: Text("about_app_title".tr()),
+      onTap: () => PackageInfo.fromPlatform().then(
+        (PackageInfo info) => showAboutDialog(
+          context: context,
+          applicationIcon: const DebugImageSwitch(),
+          applicationVersion: "v${info.version}",
+          applicationLegalese: '© ${DateTime.now().year} Silver .NET',
+          applicationName: info.appName,
+          children: [
+            Text('about_app_desc'.tr()),
+          ],
+        ),
+      ),
     );
   }
 }
