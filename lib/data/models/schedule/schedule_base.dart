@@ -1,13 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/data/converters/datetime_converter.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
+import 'package:silvertimetable/data/models/favable_schedule.dart';
 
 part 'schedule_base.freezed.dart';
 part 'schedule_base.g.dart';
 
 @freezed
-class ScheduleBase with _$ScheduleBase {
+class ScheduleBase with _$ScheduleBase, FavableSchedule {
   ScheduleBase._();
 
   @HiveType(

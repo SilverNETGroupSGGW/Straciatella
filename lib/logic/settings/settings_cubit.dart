@@ -1,10 +1,11 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/themes.dart';
 
 part 'settings_state.dart';
@@ -27,8 +28,10 @@ class SettingsCubit extends Cubit<SettingsState> {
       final SettingsState loadedSettingsState = box.get(_boxKey) ?? state;
       emit(loadedSettingsState);
     } catch (e) {
+      if (kDebugMode) {
+        print("Could not load settings");
+      }
       // TODO: handle exception
-      print("Could not load settings");
     }
   }
 

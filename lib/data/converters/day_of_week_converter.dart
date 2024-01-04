@@ -19,5 +19,5 @@ class DayOfWeekConverter extends JsonConverter<DayOfWeek, String> {
       DayOfWeek.values[_apiDaysOrder.indexOf(json)];
 
   @override
-  String toJson(DayOfWeek dayOfWeek) => _apiDaysOrder[dayOfWeek.index];
+  String toJson(DayOfWeek object) => _apiDaysOrder[object.index];
 }

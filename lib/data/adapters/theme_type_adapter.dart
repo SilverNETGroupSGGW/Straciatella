@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/themes.dart';
 
 class ThemeTypeAdapter extends TypeAdapter<ThemeType> {
