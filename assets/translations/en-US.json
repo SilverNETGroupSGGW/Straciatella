@@ -46,5 +46,17 @@
     "api_empty": "API URL cannot be empty",
     "email": "Email",
     "email_desc": "Email address for your account",
-    "email_empty": "Email cannot be empty"
+    "email_empty": "Email cannot be empty",
+    "welcome_stage_text": "SGGW Schedule",
+    "welcome_stage_desc": "Welcome to SGGW Schedule app! We've made this app from scratch with latest technologies and clean code. We hope you'll enjoy it as much as we enjoyed making it!",
+    "schedules_stage_text": "Browse schedules",
+    "schedules_stage_desc": "All schedules are always up to date. Schedules for students and employees are available.",
+    "notifications_stage_text": "Update notifications",
+    "notifications_stage_desc": "You can enable notifications for schedule updates. You'll be notified when schedule is updated.",
+    "customize_stage_text": "Customize app",
+    "customize_stage_desc": "You can customize app to your liking. You can change theme, language and more!",
+    "map_stage_text": "Campus and indoor maps",
+    "map_stage_desc": "You can browse campus and indoor maps. You can also search for rooms and buildings.",
+    "final_stage_text": "That's it!",
+    "final_stage_desc": "You're ready to use SGGW Schedule app! We hope you'll enjoy it!"
 }
