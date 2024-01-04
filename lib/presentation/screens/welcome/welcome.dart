@@ -1,8 +1,11 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/presentation/screens/welcome/widgets/customize_stage.dart';
+import 'package:silvertimetable/presentation/screens/welcome/widgets/final_stage.dart';
+import 'package:silvertimetable/presentation/screens/welcome/widgets/map_stage.dart';
+import 'package:silvertimetable/presentation/screens/welcome/widgets/notifications_stage.dart';
 import 'package:silvertimetable/presentation/screens/welcome/widgets/page_dots.dart';
+import 'package:silvertimetable/presentation/screens/welcome/widgets/schedules_stage.dart';
 import 'package:silvertimetable/presentation/screens/welcome/widgets/welcome_stage.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // ignore_for_file: public_member_api_docs
 void main() {
@@ -36,33 +39,42 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   final pages = <Widget>[
     WelcomeStage(),
-    WelcomeStage(),
-    WelcomeStage(),
+    SchedulesStage(),
+    NotificationsStage(),
+    MapStage(),
+    CustomizeStage(),
+    FinalStage(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView(
-                controller: controller,
-                children: pages,
-                onPageChanged: (index) {
-                  setState(() {
-                    currentPage = index;
-                  });
-                },
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
+              Expanded(
+                child: PageView.builder(
+                  controller: controller,
+                  itemCount: pages.length,
+                  itemBuilder: (context, index) {
+                    return pages[index];
+                  },
+                  onPageChanged: (index) {
+                    setState(() {
+                      currentPage = index;
+                    });
+                  },
+                ),
               ),
-            ),
-            PageDots(
-              currentPage: currentPage,
-              controller: controller,
-              dotCount: pages.length,
-            ),
-          ],
+              PageDots(
+                currentPage: currentPage,
+                controller: controller,
+                dotCount: pages.length,
+              ),
+            ],
+          ),
         ),
       ),
     );
