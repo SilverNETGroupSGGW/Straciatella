@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
@@ -34,43 +33,6 @@ class SettingsCubit extends Cubit<SettingsState> {
       }
       // TODO: handle exception
     }
-  }
-
-  void toggleAutoThemeMode() {
-    if (state.themeMode == ThemeMode.system) {
-      final brightness =
-          SchedulerBinding.instance.platformDispatcher.platformBrightness;
-
-      if (brightness == Brightness.dark) {
-        emit(
-          state.copyWith(
-            themeMode: ThemeMode.dark,
-          ),
-        );
-      } else {
-        emit(
-          state.copyWith(
-            themeMode: ThemeMode.light,
-          ),
-        );
-      }
-    } else {
-      emit(
-        state.copyWith(
-          themeMode: ThemeMode.system,
-        ),
-      );
-    }
-  }
-
-  void toggleThemeMode() {
-    emit(
-      state.copyWith(
-        themeMode: state.themeMode == ThemeMode.light
-            ? ThemeMode.dark
-            : ThemeMode.light,
-      ),
-    );
   }
 
   void changeThemeMode(ThemeMode themeMode) {
