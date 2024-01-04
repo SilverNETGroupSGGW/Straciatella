@@ -1,43 +1,51 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeStage extends StatelessWidget {
   const WelcomeStage({
     super.key,
+    required this.header,
+    this.leading,
+    required this.title,
+    required this.desc,
   });
+
+  final Widget? header, leading;
+  final String title, desc;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.expand(
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            'assets/icon/icon.png',
-            width: 200,
-            height: 200,
-          ),
-          SizedBox(
-            height: 250,
-          ),
-          Column(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        if (header != null) Expanded(child: header!, flex: 2),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                "welcome_stage_text".tr(),
-                style: Theme.of(context).textTheme.titleMedium,
+              Column(
+                children: [
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.headlineLarge,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16.0),
+                  Text(
+                    desc,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 8,
-              ),
-              Text(
-                "welcome_stage_desc".tr(),
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
+              if (leading != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 24.0),
+                  child: leading!,
+                ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
