@@ -112,7 +112,8 @@ class __$$FavedSchedulesStateImplCopyWithImpl<$Res>
 @HiveType(
     typeId: HiveTypeIds.favedSchedulesState,
     adapterName: "FavedSchedulesStateAdapter")
-class _$FavedSchedulesStateImpl extends _FavedSchedulesState {
+class _$FavedSchedulesStateImpl extends _FavedSchedulesState
+    with DiagnosticableTreeMixin {
   _$FavedSchedulesStateImpl(
       {@HiveField(0) final List<FavableSchedule> favedSchedules = const [],
       @HiveField(1) this.selectedSchedule = null})
@@ -135,8 +136,17 @@ class _$FavedSchedulesStateImpl extends _FavedSchedulesState {
   final FavableSchedule? selectedSchedule;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'FavedSchedulesState(favedSchedules: $favedSchedules, selectedSchedule: $selectedSchedule)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'FavedSchedulesState'))
+      ..add(DiagnosticsProperty('favedSchedules', favedSchedules))
+      ..add(DiagnosticsProperty('selectedSchedule', selectedSchedule));
   }
 
   @override

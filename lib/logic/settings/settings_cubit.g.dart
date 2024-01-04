@@ -17,12 +17,12 @@ class SettingsStateAdapter extends TypeAdapter<_$SettingsStateImpl> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return _$SettingsStateImpl(
-      themeMode: fields[0] as ThemeMode,
-      themeType: fields[4] as ThemeType,
-      isFirstRun: fields[1] as bool,
-      isDebugMode: fields[2] as bool,
-      themeColor: fields[3] as Color,
-      isFabHidden: fields[5] as bool,
+      themeMode: fields[0] == null ? ThemeMode.system : fields[0] as ThemeMode,
+      themeType: fields[4] == null ? ThemeType.custom : fields[4] as ThemeType,
+      isFirstRun: fields[1] == null ? true : fields[1] as bool,
+      isDebugMode: fields[2] == null ? true : fields[2] as bool,
+      themeColor: fields[3] == null ? Colors.red : fields[3] as Color,
+      isFabHidden: fields[5] == null ? false : fields[5] as bool,
     );
   }
 

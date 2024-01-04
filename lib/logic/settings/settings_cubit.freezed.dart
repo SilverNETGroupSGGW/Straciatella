@@ -16,17 +16,17 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SettingsState {
-  @HiveField(0)
+  @HiveField(0, defaultValue: ThemeMode.system)
   ThemeMode get themeMode => throw _privateConstructorUsedError;
-  @HiveField(4)
+  @HiveField(4, defaultValue: ThemeType.custom)
   ThemeType get themeType => throw _privateConstructorUsedError;
-  @HiveField(1)
+  @HiveField(1, defaultValue: true)
   bool get isFirstRun => throw _privateConstructorUsedError;
-  @HiveField(2)
+  @HiveField(2, defaultValue: kDebugMode)
   bool get isDebugMode => throw _privateConstructorUsedError;
-  @HiveField(3)
+  @HiveField(3, defaultValue: Colors.red)
   Color get themeColor => throw _privateConstructorUsedError;
-  @HiveField(5)
+  @HiveField(5, defaultValue: false)
   bool get isFabHidden => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -41,12 +41,12 @@ abstract class $SettingsStateCopyWith<$Res> {
       _$SettingsStateCopyWithImpl<$Res, SettingsState>;
   @useResult
   $Res call(
-      {@HiveField(0) ThemeMode themeMode,
-      @HiveField(4) ThemeType themeType,
-      @HiveField(1) bool isFirstRun,
-      @HiveField(2) bool isDebugMode,
-      @HiveField(3) Color themeColor,
-      @HiveField(5) bool isFabHidden});
+      {@HiveField(0, defaultValue: ThemeMode.system) ThemeMode themeMode,
+      @HiveField(4, defaultValue: ThemeType.custom) ThemeType themeType,
+      @HiveField(1, defaultValue: true) bool isFirstRun,
+      @HiveField(2, defaultValue: kDebugMode) bool isDebugMode,
+      @HiveField(3, defaultValue: Colors.red) Color themeColor,
+      @HiveField(5, defaultValue: false) bool isFabHidden});
 }
 
 /// @nodoc
@@ -107,12 +107,12 @@ abstract class _$$SettingsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@HiveField(0) ThemeMode themeMode,
-      @HiveField(4) ThemeType themeType,
-      @HiveField(1) bool isFirstRun,
-      @HiveField(2) bool isDebugMode,
-      @HiveField(3) Color themeColor,
-      @HiveField(5) bool isFabHidden});
+      {@HiveField(0, defaultValue: ThemeMode.system) ThemeMode themeMode,
+      @HiveField(4, defaultValue: ThemeType.custom) ThemeType themeType,
+      @HiveField(1, defaultValue: true) bool isFirstRun,
+      @HiveField(2, defaultValue: kDebugMode) bool isDebugMode,
+      @HiveField(3, defaultValue: Colors.red) Color themeColor,
+      @HiveField(5, defaultValue: false) bool isFabHidden});
 }
 
 /// @nodoc
@@ -166,48 +166,63 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
 
 @HiveType(
     typeId: HiveTypeIds.settingsState, adapterName: "SettingsStateAdapter")
-class _$SettingsStateImpl extends _SettingsState {
+class _$SettingsStateImpl extends _SettingsState with DiagnosticableTreeMixin {
   _$SettingsStateImpl(
-      {@HiveField(0) this.themeMode = ThemeMode.system,
-      @HiveField(4) this.themeType = ThemeType.custom,
-      @HiveField(1) this.isFirstRun = true,
-      @HiveField(2) this.isDebugMode = false,
-      @HiveField(3) this.themeColor = Colors.red,
-      @HiveField(5) this.isFabHidden = false})
+      {@HiveField(0, defaultValue: ThemeMode.system)
+      this.themeMode = ThemeMode.system,
+      @HiveField(4, defaultValue: ThemeType.custom)
+      this.themeType = ThemeType.custom,
+      @HiveField(1, defaultValue: true) this.isFirstRun = true,
+      @HiveField(2, defaultValue: kDebugMode) this.isDebugMode = kDebugMode,
+      @HiveField(3, defaultValue: Colors.red) this.themeColor = Colors.red,
+      @HiveField(5, defaultValue: false) this.isFabHidden = false})
       : super._();
 
   @override
   @JsonKey()
-  @HiveField(0)
+  @HiveField(0, defaultValue: ThemeMode.system)
   final ThemeMode themeMode;
   @override
   @JsonKey()
-  @HiveField(4)
+  @HiveField(4, defaultValue: ThemeType.custom)
   final ThemeType themeType;
   @override
   @JsonKey()
-  @HiveField(1)
+  @HiveField(1, defaultValue: true)
   final bool isFirstRun;
   @override
   @JsonKey()
-  @HiveField(2)
+  @HiveField(2, defaultValue: kDebugMode)
   final bool isDebugMode;
   @override
   @JsonKey()
-  @HiveField(3)
+  @HiveField(3, defaultValue: Colors.red)
   final Color themeColor;
   @override
   @JsonKey()
-  @HiveField(5)
+  @HiveField(5, defaultValue: false)
   final bool isFabHidden;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SettingsState(themeMode: $themeMode, themeType: $themeType, isFirstRun: $isFirstRun, isDebugMode: $isDebugMode, themeColor: $themeColor, isFabHidden: $isFabHidden)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SettingsState'))
+      ..add(DiagnosticsProperty('themeMode', themeMode))
+      ..add(DiagnosticsProperty('themeType', themeType))
+      ..add(DiagnosticsProperty('isFirstRun', isFirstRun))
+      ..add(DiagnosticsProperty('isDebugMode', isDebugMode))
+      ..add(DiagnosticsProperty('themeColor', themeColor))
+      ..add(DiagnosticsProperty('isFabHidden', isFabHidden));
+  }
+
+  @override
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SettingsStateImpl &&
@@ -238,31 +253,32 @@ class _$SettingsStateImpl extends _SettingsState {
 
 abstract class _SettingsState extends SettingsState {
   factory _SettingsState(
-      {@HiveField(0) final ThemeMode themeMode,
-      @HiveField(4) final ThemeType themeType,
-      @HiveField(1) final bool isFirstRun,
-      @HiveField(2) final bool isDebugMode,
-      @HiveField(3) final Color themeColor,
-      @HiveField(5) final bool isFabHidden}) = _$SettingsStateImpl;
+      {@HiveField(0, defaultValue: ThemeMode.system) final ThemeMode themeMode,
+      @HiveField(4, defaultValue: ThemeType.custom) final ThemeType themeType,
+      @HiveField(1, defaultValue: true) final bool isFirstRun,
+      @HiveField(2, defaultValue: kDebugMode) final bool isDebugMode,
+      @HiveField(3, defaultValue: Colors.red) final Color themeColor,
+      @HiveField(5, defaultValue: false)
+      final bool isFabHidden}) = _$SettingsStateImpl;
   _SettingsState._() : super._();
 
   @override
-  @HiveField(0)
+  @HiveField(0, defaultValue: ThemeMode.system)
   ThemeMode get themeMode;
   @override
-  @HiveField(4)
+  @HiveField(4, defaultValue: ThemeType.custom)
   ThemeType get themeType;
   @override
-  @HiveField(1)
+  @HiveField(1, defaultValue: true)
   bool get isFirstRun;
   @override
-  @HiveField(2)
+  @HiveField(2, defaultValue: kDebugMode)
   bool get isDebugMode;
   @override
-  @HiveField(3)
+  @HiveField(3, defaultValue: Colors.red)
   Color get themeColor;
   @override
-  @HiveField(5)
+  @HiveField(5, defaultValue: false)
   bool get isFabHidden;
   @override
   @JsonKey(ignore: true)
