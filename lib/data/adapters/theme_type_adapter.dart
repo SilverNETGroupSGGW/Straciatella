@@ -8,7 +8,7 @@ class ThemeTypeAdapter extends TypeAdapter<ThemeType> {
 
   @override
   ThemeType read(BinaryReader reader) {
-    return ThemeType.values[reader.read()];
+    return ThemeType.values[reader.read() as int];
   }
 
   @override

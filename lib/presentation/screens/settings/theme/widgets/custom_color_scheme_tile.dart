@@ -20,7 +20,6 @@ class CustomColorSchemeTile extends StatelessWidget {
             ColorPicker(
               borderRadius: 12,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-              hasBorder: false,
               height: 80,
               width: 80,
               pickersEnabled: const {

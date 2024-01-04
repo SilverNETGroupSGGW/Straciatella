@@ -41,9 +41,7 @@ class ThemeScreen extends StatelessWidget {
                     CategoryLabel(text: 'colors'.tr()),
                     const AutoColorSchemeTile(),
                     const RetroColorSchemeTile(),
-                    state.themeType == ThemeType.custom
-                        ? const CustomColorSchemeTile()
-                        : const SizedBox.shrink(),
+                    if (state.themeType == ThemeType.custom) const CustomColorSchemeTile() else const SizedBox.shrink(),
                   ],
                 ),
               );

@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:silvertimetable/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 
 class AboutTile extends StatelessWidget {
@@ -36,7 +36,7 @@ class DebugImageSwitch extends StatelessWidget {
       onTap: () {
         debugTapCount++;
         if (debugTapCount == 7) {
-          bool newDebug = context.read<SettingsCubit>().toggleDebugMode();
+          final bool newDebug = context.read<SettingsCubit>().toggleDebugMode();
           // Show SnackBar
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

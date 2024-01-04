@@ -24,7 +24,7 @@ ThemeData getThemeData(
       );
     case ThemeType.adaptive:
       return ThemeData(
-        colorScheme: deviceColorScheme!,
+        colorScheme: deviceColorScheme,
         brightness: isDark ? Brightness.dark : Brightness.light,
       );
   }

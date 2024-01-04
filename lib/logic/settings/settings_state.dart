@@ -2,7 +2,6 @@ part of 'settings_cubit.dart';
 
 @freezed
 class SettingsState extends HiveObject with _$SettingsState {
-  SettingsState._();
 
   @HiveType(
     typeId: HiveTypeIds.settingsState,
@@ -16,4 +15,5 @@ class SettingsState extends HiveObject with _$SettingsState {
     @Default(Colors.red) @HiveField(3) Color themeColor,
     @Default(false) @HiveField(5) bool isFabHidden,
   }) = _SettingsState;
+  SettingsState._();
 }

@@ -10,8 +10,8 @@ class CategoryLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color = Theme.of(context).colorScheme.primary;
-    TextStyle? textStyle =
+    final Color color = Theme.of(context).colorScheme.primary;
+    final TextStyle? textStyle =
         Theme.of(context).textTheme.labelLarge?.copyWith(color: color);
     return Padding(
       padding: const EdgeInsets.only(
