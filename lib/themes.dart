@@ -10,10 +10,8 @@ ThemeData getThemeData(
 }) {
   return switch ((settings.themeType, deviceColorScheme, brightness)) {
     (ThemeType.custom, _, _) => _fromSeedColor(settings.themeColor, brightness),
-    (ThemeType.retro, _, Brightness.light) =>
-      ThemeData.from(colorScheme: retroLightTheme),
-    (ThemeType.retro, _, Brightness.dark) =>
-      ThemeData.from(colorScheme: retroDarkTheme),
+    (ThemeType.retro, _, Brightness.light) => retroLightTheme,
+    (ThemeType.retro, _, Brightness.dark) => retroDarkTheme,
     (ThemeType.adaptive, null, _) =>
       _fromSeedColor(settings.themeColor, brightness),
     (ThemeType.adaptive, _, _) => _adaptive(deviceColorScheme!, brightness),
@@ -37,34 +35,38 @@ ThemeData _adaptive(ColorScheme deviceColorScheme, Brightness brightness) {
   );
 }
 
-ColorScheme retroLightTheme = ColorScheme(
-  brightness: Brightness.light,
-  shadow: Colors.black,
-  primary: Colors.red,
-  surfaceTint: Colors.grey.shade800,
-  onPrimary: Colors.white,
-  secondary: Colors.red,
-  onSecondary: Colors.white,
-  error: Colors.red,
-  onError: Colors.white,
-  background: Colors.grey.shade900,
-  onBackground: Colors.grey,
-  surface: Colors.black54,
-  onSurface: Colors.white,
+ThemeData retroLightTheme = ThemeData.from(
+  colorScheme: ColorScheme(
+    brightness: Brightness.light,
+    shadow: Colors.black,
+    primary: Colors.red,
+    surfaceTint: Colors.grey.shade800,
+    onPrimary: Colors.white,
+    secondary: Colors.red,
+    onSecondary: Colors.white,
+    error: Colors.red,
+    onError: Colors.white,
+    background: Colors.grey.shade900,
+    onBackground: Colors.grey,
+    surface: Colors.black54,
+    onSurface: Colors.white,
+  ),
 );
 
-ColorScheme retroDarkTheme = ColorScheme(
-  brightness: Brightness.dark,
-  shadow: Colors.black,
-  primary: Colors.red,
-  surfaceTint: Colors.grey.shade800,
-  onPrimary: Colors.white,
-  secondary: Colors.red,
-  onSecondary: Colors.white,
-  error: Colors.red,
-  onError: Colors.white,
-  background: Colors.grey.shade900,
-  onBackground: Colors.grey,
-  surface: Colors.black54,
-  onSurface: Colors.white,
+ThemeData retroDarkTheme = ThemeData.from(
+  colorScheme: ColorScheme(
+    brightness: Brightness.dark,
+    shadow: Colors.black,
+    primary: Colors.red,
+    surfaceTint: Colors.grey.shade800,
+    onPrimary: Colors.white,
+    secondary: Colors.red,
+    onSecondary: Colors.white,
+    error: Colors.red,
+    onError: Colors.white,
+    background: Colors.grey.shade900,
+    onBackground: Colors.grey,
+    surface: Colors.black54,
+    onSurface: Colors.white,
+  ),
 );
