@@ -1,6 +1,5 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:silvertimetable/presentation/screens/debug/debug.dart';
 import 'package:silvertimetable/presentation/screens/timetable/timetable.dart';
 import 'package:silvertimetable/presentation/screens/settings/settings.dart';
