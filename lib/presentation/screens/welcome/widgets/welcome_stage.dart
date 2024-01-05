@@ -7,17 +7,26 @@ class WelcomeStage extends StatelessWidget {
     this.leading,
     required this.title,
     required this.desc,
+    required this.animationController,
   });
 
   final Widget? header, leading;
   final String title, desc;
+  final AnimationController animationController;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (header != null) Expanded(child: header!, flex: 2),
+        if (header != null)
+          Expanded(
+            child: FadeTransition(
+              child: header!,
+              opacity: animationController,
+            ),
+            flex: 2,
+          ),
         Expanded(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

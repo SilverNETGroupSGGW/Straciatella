@@ -1,4 +1,6 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:silvertimetable/presentation/screens/debug/debug.dart';
 import 'package:silvertimetable/presentation/screens/timetable/timetable.dart';
 import 'package:silvertimetable/presentation/screens/settings/settings.dart';
@@ -13,13 +15,23 @@ sealed class RouteNames {
 
 class AppRouter {
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
-    return MaterialPageRoute(
-      builder: (context) => switch (settings.name) {
-        RouteNames.timeline => TimetableScreen(),
-        RouteNames.settings => SettingsScreen(),
-        RouteNames.debug => DebugScreen(),
-        RouteNames.welcome => WelcomeScreen(),
-        _ => RouteNotFoundScreen(),
+    return PageRouteBuilder(
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return SharedAxisTransition(
+          animation: animation,
+          secondaryAnimation: secondaryAnimation,
+          transitionType: SharedAxisTransitionType.horizontal,
+          child: child,
+        );
+      },
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return switch (settings.name) {
+          RouteNames.timeline => TimetableScreen(),
+          RouteNames.settings => SettingsScreen(),
+          RouteNames.debug => DebugScreen(),
+          RouteNames.welcome => WelcomeScreen(),
+          _ => RouteNotFoundScreen(),
+        };
       },
     );
   }
