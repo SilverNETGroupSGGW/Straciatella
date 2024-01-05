@@ -7,6 +7,10 @@ import 'package:silvertimetable/presentation/screens/settings/theme/widgets/them
 class RetroThemeTile extends StatelessWidget {
   const RetroThemeTile({super.key});
 
+  bool _isThisThemeType(SettingsState settings) {
+    return settings.themeType == ThemeType.retro;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,16 +18,10 @@ class RetroThemeTile extends StatelessWidget {
       children: [
         BlocBuilder<SettingsCubit, SettingsState>(
           buildWhen: (previous, current) =>
-              switch ((previous.themeType, current.themeType)) {
-            // theme type changed to or from retro
-            (ThemeType.retro, != ThemeType.retro) => true,
-            (!= ThemeType.retro, ThemeType.retro) => true,
-            // otherwise dot rebuild this widget
-            (_, _) => false,
-          },
+              _isThisThemeType(previous) ^ _isThisThemeType(current),
           builder: (context, settings) {
             return ThemeTile(
-              isSelected: settings.themeType == ThemeType.retro,
+              isSelected: _isThisThemeType(settings),
               onPressed: () => context
                   .read<SettingsCubit>()
                   .changeThemeType(ThemeType.retro),
@@ -45,7 +43,7 @@ class RetroThemeTile extends StatelessWidget {
             );
           },
         ),
-        const Text("retro"),
+        const Text("Retro"),
       ],
     );
   }

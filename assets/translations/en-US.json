@@ -1,5 +1,5 @@
-{
-    "app_desc": "A schedule app made by {creator} for students and employees of Warsaw University of Life Sciences. Remade from scrach with love and brand news theme!",
+{    
+    "app_desc": "A schedule app made by {creator} for students and employees of Warsaw University of Life Sciences.",
     "timeline": "Timeline",
     "settings": "Settings",
     "language": "Language",
@@ -72,8 +72,11 @@
     "custom_colors": "Custom Colors",
     "custom_colors_desc": "Choose your own accent color",
     "lecturer": "Lecturer",
+    "lesson": "Classes",
     "classroom": "Classroom",
     "group": "Group",
     "comment": "Comment",
-    "preview": "Preview"
+    "preview": "Preview",
+    "about_app_title": "About app",
+    "adaptive": "Adaptive"
 }

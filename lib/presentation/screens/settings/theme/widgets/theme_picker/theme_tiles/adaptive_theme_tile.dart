@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/enums.dart';
@@ -8,6 +9,10 @@ import 'package:silvertimetable/presentation/screens/settings/theme/widgets/them
 class AdaptiveThemeTile extends StatelessWidget {
   const AdaptiveThemeTile({super.key});
 
+  bool _isThisThemeType(SettingsState settings) {
+    return settings.themeType == ThemeType.adaptive;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,16 +20,10 @@ class AdaptiveThemeTile extends StatelessWidget {
       children: [
         BlocBuilder<SettingsCubit, SettingsState>(
           buildWhen: (previous, current) =>
-              switch ((previous.themeType, current.themeType)) {
-            // theme type changed to or from adaptive
-            (ThemeType.adaptive, != ThemeType.adaptive) => true,
-            (!= ThemeType.adaptive, ThemeType.adaptive) => true,
-            // otherwise dot rebuild this widget
-            (_, _) => false,
-          },
+              _isThisThemeType(previous) ^ _isThisThemeType(current),
           builder: (context, settings) {
             return ThemeTile(
-              isSelected: settings.themeType == ThemeType.adaptive,
+              isSelected: _isThisThemeType(settings),
               onPressed: () => context
                   .read<SettingsCubit>()
                   .changeThemeType(ThemeType.adaptive),
@@ -46,7 +45,7 @@ class AdaptiveThemeTile extends StatelessWidget {
             );
           },
         ),
-        Text("adaptive".tr()),
+        Text("adaptive".tr().capitalize),
       ],
     );
   }
