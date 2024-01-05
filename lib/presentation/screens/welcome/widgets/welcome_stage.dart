@@ -16,45 +16,45 @@ class WelcomeStage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        if (header != null)
-          Expanded(
-            child: FadeTransition(
+    return FadeTransition(
+      opacity: animationController,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (header != null)
+            Expanded(
               child: header!,
-              opacity: animationController,
+              flex: 2,
             ),
-            flex: 2,
-          ),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.headlineLarge,
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 16.0),
-                  Text(
-                    desc,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-              if (leading != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 24.0),
-                  child: leading!,
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.headlineLarge,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 16.0),
+                    Text(
+                      desc,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
-            ],
+                if (leading != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 24.0),
+                    child: leading!,
+                  ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
