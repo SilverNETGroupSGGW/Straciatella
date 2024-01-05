@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/presentation/screens/debug/debug.dart';
-import 'package:silvertimetable/presentation/screens/timetable/timetable.dart';
 import 'package:silvertimetable/presentation/screens/settings/settings.dart';
+import 'package:silvertimetable/presentation/screens/timetable/timetable.dart';
 
 sealed class RouteNames {
   static const timeline = "/";

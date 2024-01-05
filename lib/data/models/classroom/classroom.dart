@@ -8,7 +8,6 @@ part 'classroom.g.dart';
 
 @freezed
 class Classroom with _$Classroom {
-  Classroom._();
 
   @HiveType(
     typeId: HiveTypeIds.classroom,
@@ -22,6 +21,7 @@ class Classroom with _$Classroom {
     @HiveField(4) required String floor,
     @HiveField(5) required String building,
   }) = _Classroom;
+  Classroom._();
 
   factory Classroom.fromJson(Map<String, dynamic> json) =>
       _$ClassroomFromJson(json);

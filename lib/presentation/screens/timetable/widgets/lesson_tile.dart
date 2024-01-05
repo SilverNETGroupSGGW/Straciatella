@@ -32,7 +32,6 @@ class LessonTile extends StatelessWidget {
             startTime: startTime,
           ),
           LessonCardStudent(
-            elevation: 0,
             classroom: classroom,
             comment: comment,
             groups: groups,

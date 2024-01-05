@@ -16,9 +16,9 @@ void main() async {
     path: testingLocation,
   );
 
-  Box box = Hive.box(hiveBoxName);
+  final Box box = Hive.box(hiveBoxName);
   box.clear();
-  ScheduleBase testSchedule = ScheduleBase.fromJson({
+  final ScheduleBase testSchedule = ScheduleBase.fromJson({
     "id": "ba0d9a27-3078-4709-81e6-2d8b4e1c8a71",
     "created": "2023-11-27T00:00:06.6281617",
     "updated": "2023-11-27T00:00:06.6281618",
@@ -31,7 +31,7 @@ void main() async {
     "studyMode": "Unknown",
     "degreeOfStudy": "AssociateDegree",
   });
-  LecturerBase testLecturer = LecturerBase.fromJson({
+  final LecturerBase testLecturer = LecturerBase.fromJson({
     "id": "abf9b897-9cbb-456d-0548-08dbeeaa6ca9",
     "created": "2023-11-26T18:39:16.8659781",
     "updated": "2023-11-26T18:39:16.8659783",
@@ -48,7 +48,6 @@ void main() async {
     expect: () => [
       FavedSchedulesState(
         favedSchedules: [testSchedule],
-        selectedSchedule: null,
       ),
     ],
     tearDown: () => box.clear(),
@@ -64,7 +63,6 @@ void main() async {
     expect: () => [
       FavedSchedulesState(
         favedSchedules: [testSchedule],
-        selectedSchedule: null,
       ),
     ],
     tearDown: () => box.clear(),
@@ -94,7 +92,6 @@ void main() async {
     expect: () => [
       FavedSchedulesState(
         favedSchedules: [],
-        selectedSchedule: null,
       ),
     ],
     tearDown: () => box.clear(),
@@ -107,7 +104,6 @@ void main() async {
     expect: () => [
       FavedSchedulesState(
         favedSchedules: [testSchedule],
-        selectedSchedule: null,
       ),
     ],
     tearDown: () => box.clear(),
@@ -124,7 +120,6 @@ void main() async {
     expect: () => [
       FavedSchedulesState(
         favedSchedules: [],
-        selectedSchedule: null,
       ),
     ],
     tearDown: () => box.clear(),

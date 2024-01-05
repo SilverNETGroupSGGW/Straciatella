@@ -7,7 +7,7 @@ class DurationAdapter extends TypeAdapter<Duration> {
 
   @override
   Duration read(BinaryReader reader) {
-    return Duration(milliseconds: reader.read());
+    return Duration(milliseconds: reader.read() as int);
   }
 
   @override

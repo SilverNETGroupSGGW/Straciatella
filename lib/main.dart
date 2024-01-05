@@ -1,12 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/register_adapters.dart';
 import 'package:silvertimetable/logic/register_adapters.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/router.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/themes.dart';
 
 void main() async {
@@ -16,7 +16,7 @@ void main() async {
   registerDataAdapters();
   await Hive.openBox(hiveBoxName);
   await EasyLocalization.ensureInitialized();
-  SettingsCubit settings = SettingsCubit()..loadSettings();
+  final SettingsCubit settings = SettingsCubit()..loadSettings();
 
   runApp(
     EasyLocalization(

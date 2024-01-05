@@ -13,7 +13,8 @@ class DarkThemeModeTile extends StatelessWidget {
       builder: (context, systemBrightness) {
         return BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, settings) {
-            ({bool enabled, bool isDark}) state = switch (settings.themeMode) {
+            final ({bool enabled, bool isDark}) state =
+                switch (settings.themeMode) {
               ThemeMode.system => (
                   enabled: false,
                   isDark: systemBrightness == Brightness.dark

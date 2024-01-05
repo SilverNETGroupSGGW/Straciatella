@@ -16,7 +16,6 @@ ThemeData getLightTheme(Color seedColor) {
   return ThemeData(
     colorScheme: ColorScheme.fromSeed(
       seedColor: seedColor,
-      brightness: Brightness.light,
     ),
   );
 }

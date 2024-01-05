@@ -2,7 +2,6 @@ part of 'settings_cubit.dart';
 
 @freezed
 class SettingsState extends HiveObject with _$SettingsState {
-  SettingsState._();
 
   @HiveType(
     typeId: HiveTypeIds.settingsState,
@@ -15,4 +14,5 @@ class SettingsState extends HiveObject with _$SettingsState {
     @Default(false) @HiveField(2) bool isDebugMode,
     @Default(Colors.red) @HiveField(3) Color themeColor,
   }) = _SettingsState;
+  SettingsState._();
 }
