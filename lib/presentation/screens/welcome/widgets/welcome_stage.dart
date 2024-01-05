@@ -23,8 +23,8 @@ class WelcomeStage extends StatelessWidget {
         children: [
           if (header != null)
             Expanded(
-              child: header!,
               flex: 2,
+              child: header!,
             ),
           Expanded(
             child: Column(

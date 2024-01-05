@@ -5,6 +5,8 @@ import 'package:silvertimetable/presentation/screens/welcome/widgets/welcome_sta
 import 'package:silvertimetable/router.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({super.key});
+
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
@@ -38,7 +40,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     final pages = <Widget>[
       WelcomeStage(
         animationController: animationControllers[0].controller,
-        header: Image(
+        header: const Image(
           image: AssetImage('assets/icon/icon.png'),
           width: 200,
           height: 200,
@@ -48,7 +50,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       ),
       WelcomeStage(
         animationController: animationControllers[1].controller,
-        header: Icon(
+        header: const Icon(
           Icons.search,
           size: iconSize,
         ),
@@ -57,7 +59,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       ),
       WelcomeStage(
         animationController: animationControllers[2].controller,
-        header: Icon(
+        header: const Icon(
           // TODO: Change icon to off depending on the permission
           Icons.notifications,
           size: iconSize,
@@ -72,7 +74,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       ),
       WelcomeStage(
         animationController: animationControllers[3].controller,
-        header: Icon(
+        header: const Icon(
           Icons.map,
           size: iconSize,
         ),
@@ -81,7 +83,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       ),
       WelcomeStage(
         animationController: animationControllers[4].controller,
-        header: Icon(
+        header: const Icon(
           Icons.palette,
           size: iconSize,
         ),
@@ -96,7 +98,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       ),
       WelcomeStage(
         animationController: animationControllers[5].controller,
-        header: Icon(
+        header: const Icon(
           Icons.favorite,
           size: iconSize,
         ),

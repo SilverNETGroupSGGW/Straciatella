@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -28,12 +29,14 @@ class PageDots extends StatelessWidget {
                   ? TextButton(
                       onPressed: () async {
                         await controller.previousPage(
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.ease,
                         );
-                        print(controller.page);
+                        if (kDebugMode) {
+                          print(controller.page);
+                        }
                       },
-                      child: Text("Previous"),
+                      child: const Text("Previous"),
                     )
                   : Container(),
             ),
@@ -55,11 +58,11 @@ class PageDots extends StatelessWidget {
                   ? FilledButton(
                       onPressed: () {
                         controller.nextPage(
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.ease,
                         );
                       },
-                      child: Text("Next"),
+                      child: const Text("Next"),
                     )
                   : FilledButton(
                       onPressed: () {
@@ -68,7 +71,7 @@ class PageDots extends StatelessWidget {
                           (route) => false,
                         );
                       },
-                      child: Text("Finish"),
+                      child: const Text("Finish"),
                     ),
             ),
           ),

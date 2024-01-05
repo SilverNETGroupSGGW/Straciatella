@@ -25,11 +25,11 @@ class AppRouter {
       },
       pageBuilder: (context, animation, secondaryAnimation) {
         return switch (settings.name) {
-          RouteNames.timeline => TimetableScreen(),
-          RouteNames.settings => SettingsScreen(),
-          RouteNames.debug => DebugScreen(),
-          RouteNames.welcome => WelcomeScreen(),
-          _ => RouteNotFoundScreen(),
+          RouteNames.timeline => const TimetableScreen(),
+          RouteNames.settings => const SettingsScreen(),
+          RouteNames.debug => const DebugScreen(),
+          RouteNames.welcome => const WelcomeScreen(),
+          _ => const RouteNotFoundScreen(),
         };
       },
     );
