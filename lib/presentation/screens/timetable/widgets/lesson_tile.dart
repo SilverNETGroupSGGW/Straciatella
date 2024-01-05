@@ -10,6 +10,7 @@ class LessonTile extends StatelessWidget {
   final String? comment;
   final TimeOfDay startTime;
   final Duration duration;
+  final double elevation;
 
   const LessonTile({
     super.key,
@@ -20,6 +21,7 @@ class LessonTile extends StatelessWidget {
     required this.comment,
     required this.startTime,
     required this.duration,
+    this.elevation = 0,
   });
 
   @override
@@ -37,6 +39,7 @@ class LessonTile extends StatelessWidget {
             groups: groups,
             lecturers: lecturers,
             name: name,
+            elevation: elevation,
           ),
         ],
       ),
