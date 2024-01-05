@@ -4,38 +4,40 @@ import 'package:silvertimetable/presentation/screens/welcome/widgets/page_dots.d
 import 'package:silvertimetable/presentation/screens/welcome/widgets/welcome_stage.dart';
 import 'package:silvertimetable/router.dart';
 
-// ignore_for_file: public_member_api_docs
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Smooth Page Indicator Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: WelcomeScreen(),
-    );
-  }
-}
-
 class WelcomeScreen extends StatefulWidget {
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
-  final controller = PageController();
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with TickerProviderStateMixin {
+  final pageController = PageController();
 
   int currentPage = 0;
   static const iconSize = 150.0;
+  late final List<({AnimationController controller, bool wasShown})>
+      animationControllers;
+
+  @override
+  void initState() {
+    animationControllers = List.generate(
+      6,
+      (index) => (
+        controller: AnimationController(
+          vsync: this,
+          duration: const Duration(milliseconds: 500),
+        ),
+        wasShown: false,
+      ),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final pages = <Widget>[
       WelcomeStage(
+        animationController: animationControllers[0].controller,
         header: Image(
           image: AssetImage('assets/icon/icon.png'),
           width: 200,
@@ -45,7 +47,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         desc: 'welcome_stage_desc'.tr(),
       ),
       WelcomeStage(
-        // T
+        animationController: animationControllers[1].controller,
         header: Icon(
           Icons.search,
           size: iconSize,
@@ -54,6 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         desc: 'schedules_stage_desc'.tr(),
       ),
       WelcomeStage(
+        animationController: animationControllers[2].controller,
         header: Icon(
           // TODO: Change icon to off depending on the permission
           Icons.notifications,
@@ -68,6 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Text('allow_notifications'.tr())),
       ),
       WelcomeStage(
+        animationController: animationControllers[3].controller,
         header: Icon(
           Icons.map,
           size: iconSize,
@@ -76,6 +80,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         desc: 'map_stage_desc'.tr(),
       ),
       WelcomeStage(
+        animationController: animationControllers[4].controller,
         header: Icon(
           Icons.palette,
           size: iconSize,
@@ -90,6 +95,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Text('customize'.tr())),
       ),
       WelcomeStage(
+        animationController: animationControllers[5].controller,
         header: Icon(
           Icons.favorite,
           size: iconSize,
@@ -99,6 +105,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
     ];
 
+    animationControllers[0].controller.forward();
+
     return PopScope(
       canPop: false,
       child: Scaffold(
@@ -107,7 +115,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             children: [
               Expanded(
                 child: PageView.builder(
-                  controller: controller,
+                  controller: pageController,
                   itemCount: pages.length,
                   itemBuilder: (context, index) {
                     return Padding(
@@ -116,6 +124,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     );
                   },
                   onPageChanged: (index) {
+                    if (!animationControllers[index].wasShown) {
+                      animationControllers[index].controller.forward();
+                      animationControllers[index] = (
+                        controller: animationControllers[index].controller,
+                        wasShown: true,
+                      );
+                    }
                     setState(() {
                       currentPage = index;
                     });
@@ -124,7 +139,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
               PageDots(
                 currentPage: currentPage,
-                controller: controller,
+                controller: pageController,
                 dotCount: pages.length,
               ),
             ],
