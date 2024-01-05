@@ -12,7 +12,7 @@ class ColorTile extends StatelessWidget {
     return ListTile(
       title: Text('theme_color'.tr()),
       subtitle: Text('theme_color_desc'.tr()),
-      trailing: Icon(Icons.colorize),
+      trailing: const Icon(Icons.colorize),
       onTap: () {
         // Show dialog
         showAdaptiveDialog(
@@ -60,7 +60,7 @@ class ChangeThemeColorAlertDialog extends StatelessWidget {
           child: Text('confirm'.tr()),
         ),
       ],
-      icon: Icon(Icons.colorize),
+      icon: const Icon(Icons.colorize),
     );
   }
 }

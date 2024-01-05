@@ -29,7 +29,7 @@ class LessonVerticalTimeSpan extends StatelessWidget {
             style: labelSmall,
           ),
         ),
-        Expanded(
+        const Expanded(
           child: VerticalDivider(),
         ),
         Padding(

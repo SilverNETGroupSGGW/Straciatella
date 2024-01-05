@@ -7,5 +7,5 @@ class DateTimeConverter extends JsonConverter<DateTime, String> {
   DateTime fromJson(String json) => DateTime.parse(json);
 
   @override
-  String toJson(DateTime dateTime) => dateTime.toIso8601String();
+  String toJson(DateTime object) => object.toIso8601String();
 }

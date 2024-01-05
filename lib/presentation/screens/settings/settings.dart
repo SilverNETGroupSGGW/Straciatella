@@ -10,11 +10,11 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          Text("settings screen"),
+          const Text("settings screen"),
           TextButton.icon(
             onPressed: () => Navigator.of(context).pushNamed(RouteNames.debug),
-            icon: Icon(Icons.settings),
-            label: Text("debug screen"),
+            icon: const Icon(Icons.settings),
+            label: const Text("debug screen"),
           ),
         ],
       ),

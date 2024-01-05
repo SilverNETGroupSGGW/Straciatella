@@ -4,7 +4,7 @@ class HiveTypeIds {
   static const themeType = 1;
   static const themeMode = 2;
   static const color = 3;
-  static const savedSchedulesState = 4;
+  static const favedSchedulesState = 4;
   static const scheduleBase = 5;
   static const schedule = 6;
   static const classroom = 7;
@@ -13,4 +13,6 @@ class HiveTypeIds {
   static const subject = 10;
   static const subjectLesson = 11;
   static const subjectGroup = 12;
+  static const dayOfWeek = 13;
+  static const duration = 14;
 }
