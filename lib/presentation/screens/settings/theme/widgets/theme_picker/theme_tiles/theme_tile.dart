@@ -28,16 +28,16 @@ class ThemeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     const double size = 60;
 
-    return Material(
-      type: MaterialType.card,
-      elevation: 1,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: SizedBox(
-        width: size,
-        height: size,
+    return SizedBox(
+      width: size,
+      height: size,
+      child: Material(
+        type: MaterialType.card,
+        elevation: 1,
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: InkWell(
           focusColor: isSelected ? Colors.transparent : Colors.black12,
           highlightColor: isSelected
@@ -53,6 +53,7 @@ class ThemeTile extends StatelessWidget {
                   child: Icon(
                     MaterialSymbols.check_filled_outlined,
                     size: size * 0.6,
+                    color: Colors.white,
                   ),
                 ),
             ],

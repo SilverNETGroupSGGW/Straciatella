@@ -1,12 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
-import 'package:silvertimetable/presentation/screens/settings/theme/widgets/auto_color_scheme_tile.dart';
-import 'package:silvertimetable/presentation/screens/settings/theme/widgets/custom_color_scheme_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/widgets/mockup_lesson_tile.dart';
-import 'package:silvertimetable/presentation/screens/settings/theme/widgets/retro_color_scheme_tile.dart';
+import 'package:silvertimetable/presentation/screens/settings/theme/widgets/theme_picker/theme_picker.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/dark_theme_mode_tile.dart';
 import 'package:silvertimetable/presentation/widgets/category_label.dart';
@@ -28,23 +25,28 @@ class ThemeScreen extends StatelessWidget {
               return SliverList(
                 delegate: SliverChildListDelegate(
                   [
-                    const Divider(),
                     CategoryLabel(text: 'preview'.tr()),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: MockupLessonTile(),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Transform.scale(
+                        scale: 0.8,
+                        child: const Column(
+                          children: [
+                            MockupLessonTile(),
+                            MockupLessonTile(),
+                          ],
+                        ),
+                      ),
                     ),
-                    const Divider(),
                     CategoryLabel(text: 'theme'.tr()),
                     const AutoThemeModeTile(),
                     const DarkThemeModeTile(),
-                    CategoryLabel(text: 'colors'.tr()),
-                    const AutoColorSchemeTile(),
-                    const RetroColorSchemeTile(),
-                    if (state.themeType == ThemeType.custom)
-                      const CustomColorSchemeTile()
-                    else
-                      const SizedBox.shrink(),
+                    const Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: ThemePicker(),
+                      ),
+                    ),
                   ],
                 ),
               );
