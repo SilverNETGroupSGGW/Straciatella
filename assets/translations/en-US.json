@@ -1,4 +1,5 @@
 {    
+    "appname": "SGGW Schedule",
     "app_desc": "A schedule app made by {creator} for students and employees of Warsaw University of Life Sciences.",
     "timeline": "Timeline",
     "settings": "Settings",
@@ -78,5 +79,6 @@
     "comment": "Comment",
     "preview": "Preview",
     "about_app_title": "About app",
-    "adaptive": "Adaptive"
+    "adaptive": "Adaptive",
+    "created_by": "Created by members of SIlver.NET science club:"
 }

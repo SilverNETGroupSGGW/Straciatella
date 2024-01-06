@@ -1,4 +1,5 @@
 {
+    "appname": "Plan SGGW",
     "language": "Język",
     "language_desc": "Wybierz swój język",
     "timeline": "Oś czasu",
@@ -76,5 +77,6 @@
     "comment": "Komentarz",
     "preview": "Podgląd",
     "about_app_title": "O aplikacji",
-    "adaptive": "Systemowy"
+    "adaptive": "Systemowy",
+    "created_by": "Stworzona przez członków koła Silver.NET:"
 }
