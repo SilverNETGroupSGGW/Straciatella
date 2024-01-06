@@ -7,3 +7,5 @@ enum DayOfWeek {
   saturday,
   sunday,
 }
+
+enum ThemeType { custom, retro, adaptive }

@@ -1,71 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/data/models/enums.dart';
+import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 
-enum ThemeType { normal, retro }
-
-ThemeData getTheme(ThemeType type, bool isDark, Color seedColor) {
-  return switch ((type, isDark)) {
-    (ThemeType.normal, false) => getLightTheme(seedColor),
-    (ThemeType.normal, true) => getDarkTheme(seedColor),
-    (ThemeType.retro, false) => getRetroLightTheme(),
-    (ThemeType.retro, true) => getRetroDarkTheme(),
+// choosing theme logic
+ThemeData getThemeData(
+  SettingsState settings, {
+  ColorScheme? deviceColorScheme,
+  Brightness brightness = Brightness.light,
+}) {
+  return switch ((settings.themeType, deviceColorScheme, brightness)) {
+    (ThemeType.custom, _, _) => _fromSeedColor(settings.themeColor, brightness),
+    (ThemeType.retro, _, Brightness.light) => retroLightTheme,
+    (ThemeType.retro, _, Brightness.dark) => retroDarkTheme,
+    (ThemeType.adaptive, null, _) =>
+      _fromSeedColor(settings.themeColor, brightness),
+    (ThemeType.adaptive, _, _) => _adaptive(deviceColorScheme!, brightness),
   };
 }
 
-// ** Normal theme
-ThemeData getLightTheme(Color seedColor) {
-  return ThemeData(
+// *** Themes definitions
+ThemeData _fromSeedColor(Color seed, Brightness brightness) {
+  return ThemeData.from(
     colorScheme: ColorScheme.fromSeed(
-      seedColor: seedColor,
+      seedColor: seed,
+      brightness: brightness,
     ),
   );
 }
 
-ThemeData getDarkTheme(Color seedColor) {
+ThemeData _adaptive(ColorScheme deviceColorScheme, Brightness brightness) {
   return ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: seedColor,
-      brightness: Brightness.dark,
-    ),
+    colorScheme: deviceColorScheme,
+    brightness: brightness,
   );
 }
 
-// ** Retro theme
-ThemeData getRetroLightTheme() {
-  return ThemeData(
-    colorScheme: ColorScheme(
-      brightness: Brightness.light,
-      shadow: Colors.black,
-      primary: Colors.red,
-      surfaceTint: Colors.grey.shade800,
-      onPrimary: Colors.white,
-      secondary: Colors.red,
-      onSecondary: Colors.white,
-      error: Colors.red,
-      onError: Colors.white,
-      background: Colors.grey.shade900,
-      onBackground: Colors.grey,
-      surface: Colors.black54,
-      onSurface: Colors.white,
-    ),
-  );
-}
+ThemeData retroLightTheme = ThemeData.from(
+  colorScheme: ColorScheme(
+    brightness: Brightness.light,
+    shadow: Colors.black,
+    primary: Colors.red,
+    surfaceTint: Colors.grey.shade800,
+    onPrimary: Colors.white,
+    secondary: Colors.red,
+    onSecondary: Colors.white,
+    error: Colors.red,
+    onError: Colors.white,
+    background: Colors.grey.shade900,
+    onBackground: Colors.grey,
+    surface: Colors.black54,
+    onSurface: Colors.white,
+  ),
+);
 
-ThemeData getRetroDarkTheme() {
-  return ThemeData(
-    colorScheme: ColorScheme(
-      brightness: Brightness.dark,
-      shadow: Colors.black,
-      primary: Colors.red,
-      surfaceTint: Colors.grey.shade800,
-      onPrimary: Colors.white,
-      secondary: Colors.red,
-      onSecondary: Colors.white,
-      error: Colors.red,
-      onError: Colors.white,
-      background: Colors.grey.shade900,
-      onBackground: Colors.grey,
-      surface: Colors.black54,
-      onSurface: Colors.white,
-    ),
-  );
-}
+ThemeData retroDarkTheme = ThemeData.from(
+  colorScheme: ColorScheme(
+    brightness: Brightness.dark,
+    shadow: Colors.black,
+    primary: Colors.red,
+    surfaceTint: Colors.grey.shade800,
+    onPrimary: Colors.white,
+    secondary: Colors.red,
+    onSecondary: Colors.white,
+    error: Colors.red,
+    onError: Colors.white,
+    background: Colors.grey.shade900,
+    onBackground: Colors.grey,
+    surface: Colors.black54,
+    onSurface: Colors.white,
+  ),
+);

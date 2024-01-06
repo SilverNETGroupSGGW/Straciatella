@@ -10,24 +10,29 @@ flutter_launcher_icons:
   ios: true
   web:
     generate: true
-    image_path: "assets/icon/icon.png"
-  image_path: "assets/icon/icon.png"
+    image_path: "assets/images/icon.png"
+  image_path: "assets/images/icon.png"
+  # see https://pub.dev/packages/flutter_launcher_icons#mag-attributes for other attributes
 
 dependencies:
   cupertino_icons: ^1.0.2
   dio: ^5.4.0
+  dynamic_color: ^1.6.9
   easy_localization: ^3.0.3
+  flex_color_picker: ^3.3.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
-  flutter_colorpicker: ^1.0.3
+  flutter_material_symbols: ^0.0.4
   freezed_annotation: ^2.4.1
+  gap: ^3.0.1
   google_fonts: ^6.1.0
   hive: ^2.0.4
   hive_flutter: ^1.1.0
   hive_generator: ^2.0.1
   json_annotation: ^4.8.1
-  lint: ^2.3.0
+  package_info_plus: ^5.0.1
+  url_launcher: ^6.2.2
   uuid: ^4.2.1
 
 dev_dependencies:
@@ -41,8 +46,10 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.4.5
   json_serializable: ^6.7.1
+  lint: ^2.3.0
 
 flutter:
   assets:
     - assets/translations/
+    - assets/images/
   uses-material-design: true

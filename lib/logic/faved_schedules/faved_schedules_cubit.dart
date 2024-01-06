@@ -33,9 +33,10 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
       if (loadedState != null) emit(loadedState);
     } catch (e) {
       if (kDebugMode) {
-        print("Could not load faved schedules");
+        throw Exception("Error loading faved schedules from Hive: $e");
       }
       // TODO: handle exception
+      return;
     }
   }
 
