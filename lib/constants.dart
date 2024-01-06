@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 const String appName = "silvertimetable";
@@ -11,3 +13,8 @@ const List<({Locale locale, String name})> supportedLocale = [
 
 const Locale fallbackLocale = Locale('en', 'US');
 const String apiUrl = "https://kampus-sggw-api.azurewebsites.net/api";
+
+final privacyPolicyUrl =
+    Uri.parse("https://silvernetgroup.github.io/privacy-policy/");
+
+final Random random = Random();

@@ -7,13 +7,20 @@ import 'package:silvertimetable/presentation/widgets/platform_brightness_builder
 class DarkThemeModeTile extends StatelessWidget {
   const DarkThemeModeTile({super.key});
 
+  void onChanged(bool value, BuildContext context) {
+    context.read<SettingsCubit>().changeThemeMode(
+          value ? ThemeMode.dark : ThemeMode.light,
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return PlatformBrightnessBuilder(
       builder: (context, systemBrightness) {
         return BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, settings) {
-            ({bool enabled, bool isDark}) state = switch (settings.themeMode) {
+            final ({bool enabled, bool isDark}) switchState =
+                switch (settings.themeMode) {
               ThemeMode.system => (
                   enabled: false,
                   isDark: systemBrightness == Brightness.dark
@@ -21,20 +28,14 @@ class DarkThemeModeTile extends StatelessWidget {
               ThemeMode.dark => (enabled: true, isDark: true),
               ThemeMode.light => (enabled: true, isDark: false),
             };
-            return ListTile(
-              enabled: state.enabled,
+
+            return SwitchListTile.adaptive(
               title: Text('theme_dark'.tr()),
               subtitle: Text('theme_dark_desc'.tr()),
-              trailing: Switch(
-                value: state.isDark,
-                onChanged: state.enabled
-                    ? (bool value) {
-                        context.read<SettingsCubit>().changeThemeMode(
-                              value ? ThemeMode.dark : ThemeMode.light,
-                            );
-                      }
-                    : null,
-              ),
+              onChanged: switchState.enabled
+                  ? (bool value) => onChanged(value, context)
+                  : null,
+              value: switchState.isDark,
             );
           },
         );

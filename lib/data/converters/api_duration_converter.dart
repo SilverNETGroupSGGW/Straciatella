@@ -21,10 +21,10 @@ class ApiDurationConverter extends JsonConverter<Duration, String> {
     int seconds = object.inSeconds;
     int minutes = seconds ~/ 60;
     seconds %= 60;
-    int hours = minutes ~/ 60;
+    final int hours = minutes ~/ 60;
     minutes %= 60;
 
-    pad(int val) {
+    String pad(int val) {
       return val.toString().padLeft(2, "0");
     }
 

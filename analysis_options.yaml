@@ -1,5 +1,4 @@
-include: package:flutter_lints/flutter.yaml
-
+include: package:lint/strict.yaml
 linter:
   # A list of all available lints
   # and their documentation is published at https://dart.dev/lints.
@@ -10,6 +9,8 @@ linter:
 # https://dart.dev/guides/language/analysis-options
 
 analyzer:
+  plugins:
+    - custom_lint
   errors:
     invalid_annotation_target: ignore
   exclude:

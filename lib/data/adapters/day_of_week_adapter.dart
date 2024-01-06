@@ -8,7 +8,7 @@ class DayOfWeekAdapter extends TypeAdapter<DayOfWeek> {
 
   @override
   DayOfWeek read(BinaryReader reader) {
-    return DayOfWeek.values[reader.read()];
+    return DayOfWeek.values[reader.read() as int];
   }
 
   @override
