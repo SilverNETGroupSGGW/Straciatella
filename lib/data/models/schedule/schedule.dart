@@ -1,15 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:silvertimetable/data/converters/datetime_converter.dart';
 import 'package:hive/hive.dart';
+import 'package:silvertimetable/data/converters/datetime_converter.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/subject/subject.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
 
 part 'schedule.freezed.dart';
 part 'schedule.g.dart';
 
 @freezed
 class Schedule with _$Schedule {
-  Schedule._();
 
   @HiveType(
     typeId: HiveTypeIds.schedule,
@@ -29,6 +28,7 @@ class Schedule with _$Schedule {
     @HiveField(10) required String degreeOfStudy,
     @HiveField(11) required List<Subject> subjects,
   }) = _Schedule;
+  Schedule._();
 
   factory Schedule.fromJson(Map<String, dynamic> json) =>
       _$ScheduleFromJson(json);

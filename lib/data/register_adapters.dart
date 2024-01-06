@@ -11,7 +11,7 @@ import 'package:silvertimetable/data/models/schedule/schedule.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/models/subject/subject.dart';
 
-registerDataAdapters() {
+void registerDataAdapters() {
   Hive.registerAdapter(ColorAdapter());
   Hive.registerAdapter(ThemeModeAdapter());
   Hive.registerAdapter(ThemeTypeAdapter());

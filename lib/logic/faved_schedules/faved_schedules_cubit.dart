@@ -1,8 +1,9 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/favable_schedule.dart';
 
 part 'faved_schedules_state.dart';
@@ -25,17 +26,21 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
     box.put(boxKey, change.nextState);
   }
 
-  loadFavedSchedules() {
+  void loadFavedSchedules() {
     try {
-      FavedSchedulesState? loadedState = box.get(boxKey);
+      final FavedSchedulesState? loadedState =
+          box.get(boxKey) as FavedSchedulesState?;
       if (loadedState != null) emit(loadedState);
     } catch (e) {
-      print("Could not load faved schedules");
+      if (kDebugMode) {
+        throw Exception("Error loading faved schedules from Hive: $e");
+      }
       // TODO: handle exception
+      return;
     }
   }
 
-  addSchedule(FavableSchedule schedule) {
+  void addSchedule(FavableSchedule schedule) {
     if (state.favedSchedules.contains(schedule)) return;
     emit(
       state.copyWith(
@@ -44,55 +49,73 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
     );
   }
 
-  removeSchedule(FavableSchedule schedule) {
-    List<FavableSchedule> newFavedSchedules = [...state.favedSchedules];
+  void removeSchedule(FavableSchedule schedule) {
+    final List<FavableSchedule> newFavedSchedules = [...state.favedSchedules];
     newFavedSchedules.remove(schedule);
     if (state.selectedSchedule == schedule) {
-      emit(state.copyWith(
-        favedSchedules: newFavedSchedules,
-        selectedSchedule: null,
-      ));
+      emit(
+        state.copyWith(
+          favedSchedules: newFavedSchedules,
+          selectedSchedule: null,
+        ),
+      );
     } else {
-      emit(state.copyWith(
-        favedSchedules: newFavedSchedules,
-      ));
+      emit(
+        state.copyWith(
+          favedSchedules: newFavedSchedules,
+        ),
+      );
     }
   }
 
-  clearSchedules() {
-    emit(state.copyWith(
-      favedSchedules: [],
-      selectedSchedule: null,
-    ));
-  }
-
-  overwriteFavedSchedules(List<FavableSchedule> schedules) {
-    if (schedules.contains(state.selectedSchedule))
-      emit(state.copyWith(
-        favedSchedules: schedules,
-      ));
-    else
-      emit(state.copyWith(
-        favedSchedules: schedules,
+  void clearSchedules() {
+    emit(
+      state.copyWith(
+        favedSchedules: [],
         selectedSchedule: null,
-      ));
+      ),
+    );
   }
 
-  selectSchedule(FavableSchedule schedule) {
-    if (state.favedSchedules.contains(schedule))
-      emit(state.copyWith(
-        selectedSchedule: schedule,
-      ));
-    else
-      emit(state.copyWith(
-        selectedSchedule: schedule,
-        favedSchedules: [...state.favedSchedules, schedule],
-      ));
+  void overwriteFavedSchedules(List<FavableSchedule> schedules) {
+    if (schedules.contains(state.selectedSchedule)) {
+      emit(
+        state.copyWith(
+          favedSchedules: schedules,
+        ),
+      );
+    } else {
+      emit(
+        state.copyWith(
+          favedSchedules: schedules,
+          selectedSchedule: null,
+        ),
+      );
+    }
   }
 
-  unselectSchedule() {
-    emit(state.copyWith(
-      selectedSchedule: null,
-    ));
+  void selectSchedule(FavableSchedule schedule) {
+    if (state.favedSchedules.contains(schedule)) {
+      emit(
+        state.copyWith(
+          selectedSchedule: schedule,
+        ),
+      );
+    } else {
+      emit(
+        state.copyWith(
+          selectedSchedule: schedule,
+          favedSchedules: [...state.favedSchedules, schedule],
+        ),
+      );
+    }
+  }
+
+  void unselectSchedule() {
+    emit(
+      state.copyWith(
+        selectedSchedule: null,
+      ),
+    );
   }
 }

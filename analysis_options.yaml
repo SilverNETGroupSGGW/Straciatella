@@ -1,7 +1,18 @@
+include: package:lint/strict.yaml
+
+linter:
+  # A list of all available lints
+  # and their documentation is published at https://dart.dev/lints.
+  rules:
+    # prefer_double_quotes: true
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
 analyzer:
   plugins:
     - custom_lint
   errors:
     invalid_annotation_target: ignore
-  # exclude:
-  # - lib/**/*.g.dart 
+  exclude:
+    - lib/**/*.g.dart

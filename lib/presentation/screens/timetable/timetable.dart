@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:silvertimetable/logic/settings/settings_cubit.dart';
+import 'package:silvertimetable/presentation/screens/timetable/widgets/timetable_fab.dart';
 import 'package:silvertimetable/router.dart';
 
 class TimetableScreen extends StatelessWidget {
@@ -9,14 +12,22 @@ class TimetableScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton.filled(
+          IconButton(
             onPressed: () =>
                 Navigator.of(context).pushNamed(RouteNames.settings),
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
           ),
         ],
       ),
-      body: Text("home screen"),
+      floatingActionButton: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, state) {
+          return !state.isFabHidden
+              ? const TimetableFab()
+              // Official way to hide FAB according to stackoverflow
+              : const SizedBox.shrink();
+        },
+      ),
+      body: const Text("home screen"),
     );
   }
 }

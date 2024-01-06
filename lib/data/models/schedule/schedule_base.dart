@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/data/converters/datetime_converter.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/favable_schedule.dart';
 
 part 'schedule_base.freezed.dart';
@@ -9,7 +9,6 @@ part 'schedule_base.g.dart';
 
 @freezed
 class ScheduleBase with _$ScheduleBase, FavableSchedule {
-  ScheduleBase._();
 
   @HiveType(
     typeId: HiveTypeIds.scheduleBase,
@@ -28,6 +27,7 @@ class ScheduleBase with _$ScheduleBase, FavableSchedule {
     @HiveField(9) required String studyMode,
     @HiveField(10) required String degreeOfStudy,
   }) = _ScheduleBase;
+  ScheduleBase._();
 
   factory ScheduleBase.fromJson(Map<String, dynamic> json) =>
       _$ScheduleBaseFromJson(json);

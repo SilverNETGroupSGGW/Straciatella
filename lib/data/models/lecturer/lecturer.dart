@@ -1,15 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:silvertimetable/data/converters/datetime_converter.dart';
-import 'package:silvertimetable/data/models/subject/subject.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
 import 'package:hive/hive.dart';
+import 'package:silvertimetable/data/converters/datetime_converter.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
+import 'package:silvertimetable/data/models/subject/subject.dart';
 
 part 'lecturer.freezed.dart';
 part 'lecturer.g.dart';
 
 @freezed
 class Lecturer with _$Lecturer {
-  Lecturer._();
 
   @HiveType(
     typeId: HiveTypeIds.lecturer,
@@ -25,6 +24,7 @@ class Lecturer with _$Lecturer {
     @HiveField(6) required String email,
     @HiveField(7) required List<Subject> subjects,
   }) = _Lecturer;
+  Lecturer._();
 
   factory Lecturer.fromJson(Map<String, dynamic> json) =>
       _$LecturerFromJson(json);

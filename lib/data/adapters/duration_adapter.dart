@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 
 class DurationAdapter extends TypeAdapter<Duration> {
   @override
@@ -7,7 +7,7 @@ class DurationAdapter extends TypeAdapter<Duration> {
 
   @override
   Duration read(BinaryReader reader) {
-    return Duration(milliseconds: reader.read());
+    return Duration(milliseconds: reader.read() as int);
   }
 
   @override

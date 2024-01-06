@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/presentation/screens/settings/theme/widgets/theme_picker/theme_picker.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
-import 'package:silvertimetable/presentation/screens/settings/widgets/color_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/dark_theme_mode_tile.dart';
 import 'package:silvertimetable/presentation/screens/timetable/widgets/lesson_tile.dart';
 
@@ -12,7 +12,7 @@ class DebugScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: ListView(
-        children: [
+        children: const [
           LessonTile(
             classroom: "3/77",
             comment:
@@ -25,7 +25,7 @@ class DebugScreen extends StatelessWidget {
           ),
           AutoThemeModeTile(),
           DarkThemeModeTile(),
-          ColorTile(),
+          ThemePicker(),
         ],
       ),
     );

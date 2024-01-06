@@ -31,7 +31,7 @@ void main() {
       "faculty": "XX",
       "fieldOfStudy": "ZZ",
       "studyMode": "PartTimeStudies",
-      "degreeOfStudy": "MastersDegree"
+      "degreeOfStudy": "MastersDegree",
     },
     "classroom": {
       "id": "465eaa62-086c-476f-8a7b-0045c4cfa509",
@@ -39,7 +39,7 @@ void main() {
       "updated": "2023-11-27T10:30:57.3227464",
       "name": "Aula IV.",
       "floor": "",
-      "building": "34"
+      "building": "34",
     },
     "lessons": [
       {
@@ -48,7 +48,7 @@ void main() {
         "updated": "2023-12-22T17:49:28.7739208",
         "numberOfLesson": 1,
         "startTime": "2024-05-01T10:00:00",
-        "duration": "01:30:00"
+        "duration": "01:30:00",
       },
       {
         "id": "cea2f0ef-66cc-4ba4-9a21-5ec586d6ec1b",
@@ -56,7 +56,7 @@ void main() {
         "updated": "2023-12-22T17:49:28.7739372",
         "numberOfLesson": 2,
         "startTime": "2024-02-28T01:00:00",
-        "duration": "01:45:00"
+        "duration": "01:45:00",
       }
     ],
     "groups": [
@@ -65,9 +65,9 @@ void main() {
         "created": "2023-12-11T21:24:14.1256362",
         "updated": "2023-12-11T21:24:14.1256709",
         "scheduleId": "46a10323-c491-4e1b-b3ff-c5f75ba0c5ab",
-        "name": "1"
+        "name": "1",
       }
-    ]
+    ],
   };
 
   final subject = Subject(
@@ -79,7 +79,7 @@ void main() {
     type: "PracticalClasses",
     startTime: "12:00:00",
     dayOfWeek: DayOfWeek.tuesday,
-    duration: Duration(hours: 1, minutes: 30),
+    duration: const Duration(hours: 1, minutes: 30),
     isRemote: false,
     comment: "",
     schedule: ScheduleBase(
@@ -110,7 +110,7 @@ void main() {
         updated: DateTime.parse("2023-12-22T17:49:28.7739208"),
         numberOfLesson: 1,
         startTime: DateTime.parse("2024-05-01T10:00:00"),
-        duration: Duration(hours: 1, minutes: 30),
+        duration: const Duration(hours: 1, minutes: 30),
       ),
       SubjectLesson(
         id: "cea2f0ef-66cc-4ba4-9a21-5ec586d6ec1b",
@@ -118,7 +118,7 @@ void main() {
         updated: DateTime.parse("2023-12-22T17:49:28.7739372"),
         numberOfLesson: 2,
         startTime: DateTime.parse("2024-02-28T01:00:00"),
-        duration: Duration(hours: 1, minutes: 45),
+        duration: const Duration(hours: 1, minutes: 45),
       ),
     ],
     groups: [

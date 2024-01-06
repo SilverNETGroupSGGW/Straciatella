@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
-import 'package:silvertimetable/themes.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
+import 'package:silvertimetable/data/models/enums.dart';
 
 class ThemeTypeAdapter extends TypeAdapter<ThemeType> {
   @override
@@ -8,7 +8,7 @@ class ThemeTypeAdapter extends TypeAdapter<ThemeType> {
 
   @override
   ThemeType read(BinaryReader reader) {
-    return ThemeType.values[reader.read()];
+    return ThemeType.values[reader.read() as int];
   }
 
   @override

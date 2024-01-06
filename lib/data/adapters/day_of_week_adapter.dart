@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:silvertimetable/data/hiveTypeIds.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 
 class DayOfWeekAdapter extends TypeAdapter<DayOfWeek> {
@@ -8,7 +8,7 @@ class DayOfWeekAdapter extends TypeAdapter<DayOfWeek> {
 
   @override
   DayOfWeek read(BinaryReader reader) {
-    return DayOfWeek.values[reader.read()];
+    return DayOfWeek.values[reader.read() as int];
   }
 
   @override
