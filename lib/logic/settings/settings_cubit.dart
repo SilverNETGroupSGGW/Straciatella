@@ -24,9 +24,9 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   void loadSettings() {
     try {
-      final SettingsState loadedSettingsState =
-          box.get(_boxKey) as SettingsState? ?? state;
-      emit(loadedSettingsState);
+      final SettingsState? loadedSettingsState =
+          box.get(_boxKey) as SettingsState?;
+      if (loadedSettingsState != null) emit(loadedSettingsState);
     } catch (e) {
       if (kDebugMode) {
         print("Could not load settings");
@@ -43,14 +43,6 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
   }
 
-  void toggleHideFab() {
-    emit(
-      state.copyWith(
-        isFabHidden: !state.isFabHidden,
-      ),
-    );
-  }
-
   void changeThemeType(ThemeType themeType) {
     emit(
       state.copyWith(
@@ -63,6 +55,14 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(
       state.copyWith(
         themeColor: color,
+      ),
+    );
+  }
+
+  void toggleHideFab() {
+    emit(
+      state.copyWith(
+        isFabHidden: !state.isFabHidden,
       ),
     );
   }
