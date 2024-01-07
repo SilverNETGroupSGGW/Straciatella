@@ -54,6 +54,22 @@ class ScheduleManagerBloc
 
     on<_SetLecturer>((event, emit) => setLecturer(event.lecturer, emit));
 
+    on<_RemoveSchedule>((event, emit) {
+      emit(
+        lastLoaded.copyWith(
+          schedules: Map.from(lastLoaded.schedules)..remove(event.schedule),
+        ),
+      );
+    });
+
+    on<_Clear>((event, emit) {
+      emit(
+        lastLoaded.copyWith(
+          schedules: {},
+        ),
+      );
+    });
+
     // * fetchers
     on<_UpdateSchedule>(
       (event, emit) async {

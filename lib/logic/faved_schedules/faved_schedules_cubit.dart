@@ -19,6 +19,7 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
 
   // invokes events on this if:
   // user added a schedule to favs
+  // user removed a schedule from favs
   ScheduleManagerBloc? scheduleManagerBloc;
 
   FavedSchedulesCubit([this.scheduleManagerBloc])
@@ -85,6 +86,7 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
         ),
       );
     }
+    scheduleManagerBloc?.add(ScheduleManagerEvent.removeSchedule(schedule));
   }
 
   void clearSchedules() {
@@ -94,6 +96,7 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
         selectedSchedule: null,
       ),
     );
+    scheduleManagerBloc?.add(const ScheduleManagerEvent.clear());
   }
 
   // void overwriteFavedSchedules(List<ScheduleKey> schedules) {

@@ -22,6 +22,8 @@ mixin _$ScheduleManagerEvent {
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
+    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,6 +33,8 @@ mixin _$ScheduleManagerEvent {
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
+    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +44,8 @@ mixin _$ScheduleManagerEvent {
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
+    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
   }) =>
@@ -50,6 +56,8 @@ mixin _$ScheduleManagerEvent {
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
+    required TResult Function(_RemoveSchedule value) removeSchedule,
+    required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateSchedule value) updateSchedule,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +67,8 @@ mixin _$ScheduleManagerEvent {
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
+    TResult? Function(_RemoveSchedule value)? removeSchedule,
+    TResult? Function(_Clear value)? clear,
     TResult? Function(_UpdateSchedule value)? updateSchedule,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +78,8 @@ mixin _$ScheduleManagerEvent {
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
+    TResult Function(_RemoveSchedule value)? removeSchedule,
+    TResult Function(_Clear value)? clear,
     TResult Function(_UpdateSchedule value)? updateSchedule,
     required TResult orElse(),
   }) =>
@@ -140,6 +152,8 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
+    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
     return init();
@@ -152,6 +166,8 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
+    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
     return init?.call();
@@ -164,6 +180,8 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
+    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
   }) {
@@ -180,6 +198,8 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
+    required TResult Function(_RemoveSchedule value) removeSchedule,
+    required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateSchedule value) updateSchedule,
   }) {
     return init(this);
@@ -192,6 +212,8 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
+    TResult? Function(_RemoveSchedule value)? removeSchedule,
+    TResult? Function(_Clear value)? clear,
     TResult? Function(_UpdateSchedule value)? updateSchedule,
   }) {
     return init?.call(this);
@@ -204,6 +226,8 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
+    TResult Function(_RemoveSchedule value)? removeSchedule,
+    TResult Function(_Clear value)? clear,
     TResult Function(_UpdateSchedule value)? updateSchedule,
     required TResult orElse(),
   }) {
@@ -305,6 +329,8 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
+    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
     return setLecturer(lecturer);
@@ -317,6 +343,8 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
+    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
     return setLecturer?.call(lecturer);
@@ -329,6 +357,8 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
+    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
   }) {
@@ -345,6 +375,8 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
+    required TResult Function(_RemoveSchedule value) removeSchedule,
+    required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateSchedule value) updateSchedule,
   }) {
     return setLecturer(this);
@@ -357,6 +389,8 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
+    TResult? Function(_RemoveSchedule value)? removeSchedule,
+    TResult? Function(_Clear value)? clear,
     TResult? Function(_UpdateSchedule value)? updateSchedule,
   }) {
     return setLecturer?.call(this);
@@ -369,6 +403,8 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
+    TResult Function(_RemoveSchedule value)? removeSchedule,
+    TResult Function(_Clear value)? clear,
     TResult Function(_UpdateSchedule value)? updateSchedule,
     required TResult orElse(),
   }) {
@@ -467,6 +503,8 @@ class _$UpdateLecturerImpl
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
+    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
     return updateLecturer(id);
@@ -479,6 +517,8 @@ class _$UpdateLecturerImpl
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
+    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
     return updateLecturer?.call(id);
@@ -491,6 +531,8 @@ class _$UpdateLecturerImpl
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
+    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
   }) {
@@ -507,6 +549,8 @@ class _$UpdateLecturerImpl
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
+    required TResult Function(_RemoveSchedule value) removeSchedule,
+    required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateSchedule value) updateSchedule,
   }) {
     return updateLecturer(this);
@@ -519,6 +563,8 @@ class _$UpdateLecturerImpl
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
+    TResult? Function(_RemoveSchedule value)? removeSchedule,
+    TResult? Function(_Clear value)? clear,
     TResult? Function(_UpdateSchedule value)? updateSchedule,
   }) {
     return updateLecturer?.call(this);
@@ -531,6 +577,8 @@ class _$UpdateLecturerImpl
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
+    TResult Function(_RemoveSchedule value)? removeSchedule,
+    TResult Function(_Clear value)? clear,
     TResult Function(_UpdateSchedule value)? updateSchedule,
     required TResult orElse(),
   }) {
@@ -637,6 +685,8 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
+    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
     return setSchedule(schedule);
@@ -649,6 +699,8 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
+    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
     return setSchedule?.call(schedule);
@@ -661,6 +713,8 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
+    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
   }) {
@@ -677,6 +731,8 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
+    required TResult Function(_RemoveSchedule value) removeSchedule,
+    required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateSchedule value) updateSchedule,
   }) {
     return setSchedule(this);
@@ -689,6 +745,8 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
+    TResult? Function(_RemoveSchedule value)? removeSchedule,
+    TResult? Function(_Clear value)? clear,
     TResult? Function(_UpdateSchedule value)? updateSchedule,
   }) {
     return setSchedule?.call(this);
@@ -701,6 +759,8 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
+    TResult Function(_RemoveSchedule value)? removeSchedule,
+    TResult Function(_Clear value)? clear,
     TResult Function(_UpdateSchedule value)? updateSchedule,
     required TResult orElse(),
   }) {
@@ -718,6 +778,320 @@ abstract class _SetSchedule implements ScheduleManagerEvent {
   @JsonKey(ignore: true)
   _$$SetScheduleImplCopyWith<_$SetScheduleImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveScheduleImplCopyWith<$Res> {
+  factory _$$RemoveScheduleImplCopyWith(_$RemoveScheduleImpl value,
+          $Res Function(_$RemoveScheduleImpl) then) =
+      __$$RemoveScheduleImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({(Type, String) schedule});
+}
+
+/// @nodoc
+class __$$RemoveScheduleImplCopyWithImpl<$Res>
+    extends _$ScheduleManagerEventCopyWithImpl<$Res, _$RemoveScheduleImpl>
+    implements _$$RemoveScheduleImplCopyWith<$Res> {
+  __$$RemoveScheduleImplCopyWithImpl(
+      _$RemoveScheduleImpl _value, $Res Function(_$RemoveScheduleImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? schedule = null,
+  }) {
+    return _then(_$RemoveScheduleImpl(
+      null == schedule
+          ? _value.schedule
+          : schedule // ignore: cast_nullable_to_non_nullable
+              as (Type, String),
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoveScheduleImpl
+    with DiagnosticableTreeMixin
+    implements _RemoveSchedule {
+  const _$RemoveScheduleImpl(this.schedule);
+
+  @override
+  final (Type, String) schedule;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ScheduleManagerEvent.removeSchedule(schedule: $schedule)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ScheduleManagerEvent.removeSchedule'))
+      ..add(DiagnosticsProperty('schedule', schedule));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveScheduleImpl &&
+            (identical(other.schedule, schedule) ||
+                other.schedule == schedule));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, schedule);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveScheduleImplCopyWith<_$RemoveScheduleImpl> get copyWith =>
+      __$$RemoveScheduleImplCopyWithImpl<_$RemoveScheduleImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(Lecturer lecturer) setLecturer,
+    required TResult Function(String id) updateLecturer,
+    required TResult Function(Schedule schedule) setSchedule,
+    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function() clear,
+    required TResult Function(String id) updateSchedule,
+  }) {
+    return removeSchedule(schedule);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(Lecturer lecturer)? setLecturer,
+    TResult? Function(String id)? updateLecturer,
+    TResult? Function(Schedule schedule)? setSchedule,
+    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function()? clear,
+    TResult? Function(String id)? updateSchedule,
+  }) {
+    return removeSchedule?.call(schedule);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(Lecturer lecturer)? setLecturer,
+    TResult Function(String id)? updateLecturer,
+    TResult Function(Schedule schedule)? setSchedule,
+    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function()? clear,
+    TResult Function(String id)? updateSchedule,
+    required TResult orElse(),
+  }) {
+    if (removeSchedule != null) {
+      return removeSchedule(schedule);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_SetLecturer value) setLecturer,
+    required TResult Function(_UpdateLecturer value) updateLecturer,
+    required TResult Function(_SetSchedule value) setSchedule,
+    required TResult Function(_RemoveSchedule value) removeSchedule,
+    required TResult Function(_Clear value) clear,
+    required TResult Function(_UpdateSchedule value) updateSchedule,
+  }) {
+    return removeSchedule(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_SetLecturer value)? setLecturer,
+    TResult? Function(_UpdateLecturer value)? updateLecturer,
+    TResult? Function(_SetSchedule value)? setSchedule,
+    TResult? Function(_RemoveSchedule value)? removeSchedule,
+    TResult? Function(_Clear value)? clear,
+    TResult? Function(_UpdateSchedule value)? updateSchedule,
+  }) {
+    return removeSchedule?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_SetLecturer value)? setLecturer,
+    TResult Function(_UpdateLecturer value)? updateLecturer,
+    TResult Function(_SetSchedule value)? setSchedule,
+    TResult Function(_RemoveSchedule value)? removeSchedule,
+    TResult Function(_Clear value)? clear,
+    TResult Function(_UpdateSchedule value)? updateSchedule,
+    required TResult orElse(),
+  }) {
+    if (removeSchedule != null) {
+      return removeSchedule(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveSchedule implements ScheduleManagerEvent {
+  const factory _RemoveSchedule(final (Type, String) schedule) =
+      _$RemoveScheduleImpl;
+
+  (Type, String) get schedule;
+  @JsonKey(ignore: true)
+  _$$RemoveScheduleImplCopyWith<_$RemoveScheduleImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearImplCopyWith<$Res> {
+  factory _$$ClearImplCopyWith(
+          _$ClearImpl value, $Res Function(_$ClearImpl) then) =
+      __$$ClearImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearImplCopyWithImpl<$Res>
+    extends _$ScheduleManagerEventCopyWithImpl<$Res, _$ClearImpl>
+    implements _$$ClearImplCopyWith<$Res> {
+  __$$ClearImplCopyWithImpl(
+      _$ClearImpl _value, $Res Function(_$ClearImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
+  const _$ClearImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ScheduleManagerEvent.clear()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'ScheduleManagerEvent.clear'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(Lecturer lecturer) setLecturer,
+    required TResult Function(String id) updateLecturer,
+    required TResult Function(Schedule schedule) setSchedule,
+    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function() clear,
+    required TResult Function(String id) updateSchedule,
+  }) {
+    return clear();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(Lecturer lecturer)? setLecturer,
+    TResult? Function(String id)? updateLecturer,
+    TResult? Function(Schedule schedule)? setSchedule,
+    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function()? clear,
+    TResult? Function(String id)? updateSchedule,
+  }) {
+    return clear?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(Lecturer lecturer)? setLecturer,
+    TResult Function(String id)? updateLecturer,
+    TResult Function(Schedule schedule)? setSchedule,
+    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function()? clear,
+    TResult Function(String id)? updateSchedule,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_SetLecturer value) setLecturer,
+    required TResult Function(_UpdateLecturer value) updateLecturer,
+    required TResult Function(_SetSchedule value) setSchedule,
+    required TResult Function(_RemoveSchedule value) removeSchedule,
+    required TResult Function(_Clear value) clear,
+    required TResult Function(_UpdateSchedule value) updateSchedule,
+  }) {
+    return clear(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_SetLecturer value)? setLecturer,
+    TResult? Function(_UpdateLecturer value)? updateLecturer,
+    TResult? Function(_SetSchedule value)? setSchedule,
+    TResult? Function(_RemoveSchedule value)? removeSchedule,
+    TResult? Function(_Clear value)? clear,
+    TResult? Function(_UpdateSchedule value)? updateSchedule,
+  }) {
+    return clear?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_SetLecturer value)? setLecturer,
+    TResult Function(_UpdateLecturer value)? updateLecturer,
+    TResult Function(_SetSchedule value)? setSchedule,
+    TResult Function(_RemoveSchedule value)? removeSchedule,
+    TResult Function(_Clear value)? clear,
+    TResult Function(_UpdateSchedule value)? updateSchedule,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Clear implements ScheduleManagerEvent {
+  const factory _Clear() = _$ClearImpl;
 }
 
 /// @nodoc
@@ -799,6 +1173,8 @@ class _$UpdateScheduleImpl
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
+    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
     return updateSchedule(id);
@@ -811,6 +1187,8 @@ class _$UpdateScheduleImpl
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
+    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
     return updateSchedule?.call(id);
@@ -823,6 +1201,8 @@ class _$UpdateScheduleImpl
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
+    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
   }) {
@@ -839,6 +1219,8 @@ class _$UpdateScheduleImpl
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
+    required TResult Function(_RemoveSchedule value) removeSchedule,
+    required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateSchedule value) updateSchedule,
   }) {
     return updateSchedule(this);
@@ -851,6 +1233,8 @@ class _$UpdateScheduleImpl
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
+    TResult? Function(_RemoveSchedule value)? removeSchedule,
+    TResult? Function(_Clear value)? clear,
     TResult? Function(_UpdateSchedule value)? updateSchedule,
   }) {
     return updateSchedule?.call(this);
@@ -863,6 +1247,8 @@ class _$UpdateScheduleImpl
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
+    TResult Function(_RemoveSchedule value)? removeSchedule,
+    TResult Function(_Clear value)? clear,
     TResult Function(_UpdateSchedule value)? updateSchedule,
     required TResult orElse(),
   }) {

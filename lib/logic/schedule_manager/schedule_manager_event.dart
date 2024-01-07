@@ -9,6 +9,9 @@ class ScheduleManagerEvent with _$ScheduleManagerEvent {
       _UpdateLecturer;
   const factory ScheduleManagerEvent.setSchedule(Schedule schedule) =
       _SetSchedule;
+  const factory ScheduleManagerEvent.removeSchedule(ScheduleKey schedule) =
+      _RemoveSchedule;
+  const factory ScheduleManagerEvent.clear() = _Clear;
   const factory ScheduleManagerEvent.updateSchedule(String id) =
       _UpdateSchedule;
 }
