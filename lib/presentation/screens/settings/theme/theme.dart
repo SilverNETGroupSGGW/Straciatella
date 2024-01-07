@@ -16,6 +16,7 @@ class ThemeScreen extends StatelessWidget {
         slivers: [
           SliverAppBar.large(
             title: Text('customization'.tr()),
+            expandedHeight: 196,
           ),
           SliverList.list(
             children: [
