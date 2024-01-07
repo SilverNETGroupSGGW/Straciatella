@@ -20,7 +20,6 @@ class LessonVerticalTimeSpan extends StatelessWidget {
     final labelSmall = Theme.of(context).textTheme.labelSmall;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),

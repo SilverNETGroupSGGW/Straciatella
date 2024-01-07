@@ -9,7 +9,6 @@ part 'schedule_base.g.dart';
 
 @freezed
 class ScheduleBase with _$ScheduleBase, FavableSchedule {
-  ScheduleBase._();
 
   @HiveType(
     typeId: HiveTypeIds.scheduleBase,
@@ -28,6 +27,7 @@ class ScheduleBase with _$ScheduleBase, FavableSchedule {
     @HiveField(9) required String studyMode,
     @HiveField(10) required String degreeOfStudy,
   }) = _ScheduleBase;
+  ScheduleBase._();
 
   factory ScheduleBase.fromJson(Map<String, dynamic> json) =>
       _$ScheduleBaseFromJson(json);

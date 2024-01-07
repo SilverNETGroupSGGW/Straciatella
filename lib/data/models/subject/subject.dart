@@ -3,17 +3,16 @@ import 'package:hive/hive.dart';
 import 'package:silvertimetable/data/converters/api_duration_converter.dart';
 import 'package:silvertimetable/data/converters/datetime_converter.dart';
 import 'package:silvertimetable/data/converters/day_of_week_converter.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/classroom/classroom.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
-import 'package:silvertimetable/data/hive_type_ids.dart';
 
 part 'subject.freezed.dart';
 part 'subject.g.dart';
 
 @freezed
 class Subject with _$Subject {
-  Subject._();
 
   @HiveType(
     typeId: HiveTypeIds.subject,
@@ -36,6 +35,7 @@ class Subject with _$Subject {
     @HiveField(13) required List<SubjectLesson> lessons,
     @HiveField(14) required List<SubjectGroup> groups,
   }) = _Subject;
+  Subject._();
 
   factory Subject.fromJson(Map<String, dynamic> json) =>
       _$SubjectFromJson(json);
@@ -43,7 +43,6 @@ class Subject with _$Subject {
 
 @freezed
 class SubjectLesson with _$SubjectLesson {
-  SubjectLesson._();
 
   @HiveType(
     typeId: HiveTypeIds.subjectLesson,
@@ -57,6 +56,7 @@ class SubjectLesson with _$SubjectLesson {
     @HiveField(4) @DateTimeConverter() required DateTime startTime,
     @HiveField(5) @ApiDurationConverter() required Duration duration,
   }) = _SubjectLesson;
+  SubjectLesson._();
 
   factory SubjectLesson.fromJson(Map<String, dynamic> json) =>
       _$SubjectLessonFromJson(json);
@@ -64,7 +64,6 @@ class SubjectLesson with _$SubjectLesson {
 
 @freezed
 class SubjectGroup with _$SubjectGroup {
-  SubjectGroup._();
 
   @HiveType(
     typeId: HiveTypeIds.subjectGroup,
@@ -77,6 +76,7 @@ class SubjectGroup with _$SubjectGroup {
     @HiveField(3) required String scheduleId,
     @HiveField(4) required String name,
   }) = _SubjectGroup;
+  SubjectGroup._();
 
   factory SubjectGroup.fromJson(Map<String, dynamic> json) =>
       _$SubjectGroupFromJson(json);

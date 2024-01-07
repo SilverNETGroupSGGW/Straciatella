@@ -26,19 +26,21 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
     box.put(boxKey, change.nextState);
   }
 
-  loadFavedSchedules() {
+  void loadFavedSchedules() {
     try {
-      FavedSchedulesState? loadedState = box.get(boxKey);
+      final FavedSchedulesState? loadedState =
+          box.get(boxKey) as FavedSchedulesState?;
       if (loadedState != null) emit(loadedState);
     } catch (e) {
       if (kDebugMode) {
-        print("Could not load faved schedules");
+        throw Exception("Error loading faved schedules from Hive: $e");
       }
       // TODO: handle exception
+      return;
     }
   }
 
-  addSchedule(FavableSchedule schedule) {
+  void addSchedule(FavableSchedule schedule) {
     if (state.favedSchedules.contains(schedule)) return;
     emit(
       state.copyWith(
@@ -47,57 +49,73 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
     );
   }
 
-  removeSchedule(FavableSchedule schedule) {
-    List<FavableSchedule> newFavedSchedules = [...state.favedSchedules];
+  void removeSchedule(FavableSchedule schedule) {
+    final List<FavableSchedule> newFavedSchedules = [...state.favedSchedules];
     newFavedSchedules.remove(schedule);
     if (state.selectedSchedule == schedule) {
-      emit(state.copyWith(
-        favedSchedules: newFavedSchedules,
-        selectedSchedule: null,
-      ));
+      emit(
+        state.copyWith(
+          favedSchedules: newFavedSchedules,
+          selectedSchedule: null,
+        ),
+      );
     } else {
-      emit(state.copyWith(
-        favedSchedules: newFavedSchedules,
-      ));
+      emit(
+        state.copyWith(
+          favedSchedules: newFavedSchedules,
+        ),
+      );
     }
   }
 
-  clearSchedules() {
-    emit(state.copyWith(
-      favedSchedules: [],
-      selectedSchedule: null,
-    ));
+  void clearSchedules() {
+    emit(
+      state.copyWith(
+        favedSchedules: [],
+        selectedSchedule: null,
+      ),
+    );
   }
 
-  overwriteFavedSchedules(List<FavableSchedule> schedules) {
+  void overwriteFavedSchedules(List<FavableSchedule> schedules) {
     if (schedules.contains(state.selectedSchedule)) {
-      emit(state.copyWith(
-        favedSchedules: schedules,
-      ));
+      emit(
+        state.copyWith(
+          favedSchedules: schedules,
+        ),
+      );
     } else {
-      emit(state.copyWith(
-        favedSchedules: schedules,
-        selectedSchedule: null,
-      ));
+      emit(
+        state.copyWith(
+          favedSchedules: schedules,
+          selectedSchedule: null,
+        ),
+      );
     }
   }
 
-  selectSchedule(FavableSchedule schedule) {
+  void selectSchedule(FavableSchedule schedule) {
     if (state.favedSchedules.contains(schedule)) {
-      emit(state.copyWith(
-        selectedSchedule: schedule,
-      ));
+      emit(
+        state.copyWith(
+          selectedSchedule: schedule,
+        ),
+      );
     } else {
-      emit(state.copyWith(
-        selectedSchedule: schedule,
-        favedSchedules: [...state.favedSchedules, schedule],
-      ));
+      emit(
+        state.copyWith(
+          selectedSchedule: schedule,
+          favedSchedules: [...state.favedSchedules, schedule],
+        ),
+      );
     }
   }
 
-  unselectSchedule() {
-    emit(state.copyWith(
-      selectedSchedule: null,
-    ));
+  void unselectSchedule() {
+    emit(
+      state.copyWith(
+        selectedSchedule: null,
+      ),
+    );
   }
 }

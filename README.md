@@ -11,7 +11,7 @@ This project is a mobile application that allows you to view schedules for your 
 
 ## Table of Contents
 
-- [SGGW Schedule Mobile](#sggw-plan-mobileweb)
+- [SGGW Schedule Mobile](#sggw-schedule-mobile)
   - [Description](#description)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
