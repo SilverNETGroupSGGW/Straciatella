@@ -9,15 +9,11 @@ class ScheduleManagerState extends HiveObject with _$ScheduleManagerState {
   factory ScheduleManagerState.loaded({
     @Default({})
     @HiveField(0, defaultValue: {})
-    Map<ScheduleKey, BaseSchedule> schedulesIndex,
-    @Default({})
-    @HiveField(1, defaultValue: {})
     Map<ScheduleKey, ExtendedSchedule> schedules,
   }) = _Loaded;
 
   // this one cant be saved with hive, must be mapped to loaded state
   factory ScheduleManagerState.loading({
-    @Default(false) bool all,
     @Default({}) Set<ScheduleKey> loading,
   }) = _Loading;
   ScheduleManagerState._();

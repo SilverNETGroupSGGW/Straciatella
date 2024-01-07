@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -7,10 +6,8 @@ import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
-import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
-import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
 import 'package:silvertimetable/data/types.dart';
 
@@ -53,33 +50,11 @@ class ScheduleManagerBloc
       }
     });
     // * setters
-    on<_SetIndex>((event, emit) => setIndex(event.index, emit));
-
     on<_SetSchedule>((event, emit) => setSchedule(event.schedule, emit));
 
     on<_SetLecturer>((event, emit) => setLecturer(event.lecturer, emit));
 
     // * fetchers
-    on<_UpdateIndex>(
-      (event, emit) async {
-        flagLoadingIndex(emit);
-        try {
-          final List<BaseSchedule> schedules = await Future.wait([
-            sggwHubRepo.getSchedules(),
-            sggwHubRepo.getLecturers(),
-          ]).then((value) => [...value[0], ...value[1]]);
-          setIndex(schedules, emit);
-        } catch (ex) {
-          if (kDebugMode) {
-            print("Could not get index of schedules");
-            print(ex);
-          }
-        }
-        unflagLoadingIndex(emit);
-      },
-      transformer: droppable(),
-    );
-
     on<_UpdateSchedule>(
       (event, emit) async {
         final ScheduleKey key = (Schedule, event.id);
@@ -127,22 +102,6 @@ class ScheduleManagerBloc
     );
   }
 
-  void unflagLoadingIndex(Emitter<ScheduleManagerState> emit) {
-    emit(
-      lastLoading.copyWith(
-        all: false,
-      ),
-    );
-  }
-
-  void flagLoadingIndex(Emitter<ScheduleManagerState> emit) {
-    emit(
-      lastLoading.copyWith(
-        all: true,
-      ),
-    );
-  }
-
   void flagLoadingSchedule(
     Emitter<ScheduleManagerState> emit,
     ScheduleKey key,
@@ -161,30 +120,6 @@ class ScheduleManagerBloc
     emit(
       lastLoading.copyWith(
         loading: Set.from(lastLoading.loading)..remove(key),
-      ),
-    );
-  }
-
-  FutureOr<void> setIndex(
-    List<BaseSchedule> index,
-    Emitter<ScheduleManagerState> emit,
-  ) {
-    final Map<(Type, String), BaseSchedule> nextIndex = {};
-
-    for (final element in index) {
-      if (element is LecturerBase) {
-        nextIndex[(LecturerBase, element.id)] = element;
-        continue;
-      }
-
-      if (element is ScheduleBase) {
-        nextIndex[(ScheduleBase, element.id)] = element;
-      }
-    }
-
-    emit(
-      lastLoaded.copyWith(
-        schedulesIndex: nextIndex,
       ),
     );
   }

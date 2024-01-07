@@ -17,22 +17,17 @@ class ScheduleManagerStateLoadedAdapter extends TypeAdapter<_$LoadedImpl> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return _$LoadedImpl(
-      schedulesIndex: fields[0] == null
+      schedules: fields[0] == null
           ? {}
-          : (fields[0] as Map).cast<(Type, String), BaseSchedule>(),
-      schedules: fields[1] == null
-          ? {}
-          : (fields[1] as Map).cast<(Type, String), ExtendedSchedule>(),
+          : (fields[0] as Map).cast<(Type, String), ExtendedSchedule>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, _$LoadedImpl obj) {
     writer
-      ..writeByte(2)
-      ..writeByte(0)
-      ..write(obj.schedulesIndex)
       ..writeByte(1)
+      ..writeByte(0)
       ..write(obj.schedules);
   }
 
