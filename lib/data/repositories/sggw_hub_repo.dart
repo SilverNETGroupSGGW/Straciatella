@@ -11,9 +11,8 @@ class SggwHubRepo {
     final List<LecturerBase> lecturers = [];
     final response = await sggwHubApi.getLecturers();
 
-    for (final Map<String, dynamic> json
-        in response.data as List<Map<String, dynamic>>) {
-      lecturers.add(LecturerBase.fromJson(json));
+    for (final json in response.data as List) {
+      lecturers.add(LecturerBase.fromJson(json as Map<String, dynamic>));
     }
 
     return lecturers;
@@ -23,9 +22,8 @@ class SggwHubRepo {
     final List<ScheduleBase> schedules = [];
     final response = await sggwHubApi.getSchedules();
 
-    for (final Map<String, dynamic> json
-        in response.data as List<Map<String, dynamic>>) {
-      schedules.add(ScheduleBase.fromJson(json));
+    for (final json in response.data as List) {
+      schedules.add(ScheduleBase.fromJson(json as Map<String, dynamic>));
     }
 
     return schedules;
