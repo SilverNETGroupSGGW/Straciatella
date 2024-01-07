@@ -41,7 +41,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       WelcomeStage(
         animationController: animationControllers[0].controller,
         header: const Image(
-          image: AssetImage('assets/icon/icon.png'),
+          image: AssetImage('assets/images/icon.png'),
           width: 200,
           height: 200,
         ),
@@ -67,10 +67,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         title: 'notifications_stage_text'.tr(),
         desc: 'notifications_stage_desc'.tr(),
         leading: FilledButton(
-            onPressed: () {
-              // TODO: Ask for notification permission
-            },
-            child: Text('allow_notifications'.tr()),),
+          onPressed: () {
+            // TODO: Ask for notification permission
+          },
+          child: Text('allow_notifications'.tr()),
+        ),
       ),
       WelcomeStage(
         animationController: animationControllers[3].controller,
@@ -90,11 +91,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         title: 'customization_stage_text'.tr(),
         desc: 'customization_stage_desc'.tr(),
         leading: FilledButton(
-            onPressed: () {
-              // TODO: Navigate to theme screen instead of settings
-              Navigator.of(context).pushNamed(RouteNames.settings);
-            },
-            child: Text('customize'.tr()),),
+          onPressed: () {
+            // TODO: Navigate to theme screen instead of settings
+            Navigator.of(context).pushNamed(RouteNames.settings);
+          },
+          child: Text('customize'.tr()),
+        ),
       ),
       WelcomeStage(
         animationController: animationControllers[5].controller,
