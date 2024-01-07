@@ -4,7 +4,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
+import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
+import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/types.dart';
+import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 
 part 'faved_schedules_state.dart';
 part 'faved_schedules_cubit.freezed.dart';
@@ -14,7 +17,12 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
   static const boxKey = "favedSchedules";
   final Box box = Hive.box(hiveBoxName);
 
-  FavedSchedulesCubit() : super(FavedSchedulesState());
+  // invokes events on this if:
+  // user added a schedule to favs
+  ScheduleManagerBloc? scheduleManagerBloc;
+
+  FavedSchedulesCubit([this.scheduleManagerBloc])
+      : super(FavedSchedulesState());
   // For Copilot: Create new lists instead of mutating them
 
   @override
@@ -24,6 +32,15 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
 
     // Custom onChange logic goes here
     box.put(boxKey, change.nextState);
+  }
+
+  void invokeUpdateOnScheduleManager(ScheduleKey key) {
+    if (key.$1 is LecturerBase) {
+      scheduleManagerBloc?.add(ScheduleManagerEvent.updateLecturer(key.$2));
+    }
+    if (key.$1 is ScheduleBase) {
+      scheduleManagerBloc?.add(ScheduleManagerEvent.updateSchedule(key.$2));
+    }
   }
 
   void loadFavedSchedules() {
@@ -42,6 +59,8 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
 
   void addSchedule(ScheduleKey schedule) {
     if (state.favedSchedules.contains(schedule)) return;
+
+    invokeUpdateOnScheduleManager(schedule);
     emit(
       state.copyWith(
         favedSchedules: [...state.favedSchedules, schedule],
@@ -77,24 +96,25 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
     );
   }
 
-  void overwriteFavedSchedules(List<ScheduleKey> schedules) {
-    if (schedules.contains(state.selectedSchedule)) {
-      emit(
-        state.copyWith(
-          favedSchedules: schedules,
-        ),
-      );
-    } else {
-      emit(
-        state.copyWith(
-          favedSchedules: schedules,
-          selectedSchedule: null,
-        ),
-      );
-    }
-  }
+  // void overwriteFavedSchedules(List<ScheduleKey> schedules) {
+  //   if (schedules.contains(state.selectedSchedule)) {
+  //     emit(
+  //       state.copyWith(
+  //         favedSchedules: schedules,
+  //       ),
+  //     );
+  //   } else {
+  //     emit(
+  //       state.copyWith(
+  //         favedSchedules: schedules,
+  //         selectedSchedule: null,
+  //       ),
+  //     );
+  //   }
+  // }
 
   void selectSchedule(ScheduleKey schedule) {
+    invokeUpdateOnScheduleManager(schedule);
     if (state.favedSchedules.contains(schedule)) {
       emit(
         state.copyWith(

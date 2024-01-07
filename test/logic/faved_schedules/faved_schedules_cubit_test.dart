@@ -80,17 +80,17 @@ void main() async {
     tearDown: () => box.clear(),
   );
 
-  blocTest<FavedSchedulesCubit, FavedSchedulesState>(
-    'overwrite FavedSchedulestate with one schedule',
-    build: () => FavedSchedulesCubit(),
-    act: (bloc) => bloc.overwriteFavedSchedules([testSchedule]),
-    expect: () => [
-      FavedSchedulesState(
-        favedSchedules: [testSchedule],
-      ),
-    ],
-    tearDown: () => box.clear(),
-  );
+  // blocTest<FavedSchedulesCubit, FavedSchedulesState>(
+  //   'overwrite FavedSchedulestate with one schedule',
+  //   build: () => FavedSchedulesCubit(),
+  //   act: (bloc) => bloc.overwriteFavedSchedules([testSchedule]),
+  //   expect: () => [
+  //     FavedSchedulesState(
+  //       favedSchedules: [testSchedule],
+  //     ),
+  //   ],
+  //   tearDown: () => box.clear(),
+  // );
 
   blocTest<FavedSchedulesCubit, FavedSchedulesState>(
     'clear FavedSchedulestate',
