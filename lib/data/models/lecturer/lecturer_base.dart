@@ -2,14 +2,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/data/converters/datetime_converter.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
-import 'package:silvertimetable/data/models/favable_schedule.dart';
+import 'package:silvertimetable/data/models/mixins.dart';
 
 part 'lecturer_base.freezed.dart';
 part 'lecturer_base.g.dart';
 
 @freezed
-class LecturerBase with _$LecturerBase, FavableSchedule {
-
+class LecturerBase with _$LecturerBase, BaseSchedule {
   @HiveType(
     typeId: HiveTypeIds.lecturerBase,
     adapterName: "LecturerBaseAdapter",

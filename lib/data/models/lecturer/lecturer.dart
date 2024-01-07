@@ -2,14 +2,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/data/converters/datetime_converter.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
+import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/data/models/subject/subject.dart';
 
 part 'lecturer.freezed.dart';
 part 'lecturer.g.dart';
 
 @freezed
-class Lecturer with _$Lecturer {
-
+class Lecturer with _$Lecturer, ExtendedSchedule {
   @HiveType(
     typeId: HiveTypeIds.lecturer,
     adapterName: "LecturerAdapter",
