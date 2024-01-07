@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/logic/faved_schedules/faved_schedules_cubit.dart';
-import 'package:silvertimetable/presentation/builders/schedule_builder.dart';
+import 'package:silvertimetable/presentation/builders/cached_schedule_builder.dart';
 
 class SelectedFavedScheduleBuilder extends StatelessWidget {
   final Widget Function(
@@ -22,7 +22,7 @@ class SelectedFavedScheduleBuilder extends StatelessWidget {
         if (favedSchedules.selectedSchedule == null) {
           return builder(context, null);
         } else {
-          return ScheduleBuilder(
+          return CachedScheduleBuilder(
             builder: builder,
             scheduleKey: favedSchedules.selectedSchedule!,
           );

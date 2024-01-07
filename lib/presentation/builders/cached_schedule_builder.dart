@@ -3,14 +3,14 @@ import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/data/types.dart';
 import 'package:silvertimetable/presentation/builders/schedule_manager_builders.dart';
 
-class ScheduleBuilder extends StatelessWidget {
+class CachedScheduleBuilder extends StatelessWidget {
   final Widget Function(
     BuildContext context,
     ExtendedSchedule? schedule,
   ) builder;
   final ScheduleKey scheduleKey;
 
-  const ScheduleBuilder({
+  const CachedScheduleBuilder({
     super.key,
     required this.builder,
     required this.scheduleKey,

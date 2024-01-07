@@ -16,9 +16,7 @@ class ScheduleIndexBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<BaseSchedule>>(
-      future: Future.wait(
-        [SggwHubRepo().getSchedules(), SggwHubRepo().getLecturers()],
-      ).then((value) => [...value[0], ...value[1]]),
+      future: SggwHubRepo().getSchedulesIndex(),
       builder: builder,
     );
   }
