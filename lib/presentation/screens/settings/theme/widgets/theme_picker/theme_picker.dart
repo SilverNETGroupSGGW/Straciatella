@@ -11,10 +11,14 @@ class ThemePicker extends StatelessWidget {
     Colors.red,
     Colors.pink,
     Colors.purple,
+    Colors.deepPurple,
+    Colors.indigo,
     Colors.blue,
     Colors.cyan,
-    Colors.lime,
+    Colors.teal,
+    Colors.green,
     Colors.yellow,
+    Colors.amber,
     Colors.orange,
   ];
 
