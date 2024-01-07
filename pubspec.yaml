@@ -15,6 +15,7 @@ flutter_launcher_icons:
   # see https://pub.dev/packages/flutter_launcher_icons#mag-attributes for other attributes
 
 dependencies:
+  bloc_concurrency: ^0.2.3
   cupertino_icons: ^1.0.2
   dio: ^5.4.0
   dynamic_color: ^1.6.9

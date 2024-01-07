@@ -15,5 +15,6 @@ class HiveTypeIds {
   static const subjectGroup = 12;
   static const dayOfWeek = 13;
   static const duration = 14;
+  static const scheduleManagerLoadedState = 15;
   static const scheduleKey = 16;
 }
