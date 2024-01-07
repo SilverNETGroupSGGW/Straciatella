@@ -22,7 +22,7 @@ mixin _$ScheduleManagerEvent {
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
-    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function((ScheduleType, String) schedule) removeSchedule,
     required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) =>
@@ -33,7 +33,7 @@ mixin _$ScheduleManagerEvent {
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
-    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function((ScheduleType, String) schedule)? removeSchedule,
     TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) =>
@@ -44,7 +44,7 @@ mixin _$ScheduleManagerEvent {
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
-    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function((ScheduleType, String) schedule)? removeSchedule,
     TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
@@ -152,7 +152,7 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
-    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function((ScheduleType, String) schedule) removeSchedule,
     required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
@@ -166,7 +166,7 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
-    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function((ScheduleType, String) schedule)? removeSchedule,
     TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
@@ -180,7 +180,7 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
-    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function((ScheduleType, String) schedule)? removeSchedule,
     TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
@@ -329,7 +329,7 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
-    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function((ScheduleType, String) schedule) removeSchedule,
     required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
@@ -343,7 +343,7 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
-    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function((ScheduleType, String) schedule)? removeSchedule,
     TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
@@ -357,7 +357,7 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
-    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function((ScheduleType, String) schedule)? removeSchedule,
     TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
@@ -503,7 +503,7 @@ class _$UpdateLecturerImpl
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
-    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function((ScheduleType, String) schedule) removeSchedule,
     required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
@@ -517,7 +517,7 @@ class _$UpdateLecturerImpl
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
-    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function((ScheduleType, String) schedule)? removeSchedule,
     TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
@@ -531,7 +531,7 @@ class _$UpdateLecturerImpl
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
-    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function((ScheduleType, String) schedule)? removeSchedule,
     TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
@@ -685,7 +685,7 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
-    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function((ScheduleType, String) schedule) removeSchedule,
     required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
@@ -699,7 +699,7 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
-    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function((ScheduleType, String) schedule)? removeSchedule,
     TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
@@ -713,7 +713,7 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
-    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function((ScheduleType, String) schedule)? removeSchedule,
     TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
@@ -786,7 +786,7 @@ abstract class _$$RemoveScheduleImplCopyWith<$Res> {
           $Res Function(_$RemoveScheduleImpl) then) =
       __$$RemoveScheduleImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({(Type, String) schedule});
+  $Res call({(ScheduleType, String) schedule});
 }
 
 /// @nodoc
@@ -806,7 +806,7 @@ class __$$RemoveScheduleImplCopyWithImpl<$Res>
       null == schedule
           ? _value.schedule
           : schedule // ignore: cast_nullable_to_non_nullable
-              as (Type, String),
+              as (ScheduleType, String),
     ));
   }
 }
@@ -819,7 +819,7 @@ class _$RemoveScheduleImpl
   const _$RemoveScheduleImpl(this.schedule);
 
   @override
-  final (Type, String) schedule;
+  final (ScheduleType, String) schedule;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -860,7 +860,7 @@ class _$RemoveScheduleImpl
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
-    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function((ScheduleType, String) schedule) removeSchedule,
     required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
@@ -874,7 +874,7 @@ class _$RemoveScheduleImpl
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
-    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function((ScheduleType, String) schedule)? removeSchedule,
     TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
@@ -888,7 +888,7 @@ class _$RemoveScheduleImpl
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
-    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function((ScheduleType, String) schedule)? removeSchedule,
     TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
@@ -947,10 +947,10 @@ class _$RemoveScheduleImpl
 }
 
 abstract class _RemoveSchedule implements ScheduleManagerEvent {
-  const factory _RemoveSchedule(final (Type, String) schedule) =
+  const factory _RemoveSchedule(final (ScheduleType, String) schedule) =
       _$RemoveScheduleImpl;
 
-  (Type, String) get schedule;
+  (ScheduleType, String) get schedule;
   @JsonKey(ignore: true)
   _$$RemoveScheduleImplCopyWith<_$RemoveScheduleImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1004,7 +1004,7 @@ class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
-    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function((ScheduleType, String) schedule) removeSchedule,
     required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
@@ -1018,7 +1018,7 @@ class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
-    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function((ScheduleType, String) schedule)? removeSchedule,
     TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
@@ -1032,7 +1032,7 @@ class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
-    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function((ScheduleType, String) schedule)? removeSchedule,
     TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
@@ -1173,7 +1173,7 @@ class _$UpdateScheduleImpl
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
-    required TResult Function((Type, String) schedule) removeSchedule,
+    required TResult Function((ScheduleType, String) schedule) removeSchedule,
     required TResult Function() clear,
     required TResult Function(String id) updateSchedule,
   }) {
@@ -1187,7 +1187,7 @@ class _$UpdateScheduleImpl
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
-    TResult? Function((Type, String) schedule)? removeSchedule,
+    TResult? Function((ScheduleType, String) schedule)? removeSchedule,
     TResult? Function()? clear,
     TResult? Function(String id)? updateSchedule,
   }) {
@@ -1201,7 +1201,7 @@ class _$UpdateScheduleImpl
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
-    TResult Function((Type, String) schedule)? removeSchedule,
+    TResult Function((ScheduleType, String) schedule)? removeSchedule,
     TResult Function()? clear,
     TResult Function(String id)? updateSchedule,
     required TResult orElse(),
@@ -1274,27 +1274,27 @@ mixin _$ScheduleManagerState {
   TResult when<TResult extends Object?>({
     required TResult Function(
             @HiveField(0, defaultValue: {})
-            Map<(Type, String), ExtendedSchedule> schedules)
+            Map<(ScheduleType, String), ExtendedSchedule> schedules)
         loaded,
-    required TResult Function(Set<(Type, String)> loading) loading,
+    required TResult Function(Set<(ScheduleType, String)> loading) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             @HiveField(0, defaultValue: {})
-            Map<(Type, String), ExtendedSchedule> schedules)?
+            Map<(ScheduleType, String), ExtendedSchedule> schedules)?
         loaded,
-    TResult? Function(Set<(Type, String)> loading)? loading,
+    TResult? Function(Set<(ScheduleType, String)> loading)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             @HiveField(0, defaultValue: {})
-            Map<(Type, String), ExtendedSchedule> schedules)?
+            Map<(ScheduleType, String), ExtendedSchedule> schedules)?
         loaded,
-    TResult Function(Set<(Type, String)> loading)? loading,
+    TResult Function(Set<(ScheduleType, String)> loading)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1346,7 +1346,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
   @useResult
   $Res call(
       {@HiveField(0, defaultValue: {})
-      Map<(Type, String), ExtendedSchedule> schedules});
+      Map<(ScheduleType, String), ExtendedSchedule> schedules});
 }
 
 /// @nodoc
@@ -1366,7 +1366,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
       schedules: null == schedules
           ? _value._schedules
           : schedules // ignore: cast_nullable_to_non_nullable
-              as Map<(Type, String), ExtendedSchedule>,
+              as Map<(ScheduleType, String), ExtendedSchedule>,
     ));
   }
 }
@@ -1379,15 +1379,15 @@ class __$$LoadedImplCopyWithImpl<$Res>
 class _$LoadedImpl extends _Loaded with DiagnosticableTreeMixin {
   _$LoadedImpl(
       {@HiveField(0, defaultValue: {})
-      final Map<(Type, String), ExtendedSchedule> schedules = const {}})
+      final Map<(ScheduleType, String), ExtendedSchedule> schedules = const {}})
       : _schedules = schedules,
         super._();
 
-  final Map<(Type, String), ExtendedSchedule> _schedules;
+  final Map<(ScheduleType, String), ExtendedSchedule> _schedules;
   @override
   @JsonKey()
   @HiveField(0, defaultValue: {})
-  Map<(Type, String), ExtendedSchedule> get schedules {
+  Map<(ScheduleType, String), ExtendedSchedule> get schedules {
     if (_schedules is EqualUnmodifiableMapView) return _schedules;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_schedules);
@@ -1430,9 +1430,9 @@ class _$LoadedImpl extends _Loaded with DiagnosticableTreeMixin {
   TResult when<TResult extends Object?>({
     required TResult Function(
             @HiveField(0, defaultValue: {})
-            Map<(Type, String), ExtendedSchedule> schedules)
+            Map<(ScheduleType, String), ExtendedSchedule> schedules)
         loaded,
-    required TResult Function(Set<(Type, String)> loading) loading,
+    required TResult Function(Set<(ScheduleType, String)> loading) loading,
   }) {
     return loaded(schedules);
   }
@@ -1442,9 +1442,9 @@ class _$LoadedImpl extends _Loaded with DiagnosticableTreeMixin {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             @HiveField(0, defaultValue: {})
-            Map<(Type, String), ExtendedSchedule> schedules)?
+            Map<(ScheduleType, String), ExtendedSchedule> schedules)?
         loaded,
-    TResult? Function(Set<(Type, String)> loading)? loading,
+    TResult? Function(Set<(ScheduleType, String)> loading)? loading,
   }) {
     return loaded?.call(schedules);
   }
@@ -1454,9 +1454,9 @@ class _$LoadedImpl extends _Loaded with DiagnosticableTreeMixin {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             @HiveField(0, defaultValue: {})
-            Map<(Type, String), ExtendedSchedule> schedules)?
+            Map<(ScheduleType, String), ExtendedSchedule> schedules)?
         loaded,
-    TResult Function(Set<(Type, String)> loading)? loading,
+    TResult Function(Set<(ScheduleType, String)> loading)? loading,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1499,12 +1499,13 @@ class _$LoadedImpl extends _Loaded with DiagnosticableTreeMixin {
 
 abstract class _Loaded extends ScheduleManagerState {
   factory _Loaded(
-      {@HiveField(0, defaultValue: {})
-      final Map<(Type, String), ExtendedSchedule> schedules}) = _$LoadedImpl;
+          {@HiveField(0, defaultValue: {})
+          final Map<(ScheduleType, String), ExtendedSchedule> schedules}) =
+      _$LoadedImpl;
   _Loaded._() : super._();
 
   @HiveField(0, defaultValue: {})
-  Map<(Type, String), ExtendedSchedule> get schedules;
+  Map<(ScheduleType, String), ExtendedSchedule> get schedules;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1516,7 +1517,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
           _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
       __$$LoadingImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Set<(Type, String)> loading});
+  $Res call({Set<(ScheduleType, String)> loading});
 }
 
 /// @nodoc
@@ -1536,7 +1537,7 @@ class __$$LoadingImplCopyWithImpl<$Res>
       loading: null == loading
           ? _value._loading
           : loading // ignore: cast_nullable_to_non_nullable
-              as Set<(Type, String)>,
+              as Set<(ScheduleType, String)>,
     ));
   }
 }
@@ -1544,14 +1545,14 @@ class __$$LoadingImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadingImpl extends _Loading with DiagnosticableTreeMixin {
-  _$LoadingImpl({final Set<(Type, String)> loading = const {}})
+  _$LoadingImpl({final Set<(ScheduleType, String)> loading = const {}})
       : _loading = loading,
         super._();
 
-  final Set<(Type, String)> _loading;
+  final Set<(ScheduleType, String)> _loading;
   @override
   @JsonKey()
-  Set<(Type, String)> get loading {
+  Set<(ScheduleType, String)> get loading {
     if (_loading is EqualUnmodifiableSetView) return _loading;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableSetView(_loading);
@@ -1593,9 +1594,9 @@ class _$LoadingImpl extends _Loading with DiagnosticableTreeMixin {
   TResult when<TResult extends Object?>({
     required TResult Function(
             @HiveField(0, defaultValue: {})
-            Map<(Type, String), ExtendedSchedule> schedules)
+            Map<(ScheduleType, String), ExtendedSchedule> schedules)
         loaded,
-    required TResult Function(Set<(Type, String)> loading) loading,
+    required TResult Function(Set<(ScheduleType, String)> loading) loading,
   }) {
     return loading(this.loading);
   }
@@ -1605,9 +1606,9 @@ class _$LoadingImpl extends _Loading with DiagnosticableTreeMixin {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             @HiveField(0, defaultValue: {})
-            Map<(Type, String), ExtendedSchedule> schedules)?
+            Map<(ScheduleType, String), ExtendedSchedule> schedules)?
         loaded,
-    TResult? Function(Set<(Type, String)> loading)? loading,
+    TResult? Function(Set<(ScheduleType, String)> loading)? loading,
   }) {
     return loading?.call(this.loading);
   }
@@ -1617,9 +1618,9 @@ class _$LoadingImpl extends _Loading with DiagnosticableTreeMixin {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             @HiveField(0, defaultValue: {})
-            Map<(Type, String), ExtendedSchedule> schedules)?
+            Map<(ScheduleType, String), ExtendedSchedule> schedules)?
         loaded,
-    TResult Function(Set<(Type, String)> loading)? loading,
+    TResult Function(Set<(ScheduleType, String)> loading)? loading,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1661,10 +1662,10 @@ class _$LoadingImpl extends _Loading with DiagnosticableTreeMixin {
 }
 
 abstract class _Loading extends ScheduleManagerState {
-  factory _Loading({final Set<(Type, String)> loading}) = _$LoadingImpl;
+  factory _Loading({final Set<(ScheduleType, String)> loading}) = _$LoadingImpl;
   _Loading._() : super._();
 
-  Set<(Type, String)> get loading;
+  Set<(ScheduleType, String)> get loading;
   @JsonKey(ignore: true)
   _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;

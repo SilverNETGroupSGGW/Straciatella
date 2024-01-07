@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
+import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
@@ -73,7 +74,7 @@ class ScheduleManagerBloc
     // * fetchers
     on<_UpdateSchedule>(
       (event, emit) async {
-        final ScheduleKey key = (Schedule, event.id);
+        final ScheduleKey key = (ScheduleType.schedule, event.id);
         // TODO: move this if block to transformer
         if (state is _Loading && (state as _Loading).loading.contains(key)) {
           // already fetching newest data for this schedule
@@ -96,7 +97,7 @@ class ScheduleManagerBloc
 
     on<_UpdateLecturer>(
       (event, emit) async {
-        final ScheduleKey key = (Lecturer, event.id);
+        final ScheduleKey key = (ScheduleType.lecturer, event.id);
         // TODO: move this if block to transformer
         if (state is _Loading && (state as _Loading).loading.contains(key)) {
           // already fetching newest data for this schedule
@@ -148,7 +149,7 @@ class ScheduleManagerBloc
       lastLoaded.copyWith(
         schedules: Map.from(lastLoaded.schedules)
           ..update(
-            (Schedule, schedule.id),
+            (ScheduleType.schedule, schedule.id),
             (value) => schedule,
             ifAbsent: () => schedule,
           ),
@@ -164,7 +165,7 @@ class ScheduleManagerBloc
       lastLoaded.copyWith(
         schedules: Map.from(lastLoaded.schedules)
           ..update(
-            (Lecturer, lecturer.id),
+            (ScheduleType.lecturer, lecturer.id),
             (value) => lecturer,
             ifAbsent: () => lecturer,
           ),

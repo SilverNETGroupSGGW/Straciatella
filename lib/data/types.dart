@@ -1,1 +1,3 @@
-typedef ScheduleKey = (Type, String);
+import 'package:silvertimetable/data/models/enums.dart';
+
+typedef ScheduleKey = (ScheduleType, String);

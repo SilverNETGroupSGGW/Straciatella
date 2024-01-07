@@ -19,7 +19,7 @@ class ScheduleManagerStateLoadedAdapter extends TypeAdapter<_$LoadedImpl> {
     return _$LoadedImpl(
       schedules: fields[0] == null
           ? {}
-          : (fields[0] as Map).cast<(Type, String), ExtendedSchedule>(),
+          : (fields[0] as Map).cast<(InvalidType, String), ExtendedSchedule>(),
     );
   }
 

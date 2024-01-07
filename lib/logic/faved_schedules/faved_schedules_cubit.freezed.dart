@@ -17,9 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$FavedSchedulesState {
   @HiveField(0)
-  List<(Type, String)> get favedSchedules => throw _privateConstructorUsedError;
+  List<(ScheduleType, String)> get favedSchedules =>
+      throw _privateConstructorUsedError;
   @HiveField(1)
-  (Type, String)? get selectedSchedule => throw _privateConstructorUsedError;
+  (ScheduleType, String)? get selectedSchedule =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FavedSchedulesStateCopyWith<FavedSchedulesState> get copyWith =>
@@ -33,8 +35,8 @@ abstract class $FavedSchedulesStateCopyWith<$Res> {
       _$FavedSchedulesStateCopyWithImpl<$Res, FavedSchedulesState>;
   @useResult
   $Res call(
-      {@HiveField(0) List<(Type, String)> favedSchedules,
-      @HiveField(1) (Type, String)? selectedSchedule});
+      {@HiveField(0) List<(ScheduleType, String)> favedSchedules,
+      @HiveField(1) (ScheduleType, String)? selectedSchedule});
 }
 
 /// @nodoc
@@ -57,11 +59,11 @@ class _$FavedSchedulesStateCopyWithImpl<$Res, $Val extends FavedSchedulesState>
       favedSchedules: null == favedSchedules
           ? _value.favedSchedules
           : favedSchedules // ignore: cast_nullable_to_non_nullable
-              as List<(Type, String)>,
+              as List<(ScheduleType, String)>,
       selectedSchedule: freezed == selectedSchedule
           ? _value.selectedSchedule
           : selectedSchedule // ignore: cast_nullable_to_non_nullable
-              as (Type, String)?,
+              as (ScheduleType, String)?,
     ) as $Val);
   }
 }
@@ -75,8 +77,8 @@ abstract class _$$FavedSchedulesStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@HiveField(0) List<(Type, String)> favedSchedules,
-      @HiveField(1) (Type, String)? selectedSchedule});
+      {@HiveField(0) List<(ScheduleType, String)> favedSchedules,
+      @HiveField(1) (ScheduleType, String)? selectedSchedule});
 }
 
 /// @nodoc
@@ -97,11 +99,11 @@ class __$$FavedSchedulesStateImplCopyWithImpl<$Res>
       favedSchedules: null == favedSchedules
           ? _value._favedSchedules
           : favedSchedules // ignore: cast_nullable_to_non_nullable
-              as List<(Type, String)>,
+              as List<(ScheduleType, String)>,
       selectedSchedule: freezed == selectedSchedule
           ? _value.selectedSchedule
           : selectedSchedule // ignore: cast_nullable_to_non_nullable
-              as (Type, String)?,
+              as (ScheduleType, String)?,
     ));
   }
 }
@@ -114,16 +116,17 @@ class __$$FavedSchedulesStateImplCopyWithImpl<$Res>
 class _$FavedSchedulesStateImpl extends _FavedSchedulesState
     with DiagnosticableTreeMixin {
   _$FavedSchedulesStateImpl(
-      {@HiveField(0) final List<(Type, String)> favedSchedules = const [],
+      {@HiveField(0)
+      final List<(ScheduleType, String)> favedSchedules = const [],
       @HiveField(1) this.selectedSchedule = null})
       : _favedSchedules = favedSchedules,
         super._();
 
-  final List<(Type, String)> _favedSchedules;
+  final List<(ScheduleType, String)> _favedSchedules;
   @override
   @JsonKey()
   @HiveField(0)
-  List<(Type, String)> get favedSchedules {
+  List<(ScheduleType, String)> get favedSchedules {
     if (_favedSchedules is EqualUnmodifiableListView) return _favedSchedules;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_favedSchedules);
@@ -132,7 +135,7 @@ class _$FavedSchedulesStateImpl extends _FavedSchedulesState
   @override
   @JsonKey()
   @HiveField(1)
-  final (Type, String)? selectedSchedule;
+  final (ScheduleType, String)? selectedSchedule;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -173,17 +176,17 @@ class _$FavedSchedulesStateImpl extends _FavedSchedulesState
 
 abstract class _FavedSchedulesState extends FavedSchedulesState {
   factory _FavedSchedulesState(
-          {@HiveField(0) final List<(Type, String)> favedSchedules,
-          @HiveField(1) final (Type, String)? selectedSchedule}) =
+          {@HiveField(0) final List<(ScheduleType, String)> favedSchedules,
+          @HiveField(1) final (ScheduleType, String)? selectedSchedule}) =
       _$FavedSchedulesStateImpl;
   _FavedSchedulesState._() : super._();
 
   @override
   @HiveField(0)
-  List<(Type, String)> get favedSchedules;
+  List<(ScheduleType, String)> get favedSchedules;
   @override
   @HiveField(1)
-  (Type, String)? get selectedSchedule;
+  (ScheduleType, String)? get selectedSchedule;
   @override
   @JsonKey(ignore: true)
   _$$FavedSchedulesStateImplCopyWith<_$FavedSchedulesStateImpl> get copyWith =>
