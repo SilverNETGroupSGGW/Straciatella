@@ -37,11 +37,11 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
   }
 
   void invokeUpdateOnScheduleManager(ScheduleKey key) {
-    if (key.$1 is LecturerBase) {
-      scheduleManagerBloc?.add(ScheduleManagerEvent.updateLecturer(key.$2));
+    if (key.type is LecturerBase) {
+      scheduleManagerBloc?.add(ScheduleManagerEvent.updateLecturer(key.id));
     }
-    if (key.$1 is ScheduleBase) {
-      scheduleManagerBloc?.add(ScheduleManagerEvent.updateSchedule(key.$2));
+    if (key.type is ScheduleBase) {
+      scheduleManagerBloc?.add(ScheduleManagerEvent.updateSchedule(key.id));
     }
   }
 

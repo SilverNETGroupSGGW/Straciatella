@@ -20,9 +20,9 @@ class PreviewScheduleBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<ExtendedSchedule>(
-      future: scheduleKey.$1 is LecturerBase
-          ? SggwHubRepo().getLecturer(scheduleKey.$2)
-          : SggwHubRepo().getSchedule(scheduleKey.$2),
+      future: scheduleKey.type is LecturerBase
+          ? SggwHubRepo().getLecturer(scheduleKey.id)
+          : SggwHubRepo().getSchedule(scheduleKey.id),
       builder: builder,
     );
   }

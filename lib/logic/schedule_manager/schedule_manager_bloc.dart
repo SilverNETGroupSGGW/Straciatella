@@ -74,7 +74,7 @@ class ScheduleManagerBloc
     // * fetchers
     on<_UpdateSchedule>(
       (event, emit) async {
-        final ScheduleKey key = (ScheduleType.schedule, event.id);
+        final ScheduleKey key = (type: ScheduleType.schedule, id: event.id);
         // TODO: move this if block to transformer
         if (state is _Loading && (state as _Loading).loading.contains(key)) {
           // already fetching newest data for this schedule
@@ -97,7 +97,7 @@ class ScheduleManagerBloc
 
     on<_UpdateLecturer>(
       (event, emit) async {
-        final ScheduleKey key = (ScheduleType.lecturer, event.id);
+        final ScheduleKey key = (type: ScheduleType.lecturer, id: event.id);
         // TODO: move this if block to transformer
         if (state is _Loading && (state as _Loading).loading.contains(key)) {
           // already fetching newest data for this schedule
@@ -149,7 +149,7 @@ class ScheduleManagerBloc
       lastLoaded.copyWith(
         schedules: Map.from(lastLoaded.schedules)
           ..update(
-            (ScheduleType.schedule, schedule.id),
+            (type: ScheduleType.schedule, id: schedule.id),
             (value) => schedule,
             ifAbsent: () => schedule,
           ),
@@ -165,7 +165,7 @@ class ScheduleManagerBloc
       lastLoaded.copyWith(
         schedules: Map.from(lastLoaded.schedules)
           ..update(
-            (ScheduleType.lecturer, lecturer.id),
+            (type: ScheduleType.lecturer, id: lecturer.id),
             (value) => lecturer,
             ifAbsent: () => lecturer,
           ),

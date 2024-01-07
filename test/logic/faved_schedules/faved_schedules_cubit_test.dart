@@ -19,9 +19,9 @@ void main() async {
   final Box box = Hive.box(hiveBoxName);
   box.clear();
   const ScheduleKey testSchedule =
-      (ScheduleType.schedule, "ba0d9a27-3078-4709-81e6-2d8b4e1c8a71");
+      (type: ScheduleType.schedule, id: "ba0d9a27-3078-4709-81e6-2d8b4e1c8a71");
   const ScheduleKey testLecturer =
-      (ScheduleType.lecturer, "abf9b897-9cbb-456d-0548-08dbeeaa6ca9");
+      (type: ScheduleType.lecturer, id: "abf9b897-9cbb-456d-0548-08dbeeaa6ca9");
 
   blocTest<FavedSchedulesCubit, FavedSchedulesState>(
     'add schedule to FavedSchedulestate',
