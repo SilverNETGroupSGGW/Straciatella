@@ -10,8 +10,10 @@ class WelcomeStage extends StatelessWidget {
     required this.animationController,
   });
 
-  final Widget? header, leading;
-  final String title, desc;
+  final Widget? header;
+  final Widget? leading;
+  final String title;
+  final String desc;
   final AnimationController animationController;
 
   @override
@@ -48,7 +50,7 @@ class WelcomeStage extends StatelessWidget {
                 if (leading != null)
                   Padding(
                     padding: const EdgeInsets.only(top: 24.0),
-                    child: leading!,
+                    child: leading,
                   ),
               ],
             ),

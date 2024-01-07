@@ -12,7 +12,8 @@ class PageDots extends StatelessWidget {
   });
 
   final PageController controller;
-  final int dotCount, currentPage;
+  final int dotCount;
+  final int currentPage;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,6 @@ class PageDots extends StatelessWidget {
       padding: const EdgeInsets.all(24.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
         children: [
           Expanded(
             child: Container(

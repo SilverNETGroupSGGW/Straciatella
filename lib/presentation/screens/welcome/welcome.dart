@@ -70,7 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             onPressed: () {
               // TODO: Ask for notification permission
             },
-            child: Text('allow_notifications'.tr())),
+            child: Text('allow_notifications'.tr()),),
       ),
       WelcomeStage(
         animationController: animationControllers[3].controller,
@@ -94,7 +94,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               // TODO: Navigate to theme screen instead of settings
               Navigator.of(context).pushNamed(RouteNames.settings);
             },
-            child: Text('customize'.tr())),
+            child: Text('customize'.tr()),),
       ),
       WelcomeStage(
         animationController: animationControllers[5].controller,
