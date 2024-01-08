@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,23 +20,26 @@ part 'schedule_manager_bloc.g.dart';
 
 class ScheduleManagerBloc
     extends Bloc<ScheduleManagerEvent, ScheduleManagerState> {
-  static const _boxKey = "schedule_manager";
-  final SggwHubRepo sggwHubRepo = SggwHubRepo();
+  static const boxKey = "schedule_manager";
+  late final SggwHubRepo _sggwHubRepo;
   final Box box = Hive.box(hiveBoxName);
 
   @override
   void onChange(Change<ScheduleManagerState> change) {
     super.onChange(change);
     if (change.currentState.schedules != change.nextState.schedules) {
-      box.put(_boxKey, change.nextState.asHivable());
+      box.put(boxKey, change.nextState.asHivable());
     }
   }
 
-  ScheduleManagerBloc() : super(ScheduleManagerState()) {
+  ScheduleManagerBloc([SggwHubRepo? sggwHubRepo])
+      : super(ScheduleManagerState()) {
+    _sggwHubRepo = sggwHubRepo ?? SggwHubRepo();
+
     on<_Init>((event, emit) {
       try {
         final ScheduleManagerHiveState? loadedState =
-            box.get(_boxKey) as ScheduleManagerHiveState?;
+            box.get(boxKey) as ScheduleManagerHiveState?;
         if (loadedState != null) {
           emit(loadedState.asNormalState());
         }
@@ -69,16 +73,31 @@ class ScheduleManagerBloc
 
         flagLoadingSchedule(emit, key);
         try {
-          final Schedule schedule = await sggwHubRepo.getSchedule(event.id);
-          setSchedule(schedule, emit);
+          final Schedule schedule = await _sggwHubRepo.getSchedule(event.id);
+          if (emit.isDone) {
+            unflagLoadingSchedule(emit, key);
+            return;
+          }
+          emit(
+            state.copyWith(
+              schedules: Map.from(state.schedules)
+                ..update(
+                  (type: ScheduleType.schedule, id: schedule.id),
+                  (value) => schedule,
+                  ifAbsent: () => schedule,
+                ),
+              refreshing: Set.from(state.refreshing)..remove(key),
+            ),
+          );
         } catch (ex) {
           if (kDebugMode) {
             print("Could not get Schedule ${event.id}");
             print(ex);
           }
+          unflagLoadingSchedule(emit, key);
         }
-        unflagLoadingSchedule(emit, key);
       },
+      transformer: restartable(),
     );
 
     on<_UpdateLecturer>(
@@ -92,16 +111,31 @@ class ScheduleManagerBloc
 
         flagLoadingSchedule(emit, key);
         try {
-          final Lecturer lecturer = await sggwHubRepo.getLecturer(event.id);
-          setLecturer(lecturer, emit);
+          final Lecturer lecturer = await _sggwHubRepo.getLecturer(event.id);
+          if (emit.isDone) {
+            unflagLoadingSchedule(emit, key);
+            return;
+          }
+          emit(
+            state.copyWith(
+              schedules: Map.from(state.schedules)
+                ..update(
+                  (type: ScheduleType.lecturer, id: lecturer.id),
+                  (value) => lecturer,
+                  ifAbsent: () => lecturer,
+                ),
+              refreshing: Set.from(state.refreshing)..remove(key),
+            ),
+          );
         } catch (ex) {
           if (kDebugMode) {
             print("Could not get Lecturer ${event.id}");
             print(ex);
           }
+          unflagLoadingSchedule(emit, key);
         }
-        unflagLoadingSchedule(emit, key);
       },
+      transformer: restartable(),
     );
   }
 

@@ -8,8 +8,10 @@ import 'package:silvertimetable/data/adapters/theme_type_adapter.dart';
 import 'package:silvertimetable/data/models/classroom/classroom.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
+import 'package:silvertimetable/data/models/lesson/lesson.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
+import 'package:silvertimetable/data/models/schedule_group/schedule_group.dart';
 import 'package:silvertimetable/data/models/subject/subject.dart';
 
 void registerDataAdapters() {
@@ -24,7 +26,7 @@ void registerDataAdapters() {
   Hive.registerAdapter(ScheduleAdapter());
   Hive.registerAdapter(ScheduleBaseAdapter());
   Hive.registerAdapter(SubjectAdapter());
-  Hive.registerAdapter(SubjectLessonAdapter());
-  Hive.registerAdapter(SubjectGroupAdapter());
+  Hive.registerAdapter(LessonAdapter());
+  Hive.registerAdapter(ScheduleGroupAdapter());
   Hive.registerAdapter(ScheduleKeyAdapter());
 }

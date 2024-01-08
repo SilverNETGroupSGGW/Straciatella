@@ -15,8 +15,8 @@ class LecturerBase with _$LecturerBase, BaseSchedule {
   )
   factory LecturerBase({
     @HiveField(0) required String id,
-    @HiveField(1) @DateTimeConverter() required DateTime created,
-    @HiveField(2) @DateTimeConverter() required DateTime updated,
+    @HiveField(1) @DateTimeConverter() DateTime? created,
+    @HiveField(2) @DateTimeConverter() DateTime? updated,
     @HiveField(3) required String firstName,
     @HiveField(4) required String surname,
     @HiveField(5) required String academicDegree,

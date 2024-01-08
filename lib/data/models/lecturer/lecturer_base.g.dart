@@ -18,8 +18,8 @@ class LecturerBaseAdapter extends TypeAdapter<_$LecturerBaseImpl> {
     };
     return _$LecturerBaseImpl(
       id: fields[0] as String,
-      created: fields[1] as DateTime,
-      updated: fields[2] as DateTime,
+      created: fields[1] as DateTime?,
+      updated: fields[2] as DateTime?,
       firstName: fields[3] as String,
       surname: fields[4] as String,
       academicDegree: fields[5] as String,
@@ -65,8 +65,10 @@ class LecturerBaseAdapter extends TypeAdapter<_$LecturerBaseImpl> {
 _$LecturerBaseImpl _$$LecturerBaseImplFromJson(Map<String, dynamic> json) =>
     _$LecturerBaseImpl(
       id: json['id'] as String,
-      created: const DateTimeConverter().fromJson(json['created'] as String),
-      updated: const DateTimeConverter().fromJson(json['updated'] as String),
+      created: _$JsonConverterFromJson<String, DateTime>(
+          json['created'], const DateTimeConverter().fromJson),
+      updated: _$JsonConverterFromJson<String, DateTime>(
+          json['updated'], const DateTimeConverter().fromJson),
       firstName: json['firstName'] as String,
       surname: json['surname'] as String,
       academicDegree: json['academicDegree'] as String,
@@ -76,10 +78,24 @@ _$LecturerBaseImpl _$$LecturerBaseImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$LecturerBaseImplToJson(_$LecturerBaseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'created': const DateTimeConverter().toJson(instance.created),
-      'updated': const DateTimeConverter().toJson(instance.updated),
+      'created': _$JsonConverterToJson<String, DateTime>(
+          instance.created, const DateTimeConverter().toJson),
+      'updated': _$JsonConverterToJson<String, DateTime>(
+          instance.updated, const DateTimeConverter().toJson),
       'firstName': instance.firstName,
       'surname': instance.surname,
       'academicDegree': instance.academicDegree,
       'email': instance.email,
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
