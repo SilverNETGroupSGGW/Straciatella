@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
+import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
@@ -14,6 +15,7 @@ import 'package:silvertimetable/data/types.dart';
 part 'schedule_manager_event.dart';
 part 'schedule_manager_state.dart';
 part 'schedule_manager_bloc.freezed.dart';
+part 'schedule_manager_bloc.g.dart';
 
 class ScheduleManagerBloc
     extends Bloc<ScheduleManagerEvent, ScheduleManagerState> {
@@ -25,17 +27,17 @@ class ScheduleManagerBloc
   void onChange(Change<ScheduleManagerState> change) {
     super.onChange(change);
     if (change.currentState.schedules != change.nextState.schedules) {
-      box.put("$_boxKey/schedules", change.nextState.schedules);
+      box.put(_boxKey, change.nextState.asHivable());
     }
   }
 
   ScheduleManagerBloc() : super(ScheduleManagerState()) {
     on<_Init>((event, emit) {
       try {
-        final ScheduleCacheMap? loadedState =
-            box.get("$_boxKey/schedules") as ScheduleCacheMap?;
+        final ScheduleManagerHiveState? loadedState =
+            box.get(_boxKey) as ScheduleManagerHiveState?;
         if (loadedState != null) {
-          emit(ScheduleManagerState(schedules: loadedState));
+          emit(loadedState.asNormalState());
         }
       } catch (e) {
         if (kDebugMode) {

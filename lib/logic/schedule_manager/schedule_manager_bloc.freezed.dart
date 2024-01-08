@@ -1379,15 +1379,15 @@ class __$$ScheduleManagerStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ScheduleManagerStateImpl
-    with DiagnosticableTreeMixin
-    implements _ScheduleManagerState {
+class _$ScheduleManagerStateImpl extends _ScheduleManagerState
+    with DiagnosticableTreeMixin {
   _$ScheduleManagerStateImpl(
       {final Map<({String id, ScheduleType type}), ExtendedSchedule> schedules =
           const {},
       final Set<({String id, ScheduleType type})> refreshing = const {}})
       : _schedules = schedules,
-        _refreshing = refreshing;
+        _refreshing = refreshing,
+        super._();
 
   final Map<({String id, ScheduleType type}), ExtendedSchedule> _schedules;
   @override
@@ -1447,11 +1447,12 @@ class _$ScheduleManagerStateImpl
               this, _$identity);
 }
 
-abstract class _ScheduleManagerState implements ScheduleManagerState {
+abstract class _ScheduleManagerState extends ScheduleManagerState {
   factory _ScheduleManagerState(
       {final Map<({String id, ScheduleType type}), ExtendedSchedule> schedules,
       final Set<({String id, ScheduleType type})>
           refreshing}) = _$ScheduleManagerStateImpl;
+  _ScheduleManagerState._() : super._();
 
   @override
   Map<({String id, ScheduleType type}), ExtendedSchedule> get schedules;
@@ -1460,5 +1461,164 @@ abstract class _ScheduleManagerState implements ScheduleManagerState {
   @override
   @JsonKey(ignore: true)
   _$$ScheduleManagerStateImplCopyWith<_$ScheduleManagerStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ScheduleManagerHiveState {
+  @HiveField(0, defaultValue: {})
+  Map<({String id, ScheduleType type}), ExtendedSchedule> get schedules =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ScheduleManagerHiveStateCopyWith<ScheduleManagerHiveState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ScheduleManagerHiveStateCopyWith<$Res> {
+  factory $ScheduleManagerHiveStateCopyWith(ScheduleManagerHiveState value,
+          $Res Function(ScheduleManagerHiveState) then) =
+      _$ScheduleManagerHiveStateCopyWithImpl<$Res, ScheduleManagerHiveState>;
+  @useResult
+  $Res call(
+      {@HiveField(0, defaultValue: {})
+      Map<({String id, ScheduleType type}), ExtendedSchedule> schedules});
+}
+
+/// @nodoc
+class _$ScheduleManagerHiveStateCopyWithImpl<$Res,
+        $Val extends ScheduleManagerHiveState>
+    implements $ScheduleManagerHiveStateCopyWith<$Res> {
+  _$ScheduleManagerHiveStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? schedules = null,
+  }) {
+    return _then(_value.copyWith(
+      schedules: null == schedules
+          ? _value.schedules
+          : schedules // ignore: cast_nullable_to_non_nullable
+              as Map<({String id, ScheduleType type}), ExtendedSchedule>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ScheduleManagerHiveStateImplCopyWith<$Res>
+    implements $ScheduleManagerHiveStateCopyWith<$Res> {
+  factory _$$ScheduleManagerHiveStateImplCopyWith(
+          _$ScheduleManagerHiveStateImpl value,
+          $Res Function(_$ScheduleManagerHiveStateImpl) then) =
+      __$$ScheduleManagerHiveStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@HiveField(0, defaultValue: {})
+      Map<({String id, ScheduleType type}), ExtendedSchedule> schedules});
+}
+
+/// @nodoc
+class __$$ScheduleManagerHiveStateImplCopyWithImpl<$Res>
+    extends _$ScheduleManagerHiveStateCopyWithImpl<$Res,
+        _$ScheduleManagerHiveStateImpl>
+    implements _$$ScheduleManagerHiveStateImplCopyWith<$Res> {
+  __$$ScheduleManagerHiveStateImplCopyWithImpl(
+      _$ScheduleManagerHiveStateImpl _value,
+      $Res Function(_$ScheduleManagerHiveStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? schedules = null,
+  }) {
+    return _then(_$ScheduleManagerHiveStateImpl(
+      schedules: null == schedules
+          ? _value._schedules
+          : schedules // ignore: cast_nullable_to_non_nullable
+              as Map<({String id, ScheduleType type}), ExtendedSchedule>,
+    ));
+  }
+}
+
+/// @nodoc
+
+@HiveType(
+    typeId: HiveTypeIds.scheduleManagerHiveState,
+    adapterName: "ScheduleManagerHiveStateAdapter")
+class _$ScheduleManagerHiveStateImpl extends _ScheduleManagerHiveState
+    with DiagnosticableTreeMixin {
+  _$ScheduleManagerHiveStateImpl(
+      {@HiveField(0, defaultValue: {})
+      final Map<({String id, ScheduleType type}), ExtendedSchedule> schedules =
+          const {}})
+      : _schedules = schedules,
+        super._();
+
+  final Map<({String id, ScheduleType type}), ExtendedSchedule> _schedules;
+  @override
+  @JsonKey()
+  @HiveField(0, defaultValue: {})
+  Map<({String id, ScheduleType type}), ExtendedSchedule> get schedules {
+    if (_schedules is EqualUnmodifiableMapView) return _schedules;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_schedules);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ScheduleManagerHiveState(schedules: $schedules)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ScheduleManagerHiveState'))
+      ..add(DiagnosticsProperty('schedules', schedules));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ScheduleManagerHiveStateImpl &&
+            const DeepCollectionEquality()
+                .equals(other._schedules, _schedules));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_schedules));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ScheduleManagerHiveStateImplCopyWith<_$ScheduleManagerHiveStateImpl>
+      get copyWith => __$$ScheduleManagerHiveStateImplCopyWithImpl<
+          _$ScheduleManagerHiveStateImpl>(this, _$identity);
+}
+
+abstract class _ScheduleManagerHiveState extends ScheduleManagerHiveState {
+  factory _ScheduleManagerHiveState(
+      {@HiveField(0, defaultValue: {})
+      final Map<({String id, ScheduleType type}), ExtendedSchedule>
+          schedules}) = _$ScheduleManagerHiveStateImpl;
+  _ScheduleManagerHiveState._() : super._();
+
+  @override
+  @HiveField(0, defaultValue: {})
+  Map<({String id, ScheduleType type}), ExtendedSchedule> get schedules;
+  @override
+  @JsonKey(ignore: true)
+  _$$ScheduleManagerHiveStateImplCopyWith<_$ScheduleManagerHiveStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
