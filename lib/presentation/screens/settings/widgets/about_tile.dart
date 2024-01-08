@@ -36,6 +36,7 @@ class AboutTile extends StatelessWidget {
             ),
             const Text("Bartosz Matyjasiak"),
             const Text("Jakub Orchowski"),
+            const Text("Bartosz Kwaśny"),
             const SizedBox(
               height: 10,
             ),

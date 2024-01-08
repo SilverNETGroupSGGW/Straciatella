@@ -9,6 +9,7 @@ class TimetableScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: implement adaptive scaffold
     return Scaffold(
       appBar: AppBar(
         actions: [
