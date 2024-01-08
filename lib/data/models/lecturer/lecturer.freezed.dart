@@ -24,10 +24,10 @@ mixin _$Lecturer {
   String get id => throw _privateConstructorUsedError;
   @HiveField(1)
   @DateTimeConverter()
-  DateTime get created => throw _privateConstructorUsedError;
+  DateTime? get created => throw _privateConstructorUsedError;
   @HiveField(2)
   @DateTimeConverter()
-  DateTime get updated => throw _privateConstructorUsedError;
+  DateTime? get updated => throw _privateConstructorUsedError;
   @HiveField(3)
   String get firstName => throw _privateConstructorUsedError;
   @HiveField(4)
@@ -52,8 +52,8 @@ abstract class $LecturerCopyWith<$Res> {
   @useResult
   $Res call(
       {@HiveField(0) String id,
-      @HiveField(1) @DateTimeConverter() DateTime created,
-      @HiveField(2) @DateTimeConverter() DateTime updated,
+      @HiveField(1) @DateTimeConverter() DateTime? created,
+      @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) String firstName,
       @HiveField(4) String surname,
       @HiveField(5) String academicDegree,
@@ -75,8 +75,8 @@ class _$LecturerCopyWithImpl<$Res, $Val extends Lecturer>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
+    Object? created = freezed,
+    Object? updated = freezed,
     Object? firstName = null,
     Object? surname = null,
     Object? academicDegree = null,
@@ -88,14 +88,14 @@ class _$LecturerCopyWithImpl<$Res, $Val extends Lecturer>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
+              as DateTime?,
+      updated: freezed == updated
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -130,8 +130,8 @@ abstract class _$$LecturerImplCopyWith<$Res>
   @useResult
   $Res call(
       {@HiveField(0) String id,
-      @HiveField(1) @DateTimeConverter() DateTime created,
-      @HiveField(2) @DateTimeConverter() DateTime updated,
+      @HiveField(1) @DateTimeConverter() DateTime? created,
+      @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) String firstName,
       @HiveField(4) String surname,
       @HiveField(5) String academicDegree,
@@ -151,8 +151,8 @@ class __$$LecturerImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
+    Object? created = freezed,
+    Object? updated = freezed,
     Object? firstName = null,
     Object? surname = null,
     Object? academicDegree = null,
@@ -164,14 +164,14 @@ class __$$LecturerImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
+              as DateTime?,
+      updated: freezed == updated
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -202,8 +202,8 @@ class __$$LecturerImplCopyWithImpl<$Res>
 class _$LecturerImpl extends _Lecturer {
   _$LecturerImpl(
       {@HiveField(0) required this.id,
-      @HiveField(1) @DateTimeConverter() required this.created,
-      @HiveField(2) @DateTimeConverter() required this.updated,
+      @HiveField(1) @DateTimeConverter() this.created,
+      @HiveField(2) @DateTimeConverter() this.updated,
       @HiveField(3) required this.firstName,
       @HiveField(4) required this.surname,
       @HiveField(5) required this.academicDegree,
@@ -221,11 +221,11 @@ class _$LecturerImpl extends _Lecturer {
   @override
   @HiveField(1)
   @DateTimeConverter()
-  final DateTime created;
+  final DateTime? created;
   @override
   @HiveField(2)
   @DateTimeConverter()
-  final DateTime updated;
+  final DateTime? updated;
   @override
   @HiveField(3)
   final String firstName;
@@ -299,8 +299,8 @@ class _$LecturerImpl extends _Lecturer {
 abstract class _Lecturer extends Lecturer {
   factory _Lecturer(
       {@HiveField(0) required final String id,
-      @HiveField(1) @DateTimeConverter() required final DateTime created,
-      @HiveField(2) @DateTimeConverter() required final DateTime updated,
+      @HiveField(1) @DateTimeConverter() final DateTime? created,
+      @HiveField(2) @DateTimeConverter() final DateTime? updated,
       @HiveField(3) required final String firstName,
       @HiveField(4) required final String surname,
       @HiveField(5) required final String academicDegree,
@@ -317,11 +317,11 @@ abstract class _Lecturer extends Lecturer {
   @override
   @HiveField(1)
   @DateTimeConverter()
-  DateTime get created;
+  DateTime? get created;
   @override
   @HiveField(2)
   @DateTimeConverter()
-  DateTime get updated;
+  DateTime? get updated;
   @override
   @HiveField(3)
   String get firstName;

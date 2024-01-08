@@ -1,5 +1,6 @@
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
+import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/providers/sggw_hub_api.dart';
@@ -11,9 +12,8 @@ class SggwHubRepo {
     final List<LecturerBase> lecturers = [];
     final response = await sggwHubApi.getLecturers();
 
-    for (final Map<String, dynamic> json
-        in response.data as List<Map<String, dynamic>>) {
-      lecturers.add(LecturerBase.fromJson(json));
+    for (final json in response.data as List) {
+      lecturers.add(LecturerBase.fromJson(json as Map<String, dynamic>));
     }
 
     return lecturers;
@@ -23,12 +23,17 @@ class SggwHubRepo {
     final List<ScheduleBase> schedules = [];
     final response = await sggwHubApi.getSchedules();
 
-    for (final Map<String, dynamic> json
-        in response.data as List<Map<String, dynamic>>) {
-      schedules.add(ScheduleBase.fromJson(json));
+    for (final json in response.data as List) {
+      schedules.add(ScheduleBase.fromJson(json as Map<String, dynamic>));
     }
 
     return schedules;
+  }
+
+  Future<List<BaseSchedule>> getSchedulesIndex() async {
+    return Future.wait(
+      [SggwHubRepo().getSchedules(), SggwHubRepo().getLecturers()],
+    ).then((value) => [...value[0], ...value[1]]);
   }
 
   Future<Schedule> getSchedule(String id) async {

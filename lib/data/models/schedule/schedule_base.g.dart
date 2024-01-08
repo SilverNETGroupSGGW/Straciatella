@@ -18,9 +18,9 @@ class ScheduleBaseAdapter extends TypeAdapter<_$ScheduleBaseImpl> {
     };
     return _$ScheduleBaseImpl(
       id: fields[0] as String,
-      created: fields[1] as DateTime,
-      updated: fields[2] as DateTime,
-      startDate: fields[3] as DateTime,
+      created: fields[1] as DateTime?,
+      updated: fields[2] as DateTime?,
+      startDate: fields[3] as DateTime?,
       name: fields[4] as String,
       year: fields[5] as int,
       semester: fields[6] as int,
@@ -77,9 +77,13 @@ class ScheduleBaseAdapter extends TypeAdapter<_$ScheduleBaseImpl> {
 _$ScheduleBaseImpl _$$ScheduleBaseImplFromJson(Map<String, dynamic> json) =>
     _$ScheduleBaseImpl(
       id: json['id'] as String,
-      created: const DateTimeConverter().fromJson(json['created'] as String),
-      updated: const DateTimeConverter().fromJson(json['updated'] as String),
-      startDate: DateTime.parse(json['startDate'] as String),
+      created: _$JsonConverterFromJson<String, DateTime>(
+          json['created'], const DateTimeConverter().fromJson),
+      updated: _$JsonConverterFromJson<String, DateTime>(
+          json['updated'], const DateTimeConverter().fromJson),
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
       name: json['name'] as String,
       year: json['year'] as int,
       semester: json['semester'] as int,
@@ -92,9 +96,11 @@ _$ScheduleBaseImpl _$$ScheduleBaseImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$ScheduleBaseImplToJson(_$ScheduleBaseImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'created': const DateTimeConverter().toJson(instance.created),
-      'updated': const DateTimeConverter().toJson(instance.updated),
-      'startDate': instance.startDate.toIso8601String(),
+      'created': _$JsonConverterToJson<String, DateTime>(
+          instance.created, const DateTimeConverter().toJson),
+      'updated': _$JsonConverterToJson<String, DateTime>(
+          instance.updated, const DateTimeConverter().toJson),
+      'startDate': instance.startDate?.toIso8601String(),
       'name': instance.name,
       'year': instance.year,
       'semester': instance.semester,
@@ -103,3 +109,15 @@ Map<String, dynamic> _$$ScheduleBaseImplToJson(_$ScheduleBaseImpl instance) =>
       'studyMode': instance.studyMode,
       'degreeOfStudy': instance.degreeOfStudy,
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);

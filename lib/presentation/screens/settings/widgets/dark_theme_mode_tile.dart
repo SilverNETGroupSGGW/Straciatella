@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
-import 'package:silvertimetable/presentation/widgets/platform_brightness_builder.dart';
+import 'package:silvertimetable/presentation/builders/platform_brightness_builder.dart';
 
 class DarkThemeModeTile extends StatelessWidget {
   const DarkThemeModeTile({super.key});

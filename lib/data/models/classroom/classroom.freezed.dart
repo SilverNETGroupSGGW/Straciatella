@@ -24,10 +24,10 @@ mixin _$Classroom {
   String get id => throw _privateConstructorUsedError;
   @HiveField(1)
   @DateTimeConverter()
-  DateTime get created => throw _privateConstructorUsedError;
+  DateTime? get created => throw _privateConstructorUsedError;
   @HiveField(2)
   @DateTimeConverter()
-  DateTime get updated => throw _privateConstructorUsedError;
+  DateTime? get updated => throw _privateConstructorUsedError;
   @HiveField(3)
   String get name => throw _privateConstructorUsedError;
   @HiveField(4)
@@ -48,8 +48,8 @@ abstract class $ClassroomCopyWith<$Res> {
   @useResult
   $Res call(
       {@HiveField(0) String id,
-      @HiveField(1) @DateTimeConverter() DateTime created,
-      @HiveField(2) @DateTimeConverter() DateTime updated,
+      @HiveField(1) @DateTimeConverter() DateTime? created,
+      @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) String name,
       @HiveField(4) String floor,
       @HiveField(5) String building});
@@ -69,8 +69,8 @@ class _$ClassroomCopyWithImpl<$Res, $Val extends Classroom>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
+    Object? created = freezed,
+    Object? updated = freezed,
     Object? name = null,
     Object? floor = null,
     Object? building = null,
@@ -80,14 +80,14 @@ class _$ClassroomCopyWithImpl<$Res, $Val extends Classroom>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
+              as DateTime?,
+      updated: freezed == updated
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -114,8 +114,8 @@ abstract class _$$ClassroomImplCopyWith<$Res>
   @useResult
   $Res call(
       {@HiveField(0) String id,
-      @HiveField(1) @DateTimeConverter() DateTime created,
-      @HiveField(2) @DateTimeConverter() DateTime updated,
+      @HiveField(1) @DateTimeConverter() DateTime? created,
+      @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) String name,
       @HiveField(4) String floor,
       @HiveField(5) String building});
@@ -133,8 +133,8 @@ class __$$ClassroomImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
+    Object? created = freezed,
+    Object? updated = freezed,
     Object? name = null,
     Object? floor = null,
     Object? building = null,
@@ -144,14 +144,14 @@ class __$$ClassroomImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
+              as DateTime?,
+      updated: freezed == updated
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -174,8 +174,8 @@ class __$$ClassroomImplCopyWithImpl<$Res>
 class _$ClassroomImpl extends _Classroom {
   _$ClassroomImpl(
       {@HiveField(0) required this.id,
-      @HiveField(1) @DateTimeConverter() required this.created,
-      @HiveField(2) @DateTimeConverter() required this.updated,
+      @HiveField(1) @DateTimeConverter() this.created,
+      @HiveField(2) @DateTimeConverter() this.updated,
       @HiveField(3) required this.name,
       @HiveField(4) required this.floor,
       @HiveField(5) required this.building})
@@ -190,11 +190,11 @@ class _$ClassroomImpl extends _Classroom {
   @override
   @HiveField(1)
   @DateTimeConverter()
-  final DateTime created;
+  final DateTime? created;
   @override
   @HiveField(2)
   @DateTimeConverter()
-  final DateTime updated;
+  final DateTime? updated;
   @override
   @HiveField(3)
   final String name;
@@ -246,8 +246,8 @@ class _$ClassroomImpl extends _Classroom {
 abstract class _Classroom extends Classroom {
   factory _Classroom(
       {@HiveField(0) required final String id,
-      @HiveField(1) @DateTimeConverter() required final DateTime created,
-      @HiveField(2) @DateTimeConverter() required final DateTime updated,
+      @HiveField(1) @DateTimeConverter() final DateTime? created,
+      @HiveField(2) @DateTimeConverter() final DateTime? updated,
       @HiveField(3) required final String name,
       @HiveField(4) required final String floor,
       @HiveField(5) required final String building}) = _$ClassroomImpl;
@@ -262,11 +262,11 @@ abstract class _Classroom extends Classroom {
   @override
   @HiveField(1)
   @DateTimeConverter()
-  DateTime get created;
+  DateTime? get created;
   @override
   @HiveField(2)
   @DateTimeConverter()
-  DateTime get updated;
+  DateTime? get updated;
   @override
   @HiveField(3)
   String get name;

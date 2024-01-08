@@ -18,8 +18,8 @@ class ClassroomAdapter extends TypeAdapter<_$ClassroomImpl> {
     };
     return _$ClassroomImpl(
       id: fields[0] as String,
-      created: fields[1] as DateTime,
-      updated: fields[2] as DateTime,
+      created: fields[1] as DateTime?,
+      updated: fields[2] as DateTime?,
       name: fields[3] as String,
       floor: fields[4] as String,
       building: fields[5] as String,
@@ -62,8 +62,10 @@ class ClassroomAdapter extends TypeAdapter<_$ClassroomImpl> {
 _$ClassroomImpl _$$ClassroomImplFromJson(Map<String, dynamic> json) =>
     _$ClassroomImpl(
       id: json['id'] as String,
-      created: const DateTimeConverter().fromJson(json['created'] as String),
-      updated: const DateTimeConverter().fromJson(json['updated'] as String),
+      created: _$JsonConverterFromJson<String, DateTime>(
+          json['created'], const DateTimeConverter().fromJson),
+      updated: _$JsonConverterFromJson<String, DateTime>(
+          json['updated'], const DateTimeConverter().fromJson),
       name: json['name'] as String,
       floor: json['floor'] as String,
       building: json['building'] as String,
@@ -72,9 +74,23 @@ _$ClassroomImpl _$$ClassroomImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$ClassroomImplToJson(_$ClassroomImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'created': const DateTimeConverter().toJson(instance.created),
-      'updated': const DateTimeConverter().toJson(instance.updated),
+      'created': _$JsonConverterToJson<String, DateTime>(
+          instance.created, const DateTimeConverter().toJson),
+      'updated': _$JsonConverterToJson<String, DateTime>(
+          instance.updated, const DateTimeConverter().toJson),
       'name': instance.name,
       'floor': instance.floor,
       'building': instance.building,
     };
+
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
