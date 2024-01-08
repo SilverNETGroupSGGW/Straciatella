@@ -1,0 +1,2 @@
+mixin BaseSchedule {}
+mixin ExtendedSchedule {}

@@ -1,35 +1,34 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'classroom.dart';
+part of 'schedule_group.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ClassroomAdapter extends TypeAdapter<_$ClassroomImpl> {
+class ScheduleGroupAdapter extends TypeAdapter<_$ScheduleGroupImpl> {
   @override
-  final int typeId = 7;
+  final int typeId = 12;
 
   @override
-  _$ClassroomImpl read(BinaryReader reader) {
+  _$ScheduleGroupImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$ClassroomImpl(
+    return _$ScheduleGroupImpl(
       id: fields[0] as String,
       created: fields[1] as DateTime?,
       updated: fields[2] as DateTime?,
-      name: fields[3] as String,
-      floor: fields[4] as String,
-      building: fields[5] as String,
+      scheduleId: fields[3] as String?,
+      name: fields[4] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$ClassroomImpl obj) {
+  void write(BinaryWriter writer, _$ScheduleGroupImpl obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -37,11 +36,9 @@ class ClassroomAdapter extends TypeAdapter<_$ClassroomImpl> {
       ..writeByte(2)
       ..write(obj.updated)
       ..writeByte(3)
-      ..write(obj.name)
+      ..write(obj.scheduleId)
       ..writeByte(4)
-      ..write(obj.floor)
-      ..writeByte(5)
-      ..write(obj.building);
+      ..write(obj.name);
   }
 
   @override
@@ -50,7 +47,7 @@ class ClassroomAdapter extends TypeAdapter<_$ClassroomImpl> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ClassroomAdapter &&
+      other is ScheduleGroupAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -59,28 +56,26 @@ class ClassroomAdapter extends TypeAdapter<_$ClassroomImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ClassroomImpl _$$ClassroomImplFromJson(Map<String, dynamic> json) =>
-    _$ClassroomImpl(
+_$ScheduleGroupImpl _$$ScheduleGroupImplFromJson(Map<String, dynamic> json) =>
+    _$ScheduleGroupImpl(
       id: json['id'] as String,
       created: _$JsonConverterFromJson<String, DateTime>(
           json['created'], const DateTimeConverter().fromJson),
       updated: _$JsonConverterFromJson<String, DateTime>(
           json['updated'], const DateTimeConverter().fromJson),
+      scheduleId: json['scheduleId'] as String?,
       name: json['name'] as String,
-      floor: json['floor'] as String,
-      building: json['building'] as String,
     );
 
-Map<String, dynamic> _$$ClassroomImplToJson(_$ClassroomImpl instance) =>
+Map<String, dynamic> _$$ScheduleGroupImplToJson(_$ScheduleGroupImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': _$JsonConverterToJson<String, DateTime>(
           instance.created, const DateTimeConverter().toJson),
       'updated': _$JsonConverterToJson<String, DateTime>(
           instance.updated, const DateTimeConverter().toJson),
+      'scheduleId': instance.scheduleId,
       'name': instance.name,
-      'floor': instance.floor,
-      'building': instance.building,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(
