@@ -1,18 +1,39 @@
-name: gh-pages
+name: Publish to GitHub Pages
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2 # Only works with v2
-      - uses: subosito/flutter-action@v1
-      - uses: bluefireteam/flutter-gh-pages@v7
+      - uses: actions/checkout@v4
+      - name: Install flutter
+        uses: subosito/flutter-action@v2
         with:
-            baseHref: /${{ github.event.repository.name }}/
+          cache: true
+          channel: "stable"
+      - name: Get packages
+        run: flutter pub get
+      - name: Build web
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
