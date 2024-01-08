@@ -3,7 +3,9 @@ import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/models/classroom/classroom.dart';
 import 'package:silvertimetable/data/models/enums.dart';
+import 'package:silvertimetable/data/models/lesson/lesson.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
+import 'package:silvertimetable/data/models/schedule_group/schedule_group.dart';
 import 'package:silvertimetable/data/models/subject/subject.dart';
 import 'package:silvertimetable/data/register_adapters.dart';
 
@@ -104,7 +106,7 @@ void main() {
       building: "34",
     ),
     lessons: [
-      SubjectLesson(
+      Lesson(
         id: "5a161256-ef9d-4523-9462-15f0adfc380e",
         created: DateTime.parse("2023-12-22T17:48:37.7724059"),
         updated: DateTime.parse("2023-12-22T17:49:28.7739208"),
@@ -112,7 +114,7 @@ void main() {
         startTime: DateTime.parse("2024-05-01T10:00:00"),
         duration: const Duration(hours: 1, minutes: 30),
       ),
-      SubjectLesson(
+      Lesson(
         id: "cea2f0ef-66cc-4ba4-9a21-5ec586d6ec1b",
         created: DateTime.parse("2023-12-22T17:49:28.7635819"),
         updated: DateTime.parse("2023-12-22T17:49:28.7739372"),
@@ -122,7 +124,7 @@ void main() {
       ),
     ],
     groups: [
-      SubjectGroup(
+      ScheduleGroup(
         id: "efe04f87-3d7d-46f8-9cc1-0852564be8fa",
         created: DateTime.parse("2023-12-11T21:24:14.1256362"),
         updated: DateTime.parse("2023-12-11T21:24:14.1256709"),

@@ -9,3 +9,5 @@ enum DayOfWeek {
 }
 
 enum ThemeType { custom, retro, adaptive }
+
+enum ScheduleType { schedule, lecturer }

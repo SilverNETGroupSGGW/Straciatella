@@ -24,10 +24,10 @@ mixin _$Schedule {
   String get id => throw _privateConstructorUsedError;
   @HiveField(1)
   @DateTimeConverter()
-  DateTime get created => throw _privateConstructorUsedError;
+  DateTime? get created => throw _privateConstructorUsedError;
   @HiveField(2)
   @DateTimeConverter()
-  DateTime get updated => throw _privateConstructorUsedError;
+  DateTime? get updated => throw _privateConstructorUsedError;
   @HiveField(3)
   DateTime get startDate => throw _privateConstructorUsedError;
   @HiveField(4)
@@ -60,8 +60,8 @@ abstract class $ScheduleCopyWith<$Res> {
   @useResult
   $Res call(
       {@HiveField(0) String id,
-      @HiveField(1) @DateTimeConverter() DateTime created,
-      @HiveField(2) @DateTimeConverter() DateTime updated,
+      @HiveField(1) @DateTimeConverter() DateTime? created,
+      @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) DateTime startDate,
       @HiveField(4) String name,
       @HiveField(5) int year,
@@ -87,8 +87,8 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
+    Object? created = freezed,
+    Object? updated = freezed,
     Object? startDate = null,
     Object? name = null,
     Object? year = null,
@@ -104,14 +104,14 @@ class _$ScheduleCopyWithImpl<$Res, $Val extends Schedule>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
+              as DateTime?,
+      updated: freezed == updated
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       startDate: null == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -162,8 +162,8 @@ abstract class _$$ScheduleImplCopyWith<$Res>
   @useResult
   $Res call(
       {@HiveField(0) String id,
-      @HiveField(1) @DateTimeConverter() DateTime created,
-      @HiveField(2) @DateTimeConverter() DateTime updated,
+      @HiveField(1) @DateTimeConverter() DateTime? created,
+      @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) DateTime startDate,
       @HiveField(4) String name,
       @HiveField(5) int year,
@@ -187,8 +187,8 @@ class __$$ScheduleImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
+    Object? created = freezed,
+    Object? updated = freezed,
     Object? startDate = null,
     Object? name = null,
     Object? year = null,
@@ -204,14 +204,14 @@ class __$$ScheduleImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
+      created: freezed == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
+              as DateTime?,
+      updated: freezed == updated
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       startDate: null == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -258,8 +258,8 @@ class __$$ScheduleImplCopyWithImpl<$Res>
 class _$ScheduleImpl extends _Schedule {
   _$ScheduleImpl(
       {@HiveField(0) required this.id,
-      @HiveField(1) @DateTimeConverter() required this.created,
-      @HiveField(2) @DateTimeConverter() required this.updated,
+      @HiveField(1) @DateTimeConverter() this.created,
+      @HiveField(2) @DateTimeConverter() this.updated,
       @HiveField(3) required this.startDate,
       @HiveField(4) required this.name,
       @HiveField(5) required this.year,
@@ -281,11 +281,11 @@ class _$ScheduleImpl extends _Schedule {
   @override
   @HiveField(1)
   @DateTimeConverter()
-  final DateTime created;
+  final DateTime? created;
   @override
   @HiveField(2)
   @DateTimeConverter()
-  final DateTime updated;
+  final DateTime? updated;
   @override
   @HiveField(3)
   final DateTime startDate;
@@ -382,8 +382,8 @@ class _$ScheduleImpl extends _Schedule {
 abstract class _Schedule extends Schedule {
   factory _Schedule(
       {@HiveField(0) required final String id,
-      @HiveField(1) @DateTimeConverter() required final DateTime created,
-      @HiveField(2) @DateTimeConverter() required final DateTime updated,
+      @HiveField(1) @DateTimeConverter() final DateTime? created,
+      @HiveField(2) @DateTimeConverter() final DateTime? updated,
       @HiveField(3) required final DateTime startDate,
       @HiveField(4) required final String name,
       @HiveField(5) required final int year,
@@ -404,11 +404,11 @@ abstract class _Schedule extends Schedule {
   @override
   @HiveField(1)
   @DateTimeConverter()
-  DateTime get created;
+  DateTime? get created;
   @override
   @HiveField(2)
   @DateTimeConverter()
-  DateTime get updated;
+  DateTime? get updated;
   @override
   @HiveField(3)
   DateTime get startDate;

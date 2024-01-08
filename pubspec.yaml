@@ -15,6 +15,7 @@ flutter_launcher_icons:
   # see https://pub.dev/packages/flutter_launcher_icons#mag-attributes for other attributes
 
 dependencies:
+  bloc_concurrency: ^0.2.3
   cupertino_icons: ^1.0.2
   dio: ^5.4.0
   dynamic_color: ^1.6.9
@@ -31,6 +32,7 @@ dependencies:
   hive_flutter: ^1.1.0
   hive_generator: ^2.0.1
   json_annotation: ^4.8.1
+  mockito: ^5.4.4
   package_info_plus: ^5.0.1
   url_launcher: ^6.2.2
   uuid: ^4.2.1
