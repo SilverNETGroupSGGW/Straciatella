@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
-import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
@@ -15,7 +14,6 @@ import 'package:silvertimetable/data/types.dart';
 part 'schedule_manager_event.dart';
 part 'schedule_manager_state.dart';
 part 'schedule_manager_bloc.freezed.dart';
-part 'schedule_manager_bloc.g.dart';
 
 class ScheduleManagerBloc
     extends Bloc<ScheduleManagerEvent, ScheduleManagerState> {
@@ -23,26 +21,22 @@ class ScheduleManagerBloc
   final SggwHubRepo sggwHubRepo = SggwHubRepo();
   final Box box = Hive.box(hiveBoxName);
 
-  _Loaded lastLoaded = _Loaded();
-  _Loading lastLoading = _Loading();
-
   @override
   void onChange(Change<ScheduleManagerState> change) {
     super.onChange(change);
-    if (change.nextState is _Loading) {
-      lastLoading = change.nextState as _Loading;
-    }
-    if (change.nextState is _Loaded) {
-      lastLoaded = change.nextState as _Loaded;
-      box.put(_boxKey, lastLoaded);
+    if (change.currentState.schedules != change.nextState.schedules) {
+      box.put("$_boxKey/schedules", change.nextState.schedules);
     }
   }
 
-  ScheduleManagerBloc() : super(_Loaded()) {
+  ScheduleManagerBloc() : super(ScheduleManagerState()) {
     on<_Init>((event, emit) {
       try {
-        final _Loaded? loadedState = box.get(_boxKey) as _Loaded?;
-        if (loadedState != null) emit(loadedState);
+        final ScheduleCacheMap? loadedState =
+            box.get("$_boxKey/schedules") as ScheduleCacheMap?;
+        if (loadedState != null) {
+          emit(ScheduleManagerState(schedules: loadedState));
+        }
       } catch (e) {
         if (kDebugMode) {
           print("Could not load schedule manager state");
@@ -55,20 +49,10 @@ class ScheduleManagerBloc
 
     on<_SetLecturer>((event, emit) => setLecturer(event.lecturer, emit));
 
-    on<_RemoveSchedule>((event, emit) {
-      emit(
-        lastLoaded.copyWith(
-          schedules: Map.from(lastLoaded.schedules)..remove(event.schedule),
-        ),
-      );
-    });
+    on<_RemoveSchedule>((event, emit) => removeSchedule(event.schedule, emit));
 
     on<_Clear>((event, emit) {
-      emit(
-        lastLoaded.copyWith(
-          schedules: {},
-        ),
-      );
+      emit(ScheduleManagerState());
     });
 
     // * fetchers
@@ -76,7 +60,7 @@ class ScheduleManagerBloc
       (event, emit) async {
         final ScheduleKey key = (type: ScheduleType.schedule, id: event.id);
         // TODO: move this if block to transformer
-        if (state is _Loading && (state as _Loading).loading.contains(key)) {
+        if (state.refreshing.contains(key)) {
           // already fetching newest data for this schedule
           return;
         }
@@ -99,7 +83,7 @@ class ScheduleManagerBloc
       (event, emit) async {
         final ScheduleKey key = (type: ScheduleType.lecturer, id: event.id);
         // TODO: move this if block to transformer
-        if (state is _Loading && (state as _Loading).loading.contains(key)) {
+        if (state.refreshing.contains(key)) {
           // already fetching newest data for this schedule
           return;
         }
@@ -119,13 +103,25 @@ class ScheduleManagerBloc
     );
   }
 
+  void removeSchedule(
+    ScheduleKey schedule,
+    Emitter<ScheduleManagerState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        schedules: Map.from(state.schedules)..remove(schedule),
+        refreshing: Set.from(state.refreshing)..remove(schedule),
+      ),
+    );
+  }
+
   void flagLoadingSchedule(
     Emitter<ScheduleManagerState> emit,
     ScheduleKey key,
   ) {
     emit(
-      lastLoading.copyWith(
-        loading: Set.from(lastLoading.loading)..add(key),
+      state.copyWith(
+        refreshing: Set.from(state.refreshing)..add(key),
       ),
     );
   }
@@ -135,8 +131,8 @@ class ScheduleManagerBloc
     ScheduleKey key,
   ) {
     emit(
-      lastLoading.copyWith(
-        loading: Set.from(lastLoading.loading)..remove(key),
+      state.copyWith(
+        refreshing: Set.from(state.refreshing)..remove(key),
       ),
     );
   }
@@ -146,8 +142,8 @@ class ScheduleManagerBloc
     Emitter<ScheduleManagerState> emit,
   ) {
     emit(
-      lastLoaded.copyWith(
-        schedules: Map.from(lastLoaded.schedules)
+      state.copyWith(
+        schedules: Map.from(state.schedules)
           ..update(
             (type: ScheduleType.schedule, id: schedule.id),
             (value) => schedule,
@@ -162,8 +158,8 @@ class ScheduleManagerBloc
     Emitter<ScheduleManagerState> emit,
   ) {
     emit(
-      lastLoaded.copyWith(
-        schedules: Map.from(lastLoaded.schedules)
+      state.copyWith(
+        schedules: Map.from(state.schedules)
           ..update(
             (type: ScheduleType.lecturer, id: lecturer.id),
             (value) => lecturer,
