@@ -15,6 +15,7 @@ flutter_launcher_icons:
   # see https://pub.dev/packages/flutter_launcher_icons#mag-attributes for other attributes
 
 dependencies:
+  animations: ^2.0.11
   bloc_concurrency: ^0.2.3
   cupertino_icons: ^1.0.2
   dio: ^5.4.0
@@ -34,6 +35,7 @@ dependencies:
   json_annotation: ^4.8.1
   mockito: ^5.4.4
   package_info_plus: ^5.0.1
+  smooth_page_indicator: ^1.1.0
   url_launcher: ^6.2.2
   uuid: ^4.2.1
 
@@ -41,7 +43,6 @@ dev_dependencies:
   bloc_test: ^9.1.5
   build_runner: ^2.4.6
   build_test: ^2.2.2
-  custom_lint: ^0.5.7
   flutter_launcher_icons: ^0.13.1
   flutter_lints: ^3.0.1
   flutter_test:
