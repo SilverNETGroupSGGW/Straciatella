@@ -1,11 +1,14 @@
 part of 'schedule_manager_bloc.dart';
 
-typedef ScheduleCacheMap = Map<ScheduleKey, ExtendedSchedule>;
+typedef ExtendedScheduleCacheMap = Map<ScheduleKey, ExtendedSchedule>;
+typedef BaseScheduleCacheMap = Map<ScheduleKey, BaseSchedule>;
 
 @freezed
 class ScheduleManagerState with _$ScheduleManagerState {
   factory ScheduleManagerState({
-    @Default({}) ScheduleCacheMap schedules,
+    @Default({}) ExtendedScheduleCacheMap schedules,
+    @Default({}) BaseScheduleCacheMap schedulesIndex,
+    @Default(false) bool refreshingIndex,
     @Default({}) Set<ScheduleKey> refreshing,
   }) = _ScheduleManagerState;
   ScheduleManagerState._();
@@ -13,6 +16,7 @@ class ScheduleManagerState with _$ScheduleManagerState {
   ScheduleManagerHiveState asHivable() {
     return ScheduleManagerHiveState(
       schedules: schedules,
+      schedulesIndex: schedulesIndex,
     );
   }
 }
@@ -24,13 +28,19 @@ class ScheduleManagerHiveState with _$ScheduleManagerHiveState {
     adapterName: "ScheduleManagerHiveStateAdapter",
   )
   factory ScheduleManagerHiveState({
-    @Default({}) @HiveField(0, defaultValue: {}) ScheduleCacheMap schedules,
+    @Default({})
+    @HiveField(0, defaultValue: {})
+    ExtendedScheduleCacheMap schedules,
+    @Default({})
+    @HiveField(1, defaultValue: {})
+    BaseScheduleCacheMap schedulesIndex,
   }) = _ScheduleManagerHiveState;
   ScheduleManagerHiveState._();
 
   ScheduleManagerState asNormalState() {
     return ScheduleManagerState(
       schedules: schedules,
+      schedulesIndex: schedulesIndex,
     );
   }
 }

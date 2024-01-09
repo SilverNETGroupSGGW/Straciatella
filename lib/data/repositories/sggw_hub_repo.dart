@@ -31,9 +31,15 @@ class SggwHubRepo {
   }
 
   Future<List<BaseSchedule>> getSchedulesIndex() async {
-    return Future.wait(
-      [SggwHubRepo().getSchedules(), SggwHubRepo().getLecturers()],
-    ).then((value) => [...value[0], ...value[1]]);
+    return Future.wait([
+      getSchedules(),
+      getLecturers(),
+    ]).then(
+      (value) => [
+        ...value[0],
+        ...value[1],
+      ],
+    );
   }
 
   Future<Schedule> getSchedule(String id) async {

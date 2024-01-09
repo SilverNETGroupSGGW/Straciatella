@@ -19,6 +19,10 @@ mixin _$ScheduleManagerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)
+        setIndex,
+    required TResult Function() updateIndex,
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
@@ -31,6 +35,10 @@ mixin _$ScheduleManagerEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult? Function()? updateIndex,
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
@@ -43,6 +51,9 @@ mixin _$ScheduleManagerEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function(Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult Function()? updateIndex,
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
@@ -55,6 +66,8 @@ mixin _$ScheduleManagerEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_SetIndex value) setIndex,
+    required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
@@ -66,6 +79,8 @@ mixin _$ScheduleManagerEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_SetIndex value)? setIndex,
+    TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
@@ -77,6 +92,8 @@ mixin _$ScheduleManagerEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_SetIndex value)? setIndex,
+    TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
@@ -151,6 +168,10 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)
+        setIndex,
+    required TResult Function() updateIndex,
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
@@ -166,6 +187,10 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult? Function()? updateIndex,
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
@@ -181,6 +206,9 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function(Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult Function()? updateIndex,
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
@@ -199,6 +227,8 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_SetIndex value) setIndex,
+    required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
@@ -213,6 +243,8 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_SetIndex value)? setIndex,
+    TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
@@ -227,6 +259,8 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_SetIndex value)? setIndex,
+    TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
@@ -244,6 +278,364 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
 
 abstract class _Init implements ScheduleManagerEvent {
   const factory _Init() = _$InitImpl;
+}
+
+/// @nodoc
+abstract class _$$SetIndexImplCopyWith<$Res> {
+  factory _$$SetIndexImplCopyWith(
+          _$SetIndexImpl value, $Res Function(_$SetIndexImpl) then) =
+      __$$SetIndexImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<({String id, ScheduleType type}), BaseSchedule> index});
+}
+
+/// @nodoc
+class __$$SetIndexImplCopyWithImpl<$Res>
+    extends _$ScheduleManagerEventCopyWithImpl<$Res, _$SetIndexImpl>
+    implements _$$SetIndexImplCopyWith<$Res> {
+  __$$SetIndexImplCopyWithImpl(
+      _$SetIndexImpl _value, $Res Function(_$SetIndexImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$SetIndexImpl(
+      null == index
+          ? _value._index
+          : index // ignore: cast_nullable_to_non_nullable
+              as Map<({String id, ScheduleType type}), BaseSchedule>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetIndexImpl with DiagnosticableTreeMixin implements _SetIndex {
+  const _$SetIndexImpl(
+      final Map<({String id, ScheduleType type}), BaseSchedule> index)
+      : _index = index;
+
+  final Map<({String id, ScheduleType type}), BaseSchedule> _index;
+  @override
+  Map<({String id, ScheduleType type}), BaseSchedule> get index {
+    if (_index is EqualUnmodifiableMapView) return _index;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_index);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ScheduleManagerEvent.setIndex(index: $index)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ScheduleManagerEvent.setIndex'))
+      ..add(DiagnosticsProperty('index', index));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetIndexImpl &&
+            const DeepCollectionEquality().equals(other._index, _index));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_index));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetIndexImplCopyWith<_$SetIndexImpl> get copyWith =>
+      __$$SetIndexImplCopyWithImpl<_$SetIndexImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)
+        setIndex,
+    required TResult Function() updateIndex,
+    required TResult Function(Lecturer lecturer) setLecturer,
+    required TResult Function(String id) updateLecturer,
+    required TResult Function(Schedule schedule) setSchedule,
+    required TResult Function(String id) updateSchedule,
+    required TResult Function(({String id, ScheduleType type}) schedule)
+        removeSchedule,
+    required TResult Function() clear,
+  }) {
+    return setIndex(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult? Function()? updateIndex,
+    TResult? Function(Lecturer lecturer)? setLecturer,
+    TResult? Function(String id)? updateLecturer,
+    TResult? Function(Schedule schedule)? setSchedule,
+    TResult? Function(String id)? updateSchedule,
+    TResult? Function(({String id, ScheduleType type}) schedule)?
+        removeSchedule,
+    TResult? Function()? clear,
+  }) {
+    return setIndex?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult Function()? updateIndex,
+    TResult Function(Lecturer lecturer)? setLecturer,
+    TResult Function(String id)? updateLecturer,
+    TResult Function(Schedule schedule)? setSchedule,
+    TResult Function(String id)? updateSchedule,
+    TResult Function(({String id, ScheduleType type}) schedule)? removeSchedule,
+    TResult Function()? clear,
+    required TResult orElse(),
+  }) {
+    if (setIndex != null) {
+      return setIndex(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_SetIndex value) setIndex,
+    required TResult Function(_UpdateIndex value) updateIndex,
+    required TResult Function(_SetLecturer value) setLecturer,
+    required TResult Function(_UpdateLecturer value) updateLecturer,
+    required TResult Function(_SetSchedule value) setSchedule,
+    required TResult Function(_UpdateSchedule value) updateSchedule,
+    required TResult Function(_RemoveSchedule value) removeSchedule,
+    required TResult Function(_Clear value) clear,
+  }) {
+    return setIndex(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_SetIndex value)? setIndex,
+    TResult? Function(_UpdateIndex value)? updateIndex,
+    TResult? Function(_SetLecturer value)? setLecturer,
+    TResult? Function(_UpdateLecturer value)? updateLecturer,
+    TResult? Function(_SetSchedule value)? setSchedule,
+    TResult? Function(_UpdateSchedule value)? updateSchedule,
+    TResult? Function(_RemoveSchedule value)? removeSchedule,
+    TResult? Function(_Clear value)? clear,
+  }) {
+    return setIndex?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_SetIndex value)? setIndex,
+    TResult Function(_UpdateIndex value)? updateIndex,
+    TResult Function(_SetLecturer value)? setLecturer,
+    TResult Function(_UpdateLecturer value)? updateLecturer,
+    TResult Function(_SetSchedule value)? setSchedule,
+    TResult Function(_UpdateSchedule value)? updateSchedule,
+    TResult Function(_RemoveSchedule value)? removeSchedule,
+    TResult Function(_Clear value)? clear,
+    required TResult orElse(),
+  }) {
+    if (setIndex != null) {
+      return setIndex(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetIndex implements ScheduleManagerEvent {
+  const factory _SetIndex(
+          final Map<({String id, ScheduleType type}), BaseSchedule> index) =
+      _$SetIndexImpl;
+
+  Map<({String id, ScheduleType type}), BaseSchedule> get index;
+  @JsonKey(ignore: true)
+  _$$SetIndexImplCopyWith<_$SetIndexImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateIndexImplCopyWith<$Res> {
+  factory _$$UpdateIndexImplCopyWith(
+          _$UpdateIndexImpl value, $Res Function(_$UpdateIndexImpl) then) =
+      __$$UpdateIndexImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateIndexImplCopyWithImpl<$Res>
+    extends _$ScheduleManagerEventCopyWithImpl<$Res, _$UpdateIndexImpl>
+    implements _$$UpdateIndexImplCopyWith<$Res> {
+  __$$UpdateIndexImplCopyWithImpl(
+      _$UpdateIndexImpl _value, $Res Function(_$UpdateIndexImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UpdateIndexImpl with DiagnosticableTreeMixin implements _UpdateIndex {
+  const _$UpdateIndexImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ScheduleManagerEvent.updateIndex()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'ScheduleManagerEvent.updateIndex'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateIndexImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)
+        setIndex,
+    required TResult Function() updateIndex,
+    required TResult Function(Lecturer lecturer) setLecturer,
+    required TResult Function(String id) updateLecturer,
+    required TResult Function(Schedule schedule) setSchedule,
+    required TResult Function(String id) updateSchedule,
+    required TResult Function(({String id, ScheduleType type}) schedule)
+        removeSchedule,
+    required TResult Function() clear,
+  }) {
+    return updateIndex();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult? Function()? updateIndex,
+    TResult? Function(Lecturer lecturer)? setLecturer,
+    TResult? Function(String id)? updateLecturer,
+    TResult? Function(Schedule schedule)? setSchedule,
+    TResult? Function(String id)? updateSchedule,
+    TResult? Function(({String id, ScheduleType type}) schedule)?
+        removeSchedule,
+    TResult? Function()? clear,
+  }) {
+    return updateIndex?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult Function()? updateIndex,
+    TResult Function(Lecturer lecturer)? setLecturer,
+    TResult Function(String id)? updateLecturer,
+    TResult Function(Schedule schedule)? setSchedule,
+    TResult Function(String id)? updateSchedule,
+    TResult Function(({String id, ScheduleType type}) schedule)? removeSchedule,
+    TResult Function()? clear,
+    required TResult orElse(),
+  }) {
+    if (updateIndex != null) {
+      return updateIndex();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_SetIndex value) setIndex,
+    required TResult Function(_UpdateIndex value) updateIndex,
+    required TResult Function(_SetLecturer value) setLecturer,
+    required TResult Function(_UpdateLecturer value) updateLecturer,
+    required TResult Function(_SetSchedule value) setSchedule,
+    required TResult Function(_UpdateSchedule value) updateSchedule,
+    required TResult Function(_RemoveSchedule value) removeSchedule,
+    required TResult Function(_Clear value) clear,
+  }) {
+    return updateIndex(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_SetIndex value)? setIndex,
+    TResult? Function(_UpdateIndex value)? updateIndex,
+    TResult? Function(_SetLecturer value)? setLecturer,
+    TResult? Function(_UpdateLecturer value)? updateLecturer,
+    TResult? Function(_SetSchedule value)? setSchedule,
+    TResult? Function(_UpdateSchedule value)? updateSchedule,
+    TResult? Function(_RemoveSchedule value)? removeSchedule,
+    TResult? Function(_Clear value)? clear,
+  }) {
+    return updateIndex?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_SetIndex value)? setIndex,
+    TResult Function(_UpdateIndex value)? updateIndex,
+    TResult Function(_SetLecturer value)? setLecturer,
+    TResult Function(_UpdateLecturer value)? updateLecturer,
+    TResult Function(_SetSchedule value)? setSchedule,
+    TResult Function(_UpdateSchedule value)? updateSchedule,
+    TResult Function(_RemoveSchedule value)? removeSchedule,
+    TResult Function(_Clear value)? clear,
+    required TResult orElse(),
+  }) {
+    if (updateIndex != null) {
+      return updateIndex(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateIndex implements ScheduleManagerEvent {
+  const factory _UpdateIndex() = _$UpdateIndexImpl;
 }
 
 /// @nodoc
@@ -330,6 +722,10 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)
+        setIndex,
+    required TResult Function() updateIndex,
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
@@ -345,6 +741,10 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult? Function()? updateIndex,
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
@@ -360,6 +760,9 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function(Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult Function()? updateIndex,
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
@@ -378,6 +781,8 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_SetIndex value) setIndex,
+    required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
@@ -392,6 +797,8 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_SetIndex value)? setIndex,
+    TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
@@ -406,6 +813,8 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_SetIndex value)? setIndex,
+    TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
@@ -506,6 +915,10 @@ class _$UpdateLecturerImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)
+        setIndex,
+    required TResult Function() updateIndex,
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
@@ -521,6 +934,10 @@ class _$UpdateLecturerImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult? Function()? updateIndex,
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
@@ -536,6 +953,9 @@ class _$UpdateLecturerImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function(Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult Function()? updateIndex,
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
@@ -554,6 +974,8 @@ class _$UpdateLecturerImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_SetIndex value) setIndex,
+    required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
@@ -568,6 +990,8 @@ class _$UpdateLecturerImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_SetIndex value)? setIndex,
+    TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
@@ -582,6 +1006,8 @@ class _$UpdateLecturerImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_SetIndex value)? setIndex,
+    TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
@@ -690,6 +1116,10 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)
+        setIndex,
+    required TResult Function() updateIndex,
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
@@ -705,6 +1135,10 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult? Function()? updateIndex,
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
@@ -720,6 +1154,9 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function(Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult Function()? updateIndex,
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
@@ -738,6 +1175,8 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_SetIndex value) setIndex,
+    required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
@@ -752,6 +1191,8 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_SetIndex value)? setIndex,
+    TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
@@ -766,6 +1207,8 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_SetIndex value)? setIndex,
+    TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
@@ -866,6 +1309,10 @@ class _$UpdateScheduleImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)
+        setIndex,
+    required TResult Function() updateIndex,
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
@@ -881,6 +1328,10 @@ class _$UpdateScheduleImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult? Function()? updateIndex,
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
@@ -896,6 +1347,9 @@ class _$UpdateScheduleImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function(Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult Function()? updateIndex,
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
@@ -914,6 +1368,8 @@ class _$UpdateScheduleImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_SetIndex value) setIndex,
+    required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
@@ -928,6 +1384,8 @@ class _$UpdateScheduleImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_SetIndex value)? setIndex,
+    TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
@@ -942,6 +1400,8 @@ class _$UpdateScheduleImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_SetIndex value)? setIndex,
+    TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
@@ -1043,6 +1503,10 @@ class _$RemoveScheduleImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)
+        setIndex,
+    required TResult Function() updateIndex,
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
@@ -1058,6 +1522,10 @@ class _$RemoveScheduleImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult? Function()? updateIndex,
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
@@ -1073,6 +1541,9 @@ class _$RemoveScheduleImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function(Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult Function()? updateIndex,
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
@@ -1091,6 +1562,8 @@ class _$RemoveScheduleImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_SetIndex value) setIndex,
+    required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
@@ -1105,6 +1578,8 @@ class _$RemoveScheduleImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_SetIndex value)? setIndex,
+    TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
@@ -1119,6 +1594,8 @@ class _$RemoveScheduleImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_SetIndex value)? setIndex,
+    TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
@@ -1189,6 +1666,10 @@ class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)
+        setIndex,
+    required TResult Function() updateIndex,
     required TResult Function(Lecturer lecturer) setLecturer,
     required TResult Function(String id) updateLecturer,
     required TResult Function(Schedule schedule) setSchedule,
@@ -1204,6 +1685,10 @@ class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function(
+            Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult? Function()? updateIndex,
     TResult? Function(Lecturer lecturer)? setLecturer,
     TResult? Function(String id)? updateLecturer,
     TResult? Function(Schedule schedule)? setSchedule,
@@ -1219,6 +1704,9 @@ class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function(Map<({String id, ScheduleType type}), BaseSchedule> index)?
+        setIndex,
+    TResult Function()? updateIndex,
     TResult Function(Lecturer lecturer)? setLecturer,
     TResult Function(String id)? updateLecturer,
     TResult Function(Schedule schedule)? setSchedule,
@@ -1237,6 +1725,8 @@ class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_SetIndex value) setIndex,
+    required TResult Function(_UpdateIndex value) updateIndex,
     required TResult Function(_SetLecturer value) setLecturer,
     required TResult Function(_UpdateLecturer value) updateLecturer,
     required TResult Function(_SetSchedule value) setSchedule,
@@ -1251,6 +1741,8 @@ class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_SetIndex value)? setIndex,
+    TResult? Function(_UpdateIndex value)? updateIndex,
     TResult? Function(_SetLecturer value)? setLecturer,
     TResult? Function(_UpdateLecturer value)? updateLecturer,
     TResult? Function(_SetSchedule value)? setSchedule,
@@ -1265,6 +1757,8 @@ class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_SetIndex value)? setIndex,
+    TResult Function(_UpdateIndex value)? updateIndex,
     TResult Function(_SetLecturer value)? setLecturer,
     TResult Function(_UpdateLecturer value)? updateLecturer,
     TResult Function(_SetSchedule value)? setSchedule,
@@ -1288,6 +1782,9 @@ abstract class _Clear implements ScheduleManagerEvent {
 mixin _$ScheduleManagerState {
   Map<({String id, ScheduleType type}), ExtendedSchedule> get schedules =>
       throw _privateConstructorUsedError;
+  Map<({String id, ScheduleType type}), BaseSchedule> get schedulesIndex =>
+      throw _privateConstructorUsedError;
+  bool get refreshingIndex => throw _privateConstructorUsedError;
   Set<({String id, ScheduleType type})> get refreshing =>
       throw _privateConstructorUsedError;
 
@@ -1304,6 +1801,8 @@ abstract class $ScheduleManagerStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Map<({String id, ScheduleType type}), ExtendedSchedule> schedules,
+      Map<({String id, ScheduleType type}), BaseSchedule> schedulesIndex,
+      bool refreshingIndex,
       Set<({String id, ScheduleType type})> refreshing});
 }
 
@@ -1322,6 +1821,8 @@ class _$ScheduleManagerStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? schedules = null,
+    Object? schedulesIndex = null,
+    Object? refreshingIndex = null,
     Object? refreshing = null,
   }) {
     return _then(_value.copyWith(
@@ -1329,6 +1830,14 @@ class _$ScheduleManagerStateCopyWithImpl<$Res,
           ? _value.schedules
           : schedules // ignore: cast_nullable_to_non_nullable
               as Map<({String id, ScheduleType type}), ExtendedSchedule>,
+      schedulesIndex: null == schedulesIndex
+          ? _value.schedulesIndex
+          : schedulesIndex // ignore: cast_nullable_to_non_nullable
+              as Map<({String id, ScheduleType type}), BaseSchedule>,
+      refreshingIndex: null == refreshingIndex
+          ? _value.refreshingIndex
+          : refreshingIndex // ignore: cast_nullable_to_non_nullable
+              as bool,
       refreshing: null == refreshing
           ? _value.refreshing
           : refreshing // ignore: cast_nullable_to_non_nullable
@@ -1347,6 +1856,8 @@ abstract class _$$ScheduleManagerStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {Map<({String id, ScheduleType type}), ExtendedSchedule> schedules,
+      Map<({String id, ScheduleType type}), BaseSchedule> schedulesIndex,
+      bool refreshingIndex,
       Set<({String id, ScheduleType type})> refreshing});
 }
 
@@ -1362,6 +1873,8 @@ class __$$ScheduleManagerStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? schedules = null,
+    Object? schedulesIndex = null,
+    Object? refreshingIndex = null,
     Object? refreshing = null,
   }) {
     return _then(_$ScheduleManagerStateImpl(
@@ -1369,6 +1882,14 @@ class __$$ScheduleManagerStateImplCopyWithImpl<$Res>
           ? _value._schedules
           : schedules // ignore: cast_nullable_to_non_nullable
               as Map<({String id, ScheduleType type}), ExtendedSchedule>,
+      schedulesIndex: null == schedulesIndex
+          ? _value._schedulesIndex
+          : schedulesIndex // ignore: cast_nullable_to_non_nullable
+              as Map<({String id, ScheduleType type}), BaseSchedule>,
+      refreshingIndex: null == refreshingIndex
+          ? _value.refreshingIndex
+          : refreshingIndex // ignore: cast_nullable_to_non_nullable
+              as bool,
       refreshing: null == refreshing
           ? _value._refreshing
           : refreshing // ignore: cast_nullable_to_non_nullable
@@ -1384,8 +1905,12 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
   _$ScheduleManagerStateImpl(
       {final Map<({String id, ScheduleType type}), ExtendedSchedule> schedules =
           const {},
+      final Map<({String id, ScheduleType type}), BaseSchedule> schedulesIndex =
+          const {},
+      this.refreshingIndex = false,
       final Set<({String id, ScheduleType type})> refreshing = const {}})
       : _schedules = schedules,
+        _schedulesIndex = schedulesIndex,
         _refreshing = refreshing,
         super._();
 
@@ -1398,6 +1923,18 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
     return EqualUnmodifiableMapView(_schedules);
   }
 
+  final Map<({String id, ScheduleType type}), BaseSchedule> _schedulesIndex;
+  @override
+  @JsonKey()
+  Map<({String id, ScheduleType type}), BaseSchedule> get schedulesIndex {
+    if (_schedulesIndex is EqualUnmodifiableMapView) return _schedulesIndex;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_schedulesIndex);
+  }
+
+  @override
+  @JsonKey()
+  final bool refreshingIndex;
   final Set<({String id, ScheduleType type})> _refreshing;
   @override
   @JsonKey()
@@ -1409,7 +1946,7 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ScheduleManagerState(schedules: $schedules, refreshing: $refreshing)';
+    return 'ScheduleManagerState(schedules: $schedules, schedulesIndex: $schedulesIndex, refreshingIndex: $refreshingIndex, refreshing: $refreshing)';
   }
 
   @override
@@ -1418,6 +1955,8 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
     properties
       ..add(DiagnosticsProperty('type', 'ScheduleManagerState'))
       ..add(DiagnosticsProperty('schedules', schedules))
+      ..add(DiagnosticsProperty('schedulesIndex', schedulesIndex))
+      ..add(DiagnosticsProperty('refreshingIndex', refreshingIndex))
       ..add(DiagnosticsProperty('refreshing', refreshing));
   }
 
@@ -1429,6 +1968,10 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
             const DeepCollectionEquality()
                 .equals(other._schedules, _schedules) &&
             const DeepCollectionEquality()
+                .equals(other._schedulesIndex, _schedulesIndex) &&
+            (identical(other.refreshingIndex, refreshingIndex) ||
+                other.refreshingIndex == refreshingIndex) &&
+            const DeepCollectionEquality()
                 .equals(other._refreshing, _refreshing));
   }
 
@@ -1436,6 +1979,8 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_schedules),
+      const DeepCollectionEquality().hash(_schedulesIndex),
+      refreshingIndex,
       const DeepCollectionEquality().hash(_refreshing));
 
   @JsonKey(ignore: true)
@@ -1450,12 +1995,18 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
 abstract class _ScheduleManagerState extends ScheduleManagerState {
   factory _ScheduleManagerState(
       {final Map<({String id, ScheduleType type}), ExtendedSchedule> schedules,
+      final Map<({String id, ScheduleType type}), BaseSchedule> schedulesIndex,
+      final bool refreshingIndex,
       final Set<({String id, ScheduleType type})>
           refreshing}) = _$ScheduleManagerStateImpl;
   _ScheduleManagerState._() : super._();
 
   @override
   Map<({String id, ScheduleType type}), ExtendedSchedule> get schedules;
+  @override
+  Map<({String id, ScheduleType type}), BaseSchedule> get schedulesIndex;
+  @override
+  bool get refreshingIndex;
   @override
   Set<({String id, ScheduleType type})> get refreshing;
   @override
@@ -1468,6 +2019,9 @@ abstract class _ScheduleManagerState extends ScheduleManagerState {
 mixin _$ScheduleManagerHiveState {
   @HiveField(0, defaultValue: {})
   Map<({String id, ScheduleType type}), ExtendedSchedule> get schedules =>
+      throw _privateConstructorUsedError;
+  @HiveField(1, defaultValue: {})
+  Map<({String id, ScheduleType type}), BaseSchedule> get schedulesIndex =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1483,7 +2037,9 @@ abstract class $ScheduleManagerHiveStateCopyWith<$Res> {
   @useResult
   $Res call(
       {@HiveField(0, defaultValue: {})
-      Map<({String id, ScheduleType type}), ExtendedSchedule> schedules});
+      Map<({String id, ScheduleType type}), ExtendedSchedule> schedules,
+      @HiveField(1, defaultValue: {})
+      Map<({String id, ScheduleType type}), BaseSchedule> schedulesIndex});
 }
 
 /// @nodoc
@@ -1501,12 +2057,17 @@ class _$ScheduleManagerHiveStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? schedules = null,
+    Object? schedulesIndex = null,
   }) {
     return _then(_value.copyWith(
       schedules: null == schedules
           ? _value.schedules
           : schedules // ignore: cast_nullable_to_non_nullable
               as Map<({String id, ScheduleType type}), ExtendedSchedule>,
+      schedulesIndex: null == schedulesIndex
+          ? _value.schedulesIndex
+          : schedulesIndex // ignore: cast_nullable_to_non_nullable
+              as Map<({String id, ScheduleType type}), BaseSchedule>,
     ) as $Val);
   }
 }
@@ -1522,7 +2083,9 @@ abstract class _$$ScheduleManagerHiveStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {@HiveField(0, defaultValue: {})
-      Map<({String id, ScheduleType type}), ExtendedSchedule> schedules});
+      Map<({String id, ScheduleType type}), ExtendedSchedule> schedules,
+      @HiveField(1, defaultValue: {})
+      Map<({String id, ScheduleType type}), BaseSchedule> schedulesIndex});
 }
 
 /// @nodoc
@@ -1539,12 +2102,17 @@ class __$$ScheduleManagerHiveStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? schedules = null,
+    Object? schedulesIndex = null,
   }) {
     return _then(_$ScheduleManagerHiveStateImpl(
       schedules: null == schedules
           ? _value._schedules
           : schedules // ignore: cast_nullable_to_non_nullable
               as Map<({String id, ScheduleType type}), ExtendedSchedule>,
+      schedulesIndex: null == schedulesIndex
+          ? _value._schedulesIndex
+          : schedulesIndex // ignore: cast_nullable_to_non_nullable
+              as Map<({String id, ScheduleType type}), BaseSchedule>,
     ));
   }
 }
@@ -1559,8 +2127,12 @@ class _$ScheduleManagerHiveStateImpl extends _ScheduleManagerHiveState
   _$ScheduleManagerHiveStateImpl(
       {@HiveField(0, defaultValue: {})
       final Map<({String id, ScheduleType type}), ExtendedSchedule> schedules =
+          const {},
+      @HiveField(1, defaultValue: {})
+      final Map<({String id, ScheduleType type}), BaseSchedule> schedulesIndex =
           const {}})
       : _schedules = schedules,
+        _schedulesIndex = schedulesIndex,
         super._();
 
   final Map<({String id, ScheduleType type}), ExtendedSchedule> _schedules;
@@ -1573,9 +2145,19 @@ class _$ScheduleManagerHiveStateImpl extends _ScheduleManagerHiveState
     return EqualUnmodifiableMapView(_schedules);
   }
 
+  final Map<({String id, ScheduleType type}), BaseSchedule> _schedulesIndex;
+  @override
+  @JsonKey()
+  @HiveField(1, defaultValue: {})
+  Map<({String id, ScheduleType type}), BaseSchedule> get schedulesIndex {
+    if (_schedulesIndex is EqualUnmodifiableMapView) return _schedulesIndex;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_schedulesIndex);
+  }
+
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ScheduleManagerHiveState(schedules: $schedules)';
+    return 'ScheduleManagerHiveState(schedules: $schedules, schedulesIndex: $schedulesIndex)';
   }
 
   @override
@@ -1583,7 +2165,8 @@ class _$ScheduleManagerHiveStateImpl extends _ScheduleManagerHiveState
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ScheduleManagerHiveState'))
-      ..add(DiagnosticsProperty('schedules', schedules));
+      ..add(DiagnosticsProperty('schedules', schedules))
+      ..add(DiagnosticsProperty('schedulesIndex', schedulesIndex));
   }
 
   @override
@@ -1592,12 +2175,16 @@ class _$ScheduleManagerHiveStateImpl extends _ScheduleManagerHiveState
         (other.runtimeType == runtimeType &&
             other is _$ScheduleManagerHiveStateImpl &&
             const DeepCollectionEquality()
-                .equals(other._schedules, _schedules));
+                .equals(other._schedules, _schedules) &&
+            const DeepCollectionEquality()
+                .equals(other._schedulesIndex, _schedulesIndex));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_schedules));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_schedules),
+      const DeepCollectionEquality().hash(_schedulesIndex));
 
   @JsonKey(ignore: true)
   @override
@@ -1610,13 +2197,18 @@ class _$ScheduleManagerHiveStateImpl extends _ScheduleManagerHiveState
 abstract class _ScheduleManagerHiveState extends ScheduleManagerHiveState {
   factory _ScheduleManagerHiveState(
       {@HiveField(0, defaultValue: {})
-      final Map<({String id, ScheduleType type}), ExtendedSchedule>
-          schedules}) = _$ScheduleManagerHiveStateImpl;
+      final Map<({String id, ScheduleType type}), ExtendedSchedule> schedules,
+      @HiveField(1, defaultValue: {})
+      final Map<({String id, ScheduleType type}), BaseSchedule>
+          schedulesIndex}) = _$ScheduleManagerHiveStateImpl;
   _ScheduleManagerHiveState._() : super._();
 
   @override
   @HiveField(0, defaultValue: {})
   Map<({String id, ScheduleType type}), ExtendedSchedule> get schedules;
+  @override
+  @HiveField(1, defaultValue: {})
+  Map<({String id, ScheduleType type}), BaseSchedule> get schedulesIndex;
   @override
   @JsonKey(ignore: true)
   _$$ScheduleManagerHiveStateImplCopyWith<_$ScheduleManagerHiveStateImpl>

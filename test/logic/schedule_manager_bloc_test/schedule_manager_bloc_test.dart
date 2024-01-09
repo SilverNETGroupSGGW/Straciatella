@@ -87,4 +87,21 @@ void main() async {
     ],
     tearDown: () => box.clear(),
   );
+
+  blocTest<ScheduleManagerBloc, ScheduleManagerState>(
+    'emits 2 states for updating schedule index',
+    build: () => ScheduleManagerBloc(FakeSggwHubRepo()),
+    act: (bloc) => bloc.add(const ScheduleManagerEvent.updateIndex()),
+    expect: () => [
+      // puts into loading
+      ScheduleManagerState(
+        refreshingIndex: true,
+      ),
+      // then unmarks as loading and is in the cache
+      predicate<ScheduleManagerState>(
+        (state) => state.schedulesIndex.isNotEmpty && !state.refreshingIndex,
+      ),
+    ],
+    tearDown: () => box.clear(),
+  );
 }
