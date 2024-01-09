@@ -334,3 +334,75 @@ final mockSchedule = {
     }
   ],
 };
+
+final mockSchedulesIndex = [
+  {
+    "id": "d975879c-c267-4e69-bcde-8b1c8dc448de",
+    "created": "2024-01-06T21:07:15.7158673",
+    "updated": "2024-01-07T10:32:38.1230452",
+    "startDate": "2023-10-02T00:00:00+00:00",
+    "name": "Inf R3S5",
+    "year": 3,
+    "semester": 5,
+    "faculty": "Wydział Zastosowań Informatyki i Matematyki",
+    "fieldOfStudy": "Informatyka",
+    "studyMode": "FullTimeStudies",
+    "degreeOfStudy": "BachelorsDegree",
+  },
+  {
+    "id": "edb84e2f-62e7-472a-bdc3-b10cadaebe42",
+    "created": "2024-01-06T21:52:07.1286274",
+    "updated": "2024-01-07T10:36:21.1351993",
+    "startDate": "2023-10-02T00:00:00+00:00",
+    "name": "InfE R2S3",
+    "year": 2,
+    "semester": 3,
+    "faculty": "Wydział Zastosowań Informatyki i Matematyki",
+    "fieldOfStudy": "Informatyka i ekonometria",
+    "studyMode": "FullTimeStudies",
+    "degreeOfStudy": "MastersDegree",
+  },
+  {
+    "id": "674089ff-dd11-48a6-8d44-fce8d94d0159",
+    "created": "2024-01-07T11:06:32.3880366",
+    "updated": "2024-01-07T11:06:32.3880874",
+    "startDate": "2023-10-02T00:00:00+00:00",
+    "name": "SilverNET",
+    "year": 1,
+    "semester": 1,
+    "faculty": "Wydział Zastosowań Informatyki i Matematyki",
+    "fieldOfStudy": "Informatyka",
+    "studyMode": "FullTimeStudies",
+    "degreeOfStudy": "BachelorsDegree",
+  },
+];
+
+final mockLecturersIndex = [
+  {
+    "id": "44f2dac7-32c3-4fbe-e3c6-08dc0ef28643",
+    "created": "2024-01-06T21:06:03.9625549",
+    "updated": "2024-01-06T21:06:03.962555",
+    "firstName": "Marcin",
+    "surname": "Surname1",
+    "academicDegree": "dr",
+    "email": "marcin_surname1@sggw.edu.pl",
+  },
+  {
+    "id": "d0de4766-cbf9-44b0-e3c7-08dc0ef28643",
+    "created": "2024-01-06T21:06:16.2553602",
+    "updated": "2024-01-06T21:06:16.2553604",
+    "firstName": "Krzysztof",
+    "surname": "Surname2",
+    "academicDegree": "dr",
+    "email": "krzyszrof_surname2@sggw.edu.pl",
+  },
+  {
+    "id": "5027ca0b-e1b2-43ee-e3c8-08dc0ef28643",
+    "created": "2024-01-06T21:06:31.4855967",
+    "updated": "2024-01-06T21:06:31.4855968",
+    "firstName": "Dariusz",
+    "surname": "Surname3",
+    "academicDegree": "dr",
+    "email": "dariusz_surname3@sggw.edu.pl",
+  },
+];
