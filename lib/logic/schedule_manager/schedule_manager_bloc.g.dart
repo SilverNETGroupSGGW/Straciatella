@@ -22,15 +22,21 @@ class ScheduleManagerHiveStateAdapter
           ? {}
           : (fields[0] as Map)
               .cast<({String id, ScheduleType type}), ExtendedSchedule>(),
+      schedulesIndex: fields[1] == null
+          ? {}
+          : (fields[1] as Map)
+              .cast<({String id, ScheduleType type}), BaseSchedule>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, _$ScheduleManagerHiveStateImpl obj) {
     writer
-      ..writeByte(1)
+      ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.schedules);
+      ..write(obj.schedules)
+      ..writeByte(1)
+      ..write(obj.schedulesIndex);
   }
 
   @override

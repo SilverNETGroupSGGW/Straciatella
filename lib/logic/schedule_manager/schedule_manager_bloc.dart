@@ -8,8 +8,10 @@ import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
+import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
+import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
 import 'package:silvertimetable/data/types.dart';
 
@@ -51,6 +53,8 @@ class ScheduleManagerBloc
       }
     });
     // * setters
+    on<_SetIndex>((event, emit) => setIndex(event.index, emit));
+
     on<_SetSchedule>((event, emit) => setSchedule(event.schedule, emit));
 
     on<_SetLecturer>((event, emit) => setLecturer(event.lecturer, emit));
@@ -62,6 +66,53 @@ class ScheduleManagerBloc
     });
 
     // * fetchers
+    on<_UpdateIndex>(
+      (event, emit) async {
+        // TODO: move this if block to transformer
+        if (state.refreshingIndex) {
+          // already fetching newest data for this schedule
+          return;
+        }
+
+        flagLoadingScheduleIndex(emit);
+        try {
+          final Map<ScheduleKey, BaseSchedule> index =
+              await _sggwHubRepo.getSchedulesIndex().then(
+                    (value) => Map.fromIterable(
+                      value,
+                      key: (e) {
+                        if (e is LecturerBase) {
+                          return (type: ScheduleType.lecturer, id: e.id);
+                        }
+                        return (
+                          type: ScheduleType.schedule,
+                          id: (e as ScheduleBase).id
+                        );
+                      },
+                      value: (e) => e as BaseSchedule,
+                    ),
+                  );
+          if (emit.isDone) {
+            unflagLoadingScheduleIndex(emit);
+            return;
+          }
+          emit(
+            state.copyWith(
+              schedulesIndex: index,
+              refreshingIndex: false,
+            ),
+          );
+        } catch (ex) {
+          if (kDebugMode) {
+            print("Could not get schedules index");
+            print(ex);
+          }
+          unflagLoadingScheduleIndex(emit);
+        }
+      },
+      transformer: restartable(),
+    );
+
     on<_UpdateSchedule>(
       (event, emit) async {
         final ScheduleKey key = (type: ScheduleType.schedule, id: event.id);
@@ -169,6 +220,33 @@ class ScheduleManagerBloc
     emit(
       state.copyWith(
         refreshing: Set.from(state.refreshing)..remove(key),
+      ),
+    );
+  }
+
+  void flagLoadingScheduleIndex(Emitter<ScheduleManagerState> emit) {
+    emit(
+      state.copyWith(
+        refreshingIndex: true,
+      ),
+    );
+  }
+
+  void unflagLoadingScheduleIndex(Emitter<ScheduleManagerState> emit) {
+    emit(
+      state.copyWith(
+        refreshingIndex: false,
+      ),
+    );
+  }
+
+  FutureOr<void> setIndex(
+    BaseScheduleCacheMap index,
+    Emitter<ScheduleManagerState> emit,
+  ) {
+    emit(
+      state.copyWith(
+        schedulesIndex: index,
       ),
     );
   }
