@@ -156,7 +156,7 @@ class _$InitImpl with DiagnosticableTreeMixin implements _Init {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitImpl);
   }
@@ -340,7 +340,7 @@ class _$SetIndexImpl with DiagnosticableTreeMixin implements _SetIndex {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetIndexImpl &&
@@ -514,7 +514,7 @@ class _$UpdateIndexImpl with DiagnosticableTreeMixin implements _UpdateIndex {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UpdateIndexImpl);
   }
@@ -701,7 +701,7 @@ class _$SetLecturerImpl with DiagnosticableTreeMixin implements _SetLecturer {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetLecturerImpl &&
@@ -894,7 +894,7 @@ class _$UpdateLecturerImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateLecturerImpl &&
@@ -1095,7 +1095,7 @@ class _$SetScheduleImpl with DiagnosticableTreeMixin implements _SetSchedule {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetScheduleImpl &&
@@ -1288,7 +1288,7 @@ class _$UpdateScheduleImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateScheduleImpl &&
@@ -1481,7 +1481,7 @@ class _$RemoveScheduleImpl
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveScheduleImpl &&
@@ -1654,7 +1654,7 @@ class _$ClearImpl with DiagnosticableTreeMixin implements _Clear {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ClearImpl);
   }
@@ -1961,7 +1961,7 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ScheduleManagerStateImpl &&
@@ -2170,7 +2170,7 @@ class _$ScheduleManagerHiveStateImpl extends _ScheduleManagerHiveState
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ScheduleManagerHiveStateImpl &&
