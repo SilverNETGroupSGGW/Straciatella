@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/generated/locale_keys.g.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/about_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/customization_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/debug_widgets_tile.dart';
@@ -19,22 +20,22 @@ class SettingsScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar.large(
-            title: Text('settings'.tr()),
+            title: Text(LocaleKeys.settings.tr()),
             expandedHeight: 196,
           ),
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                CategoryLabel(text: 'schedules'.tr()),
+                CategoryLabel(text: LocaleKeys.schedules.tr()),
                 const ManageSchedulesTile(),
-                CategoryLabel(text: 'preferences'.tr()),
+                CategoryLabel(text: LocaleKeys.preferences.tr()),
                 const CustomizationTile(),
                 const NotificationsTile(),
                 const LanguageTile(),
                 const ShowFabSwitchTile(),
-                CategoryLabel(text: 'debug'.tr()),
+                CategoryLabel(text: LocaleKeys.debug.tr()),
                 const DebugWidgetsTile(),
-                CategoryLabel(text: 'about'.tr()),
+                CategoryLabel(text: LocaleKeys.about.tr()),
                 const PrivacyPolicyTile(),
                 const AboutTile(),
               ],
