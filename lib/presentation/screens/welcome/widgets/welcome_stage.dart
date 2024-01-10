@@ -21,25 +21,29 @@ class WelcomeStage extends StatelessWidget {
     return FadeTransition(
       opacity: animationController,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           if (header != null)
             Expanded(
-              flex: 2,
+              flex: 4,
               child: header!,
             ),
           Expanded(
+            flex: 3,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.headlineLarge,
-                      textAlign: TextAlign.center,
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        title,
+                        style: Theme.of(context).textTheme.headlineLarge,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                    const SizedBox(height: 16.0),
                     Text(
                       desc,
                       style: Theme.of(context).textTheme.bodyLarge,
@@ -47,11 +51,7 @@ class WelcomeStage extends StatelessWidget {
                     ),
                   ],
                 ),
-                if (leading != null)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24.0),
-                    child: leading,
-                  ),
+                if (leading != null) leading!,
               ],
             ),
           ),
