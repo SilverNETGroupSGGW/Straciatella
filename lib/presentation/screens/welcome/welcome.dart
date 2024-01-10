@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/presentation/screens/welcome/widgets/page_dots.dart';
 import 'package:silvertimetable/presentation/screens/welcome/widgets/welcome_stage.dart';
 import 'package:silvertimetable/router.dart';
@@ -140,9 +138,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     setState(() {
                       currentPage = index;
                     });
-                    if (index == pages.length - 1) {
-                      context.read<SettingsCubit>().completeFirstRun();
-                    }
                   },
                 ),
               ),
