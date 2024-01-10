@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/constants.dart';
+import 'package:silvertimetable/generated/locale_keys.g.dart';
 
 class LanguageTile extends StatelessWidget {
   const LanguageTile({
@@ -10,8 +11,8 @@ class LanguageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text('language'.tr()),
-      subtitle: Text('language_desc'.tr()),
+      title: Text(LocaleKeys.language.tr()),
+      subtitle: Text(LocaleKeys.language_desc.tr()),
       onTap: () {
         showLanguageDialog(context);
       },
@@ -23,7 +24,7 @@ class LanguageTile extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog.adaptive(
         contentPadding: const EdgeInsets.symmetric(vertical: 24),
-        title: Text('language'.tr()),
+        title: Text(LocaleKeys.language.tr()),
         icon: const Icon(Icons.language),
         content: SingleChildScrollView(
           child: Column(

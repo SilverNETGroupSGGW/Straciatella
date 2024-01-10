@@ -3,6 +3,7 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:silvertimetable/generated/locale_keys.g.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 
 class AboutTile extends StatelessWidget {
@@ -23,7 +24,7 @@ class AboutTile extends StatelessWidget {
           applicationName: "appname".tr().capitalize,
           children: [
             Text(
-              'about_app_desc'.tr(),
+              LocaleKeys.about_app_desc.tr(),
               style: Theme.of(context).textTheme.titleSmall,
             ),
             const Divider(),
@@ -72,7 +73,7 @@ class DebugImageSwitch extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              '${'debug_mode_switched_to'.tr()}: ${state.isDebugMode}',
+              LocaleKeys.about.tr(),
             ),
             duration: const Duration(seconds: 2),
           ),

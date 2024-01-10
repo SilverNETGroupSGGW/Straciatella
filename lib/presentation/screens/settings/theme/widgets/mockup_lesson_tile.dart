@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/constants.dart';
+import 'package:silvertimetable/generated/locale_keys.g.dart';
 import 'package:silvertimetable/helpers.dart';
 import 'package:silvertimetable/presentation/screens/timetable/widgets/lesson_tile.dart';
 
@@ -42,7 +43,7 @@ class MockupLessonTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LessonTile(
-      name: 'lesson'.tr().capitalize,
+      name: LocaleKeys.lesson.tr().capitalize,
       classroom: _mockClassrooms.chooseOne(),
       lecturers: [_mockLecturers.chooseOne()],
       groups: _mockGroups.chooseMany(random.nextInt(4) + 1),
