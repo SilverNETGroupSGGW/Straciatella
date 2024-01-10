@@ -14,15 +14,19 @@ class LanguageTile extends StatelessWidget {
       title: Text(LocaleKeys.language.tr()),
       subtitle: Text(LocaleKeys.language_desc.tr()),
       onTap: () {
-        showLanguageDialog(context);
+        showLanguageDialog(context).then((locale) {
+          if (locale != null) {
+            context.setLocale(locale);
+          }
+        });
       },
     );
   }
 
-  Future<dynamic> showLanguageDialog(BuildContext context) {
-    return showAdaptiveDialog(
+  Future<Locale?> showLanguageDialog(BuildContext context) {
+    return showDialog<Locale>(
       context: context,
-      builder: (context) => AlertDialog.adaptive(
+      builder: (context) => AlertDialog(
         contentPadding: const EdgeInsets.symmetric(vertical: 24),
         title: Text(LocaleKeys.language.tr()),
         icon: const Icon(Icons.language),
@@ -30,16 +34,12 @@ class LanguageTile extends StatelessWidget {
           child: Column(
             children: [
               for (final locale in supportedLocale)
-                ListTile(
-                  leading: Radio(
-                    value: locale.locale,
-                    groupValue: context.locale,
-                    onChanged: (_) {},
-                  ),
+                RadioListTile(
+                  value: locale.locale,
+                  groupValue: context.locale,
                   title: Text(locale.name),
-                  onTap: () {
-                    context.setLocale(locale.locale);
-                    Navigator.pop(context);
+                  onChanged: (locale) {
+                    Navigator.pop(context, locale);
                   },
                 ),
             ],
