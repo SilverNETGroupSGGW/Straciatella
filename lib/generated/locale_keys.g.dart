@@ -26,8 +26,8 @@ abstract class  LocaleKeys {
   static const customization_stage_desc = 'customization_stage_desc';
   static const customization_stage_text = 'customization_stage_text';
   static const customize = 'customize';
+  static const ddefault = 'ddefault';
   static const debug = 'debug';
-  static const default = 'default';
   static const delete = 'delete';
   static const dynamic_colors = 'dynamic_colors';
   static const dynamic_colors_desc = 'dynamic_colors_desc';
