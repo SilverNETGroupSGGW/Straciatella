@@ -36,10 +36,6 @@ const List<String> _mockComments = [
 ];
 
 class MockupLessonTile extends StatelessWidget {
-  const MockupLessonTile({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return LessonTile(

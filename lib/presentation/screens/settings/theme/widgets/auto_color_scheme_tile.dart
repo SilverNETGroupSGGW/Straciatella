@@ -6,10 +6,6 @@ import 'package:silvertimetable/generated/locale_keys.g.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 
 class AutoColorSchemeTile extends StatelessWidget {
-  const AutoColorSchemeTile({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SettingsCubit, SettingsState>(

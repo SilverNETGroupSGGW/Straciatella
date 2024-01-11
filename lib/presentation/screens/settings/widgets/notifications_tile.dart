@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:silvertimetable/generated/locale_keys.g.dart';
 
 class NotificationsTile extends StatelessWidget {
-  const NotificationsTile({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return ListTile(

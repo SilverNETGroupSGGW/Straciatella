@@ -4,10 +4,6 @@ import 'package:silvertimetable/generated/locale_keys.g.dart';
 import 'package:silvertimetable/router.dart';
 
 class CustomizationTile extends StatelessWidget {
-  const CustomizationTile({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return ListTile(

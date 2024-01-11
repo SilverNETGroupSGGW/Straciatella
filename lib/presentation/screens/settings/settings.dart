@@ -12,8 +12,6 @@ import 'package:silvertimetable/presentation/screens/settings/widgets/show_fab_s
 import 'package:silvertimetable/presentation/widgets/category_label.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,17 +25,17 @@ class SettingsScreen extends StatelessWidget {
             delegate: SliverChildListDelegate(
               [
                 CategoryLabel(text: LocaleKeys.schedules.tr()),
-                const ManageSchedulesTile(),
+                ManageSchedulesTile(),
                 CategoryLabel(text: LocaleKeys.preferences.tr()),
-                const CustomizationTile(),
-                const NotificationsTile(),
-                const LanguageTile(),
-                const ShowFabSwitchTile(),
+                CustomizationTile(),
+                NotificationsTile(),
+                LanguageTile(),
+                ShowFabSwitchTile(),
                 CategoryLabel(text: LocaleKeys.debug.tr()),
-                const DebugWidgetsTile(),
+                DebugWidgetsTile(),
                 CategoryLabel(text: LocaleKeys.about.tr()),
-                const PrivacyPolicyTile(),
-                const AboutTile(),
+                PrivacyPolicyTile(),
+                AboutTile(),
               ],
             ),
           ),

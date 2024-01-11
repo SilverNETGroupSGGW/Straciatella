@@ -5,10 +5,6 @@ import 'package:silvertimetable/generated/locale_keys.g.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PrivacyPolicyTile extends StatelessWidget {
-  const PrivacyPolicyTile({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return ListTile(

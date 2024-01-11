@@ -24,8 +24,8 @@ class DebugScreen extends StatelessWidget {
             duration: Duration(minutes: 90),
             startTime: TimeOfDay(hour: 15, minute: 30),
           ),
-          const AutoThemeModeTile(),
-          const DarkThemeModeTile(),
+          AutoThemeModeTile(),
+          DarkThemeModeTile(),
           const ThemePicker(),
           TextButton(
             onPressed: () => Navigator.pushNamed(context, RouteNames.welcome),

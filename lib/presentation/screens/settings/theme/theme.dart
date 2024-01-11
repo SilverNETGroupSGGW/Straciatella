@@ -8,8 +8,6 @@ import 'package:silvertimetable/presentation/screens/settings/widgets/dark_theme
 import 'package:silvertimetable/presentation/widgets/category_label.dart';
 
 class ThemeScreen extends StatelessWidget {
-  const ThemeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +24,7 @@ class ThemeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 child: Transform.scale(
                   scale: 0.8,
-                  child: const Column(
+                  child: Column(
                     children: [
                       MockupLessonTile(),
                       MockupLessonTile(),
@@ -35,8 +33,8 @@ class ThemeScreen extends StatelessWidget {
                 ),
               ),
               CategoryLabel(text: LocaleKeys.theme.tr()),
-              const AutoThemeModeTile(),
-              const DarkThemeModeTile(),
+              AutoThemeModeTile(),
+              DarkThemeModeTile(),
               const Card(
                 child: Padding(
                   padding: EdgeInsets.all(8.0),

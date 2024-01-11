@@ -6,8 +6,6 @@ import 'package:silvertimetable/presentation/screens/welcome/widgets/welcome_sta
 import 'package:silvertimetable/router.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
-
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }

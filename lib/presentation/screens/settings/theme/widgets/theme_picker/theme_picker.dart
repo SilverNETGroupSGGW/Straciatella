@@ -49,8 +49,8 @@ class ThemePicker extends StatelessWidget {
               const Divider(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  RetroThemeTile(),
+                children: [
+                  const RetroThemeTile(),
                   if (!kIsWeb || kDebugMode) AdaptiveThemeTile(),
                 ],
               ),
