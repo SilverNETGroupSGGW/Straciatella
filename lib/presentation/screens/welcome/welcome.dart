@@ -1,12 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/generated/locale_keys.g.dart';
 import 'package:silvertimetable/presentation/screens/welcome/widgets/page_dots.dart';
 import 'package:silvertimetable/presentation/screens/welcome/widgets/welcome_stage.dart';
 import 'package:silvertimetable/router.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
-
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
@@ -45,8 +44,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           width: 200,
           height: 200,
         ),
-        title: 'welcome_stage_text'.tr(),
-        desc: 'welcome_stage_desc'.tr(),
+        title: LocaleKeys.welcome_stage_text.tr(),
+        desc: LocaleKeys.welcome_stage_desc.tr(),
       ),
       WelcomeStage(
         animationController: animationControllers[1].controller,
@@ -54,8 +53,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           Icons.search,
           size: iconSize,
         ),
-        title: 'schedules_stage_text'.tr(),
-        desc: 'schedules_stage_desc'.tr(),
+        title: LocaleKeys.schedules_stage_text.tr(),
+        desc: LocaleKeys.schedules_stage_desc.tr(),
       ),
       WelcomeStage(
         animationController: animationControllers[2].controller,
@@ -64,13 +63,13 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           Icons.notifications,
           size: iconSize,
         ),
-        title: 'notifications_stage_text'.tr(),
-        desc: 'notifications_stage_desc'.tr(),
+        title: LocaleKeys.notifications_stage_text.tr(),
+        desc: LocaleKeys.notifications_stage_desc.tr(),
         leading: FilledButton(
           onPressed: () {
             // TODO: Ask for notification permission
           },
-          child: Text('allow_notifications'.tr()),
+          child: Text(LocaleKeys.allow_notifications.tr()),
         ),
       ),
       WelcomeStage(
@@ -79,8 +78,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           Icons.map,
           size: iconSize,
         ),
-        title: 'map_stage_text'.tr(),
-        desc: 'map_stage_desc'.tr(),
+        title: LocaleKeys.map_stage_text.tr(),
+        desc: LocaleKeys.map_stage_desc.tr(),
       ),
       WelcomeStage(
         animationController: animationControllers[4].controller,
@@ -88,14 +87,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           Icons.palette,
           size: iconSize,
         ),
-        title: 'customization_stage_text'.tr(),
-        desc: 'customization_stage_desc'.tr(),
+        title: LocaleKeys.customization_stage_text.tr(),
+        desc: LocaleKeys.customization_stage_desc.tr(),
         leading: FilledButton(
           onPressed: () {
             // TODO: Navigate to theme screen instead of settings
             Navigator.of(context).pushNamed(RouteNames.settings);
           },
-          child: Text('customize'.tr()),
+          child: Text(LocaleKeys.customize.tr()),
         ),
       ),
       WelcomeStage(
@@ -104,8 +103,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           Icons.favorite,
           size: iconSize,
         ),
-        title: 'final_stage_text'.tr(),
-        desc: 'final_stage_desc'.tr(),
+        title: LocaleKeys.final_stage_text.tr(),
+        desc: LocaleKeys.final_stage_desc.tr(),
       ),
     ];
 

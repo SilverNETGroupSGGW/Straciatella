@@ -6,14 +6,12 @@ import 'package:silvertimetable/presentation/screens/settings/theme/theme.dart';
 import 'package:silvertimetable/presentation/screens/timetable/timetable.dart';
 import 'package:silvertimetable/presentation/screens/welcome/welcome.dart';
 
-
 sealed class RouteNames {
   static const timeline = "/";
   static const settings = "/settings";
   static const debug = "/debug";
   static const welcome = "/welcome";
   static const theme = "/settings/theme";
-
 }
 
 class AppRouter {
@@ -30,10 +28,10 @@ class AppRouter {
       pageBuilder: (context, animation, secondaryAnimation) {
         return switch (settings.name) {
           RouteNames.timeline => const TimetableScreen(),
-          RouteNames.settings => const SettingsScreen(),
+          RouteNames.settings => SettingsScreen(),
           RouteNames.debug => const DebugScreen(),
-          RouteNames.welcome => const WelcomeScreen(),
-          RouteNames.theme => const ThemeScreen(),
+          RouteNames.welcome => WelcomeScreen(),
+          RouteNames.theme => ThemeScreen(),
           _ => const RouteNotFoundScreen(),
         };
       },
