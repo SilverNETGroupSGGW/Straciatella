@@ -6,8 +6,6 @@ import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/presentation/builders/platform_brightness_builder.dart';
 
 class DarkThemeModeTile extends StatelessWidget {
-  const DarkThemeModeTile({super.key});
-
   void onChanged(bool value, BuildContext context) {
     context.read<SettingsCubit>().changeThemeMode(
           value ? ThemeMode.dark : ThemeMode.light,

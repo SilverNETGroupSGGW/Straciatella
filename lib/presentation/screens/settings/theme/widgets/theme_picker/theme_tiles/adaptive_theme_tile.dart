@@ -7,8 +7,6 @@ import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/widgets/theme_picker/theme_tiles/theme_tile.dart';
 
 class AdaptiveThemeTile extends StatelessWidget {
-  const AdaptiveThemeTile({super.key});
-
   bool _isThisThemeType(SettingsState settings) {
     return settings.themeType == ThemeType.adaptive;
   }

@@ -4,10 +4,6 @@ import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/generated/locale_keys.g.dart';
 
 class LanguageTile extends StatelessWidget {
-  const LanguageTile({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return ListTile(

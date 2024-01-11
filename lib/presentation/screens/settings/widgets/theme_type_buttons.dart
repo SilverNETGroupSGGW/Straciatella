@@ -5,7 +5,8 @@ import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 
 class ThemeTypeButtons extends StatelessWidget {
-  const ThemeTypeButtons({
+  // ignore: prefer_const_constructors_in_immutables
+  ThemeTypeButtons({
     super.key,
     required this.selected,
   });
