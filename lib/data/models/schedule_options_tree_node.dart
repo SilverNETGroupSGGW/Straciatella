@@ -8,11 +8,20 @@ import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 /// [options] holds all the options that can be chosen where:
 ///   key is a value of chosen option
 ///   value is usually another OptionsTreeNode or if this node is a leaf it is null
-class OptionsTreeNode<K, V> {
+class OptionsTreeNode<OptionValueType> {
   final String name;
-  late final SplayTreeMap<K, V> options;
-  OptionsTreeNode(this.name, [SplayTreeMap<K, V>? options]) {
+  late final SplayTreeMap<OptionValueType, OptionsTreeNode?> options;
+  OptionsTreeNode(
+    this.name, [
+    SplayTreeMap<OptionValueType, OptionsTreeNode?>? options,
+  ]) {
     this.options = options ?? SplayTreeMap();
+  }
+
+  @override
+  String toString([int tabs = 0]) {
+    final t = List.filled(tabs, " ").join();
+    return "$name: {\n$t ${options.entries.map((option) => "${option.key} --> ${option.value?.toString(tabs + 1)}").join(",\n$t ")}\n$t}";
   }
 }
 
@@ -40,7 +49,6 @@ void _addScheduleOptionsToTree(
   int level = 0,
 ]) {
   final levelsCount = ScheduleOptionsLevels.values.length;
-  if (level >= levelsCount) return;
 
   final levelValue = switch (ScheduleOptionsLevels.values[level]) {
     ScheduleOptionsLevels.faculty => schedule.faculty,
@@ -57,9 +65,11 @@ void _addScheduleOptionsToTree(
         ? OptionsTreeNode(ScheduleOptionsLevels.values[level + 1].name)
         : null,
   );
+
+  if (root.options[levelValue] == null) return;
   _addScheduleOptionsToTree(
     schedule,
-    root.options[levelValue] as OptionsTreeNode,
+    root.options[levelValue]!,
     level + 1,
   );
 }
