@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 
 /// Represents one node in a tree of options to choose\
@@ -25,6 +26,7 @@ class OptionsTreeNode<OptionValueType> {
   }
 }
 
+// ---------SCHEDULE TREE-----------
 enum ScheduleOptionsLevels {
   // academiYear,
   faculty,
@@ -69,6 +71,49 @@ void _addScheduleOptionsToTree(
   if (root.options[levelValue] == null) return;
   _addScheduleOptionsToTree(
     schedule,
+    root.options[levelValue]!,
+    level + 1,
+  );
+}
+
+// ---------LECTURER TREE-----------
+enum LecturerOptionsLevels {
+  // academiYear,
+  fullname,
+  id,
+}
+
+OptionsTreeNode createLecturerOptionsTree(Iterable<LecturerBase> lecturers) {
+  final root = OptionsTreeNode(LecturerOptionsLevels.values.first.name);
+  for (final lecturer in lecturers) {
+    _addLecturerOptionsToTree(lecturer, root);
+  }
+  return root;
+}
+
+void _addLecturerOptionsToTree(
+  LecturerBase lecturer,
+  OptionsTreeNode root, [
+  int level = 0,
+]) {
+  final levelsCount = LecturerOptionsLevels.values.length;
+
+  final levelValue = switch (LecturerOptionsLevels.values[level]) {
+    LecturerOptionsLevels.fullname =>
+      "${lecturer.firstName} ${lecturer.surname}",
+    LecturerOptionsLevels.id => lecturer.id,
+  };
+
+  root.options.putIfAbsent(
+    levelValue,
+    () => level < levelsCount - 1
+        ? OptionsTreeNode(LecturerOptionsLevels.values[level + 1].name)
+        : null,
+  );
+
+  if (root.options[levelValue] == null) return;
+  _addLecturerOptionsToTree(
+    lecturer,
     root.options[levelValue]!,
     level + 1,
   );

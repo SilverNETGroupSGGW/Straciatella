@@ -2,6 +2,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:silvertimetable/data/fakes/sggw_hub_repo_fake.dart';
+import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/models/schedule_options_tree_node.dart';
 
@@ -10,6 +11,14 @@ void main() {
     final index = await FakeSggwHubRepo().getSchedulesIndex();
     final schedules = index.whereType<ScheduleBase>();
     final treeRoot = createScheduleOptionsTree(schedules);
+
+    print(treeRoot);
+  });
+
+  test("Prints a tree from fake lecturers", () async {
+    final index = await FakeSggwHubRepo().getSchedulesIndex();
+    final lecturers = index.whereType<LecturerBase>();
+    final treeRoot = createLecturerOptionsTree(lecturers);
 
     print(treeRoot);
   });
