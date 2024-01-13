@@ -1,7 +1,9 @@
 import 'dart:collection';
-
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
+
+part 'schedule_options_tree_node.freezed.dart';
 
 /// Represents one node in a tree of options to choose\
 ///
@@ -19,10 +21,25 @@ class OptionsTreeNode<OptionValueType> {
     this.options = options ?? SplayTreeMap();
   }
 
+  bool get isLeaf {
+    return options.length == 1 && options.entries.first.value == null;
+  }
+
+  OptionValueType? get leafValue {
+    if (isLeaf) {
+      return options.entries.first.key;
+    }
+    return null;
+  }
+
   @override
   String toString([int tabs = 0]) {
     final t = List.filled(tabs, " ").join();
-    return "$name: {\n$t ${options.entries.map((option) => "${option.key} --> ${option.value?.toString(tabs + 1)}").join(",\n$t ")}\n$t}";
+    final optionsStr = leafValue ??
+        "{\n$t ${options.entries.map(
+              (o) => "${o.key} --> ${o.value?.toString(tabs + 1)}",
+            ).join(",\n$t ")}\n$t}";
+    return "$name: $optionsStr";
   }
 }
 
@@ -53,6 +70,7 @@ void _addScheduleOptionsToTree(
   final levelsCount = ScheduleOptionsLevels.values.length;
 
   final levelValue = switch (ScheduleOptionsLevels.values[level]) {
+    // ScheduleOptionsLevels.academiYear => schedule.academiYear,
     ScheduleOptionsLevels.faculty => schedule.faculty,
     ScheduleOptionsLevels.fieldOfStudy => schedule.fieldOfStudy,
     ScheduleOptionsLevels.studyMode => schedule.studyMode,
@@ -78,9 +96,35 @@ void _addScheduleOptionsToTree(
 
 // ---------LECTURER TREE-----------
 enum LecturerOptionsLevels {
-  // academiYear,
   fullname,
   id,
+}
+
+@freezed
+class _LecturerFullNameValue
+    with _$LecturerFullNameValue
+    implements Comparable<_LecturerFullNameValue> {
+  factory _LecturerFullNameValue({
+    required String firstName,
+    required String surname,
+    required String academicDegree,
+  }) = __LecturerFullNameValue;
+  _LecturerFullNameValue._();
+
+  @override
+  int compareTo(_LecturerFullNameValue other) {
+    final cmpFirstName = firstName.compareTo(other.firstName);
+    if (cmpFirstName != 0) return cmpFirstName;
+    final cmpSurname = surname.compareTo(other.surname);
+    if (cmpSurname != 0) return cmpSurname;
+
+    return academicDegree.compareTo(other.academicDegree);
+  }
+
+  @override
+  String toString() {
+    return "$academicDegree $firstName $surname";
+  }
 }
 
 OptionsTreeNode createLecturerOptionsTree(Iterable<LecturerBase> lecturers) {
@@ -99,8 +143,11 @@ void _addLecturerOptionsToTree(
   final levelsCount = LecturerOptionsLevels.values.length;
 
   final levelValue = switch (LecturerOptionsLevels.values[level]) {
-    LecturerOptionsLevels.fullname =>
-      "${lecturer.firstName} ${lecturer.surname}",
+    LecturerOptionsLevels.fullname => _LecturerFullNameValue(
+        firstName: lecturer.firstName,
+        surname: lecturer.surname,
+        academicDegree: lecturer.academicDegree,
+      ),
     LecturerOptionsLevels.id => lecturer.id,
   };
 
