@@ -10,7 +10,7 @@ class AutoColorSchemeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SettingsCubit, SettingsState>(
       builder: (context, state) {
-        return SwitchListTile.adaptive(
+        return SwitchListTile(
           value: state.themeType == ThemeType.adaptive,
           title: Text(LocaleKeys.dynamic_colors.tr()),
           subtitle: Text(LocaleKeys.dynamic_colors_desc.tr()),

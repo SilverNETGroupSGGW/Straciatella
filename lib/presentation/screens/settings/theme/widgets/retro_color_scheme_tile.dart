@@ -10,7 +10,7 @@ class RetroColorSchemeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SettingsCubit, SettingsState>(
       builder: (context, state) {
-        return SwitchListTile.adaptive(
+        return SwitchListTile(
           value: state.themeType == ThemeType.retro,
           title: Text(LocaleKeys.retro_colors.tr()),
           subtitle: Text(LocaleKeys.retro_colors_desc.tr()),
