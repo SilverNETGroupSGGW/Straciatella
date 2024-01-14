@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/presentation/screens/welcome/widgets/welcome_text.dart';
 
 class WelcomeStage extends StatelessWidget {
   const WelcomeStage({
@@ -21,40 +22,24 @@ class WelcomeStage extends StatelessWidget {
     return FadeTransition(
       opacity: animationController,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          if (header != null)
-            Expanded(
-              flex: 4,
-              child: header!,
-            ),
-          Expanded(
-            flex: 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        title,
-                        style: Theme.of(context).textTheme.headlineLarge,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Text(
-                      desc,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-                if (leading != null) leading!,
-              ],
-            ),
+          const Spacer(flex: 5),
+          if (header != null) header!,
+          const Spacer(flex: 2),
+          WelcomeText(
+            title: title,
+            textStyle: Theme.of(context).textTheme.headlineLarge,
           ),
+          const SizedBox(
+            height: 30,
+          ),
+          WelcomeText(
+            title: desc,
+            textStyle: Theme.of(context).textTheme.bodyLarge,
+          ),
+          const Spacer(),
+          if (leading != null) leading!,
+          const Spacer(),
         ],
       ),
     );
