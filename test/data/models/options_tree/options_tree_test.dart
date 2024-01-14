@@ -3,8 +3,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:silvertimetable/data/fakes/sggw_hub_repo_fake.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
+import 'package:silvertimetable/data/models/options_tree/lecturers_tree.dart';
+import 'package:silvertimetable/data/models/options_tree/schedules_tree.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
-import 'package:silvertimetable/data/models/schedule_options_tree_node.dart';
 
 void main() {
   test("Prints a tree from fake schedules", () async {
