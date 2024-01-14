@@ -28,7 +28,7 @@ class DarkThemeModeTile extends StatelessWidget {
               ThemeMode.light => (enabled: true, isDark: false),
             };
 
-            return SwitchListTile.adaptive(
+            return SwitchListTile(
               title: Text(LocaleKeys.theme_dark.tr()),
               subtitle: Text(LocaleKeys.theme_dark_desc.tr()),
               onChanged: switchState.enabled

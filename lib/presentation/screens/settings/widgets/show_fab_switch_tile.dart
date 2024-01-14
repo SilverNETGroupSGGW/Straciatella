@@ -9,7 +9,7 @@ class ShowFabSwitchTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SettingsCubit, SettingsState>(
       builder: (context, state) {
-        return SwitchListTile.adaptive(
+        return SwitchListTile(
           value: state.isFabHidden,
           title: Text(LocaleKeys.hide_fab.tr()),
           subtitle: Text(LocaleKeys.hide_fab_desc.tr()),
