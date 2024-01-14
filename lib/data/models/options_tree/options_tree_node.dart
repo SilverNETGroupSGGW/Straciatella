@@ -28,6 +28,22 @@ class OptionsTreeNode<OptionValueType> {
   }
 
   @override
+  bool operator ==(Object other) {
+    if (other is! OptionsTreeNode) return false;
+    if (name != other.name) return false;
+    if (options.length != other.options.length) return false;
+
+    return !other.options.entries.any(
+      (element) =>
+          !options.containsKey(element.key) ||
+          options[element.key] != element.value,
+    );
+  }
+
+  @override
+  int get hashCode => name.hashCode;
+
+  @override
   String toString([int tabs = 0]) {
     final t = List.filled(tabs, " ").join();
     final optionsStr = leafValue ??
