@@ -10,6 +10,8 @@ class ScheduleManagerState with _$ScheduleManagerState {
     @Default({}) BaseScheduleCacheMap schedulesIndex,
     @Default(false) bool refreshingIndex,
     @Default({}) Set<ScheduleKey> refreshing,
+    OptionsTreeNode? schedulesOptionsTree,
+    OptionsTreeNode? lecturersOptionsTree,
   }) = _ScheduleManagerState;
   ScheduleManagerState._();
 
@@ -41,6 +43,12 @@ class ScheduleManagerHiveState with _$ScheduleManagerHiveState {
     return ScheduleManagerState(
       schedules: schedules,
       schedulesIndex: schedulesIndex,
+      lecturersOptionsTree: createLecturerOptionsTree(
+        schedulesIndex.values.whereType<LecturerBase>(),
+      ),
+      schedulesOptionsTree: createScheduleOptionsTree(
+        schedulesIndex.values.whereType<ScheduleBase>(),
+      ),
     );
   }
 }

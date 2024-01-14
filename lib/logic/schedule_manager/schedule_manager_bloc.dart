@@ -10,6 +10,9 @@ import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
+import 'package:silvertimetable/data/models/options_tree/lecturers_tree.dart';
+import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
+import 'package:silvertimetable/data/models/options_tree/schedules_tree.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
@@ -100,6 +103,12 @@ class ScheduleManagerBloc
             state.copyWith(
               schedulesIndex: index,
               refreshingIndex: false,
+              lecturersOptionsTree: createLecturerOptionsTree(
+                index.values.whereType<LecturerBase>(),
+              ),
+              schedulesOptionsTree: createScheduleOptionsTree(
+                index.values.whereType<ScheduleBase>(),
+              ),
             ),
           );
         } catch (ex) {
@@ -247,6 +256,12 @@ class ScheduleManagerBloc
     emit(
       state.copyWith(
         schedulesIndex: index,
+        lecturersOptionsTree: createLecturerOptionsTree(
+          index.values.whereType<LecturerBase>(),
+        ),
+        schedulesOptionsTree: createScheduleOptionsTree(
+          index.values.whereType<ScheduleBase>(),
+        ),
       ),
     );
   }
