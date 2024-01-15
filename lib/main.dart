@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/register_adapters.dart';
 import 'package:silvertimetable/logic/register_adapters.dart';
@@ -65,6 +66,19 @@ class _MainAppState extends State<MainApp> {
                 localizationsDelegates: context.localizationDelegates,
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,
+                builder: (context, child) => ResponsiveBreakpoints.builder(
+                  child: child!,
+                  breakpoints: [
+                    const Breakpoint(start: 0, end: 450, name: MOBILE),
+                    const Breakpoint(start: 451, end: 800, name: TABLET),
+                    const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+                    const Breakpoint(
+                      start: 1921,
+                      end: double.infinity,
+                      name: '4K',
+                    ),
+                  ],
+                ),
                 onGenerateRoute: _appRouter.onGenerateRoute,
                 initialRoute: settings.isFirstRun
                     ? RouteNames.welcome
