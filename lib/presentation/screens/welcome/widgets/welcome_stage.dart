@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/presentation/screens/welcome/widgets/welcome_text.dart';
 
 class WelcomeStage extends StatelessWidget {
   const WelcomeStage({
@@ -21,40 +22,24 @@ class WelcomeStage extends StatelessWidget {
     return FadeTransition(
       opacity: animationController,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (header != null)
-            Expanded(
-              flex: 2,
-              child: header!,
-            ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.headlineLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 16.0),
-                    Text(
-                      desc,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-                if (leading != null)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24.0),
-                    child: leading,
-                  ),
-              ],
-            ),
+          const Spacer(flex: 5),
+          if (header != null) header!,
+          const Spacer(flex: 2),
+          WelcomeText(
+            title: title,
+            textStyle: Theme.of(context).textTheme.headlineLarge,
           ),
+          const SizedBox(
+            height: 30,
+          ),
+          WelcomeText(
+            title: desc,
+            textStyle: Theme.of(context).textTheme.bodyLarge,
+          ),
+          const Spacer(),
+          if (leading != null) leading!,
+          const Spacer(),
         ],
       ),
     );
