@@ -16,20 +16,25 @@ class _CalendarPageViewState extends State<CalendarPageView> {
   Widget build(BuildContext context) {
     return BlocListener<CalendarPageCubit, CalendarPageCubitState>(
       listener: (context, state) {
-        if (state.invoker == this) return;
-
-        _pageController.animateToPage(
-          state.page,
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.decelerate,
-        );
+        if (state.invoker != this) {
+          _pageController.position.correctPixels(state.pixels);
+          _pageController.position.notifyListeners();
+        }
       },
-      child: PageView.builder(
-        controller: _pageController,
-        onPageChanged: (page) =>
-            context.read<CalendarPageCubit>().setPage(page, this),
-        itemBuilder: (_, page) => Center(
-          child: Text("Date: $page"),
+      child: NotificationListener(
+        onNotification: (notif) {
+          if (notif is ScrollUpdateNotification) {
+            context
+                .read<CalendarPageCubit>()
+                .setPixels(_pageController.position.pixels, this);
+          }
+          return false;
+        },
+        child: PageView.builder(
+          controller: _pageController,
+          itemBuilder: (_, page) => Center(
+            child: Text("View: $page"),
+          ),
         ),
       ),
     );

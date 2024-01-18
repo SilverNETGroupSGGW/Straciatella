@@ -14,7 +14,7 @@ class CalendarPagePicker extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CalendarPagePickerState extends State<CalendarPagePicker> {
-  final _pageController = PageController();
+  final _pageController = PageController(viewportFraction: 0.2);
 
   @override
   Widget build(BuildContext context) {
@@ -22,20 +22,28 @@ class _CalendarPagePickerState extends State<CalendarPagePicker> {
       constraints: BoxConstraints(maxHeight: widget.preferredSize.height),
       child: BlocListener<CalendarPageCubit, CalendarPageCubitState>(
         listener: (context, state) {
-          if (state.invoker == this) return;
-
-          _pageController.animateToPage(
-            state.page,
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.decelerate,
-          );
+          if (state.invoker != this) {
+            _pageController.position
+                .correctPixels(state.pixels * _pageController.viewportFraction);
+            _pageController.position.notifyListeners();
+          }
         },
-        child: PageView.builder(
-          controller: _pageController,
-          onPageChanged: (page) =>
-              context.read<CalendarPageCubit>().setPage(page, this),
-          itemBuilder: (_, page) => Center(
-            child: Text("Date: $page"),
+        child: NotificationListener(
+          onNotification: (notif) {
+            if (notif is ScrollUpdateNotification) {
+              context.read<CalendarPageCubit>().setPixels(
+                    _pageController.position.pixels /
+                        _pageController.viewportFraction,
+                    this,
+                  );
+            }
+            return false;
+          },
+          child: PageView.builder(
+            controller: _pageController,
+            itemBuilder: (_, page) => Center(
+              child: Text("Date: $page"),
+            ),
           ),
         ),
       ),
