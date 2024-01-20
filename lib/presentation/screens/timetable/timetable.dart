@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/presentation/screens/timetable/widgets/timetable_fab.dart';
-import 'package:silvertimetable/presentation/widgets/calendar_page_view/calendar_page_controller.dart';
+import 'package:silvertimetable/presentation/widgets/calendar_page_view/calendar_page_cubit.dart';
 import 'package:silvertimetable/presentation/widgets/calendar_page_view/calendar_page_picker.dart';
 import 'package:silvertimetable/presentation/widgets/calendar_page_view/calendar_page_view.dart';
 import 'package:silvertimetable/router.dart';
@@ -12,8 +12,7 @@ class TimetableScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement adaptive scaffold
-    return CalendarPageController(
+    return CalendarPageCubitProvider(
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Timetable"),
