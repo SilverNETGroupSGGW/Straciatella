@@ -36,3 +36,9 @@ extension ListExt<T> on List<T> {
     return reservoir;
   }
 }
+
+extension NumExt on num {
+  bool inBounds(num min, num max) {
+    return this <= max && this >= min;
+  }
+}

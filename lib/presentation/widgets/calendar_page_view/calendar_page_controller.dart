@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/presentation/widgets/calendar_page_view/calendar_page_cubit.dart';
 
 class CalendarPageControler extends StatefulWidget {
-  final double viewportFraction;
+  final PageController? controller;
   final Widget Function(BuildContext context, PageController controller)
       builder;
 
   const CalendarPageControler({
     super.key,
-    this.viewportFraction = 1,
+    this.controller,
     required this.builder,
   });
 
@@ -18,9 +18,8 @@ class CalendarPageControler extends StatefulWidget {
 }
 
 class _CalendarPageControlerState extends State<CalendarPageControler> {
-  late final _pageController = PageController(
-    viewportFraction: widget.viewportFraction,
-  );
+  late final PageController _pageController =
+      widget.controller ?? PageController();
 
   @override
   Widget build(BuildContext context) {

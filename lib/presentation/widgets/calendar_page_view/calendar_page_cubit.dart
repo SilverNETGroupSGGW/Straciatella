@@ -5,7 +5,7 @@ typedef CalendarPageCubitState = ({double pixels, Object? invoker});
 
 class CalendarPageCubit extends Cubit<CalendarPageCubitState> {
   CalendarPageCubit([
-    super.initialPage = (pixels: 0, invoker: null),
+    super.initial = (pixels: 0, invoker: null),
   ]);
 
   void setPixels(double pixels, Object invoker) =>
