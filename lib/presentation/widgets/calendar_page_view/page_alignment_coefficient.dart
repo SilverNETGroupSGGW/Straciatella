@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:silvertimetable/helpers.dart';
 
-class IsAlignedPage extends StatefulWidget {
+class PageAlignmentCoefficient extends StatefulWidget {
   final PageController pageController;
   final int page;
   final double error;
-  final Widget Function(BuildContext context, bool isAligned) builder;
-  const IsAlignedPage({
+  final Widget Function(BuildContext context, double coefficient) builder;
+  const PageAlignmentCoefficient({
     super.key,
     required this.pageController,
     required this.page,
@@ -15,10 +15,11 @@ class IsAlignedPage extends StatefulWidget {
   });
 
   @override
-  State<IsAlignedPage> createState() => _IsAlignedPageState();
+  State<PageAlignmentCoefficient> createState() =>
+      _PageAlignmentCoefficientState();
 }
 
-class _IsAlignedPageState extends State<IsAlignedPage> {
+class _PageAlignmentCoefficientState extends State<PageAlignmentCoefficient> {
   double? page;
 
   void setPage() {
@@ -35,9 +36,11 @@ class _IsAlignedPageState extends State<IsAlignedPage> {
 
   @override
   Widget build(BuildContext context) {
-    final bool isAligned =
-        ((page ?? 0) - widget.page).inBounds(-widget.error, widget.error);
-    return widget.builder(context, isAligned);
+    const curve = Curves.easeOut;
+    final coe = (page ?? 0).alignmentCoe(widget.page.toDouble(), widget.error);
+
+    final t = curve.transform(coe);
+    return widget.builder(context, t);
   }
 
   @override

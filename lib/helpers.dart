@@ -41,4 +41,10 @@ extension NumExt on num {
   bool inBounds(num min, num max) {
     return this <= max && this >= min;
   }
+
+  double alignmentCoe(double center, double error) {
+    final distance = (this - center).abs();
+
+    return error != 0 ? max(0, 1 - distance / error) : 0;
+  }
 }

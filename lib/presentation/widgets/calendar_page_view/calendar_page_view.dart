@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/presentation/widgets/calendar_page_view/calendar_page_controller.dart';
-import 'package:silvertimetable/presentation/widgets/calendar_page_view/is_aligned_page.dart';
+import 'package:silvertimetable/presentation/widgets/calendar_page_view/page_alignment_coefficient.dart';
 
 class CalendarPageView extends StatelessWidget {
   const CalendarPageView({super.key});
@@ -15,11 +15,11 @@ class CalendarPageView extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text("View: $page"),
-              IsAlignedPage(
+              PageAlignmentCoefficient(
                 pageController: controller,
                 page: page,
                 error: 0.1,
-                builder: (context, isAligned) => isAligned
+                builder: (context, coefficient) => coefficient > 0
                     ? const Text(
                         "IS ALIGNED",
                         style: TextStyle(
