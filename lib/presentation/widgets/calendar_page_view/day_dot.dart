@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:silvertimetable/presentation/widgets/calendar_page_view/calendar_page_picker.dart';
+import 'package:silvertimetable/helpers.dart';
 
 class DayDot extends StatelessWidget {
   final DateTime date;
@@ -24,7 +24,7 @@ class DayDot extends StatelessWidget {
         _ => Colors.white,
       };
 
-  double _getOpacity() => switch ((hasEvents, date.isBefore(today))) {
+  double _getOpacity() => switch ((hasEvents, date.isBefore(today()))) {
         (_, true) => 0.1,
         (false, false) => 0.3,
         (true, false) => 1,

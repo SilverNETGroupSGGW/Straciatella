@@ -48,3 +48,12 @@ extension NumExt on num {
     return error != 0 ? max(0, 1 - distance / error) : 0;
   }
 }
+
+DateTime today() {
+  final dateTimeNow = DateTime.now();
+  return DateTime(
+    dateTimeNow.year,
+    dateTimeNow.month,
+    dateTimeNow.day,
+  );
+}

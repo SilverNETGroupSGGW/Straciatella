@@ -12,6 +12,9 @@ class TimetableScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final firstDay = DateTime.now().subtract(const Duration(days: 7));
+    final lastDay = DateTime.now().add(const Duration(days: 14));
+
     return CalendarPageCubitProvider(
       child: Scaffold(
         appBar: AppBar(
@@ -23,7 +26,10 @@ class TimetableScreen extends StatelessWidget {
               icon: const Icon(Icons.settings),
             ),
           ],
-          bottom: const CalendarPagePicker(),
+          bottom: CalendarPagePicker(
+            firstDay: firstDay,
+            lastDay: lastDay,
+          ),
         ),
         floatingActionButton: BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, state) {
@@ -33,7 +39,10 @@ class TimetableScreen extends StatelessWidget {
                 : const SizedBox.shrink();
           },
         ),
-        body: const CalendarPageView(),
+        body: CalendarPageView(
+          firstDay: firstDay,
+          lastDay: lastDay,
+        ),
       ),
     );
   }

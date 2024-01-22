@@ -1,16 +1,27 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/helpers.dart';
 import 'package:silvertimetable/presentation/widgets/calendar_page_view/calendar_page_controller.dart';
 import 'package:silvertimetable/presentation/widgets/calendar_page_view/day_dot.dart';
 import 'package:silvertimetable/presentation/widgets/calendar_page_view/page_alignment_coefficient.dart';
 
-final dateTimeNow = DateTime.now();
-final today = DateTime(dateTimeNow.year, dateTimeNow.month, dateTimeNow.day);
-
 class CalendarPagePicker extends StatelessWidget
     implements PreferredSizeWidget {
-  const CalendarPagePicker({super.key});
+  late final DateTime firstDay;
+  late final DateTime lastDay;
+
+  CalendarPagePicker({
+    super.key,
+    required DateTime firstDay,
+    required DateTime lastDay,
+  }) {
+    this.firstDay = DateTime(firstDay.year, firstDay.month, firstDay.day);
+    this.lastDay = DateTime(lastDay.year, lastDay.month, lastDay.day);
+    assert(
+      this.firstDay.isBefore(this.lastDay) || this.firstDay == this.lastDay,
+    );
+  }
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
@@ -19,28 +30,38 @@ class CalendarPagePicker extends StatelessWidget
   Widget build(BuildContext context) {
     final fontSize = Theme.of(context).textTheme.bodyMedium!.fontSize!;
     const textExtraMargin = 6;
+    final dateLabelHeight = fontSize + textExtraMargin;
+    final dotsHeight = preferredSize.height - dateLabelHeight;
+    final viewportFraction =
+        preferredSize.height / MediaQuery.of(context).size.width;
+
+    final pagesCount = lastDay.difference(firstDay).inDays + 1;
+    final initialPage =
+        today().difference(firstDay).inDays.clamp(0, pagesCount - 1);
 
     return Column(
       children: [
         ConstrainedBox(
           constraints: BoxConstraints(
-            maxHeight: preferredSize.height - fontSize - textExtraMargin,
+            maxHeight: dotsHeight,
           ),
           child: CalendarPageControler(
             controller: PageController(
-              viewportFraction: 1 / (MediaQuery.of(context).size.width / 60),
+              viewportFraction: viewportFraction,
+              initialPage: initialPage,
             ),
             builder: (context, controller) => PageView.builder(
               physics: const BouncingScrollPhysics(),
               padEnds: false,
               controller: controller,
+              itemCount: pagesCount,
               itemBuilder: (_, page) => Center(
                 child: PageAlignmentCoefficient(
                   pageController: controller,
                   page: page,
                   error: 0.8,
                   builder: (context, coefficient) => DayDot(
-                    date: today.add(Duration(days: page)),
+                    date: firstDay.add(Duration(days: page)),
                     t: coefficient,
                     onTap: () => controller.animateToPage(
                       page,
@@ -54,14 +75,19 @@ class CalendarPagePicker extends StatelessWidget
           ),
         ),
         ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: fontSize + textExtraMargin),
+          constraints: BoxConstraints(
+            maxHeight: dateLabelHeight,
+          ),
           child: CalendarPageControler(
+            controller: PageController(
+              initialPage: initialPage,
+            ),
             builder: (context, controller) => PageView.builder(
               physics: const NeverScrollableScrollPhysics(),
               padEnds: false,
               controller: controller,
+              itemCount: pagesCount,
               itemBuilder: (_, page) {
-                final date = today.add(Duration(days: page));
                 return PageAlignmentCoefficient(
                   pageController: controller,
                   page: page,
@@ -72,7 +98,7 @@ class CalendarPagePicker extends StatelessWidget
                       vertical: 2,
                     ),
                     child: _DateLabel(
-                      date: date,
+                      date: firstDay.add(Duration(days: page)),
                       opacity: coefficient,
                     ),
                   ),

@@ -37,7 +37,8 @@ class _PageAlignmentCoefficientState extends State<PageAlignmentCoefficient> {
   @override
   Widget build(BuildContext context) {
     const curve = Curves.easeOut;
-    final coe = (page ?? 0).alignmentCoe(widget.page.toDouble(), widget.error);
+    final coe = (page ?? widget.pageController.initialPage)
+        .alignmentCoe(widget.page.toDouble(), widget.error);
 
     final t = curve.transform(coe);
     return widget.builder(context, t);
