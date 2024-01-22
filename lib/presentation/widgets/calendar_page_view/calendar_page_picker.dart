@@ -10,6 +10,8 @@ final today = DateTime(dateTimeNow.year, dateTimeNow.month, dateTimeNow.day);
 
 class CalendarPagePicker extends StatelessWidget
     implements PreferredSizeWidget {
+  const CalendarPagePicker({super.key});
+
   @override
   Size get preferredSize => const Size.fromHeight(60);
 
@@ -19,7 +21,6 @@ class CalendarPagePicker extends StatelessWidget
     const textExtraMargin = 6;
 
     return Column(
-      mainAxisSize: MainAxisSize.min,
       children: [
         ConstrainedBox(
           constraints: BoxConstraints(
@@ -70,31 +71,9 @@ class CalendarPagePicker extends StatelessWidget
                       horizontal: 10.0,
                       vertical: 2,
                     ),
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: DateFormat(
-                              "EEEE ",
-                              Localizations.localeOf(context).languageCode,
-                            ).format(date).capitalize,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          TextSpan(
-                            text: DateFormat(
-                              "d MMM y",
-                              Localizations.localeOf(context).languageCode,
-                            ).format(date),
-                          ),
-                        ],
-                        style: TextStyle(
-                          color: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .color!
-                              .withOpacity(coefficient),
-                        ),
-                      ),
+                    child: _DateLabel(
+                      date: date,
+                      opacity: coefficient,
                     ),
                   ),
                 );
@@ -103,6 +82,46 @@ class CalendarPagePicker extends StatelessWidget
           ),
         ),
       ],
+    );
+  }
+}
+
+class _DateLabel extends StatelessWidget {
+  final DateTime date;
+  final double opacity;
+
+  const _DateLabel({
+    required this.date,
+    required this.opacity,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: DateFormat(
+              "EEEE ",
+              Localizations.localeOf(context).languageCode,
+            ).format(date).capitalize,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          TextSpan(
+            text: DateFormat(
+              "d MMM y",
+              Localizations.localeOf(context).languageCode,
+            ).format(date),
+          ),
+        ],
+        style: TextStyle(
+          color: Theme.of(context)
+              .textTheme
+              .bodyMedium!
+              .color!
+              .withOpacity(opacity),
+        ),
+      ),
     );
   }
 }
