@@ -48,7 +48,7 @@ class DayDot extends StatelessWidget {
               return Container(
                 decoration: BoxDecoration(
                   color: dotColor.withOpacity(dotColor.opacity * opacity),
-                  borderRadius: BorderRadius.circular(double.maxFinite),
+                  borderRadius: BorderRadius.circular(99999),
                 ),
                 width: t * constrains.maxHeight,
                 height: t * constrains.maxHeight,
