@@ -35,6 +35,8 @@ class CalendarPagePicker extends StatelessWidget
     final viewportFraction =
         preferredSize.height / MediaQuery.of(context).size.width;
 
+    final extraDummyPagesForDots = (1 / viewportFraction).ceil();
+
     final pagesCount = lastDay.difference(firstDay).inDays + 1;
     final initialPage =
         today().difference(firstDay).inDays.clamp(0, pagesCount - 1);
@@ -54,21 +56,34 @@ class CalendarPagePicker extends StatelessWidget
               physics: const BouncingScrollPhysics(),
               padEnds: false,
               controller: controller,
-              itemCount: pagesCount,
+              itemCount: pagesCount + extraDummyPagesForDots,
+              onPageChanged: (page) {
+                // Just to restrict scrolling to the dummy extra containers
+                // this makes animation really weird, not like BouncingScrollPhysics
+                if (page >= pagesCount) {
+                  controller.animateToPage(
+                    pagesCount - 1,
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.easeIn,
+                  );
+                }
+              },
               itemBuilder: (_, page) => Center(
                 child: PageAlignmentCoefficient(
                   pageController: controller,
                   page: page,
                   error: 0.8,
-                  builder: (context, coefficient) => DayDot(
-                    date: firstDay.add(Duration(days: page)),
-                    t: coefficient,
-                    onTap: () => controller.animateToPage(
-                      page,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
-                    ),
-                  ),
+                  builder: (context, coefficient) => page < pagesCount
+                      ? DayDot(
+                          date: firstDay.add(Duration(days: page)),
+                          t: coefficient,
+                          onTap: () => controller.animateToPage(
+                            page,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeIn,
+                          ),
+                        )
+                      : Container(),
                 ),
               ),
             ),
