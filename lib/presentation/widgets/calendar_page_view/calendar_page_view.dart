@@ -9,6 +9,7 @@ class CalendarPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CalendarPageControler(
       builder: (context, controller) => PageView.builder(
+        physics: const BouncingScrollPhysics(),
         controller: controller,
         itemBuilder: (_, page) => Center(
           child: Column(

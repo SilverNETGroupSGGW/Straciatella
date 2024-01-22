@@ -23,7 +23,7 @@ class TimetableScreen extends StatelessWidget {
               icon: const Icon(Icons.settings),
             ),
           ],
-          bottom: const CalendarPagePicker(),
+          bottom: CalendarPagePicker(),
         ),
         floatingActionButton: BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, state) {

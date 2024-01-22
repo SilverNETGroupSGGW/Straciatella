@@ -59,6 +59,12 @@ class DayDot extends StatelessWidget {
             date.day.toString(),
             style: TextStyle(
               color: textColor.withOpacity(textColor.opacity * opacity),
+              fontWeight: FontWeight.lerp(
+                FontWeight.normal,
+                FontWeight.bold,
+                t,
+              ),
+              fontSize: 20,
             ),
           ),
         ],
