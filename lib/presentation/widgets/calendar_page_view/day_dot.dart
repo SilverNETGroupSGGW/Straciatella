@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:silvertimetable/helpers.dart';
+import 'package:silvertimetable/themes/extensions/day_dot_theme.dart';
 
 class DayDot extends StatelessWidget {
   final DateTime date;
@@ -16,58 +16,49 @@ class DayDot extends StatelessWidget {
     required this.onTap,
   });
 
-  // TODO: get colors from theme
-  Color _getWeekdayColor() => switch (date.weekday) {
-        < 5 => Colors.white,
-        6 => Colors.white70,
-        7 => Colors.red[300]!,
-        _ => Colors.white,
-      };
-
-  double _getOpacity() => switch ((hasEvents, date.isBefore(today()))) {
-        (_, true) => 0.1,
-        (false, false) => 0.3,
-        (true, false) => 1,
-      };
-
   @override
   Widget build(BuildContext context) {
-    final opacity = _getOpacity();
-    final weekdayColor = _getWeekdayColor();
-    final textColor = Color.lerp(Colors.black, weekdayColor, 1 - t)!;
-    final dotColor = weekdayColor.withOpacity(t);
+    final dayDotTheme = Theme.of(context).extension<DayDotTheme>()!;
+    final (Color bgColor, Color textColor) =
+        dayDotTheme.getByWeekdayColor(date.weekday);
+
+    final textColorLerp = Color.lerp(bgColor, textColor, t)!;
+    final opacity = dayDotTheme.getOpacity(hasEvents, date);
 
     // TODO: tapnięcie obok tekstu gdy nie ma Containera nie trigerruje onTap
-    return GestureDetector(
-      onTap: onTap,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          LayoutBuilder(
-            builder: (context, constrains) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: dotColor.withOpacity(dotColor.opacity * opacity),
-                  borderRadius: BorderRadius.circular(99999),
-                ),
-                width: t * constrains.maxHeight,
-                height: t * constrains.maxHeight,
-              );
-            },
-          ),
-          Text(
-            date.day.toString(),
-            style: TextStyle(
-              color: textColor.withOpacity(textColor.opacity * opacity),
-              fontWeight: FontWeight.lerp(
-                FontWeight.normal,
-                FontWeight.bold,
-                t,
-              ),
-              fontSize: 20,
+    return Opacity(
+      opacity: opacity,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            LayoutBuilder(
+              builder: (context, constrains) {
+                return Container(
+                  decoration: BoxDecoration(
+                    color: bgColor,
+                    borderRadius: BorderRadius.circular(99999),
+                  ),
+                  width: t * constrains.maxHeight,
+                  height: t * constrains.maxHeight,
+                );
+              },
             ),
-          ),
-        ],
+            Text(
+              date.day.toString(),
+              style: TextStyle(
+                color: textColorLerp,
+                fontWeight: FontWeight.lerp(
+                  FontWeight.normal,
+                  FontWeight.bold,
+                  t,
+                ),
+                fontSize: 20,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

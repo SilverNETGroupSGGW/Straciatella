@@ -1,8 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/helpers.dart';
 import 'package:silvertimetable/presentation/widgets/calendar_page_view/day_dot.dart';
+import 'package:silvertimetable/presentation/widgets/calendar_page_view/day_dot_label.dart';
 import 'package:silvertimetable/presentation/widgets/page_alignment_coefficient.dart';
 import 'package:silvertimetable/presentation/widgets/synced_page_view/synced_page_view.dart';
 
@@ -112,9 +111,9 @@ class CalendarPagePicker extends StatelessWidget
                       horizontal: 10.0,
                       vertical: 2,
                     ),
-                    child: _DateLabel(
+                    child: DayDotLabel(
                       date: firstDay.add(Duration(days: page)),
-                      opacity: coefficient,
+                      t: coefficient,
                     ),
                   ),
                 );
@@ -123,46 +122,6 @@ class CalendarPagePicker extends StatelessWidget
           ),
         ),
       ],
-    );
-  }
-}
-
-class _DateLabel extends StatelessWidget {
-  final DateTime date;
-  final double opacity;
-
-  const _DateLabel({
-    required this.date,
-    required this.opacity,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text: DateFormat(
-              "EEEE ",
-              Localizations.localeOf(context).languageCode,
-            ).format(date).capitalize,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          TextSpan(
-            text: DateFormat(
-              "d MMM y",
-              Localizations.localeOf(context).languageCode,
-            ).format(date),
-          ),
-        ],
-        style: TextStyle(
-          color: Theme.of(context)
-              .textTheme
-              .bodyMedium!
-              .color!
-              .withOpacity(opacity),
-        ),
-      ),
     );
   }
 }

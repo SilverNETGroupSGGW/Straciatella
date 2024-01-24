@@ -10,7 +10,7 @@ import 'package:silvertimetable/logic/register_adapters.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/providers_tree.dart';
 import 'package:silvertimetable/router.dart';
-import 'package:silvertimetable/themes.dart';
+import 'package:silvertimetable/themes/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
