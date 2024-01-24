@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-typedef CalendarPageCubitState = ({double pixels, Object? invoker});
+typedef SyncedPageViewState = ({double pixels, Object? invoker});
 
-class CalendarPageCubit extends Cubit<CalendarPageCubitState> {
-  CalendarPageCubit([
+class SyncedPageViewCubit extends Cubit<SyncedPageViewState> {
+  SyncedPageViewCubit([
     super.initial = (pixels: 0, invoker: null),
   ]);
 
@@ -12,10 +12,10 @@ class CalendarPageCubit extends Cubit<CalendarPageCubitState> {
       emit((pixels: pixels, invoker: invoker));
 }
 
-class CalendarPageCubitProvider extends StatelessWidget {
+class SyncedPageViews extends StatelessWidget {
   final Widget child;
 
-  const CalendarPageCubitProvider({
+  const SyncedPageViews({
     super.key,
     required this.child,
   });
@@ -23,7 +23,7 @@ class CalendarPageCubitProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => CalendarPageCubit(),
+      create: (_) => SyncedPageViewCubit(),
       child: child,
     );
   }

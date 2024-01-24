@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/helpers.dart';
-import 'package:silvertimetable/presentation/widgets/calendar_page_view/calendar_page_controller.dart';
 import 'package:silvertimetable/presentation/widgets/calendar_page_view/day_dot.dart';
-import 'package:silvertimetable/presentation/widgets/calendar_page_view/page_alignment_coefficient.dart';
+import 'package:silvertimetable/presentation/widgets/page_alignment_coefficient.dart';
+import 'package:silvertimetable/presentation/widgets/synced_page_view/synced_page_view.dart';
 
 class CalendarPagePicker extends StatelessWidget
     implements PreferredSizeWidget {
@@ -47,7 +47,7 @@ class CalendarPagePicker extends StatelessWidget
           constraints: BoxConstraints(
             maxHeight: dotsHeight,
           ),
-          child: CalendarPageControler(
+          child: SyncedPageView(
             controller: PageController(
               viewportFraction: viewportFraction,
               initialPage: initialPage,
@@ -93,7 +93,7 @@ class CalendarPagePicker extends StatelessWidget
           constraints: BoxConstraints(
             maxHeight: dateLabelHeight,
           ),
-          child: CalendarPageControler(
+          child: SyncedPageView(
             controller: PageController(
               initialPage: initialPage,
             ),
