@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/new_filter.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/widgets/theme_picker/theme_picker.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/dark_theme_mode_tile.dart';
@@ -31,6 +32,15 @@ class DebugScreen extends StatelessWidget {
             onPressed: () => Navigator.pushNamed(context, RouteNames.welcome),
             child: const Text("Run welcome screen"),
           ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NewFilterScreen()));
+            },
+            child: const Text('Show new filter screen'),
+          )
         ],
       ),
     );
