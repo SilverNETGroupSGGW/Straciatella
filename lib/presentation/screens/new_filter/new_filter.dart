@@ -4,14 +4,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 import 'package:silvertimetable/presentation/builders/schedule_manager_builders/schedule_manager_schedule_options_tree_builder.dart';
 
-class NewFilterScreen extends StatelessWidget {
-  const NewFilterScreen({super.key});
+class NewFilterScreen extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
+  NewFilterScreen({super.key});
+
+  @override
+  State<NewFilterScreen> createState() => _NewFilterScreenState();
+}
+
+class _NewFilterScreenState extends State<NewFilterScreen> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<ScheduleManagerBloc>(context)
+        .add(const ScheduleManagerEvent.updateIndex());
+  }
 
   @override
   Widget build(BuildContext context) {
-    final _scheduleManager = BlocProvider.of<ScheduleManagerBloc>(context)
-      ..add(const ScheduleManagerEvent.updateIndex());
-
     return Scaffold(
       appBar: AppBar(title: Text('new_filter_title'.tr())),
       body: ScheduleManagerScheduleOptionsTreeBuilder(

@@ -37,7 +37,7 @@ class DebugScreen extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const NewFilterScreen()));
+                      builder: (context) => NewFilterScreen()));
             },
             child: const Text('Show new filter screen'),
           )
