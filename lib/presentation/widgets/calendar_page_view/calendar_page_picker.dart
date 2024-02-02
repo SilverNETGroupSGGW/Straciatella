@@ -25,6 +25,34 @@ class CalendarPagePicker extends StatelessWidget
   @override
   Size get preferredSize => const Size.fromHeight(60);
 
+  Future<void> _animateToPage(PageController controller, int page) {
+    return controller.animateToPage(
+      page,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeIn,
+    );
+  }
+
+  Future _onSelectDay(
+    BuildContext context,
+    PageController controller,
+    DateTime initialDate,
+  ) {
+    return showDatePicker(
+      context: context,
+      initialDate: initialDate,
+      firstDate: firstDay,
+      lastDate: lastDay,
+    ).then((day) async {
+      if (day != null) {
+        await _animateToPage(
+          controller,
+          day.difference(firstDay).inDays,
+        );
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final fontSize = Theme.of(context).textTheme.bodyMedium!.fontSize!;
@@ -60,11 +88,7 @@ class CalendarPagePicker extends StatelessWidget
                 // Just to restrict scrolling to the dummy extra containers
                 // this makes animation really weird, not like BouncingScrollPhysics
                 if (page >= pagesCount) {
-                  controller.animateToPage(
-                    pagesCount - 1,
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.easeIn,
-                  );
+                  _animateToPage(controller, pagesCount - 1);
                 }
               },
               itemBuilder: (_, page) => Center(
@@ -72,17 +96,18 @@ class CalendarPagePicker extends StatelessWidget
                   pageController: controller,
                   page: page,
                   error: 0.8,
-                  builder: (context, coefficient) => page < pagesCount
-                      ? DayDot(
-                          date: firstDay.add(Duration(days: page)),
-                          t: coefficient,
-                          onTap: () => controller.animateToPage(
-                            page,
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeIn,
-                          ),
-                        )
-                      : Container(),
+                  builder: (context, coefficient) {
+                    final currentDay = firstDay.add(Duration(days: page));
+                    return page < pagesCount
+                        ? DayDot(
+                            date: currentDay,
+                            t: coefficient,
+                            onTap: () => coefficient > 0
+                                ? _onSelectDay(context, controller, currentDay)
+                                : _animateToPage(controller, page),
+                          )
+                        : Container(); // dummy container
+                  },
                 ),
               ),
             ),
