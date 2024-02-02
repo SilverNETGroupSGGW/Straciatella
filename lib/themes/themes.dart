@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
+import 'package:silvertimetable/themes/extensions/day_dot_theme.dart';
 
 // choosing theme logic
 ThemeData getThemeData(
@@ -19,12 +20,24 @@ ThemeData getThemeData(
 }
 
 // *** Themes definitions
+DayDotTheme lightDayDotTheme = DayDotTheme.create();
+DayDotTheme darkDayDotTheme = DayDotTheme.create(
+  normalDayColor: Colors.white,
+  saturdayColor: Colors.white60,
+);
+
 ThemeData _fromSeedColor(Color seed, Brightness brightness) {
-  return ThemeData.from(
+  return ThemeData(
     colorScheme: ColorScheme.fromSeed(
       seedColor: seed,
       brightness: brightness,
     ),
+    extensions: [
+      switch (brightness) {
+        Brightness.light => lightDayDotTheme,
+        Brightness.dark => darkDayDotTheme,
+      },
+    ],
   );
 }
 
@@ -32,10 +45,16 @@ ThemeData _adaptive(ColorScheme deviceColorScheme, Brightness brightness) {
   return ThemeData(
     colorScheme: deviceColorScheme,
     brightness: brightness,
+    extensions: [
+      switch (brightness) {
+        Brightness.light => lightDayDotTheme,
+        Brightness.dark => darkDayDotTheme,
+      },
+    ],
   );
 }
 
-ThemeData retroLightTheme = ThemeData.from(
+ThemeData retroLightTheme = ThemeData(
   colorScheme: ColorScheme(
     brightness: Brightness.light,
     surfaceTint: Colors.grey.shade700,
@@ -51,9 +70,12 @@ ThemeData retroLightTheme = ThemeData.from(
     surface: Colors.white,
     onSurface: Colors.grey.shade800,
   ),
+  extensions: [
+    lightDayDotTheme,
+  ],
 );
 
-ThemeData retroDarkTheme = ThemeData.from(
+ThemeData retroDarkTheme = ThemeData(
   colorScheme: ColorScheme(
     brightness: Brightness.dark,
     surfaceTint: Colors.grey.shade900,
@@ -71,4 +93,7 @@ ThemeData retroDarkTheme = ThemeData.from(
     surfaceVariant: Colors.grey.shade800,
     onSurface: Colors.white,
   ),
+  extensions: [
+    darkDayDotTheme,
+  ],
 );
