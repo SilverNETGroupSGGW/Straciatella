@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/helpers.dart';
-import 'package:silvertimetable/presentation/widgets/calendar_page_view/day_dot.dart';
-import 'package:silvertimetable/presentation/widgets/calendar_page_view/day_dot_label.dart';
+import 'package:silvertimetable/presentation/screens/timetable/widgets/calendar_page_view/day_dot.dart';
+import 'package:silvertimetable/presentation/screens/timetable/widgets/calendar_page_view/day_dot_label.dart';
 import 'package:silvertimetable/presentation/widgets/page_alignment_coefficient.dart';
 import 'package:silvertimetable/presentation/widgets/synced_page_view/synced_page_view.dart';
 
