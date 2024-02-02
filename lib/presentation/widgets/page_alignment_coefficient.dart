@@ -24,7 +24,7 @@ class _PageAlignmentCoefficientState extends State<PageAlignmentCoefficient> {
 
   void setPage() {
     setState(() {
-      page = widget.pageController.page;
+      page = widget.pageController.pageUnclamped;
     });
   }
 

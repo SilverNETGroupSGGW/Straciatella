@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 extension TimeOfDayExt on TimeOfDay {
@@ -56,4 +55,12 @@ DateTime today() {
     dateTimeNow.month,
     dateTimeNow.day,
   );
+}
+
+extension PageControllerExt on PageController {
+  double get pageUnclamped {
+    // this is PageMetrics().page definition but without clamping for pixels
+    return position.pixels /
+        max(1.0, position.viewportDimension * viewportFraction);
+  }
 }
