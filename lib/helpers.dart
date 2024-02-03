@@ -48,6 +48,12 @@ extension NumExt on num {
   }
 }
 
+extension DateTimeExt on DateTime {
+  DateTime truncateTimeOfDay() {
+    return DateTime(year, month, day);
+  }
+}
+
 DateTime today() {
   final dateTimeNow = DateTime.now();
   return DateTime(
