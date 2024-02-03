@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:silvertimetable/logic/settings/settings_cubit.dart';
-import 'package:silvertimetable/presentation/screens/timetable/widgets/calendar_page_view/calendar_page_picker.dart';
-import 'package:silvertimetable/presentation/screens/timetable/widgets/calendar_page_view/calendar_page_view.dart';
-import 'package:silvertimetable/presentation/screens/timetable/widgets/timetable_fab.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page_view/calendar_page_picker.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page_view/calendar_page_view.dart';
 import 'package:silvertimetable/presentation/widgets/synced_page_view/synced_page_views.dart';
 import 'package:silvertimetable/router.dart';
 
-class TimetableScreen extends StatelessWidget {
-  const TimetableScreen({super.key});
+class ScheduleScreen extends StatelessWidget {
+  const ScheduleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +15,7 @@ class TimetableScreen extends StatelessWidget {
     return SyncedPageViews(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Timetable"),
+          title: const Text("Schedule"),
           actions: [
             IconButton(
               onPressed: () =>
@@ -30,14 +27,6 @@ class TimetableScreen extends StatelessWidget {
             firstDay: firstDay,
             lastDay: lastDay,
           ),
-        ),
-        floatingActionButton: BlocBuilder<SettingsCubit, SettingsState>(
-          builder: (context, state) {
-            return !state.isFabHidden
-                ? const TimetableFab()
-                // Official way to hide FAB according to stackoverflow
-                : const SizedBox.shrink();
-          },
         ),
         body: CalendarPageView(
           firstDay: firstDay,

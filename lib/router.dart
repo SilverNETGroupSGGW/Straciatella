@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:silvertimetable/presentation/screens/debug/debug.dart';
 import 'package:silvertimetable/presentation/screens/settings/settings.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/theme.dart';
-import 'package:silvertimetable/presentation/screens/timetable/timetable.dart';
+import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/welcome/welcome.dart';
 
 sealed class RouteNames {
@@ -27,7 +27,7 @@ class AppRouter {
       },
       pageBuilder: (context, animation, secondaryAnimation) {
         return switch (settings.name) {
-          RouteNames.timeline => const TimetableScreen(),
+          RouteNames.timeline => const ScheduleScreen(),
           RouteNames.settings => SettingsScreen(),
           RouteNames.debug => const DebugScreen(),
           RouteNames.welcome => WelcomeScreen(),
