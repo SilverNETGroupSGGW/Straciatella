@@ -1,5 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/lesson/lesson.dart';
+import 'package:silvertimetable/data/models/mixins.dart';
+import 'package:silvertimetable/data/models/schedule/schedule.dart';
 import 'package:silvertimetable/data/models/subject/subject.dart';
 import 'package:silvertimetable/helpers.dart';
 
@@ -42,5 +45,22 @@ class ScheduleEvent with _$ScheduleEvent {
     }
 
     return result;
+  }
+
+  static Map<DateTime, List<ScheduleEvent>> convertFromSchedule(
+    ExtendedSchedule schedule,
+  ) {
+    if (schedule is Schedule) {
+      return ScheduleEvent.groupByDay(
+        ScheduleEvent.getSortedEventsFromSubjects(schedule.subjects),
+      );
+    } else if (schedule is Lecturer) {
+      return ScheduleEvent.groupByDay(
+        ScheduleEvent.getSortedEventsFromSubjects(schedule.subjects),
+      );
+    }
+    throw Exception(
+      "Can't convert schedule of unknown type ${schedule.runtimeType}",
+    );
   }
 }

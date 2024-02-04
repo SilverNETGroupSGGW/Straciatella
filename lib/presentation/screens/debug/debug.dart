@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/widgets/theme_picker/theme_picker.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/dark_theme_mode_tile.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson_tile.dart';
 import 'package:silvertimetable/router.dart';
 
 class DebugScreen extends StatelessWidget {

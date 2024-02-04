@@ -1,9 +1,9 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/presentation/screens/debug/debug.dart';
+import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/settings/settings.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/theme.dart';
-import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/welcome/welcome.dart';
 
 sealed class RouteNames {
