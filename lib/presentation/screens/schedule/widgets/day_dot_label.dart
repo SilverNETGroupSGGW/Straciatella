@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:silvertimetable/themes/extensions/day_dot_theme.dart';
 
 class DayDotLabel extends StatelessWidget {
-  final DateTime date;
+  final DateTime day;
   final bool hasEvents;
   final double t;
 
   const DayDotLabel({
-    required this.date,
+    required this.day,
     required this.t,
     this.hasEvents = true,
   });
@@ -17,8 +17,8 @@ class DayDotLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dayDotTheme = Theme.of(context).extension<DayDotTheme>()!;
-    final (Color mainColor, _) = dayDotTheme.getByWeekdayColor(date.weekday);
-    final opacity = dayDotTheme.getOpacity(hasEvents, date);
+    final (Color mainColor, _) = dayDotTheme.getByWeekdayColor(day.weekday);
+    final opacity = dayDotTheme.getOpacity(hasEvents, day);
 
     final weekdayTextColor = mainColor.withOpacity(opacity);
     final textColor =
@@ -33,7 +33,7 @@ class DayDotLabel extends StatelessWidget {
               text: DateFormat(
                 "EEEE ",
                 Localizations.localeOf(context).languageCode,
-              ).format(date).capitalize,
+              ).format(day).capitalize,
               style: TextStyle(
                 color: weekdayTextColor,
                 fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class DayDotLabel extends StatelessWidget {
               text: DateFormat(
                 "d MMM y",
                 Localizations.localeOf(context).languageCode,
-              ).format(date),
+              ).format(day),
             ),
           ],
           style: TextStyle(

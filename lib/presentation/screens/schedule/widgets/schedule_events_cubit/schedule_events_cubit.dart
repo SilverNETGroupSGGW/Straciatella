@@ -19,7 +19,7 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
     ScheduleManagerBloc scheduleManager,
     this.scheduleKey, [
     SggwHubRepo? sggwHubRepo,
-  ]) : super(const ScheduleEventsState.initial()) {
+  ]) : super(const ScheduleEventsState()) {
     _sggwHubRepo = sggwHubRepo ?? SggwHubRepo();
 
     if (!scheduleManager.state.schedules.containsKey(scheduleKey)) {
@@ -30,9 +30,9 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
       if (state.schedules.containsKey(scheduleKey)) {
         final schedule = state.schedules[scheduleKey]!;
         emit(
-          _Loaded(
+          ScheduleEventsState(
             events: ScheduleEvent.convertFromSchedule(schedule),
-            fromSchedule: state.schedules[scheduleKey]!,
+            fromSchedule: state.schedules[scheduleKey],
             isFromCache: true,
           ),
         );
@@ -40,36 +40,19 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
     });
   }
 
-  Future<void> refreshFromApi() {
-    return state.when(
-      initial: () async {
-        final schedule = await _sggwHubRepo.getScheduleByType(scheduleKey);
-        emit(
-          _Loaded(
-            events: ScheduleEvent.convertFromSchedule(schedule),
-            fromSchedule: schedule,
-            isFromCache: false,
-          ),
-        );
-      },
-      loading: (_, __, ___) async {},
-      loaded: (events, fromSchedule, isFromCache) async {
-        emit(
-          _Loading(
-            events: events,
-            fromSchedule: fromSchedule,
-            isFromCache: isFromCache,
-          ),
-        );
-        final schedule = await _sggwHubRepo.getScheduleByType(scheduleKey);
-        emit(
-          _Loaded(
-            events: ScheduleEvent.convertFromSchedule(schedule),
-            fromSchedule: schedule,
-            isFromCache: false,
-          ),
-        );
-      },
+  Future<void> refreshFromApi() async {
+    if (state.isLoading) return;
+
+    if (state.fromSchedule != null) {
+      emit(state.copyWith(isLoading: true));
+    }
+
+    final schedule = await _sggwHubRepo.getScheduleByType(scheduleKey);
+    emit(
+      ScheduleEventsState(
+        events: ScheduleEvent.convertFromSchedule(schedule),
+        fromSchedule: schedule,
+      ),
     );
   }
 

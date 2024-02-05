@@ -27,7 +27,10 @@ class AppRouter {
       },
       pageBuilder: (context, animation, secondaryAnimation) {
         return switch (settings.name) {
-          RouteNames.timeline => const ScheduleScreen(),
+          RouteNames.timeline => ScheduleScreen(
+              scheduleKey:
+                  (settings.arguments! as ScheduleScreenArgs).scheduleKey,
+            ),
           RouteNames.settings => SettingsScreen(),
           RouteNames.debug => const DebugScreen(),
           RouteNames.welcome => WelcomeScreen(),

@@ -2,15 +2,10 @@ part of 'schedule_events_cubit.dart';
 
 @freezed
 class ScheduleEventsState with _$ScheduleEventsState {
-  const factory ScheduleEventsState.initial() = _Initial;
-  const factory ScheduleEventsState.loading({
-    required Map<DateTime, List<ScheduleEvent>> events,
-    required ExtendedSchedule fromSchedule,
-    required bool isFromCache,
-  }) = _Loading;
-  const factory ScheduleEventsState.loaded({
-    required Map<DateTime, List<ScheduleEvent>> events,
-    required ExtendedSchedule fromSchedule,
-    required bool isFromCache,
-  }) = _Loaded;
+  const factory ScheduleEventsState({
+    @Default({}) Map<DateTime, List<ScheduleEvent>> events,
+    ExtendedSchedule? fromSchedule,
+    @Default(false) bool isFromCache,
+    @Default(false) bool isLoading,
+  }) = _ScheduleEventsState;
 }
