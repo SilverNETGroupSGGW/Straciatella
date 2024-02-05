@@ -26,4 +26,9 @@ class LecturerBase with _$LecturerBase, BaseSchedule {
 
   factory LecturerBase.fromJson(Map<String, dynamic> json) =>
       _$LecturerBaseFromJson(json);
+
+  @override
+  String toPrettyString() {
+    return "$academicDegree $firstName $surname";
+  }
 }

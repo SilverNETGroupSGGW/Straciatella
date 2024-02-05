@@ -32,4 +32,9 @@ class Schedule with _$Schedule, ExtendedSchedule {
 
   factory Schedule.fromJson(Map<String, dynamic> json) =>
       _$ScheduleFromJson(json);
+
+  @override
+  String toPrettyString() {
+    return "$fieldOfStudy, $degreeOfStudy sem. $semester";
+  }
 }

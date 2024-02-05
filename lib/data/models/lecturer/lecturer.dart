@@ -28,4 +28,9 @@ class Lecturer with _$Lecturer, ExtendedSchedule {
 
   factory Lecturer.fromJson(Map<String, dynamic> json) =>
       _$LecturerFromJson(json);
+
+  @override
+  String toPrettyString() {
+    return "$academicDegree $firstName $surname";
+  }
 }
