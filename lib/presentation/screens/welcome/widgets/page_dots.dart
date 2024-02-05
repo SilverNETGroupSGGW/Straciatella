@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
-import 'package:silvertimetable/router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PageDots extends StatelessWidget {
@@ -68,10 +67,7 @@ class PageDots extends StatelessWidget {
                     )
                   : FilledButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          RouteNames.timeline,
-                          (route) => false,
-                        );
+                        Navigator.pop(context);
                         context.read<SettingsCubit>().completeFirstRun();
                       },
                       child: const Text("Finish"),

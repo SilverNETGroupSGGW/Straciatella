@@ -1,5 +1,8 @@
+import 'package:silvertimetable/data/models/enums.dart';
+
+const mockLecturerKey = (id: "mockLecturer1", type: ScheduleType.lecturer);
 final mockLecturer = {
-  "id": "8a563599-4a25-470e-0547-08dbeeaa6ca9",
+  "id": "mockLecturer1",
   "created": "2023-11-26T18:06:33.7820837",
   "updated": "2023-11-26T18:06:33.7821303",
   "firstName": "MockName",
@@ -109,8 +112,9 @@ final mockLecturer = {
   ],
 };
 
+const mockScheduleKey = (id: "mockSchedule1", type: ScheduleType.schedule);
 final mockSchedule = {
-  "id": "edb84e2f-62e7-472a-bdc3-b10cadaebe42",
+  "id": "mockSchedule1",
   "created": "2024-01-06T21:52:07.1286274",
   "updated": "2024-01-07T10:36:21.1351993",
   "startDate": "2023-10-02T00:00:00+00:00",

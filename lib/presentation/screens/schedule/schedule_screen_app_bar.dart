@@ -4,8 +4,8 @@ import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_p
 import 'package:silvertimetable/presentation/screens/schedule/widgets/day_dot.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/day_dot_label.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_cubit/schedule_events_cubit.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/settings_icon_button.dart';
 import 'package:silvertimetable/presentation/widgets/page_alignment_coefficient.dart';
-import 'package:silvertimetable/router.dart';
 
 class ScheduleScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -27,12 +27,8 @@ class ScheduleScreenAppBar extends StatelessWidget
             state.events.keys.reduce((d0, d1) => d0.isAfter(d1) ? d0 : d1);
         return AppBar(
           title: Text(state.fromSchedule?.toPrettyString() ?? "Schedule"),
-          actions: [
-            IconButton(
-              onPressed: () =>
-                  Navigator.of(context).pushNamed(RouteNames.settings),
-              icon: const Icon(Icons.settings),
-            ),
+          actions: const [
+            SettingsIconButton(),
           ],
           bottom: CalendarPagePicker(
             firstDay: firstDay,

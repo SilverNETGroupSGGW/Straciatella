@@ -1,13 +1,15 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/presentation/screens/debug/debug.dart';
+import 'package:silvertimetable/presentation/screens/schedule/faved_schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/settings/settings.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/theme.dart';
 import 'package:silvertimetable/presentation/screens/welcome/welcome.dart';
 
 sealed class RouteNames {
-  static const timeline = "/";
+  static const faved = "/";
+  static const schedule = "/schedule";
   static const settings = "/settings";
   static const debug = "/debug";
   static const welcome = "/welcome";
@@ -27,7 +29,8 @@ class AppRouter {
       },
       pageBuilder: (context, animation, secondaryAnimation) {
         return switch (settings.name) {
-          RouteNames.timeline => ScheduleScreen(
+          RouteNames.faved => const FavedScheduleScreen(),
+          RouteNames.schedule => ScheduleScreen(
               scheduleKey:
                   (settings.arguments! as ScheduleScreenArgs).scheduleKey,
             ),
