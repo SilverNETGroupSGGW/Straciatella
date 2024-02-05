@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson_card_student.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson_vertical_time_span.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson/lesson_card_student.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson/lesson_vertical_time_span.dart';
 
 class LessonTile extends StatelessWidget {
   final String name;

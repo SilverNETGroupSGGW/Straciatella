@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page_view/calendar_page_view.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_cubit/schedule_events_cubit.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/calendar_page_view.dart';
 import 'package:silvertimetable/presentation/widgets/page_alignment_coefficient.dart';
 
+// TODO: make it nice
 class ScheduleScreenBody extends StatelessWidget {
   final ScheduleViewMode mode;
 

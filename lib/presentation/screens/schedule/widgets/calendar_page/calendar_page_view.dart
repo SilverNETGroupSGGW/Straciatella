@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/helpers.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page_view/calendar_page_picker.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/calendar_page_picker.dart';
 import 'package:silvertimetable/presentation/widgets/synced_page_view/synced_page_view.dart';
 
 class CalendarPageView extends StatelessWidget {

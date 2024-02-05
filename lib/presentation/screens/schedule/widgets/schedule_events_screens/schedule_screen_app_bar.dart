@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page_view/calendar_page_picker.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/day_dot.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/day_dot_label.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_cubit/schedule_events_cubit.dart';
+import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/calendar_page_picker.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/day_dot.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/day_dot_label.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/settings_icon_button.dart';
 import 'package:silvertimetable/presentation/widgets/page_alignment_coefficient.dart';
 
 class ScheduleScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
+  final bool isRefreshing;
   const ScheduleScreenAppBar({
     super.key,
+    required this.isRefreshing,
   });
 
   @override
@@ -27,8 +29,9 @@ class ScheduleScreenAppBar extends StatelessWidget
             state.events.keys.reduce((d0, d1) => d0.isAfter(d1) ? d0 : d1);
         return AppBar(
           title: Text(state.fromSchedule?.toPrettyString() ?? "Schedule"),
-          actions: const [
-            SettingsIconButton(),
+          actions: [
+            if (isRefreshing) const CircularProgressIndicator(),
+            const SettingsIconButton(),
           ],
           bottom: CalendarPagePicker(
             firstDay: firstDay,
