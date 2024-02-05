@@ -14,8 +14,8 @@ class CalendarPageView extends StatelessWidget {
     required DateTime lastDay,
     required this.dayBuilder,
   }) {
-    this.firstDay = DateTime(firstDay.year, firstDay.month, firstDay.day);
-    this.lastDay = DateTime(lastDay.year, lastDay.month, lastDay.day);
+    this.firstDay = DateUtils.dateOnly(firstDay);
+    this.lastDay = DateUtils.dateOnly(lastDay);
     assert(
       this.firstDay.isBefore(this.lastDay) || this.firstDay == this.lastDay,
     );
@@ -23,7 +23,7 @@ class CalendarPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pagesCount = lastDay.difference(firstDay).inDays + 1;
+    final pagesCount = lastDay.difference(firstDay).inDays + 2;
     final initialPage =
         today().difference(firstDay).inDays.clamp(0, pagesCount - 1);
 
@@ -38,7 +38,7 @@ class CalendarPageView extends StatelessWidget {
         itemBuilder: (context, page) => dayBuilder(
           context,
           controller,
-          firstDay.add(Duration(days: page)),
+          DateUtils.dateOnly(firstDay.add(Duration(days: page))),
           page,
         ),
       ),

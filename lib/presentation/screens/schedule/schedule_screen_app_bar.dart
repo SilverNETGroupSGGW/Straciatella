@@ -36,7 +36,11 @@ class ScheduleScreenAppBar extends StatelessWidget
             dayBuilder: (context, controller, day, page) {
               return PageAlignmentCoefficient(
                 builder: (context, t) {
-                  return DayDot(day: day, t: t);
+                  return DayDot(
+                    day: day,
+                    t: t,
+                    hasEvents: state.events.containsKey(day),
+                  );
                 },
                 pageController: controller,
                 page: page,
@@ -46,7 +50,11 @@ class ScheduleScreenAppBar extends StatelessWidget
             dayLabelBuilder: (context, controller, day, page) {
               return PageAlignmentCoefficient(
                 builder: (context, t) {
-                  return DayDotLabel(day: day, t: t);
+                  return DayDotLabel(
+                    day: day,
+                    t: t,
+                    hasEvents: state.events.containsKey(day),
+                  );
                 },
                 pageController: controller,
                 page: page,

@@ -25,8 +25,8 @@ class CalendarPagePicker extends StatelessWidget
     required this.dayLabelBuilder,
     this.height = 60,
   }) {
-    this.firstDay = DateTime(firstDay.year, firstDay.month, firstDay.day);
-    this.lastDay = DateTime(lastDay.year, lastDay.month, lastDay.day);
+    this.firstDay = DateUtils.dateOnly(firstDay);
+    this.lastDay = DateUtils.dateOnly(lastDay);
     assert(
       this.firstDay.isBefore(this.lastDay) || this.firstDay == this.lastDay,
     );
@@ -74,7 +74,7 @@ class CalendarPagePicker extends StatelessWidget
 
     final extraDummyPagesForDots = (1 / viewportFraction).ceil();
 
-    final pagesCount = lastDay.difference(firstDay).inDays + 1;
+    final pagesCount = lastDay.difference(firstDay).inDays + 2;
     final initialPage =
         today().difference(firstDay).inDays.clamp(0, pagesCount - 1);
 
@@ -102,7 +102,8 @@ class CalendarPagePicker extends StatelessWidget
                 }
               },
               itemBuilder: (context, page) {
-                final currentDay = firstDay.add(Duration(days: page));
+                final currentDay =
+                    DateUtils.dateOnly(firstDay.add(Duration(days: page)));
                 if (page >= pagesCount) return Container(); // dummy Container
 
                 return GestureDetector(
@@ -129,7 +130,8 @@ class CalendarPagePicker extends StatelessWidget
               controller: controller,
               itemCount: pagesCount,
               itemBuilder: (context, page) {
-                final currentDay = firstDay.add(Duration(days: page));
+                final currentDay =
+                    DateUtils.dateOnly(firstDay.add(Duration(days: page)));
 
                 return dayLabelBuilder(
                   context,

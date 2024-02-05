@@ -21,23 +21,25 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
     SggwHubRepo? sggwHubRepo,
   ]) : super(const ScheduleEventsState()) {
     _sggwHubRepo = sggwHubRepo ?? SggwHubRepo();
+    _subscription = scheduleManager.stream.listen(_refresh);
+    _refresh(scheduleManager.state);
+  }
 
-    if (!scheduleManager.state.schedules.containsKey(scheduleKey)) {
+  void _refresh(ScheduleManagerState scheduleManagerState) {
+    // refresh cached schedule
+    final schedules = scheduleManagerState.schedules;
+    if (schedules.containsKey(scheduleKey)) {
+      final schedule = schedules[scheduleKey]!;
+      emit(
+        ScheduleEventsState(
+          events: ScheduleEvent.convertFromSchedule(schedule),
+          fromSchedule: schedules[scheduleKey],
+          isFromCache: true,
+        ),
+      );
+    } else {
       refreshFromApi();
     }
-    _subscription = scheduleManager.stream.listen((state) {
-      // refresh cached schedule
-      if (state.schedules.containsKey(scheduleKey)) {
-        final schedule = state.schedules[scheduleKey]!;
-        emit(
-          ScheduleEventsState(
-            events: ScheduleEvent.convertFromSchedule(schedule),
-            fromSchedule: state.schedules[scheduleKey],
-            isFromCache: true,
-          ),
-        );
-      }
-    });
   }
 
   Future<void> refreshFromApi() async {
