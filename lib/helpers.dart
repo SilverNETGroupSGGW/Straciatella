@@ -54,6 +54,21 @@ extension DateTimeExt on DateTime {
   }
 }
 
+extension DateTimeIterExt on Iterable<DateTime> {
+  ({DateTime firstDay, DateTime lastDay}) getTimeSpan() {
+    assert(isNotEmpty);
+
+    DateTime firstDay = first;
+    DateTime lastDay = first;
+    for (final date in skip(1)) {
+      if (date.isBefore(firstDay)) firstDay = date;
+      if (date.isAfter(lastDay)) lastDay = date;
+    }
+
+    return (firstDay: firstDay, lastDay: lastDay);
+  }
+}
+
 DateTime today() {
   final dateTimeNow = DateTime.now();
   return DateTime(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:silvertimetable/helpers.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/calendar_page_view.dart';
@@ -19,13 +20,10 @@ class ScheduleScreenBody extends StatelessWidget {
     return BlocBuilder<ScheduleEventsCubit, ScheduleEventsState>(
       buildWhen: (previous, current) => previous.events != current.events,
       builder: (context, state) {
-        final firstDay =
-            state.events.keys.reduce((d0, d1) => d0.isBefore(d1) ? d0 : d1);
-        final lastDay =
-            state.events.keys.reduce((d0, d1) => d0.isAfter(d1) ? d0 : d1);
+        final timespan = state.events.keys.getTimeSpan();
         return CalendarPageView(
-          firstDay: firstDay,
-          lastDay: lastDay,
+          firstDay: timespan.firstDay,
+          lastDay: timespan.lastDay,
           dayBuilder: (context, controller, day, page) => Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
