@@ -47,7 +47,7 @@ class ScheduleScreenAppBar extends StatelessWidget
                 },
                 pageController: controller,
                 page: page,
-                error: 0.8,
+                errorMargin: 0.8,
               );
             },
             dayLabelBuilder: (context, controller, day, page) {
@@ -67,7 +67,7 @@ class ScheduleScreenAppBar extends StatelessWidget
                 },
                 pageController: controller,
                 page: page,
-                error: 0.1,
+                errorMargin: 0.1,
               );
             },
           ),

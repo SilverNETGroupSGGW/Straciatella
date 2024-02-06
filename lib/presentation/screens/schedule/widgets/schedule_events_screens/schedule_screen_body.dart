@@ -34,7 +34,7 @@ class ScheduleScreenBody extends StatelessWidget {
                 PageAlignmentCoefficient(
                   pageController: controller,
                   page: page,
-                  error: 0.1,
+                  errorMargin: 0.1,
                   builder: (context, coefficient) => coefficient > 0
                       ? const Text(
                           "IS ALIGNED",
