@@ -5,16 +5,13 @@ import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cu
 import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/calendar_page_picker.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/day_dot.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/day_dot_label.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_refreshing_indicator.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/settings_icon_button.dart';
 import 'package:silvertimetable/presentation/widgets/page_alignment_coefficient.dart';
 
 class ScheduleScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  final bool isRefreshing;
-  const ScheduleScreenAppBar({
-    super.key,
-    required this.isRefreshing,
-  });
+  const ScheduleScreenAppBar({super.key});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 60);
@@ -27,9 +24,9 @@ class ScheduleScreenAppBar extends StatelessWidget
         final timespan = state.events.keys.getTimeSpan();
         return AppBar(
           title: Text(state.fromSchedule?.toPrettyString() ?? "Schedule"),
-          actions: [
-            if (isRefreshing) const CircularProgressIndicator(),
-            const SettingsIconButton(),
+          actions: const [
+            ScheduleEventsRefreshingIndicator(),
+            SettingsIconButton(),
           ],
           bottom: CalendarPagePicker(
             firstDay: timespan.firstDay,

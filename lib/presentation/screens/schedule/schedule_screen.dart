@@ -38,8 +38,7 @@ class ScheduleScreen extends StatelessWidget {
           return switch ((state.events.isEmpty, state.isLoading)) {
             (true, false) => const ScheduleEventsEmptyScreen(),
             (true, true) => const ScheduleEventsLoadingScreen(),
-            (false, final bool refreshing) =>
-              ScheduleEventsLoadedScreen(refreshing: refreshing),
+            (false, _) => const ScheduleEventsLoadedScreen(),
           };
         },
       ),
