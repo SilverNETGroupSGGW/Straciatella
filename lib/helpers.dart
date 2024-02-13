@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 extension TimeOfDayExt on TimeOfDay {
@@ -34,5 +33,34 @@ extension ListExt<T> on List<T> {
     }
 
     return reservoir;
+  }
+}
+
+extension NumExt on num {
+  bool inBounds(num min, num max) {
+    return this <= max && this >= min;
+  }
+
+  double alignmentCoe(double center, double error) {
+    final distance = (this - center).abs();
+
+    return error != 0 ? max(0, 1 - distance / error) : 0;
+  }
+}
+
+DateTime today() {
+  final dateTimeNow = DateTime.now();
+  return DateTime(
+    dateTimeNow.year,
+    dateTimeNow.month,
+    dateTimeNow.day,
+  );
+}
+
+extension PageControllerExt on PageController {
+  double get pageUnclamped {
+    // this is PageMetrics().page definition but without clamping for pixels
+    return position.pixels /
+        max(1.0, position.viewportDimension * viewportFraction);
   }
 }

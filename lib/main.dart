@@ -3,13 +3,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:silvertimetable/app_scroll_behavior.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/register_adapters.dart';
 import 'package:silvertimetable/logic/register_adapters.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/providers_tree.dart';
 import 'package:silvertimetable/router.dart';
-import 'package:silvertimetable/themes.dart';
+import 'package:silvertimetable/themes/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,6 +52,7 @@ class _MainAppState extends State<MainApp> {
           return DynamicColorBuilder(
             builder: (lightDynamic, darkDynamic) {
               return MaterialApp(
+                scrollBehavior: AppScrollBehavior(),
                 title: appName,
                 theme: getThemeData(
                   settings,
