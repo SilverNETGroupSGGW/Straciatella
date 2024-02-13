@@ -46,7 +46,7 @@ final mockLecturer = {
           "created": "2023-12-22T17:48:37.7724059",
           "updated": "2023-12-22T17:49:28.7739208",
           "numberOfLesson": 1,
-          "startTime": "2024-05-01T10:00:00",
+          "startTime": "2024-02-01T10:00:00",
           "duration": "01:30:00",
         },
         {
@@ -98,7 +98,16 @@ final mockLecturer = {
         "floor": "",
         "building": "34",
       },
-      "lessons": [],
+      "lessons": [
+        {
+          "id": "5a161256-ef9d-4523-9462-15f0addc380e",
+          "created": "2023-12-22T17:48:37.7724059",
+          "updated": "2023-12-22T17:49:28.7739208",
+          "numberOfLesson": 1,
+          "startTime": "2024-02-01T12:00:00",
+          "duration": "01:30:00",
+        },
+      ],
       "groups": [
         {
           "id": "efe04f87-3d7d-46f8-9cc1-0852564be8fa",
@@ -153,7 +162,26 @@ final mockSchedule = {
           "name": "EMOS",
         }
       ],
-      "lessons": [],
+      "lessons": [
+        {
+          "id": "a20015e7-499b-4dfd-b7cd-c20c72766681",
+          "numberOfLesson": 1,
+          "startTime": "2024-02-28T13:00:00",
+          "duration": "00:45:00",
+        },
+        {
+          "id": "a20015e7-499b-4dfd-b7cd-c20c76766681",
+          "numberOfLesson": 2,
+          "startTime": "2024-02-28T14:00:00",
+          "duration": "00:45:00",
+        },
+        {
+          "id": "a20015e7-499b-4dfd-b7cd-c40c76766681",
+          "numberOfLesson": 3,
+          "startTime": "2024-02-29T14:00:00",
+          "duration": "01:30:00",
+        }
+      ],
       "classroom": {
         "id": "e2b966bb-cbf3-4fd3-895e-ba3d02b6b1fb",
         "name": "14",
@@ -188,7 +216,26 @@ final mockSchedule = {
           "name": "EMOS",
         }
       ],
-      "lessons": [],
+      "lessons": [
+        {
+          "id": "a20015e7-499b-4dfd-b786-c20c72766681",
+          "numberOfLesson": 1,
+          "startTime": "2024-02-26T13:00:00",
+          "duration": "00:45:00",
+        },
+        {
+          "id": "a20015e7-499b-88fd-b7cd-c20c76766681",
+          "numberOfLesson": 2,
+          "startTime": "2024-02-26T14:00:00",
+          "duration": "00:45:00",
+        },
+        {
+          "id": "a20815e7-499b-4dfd-b7cd-c40c76766681",
+          "numberOfLesson": 3,
+          "startTime": "2024-02-27T14:00:00",
+          "duration": "01:30:00",
+        }
+      ],
       "classroom": {
         "id": "e2b966bb-cbf3-4fd3-895e-ba3d02b6b1fb",
         "name": "14",
@@ -223,7 +270,26 @@ final mockSchedule = {
           "name": "EMOS",
         }
       ],
-      "lessons": [],
+      "lessons": [
+        {
+          "id": "a20015e7-499b-4d1d-b7cd-c20c72766681",
+          "numberOfLesson": 1,
+          "startTime": "2024-02-20T13:00:00",
+          "duration": "00:45:00",
+        },
+        {
+          "id": "a20015e7-491b-4dfd-b7cd-c20c76766681",
+          "numberOfLesson": 2,
+          "startTime": "2024-02-20T14:00:00",
+          "duration": "00:45:00",
+        },
+        {
+          "id": "a2001517-499b-4dfd-b7cd-c40c76766681",
+          "numberOfLesson": 3,
+          "startTime": "2024-02-22T14:00:00",
+          "duration": "01:30:00",
+        }
+      ],
       "classroom": {
         "id": "e2b966bb-cbf3-4fd3-895e-ba3d02b6b1fb",
         "name": "14",
@@ -258,7 +324,26 @@ final mockSchedule = {
           "name": "EMOS",
         }
       ],
-      "lessons": [],
+      "lessons": [
+        {
+          "id": "a20015e7-499b-4dfd-b7cd-c20472766681",
+          "numberOfLesson": 1,
+          "startTime": "2024-02-15T13:00:00",
+          "duration": "00:45:00",
+        },
+        {
+          "id": "a20015e7-494b-4dfd-b7cd-c20c76766681",
+          "numberOfLesson": 2,
+          "startTime": "2024-02-16T14:00:00",
+          "duration": "00:45:00",
+        },
+        {
+          "id": "a20015e7-499b-44fd-b7cd-c40c76766681",
+          "numberOfLesson": 3,
+          "startTime": "2024-02-17T14:00:00",
+          "duration": "01:30:00",
+        }
+      ],
       "classroom": {
         "id": "e2b966bb-cbf3-4fd3-895e-ba3d02b6b1fb",
         "name": "14",
@@ -293,7 +378,14 @@ final mockSchedule = {
           "name": "EMOS",
         }
       ],
-      "lessons": [],
+      "lessons": [
+        {
+          "id": "a22215e7-499b-4dfd-b7cd-c20c72766681",
+          "numberOfLesson": 1,
+          "startTime": "2024-02-18T09:00:00",
+          "duration": "09:00:00",
+        },
+      ],
       "classroom": {
         "id": "e2b966bb-cbf3-4fd3-895e-ba3d02b6b1fb",
         "name": "14",
@@ -328,7 +420,20 @@ final mockSchedule = {
           "name": "EMOS",
         }
       ],
-      "lessons": [],
+      "lessons": [
+        {
+          "id": "a20011e7-499b-4dfd-b7cd-c20c72766681",
+          "numberOfLesson": 1,
+          "startTime": "2024-02-11T13:00:00",
+          "duration": "00:45:00",
+        },
+        {
+          "id": "a20015e7-499b-4dfd-b7cd-c40c76666681",
+          "numberOfLesson": 2,
+          "startTime": "2024-02-11T14:00:00",
+          "duration": "01:30:00",
+        }
+      ],
       "classroom": {
         "id": "e2b966bb-cbf3-4fd3-895e-ba3d02b6b1fb",
         "name": "14",

@@ -74,7 +74,7 @@ class CalendarPagePicker extends StatelessWidget
 
     final extraDummyPagesForDots = (1 / viewportFraction).ceil();
 
-    final pagesCount = lastDay.difference(firstDay).inDays + 2;
+    final pagesCount = lastDay.difference(firstDay).inDays + 1;
     final initialPage =
         today().difference(firstDay).inDays.clamp(0, pagesCount - 1);
 

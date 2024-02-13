@@ -23,7 +23,7 @@ class CalendarPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pagesCount = lastDay.difference(firstDay).inDays + 2;
+    final pagesCount = lastDay.difference(firstDay).inDays + 1;
     final initialPage =
         today().difference(firstDay).inDays.clamp(0, pagesCount - 1);
 
