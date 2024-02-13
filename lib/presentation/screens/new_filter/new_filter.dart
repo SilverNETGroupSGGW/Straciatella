@@ -16,11 +16,18 @@ class NewFilterScreen extends StatefulWidget {
 }
 
 class _NewFilterScreenState extends State<NewFilterScreen> {
+  Queue<Record> userChoices = Queue();
+
   @override
   void initState() {
     super.initState();
     BlocProvider.of<ScheduleManagerBloc>(context)
         .add(const ScheduleManagerEvent.updateIndex());
+  }
+
+  void chipPressedCallback(dynamic filterType, dynamic filterValue) {
+    userChoices.add((filterType, filterValue));
+    setState(() {});
   }
 
   @override
@@ -32,34 +39,16 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
             ? const CircularProgressIndicator() // TODO coś bardziej fancy
             : ListView(
                 children: [
-                  //Text('$optionsTree'),
                   NewFilterOptionsRow(
-                    icon: nodeIcon(optionsTree.name),
+                    filterType: optionsTree.name,
                     setTitle: optionsTree.name.tr(),
                     chipTitles: keyListFromOptions(optionsTree.options),
+                    chipPressedCallback: chipPressedCallback,
                   ),
-
                 ],
               ),
       ),
     );
-  }
-
-  IconData nodeIcon(String nodeName) {
-    switch (nodeName) {
-      case 'faculty':
-        return Icons.apartment;
-      case 'fieldOfStudy':
-        return Icons.build;
-      case 'studyMode':
-        return Icons.calendar_month;
-      case 'degreeOfStudy':
-        return Icons.school;
-      case 'semester':
-        return Icons.numbers;
-      default:
-        return Icons.school;
-    }
   }
 
   List<String> keyListFromOptions(SplayTreeMap options) =>
