@@ -1,49 +1,57 @@
+import 'dart:collection';
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class NewFilterOptionsRow extends StatefulWidget {
   const NewFilterOptionsRow({
     super.key,
-    required this.filterType,
-    required this.chipTitles,
-    required this.setTitle,
-    required this.chipPressedCallback,
+    required this.filterName,
+    required this.filterOptions,
+    required this.callback,
   });
 
-  final String filterType;
-  final List<String> chipTitles;
-  final String setTitle;
-  final Function chipPressedCallback;
+  final String filterName;
+  final SplayTreeMap filterOptions;
+  final Function callback;
 
   @override
   State<NewFilterOptionsRow> createState() => _NewFilterOptionsRow();
 }
 
 class _NewFilterOptionsRow extends State<NewFilterOptionsRow> {
-  int selectedIndex = -1;
+  dynamic selectedKey = -1;
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      ListTile(leading: Icon(nodeIcon(widget.filterType)), title: Text(widget.setTitle)),
-      Wrap(
-        alignment: WrapAlignment.center,
-        children: List<Widget>.generate(
-          widget.chipTitles.length,
-          (index) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0),
-            child: ChoiceChip(
-              showCheckmark: false,
-              label: Text(widget.chipTitles[index]),
-              selected: selectedIndex == index,
-              onSelected: (value) => setState(() {
-                selectedIndex = index;
-                widget.chipPressedCallback(widget.filterType, widget.chipTitles[index]);
-              }),
-            ),
-          ),
+    return Column(
+      children: [
+        ListTile(
+          leading: Icon(nodeIcon(widget.filterName)),
+          title: Text(widget.filterName.tr()),
         ),
-      )
-    ]);
+        Wrap(
+          alignment: WrapAlignment.center,
+          children: widget.filterOptions.keys
+              .map(
+                (key) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: ChoiceChip(
+                      showCheckmark: false,
+                      label: Text(key.toString()),
+                      selected: selectedKey == key,
+                      onSelected: (_) {
+                        setState(() {
+                          selectedKey = key;
+                          widget.callback(selectedKey);
+                        });
+                      }),
+                ),
+              )
+              .toList(),
+        ),
+      ],
+    );
   }
 
   IconData nodeIcon(String nodeName) {
@@ -62,5 +70,4 @@ class _NewFilterOptionsRow extends State<NewFilterOptionsRow> {
         return Icons.school;
     }
   }
-
 }
