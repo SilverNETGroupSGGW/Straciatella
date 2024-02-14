@@ -30,7 +30,7 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
 
   void chipPressedCallback(OptionsTreeNode node, dynamic selectedKey) {
     bool nodeAlreadyPicked = false;
-    for (Map choices in userChoicesData) {
+    for (final Map choices in userChoicesData) {
       if (choices['node'] == node) {
         nodeAlreadyPicked = true;
         break;
@@ -69,7 +69,7 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
           }
           return Container(
             alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.only(bottom: 20.0),
+            padding: const EdgeInsets.only(bottom: 20.0),
             child: ListView(
               shrinkWrap: true,
               children: [
@@ -79,12 +79,13 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
                     selectedKey: choiceData['selectedKey'],
                     callback: chipPressedCallback,
                   ),
-                currentNode!.isLeaf
-                    ? AddNewFilterButton(pickedId: currentNode!.leafValue)
-                    : NewFilterOptionsRow(
-                        node: currentNode!,
-                        callback: chipPressedCallback,
-                      ),
+                if (currentNode!.isLeaf)
+                  AddNewFilterButton(pickedId: currentNode!.leafValue)
+                else
+                  NewFilterOptionsRow(
+                    node: currentNode!,
+                    callback: chipPressedCallback,
+                  ),
               ],
             ),
           );

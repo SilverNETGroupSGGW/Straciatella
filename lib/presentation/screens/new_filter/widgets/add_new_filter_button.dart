@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 class AddNewFilterButton extends StatelessWidget {
   AddNewFilterButton({super.key, required this.pickedId});
 
-  dynamic pickedId;
+  final dynamic pickedId;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: ElevatedButton.icon(
-        icon: Icon(Icons.add),
+        icon: const Icon(Icons.add),
         onPressed: () {
           Navigator.pop(context, pickedId);
         },
