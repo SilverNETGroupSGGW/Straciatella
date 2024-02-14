@@ -22,9 +22,10 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
   @override
   void initState() {
     super.initState();
-    context
+    final scheduleManagerBloc = context
         .read<ScheduleManagerBloc>()
-        .add(const ScheduleManagerEvent.updateIndex());
+        ..add(const ScheduleManagerEvent.updateIndex());
+    currentNode = scheduleManagerBloc.state.schedulesOptionsTree;
   }
 
   void chipPressedCallback(OptionsTreeNode node, dynamic selectedKey) {
