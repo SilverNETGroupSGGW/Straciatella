@@ -1787,9 +1787,9 @@ mixin _$ScheduleManagerState {
   bool get refreshingIndex => throw _privateConstructorUsedError;
   Set<({String id, ScheduleType type})> get refreshing =>
       throw _privateConstructorUsedError;
-  OptionsTreeNode? get schedulesOptionsTree =>
+  OptionsTreeNode<dynamic>? get schedulesOptionsTree =>
       throw _privateConstructorUsedError;
-  OptionsTreeNode? get lecturersOptionsTree =>
+  OptionsTreeNode<dynamic>? get lecturersOptionsTree =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1808,8 +1808,8 @@ abstract class $ScheduleManagerStateCopyWith<$Res> {
       Map<({String id, ScheduleType type}), BaseSchedule> schedulesIndex,
       bool refreshingIndex,
       Set<({String id, ScheduleType type})> refreshing,
-      OptionsTreeNode? schedulesOptionsTree,
-      OptionsTreeNode? lecturersOptionsTree});
+      OptionsTreeNode<dynamic>? schedulesOptionsTree,
+      OptionsTreeNode<dynamic>? lecturersOptionsTree});
 }
 
 /// @nodoc
@@ -1853,11 +1853,11 @@ class _$ScheduleManagerStateCopyWithImpl<$Res,
       schedulesOptionsTree: freezed == schedulesOptionsTree
           ? _value.schedulesOptionsTree
           : schedulesOptionsTree // ignore: cast_nullable_to_non_nullable
-              as OptionsTreeNode?,
+              as OptionsTreeNode<dynamic>?,
       lecturersOptionsTree: freezed == lecturersOptionsTree
           ? _value.lecturersOptionsTree
           : lecturersOptionsTree // ignore: cast_nullable_to_non_nullable
-              as OptionsTreeNode?,
+              as OptionsTreeNode<dynamic>?,
     ) as $Val);
   }
 }
@@ -1875,8 +1875,8 @@ abstract class _$$ScheduleManagerStateImplCopyWith<$Res>
       Map<({String id, ScheduleType type}), BaseSchedule> schedulesIndex,
       bool refreshingIndex,
       Set<({String id, ScheduleType type})> refreshing,
-      OptionsTreeNode? schedulesOptionsTree,
-      OptionsTreeNode? lecturersOptionsTree});
+      OptionsTreeNode<dynamic>? schedulesOptionsTree,
+      OptionsTreeNode<dynamic>? lecturersOptionsTree});
 }
 
 /// @nodoc
@@ -1917,11 +1917,11 @@ class __$$ScheduleManagerStateImplCopyWithImpl<$Res>
       schedulesOptionsTree: freezed == schedulesOptionsTree
           ? _value.schedulesOptionsTree
           : schedulesOptionsTree // ignore: cast_nullable_to_non_nullable
-              as OptionsTreeNode?,
+              as OptionsTreeNode<dynamic>?,
       lecturersOptionsTree: freezed == lecturersOptionsTree
           ? _value.lecturersOptionsTree
           : lecturersOptionsTree // ignore: cast_nullable_to_non_nullable
-              as OptionsTreeNode?,
+              as OptionsTreeNode<dynamic>?,
     ));
   }
 }
@@ -1975,9 +1975,9 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
   }
 
   @override
-  final OptionsTreeNode? schedulesOptionsTree;
+  final OptionsTreeNode<dynamic>? schedulesOptionsTree;
   @override
-  final OptionsTreeNode? lecturersOptionsTree;
+  final OptionsTreeNode<dynamic>? lecturersOptionsTree;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -2010,10 +2010,10 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
                 other.refreshingIndex == refreshingIndex) &&
             const DeepCollectionEquality()
                 .equals(other._refreshing, _refreshing) &&
-            const DeepCollectionEquality()
-                .equals(other.schedulesOptionsTree, schedulesOptionsTree) &&
-            const DeepCollectionEquality()
-                .equals(other.lecturersOptionsTree, lecturersOptionsTree));
+            (identical(other.schedulesOptionsTree, schedulesOptionsTree) ||
+                other.schedulesOptionsTree == schedulesOptionsTree) &&
+            (identical(other.lecturersOptionsTree, lecturersOptionsTree) ||
+                other.lecturersOptionsTree == lecturersOptionsTree));
   }
 
   @override
@@ -2023,8 +2023,8 @@ class _$ScheduleManagerStateImpl extends _ScheduleManagerState
       const DeepCollectionEquality().hash(_schedulesIndex),
       refreshingIndex,
       const DeepCollectionEquality().hash(_refreshing),
-      const DeepCollectionEquality().hash(schedulesOptionsTree),
-      const DeepCollectionEquality().hash(lecturersOptionsTree));
+      schedulesOptionsTree,
+      lecturersOptionsTree);
 
   @JsonKey(ignore: true)
   @override
@@ -2041,8 +2041,8 @@ abstract class _ScheduleManagerState extends ScheduleManagerState {
       final Map<({String id, ScheduleType type}), BaseSchedule> schedulesIndex,
       final bool refreshingIndex,
       final Set<({String id, ScheduleType type})> refreshing,
-      final OptionsTreeNode? schedulesOptionsTree,
-      final OptionsTreeNode?
+      final OptionsTreeNode<dynamic>? schedulesOptionsTree,
+      final OptionsTreeNode<dynamic>?
           lecturersOptionsTree}) = _$ScheduleManagerStateImpl;
   _ScheduleManagerState._() : super._();
 
@@ -2055,9 +2055,9 @@ abstract class _ScheduleManagerState extends ScheduleManagerState {
   @override
   Set<({String id, ScheduleType type})> get refreshing;
   @override
-  OptionsTreeNode? get schedulesOptionsTree;
+  OptionsTreeNode<dynamic>? get schedulesOptionsTree;
   @override
-  OptionsTreeNode? get lecturersOptionsTree;
+  OptionsTreeNode<dynamic>? get lecturersOptionsTree;
   @override
   @JsonKey(ignore: true)
   _$$ScheduleManagerStateImplCopyWith<_$ScheduleManagerStateImpl>

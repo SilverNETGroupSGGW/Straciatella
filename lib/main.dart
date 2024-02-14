@@ -68,9 +68,8 @@ class _MainAppState extends State<MainApp> {
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,
                 onGenerateRoute: _appRouter.onGenerateRoute,
-                initialRoute: settings.isFirstRun
-                    ? RouteNames.welcome
-                    : RouteNames.timeline,
+                initialRoute:
+                    settings.isFirstRun ? RouteNames.welcome : RouteNames.faved,
               );
             },
           );

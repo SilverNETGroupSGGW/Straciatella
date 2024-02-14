@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/generated/locale_keys.g.dart';
 import 'package:silvertimetable/helpers.dart';
-import 'package:silvertimetable/presentation/screens/timetable/widgets/lesson_tile.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson/lesson_tile.dart';
 
 const List<String> _mockLecturers = [
   "Marian Rejewski",
