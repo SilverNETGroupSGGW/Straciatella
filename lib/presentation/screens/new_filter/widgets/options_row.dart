@@ -35,7 +35,7 @@ class _NewFilterOptionsRow extends State<NewFilterOptionsRow> {
                   padding: const EdgeInsets.symmetric(horizontal: 5.0),
                   child: ChoiceChip(
                       showCheckmark: false,
-                      label: Text(key.toString()),
+                      label: Text(key.toString().tr()),
                       selected: widget.selectedKey == key,
                       onSelected: (_) {
                         setState(() {

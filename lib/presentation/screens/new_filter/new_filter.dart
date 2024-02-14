@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/add_new_filter_button.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/options_row.dart';
 
 class NewFilterScreen extends StatefulWidget {
@@ -22,9 +23,8 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
   @override
   void initState() {
     super.initState();
-    final scheduleManagerBloc = context
-        .read<ScheduleManagerBloc>()
-        ..add(const ScheduleManagerEvent.updateIndex());
+    final scheduleManagerBloc = context.read<ScheduleManagerBloc>()
+      ..add(const ScheduleManagerEvent.updateIndex());
     currentNode = scheduleManagerBloc.state.schedulesOptionsTree;
   }
 
@@ -64,6 +64,7 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
         },
         builder: (context, state) {
           if (state.refreshingIndex || state.schedulesOptionsTree == null) {
+            // TODO: Informacja o ładowaniu (najnowszych) planów
             return const CircularProgressIndicator();
           }
           return ListView(
@@ -74,10 +75,12 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
                   selectedKey: choiceData['selectedKey'],
                   callback: chipPressedCallback,
                 ),
-              NewFilterOptionsRow(
-                node: currentNode!,
-                callback: chipPressedCallback,
-              ),
+              currentNode!.isLeaf
+                  ? AddNewFilterButton(pickedId: currentNode!.leafValue)
+                  : NewFilterOptionsRow(
+                      node: currentNode!,
+                      callback: chipPressedCallback,
+                    ),
             ],
           );
         },
