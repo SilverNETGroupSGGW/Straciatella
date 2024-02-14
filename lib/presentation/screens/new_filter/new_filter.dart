@@ -29,14 +29,28 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
     });
   }
 
-  void chipPressedCallback(dynamic selectedKey) {
-    userChoicesData.add({
-      'filterName': currentNode!.name,
-      'filterOptions': currentNode!.options,
-      'selectedOptionKey': selectedKey,
+  void chipPressedCallback(OptionsTreeNode node, dynamic selectedKey) {
+    bool nodeAlreadyPicked = false;
+    for (Map choices in userChoicesData) {
+      if (choices['node'] == node) {
+        nodeAlreadyPicked = true;
+        break;
+      }
+    }
+
+    if (nodeAlreadyPicked) {
+      while(userChoicesData.last['node'] != node) {
+        userChoicesData.removeLast();
+      }
+      userChoicesData.removeLast();
+    }
+
+    userChoicesData.addLast({
+      'node': node,
+      'selectedKey': selectedKey,
     });
 
-    currentNode = currentNode?.options[selectedKey];
+    currentNode = node.options[selectedKey];
     setState(() {});
   }
 
@@ -48,15 +62,15 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
           ? const CircularProgressIndicator() // TODO coś bardziej fancy
           : ListView(
               children: [
+                Text('$currentNode'),
                 for (final Map choiceData in userChoicesData)
                   NewFilterOptionsRow(
-                    filterName: choiceData['filterName'].toString(),
-                    filterOptions: choiceData['filterOptions'] as SplayTreeMap,
+                    node: choiceData['node'] as OptionsTreeNode,
+                    selectedKey: choiceData['selectedKey'],
                     callback: chipPressedCallback,
                   ),
                 NewFilterOptionsRow(
-                  filterName: currentNode!.name,
-                  filterOptions: currentNode!.options,
+                  node: currentNode!,
                   callback: chipPressedCallback,
                 ),
               ],

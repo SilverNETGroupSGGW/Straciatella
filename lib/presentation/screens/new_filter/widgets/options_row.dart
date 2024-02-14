@@ -2,48 +2,47 @@ import 'dart:collection';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
 
 class NewFilterOptionsRow extends StatefulWidget {
-  const NewFilterOptionsRow({
+  NewFilterOptionsRow({
     super.key,
-    required this.filterName,
-    required this.filterOptions,
+    required this.node,
     required this.callback,
+    this.selectedKey
   });
 
-  final String filterName;
-  final SplayTreeMap filterOptions;
+  final OptionsTreeNode node;
   final Function callback;
+  dynamic selectedKey;
 
   @override
   State<NewFilterOptionsRow> createState() => _NewFilterOptionsRow();
 }
 
 class _NewFilterOptionsRow extends State<NewFilterOptionsRow> {
-  dynamic selectedKey = -1;
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ListTile(
-          leading: Icon(nodeIcon(widget.filterName)),
-          title: Text(widget.filterName.tr()),
+          leading: Icon(nodeIcon(widget.node.name)),
+          title: Text(widget.node.name.tr()),
         ),
         Wrap(
           alignment: WrapAlignment.center,
-          children: widget.filterOptions.keys
+          children: widget.node.options.keys
               .map(
                 (key) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5.0),
                   child: ChoiceChip(
                       showCheckmark: false,
                       label: Text(key.toString()),
-                      selected: selectedKey == key,
+                      selected: widget.selectedKey == key,
                       onSelected: (_) {
                         setState(() {
-                          selectedKey = key;
-                          widget.callback(selectedKey);
+                          widget.selectedKey = key;
+                          widget.callback(widget.node, widget.selectedKey);
                         });
                       }),
                 ),
