@@ -9,10 +9,14 @@ class AddNewFilterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: ElevatedButton(onPressed: () {
-        Navigator.pop(context, pickedId);
-      }, child: Text('add_new_filter_button_text'.tr())),
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+      child: ElevatedButton.icon(
+        icon: Icon(Icons.add),
+        onPressed: () {
+          Navigator.pop(context, pickedId);
+        },
+        label: Text('add_new_filter_button_text'.tr()),
+      ),
     );
   }
 }

@@ -67,21 +67,26 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
             // TODO: Informacja o ładowaniu (najnowszych) planów
             return const CircularProgressIndicator();
           }
-          return ListView(
-            children: [
-              for (final Map choiceData in userChoicesData)
-                NewFilterOptionsRow(
-                  node: choiceData['node'] as OptionsTreeNode,
-                  selectedKey: choiceData['selectedKey'],
-                  callback: chipPressedCallback,
-                ),
-              currentNode!.isLeaf
-                  ? AddNewFilterButton(pickedId: currentNode!.leafValue)
-                  : NewFilterOptionsRow(
-                      node: currentNode!,
-                      callback: chipPressedCallback,
-                    ),
-            ],
+          return Container(
+            alignment: Alignment.bottomCenter,
+            padding: EdgeInsets.only(bottom: 20.0),
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                for (final Map choiceData in userChoicesData)
+                  NewFilterOptionsRow(
+                    node: choiceData['node'] as OptionsTreeNode,
+                    selectedKey: choiceData['selectedKey'],
+                    callback: chipPressedCallback,
+                  ),
+                currentNode!.isLeaf
+                    ? AddNewFilterButton(pickedId: currentNode!.leafValue)
+                    : NewFilterOptionsRow(
+                        node: currentNode!,
+                        callback: chipPressedCallback,
+                      ),
+              ],
+            ),
           );
         },
       ),
