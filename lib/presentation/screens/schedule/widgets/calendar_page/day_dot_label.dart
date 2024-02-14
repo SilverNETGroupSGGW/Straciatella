@@ -18,7 +18,7 @@ class DayDotLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     final dayDotTheme = Theme.of(context).extension<DayDotTheme>()!;
     final (Color mainColor, _) = dayDotTheme.getByWeekdayColor(day.weekday);
-    final opacity = dayDotTheme.getOpacity(hasEvents, day);
+    final opacity = dayDotTheme.getOpacity(hasEvents);
 
     final weekdayTextColor = mainColor.withOpacity(opacity);
     final textColor =

@@ -1,26 +1,24 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:silvertimetable/helpers.dart';
 
 class DayDotTheme extends ThemeExtension<DayDotTheme> {
   DayDotTheme({
     this.normalDayColor = Colors.black,
     this.saturdayColor = Colors.black54,
     this.sundayColor = Colors.red,
+    this.todayIndicatorColor = Colors.red,
     this.onDotNormalDayTextColor = Colors.white,
     this.onDotSaturdayTextColor = Colors.white,
     this.onDotSundayTextColor = Colors.white,
-    this.noEventsOpacity = 0.4,
-    this.pastDayOpacity = 0.6,
+    this.noEventsOpacity = 0.2,
   });
 
   DayDotTheme.create({
     this.normalDayColor = Colors.black,
     this.saturdayColor = Colors.black54,
     this.sundayColor = Colors.red,
-    this.noEventsOpacity = 0.4,
-    this.pastDayOpacity = 0.6,
+    this.todayIndicatorColor = Colors.red,
+    this.noEventsOpacity = 0.2,
   }) {
     onDotNormalDayTextColor =
         normalDayColor.computeLuminance() > 0.5 ? Colors.black : Colors.white;
@@ -38,6 +36,9 @@ class DayDotTheme extends ThemeExtension<DayDotTheme> {
 
   /// Color of the dot for sunday
   final Color sundayColor;
+
+  /// Color of the text for today
+  final Color todayIndicatorColor;
 
   /// Color of the text with the dot visible for moday-friday
   late final Color onDotNormalDayTextColor;
@@ -61,18 +62,14 @@ class DayDotTheme extends ThemeExtension<DayDotTheme> {
         _ => (normalDayColor, onDotNormalDayTextColor),
       };
 
-  double getOpacity(bool hasEvents, DateTime date) =>
-      switch ((hasEvents, date.isBefore(today()))) {
-        (_, true) => noEventsOpacity,
-        (false, false) => pastDayOpacity,
-        (true, false) => 1,
-      };
+  double getOpacity(bool hasEvents) => hasEvents ? 1 : noEventsOpacity;
 
   @override
   DayDotTheme copyWith({
     Color? normalDayColor,
     Color? saturdayColor,
     Color? sundayColor,
+    Color? todayIndicatorColor,
     Color? onDotNormalDayTextColor,
     Color? onDotSaturdayTextColor,
     Color? onDotSundayTextColor,
@@ -89,7 +86,7 @@ class DayDotTheme extends ThemeExtension<DayDotTheme> {
           onDotSaturdayTextColor ?? this.onDotSaturdayTextColor,
       onDotSundayTextColor: onDotSundayTextColor ?? this.onDotSundayTextColor,
       noEventsOpacity: noEventsOpacity ?? this.noEventsOpacity,
-      pastDayOpacity: pastDayOpacity ?? this.pastDayOpacity,
+      todayIndicatorColor: todayIndicatorColor ?? this.todayIndicatorColor,
     );
   }
 
@@ -123,6 +120,12 @@ class DayDotTheme extends ThemeExtension<DayDotTheme> {
             t,
           ) ??
           def.sundayColor,
+      todayIndicatorColor: Color.lerp(
+            todayIndicatorColor,
+            other.todayIndicatorColor,
+            t,
+          ) ??
+          def.todayIndicatorColor,
       onDotNormalDayTextColor: Color.lerp(
             onDotNormalDayTextColor,
             other.onDotNormalDayTextColor,
@@ -147,12 +150,6 @@ class DayDotTheme extends ThemeExtension<DayDotTheme> {
             t,
           ) ??
           def.noEventsOpacity,
-      pastDayOpacity: lerpDouble(
-            pastDayOpacity,
-            other.pastDayOpacity,
-            t,
-          ) ??
-          def.pastDayOpacity,
     );
   }
 }
