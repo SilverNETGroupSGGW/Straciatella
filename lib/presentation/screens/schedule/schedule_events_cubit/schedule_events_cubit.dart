@@ -49,13 +49,21 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
       emit(state.copyWith(isLoading: true));
     }
 
-    final schedule = await _sggwHubRepo.getScheduleByType(scheduleKey);
-    emit(
-      ScheduleEventsState(
-        events: ScheduleEvent.convertFromSchedule(schedule),
-        fromSchedule: schedule,
-      ),
-    );
+    await _sggwHubRepo.getScheduleByType(scheduleKey).then((schedule) {
+      emit(
+        ScheduleEventsState(
+          events: ScheduleEvent.convertFromSchedule(schedule),
+          fromSchedule: schedule,
+        ),
+      );
+    }).catchError((err) {
+      emit(
+        state.copyWith(
+          isLoading: false,
+          error: err,
+        ),
+      );
+    });
   }
 
   @override

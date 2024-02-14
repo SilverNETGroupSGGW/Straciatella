@@ -7,5 +7,9 @@ class ScheduleEventsState with _$ScheduleEventsState {
     ExtendedSchedule? fromSchedule,
     @Default(false) bool isFromCache,
     @Default(false) bool isLoading,
+    Object? error,
   }) = _ScheduleEventsState;
+  const ScheduleEventsState._();
+
+  bool get hasError => error != null;
 }

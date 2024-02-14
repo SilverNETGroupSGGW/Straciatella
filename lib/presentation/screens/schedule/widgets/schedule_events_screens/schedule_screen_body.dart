@@ -7,6 +7,7 @@ import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_p
 import 'package:silvertimetable/presentation/widgets/page_alignment_coefficient.dart';
 
 // TODO: make it nice
+/// Displays events of a given schedule
 class ScheduleScreenBody extends StatelessWidget {
   final ScheduleViewMode mode;
 

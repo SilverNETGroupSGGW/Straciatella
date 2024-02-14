@@ -3,6 +3,7 @@ import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_e
 import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_screens/schedule_screen_body.dart';
 import 'package:silvertimetable/presentation/widgets/synced_page_view/synced_page_views.dart';
 
+/// Screen when events of a given schedule are loaded and can be displayed
 class ScheduleEventsLoadedScreen extends StatelessWidget {
   const ScheduleEventsLoadedScreen({
     super.key,
