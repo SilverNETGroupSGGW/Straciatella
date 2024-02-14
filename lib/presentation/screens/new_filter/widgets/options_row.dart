@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
