@@ -22,11 +22,9 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
   @override
   void initState() {
     super.initState();
-    setState(() {
-      final scheduleManagerBloc = BlocProvider.of<ScheduleManagerBloc>(context)
-        ..add(const ScheduleManagerEvent.updateIndex());
-      currentNode = scheduleManagerBloc.state.schedulesOptionsTree;
-    });
+    context
+        .read<ScheduleManagerBloc>()
+        .add(const ScheduleManagerEvent.updateIndex());
   }
 
   void chipPressedCallback(OptionsTreeNode node, dynamic selectedKey) {
@@ -39,7 +37,7 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
     }
 
     if (nodeAlreadyPicked) {
-      while(userChoicesData.last['node'] != node) {
+      while (userChoicesData.last['node'] != node) {
         userChoicesData.removeLast();
       }
       userChoicesData.removeLast();
@@ -58,23 +56,31 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('new_filter_title'.tr())),
-      body: currentNode == null
-          ? const CircularProgressIndicator() // TODO coś bardziej fancy
-          : ListView(
-              children: [
-                Text('$currentNode'),
-                for (final Map choiceData in userChoicesData)
-                  NewFilterOptionsRow(
-                    node: choiceData['node'] as OptionsTreeNode,
-                    selectedKey: choiceData['selectedKey'],
-                    callback: chipPressedCallback,
-                  ),
+      body: BlocConsumer<ScheduleManagerBloc, ScheduleManagerState>(
+        listener: (context, state) {
+          currentNode = state.schedulesOptionsTree;
+          userChoicesData = Queue();
+        },
+        builder: (context, state) {
+          if (state.refreshingIndex || state.schedulesOptionsTree == null) {
+            return const CircularProgressIndicator();
+          }
+          return ListView(
+            children: [
+              for (final Map choiceData in userChoicesData)
                 NewFilterOptionsRow(
-                  node: currentNode!,
+                  node: choiceData['node'] as OptionsTreeNode,
+                  selectedKey: choiceData['selectedKey'],
                   callback: chipPressedCallback,
                 ),
-              ],
-            ),
+              NewFilterOptionsRow(
+                node: currentNode!,
+                callback: chipPressedCallback,
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
