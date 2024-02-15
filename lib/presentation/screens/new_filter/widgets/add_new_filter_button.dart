@@ -2,9 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class AddNewFilterButton extends StatelessWidget {
+  // ignore: prefer_const_constructors_in_immutables
   AddNewFilterButton({super.key, required this.pickedId});
 
-  final dynamic pickedId;
+  final String pickedId;
 
   @override
   Widget build(BuildContext context) {

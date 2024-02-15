@@ -48,9 +48,7 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
     }
 
     userChoices[choiceIndex].selected = selectedKey;
-
     userChoices.add(Choice(level: level.options[selectedKey], selected: null));
-
     setState(() {});
   }
 
@@ -74,18 +72,20 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
             padding: const EdgeInsets.only(bottom: 20.0),
             child: ListView(
               shrinkWrap: true,
-              children: [
-                for (final choice in userChoices)
-                  !choice.level!.isLeaf
-                      ? NewFilterOptionsRow(
-                          level: choice.level!,
-                          selectedKey: choice.selected,
-                          callback: chipPressedCallback,
-                        )
-                      : AddNewFilterButton(
-                          pickedId: userChoices.last.level!.leafValue,
-                        ),
-              ],
+              children: userChoices
+                  .map(
+                    (choice) => !choice.level!.isLeaf
+                        ? NewFilterOptionsRow(
+                            level: choice.level!,
+                            selectedKey: choice.selected,
+                            callback: chipPressedCallback,
+                          )
+                        : AddNewFilterButton(
+                            pickedId:
+                                userChoices.last.level!.leafValue.toString(),
+                          ),
+                  )
+                  .toList(),
             ),
           );
         },
