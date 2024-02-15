@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +5,13 @@ import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart'
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/add_new_filter_button.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/options_row.dart';
+
+class Choice {
+  Choice({required this.level, required this.selected});
+
+  OptionsTreeNode? level;
+  dynamic selected;
+}
 
 class NewFilterScreen extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
@@ -17,39 +22,35 @@ class NewFilterScreen extends StatefulWidget {
 }
 
 class _NewFilterScreenState extends State<NewFilterScreen> {
-  Queue<Map> userChoicesData = Queue();
-  late OptionsTreeNode? currentNode;
+  late List<Choice> userChoices;
 
   @override
   void initState() {
     super.initState();
-    final scheduleManagerBloc = context.read<ScheduleManagerBloc>()
-      ..add(const ScheduleManagerEvent.updateIndex());
-    currentNode = scheduleManagerBloc.state.schedulesOptionsTree;
+    context
+        .read<ScheduleManagerBloc>()
+        .add(const ScheduleManagerEvent.updateIndex());
+
+    userChoices = [
+      Choice(
+        level: context.read<ScheduleManagerBloc>().state.schedulesOptionsTree,
+        selected: null,
+      ),
+    ];
   }
 
-  void chipPressedCallback(OptionsTreeNode node, dynamic selectedKey) {
-    bool nodeAlreadyPicked = false;
-    for (final Map choices in userChoicesData) {
-      if (choices['node'] == node) {
-        nodeAlreadyPicked = true;
-        break;
-      }
+  void chipPressedCallback(OptionsTreeNode level, dynamic selectedKey) {
+    final choiceIndex =
+        userChoices.indexWhere((choice) => choice.level == level);
+
+    for (int i = userChoices.length - 1; i > choiceIndex; i--) {
+      userChoices.removeAt(i);
     }
 
-    if (nodeAlreadyPicked) {
-      while (userChoicesData.last['node'] != node) {
-        userChoicesData.removeLast();
-      }
-      userChoicesData.removeLast();
-    }
+    userChoices[choiceIndex].selected = selectedKey;
 
-    userChoicesData.addLast({
-      'node': node,
-      'selectedKey': selectedKey,
-    });
+    userChoices.add(Choice(level: level.options[selectedKey], selected: null));
 
-    currentNode = node.options[selectedKey];
     setState(() {});
   }
 
@@ -59,8 +60,9 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
       appBar: AppBar(title: Text('new_filter_title'.tr())),
       body: BlocConsumer<ScheduleManagerBloc, ScheduleManagerState>(
         listener: (context, state) {
-          currentNode = state.schedulesOptionsTree;
-          userChoicesData = Queue();
+          userChoices = [
+            Choice(level: state.schedulesOptionsTree, selected: null),
+          ];
         },
         builder: (context, state) {
           if (state.refreshingIndex || state.schedulesOptionsTree == null) {
@@ -73,19 +75,16 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
             child: ListView(
               shrinkWrap: true,
               children: [
-                for (final Map choiceData in userChoicesData)
-                  NewFilterOptionsRow(
-                    node: choiceData['node'] as OptionsTreeNode,
-                    selectedKey: choiceData['selectedKey'],
-                    callback: chipPressedCallback,
-                  ),
-                if (currentNode!.isLeaf)
-                  AddNewFilterButton(pickedId: currentNode!.leafValue)
-                else
-                  NewFilterOptionsRow(
-                    node: currentNode!,
-                    callback: chipPressedCallback,
-                  ),
+                for (final choice in userChoices)
+                  !choice.level!.isLeaf
+                      ? NewFilterOptionsRow(
+                          level: choice.level!,
+                          selectedKey: choice.selected,
+                          callback: chipPressedCallback,
+                        )
+                      : AddNewFilterButton(
+                          pickedId: userChoices.last.level!.leafValue,
+                        ),
               ],
             ),
           );
