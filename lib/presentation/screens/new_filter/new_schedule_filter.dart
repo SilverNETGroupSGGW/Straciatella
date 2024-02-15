@@ -13,15 +13,16 @@ class Choice {
   dynamic selected;
 }
 
-class NewFilterScreen extends StatefulWidget {
+class NewScheduleFilterScreen extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
-  NewFilterScreen({super.key});
+  NewScheduleFilterScreen({super.key});
 
   @override
-  State<NewFilterScreen> createState() => _NewFilterScreenState();
+  State<NewScheduleFilterScreen> createState() =>
+      _NewScheduleFilterScreenState();
 }
 
-class _NewFilterScreenState extends State<NewFilterScreen> {
+class _NewScheduleFilterScreenState extends State<NewScheduleFilterScreen> {
   late List<Choice> userChoices;
 
   @override
