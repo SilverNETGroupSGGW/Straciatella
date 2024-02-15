@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/new_filter.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/new_schedule_filter.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/widgets/theme_picker/theme_picker.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/dark_theme_mode_tile.dart';
@@ -35,12 +35,14 @@ class DebugScreen extends StatelessWidget {
           TextButton(
             onPressed: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => NewFilterScreen()));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NewScheduleFilterScreen(),
+                ),
+              );
             },
-            child: const Text('Show new filter screen'),
-          )
+            child: const Text('Show new schedule filter screen'),
+          ),
         ],
       ),
     );
