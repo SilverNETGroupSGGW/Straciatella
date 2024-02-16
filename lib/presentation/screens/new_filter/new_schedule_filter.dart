@@ -25,6 +25,9 @@ class NewScheduleFilterScreen extends StatefulWidget {
 class _NewScheduleFilterScreenState extends State<NewScheduleFilterScreen> {
   late List<Choice> userChoices;
 
+  final GlobalKey<AnimatedListState> _animatedListStateKey = GlobalKey();
+  final Duration _animateDuration = const Duration(milliseconds: 150);
+
   @override
   void initState() {
     super.initState();
@@ -45,12 +48,29 @@ class _NewScheduleFilterScreenState extends State<NewScheduleFilterScreen> {
         userChoices.indexWhere((choice) => choice.level == level);
 
     for (int i = userChoices.length - 1; i > choiceIndex; i--) {
+      animateRemovingItem(i);
       userChoices.removeAt(i);
     }
 
     userChoices[choiceIndex].selected = selectedKey;
     userChoices.add(Choice(level: level.options[selectedKey], selected: null));
+    animateAddingItem(userChoices.length - 1);
     setState(() {});
+  }
+
+  void animateAddingItem(int index) {
+    _animatedListStateKey.currentState!
+        .insertItem(index, duration: _animateDuration);
+  }
+
+  void animateRemovingItem(int index) {
+    _animatedListStateKey.currentState!.removeItem(
+      index,
+      (_, animation) => SizeTransition(
+        sizeFactor: animation,
+      ),
+      duration: _animateDuration,
+    );
   }
 
   @override
@@ -71,22 +91,22 @@ class _NewScheduleFilterScreenState extends State<NewScheduleFilterScreen> {
           return Container(
             alignment: Alignment.bottomCenter,
             padding: const EdgeInsets.only(bottom: 20.0),
-            child: ListView(
+            child: AnimatedList(
+              key: _animatedListStateKey,
+              initialItemCount: userChoices.length,
               shrinkWrap: true,
-              children: userChoices
-                  .map(
-                    (choice) => !choice.level!.isLeaf
-                        ? NewFilterOptionsRow(
-                            level: choice.level!,
-                            selectedKey: choice.selected,
-                            callback: chipPressedCallback,
-                          )
-                        : AddNewFilterButton(
-                            pickedId:
-                                userChoices.last.level!.leafValue.toString(),
-                          ),
-                  )
-                  .toList(),
+              itemBuilder: (context, index, animation) => SizeTransition(
+                sizeFactor: animation,
+                child: !userChoices[index].level!.isLeaf
+                    ? NewFilterOptionsRow(
+                        level: userChoices[index].level!,
+                        selectedKey: userChoices[index].selected,
+                        callback: chipPressedCallback,
+                      )
+                    : AddNewFilterButton(
+                        pickedId: userChoices.last.level!.leafValue.toString(),
+                      ),
+              ),
             ),
           );
         },

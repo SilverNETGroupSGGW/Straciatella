@@ -9,7 +9,8 @@ class AddNewFilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      width: double.infinity,
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: ElevatedButton.icon(
         icon: const Icon(Icons.add),
