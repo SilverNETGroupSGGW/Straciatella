@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/add_new_filter_button.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/filters_loading.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/options_row.dart';
 
 class Choice {
@@ -26,7 +27,7 @@ class _NewScheduleFilterScreenState extends State<NewScheduleFilterScreen> {
   late List<Choice> userChoices;
 
   final GlobalKey<AnimatedListState> _animatedListStateKey = GlobalKey();
-  final Duration _animateDuration = const Duration(milliseconds: 150);
+  final Duration _animateDuration = const Duration(milliseconds: 100);
 
   @override
   void initState() {
@@ -86,7 +87,7 @@ class _NewScheduleFilterScreenState extends State<NewScheduleFilterScreen> {
         builder: (context, state) {
           if (state.refreshingIndex || state.schedulesOptionsTree == null) {
             // TODO: Informacja o ładowaniu (najnowszych) planów
-            return const CircularProgressIndicator();
+            return FiltersLoading();
           }
           return Container(
             alignment: Alignment.bottomCenter,
