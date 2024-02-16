@@ -36,6 +36,7 @@
   "email_empty": "Email cannot be empty",
   "faculty": "Faculty",
   "fieldOfStudy": "Field of study",
+  "filter_loading": "Loading filters",
   "final_stage_desc": "We hope you'll enjoy it!",
   "final_stage_text": "That's it!",
   "general_debug_switched_to": "${\"Debug switched to\"}: ${state.isDebugMode}",
