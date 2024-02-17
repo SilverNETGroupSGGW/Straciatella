@@ -70,8 +70,9 @@ class _ScheduleFiltersListState extends State<ScheduleFiltersList> {
       padding: const EdgeInsets.only(bottom: 20.0),
       child: BlocListener<ScheduleManagerBloc, ScheduleManagerState>(
         listener: (context, state) {
+          widget.optionsTree = state.schedulesOptionsTree!;
           userChoices = [
-            Choice(level: state.schedulesOptionsTree, selected: null),
+            Choice(level: widget.optionsTree, selected: null),
           ];
         },
         child: AnimatedList(
