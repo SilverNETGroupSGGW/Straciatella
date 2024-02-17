@@ -35,9 +35,8 @@ class _LecturerLevelFilterState extends State<LecturerLevelFilter> {
                     onChanged: (value) => setState(() {
                       selectedKey = key;
 
-                      final String lecturerId = widget.level
-                          .options[widget.level.options.keys.first]!.leafValue
-                          .toString();
+                      final String lecturerId =
+                          widget.level.options[key]!.leafValue.toString();
                       context
                           .read<LecturerPickedCubit>()
                           .lecturerPicked(lecturerId);

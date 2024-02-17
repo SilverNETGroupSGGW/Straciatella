@@ -59,8 +59,9 @@ class _NewLecturerFilterScreenState extends State<NewLecturerFilterScreen> {
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton:
-            pickedLecturerId != null ? const AddNewFilterFAB() : null,
+        floatingActionButton: pickedLecturerId != null
+            ? AddNewFilterFAB(pickedId: pickedLecturerId!)
+            : null,
       ),
     );
   }
