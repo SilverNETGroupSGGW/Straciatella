@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/filters_loading.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/lecturer_picked/lecturer_picked_cubit.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/add_new_filter_fab.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_filters_list.dart';
 
 // ignore: must_be_immutable
@@ -57,12 +58,9 @@ class _NewLecturerFilterScreenState extends State<NewLecturerFilterScreen> {
             );
           },
         ),
-        floatingActionButton: pickedLecturerId != null
-            ? FloatingActionButton.extended(
-                label: Text('add_new_filter_button_text'.tr()),
-                onPressed: () {},
-              )
-            : null,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton:
+            pickedLecturerId != null ? const AddNewFilterFAB() : null,
       ),
     );
   }
