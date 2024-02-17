@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_material_symbols/flutter_material_symbols.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 // TODO: make it nice
 class ScheduleEventsErrorScreen extends StatelessWidget {
@@ -16,7 +16,7 @@ class ScheduleEventsErrorScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
-              MaterialSymbols.error,
+              Symbols.error,
               color: Colors.red,
               size: 30,
             ),
