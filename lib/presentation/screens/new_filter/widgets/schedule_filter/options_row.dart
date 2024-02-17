@@ -41,6 +41,7 @@ class _NewFilterOptionsRow extends State<NewFilterOptionsRow> {
                     onSelected: (_) {
                       setState(() {
                         widget.selectedKey = key;
+                        // ignore: avoid_dynamic_calls
                         widget.callback(widget.level, widget.selectedKey);
                       });
                     },

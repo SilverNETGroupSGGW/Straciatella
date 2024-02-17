@@ -1,0 +1,1 @@
+enum FilterType { schedule, lecturer }

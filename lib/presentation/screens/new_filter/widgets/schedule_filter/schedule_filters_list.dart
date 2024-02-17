@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/new_schedule_filter.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/add_new_filter_button.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/options_row.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/models/choice.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/add_new_filter_button.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/options_row.dart';
 
 // ignore: must_be_immutable
-class FiltersList extends StatefulWidget {
-  FiltersList({super.key, required this.optionsTree});
+class ScheduleFiltersList extends StatefulWidget {
+  ScheduleFiltersList({super.key, required this.optionsTree});
 
   OptionsTreeNode optionsTree;
 
   @override
-  State<FiltersList> createState() => _FiltersListState();
+  State<ScheduleFiltersList> createState() => _ScheduleFiltersListState();
 }
 
-class _FiltersListState extends State<FiltersList> {
+class _ScheduleFiltersListState extends State<ScheduleFiltersList> {
   late List<Choice> userChoices;
 
   final GlobalKey<AnimatedListState> _animatedListStateKey = GlobalKey();
