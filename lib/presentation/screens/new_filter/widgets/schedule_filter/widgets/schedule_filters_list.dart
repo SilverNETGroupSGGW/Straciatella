@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/models/choice.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/add_new_filter_button.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/options_row.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/widgets/add_new_filter_button.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/widgets/options_row.dart';
 
 // ignore: must_be_immutable
 class ScheduleFiltersList extends StatefulWidget {

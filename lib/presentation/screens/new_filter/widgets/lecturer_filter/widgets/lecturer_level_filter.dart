@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/lecturer_picked/lecturer_picked_cubit.dart';
 
 // ignore: must_be_immutable
 class LecturerLevelFilter extends StatefulWidget {
@@ -32,6 +34,13 @@ class _LecturerLevelFilterState extends State<LecturerLevelFilter> {
                     groupValue: selectedKey,
                     onChanged: (value) => setState(() {
                       selectedKey = key;
+
+                      final String lecturerId = widget.level
+                          .options[widget.level.options.keys.first]!.leafValue
+                          .toString();
+                      context
+                          .read<LecturerPickedCubit>()
+                          .lecturerPicked(lecturerId);
                     }),
                     title: Text(key.toString()),
                   )
