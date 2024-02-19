@@ -44,7 +44,7 @@ class _NewLecturerFilterScreenState extends State<NewLecturerFilterScreen> {
             }
 
             if (state.refreshingIndex) {
-              return Column(
+              return Stack(
                 children: [
                   const LinearProgressIndicator(),
                   LecturerFiltersList(optionsTree: state.lecturersOptionsTree!),
