@@ -11,7 +11,6 @@ class AddNewFilterFAB extends StatelessWidget {
     return FloatingActionButton.extended(
       icon: const Icon(Icons.add),
       label: Text('add_new_filter_button_text'.tr()),
-      foregroundColor: Theme.of(context).primaryColor,
       onPressed: () {
         Navigator.pop(context, pickedId);
       },
