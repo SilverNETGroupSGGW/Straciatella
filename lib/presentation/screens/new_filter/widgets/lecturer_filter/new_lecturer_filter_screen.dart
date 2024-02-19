@@ -47,7 +47,6 @@ class _NewLecturerFilterScreenState extends State<NewLecturerFilterScreen> {
               return Column(
                 children: [
                   const LinearProgressIndicator(),
-                  const Spacer(),
                   LecturerFiltersList(optionsTree: state.lecturersOptionsTree!),
                 ],
               );
