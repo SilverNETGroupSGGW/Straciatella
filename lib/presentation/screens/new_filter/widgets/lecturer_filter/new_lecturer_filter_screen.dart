@@ -6,6 +6,7 @@ import 'package:silvertimetable/presentation/screens/new_filter/widgets/filters_
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/lecturer_picked/lecturer_picked_cubit.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/add_new_filter_fab.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_filters_list.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/new_lecturer_search_button.dart';
 
 // ignore: must_be_immutable
 class NewLecturerFilterScreen extends StatefulWidget {
@@ -36,7 +37,10 @@ class _NewLecturerFilterScreenState extends State<NewLecturerFilterScreen> {
         });
       },
       child: Scaffold(
-        appBar: AppBar(title: Text('new_filter_title'.tr())),
+        appBar: AppBar(
+          title: Text('new_filter_title'.tr()),
+          actions: const [NewLecturerSearchButton()],
+        ),
         body: BlocBuilder<ScheduleManagerBloc, ScheduleManagerState>(
           builder: (context, state) {
             if (state.lecturersOptionsTree == null) {
