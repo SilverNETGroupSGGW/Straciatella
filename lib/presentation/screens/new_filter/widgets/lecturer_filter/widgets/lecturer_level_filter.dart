@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
@@ -24,7 +25,7 @@ class _LecturerLevelFilterState extends State<LecturerLevelFilter> {
     return ExpansionTile(
       initiallyExpanded: isLastBeforeId,
       leading: Icon(levelIcon(widget.level.name)),
-      title: Text(widget.level.name),
+      title: Text(widget.level.name.tr()),
       children: widget.level.options.keys
           .toList()
           .map(
