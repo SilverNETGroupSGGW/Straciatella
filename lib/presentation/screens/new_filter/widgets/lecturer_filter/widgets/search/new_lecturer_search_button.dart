@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/lecturer_picked/lecturer_picked_cubit.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/search/widgets/lecturer_result_radio_tile.dart';
 
 class NewLecturerSearchButton extends StatefulWidget {
   const NewLecturerSearchButton({super.key});
@@ -28,7 +30,10 @@ class _NewLecturerSearchButtonState extends State<NewLecturerSearchButton> {
       onPressed: () {
         showSearch(
           context: context,
-          delegate: NewLecturerSearchDelegate(lecturers),
+          delegate: NewLecturerSearchDelegate(
+            lecturers: lecturers,
+            bloc: BlocProvider.of<LecturerPickedCubit>(context),
+          ),
         );
       },
       icon: const Icon(Icons.search),
@@ -37,9 +42,13 @@ class _NewLecturerSearchButtonState extends State<NewLecturerSearchButton> {
 }
 
 class NewLecturerSearchDelegate extends SearchDelegate {
-  NewLecturerSearchDelegate(this.lecturers);
+  NewLecturerSearchDelegate({
+    required this.lecturers,
+    required this.bloc,
+  });
 
   List<LecturerBase> lecturers;
+  LecturerPickedCubit bloc;
 
   String getPresentedInfo(LecturerBase lecturer) =>
       '${lecturer.academicDegree} ${lecturer.firstName} ${lecturer.surname}';
@@ -96,8 +105,9 @@ class NewLecturerSearchDelegate extends SearchDelegate {
     }
     return ListView.builder(
       itemCount: matched.length,
-      itemBuilder: (context, index) => ListTile(
-        title: Text(getPresentedInfo(lecturers[index])),
+      itemBuilder: (context, index) => BlocProvider.value(
+        value: bloc,
+        child: LecturerResultRadioTile(lecturer: lecturers[index]),
       ),
     );
   }
