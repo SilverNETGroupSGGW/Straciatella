@@ -25,16 +25,15 @@ class _LecturerResultRadioTileState extends State<LecturerResultRadioTile> {
         return RadioListTile(
           value: widget.lecturer.id,
           groupValue: state.lecturerPickedId,
-          onChanged: (value) {
-            setState(() {
-              context
-                  .read<LecturerPickedCubit>()
-                  .lecturerPicked(widget.lecturer.id);
-            });
+          onChanged: (_) {
+            context
+                .read<LecturerPickedCubit>()
+                .lecturerPicked(widget.lecturer.id);
           },
           title: Text(
             '${widget.lecturer.academicDegree} ${widget.lecturer.firstName} ${widget.lecturer.surname}',
           ),
+          subtitle: Text(widget.lecturer.email),
         );
       },
     );
