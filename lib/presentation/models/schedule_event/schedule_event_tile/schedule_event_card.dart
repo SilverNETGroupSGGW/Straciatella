@@ -27,33 +27,31 @@ class _EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final labelLarge = Theme.of(context).textTheme.labelLarge;
 
-    Widget iconText(IconData icon, String text) {
-      return Row(
-        children: [
-          Icon(
-            icon,
-            fill: 1,
-            size: labelLarge?.fontSize,
-          ),
-          const Gap(8),
-          Text(
-            text,
-            style: labelLarge,
-          ),
-        ],
-      );
-    }
-
     return Card(
       elevation: elevation,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () {},
+        onTap: () => showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+          ),
+          builder: (_) => ScheduleEventDesc(scheduleEvent: event),
+        ),
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
-              left: BorderSide(color: Colors.orange, width: 3),
+              left: BorderSide(
+                color: Theme.of(context)
+                    .extension<ScheduleEventTheme>()!
+                    .getColor(event.fromSubject.type),
+                width: 3,
+              ),
             ),
           ),
           child: Padding(
@@ -69,23 +67,29 @@ class _EventCard extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              "Analiza Matematyczna",
+                              event.fromSubject.name.capitalize,
                               style: Theme.of(context).textTheme.titleLarge,
                             ),
                           ],
                         ),
                       ),
                       switch (mode) {
-                        ScheduleViewMode.student => iconText(
+                        ScheduleViewMode.student => IconText(
                             Symbols.person_outline_rounded,
-                            "Adam Nowak",
+                            event.fromSubject.lecturers?.join(", ") ?? "",
+                            style: labelLarge,
                           ),
-                        ScheduleViewMode.lecturer => iconText(
+                        ScheduleViewMode.lecturer => IconText(
                             Symbols.people_outline_rounded,
-                            "WZIM Informatyka inż. sem. 1 stac. gr: ISI1, ISI2",
+                            event.fromSubject.schedule?.toPrettyString() ?? "",
+                            style: labelLarge,
                           ),
                       },
-                      iconText(Symbols.place, "3/77 b. 34"),
+                      IconText(
+                        Symbols.place,
+                        "b. ${event.fromSubject.classroom.building}, ${event.fromSubject.classroom.floor}/${event.fromSubject.classroom.name}",
+                        style: labelLarge,
+                      ),
                     ],
                   ),
                 ),

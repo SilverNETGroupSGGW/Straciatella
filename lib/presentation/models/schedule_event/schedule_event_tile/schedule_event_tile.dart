@@ -1,13 +1,16 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:gap/gap.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
 import 'package:silvertimetable/helpers.dart';
+import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_desc/schedule_event_desc.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
+import 'package:silvertimetable/presentation/widgets/icon_text.dart';
+import 'package:silvertimetable/themes/extensions/schedule_event_theme.dart';
 
 part 'schedule_event_card.dart';
 part 'schedule_event_time_span.dart';
@@ -53,11 +56,12 @@ class _ScheduleEventTileState extends State<ScheduleEventTile> {
 
   @override
   Widget build(BuildContext context) {
-    final startTime = DateTime.now().subtract(const Duration(minutes: 3));
-    final endTime = DateTime.now().add(const Duration(minutes: 3));
+    // final startTime = DateTime.now().subtract(const Duration(minutes: 3));
+    // final endTime = DateTime.now().add(const Duration(minutes: 3));
 
-    // final startTime = event.lesson.startTime;
-    // final endTime = event.lesson.startTime.add(event.lesson.duration);
+    final startTime = widget.event.lesson.startTime;
+    final endTime =
+        widget.event.lesson.startTime.add(widget.event.lesson.duration);
 
     return IntrinsicHeight(
       child: Row(
