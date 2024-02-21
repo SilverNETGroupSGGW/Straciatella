@@ -18,6 +18,7 @@ class _LecturerFiltersListState extends State<LecturerFiltersList> {
       child: BlocBuilder<ScheduleManagerBloc, ScheduleManagerState>(
         builder: (context, state) {
           return LecturerLevelFilter(
+            initiallyExpanded: true,
             level: state.lecturersOptionsTree!,
           );
         },

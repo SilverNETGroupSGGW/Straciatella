@@ -5,17 +5,21 @@ import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer
 
 // ignore: must_be_immutable
 class LecturerLevelFilter extends StatelessWidget {
-  LecturerLevelFilter({super.key, required this.level});
+  LecturerLevelFilter({
+    super.key,
+    this.initiallyExpanded = false,
+    required this.level,
+  });
 
+  bool initiallyExpanded;
   OptionsTreeNode level;
 
-  // TODO: change to first tree level instead last before id
   late bool isLastBeforeId = level.options[level.options.keys.first]!.isLeaf;
 
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      initiallyExpanded: isLastBeforeId,
+      initiallyExpanded: initiallyExpanded,
       leading: Icon(levelIcon(level.name)),
       title: Text(level.name.tr()),
       children: level.options.keys
