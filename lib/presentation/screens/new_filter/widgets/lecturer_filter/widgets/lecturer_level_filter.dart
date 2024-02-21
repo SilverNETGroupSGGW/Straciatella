@@ -4,35 +4,29 @@ import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart'
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_options_tree_result.dart';
 
 // ignore: must_be_immutable
-class LecturerLevelFilter extends StatefulWidget {
+class LecturerLevelFilter extends StatelessWidget {
   LecturerLevelFilter({super.key, required this.level});
 
   OptionsTreeNode level;
 
-  @override
-  State<LecturerLevelFilter> createState() => _LecturerLevelFilterState();
-}
-
-class _LecturerLevelFilterState extends State<LecturerLevelFilter> {
   // TODO: change to first tree level instead last before id
-  late bool isLastBeforeId =
-      widget.level.options[widget.level.options.keys.first]!.isLeaf;
+  late bool isLastBeforeId = level.options[level.options.keys.first]!.isLeaf;
 
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
       initiallyExpanded: isLastBeforeId,
-      leading: Icon(levelIcon(widget.level.name)),
-      title: Text(widget.level.name.tr()),
-      children: widget.level.options.keys
+      leading: Icon(levelIcon(level.name)),
+      title: Text(level.name.tr()),
+      children: level.options.keys
           .toList()
           .map(
             (key) => isLastBeforeId
                 ? LecturerOptionsTreeResult(
-                    level: widget.level,
+                    level: level,
                     currentKey: key,
                   )
-                : LecturerLevelFilter(level: widget.level.options[key]!),
+                : LecturerLevelFilter(level: level.options[key]!),
           )
           .toList(),
     );
