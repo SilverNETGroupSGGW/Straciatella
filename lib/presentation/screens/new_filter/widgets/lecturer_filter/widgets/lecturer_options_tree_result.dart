@@ -20,20 +20,22 @@ class LecturerOptionsTreeResult extends StatefulWidget {
 }
 
 class _LecturerOptionsTreeResultState extends State<LecturerOptionsTreeResult> {
-  dynamic selectedKey;
+  late final String lecturerId;
+
+  @override
+  void initState() {
+    super.initState();
+    lecturerId = widget.level.options[widget.currentKey]!.leafValue.toString();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LecturerPickedCubit, LecturerPickedState>(
       builder: (BuildContext context, LecturerPickedState state) {
         return RadioListTile(
-          value: widget.currentKey,
-          groupValue: selectedKey,
+          value: lecturerId,
+          groupValue: state.lecturerPickedId,
           onChanged: (value) => setState(() {
-            selectedKey = widget.currentKey;
-
-            final String lecturerId =
-                widget.level.options[widget.currentKey]!.leafValue.toString();
             context.read<LecturerPickedCubit>().lecturerPicked(lecturerId);
           }),
           title: Text(widget.currentKey.toString()),
