@@ -35,7 +35,7 @@ class _LecturerOptionsTreeResultState extends State<LecturerOptionsTreeResult> {
         return RadioListTile(
           value: lecturerId,
           groupValue: state.lecturerPickedId,
-          onChanged: (value) => setState(() {
+          onChanged: (_) => setState(() {
             context.read<LecturerPickedCubit>().lecturerPicked(lecturerId);
           }),
           title: Text(widget.currentKey.toString()),
