@@ -19,51 +19,38 @@ class NewLecturerFilterScreen extends StatefulWidget {
 }
 
 class _NewLecturerFilterScreenState extends State<NewLecturerFilterScreen> {
-  late final LecturerPickedCubit lecturerPickedCubit;
-  String? pickedLecturerId;
-
-  @override
-  void initState() {
-    super.initState();
-    lecturerPickedCubit = context.read<LecturerPickedCubit>();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LecturerPickedCubit, LecturerPickedState>(
-      listener: (context, state) {
-        setState(() {
-          pickedLecturerId = state.lecturerPickedId;
-        });
+    return BlocBuilder<LecturerPickedCubit, LecturerPickedState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('new_filter_title'.tr()),
+            actions: const [NewLecturerSearchButton()],
+          ),
+          body: BlocBuilder<ScheduleManagerBloc, ScheduleManagerState>(
+            builder: (context, state) {
+              if (state.lecturersOptionsTree == null) {
+                return FiltersLoading();
+              }
+              if (state.refreshingIndex) {
+                return const Stack(
+                  children: [
+                    LinearProgressIndicator(),
+                    LecturerFiltersList(),
+                  ],
+                );
+              }
+              return const LecturerFiltersList();
+            },
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: state.lecturerPickedId != null
+              ? AddNewFilterFAB(pickedId: state.lecturerPickedId!)
+              : null,
+        );
       },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('new_filter_title'.tr()),
-          actions: const [NewLecturerSearchButton()],
-        ),
-        body: BlocBuilder<ScheduleManagerBloc, ScheduleManagerState>(
-          builder: (context, state) {
-            if (state.lecturersOptionsTree == null) {
-              return FiltersLoading();
-            }
-            if (state.refreshingIndex) {
-              return Stack(
-                children: [
-                  const LinearProgressIndicator(),
-                  LecturerFiltersList(optionsTree: state.lecturersOptionsTree!),
-                ],
-              );
-            }
-            return LecturerFiltersList(
-              optionsTree: state.lecturersOptionsTree!,
-            );
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: pickedLecturerId != null
-            ? AddNewFilterFAB(pickedId: pickedLecturerId!)
-            : null,
-      ),
     );
   }
 }
