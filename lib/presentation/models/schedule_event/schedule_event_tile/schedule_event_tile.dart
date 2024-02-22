@@ -8,6 +8,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
 import 'package:silvertimetable/helpers.dart';
 import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_desc/schedule_event_desc.dart';
+import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_provider.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/widgets/icon_text.dart';
 import 'package:silvertimetable/themes/extensions/schedule_event_theme.dart';
@@ -63,25 +64,27 @@ class _ScheduleEventTileState extends State<ScheduleEventTile> {
     final endTime =
         widget.event.lesson.startTime.add(widget.event.lesson.duration);
 
-    return IntrinsicHeight(
-      child: Row(
-        children: [
-          Expanded(
-            child: _EventCard(
-              event: widget.event,
-              mode: widget.mode,
-              currentTime: currentTime,
+    return ScheduleEventProvider(
+      widget.event,
+      child: IntrinsicHeight(
+        child: Row(
+          children: [
+            Expanded(
+              child: _EventCard(
+                mode: widget.mode,
+                currentTime: currentTime,
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
-            child: _EventTimeSpan(
-              startTime: startTime,
-              endTime: endTime,
-              currentTime: currentTime,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
+              child: _EventTimeSpan(
+                startTime: startTime,
+                endTime: endTime,
+                currentTime: currentTime,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

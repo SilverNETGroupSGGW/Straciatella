@@ -1,11 +1,10 @@
 part of 'schedule_event_desc.dart';
 
 class _EventGroups extends StatelessWidget {
-  final ScheduleEvent event;
-  const _EventGroups(this.event);
-
   @override
   Widget build(BuildContext context) {
+    final event = ScheduleEventProvider.of(context)!.event;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [

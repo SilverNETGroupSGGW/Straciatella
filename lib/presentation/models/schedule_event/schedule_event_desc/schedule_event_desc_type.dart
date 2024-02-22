@@ -1,11 +1,10 @@
 part of 'schedule_event_desc.dart';
 
 class _EventType extends StatelessWidget {
-  final ScheduleEvent event;
-  const _EventType(this.event);
-
   @override
   Widget build(BuildContext context) {
+    final event = ScheduleEventProvider.of(context)!.event;
+
     return Text(
       event.fromSubject.type.tr(),
       style: Theme.of(context).textTheme.titleSmall!.copyWith(

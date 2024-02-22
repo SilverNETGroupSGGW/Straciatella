@@ -2,17 +2,15 @@ part of 'schedule_event_tile.dart';
 
 class _EventCard extends StatelessWidget {
   final ScheduleViewMode mode;
-  final ScheduleEvent event;
   late final DateTime currentTime;
   _EventCard({
-    required this.event,
     this.mode = ScheduleViewMode.student,
     DateTime? currentTime,
   }) {
     this.currentTime = currentTime ?? DateTime.now();
   }
 
-  double get elevation {
+  double getElevation(ScheduleEvent event) {
     if (currentTime.isBefore(event.lesson.startTime)) {
       return 0;
     } else if (currentTime
@@ -25,10 +23,11 @@ class _EventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final event = ScheduleEventProvider.of(context)!.event;
     final labelLarge = Theme.of(context).textTheme.labelLarge;
 
     return Card(
-      elevation: elevation,
+      elevation: getElevation(event),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       clipBehavior: Clip.antiAlias,
       child: InkWell(

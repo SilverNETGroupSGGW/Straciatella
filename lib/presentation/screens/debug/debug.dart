@@ -3,7 +3,7 @@ import 'package:silvertimetable/data/fakes/mock_jsons.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
 import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
-import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_tile/schedule_event_tile.dart';
+import 'package:silvertimetable/presentation/models/schedule_event/schedule_event.dart';
 import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_lecturer_schedule.dart';
 import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_schedule.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
@@ -42,16 +42,10 @@ class DebugScreen extends StatelessWidget {
             duration: Duration(minutes: 90),
             startTime: TimeOfDay(hour: 15, minute: 30),
           ),
-          const Text(
-            "Mój uproszczony koncept tylko z ważnymi rzeczami (student)",
-          ),
           ScheduleEventTile(
             event: ScheduleEvent.convertFromSchedule(
               Schedule.fromJson(mockSchedule),
             ).entries.first.value.first,
-          ),
-          const Text(
-            "Mój uproszczony koncept tylko z ważnymi rzeczami (lecturer)",
           ),
           ScheduleEventTile(
             event: ScheduleEvent.convertFromSchedule(

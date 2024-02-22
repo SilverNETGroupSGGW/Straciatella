@@ -1,11 +1,10 @@
 part of 'schedule_event_desc.dart';
 
 class _EventComment extends StatelessWidget {
-  final ScheduleEvent event;
-  const _EventComment(this.event);
-
   @override
   Widget build(BuildContext context) {
+    final event = ScheduleEventProvider.of(context)!.event;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,

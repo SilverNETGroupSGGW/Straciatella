@@ -1,11 +1,10 @@
 part of 'schedule_event_desc.dart';
 
 class _EventLocation extends StatelessWidget {
-  final ScheduleEvent event;
-  const _EventLocation(this.event);
-
   @override
   Widget build(BuildContext context) {
+    final event = ScheduleEventProvider.of(context)!.event;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,11 +27,10 @@ class _EventLocation extends StatelessWidget {
 }
 
 class _EventNavFab extends StatelessWidget {
-  final ScheduleEvent event;
-  const _EventNavFab(this.event);
-
   @override
   Widget build(BuildContext context) {
+    // final event = ScheduleEventProvider.of(context)!.event;
+
     return FloatingActionButton.extended(
       onPressed: () {},
       icon: const Icon(Symbols.pin_drop_rounded),
