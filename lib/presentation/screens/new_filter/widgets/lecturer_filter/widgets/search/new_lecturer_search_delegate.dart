@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/lecturer_picked/lecturer_picked_cubit.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_tile.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/search/lecturer_search_tile.dart';
 
 class NewLecturerSearchDelegate extends SearchDelegate {
@@ -53,7 +52,7 @@ class NewLecturerSearchDelegate extends SearchDelegate {
       itemCount: matched.length,
       itemBuilder: (context, index) => BlocProvider.value(
         value: bloc,
-        child: LecturerTile(lecturer: matched[index]),
+        child: LecturerSearchTile(lecturer: matched[index]),
       ),
     );
   }
