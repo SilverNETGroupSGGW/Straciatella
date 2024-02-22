@@ -30,7 +30,10 @@ class _NewLecturerSearchButtonState extends State<NewLecturerSearchButton> {
               ),
             );
           },
-          icon: const Icon(Icons.search),
+          icon: const Icon(
+            Icons.search,
+            size: 28,
+          ),
         );
       },
     );
