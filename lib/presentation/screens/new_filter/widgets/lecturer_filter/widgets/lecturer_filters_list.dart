@@ -21,9 +21,10 @@ class _LecturerFiltersListState extends State<LecturerFiltersList> {
             state.schedulesIndex.values.whereType<LecturerBase>().toList();
 
         return ListView.builder(
-          itemCount: lecturers.length,
-          itemBuilder: (context, index) =>
-              LecturerTile(lecturer: lecturers[index]),
+          itemCount: lecturers.length + 1,
+          itemBuilder: (context, index) => index == lecturers.length
+              ? const SizedBox(height: 90)
+              : LecturerTile(lecturer: lecturers[index]),
         );
       },
     );
