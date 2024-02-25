@@ -1,7 +1,7 @@
 part of 'lecturer_picked_cubit.dart';
 
 class LecturerPickedState {
-  LecturerPickedState({required this.lecturerPickedId});
+  LecturerPickedState({required this.lecturerPicked});
 
-  String? lecturerPickedId;
+  LecturerBase? lecturerPicked;
 }

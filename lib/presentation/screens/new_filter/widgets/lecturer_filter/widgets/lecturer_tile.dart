@@ -14,13 +14,13 @@ class LecturerTile extends StatelessWidget {
       builder: (context, state) {
         return RadioListTile(
           value: lecturer.id,
-          groupValue: state.lecturerPickedId,
+          groupValue: state.lecturerPicked?.id,
           title: Text(
             '${lecturer.academicDegree} ${lecturer.firstName} ${lecturer.surname}',
           ),
           subtitle: Text(lecturer.email),
           onChanged: (_) {
-            context.read<LecturerPickedCubit>().lecturerPicked(lecturer.id);
+            context.read<LecturerPickedCubit>().lecturerPicked(lecturer);
           },
         );
       },

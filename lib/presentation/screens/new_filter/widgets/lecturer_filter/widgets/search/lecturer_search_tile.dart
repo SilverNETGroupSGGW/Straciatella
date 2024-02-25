@@ -18,7 +18,7 @@ class LecturerSearchTile extends StatelessWidget {
           ),
           subtitle: Text(lecturer.email),
           onTap: () {
-            context.read<LecturerPickedCubit>().lecturerPicked(lecturer.id);
+            context.read<LecturerPickedCubit>().lecturerPicked(lecturer);
             Navigator.pop(context);
           },
         );
