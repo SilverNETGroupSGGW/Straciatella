@@ -21,6 +21,7 @@ class LecturerTile extends StatelessWidget {
           subtitle: Text(lecturer.email),
           onChanged: (_) {
             context.read<LecturerPickedCubit>().lecturerPicked(lecturer);
+            FocusScope.of(context).unfocus();
           },
         );
       },
