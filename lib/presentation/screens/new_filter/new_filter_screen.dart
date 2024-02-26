@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/models/filter_type.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/lecturer_picked/lecturer_picked_cubit.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/search_input/search_input_cubit.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/new_lecturer_filter_screen.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/new_schedule_filter_screen.dart';
+
+enum FilterType { schedule, lecturer }
 
 // ignore: must_be_immutable
 class NewFilterScreen extends StatefulWidget {
@@ -37,7 +38,8 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
                 create: (context) => LecturerPickedCubit(),
               ),
               BlocProvider<SearchInputCubit>(
-                  create: (context) => SearchInputCubit()),
+                create: (context) => SearchInputCubit(),
+              ),
             ],
             child: NewLecturerFilterScreen(),
           );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/models/filter_type.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/new_filter_screen.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/widgets/theme_picker/theme_picker.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
