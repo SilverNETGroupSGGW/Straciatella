@@ -122,29 +122,3 @@ class _EventCard extends StatelessWidget {
 // fromSubject.groups
 // fromSubject.comment
 // fromSubject.type full name
-
-
-// return Center(
-//   child: GestureDetector(
-//     onTap: () {
-//       setState(() {
-//         selected = !selected;
-//       });
-//     },
-//     child: FittedBox(
-//       child: AnimatedSwitcher(
-//         transitionBuilder: (widget, anim) {
-//           return FadeTransition(
-//             opacity: anim,
-//             child: SizeTransition(
-//               sizeFactor: anim,
-//               child: widget,
-//             ),
-//           );
-//         },
-//         duration: const Duration(milliseconds: 200),
-//         child: selected ? Text("hr") : FlutterLogo(size: 75),
-//       ),
-//     ),
-//   ),
-// );

@@ -61,8 +61,7 @@ class _ScheduleEventTileState extends State<ScheduleEventTile> {
     // final endTime = DateTime.now().add(const Duration(minutes: 3));
 
     final startTime = widget.event.lesson.startTime;
-    final endTime =
-        widget.event.lesson.startTime.add(widget.event.lesson.duration);
+    final endTime = widget.event.lesson.endTime;
 
     return ScheduleEventProvider(
       widget.event,

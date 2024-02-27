@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
+import 'package:silvertimetable/presentation/models/group/group_chip.dart';
+import 'package:silvertimetable/presentation/models/lecturer/lecturer_chip.dart';
 import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_provider.dart';
 import 'package:silvertimetable/presentation/widgets/icon_text.dart';
 import 'package:silvertimetable/themes/extensions/schedule_event_theme.dart';
@@ -16,6 +18,7 @@ part 'schedule_event_desc_name.dart';
 part 'schedule_event_desc_schedule.dart';
 part 'schedule_event_desc_time_span.dart';
 part 'schedule_event_desc_type.dart';
+part 'section.dart';
 
 class ScheduleEventDesc extends StatelessWidget {
   final ScheduleEvent scheduleEvent;
@@ -50,7 +53,9 @@ class ScheduleEventDesc extends StatelessWidget {
                 ),
                 const Divider(),
                 _EventTimeSpanText(),
+                const Gap(8),
                 _EventLecturers(),
+                const Gap(8),
                 _EventSchedule(),
                 const Gap(8),
                 _EventGroups(),
@@ -59,7 +64,12 @@ class ScheduleEventDesc extends StatelessWidget {
                   _EventComment(),
                 ],
                 const Gap(8),
-                _EventLocation(),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: 60,
+                  ),
+                  child: _EventLocation(),
+                ),
               ],
             ),
             Positioned(

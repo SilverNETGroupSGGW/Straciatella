@@ -5,9 +5,18 @@ class _EventLecturers extends StatelessWidget {
   Widget build(BuildContext context) {
     final event = ScheduleEventProvider.of(context)!.event;
 
-    return Text(
-      event.fromSubject.lecturers?.join(", ") ?? "",
-      style: Theme.of(context).textTheme.bodySmall,
+    return Section(
+      icon: Symbols.person,
+      title: "lecturers".tr(),
+      content: event.fromSubject.lecturers?.isEmpty ?? true
+          ? const Text("no lecturers")
+          : Wrap(
+              spacing: 2,
+              runSpacing: 2,
+              children: event.fromSubject.lecturers!
+                  .map((e) => LecturerChip(e))
+                  .toList(),
+            ),
     );
   }
 }

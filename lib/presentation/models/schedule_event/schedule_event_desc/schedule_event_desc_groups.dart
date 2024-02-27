@@ -7,6 +7,7 @@ class _EventGroups extends StatelessWidget {
 
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         IconText(
           Symbols.people_rounded,
@@ -14,7 +15,11 @@ class _EventGroups extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         const Gap(4),
-        Text(event.fromSubject.groups.join(", ")),
+        Wrap(
+          spacing: 2,
+          runSpacing: 2,
+          children: event.fromSubject.groups.map((g) => GroupChip(g)).toList(),
+        ),
       ],
     );
   }
