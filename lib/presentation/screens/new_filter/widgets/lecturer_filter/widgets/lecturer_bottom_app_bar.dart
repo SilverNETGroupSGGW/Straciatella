@@ -5,7 +5,8 @@ import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/lecturer_picked/lecturer_picked_cubit.dart';
 
 class LecturerBottomAppBar extends StatelessWidget {
-  const LecturerBottomAppBar({super.key});
+  // ignore: prefer_const_constructors_in_immutables
+  LecturerBottomAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class LecturerBottomAppBar extends StatelessWidget {
                     ? null
                     : () => Navigator.pop(context, state.lecturerPicked!.id),
                 icon: const Icon(Icons.add),
-                label: const Text('Dodaj'),
+                label: Text('add'.tr()),
               ),
             ],
           ),

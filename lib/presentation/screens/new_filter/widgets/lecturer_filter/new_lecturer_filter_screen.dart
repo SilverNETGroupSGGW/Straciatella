@@ -39,7 +39,7 @@ class _NewLecturerFilterScreenState extends State<NewLecturerFilterScreen> {
           return const LecturerFiltersList();
         },
       ),
-      bottomNavigationBar: const LecturerBottomAppBar(),
+      bottomNavigationBar: LecturerBottomAppBar(),
     );
   }
 }
