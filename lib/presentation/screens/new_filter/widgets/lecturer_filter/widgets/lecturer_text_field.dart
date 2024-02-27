@@ -21,9 +21,16 @@ class LecturerTextField extends StatelessWidget {
         hintText: 'search'.tr(),
         hintStyle: const TextStyle(fontSize: 22),
         border: InputBorder.none,
-        suffixIcon: const Icon(
-          Icons.search,
-          size: 26,
+        suffix: IconButton(
+          icon: const Icon(
+            Icons.clear,
+            size: 28,
+          ),
+          color: Colors.grey,
+          onPressed: () {
+            controller.text = '';
+            context.read<SearchInputCubit>().inputTextChanged(controller.text);
+          },
         ),
       ),
     );
