@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
@@ -21,7 +23,9 @@ class LecturerTile extends StatelessWidget {
           subtitle: Text(lecturer.email),
           onChanged: (_) {
             context.read<LecturerPickedCubit>().lecturerPicked(lecturer);
-            FocusScope.of(context).unfocus();
+            if (Platform.isAndroid) {
+              FocusManager.instance.primaryFocus?.unfocus();
+            }
           },
         );
       },

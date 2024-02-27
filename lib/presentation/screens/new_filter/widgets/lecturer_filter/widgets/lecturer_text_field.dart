@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +15,9 @@ class LecturerTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      onTapOutside: Platform.isIOS
+          ? (event) => FocusManager.instance.primaryFocus?.unfocus()
+          : null,
       onChanged: (_) =>
           context.read<SearchInputCubit>().inputTextChanged(controller.text),
       style: const TextStyle(fontSize: 20),
