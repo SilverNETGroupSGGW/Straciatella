@@ -47,6 +47,6 @@ class ScheduleBottomAppBar extends StatelessWidget {
   String currentLevelText(bool isLeaf, String levelName) {
     return isLeaf
         ? 'filter_picked'.tr()
-        : 'Wybierz ${levelName.tr().toLowerCase()}';
+        : '${'pick'.tr()} ${levelName.tr().toLowerCase()}';
   }
 }
