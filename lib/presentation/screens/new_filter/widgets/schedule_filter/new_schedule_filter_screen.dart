@@ -19,28 +19,26 @@ class NewScheduleFilterScreen extends StatefulWidget {
 class _NewScheduleFilterScreenState extends State<NewScheduleFilterScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('new_filter_title'.tr())),
-      bottomNavigationBar: ScheduleBottomAppBar(),
-      body: BlocBuilder<ScheduleManagerBloc, ScheduleManagerState>(
-        builder: (context, state) {
-          if (state.schedulesOptionsTree == null) {
-            return FiltersLoading();
-          }
-
-          if (state.refreshingIndex) {
-            return const Column(
-              children: [
-                LinearProgressIndicator(),
-                Spacer(),
-                ScheduleFiltersList(),
-              ],
-            );
-          }
-
-          return const ScheduleFiltersList();
-        },
-      ),
+    return BlocBuilder<ScheduleManagerBloc, ScheduleManagerState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(title: Text('new_filter_title'.tr())),
+          body: state.schedulesOptionsTree == null
+              ? FiltersLoading()
+              : state.refreshingIndex
+                  ? const Column(
+                      children: [
+                        LinearProgressIndicator(),
+                        Spacer(),
+                        ScheduleFiltersList(),
+                      ],
+                    )
+                  : const ScheduleFiltersList(),
+          bottomNavigationBar: state.schedulesOptionsTree != null
+              ? ScheduleBottomAppBar()
+              : null,
+        );
+      },
     );
   }
 }

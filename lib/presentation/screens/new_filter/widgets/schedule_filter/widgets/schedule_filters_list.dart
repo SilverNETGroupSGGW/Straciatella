@@ -40,10 +40,14 @@ class _ScheduleFiltersListState extends State<ScheduleFiltersList> {
         child: BlocBuilder<UserChoicesCubit, UserChoicesState>(
           builder: (context, state) {
             return ListView.builder(
+              shrinkWrap: true,
               itemCount: state.userChoices.length,
-              itemBuilder: (context, index) => NewFilterOptionsRow(
-                choiceIndex: index,
-              ),
+              itemBuilder: (context, index) =>
+                  state.userChoices[index].level!.isLeaf
+                      ? null
+                      : NewFilterOptionsRow(
+                          choiceIndex: index,
+                        ),
             );
           },
         ),
