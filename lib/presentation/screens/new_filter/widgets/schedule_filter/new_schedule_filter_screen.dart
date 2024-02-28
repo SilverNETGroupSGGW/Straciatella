@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/filters_loading.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/widgets/schedule_bottom_app_bar.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/widgets/schedule_filters_list.dart';
 
 // ignore: must_be_immutable
@@ -20,6 +21,7 @@ class _NewScheduleFilterScreenState extends State<NewScheduleFilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('new_filter_title'.tr())),
+      bottomNavigationBar: ScheduleBottomAppBar(),
       body: BlocBuilder<ScheduleManagerBloc, ScheduleManagerState>(
         builder: (context, state) {
           if (state.schedulesOptionsTree == null) {
@@ -27,16 +29,16 @@ class _NewScheduleFilterScreenState extends State<NewScheduleFilterScreen> {
           }
 
           if (state.refreshingIndex) {
-            return Column(
+            return const Column(
               children: [
-                const LinearProgressIndicator(),
-                const Spacer(),
-                ScheduleFiltersList(optionsTree: state.schedulesOptionsTree!),
+                LinearProgressIndicator(),
+                Spacer(),
+                ScheduleFiltersList(),
               ],
             );
           }
 
-          return ScheduleFiltersList(optionsTree: state.schedulesOptionsTree!);
+          return const ScheduleFiltersList();
         },
       ),
     );
