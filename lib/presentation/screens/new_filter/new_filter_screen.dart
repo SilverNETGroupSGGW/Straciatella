@@ -4,6 +4,7 @@ import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dar
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/lecturer_picked/lecturer_picked_cubit.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/search_input/search_input_cubit.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/new_lecturer_filter_screen.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/cubits/user_choices/user_choices_cubit.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/new_schedule_filter_screen.dart';
 
 enum FilterType { schedule, lecturer }
@@ -31,7 +32,10 @@ class _NewFilterScreenState extends State<NewFilterScreen> {
   @override
   Widget build(BuildContext context) {
     return widget.filterType == FilterType.schedule
-        ? NewScheduleFilterScreen()
+        ? BlocProvider<UserChoicesCubit>(
+            create: (context) => UserChoicesCubit(),
+            child: NewScheduleFilterScreen(),
+          )
         : MultiBlocProvider(
             providers: [
               BlocProvider<LecturerPickedCubit>(

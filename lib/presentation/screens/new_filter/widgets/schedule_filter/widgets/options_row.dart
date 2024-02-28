@@ -1,56 +1,77 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/cubits/user_choices/user_choices_cubit.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/models/choice.dart';
 
 // ignore: must_be_immutable
 class NewFilterOptionsRow extends StatefulWidget {
-  NewFilterOptionsRow({
+  const NewFilterOptionsRow({
     super.key,
-    required this.level,
-    required this.callback,
-    this.selectedKey,
+    required this.choiceIndex,
   });
 
-  final OptionsTreeNode level;
-  final Function callback;
-  dynamic selectedKey;
+  final int choiceIndex;
 
   @override
   State<NewFilterOptionsRow> createState() => _NewFilterOptionsRow();
 }
 
 class _NewFilterOptionsRow extends State<NewFilterOptionsRow> {
+  void updateUserChoices(Choice currentChoice, dynamic newKey) {
+    final UserChoicesCubit userChoicesCubit = context.read<UserChoicesCubit>();
+    final List<Choice> userChoices = userChoicesCubit.state.userChoices;
+
+    for (int i = userChoices.length - 1; i > widget.choiceIndex; i--) {
+      userChoicesCubit.removeLastChoice();
+    }
+
+    userChoicesCubit.updateExistingChoice(widget.choiceIndex, newKey);
+
+    userChoicesCubit.addUserChoice(
+      Choice(level: currentChoice.level!.options[newKey], selected: null),
+    );
+
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListTile(
-          leading: Icon(nodeIcon(widget.level.name)),
-          title: Text(widget.level.name.tr()),
-        ),
-        Wrap(
-          alignment: WrapAlignment.center,
-          children: widget.level.options.keys
-              .map(
-                (key) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                  child: ChoiceChip(
-                    showCheckmark: false,
-                    label: Text(key.toString().tr()),
-                    selected: widget.selectedKey == key,
-                    onSelected: (_) {
-                      setState(() {
-                        widget.selectedKey = key;
-                        // ignore: avoid_dynamic_calls
-                        widget.callback(widget.level, widget.selectedKey);
-                      });
-                    },
-                  ),
-                ),
-              )
-              .toList(),
-        ),
-      ],
+    return BlocBuilder<UserChoicesCubit, UserChoicesState>(
+      builder: (context, state) {
+        final Choice choice = state.userChoices[widget.choiceIndex];
+
+        return Column(
+          children: [
+            ListTile(
+              leading: Icon(
+                nodeIcon(choice.level!.name),
+              ),
+              title: Text(choice.level!.name.tr()),
+            ),
+            Wrap(
+              alignment: WrapAlignment.center,
+              children: choice.level!.options.keys
+                  .map(
+                    (key) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: ChoiceChip(
+                        showCheckmark: false,
+                        label: Text(key.toString().tr()),
+                        selected: choice.selected == key,
+                        onSelected: (_) {
+                          setState(() {
+                            updateUserChoices(choice, key);
+                          });
+                        },
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
+          ],
+        );
+      },
     );
   }
 
