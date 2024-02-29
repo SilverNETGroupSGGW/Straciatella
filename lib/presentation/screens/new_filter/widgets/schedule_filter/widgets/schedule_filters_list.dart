@@ -14,16 +14,17 @@ class ScheduleFiltersList extends StatefulWidget {
 }
 
 class _ScheduleFiltersListState extends State<ScheduleFiltersList> {
+  final GlobalKey<AnimatedListState> animatedListKey = GlobalKey();
+
   @override
   void initState() {
     super.initState();
-    context.read<UserChoicesCubit>().resetUserChoices(
-          Choice(
-            level:
-                context.read<ScheduleManagerBloc>().state.schedulesOptionsTree,
-            selected: null,
-          ),
-        );
+    context.read<UserChoicesCubit>().updateUserChoices([
+      Choice(
+        level: context.read<ScheduleManagerBloc>().state.schedulesOptionsTree,
+        selected: null,
+      ),
+    ]);
   }
 
   @override
@@ -33,25 +34,40 @@ class _ScheduleFiltersListState extends State<ScheduleFiltersList> {
       padding: const EdgeInsets.only(bottom: 20.0),
       child: BlocListener<ScheduleManagerBloc, ScheduleManagerState>(
         listener: (context, state) {
-          context.read<UserChoicesCubit>().resetUserChoices(
-                Choice(level: state.schedulesOptionsTree, selected: null),
-              );
+          context.read<UserChoicesCubit>().updateUserChoices([
+            Choice(level: state.schedulesOptionsTree, selected: null),
+          ]);
         },
         child: BlocBuilder<UserChoicesCubit, UserChoicesState>(
           builder: (context, state) {
-            return ListView.builder(
+            return AnimatedList(
+              key: animatedListKey,
               shrinkWrap: true,
-              itemCount: state.userChoices.length,
-              itemBuilder: (context, index) =>
-                  state.userChoices[index].level!.isLeaf
-                      ? null
-                      : NewFilterOptionsRow(
-                          choiceIndex: index,
-                        ),
+              initialItemCount: state.userChoices.length,
+              itemBuilder: (context, index, animation) => SizeTransition(
+                sizeFactor: animation,
+                child: state.userChoices[index].level!.isLeaf
+                    ? null
+                    : NewFilterOptionsRow(
+                        choiceIndex: index,
+                        animatedAddItem: animatedAddItem,
+                        animatedRemoveItem: animatedRemoveItem,
+                      ),
+              ),
             );
           },
         ),
       ),
     );
+  }
+
+  void animatedAddItem(int index) {
+    animatedListKey.currentState!.insertItem(index);
+  }
+
+  void animatedRemoveItem(int index) {
+    animatedListKey.currentState!.removeItem(index, (context, animation) {
+      return FadeTransition(opacity: animation);
+    });
   }
 }

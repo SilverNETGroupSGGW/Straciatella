@@ -9,9 +9,13 @@ class NewFilterOptionsRow extends StatefulWidget {
   const NewFilterOptionsRow({
     super.key,
     required this.choiceIndex,
+    this.animatedAddItem,
+    this.animatedRemoveItem,
   });
 
   final int choiceIndex;
+  final Function(int)? animatedAddItem;
+  final Function(int)? animatedRemoveItem;
 
   @override
   State<NewFilterOptionsRow> createState() => _NewFilterOptionsRow();
@@ -23,16 +27,18 @@ class _NewFilterOptionsRow extends State<NewFilterOptionsRow> {
     final List<Choice> userChoices = userChoicesCubit.state.userChoices;
 
     for (int i = userChoices.length - 1; i > widget.choiceIndex; i--) {
-      userChoicesCubit.removeLastChoice();
+      widget.animatedRemoveItem?.call(i);
+      userChoices.removeLast();
     }
 
-    userChoicesCubit.updateExistingChoice(widget.choiceIndex, newKey);
+    userChoices[widget.choiceIndex].selected = newKey;
 
-    userChoicesCubit.addUserChoice(
+    userChoices.add(
       Choice(level: currentChoice.level!.options[newKey], selected: null),
     );
 
-    setState(() {});
+    widget.animatedAddItem?.call(widget.choiceIndex + 1);
+    userChoicesCubit.updateUserChoices(userChoices);
   }
 
   @override
