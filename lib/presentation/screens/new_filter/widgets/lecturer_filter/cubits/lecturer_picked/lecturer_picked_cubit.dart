@@ -8,5 +8,4 @@ class LecturerPickedCubit extends Cubit<LecturerPickedState> {
 
   void lecturerPicked(LecturerBase lecturer) =>
       emit(LecturerPickedState(lecturerPicked: lecturer));
-  void lecturerNotPicked() => emit(LecturerPickedState(lecturerPicked: null));
 }
