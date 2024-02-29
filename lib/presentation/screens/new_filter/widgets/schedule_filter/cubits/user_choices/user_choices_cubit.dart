@@ -6,23 +6,7 @@ part 'user_choices_state.dart';
 class UserChoicesCubit extends Cubit<UserChoicesState> {
   UserChoicesCubit() : super(UserChoicesState());
 
-  void addUserChoice(Choice choice) {
-    emit(UserChoicesState(userChoices: [...state.userChoices, choice]));
+  void updateUserChoices(List<Choice> choices) {
+    emit(UserChoicesState(userChoices: choices));
   }
-
-  void removeLastChoice() => emit(
-        UserChoicesState(
-          userChoices:
-              state.userChoices.sublist(0, state.userChoices.length - 1),
-        ),
-      );
-
-  void updateExistingChoice(int choiceIndex, dynamic selectedKey) {
-    final List<Choice> userChoices = state.userChoices;
-    userChoices[choiceIndex].selected = selectedKey;
-    emit(UserChoicesState(userChoices: userChoices));
-  }
-
-  void resetUserChoices(Choice choice) =>
-      emit(UserChoicesState(userChoices: [choice]));
 }
