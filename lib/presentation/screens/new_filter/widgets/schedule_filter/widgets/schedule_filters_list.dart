@@ -15,6 +15,7 @@ class ScheduleFiltersList extends StatefulWidget {
 
 class _ScheduleFiltersListState extends State<ScheduleFiltersList> {
   final GlobalKey<AnimatedListState> animatedListKey = GlobalKey();
+  final Duration animatedDuration = const Duration(milliseconds: 200);
 
   @override
   void initState() {
@@ -62,7 +63,7 @@ class _ScheduleFiltersListState extends State<ScheduleFiltersList> {
   }
 
   void animatedAddItem(int index) {
-    animatedListKey.currentState!.insertItem(index);
+    animatedListKey.currentState!.insertItem(index, duration: animatedDuration);
   }
 
   void animatedRemoveItem(int index) {
