@@ -30,7 +30,7 @@ class ScheduleBottomAppBar extends StatelessWidget {
                     ? () {
                         Navigator.pop(
                           context,
-                          lastUserChoice.level!.options.keys.first,
+                          lastUserChoice.level!.leafValue,
                         );
                       }
                     : null,
