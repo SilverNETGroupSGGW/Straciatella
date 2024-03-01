@@ -91,8 +91,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         desc: LocaleKeys.customization_stage_desc.tr(),
         leading: FilledButton(
           onPressed: () {
-            // TODO: Navigate to theme screen instead of settings
-            Navigator.of(context).pushNamed(RouteNames.settings);
+            Navigator.of(context).pushNamed(RouteNames.theme);
           },
           child: Text(LocaleKeys.customize.tr()),
         ),

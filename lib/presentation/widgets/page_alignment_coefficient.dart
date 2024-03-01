@@ -4,14 +4,16 @@ import 'package:silvertimetable/helpers.dart';
 class PageAlignmentCoefficient extends StatefulWidget {
   final PageController pageController;
   final int page;
-  final double error;
+  final double errorMargin;
+  final Curve curve;
   final Widget Function(BuildContext context, double coefficient) builder;
   const PageAlignmentCoefficient({
     super.key,
     required this.pageController,
     required this.page,
-    this.error = 0,
+    this.errorMargin = 0,
     required this.builder,
+    this.curve = Curves.easeOut,
   });
 
   @override
@@ -36,11 +38,10 @@ class _PageAlignmentCoefficientState extends State<PageAlignmentCoefficient> {
 
   @override
   Widget build(BuildContext context) {
-    const curve = Curves.easeOut;
     final coe = (page ?? widget.pageController.initialPage)
-        .alignmentCoe(widget.page.toDouble(), widget.error);
+        .alignmentCoe(widget.page.toDouble(), widget.errorMargin);
 
-    final t = curve.transform(coe);
+    final t = widget.curve.transform(coe);
     return widget.builder(context, t);
   }
 

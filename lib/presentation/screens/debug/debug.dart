@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_lecturer_schedule.dart';
+import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_schedule.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/new_filter_screen.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson/lesson_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/widgets/theme_picker/theme_picker.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/dark_theme_mode_tile.dart';
-import 'package:silvertimetable/presentation/screens/timetable/widgets/lesson_tile.dart';
 import 'package:silvertimetable/router.dart';
 
 class DebugScreen extends StatelessWidget {
@@ -32,6 +34,8 @@ class DebugScreen extends StatelessWidget {
             onPressed: () => Navigator.pushNamed(context, RouteNames.welcome),
             child: const Text("Run welcome screen"),
           ),
+          const GoToMockSchedule(),
+          const GoToMockLecturerSchedule(),
           TextButton(
             onPressed: () {
               Navigator.push(

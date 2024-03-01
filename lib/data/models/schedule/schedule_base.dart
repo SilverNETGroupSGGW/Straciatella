@@ -30,4 +30,9 @@ class ScheduleBase with _$ScheduleBase, BaseSchedule {
 
   factory ScheduleBase.fromJson(Map<String, dynamic> json) =>
       _$ScheduleBaseFromJson(json);
+
+  @override
+  String toPrettyString() {
+    return "$fieldOfStudy, $degreeOfStudy sem. $semester";
+  }
 }

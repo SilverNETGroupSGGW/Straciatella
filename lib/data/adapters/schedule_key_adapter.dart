@@ -14,7 +14,7 @@ class ScheduleKeyAdapter extends TypeAdapter<ScheduleKey> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return (
-      type: ScheduleType.values[reader.read() as int],
+      type: ScheduleType.values[fields[0] as int],
       id: fields[1] as String,
     );
   }

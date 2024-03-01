@@ -1,9 +1,11 @@
+import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
 import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
 import 'package:silvertimetable/data/providers/sggw_hub_api.dart';
+import 'package:silvertimetable/data/types.dart';
 
 class SggwHubRepo {
   final sggwHubApi = SggwHubApi();
@@ -50,5 +52,12 @@ class SggwHubRepo {
   Future<Lecturer> getLecturer(String id) async {
     final response = await sggwHubApi.getLecturer(id);
     return Lecturer.fromJson(response.data as Map<String, dynamic>);
+  }
+
+  Future<ExtendedSchedule> getScheduleByType(ScheduleKey key) async {
+    return switch (key.type) {
+      ScheduleType.lecturer => getLecturer(key.id),
+      ScheduleType.schedule => getSchedule(key.id),
+    };
   }
 }

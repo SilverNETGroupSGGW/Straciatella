@@ -1,29 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/helpers.dart';
-import 'package:silvertimetable/presentation/screens/timetable/widgets/calendar_page_view/day_dot.dart';
-import 'package:silvertimetable/presentation/screens/timetable/widgets/calendar_page_view/day_dot_label.dart';
-import 'package:silvertimetable/presentation/widgets/page_alignment_coefficient.dart';
 import 'package:silvertimetable/presentation/widgets/synced_page_view/synced_page_view.dart';
+
+typedef DayBuilder = Widget Function(
+  BuildContext context,
+  PageController controller,
+  DateTime day,
+  int page,
+);
 
 class CalendarPagePicker extends StatelessWidget
     implements PreferredSizeWidget {
   late final DateTime firstDay;
   late final DateTime lastDay;
+  final double height;
+  final DayBuilder dayBuilder;
+  final DayBuilder dayLabelBuilder;
 
   CalendarPagePicker({
     super.key,
     required DateTime firstDay,
     required DateTime lastDay,
+    required this.dayBuilder,
+    required this.dayLabelBuilder,
+    this.height = 60,
   }) {
-    this.firstDay = DateTime(firstDay.year, firstDay.month, firstDay.day);
-    this.lastDay = DateTime(lastDay.year, lastDay.month, lastDay.day);
+    this.firstDay = DateUtils.dateOnly(firstDay);
+    this.lastDay = DateUtils.dateOnly(lastDay);
     assert(
       this.firstDay.isBefore(this.lastDay) || this.firstDay == this.lastDay,
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(height);
 
   Future<void> _animateToPage(PageController controller, int page) {
     return controller.animateToPage(
@@ -91,25 +101,18 @@ class CalendarPagePicker extends StatelessWidget
                   _animateToPage(controller, pagesCount - 1);
                 }
               },
-              itemBuilder: (_, page) => Center(
-                child: PageAlignmentCoefficient(
-                  pageController: controller,
-                  page: page,
-                  error: 0.8,
-                  builder: (context, coefficient) {
-                    final currentDay = firstDay.add(Duration(days: page));
-                    return page < pagesCount
-                        ? DayDot(
-                            date: currentDay,
-                            t: coefficient,
-                            onTap: () => coefficient > 0
-                                ? _onSelectDay(context, controller, currentDay)
-                                : _animateToPage(controller, page),
-                          )
-                        : Container(); // dummy container
-                  },
-                ),
-              ),
+              itemBuilder: (context, page) {
+                final currentDay =
+                    DateUtils.dateOnly(firstDay.add(Duration(days: page)));
+                if (page >= pagesCount) return Container(); // dummy Container
+
+                return GestureDetector(
+                  onTap: () => controller.page!.round() == page
+                      ? _onSelectDay(context, controller, currentDay)
+                      : _animateToPage(controller, page),
+                  child: dayBuilder(context, controller, currentDay, page),
+                );
+              },
             ),
           ),
         ),
@@ -126,21 +129,15 @@ class CalendarPagePicker extends StatelessWidget
               padEnds: false,
               controller: controller,
               itemCount: pagesCount,
-              itemBuilder: (_, page) {
-                return PageAlignmentCoefficient(
-                  pageController: controller,
-                  page: page,
-                  error: 0.1,
-                  builder: (context, coefficient) => Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0,
-                      vertical: 2,
-                    ),
-                    child: DayDotLabel(
-                      date: firstDay.add(Duration(days: page)),
-                      t: coefficient,
-                    ),
-                  ),
+              itemBuilder: (context, page) {
+                final currentDay =
+                    DateUtils.dateOnly(firstDay.add(Duration(days: page)));
+
+                return dayLabelBuilder(
+                  context,
+                  controller,
+                  currentDay,
+                  page,
                 );
               },
             ),
@@ -150,3 +147,36 @@ class CalendarPagePicker extends StatelessWidget
     );
   }
 }
+
+// BlocBuilder<ScheduleEventsCubit, ScheduleEventsState>(
+//   buildWhen: (previous, current) =>
+//       previous.events[currentDay] !=
+//       current.events[currentDay],
+//   builder: (context, state) {
+//     return DayDot(
+//       date: currentDay,
+//       t: coefficient,
+//       onTap: () => coefficient > 0
+//           ? _onSelectDay(
+//               context,
+//               controller,
+//               currentDay,
+//             )
+//           : _animateToPage(controller, page),
+//       hasEvents: state.events.containsKey(currentDay),
+//     );
+//   },
+// )
+
+// BlocBuilder<ScheduleEventsCubit, ScheduleEventsState>(
+//   buildWhen: (previous, current) =>
+//       previous.events[currentDay] !=
+//       current.events[currentDay],
+//   builder: (context, state) {
+//     return DayDotLabel(
+//       date: currentDay,
+//       t: coefficient,
+//       hasEvents: state.events.containsKey(currentDay),
+//     );
+//   },
+// )
