@@ -4,8 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/cubits/user_choices/user_choices_cubit.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/models/choice.dart';
 
-// ignore: must_be_immutable
-class NewFilterOptionsRow extends StatefulWidget {
+class NewFilterOptionsRow extends StatelessWidget {
   const NewFilterOptionsRow({
     super.key,
     required this.choiceIndex,
@@ -17,27 +16,22 @@ class NewFilterOptionsRow extends StatefulWidget {
   final Function(int)? animatedAddItem;
   final Function(int)? animatedRemoveItem;
 
-  @override
-  State<NewFilterOptionsRow> createState() => _NewFilterOptionsRow();
-}
-
-class _NewFilterOptionsRow extends State<NewFilterOptionsRow> {
   void updateUserChoices(Choice currentChoice, dynamic newKey) {
     final UserChoicesCubit userChoicesCubit = context.read<UserChoicesCubit>();
     final List<Choice> userChoices = userChoicesCubit.state.userChoices;
 
-    for (int i = userChoices.length - 1; i > widget.choiceIndex; i--) {
-      widget.animatedRemoveItem?.call(i);
+    for (int i = userChoices.length - 1; i > choiceIndex; i--) {
+      animatedRemoveItem?.call(i);
       userChoices.removeLast();
     }
 
-    userChoices[widget.choiceIndex].selected = newKey;
+    userChoices[choiceIndex].selected = newKey;
 
     userChoices.add(
       Choice(level: currentChoice.level!.options[newKey], selected: null),
     );
 
-    widget.animatedAddItem?.call(widget.choiceIndex + 1);
+    animatedAddItem?.call(choiceIndex + 1);
     userChoicesCubit.updateUserChoices(userChoices);
   }
 
@@ -45,7 +39,7 @@ class _NewFilterOptionsRow extends State<NewFilterOptionsRow> {
   Widget build(BuildContext context) {
     return BlocBuilder<UserChoicesCubit, UserChoicesState>(
       builder: (context, state) {
-        final Choice choice = state.userChoices[widget.choiceIndex];
+        final Choice choice = state.userChoices[choiceIndex];
 
         return Column(
           children: [

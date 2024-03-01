@@ -6,17 +6,7 @@ import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_filters_list.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_text_field.dart';
 
-// ignore: must_be_immutable
-class NewLecturerFilterScreen extends StatefulWidget {
-  // ignore: prefer_const_constructors_in_immutables
-  NewLecturerFilterScreen({super.key});
-
-  @override
-  State<NewLecturerFilterScreen> createState() =>
-      _NewLecturerFilterScreenState();
-}
-
-class _NewLecturerFilterScreenState extends State<NewLecturerFilterScreen> {
+class NewLecturerFilterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -6,17 +6,7 @@ import 'package:silvertimetable/presentation/screens/new_filter/widgets/filters_
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/widgets/schedule_bottom_app_bar.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/widgets/schedule_filters_list.dart';
 
-// ignore: must_be_immutable
-class NewScheduleFilterScreen extends StatefulWidget {
-  // ignore: prefer_const_constructors_in_immutables
-  NewScheduleFilterScreen({super.key});
-
-  @override
-  State<NewScheduleFilterScreen> createState() =>
-      _NewScheduleFilterScreenState();
-}
-
-class _NewScheduleFilterScreenState extends State<NewScheduleFilterScreen> {
+class NewScheduleFilterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ScheduleManagerBloc, ScheduleManagerState>(

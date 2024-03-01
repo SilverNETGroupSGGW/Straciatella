@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/search_input/search_input_cubit.dart';
 
-class LecturerTextField extends StatelessWidget {
-  // ignore: prefer_const_constructors_in_immutables
-  LecturerTextField({super.key});
+class LecturerTextField extends StatefulWidget {
+  @override
+  State<LecturerTextField> createState() => _LecturerTextFieldState();
+}
 
+class _LecturerTextFieldState extends State<LecturerTextField> {
   final TextEditingController controller = TextEditingController();
 
   @override

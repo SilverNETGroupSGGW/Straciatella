@@ -5,9 +5,6 @@ import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/models/choice.dart';
 
 class ScheduleBottomAppBar extends StatelessWidget {
-  // ignore: prefer_const_constructors_in_immutables
-  ScheduleBottomAppBar({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
