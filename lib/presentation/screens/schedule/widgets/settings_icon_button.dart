@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_material_symbols/flutter_material_symbols.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/router.dart';
 
 class SettingsIconButton extends StatelessWidget {
@@ -11,7 +11,7 @@ class SettingsIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () => Navigator.of(context).pushNamed(RouteNames.settings),
-      icon: const Icon(MaterialSymbols.settings),
+      icon: const Icon(Symbols.settings),
     );
   }
 }

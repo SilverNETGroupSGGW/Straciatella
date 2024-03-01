@@ -23,5 +23,7 @@ class Lesson with _$Lesson {
   }) = _Lesson;
   Lesson._();
 
+  DateTime get endTime => startTime.add(duration);
+
   factory Lesson.fromJson(Map<String, dynamic> json) => _$LessonFromJson(json);
 }
