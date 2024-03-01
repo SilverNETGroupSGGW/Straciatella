@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:silvertimetable/data/fakes/mock_jsons.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
@@ -66,7 +67,7 @@ class DebugScreen extends StatelessWidget {
                     filterType: ScheduleType.schedule,
                   ),
                 ),
-              );
+              ).then((value) => toast("Picked: $value"));
             },
             child: const Text('Show new schedule filter screen'),
           ),
@@ -79,7 +80,7 @@ class DebugScreen extends StatelessWidget {
                     filterType: ScheduleType.lecturer,
                   ),
                 ),
-              );
+              ).then((value) => toast("Picked: $value"));
             },
             child: const Text('Show new lecturer filter screen'),
           ),

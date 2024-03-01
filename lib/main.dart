@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:silvertimetable/app_scroll_behavior.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/fakes/sggw_hub_repo_fake.dart';
@@ -53,35 +54,38 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ProvidersTree(
-      settingsCubit: widget.settings,
-      child: BlocBuilder<SettingsCubit, SettingsState>(
-        builder: (context, settings) {
-          return DynamicColorBuilder(
-            builder: (lightDynamic, darkDynamic) {
-              return MaterialApp(
-                scrollBehavior: AppScrollBehavior(),
-                title: appName,
-                theme: getThemeData(
-                  settings,
-                  deviceColorScheme: lightDynamic,
-                ),
-                darkTheme: getThemeData(
-                  settings,
-                  deviceColorScheme: darkDynamic,
-                  brightness: Brightness.dark,
-                ),
-                themeMode: settings.themeMode,
-                localizationsDelegates: context.localizationDelegates,
-                supportedLocales: context.supportedLocales,
-                locale: context.locale,
-                onGenerateRoute: _appRouter.onGenerateRoute,
-                initialRoute:
-                    settings.isFirstRun ? RouteNames.welcome : RouteNames.faved,
-              );
-            },
-          );
-        },
+    return OverlaySupport.global(
+      child: ProvidersTree(
+        settingsCubit: widget.settings,
+        child: BlocBuilder<SettingsCubit, SettingsState>(
+          builder: (context, settings) {
+            return DynamicColorBuilder(
+              builder: (lightDynamic, darkDynamic) {
+                return MaterialApp(
+                  scrollBehavior: AppScrollBehavior(),
+                  title: appName,
+                  theme: getThemeData(
+                    settings,
+                    deviceColorScheme: lightDynamic,
+                  ),
+                  darkTheme: getThemeData(
+                    settings,
+                    deviceColorScheme: darkDynamic,
+                    brightness: Brightness.dark,
+                  ),
+                  themeMode: settings.themeMode,
+                  localizationsDelegates: context.localizationDelegates,
+                  supportedLocales: context.supportedLocales,
+                  locale: context.locale,
+                  onGenerateRoute: _appRouter.onGenerateRoute,
+                  initialRoute: settings.isFirstRun
+                      ? RouteNames.welcome
+                      : RouteNames.faved,
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
