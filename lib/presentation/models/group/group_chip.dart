@@ -8,7 +8,8 @@ class GroupChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
+    return RawChip(
+      onPressed: () {},
       label: Text(group.name),
       avatar: const Icon(Symbols.group),
     );

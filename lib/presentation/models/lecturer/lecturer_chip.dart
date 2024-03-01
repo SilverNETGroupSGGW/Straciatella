@@ -8,7 +8,8 @@ class LecturerChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
+    return RawChip(
+      onPressed: () {},
       label: Text(lecturer.toPrettyString()),
       avatar: const Icon(Symbols.person),
     );

@@ -17,9 +17,11 @@ class IconText extends StatelessWidget {
           size: style?.fontSize,
         ),
         const Gap(8),
-        Text(
-          text,
-          style: style,
+        Expanded(
+          child: Text(
+            text,
+            style: style,
+          ),
         ),
       ],
     );
