@@ -61,7 +61,7 @@ class NewFilterOptionsRow extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: ChoiceChip(
                         showCheckmark: false,
-                        label: Text(key.toString().tr()),
+                        label: Text(key.toString()),
                         selected: choice.selected == key,
                         onSelected: (_) {
                           updateUserChoices(choice, key, context);
