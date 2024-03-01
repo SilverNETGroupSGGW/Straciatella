@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:silvertimetable/data/models/enums.dart';
+import 'package:silvertimetable/data/types.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/cubits/user_choices/user_choices_cubit.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/models/choice.dart';
 
@@ -25,9 +27,12 @@ class ScheduleBottomAppBar extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: state.userChoices.last.level!.isLeaf
                     ? () {
-                        Navigator.pop(
+                        Navigator.pop<ScheduleKey>(
                           context,
-                          lastUserChoice.level!.leafValue,
+                          (
+                            type: ScheduleType.schedule,
+                            id: lastUserChoice.level!.leafValue,
+                          ),
                         );
                       }
                     : null,

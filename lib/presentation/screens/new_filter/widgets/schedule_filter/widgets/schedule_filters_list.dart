@@ -5,7 +5,6 @@ import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/models/choice.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/widgets/options_row.dart';
 
-// ignore: must_be_immutable
 class ScheduleFiltersList extends StatefulWidget {
   const ScheduleFiltersList({super.key});
 

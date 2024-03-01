@@ -16,7 +16,11 @@ class NewFilterOptionsRow extends StatelessWidget {
   final Function(int)? animatedAddItem;
   final Function(int)? animatedRemoveItem;
 
-  void updateUserChoices(Choice currentChoice, dynamic newKey) {
+  void updateUserChoices(
+    Choice currentChoice,
+    dynamic newKey,
+    BuildContext context,
+  ) {
     final UserChoicesCubit userChoicesCubit = context.read<UserChoicesCubit>();
     final List<Choice> userChoices = userChoicesCubit.state.userChoices;
 
@@ -60,9 +64,7 @@ class NewFilterOptionsRow extends StatelessWidget {
                         label: Text(key.toString().tr()),
                         selected: choice.selected == key,
                         onSelected: (_) {
-                          setState(() {
-                            updateUserChoices(choice, key);
-                          });
+                          updateUserChoices(choice, key, context);
                         },
                       ),
                     ),

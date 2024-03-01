@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:silvertimetable/data/fakes/mock_jsons.dart';
+import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
 import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
@@ -62,7 +63,7 @@ class DebugScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => NewFilterScreen(
-                    filterType: FilterType.schedule,
+                    filterType: ScheduleType.schedule,
                   ),
                 ),
               );
@@ -75,7 +76,7 @@ class DebugScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => NewFilterScreen(
-                    filterType: FilterType.lecturer,
+                    filterType: ScheduleType.lecturer,
                   ),
                 ),
               );

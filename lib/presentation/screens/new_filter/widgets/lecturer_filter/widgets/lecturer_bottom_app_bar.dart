@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
+import 'package:silvertimetable/data/types.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/lecturer_picked/lecturer_picked_cubit.dart';
 
 class LecturerBottomAppBar extends StatelessWidget {
@@ -20,7 +22,13 @@ class LecturerBottomAppBar extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: state.lecturerPicked == null
                     ? null
-                    : () => Navigator.pop(context, state.lecturerPicked!.id),
+                    : () => Navigator.pop<ScheduleKey>(
+                          context,
+                          (
+                            type: ScheduleType.lecturer,
+                            id: state.lecturerPicked!.id,
+                          ),
+                        ),
                 icon: const Icon(Icons.add),
                 label: Text('add'.tr()),
               ),
