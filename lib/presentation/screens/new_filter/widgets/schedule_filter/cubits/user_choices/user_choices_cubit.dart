@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/models/choice.dart';
 
 part 'user_choices_state.dart';
