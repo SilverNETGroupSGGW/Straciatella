@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/types.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/cubits/user_choices/user_choices_cubit.dart';
@@ -36,7 +37,7 @@ class ScheduleBottomAppBar extends StatelessWidget {
                         );
                       }
                     : null,
-                icon: const Icon(Icons.add),
+                icon: const Icon(Symbols.add),
                 label: Text('add'.tr()),
               ),
             ],

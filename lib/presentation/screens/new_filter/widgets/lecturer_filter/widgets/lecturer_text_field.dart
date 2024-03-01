@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/search_input/search_input_cubit.dart';
 
 class LecturerTextField extends StatefulWidget {
@@ -30,7 +31,7 @@ class _LecturerTextFieldState extends State<LecturerTextField> {
         border: InputBorder.none,
         suffix: IconButton(
           icon: const Icon(
-            Icons.clear,
+            Symbols.clear,
             size: 28,
           ),
           color: Colors.grey,

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/data/types.dart';
@@ -29,7 +30,7 @@ class LecturerBottomAppBar extends StatelessWidget {
                             id: state.lecturerPicked!.id,
                           ),
                         ),
-                icon: const Icon(Icons.add),
+                icon: const Icon(Symbols.add),
                 label: Text('add'.tr()),
               ),
             ],
