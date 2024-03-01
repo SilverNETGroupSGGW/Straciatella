@@ -3,6 +3,7 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/fakes/mock_jsons.dart';
@@ -38,9 +39,8 @@ class ScheduleManagerBloc
     }
   }
 
-  ScheduleManagerBloc([SggwHubRepo? sggwHubRepo])
-      : super(ScheduleManagerState()) {
-    _sggwHubRepo = sggwHubRepo ?? SggwHubRepo();
+  ScheduleManagerBloc() : super(ScheduleManagerState()) {
+    _sggwHubRepo = GetIt.instance.get<SggwHubRepo>();
 
     on<_Init>((event, emit) {
       try {
