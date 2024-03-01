@@ -342,6 +342,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_animate:
+    dependency: "direct main"
+    description:
+      name: flutter_animate
+      sha256: "7c8a6594a9252dad30cc2ef16e33270b6248c4dedc3b3d06c86c4f3f4dc05ae5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.0"
   flutter_bloc:
     dependency: "direct main"
     description:
@@ -371,14 +379,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_material_symbols:
-    dependency: "direct main"
+  flutter_shaders:
+    dependency: transitive
     description:
-      name: flutter_material_symbols
-      sha256: "14845fb68cfb4ec264de5a49e0f3e7bc7c8f1b61898605162a378b17a06a80a0"
+      name: flutter_shaders
+      sha256: "02750b545c01ff4d8e9bbe8f27a7731aa3778402506c67daa1de7f5fc3f4befe"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.4"
+    version: "0.1.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -613,6 +621,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.8.0"
+  material_symbols_icons:
+    dependency: "direct main"
+    description:
+      name: material_symbols_icons
+      sha256: fee941060cb717c74d370dbcb7a735f224d1e93d705dc5b552ee40e0697d5691
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2719.1"
   meta:
     dependency: transitive
     description:
