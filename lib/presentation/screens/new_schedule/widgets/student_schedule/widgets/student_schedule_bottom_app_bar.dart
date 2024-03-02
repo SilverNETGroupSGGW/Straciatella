@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/types.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/cubits/user_choices/user_choices_cubit.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/models/choice.dart';
+import 'package:silvertimetable/presentation/screens/new_schedule/widgets/student_schedule/cubits/user_choices/user_choices_cubit.dart';
+import 'package:silvertimetable/presentation/screens/new_schedule/widgets/student_schedule/models/choice.dart';
 
-class ScheduleBottomAppBar extends StatelessWidget {
+class StudentScheduleBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(

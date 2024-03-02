@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/cubits/user_choices/user_choices_cubit.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/models/choice.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/schedule_filter/widgets/options_row.dart';
+import 'package:silvertimetable/presentation/screens/new_schedule/widgets/student_schedule/cubits/user_choices/user_choices_cubit.dart';
+import 'package:silvertimetable/presentation/screens/new_schedule/widgets/student_schedule/models/choice.dart';
+import 'package:silvertimetable/presentation/screens/new_schedule/widgets/student_schedule/widgets/student_schedule_options_row.dart';
 
-class ScheduleFiltersList extends StatefulWidget {
-  const ScheduleFiltersList({super.key});
+class StudentSchedulesStack extends StatefulWidget {
+  const StudentSchedulesStack({super.key});
 
   @override
-  State<ScheduleFiltersList> createState() => _ScheduleFiltersListState();
+  State<StudentSchedulesStack> createState() => _StudentSchedulesStackState();
 }
 
-class _ScheduleFiltersListState extends State<ScheduleFiltersList> {
+class _StudentSchedulesStackState extends State<StudentSchedulesStack> {
   final GlobalKey<AnimatedListState> animatedListKey = GlobalKey();
   final Duration animatedDuration = const Duration(milliseconds: 200);
 
@@ -48,7 +48,7 @@ class _ScheduleFiltersListState extends State<ScheduleFiltersList> {
                 sizeFactor: animation,
                 child: state.userChoices[index].level!.isLeaf
                     ? null
-                    : NewFilterOptionsRow(
+                    : StudentScheduleOptionsRow(
                         choiceIndex: index,
                         animatedAddItem: animatedAddItem,
                         animatedRemoveItem: animatedRemoveItem,

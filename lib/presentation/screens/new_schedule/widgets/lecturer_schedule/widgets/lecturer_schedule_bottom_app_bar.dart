@@ -5,9 +5,9 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/data/types.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/lecturer_picked/lecturer_picked_cubit.dart';
+import 'package:silvertimetable/presentation/screens/new_schedule/widgets/lecturer_schedule/cubits/lecturer_picked/lecturer_picked_cubit.dart';
 
-class LecturerBottomAppBar extends StatelessWidget {
+class LecturerScheduleBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LecturerPickedCubit, LecturerPickedState>(

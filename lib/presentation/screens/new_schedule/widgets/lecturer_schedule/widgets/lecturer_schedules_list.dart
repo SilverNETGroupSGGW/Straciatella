@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/search_input/search_input_cubit.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_tile.dart';
+import 'package:silvertimetable/presentation/screens/new_schedule/widgets/lecturer_schedule/cubits/search_input/search_input_cubit.dart';
+import 'package:silvertimetable/presentation/screens/new_schedule/widgets/lecturer_schedule/widgets/lecturer_tile.dart';
 
 class LecturerSchedulesList extends StatelessWidget {
   const LecturerSchedulesList({super.key});
@@ -25,7 +25,7 @@ class LecturerSchedulesList extends StatelessWidget {
 
         return ListView.builder(
           itemCount: matchingLecturers.length,
-          itemBuilder: (context, index) => LecturerTile(
+          itemBuilder: (context, index) => LecturerScheduleTile(
             lecturer: matchingLecturers[index],
           ),
         );
