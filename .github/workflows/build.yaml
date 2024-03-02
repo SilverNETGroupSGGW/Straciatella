@@ -9,6 +9,7 @@ on:
 
 jobs:
   android:
+    name: Build APK
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,6 +38,7 @@ jobs:
           path: build/app/outputs/flutter-apk/app-release.apk
 
   web:
+    name: Build Web
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
