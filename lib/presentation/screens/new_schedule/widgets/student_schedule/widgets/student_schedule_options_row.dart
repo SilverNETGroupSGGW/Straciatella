@@ -28,6 +28,7 @@ class StudentScheduleOptionsRow extends StatelessWidget {
     for (int i = userChoices.length - 1; i > choiceIndex; i--) {
       animatedRemoveItem?.call(i);
       userChoices.removeLast();
+      // TODO: find out if possible to wait for animation to finish
     }
 
     userChoices[choiceIndex].selected = newKey;
