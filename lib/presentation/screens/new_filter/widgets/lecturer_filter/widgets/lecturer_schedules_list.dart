@@ -5,8 +5,8 @@ import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dar
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/cubits/search_input/search_input_cubit.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_tile.dart';
 
-class LecturerFiltersList extends StatelessWidget {
-  const LecturerFiltersList({super.key});
+class LecturerSchedulesList extends StatelessWidget {
+  const LecturerSchedulesList({super.key});
 
   @override
   Widget build(BuildContext context) {

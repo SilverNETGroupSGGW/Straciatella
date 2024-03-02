@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/filters_loading.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_bottom_app_bar.dart';
-import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_filters_list.dart';
+import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_schedules_list.dart';
 import 'package:silvertimetable/presentation/screens/new_filter/widgets/lecturer_filter/widgets/lecturer_text_field.dart';
 
-class NewLecturerFilterScreen extends StatelessWidget {
+class NewLecturerScheduleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +22,11 @@ class NewLecturerFilterScreen extends StatelessWidget {
             return const Stack(
               children: [
                 LinearProgressIndicator(),
-                LecturerFiltersList(),
+                LecturerSchedulesList(),
               ],
             );
           }
-          return const LecturerFiltersList();
+          return const LecturerSchedulesList();
         },
       ),
       bottomNavigationBar: LecturerBottomAppBar(),
