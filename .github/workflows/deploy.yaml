@@ -10,12 +10,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: "./.github/workflows/build.yaml"
-        with:
-          web-href: "${{ github.event.repository.name }}"
+    uses: "./.github/workflows/build.yaml"
+    with:
+      web-href: "${{ github.event.repository.name }}"
 
   release:
     name: Publish an android release
