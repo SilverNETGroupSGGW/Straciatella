@@ -26,7 +26,7 @@ class _LecturerTextFieldState extends State<LecturerTextField> {
     return TextField(
       controller: controller,
       onTapOutside: (!kIsWeb && Platform.isIOS)
-          ? (event) => FocusManager.instance.primaryFocus?.unfocus()
+          ? (_) => FocusManager.instance.primaryFocus?.unfocus()
           : null,
       onChanged: (_) =>
           context.read<SearchInputCubit>().inputTextChanged(controller.text),
