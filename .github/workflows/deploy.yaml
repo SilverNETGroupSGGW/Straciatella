@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - main
+      - devops-changes
     paths-ignore:
       - "README.md"
       - ".vscode/**"
@@ -81,6 +82,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     needs: build
     environment:
       name: github-pages
