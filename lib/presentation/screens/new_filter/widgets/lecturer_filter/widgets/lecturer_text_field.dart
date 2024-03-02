@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -18,7 +19,7 @@ class _LecturerTextFieldState extends State<LecturerTextField> {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
-      onTapOutside: Platform.isIOS
+      onTapOutside: (!kIsWeb && Platform.isIOS)
           ? (event) => FocusManager.instance.primaryFocus?.unfocus()
           : null,
       onChanged: (_) =>
