@@ -19,6 +19,10 @@ jobs:
           channel: "stable"
       - name: Get packages
         run: flutter pub get
+      - name: Create Android SDK directory
+        run: sudo mkdir -p /usr/local/lib/android/sdk
+      - name: chown Android SDK
+        run: sudo chown -R $USER:$USER /usr/local/lib/android/sdk
       - name: Cache Android SDK
         uses: actions/cache@v4
         with:
