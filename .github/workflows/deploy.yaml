@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: ".github/workflows/build.yaml"
+      - uses: "./.github/workflows/build.yaml"
         with:
           web-href: "${{ github.event.repository.name }}"
 
