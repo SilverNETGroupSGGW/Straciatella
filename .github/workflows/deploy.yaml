@@ -45,6 +45,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: web
+          path: build/web
       - name: Log in to the Container registry
         uses: docker/login-action@v3
         with:
