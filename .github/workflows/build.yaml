@@ -18,22 +18,23 @@ jobs:
         with:
           cache: true
           channel: "stable"
-      - name: Get packages
-        run: flutter pub get
-      - name: Create Android SDK directory
-        run: sudo mkdir -p /usr/local/lib/android/sdk
-      - name: chown Android SDK
-        run: sudo chown -R $USER:$USER /usr/local/lib/android/sdk
-      - name: Cache Android SDK
-        uses: actions/cache@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
-          path: /usr/local/lib/android/sdk
-          key: ${{ runner.os }}-android-sdk-${{ hashFiles('**/pubspec.yaml') }}
+          distribution: "temurin" # See 'Supported distributions' for available options
+          java-version: "17"
       - name: Cache Gradle
         uses: actions/cache@v4
         with:
           path: ~/.gradle
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+      - name: Cache Android SDK
+        uses: actions/cache@v4
+        with:
+          path: /usr/lib/android-sdk
+          key: ${{ runner.os }}-android-sdk-${{ hashFiles('**/android-sdk*') }}
+      - name: Update Android SDK
+        run: sdkmanager --update
       - name: Build Android
         run: flutter build apk --release
       - name: Upload artifact
