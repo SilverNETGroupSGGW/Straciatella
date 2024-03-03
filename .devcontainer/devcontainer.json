@@ -8,7 +8,9 @@
     // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
     "dockerfile": "./Dockerfile"
   },
-  "runArgs": ["--device=/dev/bus/usb"],
+  "runArgs": [
+    "--device=/dev/bus/usb"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -18,23 +20,19 @@
         "MiladAtef.hive-snippets",
         "iOSonntag.fluttereasylocalization",
         "esbenp.prettier-vscode",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "GitHub.copilot"
       ]
     }
   },
-
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
-
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
-
   // Uncomment the next line to run commands after the container is created.
-  "postCreateCommand": "dart pub get && flutter doctor && adb devices"
-
+  "postCreateCommand": "flutter pub get && flutter doctor && adb devices"
   // Configure tool-specific properties.
   // "customizations": {},
-
   // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "devcontainer"
 }
