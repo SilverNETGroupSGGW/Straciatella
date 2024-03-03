@@ -28,11 +28,12 @@ jobs:
         with:
           path: /usr/local/lib/android/sdk/build-tools
           key: ${{ runner.os }}-android-sdk-${{ hashFiles('**/android*') }}
+          cache-read-only: false
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
       - uses: android-actions/setup-android@v2
         with:
-          log-accepted-android-sdk-licenses: false
+          log-accepted-android-sdk-licenses: ''
       - name: Install flutter
         uses: subosito/flutter-action@v2
         with:
