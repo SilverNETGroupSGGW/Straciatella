@@ -1,7 +1,7 @@
 FROM ubuntu:latest as installer
 
 RUN apt update
-RUN apt install -y unzip curl git openjdk-21-jre-headless
+RUN apt install -y unzip curl git openjdk-17-jre-headless
 
 # Flutter
 RUN git clone -b stable https://github.com/flutter/flutter /usr/local/flutter
