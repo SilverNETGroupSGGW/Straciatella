@@ -34,7 +34,7 @@ jobs:
           path: /usr/lib/android-sdk
           key: ${{ runner.os }}-android-sdk-${{ hashFiles('**/android-sdk*') }}
       - name: Update Android SDK
-        run: sdkmanager --update
+        run: sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --update
       - name: Build Android
         run: flutter build apk --release
       - name: Upload artifact
