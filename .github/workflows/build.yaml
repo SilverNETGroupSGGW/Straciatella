@@ -29,8 +29,6 @@ jobs:
           path: /usr/lib/android-sdk
           key: ${{ runner.os }}-android-sdk-${{ hashFiles('**/android*') }}
       - uses: android-actions/setup-android@v2
-      - name: Update Android SDK
-        run: /usr/local/lib/android/sdk/tools/bin/sdkmanager --update
       - name: Install flutter
         uses: subosito/flutter-action@v2
         with:
