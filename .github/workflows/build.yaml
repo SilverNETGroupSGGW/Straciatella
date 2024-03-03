@@ -18,6 +18,8 @@ jobs:
         with:
           cache: true
           channel: "stable"
+      - run: flutter upgrade
+      - run: flutter pub get
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
