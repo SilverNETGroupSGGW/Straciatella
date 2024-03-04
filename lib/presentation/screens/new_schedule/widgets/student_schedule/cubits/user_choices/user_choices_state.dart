@@ -1,7 +1,7 @@
 part of 'user_choices_cubit.dart';
 
 class UserChoicesState {
-  UserChoicesState({this.userChoices = const []});
+  UserChoicesState({this.pickedKeys = const []});
 
-  List<Choice> userChoices;
+  List<dynamic> pickedKeys;
 }

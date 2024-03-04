@@ -16,6 +16,17 @@ class OptionsTreeNode<OptionValueType> {
     this.options = options ?? SplayTreeMap();
   }
 
+  OptionsTreeNode? getValue(List<dynamic> pickedKeys) {
+    OptionsTreeNode? parent = this;
+
+    int i = 0;
+    while (parent != null && pickedKeys.length > i) {
+      parent = parent.options[pickedKeys[i]];
+      i++;
+    }
+    return parent;
+  }
+
   bool get isLeaf {
     return options.length == 1 && options.entries.first.value == null;
   }

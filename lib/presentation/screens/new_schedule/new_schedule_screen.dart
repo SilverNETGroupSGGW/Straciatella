@@ -31,7 +31,9 @@ class _NewScheduleScreenState extends State<NewScheduleScreen> {
   Widget build(BuildContext context) {
     return widget.filterType == ScheduleType.schedule
         ? BlocProvider<UserChoicesCubit>(
-            create: (context) => UserChoicesCubit(),
+            create: (context) => UserChoicesCubit(
+              scheduleManagerBloc: context.read<ScheduleManagerBloc>(),
+            ),
             child: NewStudentScheduleScreen(),
           )
         : MultiBlocProvider(

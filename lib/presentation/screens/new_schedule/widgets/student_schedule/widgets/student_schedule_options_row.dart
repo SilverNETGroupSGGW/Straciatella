@@ -2,71 +2,47 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
 import 'package:silvertimetable/presentation/screens/new_schedule/widgets/student_schedule/cubits/user_choices/user_choices_cubit.dart';
-import 'package:silvertimetable/presentation/screens/new_schedule/widgets/student_schedule/models/choice.dart';
 
 class StudentScheduleOptionsRow extends StatelessWidget {
   const StudentScheduleOptionsRow({
     super.key,
     required this.choiceIndex,
-    this.animatedAddItem,
-    this.animatedRemoveItem,
+    required this.level,
   });
 
   final int choiceIndex;
-  final Function(int)? animatedAddItem;
-  final Function(int)? animatedRemoveItem;
-
-  void updateUserChoices(
-    Choice currentChoice,
-    dynamic newKey,
-    BuildContext context,
-  ) {
-    final UserChoicesCubit userChoicesCubit = context.read<UserChoicesCubit>();
-    final List<Choice> userChoices = userChoicesCubit.state.userChoices;
-
-    for (int i = userChoices.length - 1; i > choiceIndex; i--) {
-      animatedRemoveItem?.call(i);
-      userChoices.removeLast();
-      // TODO: find out if possible to wait for animation to finish
-    }
-
-    userChoices[choiceIndex].selected = newKey;
-
-    userChoices.add(
-      Choice(level: currentChoice.level!.options[newKey], selected: null),
-    );
-
-    animatedAddItem?.call(choiceIndex + 1);
-    userChoicesCubit.updateUserChoices(userChoices);
-  }
+  final OptionsTreeNode level;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserChoicesCubit, UserChoicesState>(
       builder: (context, state) {
-        final Choice choice = state.userChoices[choiceIndex];
-
+        final selectedKey =
+            state.pickedKeys.isNotEmpty ? state.pickedKeys[choiceIndex] : null;
         return Column(
           children: [
             ListTile(
               leading: Icon(
-                nodeIcon(choice.level!.name),
+                nodeIcon(level.name),
               ),
-              title: Text(choice.level!.name.tr()),
+              title: Text(level.name.tr()),
             ),
             Wrap(
               alignment: WrapAlignment.center,
-              children: choice.level!.options.keys
+              children: level.options.keys
                   .map(
                     (key) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: ChoiceChip(
                         showCheckmark: false,
                         label: Text(key.toString()),
-                        selected: choice.selected == key,
+                        selected: selectedKey == key,
                         onSelected: (_) {
-                          updateUserChoices(choice, key, context);
+                          context
+                              .read<UserChoicesCubit>()
+                              .selectChoiceOnLevel(key, choiceIndex);
                         },
                       ),
                     ),
