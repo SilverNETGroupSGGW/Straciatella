@@ -10,48 +10,44 @@ class StudentScheduleOptionsRow extends StatelessWidget {
     super.key,
     required this.choiceIndex,
     required this.level,
+    this.selectedKey,
   });
 
   final int choiceIndex;
   final OptionsTreeNode level;
+  final dynamic selectedKey;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserChoicesCubit, UserChoicesState>(
-      builder: (context, state) {
-        final selectedKey =
-            state.pickedKeys.isNotEmpty ? state.pickedKeys[choiceIndex] : null;
-        return Column(
-          children: [
-            ListTile(
-              leading: Icon(
-                nodeIcon(level.name),
-              ),
-              title: Text(level.name.tr()),
-            ),
-            Wrap(
-              alignment: WrapAlignment.center,
-              children: level.options.keys
-                  .map(
-                    (key) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: ChoiceChip(
-                        showCheckmark: false,
-                        label: Text(key.toString()),
-                        selected: selectedKey == key,
-                        onSelected: (_) {
-                          context
-                              .read<UserChoicesCubit>()
-                              .selectChoiceOnLevel(key, choiceIndex);
-                        },
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
-          ],
-        );
-      },
+    return Column(
+      children: [
+        ListTile(
+          leading: Icon(
+            nodeIcon(level.name),
+          ),
+          title: Text(level.name.tr()),
+        ),
+        Wrap(
+          alignment: WrapAlignment.center,
+          children: level.options.keys
+              .map(
+                (key) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: ChoiceChip(
+                    showCheckmark: false,
+                    label: Text(key.toString()),
+                    selected: selectedKey == key,
+                    onSelected: (_) {
+                      context
+                          .read<UserChoicesCubit>()
+                          .selectChoiceOnLevel(key, choiceIndex);
+                    },
+                  ),
+                ),
+              )
+              .toList(),
+        ),
+      ],
     );
   }
 

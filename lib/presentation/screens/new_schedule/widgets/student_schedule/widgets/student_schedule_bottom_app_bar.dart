@@ -16,8 +16,6 @@ class StudentScheduleBottomAppBar extends StatelessWidget {
         builder: (context, scheduleManagerState) {
           return BlocBuilder<UserChoicesCubit, UserChoicesState>(
             builder: (context, state) {
-              print(scheduleManagerState.schedulesOptionsTree);
-              print(state.pickedKeys);
               final OptionsTreeNode? lastLevel = scheduleManagerState
                   .schedulesOptionsTree
                   ?.getValue(state.pickedKeys);

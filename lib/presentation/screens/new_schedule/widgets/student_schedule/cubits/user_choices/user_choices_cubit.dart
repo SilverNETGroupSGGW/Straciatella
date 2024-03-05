@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 
 part 'user_choices_state.dart';
@@ -12,7 +13,19 @@ class UserChoicesCubit extends Cubit<UserChoicesState> {
       : super(UserChoicesState()) {
     _scheduleManagerBlocSubscription =
         scheduleManagerBloc.stream.listen((event) {
-      //
+      final newPickedKeys = [];
+      if (state.pickedKeys.isNotEmpty) {
+        OptionsTreeNode? currentLevel = event.schedulesOptionsTree;
+
+        while (currentLevel != null) {
+          final levelChoice = state.pickedKeys[newPickedKeys.length];
+          if (currentLevel.options.containsKey(levelChoice)) {
+            newPickedKeys.add(levelChoice);
+          }
+          currentLevel = currentLevel.options[levelChoice];
+        }
+      }
+      emit(UserChoicesState(pickedKeys: newPickedKeys));
     });
   }
 
@@ -20,7 +33,7 @@ class UserChoicesCubit extends Cubit<UserChoicesState> {
   void selectChoiceOnLevel(dynamic key, int level) {
     final newChoices = List.from(state.pickedKeys);
     if (newChoices.length > level) {
-      newChoices.removeRange(level + 1, newChoices.length);
+      newChoices.removeRange(level, newChoices.length);
     }
     newChoices.add(key);
 
