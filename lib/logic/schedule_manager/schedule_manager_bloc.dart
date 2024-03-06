@@ -3,9 +3,9 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
-import 'package:silvertimetable/data/fakes/mock_jsons.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
@@ -38,51 +38,15 @@ class ScheduleManagerBloc
     }
   }
 
-  ScheduleManagerBloc([SggwHubRepo? sggwHubRepo])
-      : super(ScheduleManagerState()) {
-    _sggwHubRepo = sggwHubRepo ?? SggwHubRepo();
+  ScheduleManagerBloc() : super(ScheduleManagerState()) {
+    _sggwHubRepo = GetIt.instance.get<SggwHubRepo>();
 
     on<_Init>((event, emit) {
       try {
         final ScheduleManagerHiveState? loadedState =
             box.get(boxKey) as ScheduleManagerHiveState?;
         if (loadedState != null) {
-          var s = loadedState.asNormalState();
-          if (kDebugMode) {
-            s = s.copyWith(
-              schedules: {
-                ...s.schedules,
-                if (kDebugMode) ...{
-                  (
-                    id: mockSchedule["id"]! as String,
-                    type: ScheduleType.schedule
-                  ): Schedule.fromJson(mockSchedule),
-                  (
-                    id: mockLecturer["id"]! as String,
-                    type: ScheduleType.lecturer
-                  ): Lecturer.fromJson(mockLecturer),
-                },
-              },
-            );
-          }
-          emit(s);
-        } else {
-          emit(
-            ScheduleManagerState(
-              schedules: {
-                if (kDebugMode) ...{
-                  (
-                    id: mockSchedule["id"]! as String,
-                    type: ScheduleType.schedule
-                  ): Schedule.fromJson(mockSchedule),
-                  (
-                    id: mockLecturer["id"]! as String,
-                    type: ScheduleType.lecturer
-                  ): Lecturer.fromJson(mockLecturer),
-                },
-              },
-            ),
-          );
+          emit(loadedState.asNormalState());
         }
       } catch (e) {
         if (kDebugMode) {
