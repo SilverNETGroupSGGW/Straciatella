@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/fakes/mock_jsons.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
 import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
+import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 import 'package:silvertimetable/presentation/models/schedule_event/schedule_event.dart';
 import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_lecturer_schedule.dart';
 import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_schedule.dart';
+import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson/lesson_tile.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_screens/schedule_events_error_screen.dart';
@@ -27,7 +30,13 @@ class DebugScreen extends StatelessWidget {
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ScheduleEventsErrorScreen(),
+                builder: (context) => BlocProvider(
+                  create: (context) => ScheduleEventsCubit(
+                    context.read<ScheduleManagerBloc>(),
+                    mockScheduleKey,
+                  ),
+                  child: const ScheduleEventsErrorScreen(),
+                ),
               ),
             ),
             child: const Text('Go to schedule error screen'),
