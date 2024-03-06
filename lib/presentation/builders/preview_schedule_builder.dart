@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
@@ -19,10 +20,11 @@ class PreviewScheduleBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final repo = GetIt.instance.get<SggwHubRepo>();
     return FutureBuilder<ExtendedSchedule>(
       future: scheduleKey.type is LecturerBase
-          ? SggwHubRepo().getLecturer(scheduleKey.id)
-          : SggwHubRepo().getSchedule(scheduleKey.id),
+          ? repo.getLecturer(scheduleKey.id)
+          : repo.getSchedule(scheduleKey.id),
       builder: builder,
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/themes/extensions/day_dot_theme.dart';
+import 'package:silvertimetable/themes/extensions/schedule_event_theme.dart';
 
 // choosing theme logic
 ThemeData getThemeData(
@@ -25,6 +26,7 @@ DayDotTheme darkDayDotTheme = DayDotTheme.create(
   normalDayColor: Colors.white,
   saturdayColor: Colors.white60,
 );
+ScheduleEventTheme scheduleEventTheme = ScheduleEventTheme();
 
 ThemeData _fromSeedColor(Color seed, Brightness brightness) {
   return ThemeData(
@@ -37,6 +39,7 @@ ThemeData _fromSeedColor(Color seed, Brightness brightness) {
         Brightness.light => lightDayDotTheme,
         Brightness.dark => darkDayDotTheme,
       },
+      scheduleEventTheme,
     ],
   );
 }
@@ -50,6 +53,7 @@ ThemeData _adaptive(ColorScheme deviceColorScheme, Brightness brightness) {
         Brightness.light => lightDayDotTheme,
         Brightness.dark => darkDayDotTheme,
       },
+      scheduleEventTheme,
     ],
   );
 }
@@ -72,6 +76,7 @@ ThemeData retroLightTheme = ThemeData(
   ),
   extensions: [
     lightDayDotTheme,
+    scheduleEventTheme,
   ],
 );
 
@@ -95,5 +100,6 @@ ThemeData retroDarkTheme = ThemeData(
   ),
   extensions: [
     darkDayDotTheme,
+    scheduleEventTheme,
   ],
 );

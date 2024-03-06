@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:overlay_support/overlay_support.dart';
+import 'package:silvertimetable/data/fakes/mock_jsons.dart';
+import 'package:silvertimetable/data/models/enums.dart';
+import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
+import 'package:silvertimetable/data/models/schedule/schedule.dart';
+import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
+import 'package:silvertimetable/presentation/models/schedule_event/schedule_event.dart';
 import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_lecturer_schedule.dart';
 import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_schedule.dart';
+import 'package:silvertimetable/presentation/screens/new_schedule/new_schedule_screen.dart';
+import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson/lesson_tile.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/widgets/theme_picker/theme_picker.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
@@ -16,6 +25,16 @@ class DebugScreen extends StatelessWidget {
       appBar: AppBar(),
       body: ListView(
         children: [
+          AutoThemeModeTile(),
+          DarkThemeModeTile(),
+          const ThemePicker(),
+          TextButton(
+            onPressed: () => Navigator.pushNamed(context, RouteNames.welcome),
+            child: const Text("Run welcome screen"),
+          ),
+          const GoToMockSchedule(),
+          const GoToMockLecturerSchedule(),
+          const Text("Pierwszy concept by Kuba"),
           const LessonTile(
             classroom: "3/77",
             comment:
@@ -26,15 +45,45 @@ class DebugScreen extends StatelessWidget {
             duration: Duration(minutes: 90),
             startTime: TimeOfDay(hour: 15, minute: 30),
           ),
-          AutoThemeModeTile(),
-          DarkThemeModeTile(),
-          const ThemePicker(),
-          TextButton(
-            onPressed: () => Navigator.pushNamed(context, RouteNames.welcome),
-            child: const Text("Run welcome screen"),
+          ScheduleEventTile(
+            event: ScheduleEvent.convertFromSchedule(
+              Schedule.fromJson(mockSchedule),
+            ).entries.first.value.first,
+          ),
+          ScheduleEventTile(
+            event: ScheduleEvent.convertFromSchedule(
+              Lecturer.fromJson(mockLecturer),
+            ).entries.first.value.first,
+            mode: ScheduleViewMode.lecturer,
           ),
           const GoToMockSchedule(),
           const GoToMockLecturerSchedule(),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NewScheduleScreen(
+                    filterType: ScheduleType.schedule,
+                  ),
+                ),
+              ).then((value) => toast("Picked: $value"));
+            },
+            child: const Text('Show new schedule filter screen'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NewScheduleScreen(
+                    filterType: ScheduleType.lecturer,
+                  ),
+                ),
+              ).then((value) => toast("Picked: $value"));
+            },
+            child: const Text('Show new lecturer filter screen'),
+          ),
         ],
       ),
     );

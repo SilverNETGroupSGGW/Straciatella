@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
@@ -17,10 +18,9 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
 
   ScheduleEventsCubit(
     ScheduleManagerBloc scheduleManager,
-    this.scheduleKey, [
-    SggwHubRepo? sggwHubRepo,
-  ]) : super(const ScheduleEventsState()) {
-    _sggwHubRepo = sggwHubRepo ?? SggwHubRepo();
+    this.scheduleKey,
+  ) : super(const ScheduleEventsState()) {
+    _sggwHubRepo = GetIt.instance.get<SggwHubRepo>();
     _subscription = scheduleManager.stream.listen(_refresh);
     _refresh(scheduleManager.state);
   }

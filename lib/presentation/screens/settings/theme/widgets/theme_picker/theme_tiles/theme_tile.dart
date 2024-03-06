@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_material_symbols/flutter_material_symbols.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class ThemeTile extends StatelessWidget {
   final Widget? child;
@@ -51,7 +51,7 @@ class ThemeTile extends StatelessWidget {
               if (isSelected)
                 const Align(
                   child: Icon(
-                    MaterialSymbols.check_filled_outlined,
+                    Symbols.check_rounded,
                     size: size * 0.6,
                     color: Colors.white,
                   ),
