@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_material_symbols/flutter_material_symbols.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/themes/extensions/day_dot_theme.dart';
 
 class DayDot extends StatelessWidget {
@@ -35,7 +35,7 @@ class DayDot extends StatelessWidget {
             Positioned(
               top: -10,
               child: Icon(
-                MaterialSymbols.keyboard_arrow_down,
+                Symbols.keyboard_arrow_down,
                 color: dayDotTheme.todayIndicatorColor,
                 size: 26,
               ),
