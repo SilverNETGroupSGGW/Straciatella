@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/settings_icon_button.dart';
 
-// TODO: make it nice
 class ScheduleEventsErrorScreen extends StatelessWidget {
   const ScheduleEventsErrorScreen({
     super.key,
@@ -10,17 +11,23 @@ class ScheduleEventsErrorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: const Center(
+      appBar: AppBar(
+        title: Text('schedule'.tr()),
+        actions: const [SettingsIconButton()],
+      ),
+      body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Spacer(flex: 5),
+            const Icon(
               Symbols.error,
+              size: 80,
               color: Colors.red,
-              size: 30,
             ),
-            Text("Error loading events"),
+            const SizedBox(height: 10),
+            Text('error_loading_schedule'.tr()),
+            const Spacer(flex: 7),
           ],
         ),
       ),
