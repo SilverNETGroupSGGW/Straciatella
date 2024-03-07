@@ -15,9 +15,25 @@ class ScheduleEventsErrorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheduleEventsCubit = context.read<ScheduleEventsCubit>();
 
+    // TODO: Style the appbar title as listtile (title and subtitle)
+    // TODO: Change icon color
+    // TODO: Different error string when no connection
+    // TODO: Show whole subtitle on tap
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('schedule'.tr()),
+        title: Column(
+          children: [
+            Text(
+              'schedule'.tr(),
+              style: const TextStyle(fontSize: 24),
+            ),
+            Text(
+              scheduleEventsCubit.,
+              style: const TextStyle(fontSize: 15),
+            ),
+          ],
+        ),
         actions: const [SettingsIconButton()],
       ),
       body: Center(
