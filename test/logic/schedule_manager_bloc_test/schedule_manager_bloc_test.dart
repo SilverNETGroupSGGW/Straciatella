@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/fakes/mock_jsons.dart';
@@ -8,10 +9,12 @@ import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/schedule/schedule.dart';
 import 'package:silvertimetable/data/register_adapters.dart';
+import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
 import 'package:silvertimetable/logic/register_adapters.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 
 void main() async {
+  GetIt.instance.registerSingleton<SggwHubRepo>(FakeSggwHubRepo());
   registerLogicDataAdapters();
   registerDataAdapters();
 
@@ -34,7 +37,7 @@ void main() async {
 
   blocTest<ScheduleManagerBloc, ScheduleManagerState>(
     'Can read saved state.',
-    build: () => ScheduleManagerBloc(FakeSggwHubRepo()),
+    build: () => ScheduleManagerBloc(),
     setUp: () => box.put(
       ScheduleManagerBloc.boxKey,
       testHiveState,
@@ -46,7 +49,7 @@ void main() async {
 
   blocTest<ScheduleManagerBloc, ScheduleManagerState>(
     'emits 2 states for updating Schedule.',
-    build: () => ScheduleManagerBloc(FakeSggwHubRepo()),
+    build: () => ScheduleManagerBloc(),
     act: (bloc) => bloc.add(const ScheduleManagerEvent.updateSchedule("any")),
     expect: () => [
       // puts into loading
@@ -68,7 +71,7 @@ void main() async {
 
   blocTest<ScheduleManagerBloc, ScheduleManagerState>(
     'emits 2 states for updating Lecturer.',
-    build: () => ScheduleManagerBloc(FakeSggwHubRepo()),
+    build: () => ScheduleManagerBloc(),
     act: (bloc) => bloc.add(const ScheduleManagerEvent.updateLecturer("any")),
     expect: () => [
       // puts into loading
@@ -90,7 +93,7 @@ void main() async {
 
   blocTest<ScheduleManagerBloc, ScheduleManagerState>(
     'emits 2 states for updating schedule index',
-    build: () => ScheduleManagerBloc(FakeSggwHubRepo()),
+    build: () => ScheduleManagerBloc(),
     act: (bloc) => bloc.add(const ScheduleManagerEvent.updateIndex()),
     expect: () => [
       // puts into loading

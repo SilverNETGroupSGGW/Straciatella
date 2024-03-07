@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/themes/extensions/day_dot_theme.dart';
 
 class DayDot extends StatelessWidget {
@@ -17,23 +18,40 @@ class DayDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dayDotTheme = Theme.of(context).extension<DayDotTheme>()!;
+    final isToday = DateUtils.isSameDay(DateTime.now(), day);
+
     final (Color bgColor, Color textColor) =
         dayDotTheme.getByWeekdayColor(day.weekday);
 
     final textColorLerp = Color.lerp(bgColor, textColor, t)!;
-    final opacity = dayDotTheme.getOpacity(hasEvents, day);
+    final opacity = dayDotTheme.getOpacity(hasEvents);
 
     return Opacity(
       opacity: opacity,
       child: Stack(
         alignment: Alignment.center,
         children: [
+          if (isToday)
+            Positioned(
+              top: -10,
+              child: Icon(
+                Symbols.keyboard_arrow_down,
+                color: dayDotTheme.todayIndicatorColor,
+                size: 26,
+              ),
+            ),
           LayoutBuilder(
             builder: (context, constrains) {
               return Container(
                 decoration: BoxDecoration(
                   color: bgColor,
                   borderRadius: BorderRadius.circular(99999),
+                  border: isToday
+                      ? Border.all(
+                          color: dayDotTheme.todayIndicatorColor,
+                          width: 1.5,
+                        )
+                      : null,
                 ),
                 width: t * constrains.maxHeight,
                 height: t * constrains.maxHeight,

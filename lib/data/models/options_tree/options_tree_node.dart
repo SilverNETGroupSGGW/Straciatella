@@ -16,6 +16,32 @@ class OptionsTreeNode<OptionValueType> {
     this.options = options ?? SplayTreeMap();
   }
 
+  OptionsTreeNode? getValue(List<dynamic> pickedKeys) {
+    OptionsTreeNode? parent = this;
+
+    int i = 0;
+    while (parent != null && pickedKeys.length > i) {
+      parent = parent.options[pickedKeys[i]];
+      i++;
+    }
+    return parent;
+  }
+
+  List<OptionsTreeNode>? getPath(List<dynamic> pickedKeys) {
+    final List<OptionsTreeNode> path = [this];
+
+    try {
+      int i = 0;
+      while (i < pickedKeys.length) {
+        path.add(path.last.options[pickedKeys[i]]!);
+        i++;
+      }
+    } catch (e) {
+      return null;
+    }
+    return path;
+  }
+
   bool get isLeaf {
     return options.length == 1 && options.entries.first.value == null;
   }
