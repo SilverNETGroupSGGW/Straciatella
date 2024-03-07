@@ -24,7 +24,7 @@ class ScheduleEventsErrorScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Spacer(flex: 3),
+            const Spacer(flex: 7),
             Icon(
               errorIcon(scheduleEventsCubit.state.error),
               size: 80,
@@ -32,7 +32,7 @@ class ScheduleEventsErrorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(errorString(scheduleEventsCubit.state.error)),
-            const Spacer(flex: 3),
+            const Spacer(flex: 5),
             ElevatedButton.icon(
               onPressed: () {
                 context.read<ScheduleEventsCubit>().refreshFromApi();
