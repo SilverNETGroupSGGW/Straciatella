@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
-// TODO: make it nice
 /// Screen given schedule is empty and there are no events to display
 class ScheduleEventsEmptyScreen extends StatelessWidget {
   const ScheduleEventsEmptyScreen({
@@ -9,9 +10,22 @@ class ScheduleEventsEmptyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar:
+          AppBar(), // TODO: app bar from concurrent branch after merge with dev
       body: Center(
-        child: Text("no events"),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Symbols.event_busy,
+              color: Colors.grey,
+              size: 80,
+            ),
+            const SizedBox(height: 20),
+            Text("no_events_in_schedule".tr()),
+          ],
+        ),
       ),
     );
   }
