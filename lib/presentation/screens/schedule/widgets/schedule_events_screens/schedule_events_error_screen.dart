@@ -18,10 +18,6 @@ class ScheduleEventsErrorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheduleEventsCubit = context.read<ScheduleEventsCubit>();
 
-    // TODO: Change icon color
-    // TODO: Different error string when no connection
-    // TODO: Show whole subtitle on tap
-
     return Scaffold(
       appBar: AppBar(
         title: Column(
