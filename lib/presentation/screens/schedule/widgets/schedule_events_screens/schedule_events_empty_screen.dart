@@ -32,7 +32,10 @@ class ScheduleEventsEmptyScreen extends StatelessWidget {
               onPressed: () {
                 context.read<ScheduleEventsCubit>().refreshFromApi();
               },
-              icon: const Icon(Icons.refresh),
+              icon: const Icon(
+                Icons.refresh,
+                size: 20,
+              ),
               label: Text('refresh'.tr()),
             ),
             const Spacer(),
