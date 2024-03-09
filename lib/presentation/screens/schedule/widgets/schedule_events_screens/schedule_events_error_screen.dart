@@ -18,7 +18,6 @@ class ScheduleEventsErrorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheduleEventsCubit = context.read<ScheduleEventsCubit>();
 
-    // TODO: Style the appbar title as listtile (title and subtitle)
     // TODO: Change icon color
     // TODO: Different error string when no connection
     // TODO: Show whole subtitle on tap
@@ -50,10 +49,13 @@ class ScheduleEventsErrorScreen extends StatelessWidget {
             Icon(
               errorIcon(scheduleEventsCubit.state.error),
               size: 80,
-              color: Colors.red,
+              color: Colors.amber,
             ),
             const SizedBox(height: 20),
-            Text(errorString(scheduleEventsCubit.state.error)),
+            Text(
+              errorString(scheduleEventsCubit.state.error),
+              textAlign: TextAlign.center,
+            ),
             const Spacer(flex: 5),
             ElevatedButton.icon(
               onPressed: () {
@@ -77,6 +79,9 @@ class ScheduleEventsErrorScreen extends StatelessWidget {
   }
 
   String errorString(Object? error) {
-    return 'error_loading_schedule'.tr();
+    if (error is DioExceptionType) {
+      return '${'error_loading_schedule'.tr()}.\n${'check_internet_connection'.tr()}.';
+    }
+    return '${'error_loading_schedule'.tr()}.';
   }
 }
