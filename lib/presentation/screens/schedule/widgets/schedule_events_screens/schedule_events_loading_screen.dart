@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_app_bar.dart';
 
 /// Screen when events of a given schedule are being fetched from api
 class ScheduleEventsLoadingScreen extends StatelessWidget {
@@ -13,6 +14,7 @@ class ScheduleEventsLoadingScreen extends StatelessWidget {
     return BlocBuilder<ScheduleEventsCubit, ScheduleEventsState>(
       builder: (context, state) {
         return const Scaffold(
+          appBar: ScheduleEventsAppBar(),
           body: Center(
             child: CircularProgressIndicator(),
           ),
