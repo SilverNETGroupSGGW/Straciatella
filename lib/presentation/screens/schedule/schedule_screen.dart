@@ -39,10 +39,7 @@ class ScheduleScreen extends StatelessWidget {
             state.hasError
           )) {
             (true, false, false) => const ScheduleEventsEmptyScreen(),
-            (true, true, _) => BlocProvider.value(
-                value: context.read<ScheduleEventsCubit>(),
-                child: const ScheduleEventsLoadingScreen(),
-              ),
+            (true, true, _) => const ScheduleEventsLoadingScreen(),
             (false, _, _) => const ScheduleEventsLoadedScreen(),
             (true, false, true) => const ScheduleEventsErrorScreen(),
           };
