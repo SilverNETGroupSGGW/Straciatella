@@ -14,6 +14,7 @@ import 'package:silvertimetable/presentation/screens/new_schedule/new_schedule_s
 import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson/lesson_tile.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_screens/schedule_events_error_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_screens/schedule_events_loading_screen.dart';
 import 'package:silvertimetable/presentation/screens/settings/theme/widgets/theme_picker/theme_picker.dart';
 import 'package:silvertimetable/presentation/screens/settings/widgets/auto_theme_mode_tile.dart';
@@ -40,6 +41,21 @@ class DebugScreen extends StatelessWidget {
                     mockScheduleKey,
                   ),
                   child: const ScheduleEventsLoadingScreen(),
+                ),
+              ),
+            ),
+          ),
+          TextButton(
+            child: const Text('Go to schedule error screen'),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => BlocProvider(
+                  create: (context) => ScheduleEventsCubit(
+                    context.read<ScheduleManagerBloc>(),
+                    mockScheduleKey,
+                  ),
+                  child: const ScheduleEventsErrorScreen(),
                 ),
               ),
             ),
