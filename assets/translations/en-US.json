@@ -50,6 +50,7 @@
   "language_desc": "Change language of the app",
   "lecturer": "Lecturer",
   "lesson": "Classes",
+  "loading_schedule": "Loading schedule",
   "logged_in": "Logged in",
   "logged_in_as": "Logged in as {username}",
   "logged_out": "Logged out",

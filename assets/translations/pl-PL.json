@@ -50,6 +50,7 @@
   "language_desc": "Zmień język aplikacji",
   "lecturer": "Wykładowca",
   "lesson": "Zajęcia",
+  "loading_schedule": "Ładowanie planu",
   "logged_in": "Zalogowany",
   "logged_in_as": "Zalogowany jako {username}",
   "logged_out": "Wylogowany",
