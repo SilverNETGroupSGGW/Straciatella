@@ -26,7 +26,7 @@ class ScheduleEventsEmptyScreen extends StatelessWidget {
               size: 80,
             ),
             const SizedBox(height: 20),
-            Text("no_events_in_schedule".tr()),
+            Text('${"no_events_in_schedule".tr()}.'),
             const Spacer(flex: 5),
             ElevatedButton.icon(
               onPressed: () {
