@@ -48,11 +48,107 @@ class DebugScreen extends StatelessWidget {
           const ShowNewLecturerFilterScreen(),
           const CategoryLabel(text: "Toasts"),
           ListTile(
-            onTap: () => Notifier.showSnackBar("Test toast"),
+            onTap: () => Notifier.customNotification("Test toast"),
             title: const Text("Show test toast"),
           ),
+          const TestToast(),
+          const TestToastAdd(),
+          const TestToastDelete(),
+          const TestToastUpdate(),
+          const TestToastUpdates(),
+          const TestToastUpdateError(),
         ],
       ),
+    );
+  }
+}
+
+class TestToastUpdateError extends StatelessWidget {
+  const TestToastUpdateError({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: () => Notifier.showPlanError("Test error"),
+      title: const Text("Show plan error toast"),
+    );
+  }
+}
+
+class TestToastUpdates extends StatelessWidget {
+  const TestToastUpdates({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: () => Notifier.showPlansUpdated(),
+      title: const Text("Show plans updated toast"),
+    );
+  }
+}
+
+class TestToastUpdate extends StatelessWidget {
+  const TestToastUpdate({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: () => Notifier.showPlanUpdated(),
+      title: const Text("Show plan updated toast"),
+    );
+  }
+}
+
+class TestToastDelete extends StatelessWidget {
+  const TestToastDelete({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: () => Notifier.showPlanDeleted(),
+      title: const Text("Show plan deleted toast"),
+    );
+  }
+}
+
+class TestToastAdd extends StatelessWidget {
+  const TestToastAdd({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: () => Notifier.showPlanAdded(),
+      title: const Text("Show plan added toast"),
+    );
+  }
+}
+
+class TestToast extends StatelessWidget {
+  const TestToast({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: () => Notifier.customNotification(
+        "Test toast with action",
+        action: SnackBarAction(
+          label: "Action",
+          onPressed: () => Notifier.customNotification("Action pressed"),
+        ),
+      ),
+      title: const Text("Show test toast with action"),
     );
   }
 }
@@ -124,7 +220,7 @@ class ShowNewLecturerFilterScreen extends StatelessWidget {
               filterType: ScheduleType.lecturer,
             ),
           ),
-        ).then((value) => Notifier.showSnackBar("Picked: $value"));
+        ).then((value) => Notifier.customNotification("Picked: $value"));
       },
       title: const Text('Show new lecturer filter screen'),
     );
@@ -147,7 +243,7 @@ class ShowFilterNewScheduleScreen extends StatelessWidget {
               filterType: ScheduleType.schedule,
             ),
           ),
-        ).then((value) => Notifier.showSnackBar("Picked: $value"));
+        ).then((value) => Notifier.customNotification("Picked: $value"));
       },
       title: const Text('Show new schedule filter screen'),
     );
