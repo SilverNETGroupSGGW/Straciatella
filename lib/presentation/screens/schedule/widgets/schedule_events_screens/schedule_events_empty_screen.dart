@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_screens/schedule_screen_app_bar.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_app_bar.dart';
 
 /// Screen given schedule is empty and there are no events to display
 class ScheduleEventsEmptyScreen extends StatelessWidget {
@@ -14,7 +14,7 @@ class ScheduleEventsEmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const ScheduleScreenAppBar(),
+      appBar: const ScheduleEventsAppBar(),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
