@@ -1,13 +1,10 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
-import 'package:silvertimetable/presentation/screens/schedule/widgets/settings_icon_button.dart';
+import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_app_bar.dart';
 
 class ScheduleEventsErrorScreen extends StatelessWidget {
   const ScheduleEventsErrorScreen({
@@ -19,24 +16,7 @@ class ScheduleEventsErrorScreen extends StatelessWidget {
     final scheduleEventsCubit = context.read<ScheduleEventsCubit>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: (!kIsWeb && Platform.isIOS)
-              ? CrossAxisAlignment.center
-              : CrossAxisAlignment.start,
-          children: [
-            Text(
-              'schedule'.tr(),
-              style: const TextStyle(fontSize: 24),
-            ),
-            Text(
-              scheduleEventsCubit.state.fromSchedule!.toPrettyString(),
-              style: const TextStyle(fontSize: 12),
-            ),
-          ],
-        ),
-        actions: const [SettingsIconButton()],
-      ),
+      appBar: const ScheduleEventsAppBar(),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
