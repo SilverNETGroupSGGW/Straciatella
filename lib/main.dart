@@ -63,6 +63,7 @@ class _MainAppState extends State<MainApp> {
                 scrollBehavior: AppScrollBehavior(),
                 title: appName,
                 scaffoldMessengerKey: scaffoldMessengerKey,
+                navigatorKey: navigatorKey,
                 theme: getThemeData(
                   settings,
                   deviceColorScheme: lightDynamic,
