@@ -36,7 +36,6 @@ dependencies:
   json_annotation: ^4.8.1
   material_symbols_icons: ^4.2719.1
   mockito: ^5.4.4
-  overlay_support: ^2.1.0
   package_info_plus: ^5.0.1
   smooth_page_indicator: ^1.1.0
   url_launcher: ^6.2.2

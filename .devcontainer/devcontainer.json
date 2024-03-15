@@ -21,7 +21,8 @@
         "iOSonntag.fluttereasylocalization",
         "esbenp.prettier-vscode",
         "redhat.vscode-yaml",
-        "GitHub.copilot"
+        "GitHub.copilot",
+        "GaetSchwartz.build-runner"
       ]
     }
   },
