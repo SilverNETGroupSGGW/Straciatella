@@ -35,8 +35,8 @@ class NoFavedSchedule extends StatelessWidget {
           children: [
             Text("no faved schedule selected"),
             SettingsIconButton(),
-            GoToMockSchedule(),
-            GoToMockLecturerSchedule(),
+            ShowMockScheduleScreen(),
+            ShowMockLecturerScheduleScreen(),
           ],
         ),
       ),

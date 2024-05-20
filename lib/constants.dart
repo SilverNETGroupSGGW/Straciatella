@@ -18,3 +18,8 @@ final privacyPolicyUrl =
     Uri.parse("https://silvernetgroup.github.io/privacy-policy/");
 
 final Random random = Random();
+
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+    GlobalKey<ScaffoldMessengerState>();
+
+final navigatorKey = GlobalKey<NavigatorState>();
