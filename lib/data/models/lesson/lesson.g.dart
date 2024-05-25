@@ -6,7 +6,7 @@ part of 'lesson.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class LessonAdapter extends TypeAdapter<_$LessonImpl> {
+class LessonImplAdapter extends TypeAdapter<_$LessonImpl> {
   @override
   final int typeId = 11;
 
@@ -20,16 +20,15 @@ class LessonAdapter extends TypeAdapter<_$LessonImpl> {
       id: fields[0] as String,
       created: fields[1] as DateTime?,
       updated: fields[2] as DateTime?,
-      numberOfLesson: fields[3] as int,
-      startTime: fields[4] as DateTime,
-      duration: fields[5] as Duration,
+      classroom: fields[3] as Classroom?,
+      ice: fields[4] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$LessonImpl obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -37,11 +36,9 @@ class LessonAdapter extends TypeAdapter<_$LessonImpl> {
       ..writeByte(2)
       ..write(obj.updated)
       ..writeByte(3)
-      ..write(obj.numberOfLesson)
+      ..write(obj.classroom)
       ..writeByte(4)
-      ..write(obj.startTime)
-      ..writeByte(5)
-      ..write(obj.duration);
+      ..write(obj.ice);
   }
 
   @override
@@ -50,7 +47,7 @@ class LessonAdapter extends TypeAdapter<_$LessonImpl> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LessonAdapter &&
+      other is LessonImplAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -65,11 +62,10 @@ _$LessonImpl _$$LessonImplFromJson(Map<String, dynamic> json) => _$LessonImpl(
           json['created'], const DateTimeConverter().fromJson),
       updated: _$JsonConverterFromJson<String, DateTime>(
           json['updated'], const DateTimeConverter().fromJson),
-      numberOfLesson: json['numberOfLesson'] as int,
-      startTime:
-          const DateTimeConverter().fromJson(json['startTime'] as String),
-      duration:
-          const ApiDurationConverter().fromJson(json['duration'] as String),
+      classroom: json['classroom'] == null
+          ? null
+          : Classroom.fromJson(json['classroom'] as Map<String, dynamic>),
+      ice: json['ice'] as String,
     );
 
 Map<String, dynamic> _$$LessonImplToJson(_$LessonImpl instance) =>
@@ -79,9 +75,8 @@ Map<String, dynamic> _$$LessonImplToJson(_$LessonImpl instance) =>
           instance.created, const DateTimeConverter().toJson),
       'updated': _$JsonConverterToJson<String, DateTime>(
           instance.updated, const DateTimeConverter().toJson),
-      'numberOfLesson': instance.numberOfLesson,
-      'startTime': const DateTimeConverter().toJson(instance.startTime),
-      'duration': const ApiDurationConverter().toJson(instance.duration),
+      'classroom': instance.classroom,
+      'ice': instance.ice,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

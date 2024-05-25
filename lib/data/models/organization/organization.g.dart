@@ -1,38 +1,36 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'lecturer.dart';
+part of 'organization.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class LecturerImplAdapter extends TypeAdapter<_$LecturerImpl> {
+class OrganizationImplAdapter extends TypeAdapter<_$OrganizationImpl> {
   @override
-  final int typeId = 8;
+  final int typeId = 17;
 
   @override
-  _$LecturerImpl read(BinaryReader reader) {
+  _$OrganizationImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$LecturerImpl(
+    return _$OrganizationImpl(
       id: fields[0] as String,
       created: fields[1] as DateTime?,
       updated: fields[2] as DateTime?,
-      firstName: fields[3] as String,
-      surName: fields[4] as String,
-      academicDegree: fields[5] as String,
-      email: fields[6] as String,
-      institute: fields[7] as String,
-      subjects: (fields[8] as List?)?.cast<Subject>(),
+      name: fields[3] as String,
+      lecturers: (fields[4] as List?)?.cast<Lecturer>(),
+      classrooms: (fields[5] as List?)?.cast<Classroom>(),
+      tenants: (fields[6] as List?)?.cast<Tenant>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$LecturerImpl obj) {
+  void write(BinaryWriter writer, _$OrganizationImpl obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -40,17 +38,13 @@ class LecturerImplAdapter extends TypeAdapter<_$LecturerImpl> {
       ..writeByte(2)
       ..write(obj.updated)
       ..writeByte(3)
-      ..write(obj.firstName)
+      ..write(obj.name)
       ..writeByte(4)
-      ..write(obj.surName)
+      ..write(obj.lecturers)
       ..writeByte(5)
-      ..write(obj.academicDegree)
+      ..write(obj.classrooms)
       ..writeByte(6)
-      ..write(obj.email)
-      ..writeByte(7)
-      ..write(obj.institute)
-      ..writeByte(8)
-      ..write(obj.subjects);
+      ..write(obj.tenants);
   }
 
   @override
@@ -59,7 +53,7 @@ class LecturerImplAdapter extends TypeAdapter<_$LecturerImpl> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LecturerImplAdapter &&
+      other is OrganizationImplAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -68,36 +62,36 @@ class LecturerImplAdapter extends TypeAdapter<_$LecturerImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LecturerImpl _$$LecturerImplFromJson(Map<String, dynamic> json) =>
-    _$LecturerImpl(
+_$OrganizationImpl _$$OrganizationImplFromJson(Map<String, dynamic> json) =>
+    _$OrganizationImpl(
       id: json['id'] as String,
       created: _$JsonConverterFromJson<String, DateTime>(
           json['created'], const DateTimeConverter().fromJson),
       updated: _$JsonConverterFromJson<String, DateTime>(
           json['updated'], const DateTimeConverter().fromJson),
-      firstName: json['firstName'] as String,
-      surName: json['surName'] as String,
-      academicDegree: json['academicDegree'] as String,
-      email: json['email'] as String,
-      institute: json['institute'] as String,
-      subjects: (json['subjects'] as List<dynamic>?)
-          ?.map((e) => Subject.fromJson(e as Map<String, dynamic>))
+      name: json['name'] as String,
+      lecturers: (json['lecturers'] as List<dynamic>?)
+          ?.map((e) => Lecturer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      classrooms: (json['classrooms'] as List<dynamic>?)
+          ?.map((e) => Classroom.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      tenants: (json['tenants'] as List<dynamic>?)
+          ?.map((e) => Tenant.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$LecturerImplToJson(_$LecturerImpl instance) =>
+Map<String, dynamic> _$$OrganizationImplToJson(_$OrganizationImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': _$JsonConverterToJson<String, DateTime>(
           instance.created, const DateTimeConverter().toJson),
       'updated': _$JsonConverterToJson<String, DateTime>(
           instance.updated, const DateTimeConverter().toJson),
-      'firstName': instance.firstName,
-      'surName': instance.surName,
-      'academicDegree': instance.academicDegree,
-      'email': instance.email,
-      'institute': instance.institute,
-      'subjects': instance.subjects,
+      'name': instance.name,
+      'lecturers': instance.lecturers,
+      'classrooms': instance.classrooms,
+      'tenants': instance.tenants,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

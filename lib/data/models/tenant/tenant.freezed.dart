@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'schedule_group.dart';
+part of 'tenant.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ScheduleGroup _$ScheduleGroupFromJson(Map<String, dynamic> json) {
-  return _ScheduleGroup.fromJson(json);
+Tenant _$TenantFromJson(Map<String, dynamic> json) {
+  return _Tenant.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ScheduleGroup {
+mixin _$Tenant {
   @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @HiveField(1)
@@ -29,34 +29,32 @@ mixin _$ScheduleGroup {
   @DateTimeConverter()
   DateTime? get updated => throw _privateConstructorUsedError;
   @HiveField(3)
-  String? get scheduleId => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError; // extended info
   @HiveField(4)
-  String get name => throw _privateConstructorUsedError;
+  List<StudyProgram>? get studyPrograms => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ScheduleGroupCopyWith<ScheduleGroup> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TenantCopyWith<Tenant> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ScheduleGroupCopyWith<$Res> {
-  factory $ScheduleGroupCopyWith(
-          ScheduleGroup value, $Res Function(ScheduleGroup) then) =
-      _$ScheduleGroupCopyWithImpl<$Res, ScheduleGroup>;
+abstract class $TenantCopyWith<$Res> {
+  factory $TenantCopyWith(Tenant value, $Res Function(Tenant) then) =
+      _$TenantCopyWithImpl<$Res, Tenant>;
   @useResult
   $Res call(
       {@HiveField(0) String id,
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
-      @HiveField(3) String? scheduleId,
-      @HiveField(4) String name});
+      @HiveField(3) String name,
+      @HiveField(4) List<StudyProgram>? studyPrograms});
 }
 
 /// @nodoc
-class _$ScheduleGroupCopyWithImpl<$Res, $Val extends ScheduleGroup>
-    implements $ScheduleGroupCopyWith<$Res> {
-  _$ScheduleGroupCopyWithImpl(this._value, this._then);
+class _$TenantCopyWithImpl<$Res, $Val extends Tenant>
+    implements $TenantCopyWith<$Res> {
+  _$TenantCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -69,8 +67,8 @@ class _$ScheduleGroupCopyWithImpl<$Res, $Val extends ScheduleGroup>
     Object? id = null,
     Object? created = freezed,
     Object? updated = freezed,
-    Object? scheduleId = freezed,
     Object? name = null,
+    Object? studyPrograms = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -85,40 +83,39 @@ class _$ScheduleGroupCopyWithImpl<$Res, $Val extends ScheduleGroup>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      scheduleId: freezed == scheduleId
-          ? _value.scheduleId
-          : scheduleId // ignore: cast_nullable_to_non_nullable
-              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      studyPrograms: freezed == studyPrograms
+          ? _value.studyPrograms
+          : studyPrograms // ignore: cast_nullable_to_non_nullable
+              as List<StudyProgram>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ScheduleGroupImplCopyWith<$Res>
-    implements $ScheduleGroupCopyWith<$Res> {
-  factory _$$ScheduleGroupImplCopyWith(
-          _$ScheduleGroupImpl value, $Res Function(_$ScheduleGroupImpl) then) =
-      __$$ScheduleGroupImplCopyWithImpl<$Res>;
+abstract class _$$TenantImplCopyWith<$Res> implements $TenantCopyWith<$Res> {
+  factory _$$TenantImplCopyWith(
+          _$TenantImpl value, $Res Function(_$TenantImpl) then) =
+      __$$TenantImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@HiveField(0) String id,
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
-      @HiveField(3) String? scheduleId,
-      @HiveField(4) String name});
+      @HiveField(3) String name,
+      @HiveField(4) List<StudyProgram>? studyPrograms});
 }
 
 /// @nodoc
-class __$$ScheduleGroupImplCopyWithImpl<$Res>
-    extends _$ScheduleGroupCopyWithImpl<$Res, _$ScheduleGroupImpl>
-    implements _$$ScheduleGroupImplCopyWith<$Res> {
-  __$$ScheduleGroupImplCopyWithImpl(
-      _$ScheduleGroupImpl _value, $Res Function(_$ScheduleGroupImpl) _then)
+class __$$TenantImplCopyWithImpl<$Res>
+    extends _$TenantCopyWithImpl<$Res, _$TenantImpl>
+    implements _$$TenantImplCopyWith<$Res> {
+  __$$TenantImplCopyWithImpl(
+      _$TenantImpl _value, $Res Function(_$TenantImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,10 +124,10 @@ class __$$ScheduleGroupImplCopyWithImpl<$Res>
     Object? id = null,
     Object? created = freezed,
     Object? updated = freezed,
-    Object? scheduleId = freezed,
     Object? name = null,
+    Object? studyPrograms = freezed,
   }) {
-    return _then(_$ScheduleGroupImpl(
+    return _then(_$TenantImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -143,33 +140,32 @@ class __$$ScheduleGroupImplCopyWithImpl<$Res>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      scheduleId: freezed == scheduleId
-          ? _value.scheduleId
-          : scheduleId // ignore: cast_nullable_to_non_nullable
-              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      studyPrograms: freezed == studyPrograms
+          ? _value._studyPrograms
+          : studyPrograms // ignore: cast_nullable_to_non_nullable
+              as List<StudyProgram>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(
-    typeId: HiveTypeIds.scheduleGroup, adapterName: "ScheduleGroupAdapter")
-class _$ScheduleGroupImpl extends _ScheduleGroup {
-  _$ScheduleGroupImpl(
+@HiveType(typeId: HiveTypeIds.tenant)
+class _$TenantImpl implements _Tenant {
+  _$TenantImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() this.created,
       @HiveField(2) @DateTimeConverter() this.updated,
-      @HiveField(3) this.scheduleId,
-      @HiveField(4) required this.name})
-      : super._();
+      @HiveField(3) required this.name,
+      @HiveField(4) final List<StudyProgram>? studyPrograms})
+      : _studyPrograms = studyPrograms;
 
-  factory _$ScheduleGroupImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ScheduleGroupImplFromJson(json);
+  factory _$TenantImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TenantImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -184,59 +180,66 @@ class _$ScheduleGroupImpl extends _ScheduleGroup {
   final DateTime? updated;
   @override
   @HiveField(3)
-  final String? scheduleId;
+  final String name;
+// extended info
+  final List<StudyProgram>? _studyPrograms;
+// extended info
   @override
   @HiveField(4)
-  final String name;
+  List<StudyProgram>? get studyPrograms {
+    final value = _studyPrograms;
+    if (value == null) return null;
+    if (_studyPrograms is EqualUnmodifiableListView) return _studyPrograms;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ScheduleGroup(id: $id, created: $created, updated: $updated, scheduleId: $scheduleId, name: $name)';
+    return 'Tenant(id: $id, created: $created, updated: $updated, name: $name, studyPrograms: $studyPrograms)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ScheduleGroupImpl &&
+            other is _$TenantImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.scheduleId, scheduleId) ||
-                other.scheduleId == scheduleId) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality()
+                .equals(other._studyPrograms, _studyPrograms));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, created, updated, scheduleId, name);
+  int get hashCode => Object.hash(runtimeType, id, created, updated, name,
+      const DeepCollectionEquality().hash(_studyPrograms));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ScheduleGroupImplCopyWith<_$ScheduleGroupImpl> get copyWith =>
-      __$$ScheduleGroupImplCopyWithImpl<_$ScheduleGroupImpl>(this, _$identity);
+  _$$TenantImplCopyWith<_$TenantImpl> get copyWith =>
+      __$$TenantImplCopyWithImpl<_$TenantImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ScheduleGroupImplToJson(
+    return _$$TenantImplToJson(
       this,
     );
   }
 }
 
-abstract class _ScheduleGroup extends ScheduleGroup {
-  factory _ScheduleGroup(
+abstract class _Tenant implements Tenant {
+  factory _Tenant(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() final DateTime? created,
       @HiveField(2) @DateTimeConverter() final DateTime? updated,
-      @HiveField(3) final String? scheduleId,
-      @HiveField(4) required final String name}) = _$ScheduleGroupImpl;
-  _ScheduleGroup._() : super._();
+      @HiveField(3) required final String name,
+      @HiveField(4) final List<StudyProgram>? studyPrograms}) = _$TenantImpl;
 
-  factory _ScheduleGroup.fromJson(Map<String, dynamic> json) =
-      _$ScheduleGroupImpl.fromJson;
+  factory _Tenant.fromJson(Map<String, dynamic> json) = _$TenantImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -251,12 +254,12 @@ abstract class _ScheduleGroup extends ScheduleGroup {
   DateTime? get updated;
   @override
   @HiveField(3)
-  String? get scheduleId;
-  @override
-  @HiveField(4)
   String get name;
+  @override // extended info
+  @HiveField(4)
+  List<StudyProgram>? get studyPrograms;
   @override
   @JsonKey(ignore: true)
-  _$$ScheduleGroupImplCopyWith<_$ScheduleGroupImpl> get copyWith =>
+  _$$TenantImplCopyWith<_$TenantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

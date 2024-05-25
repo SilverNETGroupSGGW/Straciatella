@@ -31,13 +31,15 @@ mixin _$Lecturer {
   @HiveField(3)
   String get firstName => throw _privateConstructorUsedError;
   @HiveField(4)
-  String get surname => throw _privateConstructorUsedError;
+  String get surName => throw _privateConstructorUsedError;
   @HiveField(5)
   String get academicDegree => throw _privateConstructorUsedError;
   @HiveField(6)
   String get email => throw _privateConstructorUsedError;
   @HiveField(7)
-  List<Subject> get subjects => throw _privateConstructorUsedError;
+  String get institute => throw _privateConstructorUsedError; // extended info
+  @HiveField(8)
+  List<Subject>? get subjects => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,10 +57,11 @@ abstract class $LecturerCopyWith<$Res> {
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) String firstName,
-      @HiveField(4) String surname,
+      @HiveField(4) String surName,
       @HiveField(5) String academicDegree,
       @HiveField(6) String email,
-      @HiveField(7) List<Subject> subjects});
+      @HiveField(7) String institute,
+      @HiveField(8) List<Subject>? subjects});
 }
 
 /// @nodoc
@@ -78,10 +81,11 @@ class _$LecturerCopyWithImpl<$Res, $Val extends Lecturer>
     Object? created = freezed,
     Object? updated = freezed,
     Object? firstName = null,
-    Object? surname = null,
+    Object? surName = null,
     Object? academicDegree = null,
     Object? email = null,
-    Object? subjects = null,
+    Object? institute = null,
+    Object? subjects = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -100,9 +104,9 @@ class _$LecturerCopyWithImpl<$Res, $Val extends Lecturer>
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String,
-      surname: null == surname
-          ? _value.surname
-          : surname // ignore: cast_nullable_to_non_nullable
+      surName: null == surName
+          ? _value.surName
+          : surName // ignore: cast_nullable_to_non_nullable
               as String,
       academicDegree: null == academicDegree
           ? _value.academicDegree
@@ -112,10 +116,14 @@ class _$LecturerCopyWithImpl<$Res, $Val extends Lecturer>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      subjects: null == subjects
+      institute: null == institute
+          ? _value.institute
+          : institute // ignore: cast_nullable_to_non_nullable
+              as String,
+      subjects: freezed == subjects
           ? _value.subjects
           : subjects // ignore: cast_nullable_to_non_nullable
-              as List<Subject>,
+              as List<Subject>?,
     ) as $Val);
   }
 }
@@ -133,10 +141,11 @@ abstract class _$$LecturerImplCopyWith<$Res>
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) String firstName,
-      @HiveField(4) String surname,
+      @HiveField(4) String surName,
       @HiveField(5) String academicDegree,
       @HiveField(6) String email,
-      @HiveField(7) List<Subject> subjects});
+      @HiveField(7) String institute,
+      @HiveField(8) List<Subject>? subjects});
 }
 
 /// @nodoc
@@ -154,10 +163,11 @@ class __$$LecturerImplCopyWithImpl<$Res>
     Object? created = freezed,
     Object? updated = freezed,
     Object? firstName = null,
-    Object? surname = null,
+    Object? surName = null,
     Object? academicDegree = null,
     Object? email = null,
-    Object? subjects = null,
+    Object? institute = null,
+    Object? subjects = freezed,
   }) {
     return _then(_$LecturerImpl(
       id: null == id
@@ -176,9 +186,9 @@ class __$$LecturerImplCopyWithImpl<$Res>
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String,
-      surname: null == surname
-          ? _value.surname
-          : surname // ignore: cast_nullable_to_non_nullable
+      surName: null == surName
+          ? _value.surName
+          : surName // ignore: cast_nullable_to_non_nullable
               as String,
       academicDegree: null == academicDegree
           ? _value.academicDegree
@@ -188,29 +198,33 @@ class __$$LecturerImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      subjects: null == subjects
+      institute: null == institute
+          ? _value.institute
+          : institute // ignore: cast_nullable_to_non_nullable
+              as String,
+      subjects: freezed == subjects
           ? _value._subjects
           : subjects // ignore: cast_nullable_to_non_nullable
-              as List<Subject>,
+              as List<Subject>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: HiveTypeIds.lecturer, adapterName: "LecturerAdapter")
-class _$LecturerImpl extends _Lecturer {
+@HiveType(typeId: HiveTypeIds.lecturerBase)
+class _$LecturerImpl implements _Lecturer {
   _$LecturerImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() this.created,
       @HiveField(2) @DateTimeConverter() this.updated,
       @HiveField(3) required this.firstName,
-      @HiveField(4) required this.surname,
+      @HiveField(4) required this.surName,
       @HiveField(5) required this.academicDegree,
       @HiveField(6) required this.email,
-      @HiveField(7) required final List<Subject> subjects})
-      : _subjects = subjects,
-        super._();
+      @HiveField(7) required this.institute,
+      @HiveField(8) final List<Subject>? subjects})
+      : _subjects = subjects;
 
   factory _$LecturerImpl.fromJson(Map<String, dynamic> json) =>
       _$$LecturerImplFromJson(json);
@@ -231,25 +245,32 @@ class _$LecturerImpl extends _Lecturer {
   final String firstName;
   @override
   @HiveField(4)
-  final String surname;
+  final String surName;
   @override
   @HiveField(5)
   final String academicDegree;
   @override
   @HiveField(6)
   final String email;
-  final List<Subject> _subjects;
   @override
   @HiveField(7)
-  List<Subject> get subjects {
+  final String institute;
+// extended info
+  final List<Subject>? _subjects;
+// extended info
+  @override
+  @HiveField(8)
+  List<Subject>? get subjects {
+    final value = _subjects;
+    if (value == null) return null;
     if (_subjects is EqualUnmodifiableListView) return _subjects;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_subjects);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'Lecturer(id: $id, created: $created, updated: $updated, firstName: $firstName, surname: $surname, academicDegree: $academicDegree, email: $email, subjects: $subjects)';
+    return 'Lecturer(id: $id, created: $created, updated: $updated, firstName: $firstName, surName: $surName, academicDegree: $academicDegree, email: $email, institute: $institute, subjects: $subjects)';
   }
 
   @override
@@ -262,10 +283,12 @@ class _$LecturerImpl extends _Lecturer {
             (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
-            (identical(other.surname, surname) || other.surname == surname) &&
+            (identical(other.surName, surName) || other.surName == surName) &&
             (identical(other.academicDegree, academicDegree) ||
                 other.academicDegree == academicDegree) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.institute, institute) ||
+                other.institute == institute) &&
             const DeepCollectionEquality().equals(other._subjects, _subjects));
   }
 
@@ -277,9 +300,10 @@ class _$LecturerImpl extends _Lecturer {
       created,
       updated,
       firstName,
-      surname,
+      surName,
       academicDegree,
       email,
+      institute,
       const DeepCollectionEquality().hash(_subjects));
 
   @JsonKey(ignore: true)
@@ -296,17 +320,17 @@ class _$LecturerImpl extends _Lecturer {
   }
 }
 
-abstract class _Lecturer extends Lecturer {
+abstract class _Lecturer implements Lecturer {
   factory _Lecturer(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() final DateTime? created,
       @HiveField(2) @DateTimeConverter() final DateTime? updated,
       @HiveField(3) required final String firstName,
-      @HiveField(4) required final String surname,
+      @HiveField(4) required final String surName,
       @HiveField(5) required final String academicDegree,
       @HiveField(6) required final String email,
-      @HiveField(7) required final List<Subject> subjects}) = _$LecturerImpl;
-  _Lecturer._() : super._();
+      @HiveField(7) required final String institute,
+      @HiveField(8) final List<Subject>? subjects}) = _$LecturerImpl;
 
   factory _Lecturer.fromJson(Map<String, dynamic> json) =
       _$LecturerImpl.fromJson;
@@ -327,7 +351,7 @@ abstract class _Lecturer extends Lecturer {
   String get firstName;
   @override
   @HiveField(4)
-  String get surname;
+  String get surName;
   @override
   @HiveField(5)
   String get academicDegree;
@@ -336,7 +360,10 @@ abstract class _Lecturer extends Lecturer {
   String get email;
   @override
   @HiveField(7)
-  List<Subject> get subjects;
+  String get institute;
+  @override // extended info
+  @HiveField(8)
+  List<Subject>? get subjects;
   @override
   @JsonKey(ignore: true)
   _$$LecturerImplCopyWith<_$LecturerImpl> get copyWith =>

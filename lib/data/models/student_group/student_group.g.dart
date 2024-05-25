@@ -1,40 +1,34 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'schedule_base.dart';
+part of 'student_group.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ScheduleBaseAdapter extends TypeAdapter<_$ScheduleBaseImpl> {
+class StudentGroupImplAdapter extends TypeAdapter<_$StudentGroupImpl> {
   @override
-  final int typeId = 5;
+  final int typeId = 23;
 
   @override
-  _$ScheduleBaseImpl read(BinaryReader reader) {
+  _$StudentGroupImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$ScheduleBaseImpl(
+    return _$StudentGroupImpl(
       id: fields[0] as String,
       created: fields[1] as DateTime?,
       updated: fields[2] as DateTime?,
-      startDate: fields[3] as DateTime?,
-      name: fields[4] as String,
-      year: fields[5] as int,
-      semester: fields[6] as int,
-      faculty: fields[7] as String,
-      fieldOfStudy: fields[8] as String,
-      studyMode: fields[9] as String,
-      degreeOfStudy: fields[10] as String,
+      name: fields[3] as String,
+      capacity: fields[4] as int,
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$ScheduleBaseImpl obj) {
+  void write(BinaryWriter writer, _$StudentGroupImpl obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -42,21 +36,9 @@ class ScheduleBaseAdapter extends TypeAdapter<_$ScheduleBaseImpl> {
       ..writeByte(2)
       ..write(obj.updated)
       ..writeByte(3)
-      ..write(obj.startDate)
-      ..writeByte(4)
       ..write(obj.name)
-      ..writeByte(5)
-      ..write(obj.year)
-      ..writeByte(6)
-      ..write(obj.semester)
-      ..writeByte(7)
-      ..write(obj.faculty)
-      ..writeByte(8)
-      ..write(obj.fieldOfStudy)
-      ..writeByte(9)
-      ..write(obj.studyMode)
-      ..writeByte(10)
-      ..write(obj.degreeOfStudy);
+      ..writeByte(4)
+      ..write(obj.capacity);
   }
 
   @override
@@ -65,7 +47,7 @@ class ScheduleBaseAdapter extends TypeAdapter<_$ScheduleBaseImpl> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ScheduleBaseAdapter &&
+      other is StudentGroupImplAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -74,40 +56,26 @@ class ScheduleBaseAdapter extends TypeAdapter<_$ScheduleBaseImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ScheduleBaseImpl _$$ScheduleBaseImplFromJson(Map<String, dynamic> json) =>
-    _$ScheduleBaseImpl(
+_$StudentGroupImpl _$$StudentGroupImplFromJson(Map<String, dynamic> json) =>
+    _$StudentGroupImpl(
       id: json['id'] as String,
       created: _$JsonConverterFromJson<String, DateTime>(
           json['created'], const DateTimeConverter().fromJson),
       updated: _$JsonConverterFromJson<String, DateTime>(
           json['updated'], const DateTimeConverter().fromJson),
-      startDate: json['startDate'] == null
-          ? null
-          : DateTime.parse(json['startDate'] as String),
       name: json['name'] as String,
-      year: json['year'] as int,
-      semester: json['semester'] as int,
-      faculty: json['faculty'] as String,
-      fieldOfStudy: json['fieldOfStudy'] as String,
-      studyMode: json['studyMode'] as String,
-      degreeOfStudy: json['degreeOfStudy'] as String,
+      capacity: (json['capacity'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$ScheduleBaseImplToJson(_$ScheduleBaseImpl instance) =>
+Map<String, dynamic> _$$StudentGroupImplToJson(_$StudentGroupImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': _$JsonConverterToJson<String, DateTime>(
           instance.created, const DateTimeConverter().toJson),
       'updated': _$JsonConverterToJson<String, DateTime>(
           instance.updated, const DateTimeConverter().toJson),
-      'startDate': instance.startDate?.toIso8601String(),
       'name': instance.name,
-      'year': instance.year,
-      'semester': instance.semester,
-      'faculty': instance.faculty,
-      'fieldOfStudy': instance.fieldOfStudy,
-      'studyMode': instance.studyMode,
-      'degreeOfStudy': instance.degreeOfStudy,
+      'capacity': instance.capacity,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

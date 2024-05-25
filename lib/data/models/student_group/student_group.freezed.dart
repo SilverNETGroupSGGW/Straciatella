@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'lesson.dart';
+part of 'student_group.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Lesson _$LessonFromJson(Map<String, dynamic> json) {
-  return _Lesson.fromJson(json);
+StudentGroup _$StudentGroupFromJson(Map<String, dynamic> json) {
+  return _StudentGroup.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Lesson {
+mixin _$StudentGroup {
   @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @HiveField(1)
@@ -29,35 +29,34 @@ mixin _$Lesson {
   @DateTimeConverter()
   DateTime? get updated => throw _privateConstructorUsedError;
   @HiveField(3)
-  Classroom? get classroom =>
-      throw _privateConstructorUsedError; // might be remote
+  String get name => throw _privateConstructorUsedError;
   @HiveField(4)
-  String get ice => throw _privateConstructorUsedError;
+  int get capacity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LessonCopyWith<Lesson> get copyWith => throw _privateConstructorUsedError;
+  $StudentGroupCopyWith<StudentGroup> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LessonCopyWith<$Res> {
-  factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
-      _$LessonCopyWithImpl<$Res, Lesson>;
+abstract class $StudentGroupCopyWith<$Res> {
+  factory $StudentGroupCopyWith(
+          StudentGroup value, $Res Function(StudentGroup) then) =
+      _$StudentGroupCopyWithImpl<$Res, StudentGroup>;
   @useResult
   $Res call(
       {@HiveField(0) String id,
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
-      @HiveField(3) Classroom? classroom,
-      @HiveField(4) String ice});
-
-  $ClassroomCopyWith<$Res>? get classroom;
+      @HiveField(3) String name,
+      @HiveField(4) int capacity});
 }
 
 /// @nodoc
-class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
-    implements $LessonCopyWith<$Res> {
-  _$LessonCopyWithImpl(this._value, this._then);
+class _$StudentGroupCopyWithImpl<$Res, $Val extends StudentGroup>
+    implements $StudentGroupCopyWith<$Res> {
+  _$StudentGroupCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -70,8 +69,8 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
     Object? id = null,
     Object? created = freezed,
     Object? updated = freezed,
-    Object? classroom = freezed,
-    Object? ice = null,
+    Object? name = null,
+    Object? capacity = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -86,54 +85,40 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      classroom: freezed == classroom
-          ? _value.classroom
-          : classroom // ignore: cast_nullable_to_non_nullable
-              as Classroom?,
-      ice: null == ice
-          ? _value.ice
-          : ice // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
+      capacity: null == capacity
+          ? _value.capacity
+          : capacity // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ClassroomCopyWith<$Res>? get classroom {
-    if (_value.classroom == null) {
-      return null;
-    }
-
-    return $ClassroomCopyWith<$Res>(_value.classroom!, (value) {
-      return _then(_value.copyWith(classroom: value) as $Val);
-    });
   }
 }
 
 /// @nodoc
-abstract class _$$LessonImplCopyWith<$Res> implements $LessonCopyWith<$Res> {
-  factory _$$LessonImplCopyWith(
-          _$LessonImpl value, $Res Function(_$LessonImpl) then) =
-      __$$LessonImplCopyWithImpl<$Res>;
+abstract class _$$StudentGroupImplCopyWith<$Res>
+    implements $StudentGroupCopyWith<$Res> {
+  factory _$$StudentGroupImplCopyWith(
+          _$StudentGroupImpl value, $Res Function(_$StudentGroupImpl) then) =
+      __$$StudentGroupImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@HiveField(0) String id,
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
-      @HiveField(3) Classroom? classroom,
-      @HiveField(4) String ice});
-
-  @override
-  $ClassroomCopyWith<$Res>? get classroom;
+      @HiveField(3) String name,
+      @HiveField(4) int capacity});
 }
 
 /// @nodoc
-class __$$LessonImplCopyWithImpl<$Res>
-    extends _$LessonCopyWithImpl<$Res, _$LessonImpl>
-    implements _$$LessonImplCopyWith<$Res> {
-  __$$LessonImplCopyWithImpl(
-      _$LessonImpl _value, $Res Function(_$LessonImpl) _then)
+class __$$StudentGroupImplCopyWithImpl<$Res>
+    extends _$StudentGroupCopyWithImpl<$Res, _$StudentGroupImpl>
+    implements _$$StudentGroupImplCopyWith<$Res> {
+  __$$StudentGroupImplCopyWithImpl(
+      _$StudentGroupImpl _value, $Res Function(_$StudentGroupImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -142,10 +127,10 @@ class __$$LessonImplCopyWithImpl<$Res>
     Object? id = null,
     Object? created = freezed,
     Object? updated = freezed,
-    Object? classroom = freezed,
-    Object? ice = null,
+    Object? name = null,
+    Object? capacity = null,
   }) {
-    return _then(_$LessonImpl(
+    return _then(_$StudentGroupImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -158,31 +143,31 @@ class __$$LessonImplCopyWithImpl<$Res>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      classroom: freezed == classroom
-          ? _value.classroom
-          : classroom // ignore: cast_nullable_to_non_nullable
-              as Classroom?,
-      ice: null == ice
-          ? _value.ice
-          : ice // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
+      capacity: null == capacity
+          ? _value.capacity
+          : capacity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: HiveTypeIds.lesson)
-class _$LessonImpl implements _Lesson {
-  _$LessonImpl(
+@HiveType(typeId: HiveTypeIds.studentGroup)
+class _$StudentGroupImpl implements _StudentGroup {
+  _$StudentGroupImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() this.created,
       @HiveField(2) @DateTimeConverter() this.updated,
-      @HiveField(3) this.classroom,
-      @HiveField(4) required this.ice});
+      @HiveField(3) required this.name,
+      @HiveField(4) required this.capacity});
 
-  factory _$LessonImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LessonImplFromJson(json);
+  factory _$StudentGroupImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StudentGroupImplFromJson(json);
 
   @override
   @HiveField(0)
@@ -197,58 +182,58 @@ class _$LessonImpl implements _Lesson {
   final DateTime? updated;
   @override
   @HiveField(3)
-  final Classroom? classroom;
-// might be remote
+  final String name;
   @override
   @HiveField(4)
-  final String ice;
+  final int capacity;
 
   @override
   String toString() {
-    return 'Lesson(id: $id, created: $created, updated: $updated, classroom: $classroom, ice: $ice)';
+    return 'StudentGroup(id: $id, created: $created, updated: $updated, name: $name, capacity: $capacity)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LessonImpl &&
+            other is _$StudentGroupImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.classroom, classroom) ||
-                other.classroom == classroom) &&
-            (identical(other.ice, ice) || other.ice == ice));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.capacity, capacity) ||
+                other.capacity == capacity));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, created, updated, classroom, ice);
+      Object.hash(runtimeType, id, created, updated, name, capacity);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>
-      __$$LessonImplCopyWithImpl<_$LessonImpl>(this, _$identity);
+  _$$StudentGroupImplCopyWith<_$StudentGroupImpl> get copyWith =>
+      __$$StudentGroupImplCopyWithImpl<_$StudentGroupImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LessonImplToJson(
+    return _$$StudentGroupImplToJson(
       this,
     );
   }
 }
 
-abstract class _Lesson implements Lesson {
-  factory _Lesson(
+abstract class _StudentGroup implements StudentGroup {
+  factory _StudentGroup(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() final DateTime? created,
       @HiveField(2) @DateTimeConverter() final DateTime? updated,
-      @HiveField(3) final Classroom? classroom,
-      @HiveField(4) required final String ice}) = _$LessonImpl;
+      @HiveField(3) required final String name,
+      @HiveField(4) required final int capacity}) = _$StudentGroupImpl;
 
-  factory _Lesson.fromJson(Map<String, dynamic> json) = _$LessonImpl.fromJson;
+  factory _StudentGroup.fromJson(Map<String, dynamic> json) =
+      _$StudentGroupImpl.fromJson;
 
   @override
   @HiveField(0)
@@ -263,12 +248,12 @@ abstract class _Lesson implements Lesson {
   DateTime? get updated;
   @override
   @HiveField(3)
-  Classroom? get classroom;
-  @override // might be remote
+  String get name;
+  @override
   @HiveField(4)
-  String get ice;
+  int get capacity;
   @override
   @JsonKey(ignore: true)
-  _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>
+  _$$StudentGroupImplCopyWith<_$StudentGroupImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
