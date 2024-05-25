@@ -213,7 +213,7 @@ class __$$LecturerImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: HiveTypeIds.lecturerBase)
-class _$LecturerImpl implements _Lecturer {
+class _$LecturerImpl extends _Lecturer {
   _$LecturerImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() this.created,
@@ -224,7 +224,8 @@ class _$LecturerImpl implements _Lecturer {
       @HiveField(6) required this.email,
       @HiveField(7) required this.institute,
       @HiveField(8) final List<Subject>? subjects})
-      : _subjects = subjects;
+      : _subjects = subjects,
+        super._();
 
   factory _$LecturerImpl.fromJson(Map<String, dynamic> json) =>
       _$$LecturerImplFromJson(json);
@@ -320,7 +321,7 @@ class _$LecturerImpl implements _Lecturer {
   }
 }
 
-abstract class _Lecturer implements Lecturer {
+abstract class _Lecturer extends Lecturer {
   factory _Lecturer(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() final DateTime? created,
@@ -331,6 +332,7 @@ abstract class _Lecturer implements Lecturer {
       @HiveField(6) required final String email,
       @HiveField(7) required final String institute,
       @HiveField(8) final List<Subject>? subjects}) = _$LecturerImpl;
+  _Lecturer._() : super._();
 
   factory _Lecturer.fromJson(Map<String, dynamic> json) =
       _$LecturerImpl.fromJson;

@@ -42,6 +42,10 @@ mixin _$StudyProgram {
   String get startDate => throw _privateConstructorUsedError; // extended info
   @HiveField(9)
   List<StudySemester>? get semesters => throw _privateConstructorUsedError;
+  @HiveField(10)
+  Tenant? get tenant => throw _privateConstructorUsedError;
+  @HiveField(11)
+  Organization? get organization => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,7 +69,12 @@ abstract class $StudyProgramCopyWith<$Res> {
       @HiveField(6) String studyMode,
       @HiveField(7) String degreeOfStudy,
       @HiveField(8) String startDate,
-      @HiveField(9) List<StudySemester>? semesters});
+      @HiveField(9) List<StudySemester>? semesters,
+      @HiveField(10) Tenant? tenant,
+      @HiveField(11) Organization? organization});
+
+  $TenantCopyWith<$Res>? get tenant;
+  $OrganizationCopyWith<$Res>? get organization;
 }
 
 /// @nodoc
@@ -91,6 +100,8 @@ class _$StudyProgramCopyWithImpl<$Res, $Val extends StudyProgram>
     Object? degreeOfStudy = null,
     Object? startDate = null,
     Object? semesters = freezed,
+    Object? tenant = freezed,
+    Object? organization = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -133,7 +144,39 @@ class _$StudyProgramCopyWithImpl<$Res, $Val extends StudyProgram>
           ? _value.semesters
           : semesters // ignore: cast_nullable_to_non_nullable
               as List<StudySemester>?,
+      tenant: freezed == tenant
+          ? _value.tenant
+          : tenant // ignore: cast_nullable_to_non_nullable
+              as Tenant?,
+      organization: freezed == organization
+          ? _value.organization
+          : organization // ignore: cast_nullable_to_non_nullable
+              as Organization?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TenantCopyWith<$Res>? get tenant {
+    if (_value.tenant == null) {
+      return null;
+    }
+
+    return $TenantCopyWith<$Res>(_value.tenant!, (value) {
+      return _then(_value.copyWith(tenant: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrganizationCopyWith<$Res>? get organization {
+    if (_value.organization == null) {
+      return null;
+    }
+
+    return $OrganizationCopyWith<$Res>(_value.organization!, (value) {
+      return _then(_value.copyWith(organization: value) as $Val);
+    });
   }
 }
 
@@ -155,7 +198,14 @@ abstract class _$$StudyProgramImplCopyWith<$Res>
       @HiveField(6) String studyMode,
       @HiveField(7) String degreeOfStudy,
       @HiveField(8) String startDate,
-      @HiveField(9) List<StudySemester>? semesters});
+      @HiveField(9) List<StudySemester>? semesters,
+      @HiveField(10) Tenant? tenant,
+      @HiveField(11) Organization? organization});
+
+  @override
+  $TenantCopyWith<$Res>? get tenant;
+  @override
+  $OrganizationCopyWith<$Res>? get organization;
 }
 
 /// @nodoc
@@ -179,6 +229,8 @@ class __$$StudyProgramImplCopyWithImpl<$Res>
     Object? degreeOfStudy = null,
     Object? startDate = null,
     Object? semesters = freezed,
+    Object? tenant = freezed,
+    Object? organization = freezed,
   }) {
     return _then(_$StudyProgramImpl(
       id: null == id
@@ -221,6 +273,14 @@ class __$$StudyProgramImplCopyWithImpl<$Res>
           ? _value._semesters
           : semesters // ignore: cast_nullable_to_non_nullable
               as List<StudySemester>?,
+      tenant: freezed == tenant
+          ? _value.tenant
+          : tenant // ignore: cast_nullable_to_non_nullable
+              as Tenant?,
+      organization: freezed == organization
+          ? _value.organization
+          : organization // ignore: cast_nullable_to_non_nullable
+              as Organization?,
     ));
   }
 }
@@ -228,7 +288,7 @@ class __$$StudyProgramImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: HiveTypeIds.studyProgram)
-class _$StudyProgramImpl implements _StudyProgram {
+class _$StudyProgramImpl extends _StudyProgram {
   _$StudyProgramImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() this.created,
@@ -239,8 +299,11 @@ class _$StudyProgramImpl implements _StudyProgram {
       @HiveField(6) required this.studyMode,
       @HiveField(7) required this.degreeOfStudy,
       @HiveField(8) required this.startDate,
-      @HiveField(9) final List<StudySemester>? semesters})
-      : _semesters = semesters;
+      @HiveField(9) final List<StudySemester>? semesters,
+      @HiveField(10) this.tenant,
+      @HiveField(11) this.organization})
+      : _semesters = semesters,
+        super._();
 
   factory _$StudyProgramImpl.fromJson(Map<String, dynamic> json) =>
       _$$StudyProgramImplFromJson(json);
@@ -288,8 +351,15 @@ class _$StudyProgramImpl implements _StudyProgram {
   }
 
   @override
+  @HiveField(10)
+  final Tenant? tenant;
+  @override
+  @HiveField(11)
+  final Organization? organization;
+
+  @override
   String toString() {
-    return 'StudyProgram(id: $id, created: $created, updated: $updated, name: $name, faculty: $faculty, fieldOfStudy: $fieldOfStudy, studyMode: $studyMode, degreeOfStudy: $degreeOfStudy, startDate: $startDate, semesters: $semesters)';
+    return 'StudyProgram(id: $id, created: $created, updated: $updated, name: $name, faculty: $faculty, fieldOfStudy: $fieldOfStudy, studyMode: $studyMode, degreeOfStudy: $degreeOfStudy, startDate: $startDate, semesters: $semesters, tenant: $tenant, organization: $organization)';
   }
 
   @override
@@ -311,7 +381,10 @@ class _$StudyProgramImpl implements _StudyProgram {
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             const DeepCollectionEquality()
-                .equals(other._semesters, _semesters));
+                .equals(other._semesters, _semesters) &&
+            (identical(other.tenant, tenant) || other.tenant == tenant) &&
+            (identical(other.organization, organization) ||
+                other.organization == organization));
   }
 
   @JsonKey(ignore: true)
@@ -327,7 +400,9 @@ class _$StudyProgramImpl implements _StudyProgram {
       studyMode,
       degreeOfStudy,
       startDate,
-      const DeepCollectionEquality().hash(_semesters));
+      const DeepCollectionEquality().hash(_semesters),
+      tenant,
+      organization);
 
   @JsonKey(ignore: true)
   @override
@@ -343,7 +418,7 @@ class _$StudyProgramImpl implements _StudyProgram {
   }
 }
 
-abstract class _StudyProgram implements StudyProgram {
+abstract class _StudyProgram extends StudyProgram {
   factory _StudyProgram(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() final DateTime? created,
@@ -354,7 +429,10 @@ abstract class _StudyProgram implements StudyProgram {
       @HiveField(6) required final String studyMode,
       @HiveField(7) required final String degreeOfStudy,
       @HiveField(8) required final String startDate,
-      @HiveField(9) final List<StudySemester>? semesters}) = _$StudyProgramImpl;
+      @HiveField(9) final List<StudySemester>? semesters,
+      @HiveField(10) final Tenant? tenant,
+      @HiveField(11) final Organization? organization}) = _$StudyProgramImpl;
+  _StudyProgram._() : super._();
 
   factory _StudyProgram.fromJson(Map<String, dynamic> json) =
       _$StudyProgramImpl.fromJson;
@@ -391,6 +469,12 @@ abstract class _StudyProgram implements StudyProgram {
   @override // extended info
   @HiveField(9)
   List<StudySemester>? get semesters;
+  @override
+  @HiveField(10)
+  Tenant? get tenant;
+  @override
+  @HiveField(11)
+  Organization? get organization;
   @override
   @JsonKey(ignore: true)
   _$$StudyProgramImplCopyWith<_$StudyProgramImpl> get copyWith =>

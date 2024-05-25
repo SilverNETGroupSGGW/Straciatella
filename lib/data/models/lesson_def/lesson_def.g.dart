@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'lesson.dart';
+part of 'lesson_def.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class LessonImplAdapter extends TypeAdapter<_$LessonImpl> {
+class LessonDefImplAdapter extends TypeAdapter<_$LessonDefImpl> {
   @override
   final int typeId = 11;
 
   @override
-  _$LessonImpl read(BinaryReader reader) {
+  _$LessonDefImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$LessonImpl(
+    return _$LessonDefImpl(
       id: fields[0] as String,
       created: fields[1] as DateTime?,
       updated: fields[2] as DateTime?,
@@ -26,7 +26,7 @@ class LessonImplAdapter extends TypeAdapter<_$LessonImpl> {
   }
 
   @override
-  void write(BinaryWriter writer, _$LessonImpl obj) {
+  void write(BinaryWriter writer, _$LessonDefImpl obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
@@ -47,7 +47,7 @@ class LessonImplAdapter extends TypeAdapter<_$LessonImpl> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LessonImplAdapter &&
+      other is LessonDefImplAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -56,7 +56,8 @@ class LessonImplAdapter extends TypeAdapter<_$LessonImpl> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LessonImpl _$$LessonImplFromJson(Map<String, dynamic> json) => _$LessonImpl(
+_$LessonDefImpl _$$LessonDefImplFromJson(Map<String, dynamic> json) =>
+    _$LessonDefImpl(
       id: json['id'] as String,
       created: _$JsonConverterFromJson<String, DateTime>(
           json['created'], const DateTimeConverter().fromJson),
@@ -68,7 +69,7 @@ _$LessonImpl _$$LessonImplFromJson(Map<String, dynamic> json) => _$LessonImpl(
       ice: json['ice'] as String,
     );
 
-Map<String, dynamic> _$$LessonImplToJson(_$LessonImpl instance) =>
+Map<String, dynamic> _$$LessonDefImplToJson(_$LessonDefImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': _$JsonConverterToJson<String, DateTime>(

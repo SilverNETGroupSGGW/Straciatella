@@ -14,27 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Lesson _$LessonFromJson(Map<String, dynamic> json) {
-  return _Lesson.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Lesson {
-  @HiveField(0)
-  String get id => throw _privateConstructorUsedError;
-  @HiveField(1)
-  @DateTimeConverter()
-  DateTime? get created => throw _privateConstructorUsedError;
-  @HiveField(2)
-  @DateTimeConverter()
-  DateTime? get updated => throw _privateConstructorUsedError;
-  @HiveField(3)
-  Classroom? get classroom =>
-      throw _privateConstructorUsedError; // might be remote
-  @HiveField(4)
-  String get ice => throw _privateConstructorUsedError;
+  LessonDef get def => throw _privateConstructorUsedError;
+  Subject get subject => throw _privateConstructorUsedError;
+  DateTime get startTime => throw _privateConstructorUsedError;
+  Duration get duration => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LessonCopyWith<Lesson> get copyWith => throw _privateConstructorUsedError;
 }
@@ -45,13 +31,10 @@ abstract class $LessonCopyWith<$Res> {
       _$LessonCopyWithImpl<$Res, Lesson>;
   @useResult
   $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) @DateTimeConverter() DateTime? created,
-      @HiveField(2) @DateTimeConverter() DateTime? updated,
-      @HiveField(3) Classroom? classroom,
-      @HiveField(4) String ice});
+      {LessonDef def, Subject subject, DateTime startTime, Duration duration});
 
-  $ClassroomCopyWith<$Res>? get classroom;
+  $LessonDefCopyWith<$Res> get def;
+  $SubjectCopyWith<$Res> get subject;
 }
 
 /// @nodoc
@@ -67,45 +50,44 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = freezed,
-    Object? updated = freezed,
-    Object? classroom = freezed,
-    Object? ice = null,
+    Object? def = null,
+    Object? subject = null,
+    Object? startTime = null,
+    Object? duration = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: freezed == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updated: freezed == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      classroom: freezed == classroom
-          ? _value.classroom
-          : classroom // ignore: cast_nullable_to_non_nullable
-              as Classroom?,
-      ice: null == ice
-          ? _value.ice
-          : ice // ignore: cast_nullable_to_non_nullable
-              as String,
+      def: null == def
+          ? _value.def
+          : def // ignore: cast_nullable_to_non_nullable
+              as LessonDef,
+      subject: null == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as Subject,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ClassroomCopyWith<$Res>? get classroom {
-    if (_value.classroom == null) {
-      return null;
-    }
+  $LessonDefCopyWith<$Res> get def {
+    return $LessonDefCopyWith<$Res>(_value.def, (value) {
+      return _then(_value.copyWith(def: value) as $Val);
+    });
+  }
 
-    return $ClassroomCopyWith<$Res>(_value.classroom!, (value) {
-      return _then(_value.copyWith(classroom: value) as $Val);
+  @override
+  @pragma('vm:prefer-inline')
+  $SubjectCopyWith<$Res> get subject {
+    return $SubjectCopyWith<$Res>(_value.subject, (value) {
+      return _then(_value.copyWith(subject: value) as $Val);
     });
   }
 }
@@ -118,14 +100,12 @@ abstract class _$$LessonImplCopyWith<$Res> implements $LessonCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) @DateTimeConverter() DateTime? created,
-      @HiveField(2) @DateTimeConverter() DateTime? updated,
-      @HiveField(3) Classroom? classroom,
-      @HiveField(4) String ice});
+      {LessonDef def, Subject subject, DateTime startTime, Duration duration});
 
   @override
-  $ClassroomCopyWith<$Res>? get classroom;
+  $LessonDefCopyWith<$Res> get def;
+  @override
+  $SubjectCopyWith<$Res> get subject;
 }
 
 /// @nodoc
@@ -139,73 +119,53 @@ class __$$LessonImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = freezed,
-    Object? updated = freezed,
-    Object? classroom = freezed,
-    Object? ice = null,
+    Object? def = null,
+    Object? subject = null,
+    Object? startTime = null,
+    Object? duration = null,
   }) {
     return _then(_$LessonImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: freezed == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updated: freezed == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      classroom: freezed == classroom
-          ? _value.classroom
-          : classroom // ignore: cast_nullable_to_non_nullable
-              as Classroom?,
-      ice: null == ice
-          ? _value.ice
-          : ice // ignore: cast_nullable_to_non_nullable
-              as String,
+      def: null == def
+          ? _value.def
+          : def // ignore: cast_nullable_to_non_nullable
+              as LessonDef,
+      subject: null == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as Subject,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-@HiveType(typeId: HiveTypeIds.lesson)
+
 class _$LessonImpl implements _Lesson {
   _$LessonImpl(
-      {@HiveField(0) required this.id,
-      @HiveField(1) @DateTimeConverter() this.created,
-      @HiveField(2) @DateTimeConverter() this.updated,
-      @HiveField(3) this.classroom,
-      @HiveField(4) required this.ice});
-
-  factory _$LessonImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LessonImplFromJson(json);
+      {required this.def,
+      required this.subject,
+      required this.startTime,
+      required this.duration});
 
   @override
-  @HiveField(0)
-  final String id;
+  final LessonDef def;
   @override
-  @HiveField(1)
-  @DateTimeConverter()
-  final DateTime? created;
+  final Subject subject;
   @override
-  @HiveField(2)
-  @DateTimeConverter()
-  final DateTime? updated;
+  final DateTime startTime;
   @override
-  @HiveField(3)
-  final Classroom? classroom;
-// might be remote
-  @override
-  @HiveField(4)
-  final String ice;
+  final Duration duration;
 
   @override
   String toString() {
-    return 'Lesson(id: $id, created: $created, updated: $updated, classroom: $classroom, ice: $ice)';
+    return 'Lesson(def: $def, subject: $subject, startTime: $startTime, duration: $duration)';
   }
 
   @override
@@ -213,60 +173,40 @@ class _$LessonImpl implements _Lesson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LessonImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.classroom, classroom) ||
-                other.classroom == classroom) &&
-            (identical(other.ice, ice) || other.ice == ice));
+            (identical(other.def, def) || other.def == def) &&
+            (identical(other.subject, subject) || other.subject == subject) &&
+            (identical(other.startTime, startTime) ||
+                other.startTime == startTime) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, created, updated, classroom, ice);
+      Object.hash(runtimeType, def, subject, startTime, duration);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>
       __$$LessonImplCopyWithImpl<_$LessonImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LessonImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Lesson implements Lesson {
   factory _Lesson(
-      {@HiveField(0) required final String id,
-      @HiveField(1) @DateTimeConverter() final DateTime? created,
-      @HiveField(2) @DateTimeConverter() final DateTime? updated,
-      @HiveField(3) final Classroom? classroom,
-      @HiveField(4) required final String ice}) = _$LessonImpl;
-
-  factory _Lesson.fromJson(Map<String, dynamic> json) = _$LessonImpl.fromJson;
+      {required final LessonDef def,
+      required final Subject subject,
+      required final DateTime startTime,
+      required final Duration duration}) = _$LessonImpl;
 
   @override
-  @HiveField(0)
-  String get id;
+  LessonDef get def;
   @override
-  @HiveField(1)
-  @DateTimeConverter()
-  DateTime? get created;
+  Subject get subject;
   @override
-  @HiveField(2)
-  @DateTimeConverter()
-  DateTime? get updated;
+  DateTime get startTime;
   @override
-  @HiveField(3)
-  Classroom? get classroom;
-  @override // might be remote
-  @HiveField(4)
-  String get ice;
+  Duration get duration;
   @override
   @JsonKey(ignore: true)
   _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>

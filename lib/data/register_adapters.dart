@@ -7,12 +7,13 @@ import 'package:silvertimetable/data/adapters/theme_mode_adapter.dart';
 import 'package:silvertimetable/data/adapters/theme_type_adapter.dart';
 import 'package:silvertimetable/data/models/classroom/classroom.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
-import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
-import 'package:silvertimetable/data/models/lesson/lesson.dart';
-import 'package:silvertimetable/data/models/schedule/schedule.dart';
-import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
-import 'package:silvertimetable/data/models/schedule_group/schedule_group.dart';
+import 'package:silvertimetable/data/models/lesson_def/lesson_def.dart';
+import 'package:silvertimetable/data/models/organization/organization.dart';
+import 'package:silvertimetable/data/models/student_group/student_group.dart';
+import 'package:silvertimetable/data/models/study_program/study_program.dart';
+import 'package:silvertimetable/data/models/study_semester/study_semester.dart';
 import 'package:silvertimetable/data/models/subject/subject.dart';
+import 'package:silvertimetable/data/models/tenant/tenant.dart';
 
 void registerDataAdapters() {
   Hive.registerAdapter(ColorAdapter());
@@ -20,13 +21,16 @@ void registerDataAdapters() {
   Hive.registerAdapter(ThemeTypeAdapter());
   Hive.registerAdapter(DayOfWeekAdapter());
   Hive.registerAdapter(DurationAdapter());
-  Hive.registerAdapter(ClassroomAdapter());
-  Hive.registerAdapter(LecturerAdapter());
-  Hive.registerAdapter(LecturerBaseAdapter());
-  Hive.registerAdapter(ScheduleAdapter());
-  Hive.registerAdapter(ScheduleBaseAdapter());
-  Hive.registerAdapter(SubjectAdapter());
-  Hive.registerAdapter(LessonAdapter());
-  Hive.registerAdapter(ScheduleGroupAdapter());
+  Hive.registerAdapter(ClassroomImplAdapter());
+  Hive.registerAdapter(ClassroomTypeImplAdapter());
+  Hive.registerAdapter(LecturerImplAdapter());
+  Hive.registerAdapter(LessonDefImplAdapter());
+  Hive.registerAdapter(OrganizationImplAdapter());
+  Hive.registerAdapter(StudentGroupImplAdapter());
+  Hive.registerAdapter(StudyProgramImplAdapter());
+  Hive.registerAdapter(StudySemesterImplAdapter());
+  Hive.registerAdapter(SubjectImplAdapter());
+  Hive.registerAdapter(SubjectTypeImplAdapter());
+  Hive.registerAdapter(TenantImplAdapter());
   Hive.registerAdapter(ScheduleKeyAdapter());
 }

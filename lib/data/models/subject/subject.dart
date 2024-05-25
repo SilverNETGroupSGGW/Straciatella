@@ -2,7 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/data/converters/datetime_converter.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
-import 'package:silvertimetable/data/models/lesson/lesson.dart';
+import 'package:silvertimetable/data/models/lesson_def/lesson_def.dart';
+import 'package:silvertimetable/data/models/mixins.dart';
 import 'package:silvertimetable/data/models/object_base.dart';
 import 'package:silvertimetable/data/models/student_group/student_group.dart';
 
@@ -10,7 +11,7 @@ part 'subject.freezed.dart';
 part 'subject.g.dart';
 
 @freezed
-class Subject with _$Subject, ObjectBase {
+class Subject with _$Subject, ObjectBase, ICalendarable {
   @HiveType(typeId: HiveTypeIds.subject)
   factory Subject({
     @HiveField(0) required String id,
@@ -23,9 +24,10 @@ class Subject with _$Subject, ObjectBase {
     @HiveField(7) required bool isConditional,
     @HiveField(8) required SubjectType type,
     // extended info
-    @HiveField(9) List<Lesson>? lessons,
+    @HiveField(9) List<LessonDef>? lessons,
     @HiveField(10) List<StudentGroup>? groups,
   }) = _Subject;
+  Subject._();
 
   factory Subject.fromJson(Map<String, dynamic> json) =>
       _$SubjectFromJson(json);
