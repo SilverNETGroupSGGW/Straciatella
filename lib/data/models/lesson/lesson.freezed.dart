@@ -16,10 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Lesson {
-  LessonDef get def => throw _privateConstructorUsedError;
-  Subject get subject => throw _privateConstructorUsedError;
   DateTime get startTime => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
+  Classroom? get classroom => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LessonCopyWith<Lesson> get copyWith => throw _privateConstructorUsedError;
@@ -30,11 +29,9 @@ abstract class $LessonCopyWith<$Res> {
   factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
       _$LessonCopyWithImpl<$Res, Lesson>;
   @useResult
-  $Res call(
-      {LessonDef def, Subject subject, DateTime startTime, Duration duration});
+  $Res call({DateTime startTime, Duration duration, Classroom? classroom});
 
-  $LessonDefCopyWith<$Res> get def;
-  $SubjectCopyWith<$Res> get subject;
+  $ClassroomCopyWith<$Res>? get classroom;
 }
 
 /// @nodoc
@@ -50,20 +47,11 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? def = null,
-    Object? subject = null,
     Object? startTime = null,
     Object? duration = null,
+    Object? classroom = freezed,
   }) {
     return _then(_value.copyWith(
-      def: null == def
-          ? _value.def
-          : def // ignore: cast_nullable_to_non_nullable
-              as LessonDef,
-      subject: null == subject
-          ? _value.subject
-          : subject // ignore: cast_nullable_to_non_nullable
-              as Subject,
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
@@ -72,22 +60,22 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      classroom: freezed == classroom
+          ? _value.classroom
+          : classroom // ignore: cast_nullable_to_non_nullable
+              as Classroom?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $LessonDefCopyWith<$Res> get def {
-    return $LessonDefCopyWith<$Res>(_value.def, (value) {
-      return _then(_value.copyWith(def: value) as $Val);
-    });
-  }
+  $ClassroomCopyWith<$Res>? get classroom {
+    if (_value.classroom == null) {
+      return null;
+    }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $SubjectCopyWith<$Res> get subject {
-    return $SubjectCopyWith<$Res>(_value.subject, (value) {
-      return _then(_value.copyWith(subject: value) as $Val);
+    return $ClassroomCopyWith<$Res>(_value.classroom!, (value) {
+      return _then(_value.copyWith(classroom: value) as $Val);
     });
   }
 }
@@ -99,13 +87,10 @@ abstract class _$$LessonImplCopyWith<$Res> implements $LessonCopyWith<$Res> {
       __$$LessonImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {LessonDef def, Subject subject, DateTime startTime, Duration duration});
+  $Res call({DateTime startTime, Duration duration, Classroom? classroom});
 
   @override
-  $LessonDefCopyWith<$Res> get def;
-  @override
-  $SubjectCopyWith<$Res> get subject;
+  $ClassroomCopyWith<$Res>? get classroom;
 }
 
 /// @nodoc
@@ -119,20 +104,11 @@ class __$$LessonImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? def = null,
-    Object? subject = null,
     Object? startTime = null,
     Object? duration = null,
+    Object? classroom = freezed,
   }) {
     return _then(_$LessonImpl(
-      def: null == def
-          ? _value.def
-          : def // ignore: cast_nullable_to_non_nullable
-              as LessonDef,
-      subject: null == subject
-          ? _value.subject
-          : subject // ignore: cast_nullable_to_non_nullable
-              as Subject,
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
@@ -141,6 +117,10 @@ class __$$LessonImplCopyWithImpl<$Res>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      classroom: freezed == classroom
+          ? _value.classroom
+          : classroom // ignore: cast_nullable_to_non_nullable
+              as Classroom?,
     ));
   }
 }
@@ -149,23 +129,20 @@ class __$$LessonImplCopyWithImpl<$Res>
 
 class _$LessonImpl implements _Lesson {
   _$LessonImpl(
-      {required this.def,
-      required this.subject,
-      required this.startTime,
-      required this.duration});
+      {required this.startTime,
+      required this.duration,
+      required this.classroom});
 
-  @override
-  final LessonDef def;
-  @override
-  final Subject subject;
   @override
   final DateTime startTime;
   @override
   final Duration duration;
+  @override
+  final Classroom? classroom;
 
   @override
   String toString() {
-    return 'Lesson(def: $def, subject: $subject, startTime: $startTime, duration: $duration)';
+    return 'Lesson(startTime: $startTime, duration: $duration, classroom: $classroom)';
   }
 
   @override
@@ -173,17 +150,16 @@ class _$LessonImpl implements _Lesson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LessonImpl &&
-            (identical(other.def, def) || other.def == def) &&
-            (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
             (identical(other.duration, duration) ||
-                other.duration == duration));
+                other.duration == duration) &&
+            (identical(other.classroom, classroom) ||
+                other.classroom == classroom));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, def, subject, startTime, duration);
+  int get hashCode => Object.hash(runtimeType, startTime, duration, classroom);
 
   @JsonKey(ignore: true)
   @override
@@ -194,19 +170,16 @@ class _$LessonImpl implements _Lesson {
 
 abstract class _Lesson implements Lesson {
   factory _Lesson(
-      {required final LessonDef def,
-      required final Subject subject,
-      required final DateTime startTime,
-      required final Duration duration}) = _$LessonImpl;
+      {required final DateTime startTime,
+      required final Duration duration,
+      required final Classroom? classroom}) = _$LessonImpl;
 
-  @override
-  LessonDef get def;
-  @override
-  Subject get subject;
   @override
   DateTime get startTime;
   @override
   Duration get duration;
+  @override
+  Classroom? get classroom;
   @override
   @JsonKey(ignore: true)
   _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>

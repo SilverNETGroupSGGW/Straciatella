@@ -39,11 +39,15 @@ mixin _$Subject {
   @HiveField(7)
   bool get isConditional => throw _privateConstructorUsedError;
   @HiveField(8)
-  SubjectType get type => throw _privateConstructorUsedError; // extended info
+  SubjectType get type => throw _privateConstructorUsedError;
   @HiveField(9)
-  List<LessonDef>? get lessons => throw _privateConstructorUsedError;
+  List<Classroom> get classroom => throw _privateConstructorUsedError;
   @HiveField(10)
-  List<StudentGroup>? get groups => throw _privateConstructorUsedError;
+  List<LecturerBase> get lecturers => throw _privateConstructorUsedError;
+  @HiveField(11)
+  List<StudentGroup> get groups => throw _privateConstructorUsedError;
+  @HiveField(12)
+  List<LessonDef> get lessons => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,8 +69,10 @@ abstract class $SubjectCopyWith<$Res> {
       @HiveField(6) String comment,
       @HiveField(7) bool isConditional,
       @HiveField(8) SubjectType type,
-      @HiveField(9) List<LessonDef>? lessons,
-      @HiveField(10) List<StudentGroup>? groups});
+      @HiveField(9) List<Classroom> classroom,
+      @HiveField(10) List<LecturerBase> lecturers,
+      @HiveField(11) List<StudentGroup> groups,
+      @HiveField(12) List<LessonDef> lessons});
 
   $SubjectTypeCopyWith<$Res> get type;
 }
@@ -93,8 +99,10 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
     Object? comment = null,
     Object? isConditional = null,
     Object? type = null,
-    Object? lessons = freezed,
-    Object? groups = freezed,
+    Object? classroom = null,
+    Object? lecturers = null,
+    Object? groups = null,
+    Object? lessons = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -133,14 +141,22 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SubjectType,
-      lessons: freezed == lessons
-          ? _value.lessons
-          : lessons // ignore: cast_nullable_to_non_nullable
-              as List<LessonDef>?,
-      groups: freezed == groups
+      classroom: null == classroom
+          ? _value.classroom
+          : classroom // ignore: cast_nullable_to_non_nullable
+              as List<Classroom>,
+      lecturers: null == lecturers
+          ? _value.lecturers
+          : lecturers // ignore: cast_nullable_to_non_nullable
+              as List<LecturerBase>,
+      groups: null == groups
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<StudentGroup>?,
+              as List<StudentGroup>,
+      lessons: null == lessons
+          ? _value.lessons
+          : lessons // ignore: cast_nullable_to_non_nullable
+              as List<LessonDef>,
     ) as $Val);
   }
 
@@ -170,8 +186,10 @@ abstract class _$$SubjectImplCopyWith<$Res> implements $SubjectCopyWith<$Res> {
       @HiveField(6) String comment,
       @HiveField(7) bool isConditional,
       @HiveField(8) SubjectType type,
-      @HiveField(9) List<LessonDef>? lessons,
-      @HiveField(10) List<StudentGroup>? groups});
+      @HiveField(9) List<Classroom> classroom,
+      @HiveField(10) List<LecturerBase> lecturers,
+      @HiveField(11) List<StudentGroup> groups,
+      @HiveField(12) List<LessonDef> lessons});
 
   @override
   $SubjectTypeCopyWith<$Res> get type;
@@ -197,8 +215,10 @@ class __$$SubjectImplCopyWithImpl<$Res>
     Object? comment = null,
     Object? isConditional = null,
     Object? type = null,
-    Object? lessons = freezed,
-    Object? groups = freezed,
+    Object? classroom = null,
+    Object? lecturers = null,
+    Object? groups = null,
+    Object? lessons = null,
   }) {
     return _then(_$SubjectImpl(
       id: null == id
@@ -237,14 +257,22 @@ class __$$SubjectImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SubjectType,
-      lessons: freezed == lessons
-          ? _value._lessons
-          : lessons // ignore: cast_nullable_to_non_nullable
-              as List<LessonDef>?,
-      groups: freezed == groups
+      classroom: null == classroom
+          ? _value._classroom
+          : classroom // ignore: cast_nullable_to_non_nullable
+              as List<Classroom>,
+      lecturers: null == lecturers
+          ? _value._lecturers
+          : lecturers // ignore: cast_nullable_to_non_nullable
+              as List<LecturerBase>,
+      groups: null == groups
           ? _value._groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<StudentGroup>?,
+              as List<StudentGroup>,
+      lessons: null == lessons
+          ? _value._lessons
+          : lessons // ignore: cast_nullable_to_non_nullable
+              as List<LessonDef>,
     ));
   }
 }
@@ -252,7 +280,7 @@ class __$$SubjectImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: HiveTypeIds.subject)
-class _$SubjectImpl extends _Subject {
+class _$SubjectImpl implements _Subject {
   _$SubjectImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() this.created,
@@ -263,11 +291,14 @@ class _$SubjectImpl extends _Subject {
       @HiveField(6) required this.comment,
       @HiveField(7) required this.isConditional,
       @HiveField(8) required this.type,
-      @HiveField(9) final List<LessonDef>? lessons,
-      @HiveField(10) final List<StudentGroup>? groups})
-      : _lessons = lessons,
+      @HiveField(9) required final List<Classroom> classroom,
+      @HiveField(10) required final List<LecturerBase> lecturers,
+      @HiveField(11) required final List<StudentGroup> groups,
+      @HiveField(12) required final List<LessonDef> lessons})
+      : _classroom = classroom,
+        _lecturers = lecturers,
         _groups = groups,
-        super._();
+        _lessons = lessons;
 
   factory _$SubjectImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubjectImplFromJson(json);
@@ -301,33 +332,45 @@ class _$SubjectImpl extends _Subject {
   @override
   @HiveField(8)
   final SubjectType type;
-// extended info
-  final List<LessonDef>? _lessons;
-// extended info
+  final List<Classroom> _classroom;
   @override
   @HiveField(9)
-  List<LessonDef>? get lessons {
-    final value = _lessons;
-    if (value == null) return null;
-    if (_lessons is EqualUnmodifiableListView) return _lessons;
+  List<Classroom> get classroom {
+    if (_classroom is EqualUnmodifiableListView) return _classroom;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_classroom);
   }
 
-  final List<StudentGroup>? _groups;
+  final List<LecturerBase> _lecturers;
   @override
   @HiveField(10)
-  List<StudentGroup>? get groups {
-    final value = _groups;
-    if (value == null) return null;
+  List<LecturerBase> get lecturers {
+    if (_lecturers is EqualUnmodifiableListView) return _lecturers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lecturers);
+  }
+
+  final List<StudentGroup> _groups;
+  @override
+  @HiveField(11)
+  List<StudentGroup> get groups {
     if (_groups is EqualUnmodifiableListView) return _groups;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_groups);
+  }
+
+  final List<LessonDef> _lessons;
+  @override
+  @HiveField(12)
+  List<LessonDef> get lessons {
+    if (_lessons is EqualUnmodifiableListView) return _lessons;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lessons);
   }
 
   @override
   String toString() {
-    return 'Subject(id: $id, created: $created, updated: $updated, name: $name, ice: $ice, isRemote: $isRemote, comment: $comment, isConditional: $isConditional, type: $type, lessons: $lessons, groups: $groups)';
+    return 'Subject(id: $id, created: $created, updated: $updated, name: $name, ice: $ice, isRemote: $isRemote, comment: $comment, isConditional: $isConditional, type: $type, classroom: $classroom, lecturers: $lecturers, groups: $groups, lessons: $lessons)';
   }
 
   @override
@@ -346,8 +389,12 @@ class _$SubjectImpl extends _Subject {
             (identical(other.isConditional, isConditional) ||
                 other.isConditional == isConditional) &&
             (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other._lessons, _lessons) &&
-            const DeepCollectionEquality().equals(other._groups, _groups));
+            const DeepCollectionEquality()
+                .equals(other._classroom, _classroom) &&
+            const DeepCollectionEquality()
+                .equals(other._lecturers, _lecturers) &&
+            const DeepCollectionEquality().equals(other._groups, _groups) &&
+            const DeepCollectionEquality().equals(other._lessons, _lessons));
   }
 
   @JsonKey(ignore: true)
@@ -363,8 +410,10 @@ class _$SubjectImpl extends _Subject {
       comment,
       isConditional,
       type,
-      const DeepCollectionEquality().hash(_lessons),
-      const DeepCollectionEquality().hash(_groups));
+      const DeepCollectionEquality().hash(_classroom),
+      const DeepCollectionEquality().hash(_lecturers),
+      const DeepCollectionEquality().hash(_groups),
+      const DeepCollectionEquality().hash(_lessons));
 
   @JsonKey(ignore: true)
   @override
@@ -380,7 +429,7 @@ class _$SubjectImpl extends _Subject {
   }
 }
 
-abstract class _Subject extends Subject {
+abstract class _Subject implements Subject {
   factory _Subject(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() final DateTime? created,
@@ -391,9 +440,10 @@ abstract class _Subject extends Subject {
       @HiveField(6) required final String comment,
       @HiveField(7) required final bool isConditional,
       @HiveField(8) required final SubjectType type,
-      @HiveField(9) final List<LessonDef>? lessons,
-      @HiveField(10) final List<StudentGroup>? groups}) = _$SubjectImpl;
-  _Subject._() : super._();
+      @HiveField(9) required final List<Classroom> classroom,
+      @HiveField(10) required final List<LecturerBase> lecturers,
+      @HiveField(11) required final List<StudentGroup> groups,
+      @HiveField(12) required final List<LessonDef> lessons}) = _$SubjectImpl;
 
   factory _Subject.fromJson(Map<String, dynamic> json) = _$SubjectImpl.fromJson;
 
@@ -426,12 +476,18 @@ abstract class _Subject extends Subject {
   @override
   @HiveField(8)
   SubjectType get type;
-  @override // extended info
+  @override
   @HiveField(9)
-  List<LessonDef>? get lessons;
+  List<Classroom> get classroom;
   @override
   @HiveField(10)
-  List<StudentGroup>? get groups;
+  List<LecturerBase> get lecturers;
+  @override
+  @HiveField(11)
+  List<StudentGroup> get groups;
+  @override
+  @HiveField(12)
+  List<LessonDef> get lessons;
   @override
   @JsonKey(ignore: true)
   _$$SubjectImplCopyWith<_$SubjectImpl> get copyWith =>

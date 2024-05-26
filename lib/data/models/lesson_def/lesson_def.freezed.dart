@@ -30,7 +30,7 @@ mixin _$LessonDef {
   DateTime? get updated => throw _privateConstructorUsedError;
   @HiveField(3)
   Classroom? get classroom =>
-      throw _privateConstructorUsedError; // might be remote
+      throw _privateConstructorUsedError; // might be remote or same as subject
   @HiveField(4)
   String get ice => throw _privateConstructorUsedError;
 
@@ -201,7 +201,7 @@ class _$LessonDefImpl extends _LessonDef {
   @override
   @HiveField(3)
   final Classroom? classroom;
-// might be remote
+// might be remote or same as subject
   @override
   @HiveField(4)
   final String ice;
@@ -269,7 +269,7 @@ abstract class _LessonDef extends LessonDef {
   @override
   @HiveField(3)
   Classroom? get classroom;
-  @override // might be remote
+  @override // might be remote or same as subject
   @HiveField(4)
   String get ice;
   @override

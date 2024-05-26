@@ -16,7 +16,7 @@ class LessonDef with _$LessonDef, ObjectBase, ICalendarable {
     @HiveField(0) required String id,
     @HiveField(1) @DateTimeConverter() DateTime? created,
     @HiveField(2) @DateTimeConverter() DateTime? updated,
-    @HiveField(3) Classroom? classroom, // might be remote
+    @HiveField(3) Classroom? classroom, // might be remote or same as subject
     @HiveField(4) required String ice, // iCalendarEvent
   }) = _LessonDef;
   LessonDef._();

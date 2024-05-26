@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:silvertimetable/data/converters/datetime_converter.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/object_base.dart';
-import 'package:silvertimetable/data/models/study_program/study_program.dart';
+import 'package:silvertimetable/data/models/organization/organization.dart';
 
 part 'tenant.freezed.dart';
 part 'tenant.g.dart';
@@ -16,8 +16,7 @@ class Tenant with _$Tenant, ObjectBase {
     @HiveField(1) @DateTimeConverter() DateTime? created,
     @HiveField(2) @DateTimeConverter() DateTime? updated,
     @HiveField(3) required String name,
-    // extended info
-    @HiveField(4) List<StudyProgram>? studyPrograms,
+    @HiveField(4) required Organization organization,
   }) = _Tenant;
 
   factory Tenant.fromJson(Map<String, dynamic> json) => _$TenantFromJson(json);

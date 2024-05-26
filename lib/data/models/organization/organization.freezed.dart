@@ -29,13 +29,7 @@ mixin _$Organization {
   @DateTimeConverter()
   DateTime? get updated => throw _privateConstructorUsedError;
   @HiveField(3)
-  String get name => throw _privateConstructorUsedError; // extended info
-  @HiveField(4)
-  List<Lecturer>? get lecturers => throw _privateConstructorUsedError;
-  @HiveField(5)
-  List<Classroom>? get classrooms => throw _privateConstructorUsedError;
-  @HiveField(6)
-  List<Tenant>? get tenants => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,10 +47,7 @@ abstract class $OrganizationCopyWith<$Res> {
       {@HiveField(0) String id,
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
-      @HiveField(3) String name,
-      @HiveField(4) List<Lecturer>? lecturers,
-      @HiveField(5) List<Classroom>? classrooms,
-      @HiveField(6) List<Tenant>? tenants});
+      @HiveField(3) String name});
 }
 
 /// @nodoc
@@ -76,9 +67,6 @@ class _$OrganizationCopyWithImpl<$Res, $Val extends Organization>
     Object? created = freezed,
     Object? updated = freezed,
     Object? name = null,
-    Object? lecturers = freezed,
-    Object? classrooms = freezed,
-    Object? tenants = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -97,18 +85,6 @@ class _$OrganizationCopyWithImpl<$Res, $Val extends Organization>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      lecturers: freezed == lecturers
-          ? _value.lecturers
-          : lecturers // ignore: cast_nullable_to_non_nullable
-              as List<Lecturer>?,
-      classrooms: freezed == classrooms
-          ? _value.classrooms
-          : classrooms // ignore: cast_nullable_to_non_nullable
-              as List<Classroom>?,
-      tenants: freezed == tenants
-          ? _value.tenants
-          : tenants // ignore: cast_nullable_to_non_nullable
-              as List<Tenant>?,
     ) as $Val);
   }
 }
@@ -125,10 +101,7 @@ abstract class _$$OrganizationImplCopyWith<$Res>
       {@HiveField(0) String id,
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
-      @HiveField(3) String name,
-      @HiveField(4) List<Lecturer>? lecturers,
-      @HiveField(5) List<Classroom>? classrooms,
-      @HiveField(6) List<Tenant>? tenants});
+      @HiveField(3) String name});
 }
 
 /// @nodoc
@@ -146,9 +119,6 @@ class __$$OrganizationImplCopyWithImpl<$Res>
     Object? created = freezed,
     Object? updated = freezed,
     Object? name = null,
-    Object? lecturers = freezed,
-    Object? classrooms = freezed,
-    Object? tenants = freezed,
   }) {
     return _then(_$OrganizationImpl(
       id: null == id
@@ -167,18 +137,6 @@ class __$$OrganizationImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      lecturers: freezed == lecturers
-          ? _value._lecturers
-          : lecturers // ignore: cast_nullable_to_non_nullable
-              as List<Lecturer>?,
-      classrooms: freezed == classrooms
-          ? _value._classrooms
-          : classrooms // ignore: cast_nullable_to_non_nullable
-              as List<Classroom>?,
-      tenants: freezed == tenants
-          ? _value._tenants
-          : tenants // ignore: cast_nullable_to_non_nullable
-              as List<Tenant>?,
     ));
   }
 }
@@ -191,13 +149,7 @@ class _$OrganizationImpl implements _Organization {
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() this.created,
       @HiveField(2) @DateTimeConverter() this.updated,
-      @HiveField(3) required this.name,
-      @HiveField(4) final List<Lecturer>? lecturers,
-      @HiveField(5) final List<Classroom>? classrooms,
-      @HiveField(6) final List<Tenant>? tenants})
-      : _lecturers = lecturers,
-        _classrooms = classrooms,
-        _tenants = tenants;
+      @HiveField(3) required this.name});
 
   factory _$OrganizationImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrganizationImplFromJson(json);
@@ -216,44 +168,10 @@ class _$OrganizationImpl implements _Organization {
   @override
   @HiveField(3)
   final String name;
-// extended info
-  final List<Lecturer>? _lecturers;
-// extended info
-  @override
-  @HiveField(4)
-  List<Lecturer>? get lecturers {
-    final value = _lecturers;
-    if (value == null) return null;
-    if (_lecturers is EqualUnmodifiableListView) return _lecturers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<Classroom>? _classrooms;
-  @override
-  @HiveField(5)
-  List<Classroom>? get classrooms {
-    final value = _classrooms;
-    if (value == null) return null;
-    if (_classrooms is EqualUnmodifiableListView) return _classrooms;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<Tenant>? _tenants;
-  @override
-  @HiveField(6)
-  List<Tenant>? get tenants {
-    final value = _tenants;
-    if (value == null) return null;
-    if (_tenants is EqualUnmodifiableListView) return _tenants;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
 
   @override
   String toString() {
-    return 'Organization(id: $id, created: $created, updated: $updated, name: $name, lecturers: $lecturers, classrooms: $classrooms, tenants: $tenants)';
+    return 'Organization(id: $id, created: $created, updated: $updated, name: $name)';
   }
 
   @override
@@ -264,25 +182,12 @@ class _$OrganizationImpl implements _Organization {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality()
-                .equals(other._lecturers, _lecturers) &&
-            const DeepCollectionEquality()
-                .equals(other._classrooms, _classrooms) &&
-            const DeepCollectionEquality().equals(other._tenants, _tenants));
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      created,
-      updated,
-      name,
-      const DeepCollectionEquality().hash(_lecturers),
-      const DeepCollectionEquality().hash(_classrooms),
-      const DeepCollectionEquality().hash(_tenants));
+  int get hashCode => Object.hash(runtimeType, id, created, updated, name);
 
   @JsonKey(ignore: true)
   @override
@@ -303,10 +208,7 @@ abstract class _Organization implements Organization {
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() final DateTime? created,
       @HiveField(2) @DateTimeConverter() final DateTime? updated,
-      @HiveField(3) required final String name,
-      @HiveField(4) final List<Lecturer>? lecturers,
-      @HiveField(5) final List<Classroom>? classrooms,
-      @HiveField(6) final List<Tenant>? tenants}) = _$OrganizationImpl;
+      @HiveField(3) required final String name}) = _$OrganizationImpl;
 
   factory _Organization.fromJson(Map<String, dynamic> json) =
       _$OrganizationImpl.fromJson;
@@ -325,15 +227,6 @@ abstract class _Organization implements Organization {
   @override
   @HiveField(3)
   String get name;
-  @override // extended info
-  @HiveField(4)
-  List<Lecturer>? get lecturers;
-  @override
-  @HiveField(5)
-  List<Classroom>? get classrooms;
-  @override
-  @HiveField(6)
-  List<Tenant>? get tenants;
   @override
   @JsonKey(ignore: true)
   _$$OrganizationImplCopyWith<_$OrganizationImpl> get copyWith =>

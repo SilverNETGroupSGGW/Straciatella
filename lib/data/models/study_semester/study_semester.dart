@@ -18,8 +18,7 @@ class StudySemester with _$StudySemester, ObjectBase {
     @HiveField(3) required int year,
     @HiveField(4) required int semester,
     @HiveField(5) @DateTimeConverter() required DateTime startDate,
-    // extended info
-    @HiveField(6) List<Subject>? subjects,
+    @HiveField(6) required List<Subject> subjects,
   }) = _StudySemester;
 
   factory StudySemester.fromJson(Map<String, dynamic> json) =>

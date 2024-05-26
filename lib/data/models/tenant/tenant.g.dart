@@ -8,7 +8,7 @@ part of 'tenant.dart';
 
 class TenantImplAdapter extends TypeAdapter<_$TenantImpl> {
   @override
-  final int typeId = 20;
+  final int typeId = 21;
 
   @override
   _$TenantImpl read(BinaryReader reader) {
@@ -21,7 +21,7 @@ class TenantImplAdapter extends TypeAdapter<_$TenantImpl> {
       created: fields[1] as DateTime?,
       updated: fields[2] as DateTime?,
       name: fields[3] as String,
-      studyPrograms: (fields[4] as List?)?.cast<StudyProgram>(),
+      organization: fields[4] as Organization,
     );
   }
 
@@ -38,7 +38,7 @@ class TenantImplAdapter extends TypeAdapter<_$TenantImpl> {
       ..writeByte(3)
       ..write(obj.name)
       ..writeByte(4)
-      ..write(obj.studyPrograms);
+      ..write(obj.organization);
   }
 
   @override
@@ -63,9 +63,8 @@ _$TenantImpl _$$TenantImplFromJson(Map<String, dynamic> json) => _$TenantImpl(
       updated: _$JsonConverterFromJson<String, DateTime>(
           json['updated'], const DateTimeConverter().fromJson),
       name: json['name'] as String,
-      studyPrograms: (json['studyPrograms'] as List<dynamic>?)
-          ?.map((e) => StudyProgram.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      organization:
+          Organization.fromJson(json['organization'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$TenantImplToJson(_$TenantImpl instance) =>
@@ -76,7 +75,7 @@ Map<String, dynamic> _$$TenantImplToJson(_$TenantImpl instance) =>
       'updated': _$JsonConverterToJson<String, DateTime>(
           instance.updated, const DateTimeConverter().toJson),
       'name': instance.name,
-      'studyPrograms': instance.studyPrograms,
+      'organization': instance.organization,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

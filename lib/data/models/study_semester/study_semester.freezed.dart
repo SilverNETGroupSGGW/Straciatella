@@ -34,9 +34,9 @@ mixin _$StudySemester {
   int get semester => throw _privateConstructorUsedError;
   @HiveField(5)
   @DateTimeConverter()
-  DateTime get startDate => throw _privateConstructorUsedError; // extended info
+  DateTime get startDate => throw _privateConstructorUsedError;
   @HiveField(6)
-  List<Subject>? get subjects => throw _privateConstructorUsedError;
+  List<Subject> get subjects => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +57,7 @@ abstract class $StudySemesterCopyWith<$Res> {
       @HiveField(3) int year,
       @HiveField(4) int semester,
       @HiveField(5) @DateTimeConverter() DateTime startDate,
-      @HiveField(6) List<Subject>? subjects});
+      @HiveField(6) List<Subject> subjects});
 }
 
 /// @nodoc
@@ -79,7 +79,7 @@ class _$StudySemesterCopyWithImpl<$Res, $Val extends StudySemester>
     Object? year = null,
     Object? semester = null,
     Object? startDate = null,
-    Object? subjects = freezed,
+    Object? subjects = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -106,10 +106,10 @@ class _$StudySemesterCopyWithImpl<$Res, $Val extends StudySemester>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      subjects: freezed == subjects
+      subjects: null == subjects
           ? _value.subjects
           : subjects // ignore: cast_nullable_to_non_nullable
-              as List<Subject>?,
+              as List<Subject>,
     ) as $Val);
   }
 }
@@ -129,7 +129,7 @@ abstract class _$$StudySemesterImplCopyWith<$Res>
       @HiveField(3) int year,
       @HiveField(4) int semester,
       @HiveField(5) @DateTimeConverter() DateTime startDate,
-      @HiveField(6) List<Subject>? subjects});
+      @HiveField(6) List<Subject> subjects});
 }
 
 /// @nodoc
@@ -149,7 +149,7 @@ class __$$StudySemesterImplCopyWithImpl<$Res>
     Object? year = null,
     Object? semester = null,
     Object? startDate = null,
-    Object? subjects = freezed,
+    Object? subjects = null,
   }) {
     return _then(_$StudySemesterImpl(
       id: null == id
@@ -176,10 +176,10 @@ class __$$StudySemesterImplCopyWithImpl<$Res>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      subjects: freezed == subjects
+      subjects: null == subjects
           ? _value._subjects
           : subjects // ignore: cast_nullable_to_non_nullable
-              as List<Subject>?,
+              as List<Subject>,
     ));
   }
 }
@@ -195,7 +195,7 @@ class _$StudySemesterImpl implements _StudySemester {
       @HiveField(3) required this.year,
       @HiveField(4) required this.semester,
       @HiveField(5) @DateTimeConverter() required this.startDate,
-      @HiveField(6) final List<Subject>? subjects})
+      @HiveField(6) required final List<Subject> subjects})
       : _subjects = subjects;
 
   factory _$StudySemesterImpl.fromJson(Map<String, dynamic> json) =>
@@ -222,17 +222,13 @@ class _$StudySemesterImpl implements _StudySemester {
   @HiveField(5)
   @DateTimeConverter()
   final DateTime startDate;
-// extended info
-  final List<Subject>? _subjects;
-// extended info
+  final List<Subject> _subjects;
   @override
   @HiveField(6)
-  List<Subject>? get subjects {
-    final value = _subjects;
-    if (value == null) return null;
+  List<Subject> get subjects {
     if (_subjects is EqualUnmodifiableListView) return _subjects;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_subjects);
   }
 
   @override
@@ -277,13 +273,14 @@ class _$StudySemesterImpl implements _StudySemester {
 
 abstract class _StudySemester implements StudySemester {
   factory _StudySemester(
-      {@HiveField(0) required final String id,
-      @HiveField(1) @DateTimeConverter() final DateTime? created,
-      @HiveField(2) @DateTimeConverter() final DateTime? updated,
-      @HiveField(3) required final int year,
-      @HiveField(4) required final int semester,
-      @HiveField(5) @DateTimeConverter() required final DateTime startDate,
-      @HiveField(6) final List<Subject>? subjects}) = _$StudySemesterImpl;
+          {@HiveField(0) required final String id,
+          @HiveField(1) @DateTimeConverter() final DateTime? created,
+          @HiveField(2) @DateTimeConverter() final DateTime? updated,
+          @HiveField(3) required final int year,
+          @HiveField(4) required final int semester,
+          @HiveField(5) @DateTimeConverter() required final DateTime startDate,
+          @HiveField(6) required final List<Subject> subjects}) =
+      _$StudySemesterImpl;
 
   factory _StudySemester.fromJson(Map<String, dynamic> json) =
       _$StudySemesterImpl.fromJson;
@@ -309,9 +306,9 @@ abstract class _StudySemester implements StudySemester {
   @HiveField(5)
   @DateTimeConverter()
   DateTime get startDate;
-  @override // extended info
+  @override
   @HiveField(6)
-  List<Subject>? get subjects;
+  List<Subject> get subjects;
   @override
   @JsonKey(ignore: true)
   _$$StudySemesterImplCopyWith<_$StudySemesterImpl> get copyWith =>

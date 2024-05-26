@@ -8,7 +8,7 @@ part of 'study_semester.dart';
 
 class StudySemesterImplAdapter extends TypeAdapter<_$StudySemesterImpl> {
   @override
-  final int typeId = 21;
+  final int typeId = 22;
 
   @override
   _$StudySemesterImpl read(BinaryReader reader) {
@@ -23,7 +23,7 @@ class StudySemesterImplAdapter extends TypeAdapter<_$StudySemesterImpl> {
       year: fields[3] as int,
       semester: fields[4] as int,
       startDate: fields[5] as DateTime,
-      subjects: (fields[6] as List?)?.cast<Subject>(),
+      subjects: (fields[6] as List).cast<Subject>(),
     );
   }
 
@@ -73,8 +73,8 @@ _$StudySemesterImpl _$$StudySemesterImplFromJson(Map<String, dynamic> json) =>
       semester: (json['semester'] as num).toInt(),
       startDate:
           const DateTimeConverter().fromJson(json['startDate'] as String),
-      subjects: (json['subjects'] as List<dynamic>?)
-          ?.map((e) => Subject.fromJson(e as Map<String, dynamic>))
+      subjects: (json['subjects'] as List<dynamic>)
+          .map((e) => Subject.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

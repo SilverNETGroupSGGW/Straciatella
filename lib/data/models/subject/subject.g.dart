@@ -26,15 +26,17 @@ class SubjectImplAdapter extends TypeAdapter<_$SubjectImpl> {
       comment: fields[6] as String,
       isConditional: fields[7] as bool,
       type: fields[8] as SubjectType,
-      lessons: (fields[9] as List?)?.cast<LessonDef>(),
-      groups: (fields[10] as List?)?.cast<StudentGroup>(),
+      classroom: (fields[9] as List).cast<Classroom>(),
+      lecturers: (fields[10] as List).cast<LecturerBase>(),
+      groups: (fields[11] as List).cast<StudentGroup>(),
+      lessons: (fields[12] as List).cast<LessonDef>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, _$SubjectImpl obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -54,9 +56,13 @@ class SubjectImplAdapter extends TypeAdapter<_$SubjectImpl> {
       ..writeByte(8)
       ..write(obj.type)
       ..writeByte(9)
-      ..write(obj.lessons)
+      ..write(obj.classroom)
       ..writeByte(10)
-      ..write(obj.groups);
+      ..write(obj.lecturers)
+      ..writeByte(11)
+      ..write(obj.groups)
+      ..writeByte(12)
+      ..write(obj.lessons);
   }
 
   @override
@@ -72,7 +78,7 @@ class SubjectImplAdapter extends TypeAdapter<_$SubjectImpl> {
 
 class SubjectTypeImplAdapter extends TypeAdapter<_$SubjectTypeImpl> {
   @override
-  final int typeId = 22;
+  final int typeId = 23;
 
   @override
   _$SubjectTypeImpl read(BinaryReader reader) {
@@ -133,11 +139,17 @@ _$SubjectImpl _$$SubjectImplFromJson(Map<String, dynamic> json) =>
       comment: json['comment'] as String,
       isConditional: json['isConditional'] as bool,
       type: SubjectType.fromJson(json['type'] as Map<String, dynamic>),
-      lessons: (json['lessons'] as List<dynamic>?)
-          ?.map((e) => LessonDef.fromJson(e as Map<String, dynamic>))
+      classroom: (json['classroom'] as List<dynamic>)
+          .map((e) => Classroom.fromJson(e as Map<String, dynamic>))
           .toList(),
-      groups: (json['groups'] as List<dynamic>?)
-          ?.map((e) => StudentGroup.fromJson(e as Map<String, dynamic>))
+      lecturers: (json['lecturers'] as List<dynamic>)
+          .map((e) => LecturerBase.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      groups: (json['groups'] as List<dynamic>)
+          .map((e) => StudentGroup.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      lessons: (json['lessons'] as List<dynamic>)
+          .map((e) => LessonDef.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -154,8 +166,10 @@ Map<String, dynamic> _$$SubjectImplToJson(_$SubjectImpl instance) =>
       'comment': instance.comment,
       'isConditional': instance.isConditional,
       'type': instance.type,
-      'lessons': instance.lessons,
+      'classroom': instance.classroom,
+      'lecturers': instance.lecturers,
       'groups': instance.groups,
+      'lessons': instance.lessons,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

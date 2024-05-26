@@ -23,11 +23,13 @@ void registerDataAdapters() {
   Hive.registerAdapter(DurationAdapter());
   Hive.registerAdapter(ClassroomImplAdapter());
   Hive.registerAdapter(ClassroomTypeImplAdapter());
-  Hive.registerAdapter(LecturerImplAdapter());
+  Hive.registerAdapter(LecturerBaseImplAdapter());
+  Hive.registerAdapter(LecturerExtImplAdapter());
   Hive.registerAdapter(LessonDefImplAdapter());
   Hive.registerAdapter(OrganizationImplAdapter());
   Hive.registerAdapter(StudentGroupImplAdapter());
-  Hive.registerAdapter(StudyProgramImplAdapter());
+  Hive.registerAdapter(StudyProgramBaseImplAdapter());
+  Hive.registerAdapter(StudyProgramExtImplAdapter());
   Hive.registerAdapter(StudySemesterImplAdapter());
   Hive.registerAdapter(SubjectImplAdapter());
   Hive.registerAdapter(SubjectTypeImplAdapter());

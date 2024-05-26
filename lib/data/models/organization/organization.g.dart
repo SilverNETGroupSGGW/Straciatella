@@ -21,16 +21,13 @@ class OrganizationImplAdapter extends TypeAdapter<_$OrganizationImpl> {
       created: fields[1] as DateTime?,
       updated: fields[2] as DateTime?,
       name: fields[3] as String,
-      lecturers: (fields[4] as List?)?.cast<Lecturer>(),
-      classrooms: (fields[5] as List?)?.cast<Classroom>(),
-      tenants: (fields[6] as List?)?.cast<Tenant>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, _$OrganizationImpl obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,13 +35,7 @@ class OrganizationImplAdapter extends TypeAdapter<_$OrganizationImpl> {
       ..writeByte(2)
       ..write(obj.updated)
       ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.lecturers)
-      ..writeByte(5)
-      ..write(obj.classrooms)
-      ..writeByte(6)
-      ..write(obj.tenants);
+      ..write(obj.name);
   }
 
   @override
@@ -70,15 +61,6 @@ _$OrganizationImpl _$$OrganizationImplFromJson(Map<String, dynamic> json) =>
       updated: _$JsonConverterFromJson<String, DateTime>(
           json['updated'], const DateTimeConverter().fromJson),
       name: json['name'] as String,
-      lecturers: (json['lecturers'] as List<dynamic>?)
-          ?.map((e) => Lecturer.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      classrooms: (json['classrooms'] as List<dynamic>?)
-          ?.map((e) => Classroom.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      tenants: (json['tenants'] as List<dynamic>?)
-          ?.map((e) => Tenant.fromJson(e as Map<String, dynamic>))
-          .toList(),
     );
 
 Map<String, dynamic> _$$OrganizationImplToJson(_$OrganizationImpl instance) =>
@@ -89,9 +71,6 @@ Map<String, dynamic> _$$OrganizationImplToJson(_$OrganizationImpl instance) =>
       'updated': _$JsonConverterToJson<String, DateTime>(
           instance.updated, const DateTimeConverter().toJson),
       'name': instance.name,
-      'lecturers': instance.lecturers,
-      'classrooms': instance.classrooms,
-      'tenants': instance.tenants,
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

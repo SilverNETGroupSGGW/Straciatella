@@ -29,9 +29,9 @@ mixin _$Tenant {
   @DateTimeConverter()
   DateTime? get updated => throw _privateConstructorUsedError;
   @HiveField(3)
-  String get name => throw _privateConstructorUsedError; // extended info
+  String get name => throw _privateConstructorUsedError;
   @HiveField(4)
-  List<StudyProgram>? get studyPrograms => throw _privateConstructorUsedError;
+  Organization get organization => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +48,9 @@ abstract class $TenantCopyWith<$Res> {
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) String name,
-      @HiveField(4) List<StudyProgram>? studyPrograms});
+      @HiveField(4) Organization organization});
+
+  $OrganizationCopyWith<$Res> get organization;
 }
 
 /// @nodoc
@@ -68,7 +70,7 @@ class _$TenantCopyWithImpl<$Res, $Val extends Tenant>
     Object? created = freezed,
     Object? updated = freezed,
     Object? name = null,
-    Object? studyPrograms = freezed,
+    Object? organization = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -87,11 +89,19 @@ class _$TenantCopyWithImpl<$Res, $Val extends Tenant>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      studyPrograms: freezed == studyPrograms
-          ? _value.studyPrograms
-          : studyPrograms // ignore: cast_nullable_to_non_nullable
-              as List<StudyProgram>?,
+      organization: null == organization
+          ? _value.organization
+          : organization // ignore: cast_nullable_to_non_nullable
+              as Organization,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrganizationCopyWith<$Res> get organization {
+    return $OrganizationCopyWith<$Res>(_value.organization, (value) {
+      return _then(_value.copyWith(organization: value) as $Val);
+    });
   }
 }
 
@@ -107,7 +117,10 @@ abstract class _$$TenantImplCopyWith<$Res> implements $TenantCopyWith<$Res> {
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) String name,
-      @HiveField(4) List<StudyProgram>? studyPrograms});
+      @HiveField(4) Organization organization});
+
+  @override
+  $OrganizationCopyWith<$Res> get organization;
 }
 
 /// @nodoc
@@ -125,7 +138,7 @@ class __$$TenantImplCopyWithImpl<$Res>
     Object? created = freezed,
     Object? updated = freezed,
     Object? name = null,
-    Object? studyPrograms = freezed,
+    Object? organization = null,
   }) {
     return _then(_$TenantImpl(
       id: null == id
@@ -144,10 +157,10 @@ class __$$TenantImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      studyPrograms: freezed == studyPrograms
-          ? _value._studyPrograms
-          : studyPrograms // ignore: cast_nullable_to_non_nullable
-              as List<StudyProgram>?,
+      organization: null == organization
+          ? _value.organization
+          : organization // ignore: cast_nullable_to_non_nullable
+              as Organization,
     ));
   }
 }
@@ -161,8 +174,7 @@ class _$TenantImpl implements _Tenant {
       @HiveField(1) @DateTimeConverter() this.created,
       @HiveField(2) @DateTimeConverter() this.updated,
       @HiveField(3) required this.name,
-      @HiveField(4) final List<StudyProgram>? studyPrograms})
-      : _studyPrograms = studyPrograms;
+      @HiveField(4) required this.organization});
 
   factory _$TenantImpl.fromJson(Map<String, dynamic> json) =>
       _$$TenantImplFromJson(json);
@@ -181,22 +193,13 @@ class _$TenantImpl implements _Tenant {
   @override
   @HiveField(3)
   final String name;
-// extended info
-  final List<StudyProgram>? _studyPrograms;
-// extended info
   @override
   @HiveField(4)
-  List<StudyProgram>? get studyPrograms {
-    final value = _studyPrograms;
-    if (value == null) return null;
-    if (_studyPrograms is EqualUnmodifiableListView) return _studyPrograms;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final Organization organization;
 
   @override
   String toString() {
-    return 'Tenant(id: $id, created: $created, updated: $updated, name: $name, studyPrograms: $studyPrograms)';
+    return 'Tenant(id: $id, created: $created, updated: $updated, name: $name, organization: $organization)';
   }
 
   @override
@@ -208,14 +211,14 @@ class _$TenantImpl implements _Tenant {
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality()
-                .equals(other._studyPrograms, _studyPrograms));
+            (identical(other.organization, organization) ||
+                other.organization == organization));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, name,
-      const DeepCollectionEquality().hash(_studyPrograms));
+  int get hashCode =>
+      Object.hash(runtimeType, id, created, updated, name, organization);
 
   @JsonKey(ignore: true)
   @override
@@ -237,7 +240,7 @@ abstract class _Tenant implements Tenant {
       @HiveField(1) @DateTimeConverter() final DateTime? created,
       @HiveField(2) @DateTimeConverter() final DateTime? updated,
       @HiveField(3) required final String name,
-      @HiveField(4) final List<StudyProgram>? studyPrograms}) = _$TenantImpl;
+      @HiveField(4) required final Organization organization}) = _$TenantImpl;
 
   factory _Tenant.fromJson(Map<String, dynamic> json) = _$TenantImpl.fromJson;
 
@@ -255,9 +258,9 @@ abstract class _Tenant implements Tenant {
   @override
   @HiveField(3)
   String get name;
-  @override // extended info
+  @override
   @HiveField(4)
-  List<StudyProgram>? get studyPrograms;
+  Organization get organization;
   @override
   @JsonKey(ignore: true)
   _$$TenantImplCopyWith<_$TenantImpl> get copyWith =>

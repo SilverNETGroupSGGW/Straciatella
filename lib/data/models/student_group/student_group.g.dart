@@ -8,7 +8,7 @@ part of 'student_group.dart';
 
 class StudentGroupImplAdapter extends TypeAdapter<_$StudentGroupImpl> {
   @override
-  final int typeId = 23;
+  final int typeId = 24;
 
   @override
   _$StudentGroupImpl read(BinaryReader reader) {
