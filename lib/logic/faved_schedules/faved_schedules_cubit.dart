@@ -5,8 +5,8 @@ import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/enums.dart';
-import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
-import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
+import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
+import 'package:silvertimetable/data/models/study_program/study_program.dart';
 import 'package:silvertimetable/data/types.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 
@@ -37,11 +37,11 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
   }
 
   void invokeUpdateOnScheduleManager(ScheduleKey key) {
-    if (key.type is LecturerBase) {
+    if (key.type is Lecturer) {
       scheduleManagerBloc?.add(ScheduleManagerEvent.updateLecturer(key.id));
     }
-    if (key.type is ScheduleBase) {
-      scheduleManagerBloc?.add(ScheduleManagerEvent.updateSchedule(key.id));
+    if (key.type is StudyProgram) {
+      scheduleManagerBloc?.add(ScheduleManagerEvent.updateStudyProgram(key.id));
     }
   }
 
@@ -59,7 +59,7 @@ class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
     }
   }
 
-  void addSchedule(ScheduleKey schedule) {
+  void addStudyProgram(ScheduleKey schedule) {
     if (state.favedSchedules.contains(schedule)) return;
 
     invokeUpdateOnScheduleManager(schedule);

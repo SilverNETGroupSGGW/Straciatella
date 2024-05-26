@@ -1,54 +1,56 @@
 part of 'schedule_manager_bloc.dart';
 
-typedef ExtendedScheduleCacheMap = Map<ScheduleKey, ExtendedSchedule>;
-typedef BaseScheduleCacheMap = Map<ScheduleKey, BaseSchedule>;
-
 @freezed
 class ScheduleManagerState with _$ScheduleManagerState {
+  @HiveType(
+    typeId: HiveTypeIds.scheduleManagerState,
+  )
   factory ScheduleManagerState({
-    @Default({}) ExtendedScheduleCacheMap schedules,
-    @Default({}) BaseScheduleCacheMap schedulesIndex,
     @Default(false) bool refreshingIndex,
     @Default({}) Set<ScheduleKey> refreshing,
-    OptionsTreeNode? schedulesOptionsTree,
-    OptionsTreeNode? lecturersOptionsTree,
-  }) = _ScheduleManagerState;
-  ScheduleManagerState._();
-
-  ScheduleManagerHiveState asHivable() {
-    return ScheduleManagerHiveState(
-      schedules: schedules,
-      schedulesIndex: schedulesIndex,
-    );
-  }
-}
-
-@freezed
-class ScheduleManagerHiveState with _$ScheduleManagerHiveState {
-  @HiveType(
-    typeId: HiveTypeIds.scheduleManagerHiveState,
-    adapterName: "ScheduleManagerHiveStateAdapter",
-  )
-  factory ScheduleManagerHiveState({
-    @Default({})
+    @Default([]) List<StudyProgramBase> availableStudyPrograms,
+    @Default([]) List<LecturerBase> availableLecturers,
     @HiveField(0, defaultValue: {})
-    ExtendedScheduleCacheMap schedules,
     @Default({})
+    Map<String, StudyProgramExt> cachedStudyPrograms,
     @HiveField(1, defaultValue: {})
-    BaseScheduleCacheMap schedulesIndex,
-  }) = _ScheduleManagerHiveState;
-  ScheduleManagerHiveState._();
-
-  ScheduleManagerState asNormalState() {
-    return ScheduleManagerState(
-      schedules: schedules,
-      schedulesIndex: schedulesIndex,
-      lecturersOptionsTree: createLecturerOptionsTree(
-        schedulesIndex.values.whereType<LecturerBase>(),
-      ),
-      schedulesOptionsTree: createScheduleOptionsTree(
-        schedulesIndex.values.whereType<ScheduleBase>(),
-      ),
-    );
-  }
+    @Default({})
+    Map<String, LecturerExt> cachedLecturers,
+  }) = _ScheduleManagerState;
 }
+
+// @freezed
+// class ScheduleManagerHiveState with _$ScheduleManagerHiveState {
+//   @HiveType(
+//     typeId: HiveTypeIds.scheduleManagerState,
+//     adapterName: "ScheduleManagerHiveStateAdapter",
+//   )
+//   factory ScheduleManagerHiveState({
+//     @HiveField(0, defaultValue: [])
+//     @Default([])
+//     List<StudyProgramBase> availableStudyPrograms,
+//     @HiveField(1, defaultValue: [])
+//     @Default([])
+//     List<LecturerBase> availableLecturers,
+//     @HiveField(2, defaultValue: {})
+//     @Default({})
+//     Map<ScheduleKey, StudyProgramExt> cachedStudyPrograms,
+//     @HiveField(3, defaultValue: {})
+//     @Default({})
+//     Map<ScheduleKey, LecturerExt> cachedLecturers,
+//   }) = _ScheduleManagerHiveState;
+//   ScheduleManagerHiveState._();
+
+//   ScheduleManagerState asNormalState() {
+//     return ScheduleManagerState(
+//       schedules: schedules,
+//       schedulesIndex: schedulesIndex,
+//       lecturersOptionsTree: createLecturerOptionsTree(
+//         schedulesIndex.values.whereType<LecturerBase>(),
+//       ),
+//       schedulesOptionsTree: createStudyProgramOptionsTree(
+//         schedulesIndex.values.whereType<ScheduleBase>(),
+//       ),
+//     );
+//   }
+// }

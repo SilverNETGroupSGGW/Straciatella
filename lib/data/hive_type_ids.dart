@@ -16,7 +16,7 @@ class HiveTypeIds {
   static const dayOfWeek = 13;
   static const duration = 14;
   static const scheduleKey = 15;
-  static const scheduleManagerHiveState = 16;
+  static const scheduleManagerState = 16;
   static const organization = 17;
   static const classroomType = 18;
   static const studyProgramBase = 19;
