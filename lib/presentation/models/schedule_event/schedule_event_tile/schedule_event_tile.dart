@@ -5,7 +5,7 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
+import 'package:silvertimetable/data/models/lesson_data/lesson_data.dart';
 import 'package:silvertimetable/helpers.dart';
 import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_desc/schedule_event_desc.dart';
 import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_provider.dart';
@@ -17,7 +17,7 @@ part 'schedule_event_card.dart';
 part 'schedule_event_time_span.dart';
 
 class ScheduleEventTile extends StatefulWidget {
-  final ScheduleEvent event;
+  final LessonData event;
   final ScheduleViewMode mode;
   const ScheduleEventTile({
     super.key,
@@ -61,7 +61,8 @@ class _ScheduleEventTileState extends State<ScheduleEventTile> {
     // final endTime = DateTime.now().add(const Duration(minutes: 3));
 
     final startTime = widget.event.lesson.startTime;
-    final endTime = widget.event.lesson.endTime;
+    final endTime =
+        widget.event.lesson.startTime.add(widget.event.lesson.duration);
 
     return ScheduleEventProvider(
       widget.event,

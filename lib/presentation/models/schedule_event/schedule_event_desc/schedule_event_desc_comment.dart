@@ -15,7 +15,7 @@ class _EventComment extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         const Gap(4),
-        Text(event.fromSubject.comment),
+        Text(event.subject.comment),
       ],
     );
   }

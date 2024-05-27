@@ -6,7 +6,7 @@ class _EventSchedule extends StatelessWidget {
     final event = ScheduleEventProvider.of(context)!.event;
 
     return Text(
-      event.fromSubject.schedule?.toPrettyString() ?? "",
+      event.studyProgram.toString(), // TODO: make pretty string
       style: Theme.of(context).textTheme.bodySmall,
     );
   }

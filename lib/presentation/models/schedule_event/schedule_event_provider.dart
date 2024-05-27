@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
+import 'package:silvertimetable/data/models/lesson_data/lesson_data.dart';
 
 class ScheduleEventProvider extends InheritedWidget {
-  final ScheduleEvent event;
+  final LessonData event;
   const ScheduleEventProvider(this.event, {super.key, required super.child});
 
   static ScheduleEventProvider? of(BuildContext context) {

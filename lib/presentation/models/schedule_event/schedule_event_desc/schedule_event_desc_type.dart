@@ -6,11 +6,11 @@ class _EventType extends StatelessWidget {
     final event = ScheduleEventProvider.of(context)!.event;
 
     return Text(
-      event.fromSubject.type.tr(),
+      event.subject.type.name.tr(),
       style: Theme.of(context).textTheme.titleSmall!.copyWith(
             color: Theme.of(context)
                 .extension<ScheduleEventTheme>()!
-                .getColor(event.fromSubject.type),
+                .getColor(event.subject.type.name),
           ),
     );
   }

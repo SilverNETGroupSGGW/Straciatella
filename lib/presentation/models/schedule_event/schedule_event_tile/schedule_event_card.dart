@@ -10,7 +10,7 @@ class _EventCard extends StatelessWidget {
     this.currentTime = currentTime ?? DateTime.now();
   }
 
-  double getElevation(ScheduleEvent event) {
+  double getElevation(LessonData event) {
     if (currentTime.isBefore(event.lesson.startTime)) {
       return 0;
     } else if (currentTime
@@ -48,7 +48,7 @@ class _EventCard extends StatelessWidget {
               left: BorderSide(
                 color: Theme.of(context)
                     .extension<ScheduleEventTheme>()!
-                    .getColor(event.fromSubject.type),
+                    .getColor(event.subject.type.name),
                 width: 3,
               ),
             ),
@@ -66,7 +66,7 @@ class _EventCard extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              event.fromSubject.name.capitalize,
+                              event.subject.name.capitalize,
                               style: Theme.of(context).textTheme.titleLarge,
                             ),
                           ],
@@ -75,18 +75,19 @@ class _EventCard extends StatelessWidget {
                       switch (mode) {
                         ScheduleViewMode.student => IconText(
                             Symbols.person_outline_rounded,
-                            event.fromSubject.lecturers?.join(", ") ?? "",
+                            event.subject.lecturers.join(", "),
                             style: labelLarge,
                           ),
                         ScheduleViewMode.lecturer => IconText(
                             Symbols.people_outline_rounded,
-                            event.fromSubject.schedule?.toPrettyString() ?? "",
+                            event.studyProgram
+                                .toString(), // TODO: make pretty string for a studyprogram
                             style: labelLarge,
                           ),
                       },
                       IconText(
                         Symbols.place,
-                        "b. ${event.fromSubject.classroom.building}, ${event.fromSubject.classroom.floor}/${event.fromSubject.classroom.name}",
+                        "b. ${event.subject.classroom.building}, ${event.subject.classroom.floor}/${event.subject.classroom.name}",
                         style: labelLarge,
                       ),
                     ],

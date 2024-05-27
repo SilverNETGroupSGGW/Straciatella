@@ -3,7 +3,7 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
+import 'package:silvertimetable/data/models/lesson_data/lesson_data.dart';
 import 'package:silvertimetable/presentation/models/group/group_chip.dart';
 import 'package:silvertimetable/presentation/models/lecturer/lecturer_chip.dart';
 import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_provider.dart';
@@ -21,7 +21,7 @@ part 'schedule_event_desc_type.dart';
 part 'section.dart';
 
 class ScheduleEventDesc extends StatelessWidget {
-  final ScheduleEvent scheduleEvent;
+  final LessonData scheduleEvent;
   const ScheduleEventDesc({
     super.key,
     required this.scheduleEvent,
@@ -59,7 +59,7 @@ class ScheduleEventDesc extends StatelessWidget {
                 _EventSchedule(),
                 const Gap(8),
                 _EventGroups(),
-                if (scheduleEvent.fromSubject.comment.isNotEmpty) ...[
+                if (scheduleEvent.subject.comment.isNotEmpty) ...[
                   const Gap(8),
                   _EventComment(),
                 ],

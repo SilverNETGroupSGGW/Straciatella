@@ -16,7 +16,7 @@ class _EventLocation extends StatelessWidget {
         ),
         const Gap(4),
         Text(
-          "b. ${event.fromSubject.classroom.building}, ${event.fromSubject.classroom.floor}/${event.fromSubject.classroom.name}",
+          "b. ${event.subject.classroom.building}, ${event.subject.classroom.floor}/${event.subject.classroom.name}",
         ),
         // if (!event.is_online! &&
         //     ROOMS_COORDS.keys.contains(event.room!.trim()) &&

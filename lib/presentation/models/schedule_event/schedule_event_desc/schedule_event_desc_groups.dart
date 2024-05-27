@@ -11,14 +11,14 @@ class _EventGroups extends StatelessWidget {
       children: [
         IconText(
           Symbols.people_rounded,
-          event.fromSubject.groups.length > 1 ? "groups".tr() : "group".tr(),
+          event.subject.groups.length > 1 ? "groups".tr() : "group".tr(),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         const Gap(4),
         Wrap(
           spacing: 2,
           runSpacing: 2,
-          children: event.fromSubject.groups.map((g) => GroupChip(g)).toList(),
+          children: event.subject.groups.map((g) => GroupChip(g)).toList(),
         ),
       ],
     );

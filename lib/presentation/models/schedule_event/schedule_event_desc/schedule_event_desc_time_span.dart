@@ -6,7 +6,9 @@ class _EventTimeSpanText extends StatelessWidget {
     final event = ScheduleEventProvider.of(context)!.event;
 
     final start = TimeOfDay.fromDateTime(event.lesson.startTime);
-    final end = TimeOfDay.fromDateTime(event.lesson.endTime);
+    final end = TimeOfDay.fromDateTime(
+      event.lesson.startTime.add(event.lesson.duration),
+    );
     final duration = event.lesson.duration;
 
     return Row(
