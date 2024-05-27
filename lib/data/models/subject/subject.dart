@@ -25,7 +25,7 @@ class Subject with _$Subject, ObjectBase, ICalendarable, ParseLessons {
     @HiveField(6) required String comment,
     @HiveField(7) required bool isConditional,
     @HiveField(8) required SubjectType type,
-    @HiveField(9) required List<Classroom> classroom,
+    @HiveField(9) required Classroom classroom,
     @HiveField(10) required List<LecturerBase> lecturers,
     @HiveField(11) required List<StudentGroup> groups,
     @HiveField(12) required List<LessonDef> lessons,

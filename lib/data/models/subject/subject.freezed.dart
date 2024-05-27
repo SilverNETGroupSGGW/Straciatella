@@ -41,7 +41,7 @@ mixin _$Subject {
   @HiveField(8)
   SubjectType get type => throw _privateConstructorUsedError;
   @HiveField(9)
-  List<Classroom> get classroom => throw _privateConstructorUsedError;
+  Classroom get classroom => throw _privateConstructorUsedError;
   @HiveField(10)
   List<LecturerBase> get lecturers => throw _privateConstructorUsedError;
   @HiveField(11)
@@ -69,12 +69,13 @@ abstract class $SubjectCopyWith<$Res> {
       @HiveField(6) String comment,
       @HiveField(7) bool isConditional,
       @HiveField(8) SubjectType type,
-      @HiveField(9) List<Classroom> classroom,
+      @HiveField(9) Classroom classroom,
       @HiveField(10) List<LecturerBase> lecturers,
       @HiveField(11) List<StudentGroup> groups,
       @HiveField(12) List<LessonDef> lessons});
 
   $SubjectTypeCopyWith<$Res> get type;
+  $ClassroomCopyWith<$Res> get classroom;
 }
 
 /// @nodoc
@@ -144,7 +145,7 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
       classroom: null == classroom
           ? _value.classroom
           : classroom // ignore: cast_nullable_to_non_nullable
-              as List<Classroom>,
+              as Classroom,
       lecturers: null == lecturers
           ? _value.lecturers
           : lecturers // ignore: cast_nullable_to_non_nullable
@@ -167,6 +168,14 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
       return _then(_value.copyWith(type: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ClassroomCopyWith<$Res> get classroom {
+    return $ClassroomCopyWith<$Res>(_value.classroom, (value) {
+      return _then(_value.copyWith(classroom: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -186,13 +195,15 @@ abstract class _$$SubjectImplCopyWith<$Res> implements $SubjectCopyWith<$Res> {
       @HiveField(6) String comment,
       @HiveField(7) bool isConditional,
       @HiveField(8) SubjectType type,
-      @HiveField(9) List<Classroom> classroom,
+      @HiveField(9) Classroom classroom,
       @HiveField(10) List<LecturerBase> lecturers,
       @HiveField(11) List<StudentGroup> groups,
       @HiveField(12) List<LessonDef> lessons});
 
   @override
   $SubjectTypeCopyWith<$Res> get type;
+  @override
+  $ClassroomCopyWith<$Res> get classroom;
 }
 
 /// @nodoc
@@ -258,9 +269,9 @@ class __$$SubjectImplCopyWithImpl<$Res>
           : type // ignore: cast_nullable_to_non_nullable
               as SubjectType,
       classroom: null == classroom
-          ? _value._classroom
+          ? _value.classroom
           : classroom // ignore: cast_nullable_to_non_nullable
-              as List<Classroom>,
+              as Classroom,
       lecturers: null == lecturers
           ? _value._lecturers
           : lecturers // ignore: cast_nullable_to_non_nullable
@@ -291,12 +302,11 @@ class _$SubjectImpl implements _Subject {
       @HiveField(6) required this.comment,
       @HiveField(7) required this.isConditional,
       @HiveField(8) required this.type,
-      @HiveField(9) required final List<Classroom> classroom,
+      @HiveField(9) required this.classroom,
       @HiveField(10) required final List<LecturerBase> lecturers,
       @HiveField(11) required final List<StudentGroup> groups,
       @HiveField(12) required final List<LessonDef> lessons})
-      : _classroom = classroom,
-        _lecturers = lecturers,
+      : _lecturers = lecturers,
         _groups = groups,
         _lessons = lessons;
 
@@ -332,15 +342,9 @@ class _$SubjectImpl implements _Subject {
   @override
   @HiveField(8)
   final SubjectType type;
-  final List<Classroom> _classroom;
   @override
   @HiveField(9)
-  List<Classroom> get classroom {
-    if (_classroom is EqualUnmodifiableListView) return _classroom;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_classroom);
-  }
-
+  final Classroom classroom;
   final List<LecturerBase> _lecturers;
   @override
   @HiveField(10)
@@ -389,8 +393,8 @@ class _$SubjectImpl implements _Subject {
             (identical(other.isConditional, isConditional) ||
                 other.isConditional == isConditional) &&
             (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality()
-                .equals(other._classroom, _classroom) &&
+            (identical(other.classroom, classroom) ||
+                other.classroom == classroom) &&
             const DeepCollectionEquality()
                 .equals(other._lecturers, _lecturers) &&
             const DeepCollectionEquality().equals(other._groups, _groups) &&
@@ -410,7 +414,7 @@ class _$SubjectImpl implements _Subject {
       comment,
       isConditional,
       type,
-      const DeepCollectionEquality().hash(_classroom),
+      classroom,
       const DeepCollectionEquality().hash(_lecturers),
       const DeepCollectionEquality().hash(_groups),
       const DeepCollectionEquality().hash(_lessons));
@@ -440,7 +444,7 @@ abstract class _Subject implements Subject {
       @HiveField(6) required final String comment,
       @HiveField(7) required final bool isConditional,
       @HiveField(8) required final SubjectType type,
-      @HiveField(9) required final List<Classroom> classroom,
+      @HiveField(9) required final Classroom classroom,
       @HiveField(10) required final List<LecturerBase> lecturers,
       @HiveField(11) required final List<StudentGroup> groups,
       @HiveField(12) required final List<LessonDef> lessons}) = _$SubjectImpl;
@@ -478,7 +482,7 @@ abstract class _Subject implements Subject {
   SubjectType get type;
   @override
   @HiveField(9)
-  List<Classroom> get classroom;
+  Classroom get classroom;
   @override
   @HiveField(10)
   List<LecturerBase> get lecturers;

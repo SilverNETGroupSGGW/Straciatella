@@ -26,7 +26,7 @@ class SubjectImplAdapter extends TypeAdapter<_$SubjectImpl> {
       comment: fields[6] as String,
       isConditional: fields[7] as bool,
       type: fields[8] as SubjectType,
-      classroom: (fields[9] as List).cast<Classroom>(),
+      classroom: fields[9] as Classroom,
       lecturers: (fields[10] as List).cast<LecturerBase>(),
       groups: (fields[11] as List).cast<StudentGroup>(),
       lessons: (fields[12] as List).cast<LessonDef>(),
@@ -139,9 +139,7 @@ _$SubjectImpl _$$SubjectImplFromJson(Map<String, dynamic> json) =>
       comment: json['comment'] as String,
       isConditional: json['isConditional'] as bool,
       type: SubjectType.fromJson(json['type'] as Map<String, dynamic>),
-      classroom: (json['classroom'] as List<dynamic>)
-          .map((e) => Classroom.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      classroom: Classroom.fromJson(json['classroom'] as Map<String, dynamic>),
       lecturers: (json['lecturers'] as List<dynamic>)
           .map((e) => LecturerBase.fromJson(e as Map<String, dynamic>))
           .toList(),
