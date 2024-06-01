@@ -9,6 +9,9 @@ import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
+import 'package:silvertimetable/data/models/options_tree/lecturer_tree.dart';
+import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
+import 'package:silvertimetable/data/models/options_tree/study_program_tree.dart';
 import 'package:silvertimetable/data/models/study_program/study_program.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
 import 'package:silvertimetable/data/types.dart';
@@ -46,7 +49,15 @@ class ScheduleManagerBloc
         final ScheduleManagerState? loadedState =
             box.get(boxKey) as ScheduleManagerState?;
         if (loadedState != null) {
-          emit(loadedState);
+          emit(
+            loadedState.copyWith(
+              studyProgramsOptionsTree: createStudyProgramOptionsTree(
+                loadedState.studyProgramsIndex.values,
+              ),
+              lecturersOptionsTree:
+                  createLecturerOptionsTree(loadedState.lecturersIndex.values),
+            ),
+          );
         }
       } catch (e) {
         if (kDebugMode) {
@@ -83,9 +94,9 @@ class ScheduleManagerBloc
 
         flagLoadingScheduleIndex(emit);
         try {
-          final List<StudyProgramBase> studyProgramsIndex =
+          final List<StudyProgramBase> studyPrograms =
               await _sggwHubRepo.getStudyPrograms(orgId);
-          final List<LecturerBase> lecturersIndex =
+          final List<LecturerBase> lecturers =
               await _sggwHubRepo.getLecturers(orgId);
           if (emit.isDone) {
             unflagLoadingScheduleIndex(emit);
@@ -94,8 +105,11 @@ class ScheduleManagerBloc
           emit(
             state.copyWith(
               refreshingIndex: false,
-              availableStudyPrograms: studyProgramsIndex,
-              availableLecturers: lecturersIndex,
+              studyProgramsIndex: {for (final v in studyPrograms) v.id: v},
+              lecturersIndex: {for (final v in lecturers) v.id: v},
+              studyProgramsOptionsTree:
+                  createStudyProgramOptionsTree(studyPrograms),
+              lecturersOptionsTree: createLecturerOptionsTree(lecturers),
             ),
           );
         } catch (ex) {
@@ -254,8 +268,10 @@ class ScheduleManagerBloc
   ) {
     emit(
       state.copyWith(
-        availableLecturers: lecturers,
-        availableStudyPrograms: studyPrograms,
+        studyProgramsIndex: {for (final v in studyPrograms) v.id: v},
+        lecturersIndex: {for (final v in lecturers) v.id: v},
+        studyProgramsOptionsTree: createStudyProgramOptionsTree(studyPrograms),
+        lecturersOptionsTree: createLecturerOptionsTree(lecturers),
       ),
     );
   }

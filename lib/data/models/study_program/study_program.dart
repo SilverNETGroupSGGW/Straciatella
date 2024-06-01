@@ -28,7 +28,7 @@ class StudyProgram with _$StudyProgram, ObjectBase {
 
   @HiveType(typeId: HiveTypeIds.studyProgram)
   @With<_AsSchedulableImpl>()
-  @With<AsSchedulable>()
+  @With<WithLessonsData>()
   factory StudyProgram.ext({
     @HiveField(0) required String id,
     @HiveField(1) @DateTimeConverter() DateTime? created,
@@ -48,7 +48,7 @@ class StudyProgram with _$StudyProgram, ObjectBase {
       _$StudyProgramFromJson(json);
 }
 
-mixin _AsSchedulableImpl on AsSchedulable {
+mixin _AsSchedulableImpl on WithLessonsData {
   @override
   List<StudyProgramExt> get studyPrograms => [this as StudyProgramExt];
 }

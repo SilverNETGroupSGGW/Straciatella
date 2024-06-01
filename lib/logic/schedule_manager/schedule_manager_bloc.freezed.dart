@@ -1804,15 +1804,21 @@ mixin _$ScheduleManagerState {
   bool get refreshingIndex => throw _privateConstructorUsedError;
   Set<({String id, ScheduleType type})> get refreshing =>
       throw _privateConstructorUsedError;
-  List<StudyProgramBase> get availableStudyPrograms =>
+  OptionsTreeNode<dynamic>? get studyProgramsOptionsTree =>
       throw _privateConstructorUsedError;
-  List<LecturerBase> get availableLecturers =>
+  OptionsTreeNode<dynamic>? get lecturersOptionsTree =>
       throw _privateConstructorUsedError;
   @HiveField(0, defaultValue: {})
   Map<String, StudyProgramExt> get cachedStudyPrograms =>
       throw _privateConstructorUsedError;
   @HiveField(1, defaultValue: {})
   Map<String, LecturerExt> get cachedLecturers =>
+      throw _privateConstructorUsedError;
+  @HiveField(2, defaultValue: {})
+  Map<String, StudyProgramBase> get studyProgramsIndex =>
+      throw _privateConstructorUsedError;
+  @HiveField(3, defaultValue: {})
+  Map<String, LecturerBase> get lecturersIndex =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1829,12 +1835,15 @@ abstract class $ScheduleManagerStateCopyWith<$Res> {
   $Res call(
       {bool refreshingIndex,
       Set<({String id, ScheduleType type})> refreshing,
-      List<StudyProgramBase> availableStudyPrograms,
-      List<LecturerBase> availableLecturers,
+      OptionsTreeNode<dynamic>? studyProgramsOptionsTree,
+      OptionsTreeNode<dynamic>? lecturersOptionsTree,
       @HiveField(0, defaultValue: {})
       Map<String, StudyProgramExt> cachedStudyPrograms,
-      @HiveField(1, defaultValue: {})
-      Map<String, LecturerExt> cachedLecturers});
+      @HiveField(1, defaultValue: {}) Map<String, LecturerExt> cachedLecturers,
+      @HiveField(2, defaultValue: {})
+      Map<String, StudyProgramBase> studyProgramsIndex,
+      @HiveField(3, defaultValue: {})
+      Map<String, LecturerBase> lecturersIndex});
 }
 
 /// @nodoc
@@ -1853,10 +1862,12 @@ class _$ScheduleManagerStateCopyWithImpl<$Res,
   $Res call({
     Object? refreshingIndex = null,
     Object? refreshing = null,
-    Object? availableStudyPrograms = null,
-    Object? availableLecturers = null,
+    Object? studyProgramsOptionsTree = freezed,
+    Object? lecturersOptionsTree = freezed,
     Object? cachedStudyPrograms = null,
     Object? cachedLecturers = null,
+    Object? studyProgramsIndex = null,
+    Object? lecturersIndex = null,
   }) {
     return _then(_value.copyWith(
       refreshingIndex: null == refreshingIndex
@@ -1867,14 +1878,14 @@ class _$ScheduleManagerStateCopyWithImpl<$Res,
           ? _value.refreshing
           : refreshing // ignore: cast_nullable_to_non_nullable
               as Set<({String id, ScheduleType type})>,
-      availableStudyPrograms: null == availableStudyPrograms
-          ? _value.availableStudyPrograms
-          : availableStudyPrograms // ignore: cast_nullable_to_non_nullable
-              as List<StudyProgramBase>,
-      availableLecturers: null == availableLecturers
-          ? _value.availableLecturers
-          : availableLecturers // ignore: cast_nullable_to_non_nullable
-              as List<LecturerBase>,
+      studyProgramsOptionsTree: freezed == studyProgramsOptionsTree
+          ? _value.studyProgramsOptionsTree
+          : studyProgramsOptionsTree // ignore: cast_nullable_to_non_nullable
+              as OptionsTreeNode<dynamic>?,
+      lecturersOptionsTree: freezed == lecturersOptionsTree
+          ? _value.lecturersOptionsTree
+          : lecturersOptionsTree // ignore: cast_nullable_to_non_nullable
+              as OptionsTreeNode<dynamic>?,
       cachedStudyPrograms: null == cachedStudyPrograms
           ? _value.cachedStudyPrograms
           : cachedStudyPrograms // ignore: cast_nullable_to_non_nullable
@@ -1883,6 +1894,14 @@ class _$ScheduleManagerStateCopyWithImpl<$Res,
           ? _value.cachedLecturers
           : cachedLecturers // ignore: cast_nullable_to_non_nullable
               as Map<String, LecturerExt>,
+      studyProgramsIndex: null == studyProgramsIndex
+          ? _value.studyProgramsIndex
+          : studyProgramsIndex // ignore: cast_nullable_to_non_nullable
+              as Map<String, StudyProgramBase>,
+      lecturersIndex: null == lecturersIndex
+          ? _value.lecturersIndex
+          : lecturersIndex // ignore: cast_nullable_to_non_nullable
+              as Map<String, LecturerBase>,
     ) as $Val);
   }
 }
@@ -1898,12 +1917,15 @@ abstract class _$$ScheduleManagerStateImplCopyWith<$Res>
   $Res call(
       {bool refreshingIndex,
       Set<({String id, ScheduleType type})> refreshing,
-      List<StudyProgramBase> availableStudyPrograms,
-      List<LecturerBase> availableLecturers,
+      OptionsTreeNode<dynamic>? studyProgramsOptionsTree,
+      OptionsTreeNode<dynamic>? lecturersOptionsTree,
       @HiveField(0, defaultValue: {})
       Map<String, StudyProgramExt> cachedStudyPrograms,
-      @HiveField(1, defaultValue: {})
-      Map<String, LecturerExt> cachedLecturers});
+      @HiveField(1, defaultValue: {}) Map<String, LecturerExt> cachedLecturers,
+      @HiveField(2, defaultValue: {})
+      Map<String, StudyProgramBase> studyProgramsIndex,
+      @HiveField(3, defaultValue: {})
+      Map<String, LecturerBase> lecturersIndex});
 }
 
 /// @nodoc
@@ -1919,10 +1941,12 @@ class __$$ScheduleManagerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? refreshingIndex = null,
     Object? refreshing = null,
-    Object? availableStudyPrograms = null,
-    Object? availableLecturers = null,
+    Object? studyProgramsOptionsTree = freezed,
+    Object? lecturersOptionsTree = freezed,
     Object? cachedStudyPrograms = null,
     Object? cachedLecturers = null,
+    Object? studyProgramsIndex = null,
+    Object? lecturersIndex = null,
   }) {
     return _then(_$ScheduleManagerStateImpl(
       refreshingIndex: null == refreshingIndex
@@ -1933,14 +1957,14 @@ class __$$ScheduleManagerStateImplCopyWithImpl<$Res>
           ? _value._refreshing
           : refreshing // ignore: cast_nullable_to_non_nullable
               as Set<({String id, ScheduleType type})>,
-      availableStudyPrograms: null == availableStudyPrograms
-          ? _value._availableStudyPrograms
-          : availableStudyPrograms // ignore: cast_nullable_to_non_nullable
-              as List<StudyProgramBase>,
-      availableLecturers: null == availableLecturers
-          ? _value._availableLecturers
-          : availableLecturers // ignore: cast_nullable_to_non_nullable
-              as List<LecturerBase>,
+      studyProgramsOptionsTree: freezed == studyProgramsOptionsTree
+          ? _value.studyProgramsOptionsTree
+          : studyProgramsOptionsTree // ignore: cast_nullable_to_non_nullable
+              as OptionsTreeNode<dynamic>?,
+      lecturersOptionsTree: freezed == lecturersOptionsTree
+          ? _value.lecturersOptionsTree
+          : lecturersOptionsTree // ignore: cast_nullable_to_non_nullable
+              as OptionsTreeNode<dynamic>?,
       cachedStudyPrograms: null == cachedStudyPrograms
           ? _value._cachedStudyPrograms
           : cachedStudyPrograms // ignore: cast_nullable_to_non_nullable
@@ -1949,6 +1973,14 @@ class __$$ScheduleManagerStateImplCopyWithImpl<$Res>
           ? _value._cachedLecturers
           : cachedLecturers // ignore: cast_nullable_to_non_nullable
               as Map<String, LecturerExt>,
+      studyProgramsIndex: null == studyProgramsIndex
+          ? _value._studyProgramsIndex
+          : studyProgramsIndex // ignore: cast_nullable_to_non_nullable
+              as Map<String, StudyProgramBase>,
+      lecturersIndex: null == lecturersIndex
+          ? _value._lecturersIndex
+          : lecturersIndex // ignore: cast_nullable_to_non_nullable
+              as Map<String, LecturerBase>,
     ));
   }
 }
@@ -1962,17 +1994,21 @@ class _$ScheduleManagerStateImpl
   _$ScheduleManagerStateImpl(
       {this.refreshingIndex = false,
       final Set<({String id, ScheduleType type})> refreshing = const {},
-      final List<StudyProgramBase> availableStudyPrograms = const [],
-      final List<LecturerBase> availableLecturers = const [],
+      this.studyProgramsOptionsTree,
+      this.lecturersOptionsTree,
       @HiveField(0, defaultValue: {})
       final Map<String, StudyProgramExt> cachedStudyPrograms = const {},
       @HiveField(1, defaultValue: {})
-      final Map<String, LecturerExt> cachedLecturers = const {}})
+      final Map<String, LecturerExt> cachedLecturers = const {},
+      @HiveField(2, defaultValue: {})
+      final Map<String, StudyProgramBase> studyProgramsIndex = const {},
+      @HiveField(3, defaultValue: {})
+      final Map<String, LecturerBase> lecturersIndex = const {}})
       : _refreshing = refreshing,
-        _availableStudyPrograms = availableStudyPrograms,
-        _availableLecturers = availableLecturers,
         _cachedStudyPrograms = cachedStudyPrograms,
-        _cachedLecturers = cachedLecturers;
+        _cachedLecturers = cachedLecturers,
+        _studyProgramsIndex = studyProgramsIndex,
+        _lecturersIndex = lecturersIndex;
 
   @override
   @JsonKey()
@@ -1986,26 +2022,10 @@ class _$ScheduleManagerStateImpl
     return EqualUnmodifiableSetView(_refreshing);
   }
 
-  final List<StudyProgramBase> _availableStudyPrograms;
   @override
-  @JsonKey()
-  List<StudyProgramBase> get availableStudyPrograms {
-    if (_availableStudyPrograms is EqualUnmodifiableListView)
-      return _availableStudyPrograms;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_availableStudyPrograms);
-  }
-
-  final List<LecturerBase> _availableLecturers;
+  final OptionsTreeNode<dynamic>? studyProgramsOptionsTree;
   @override
-  @JsonKey()
-  List<LecturerBase> get availableLecturers {
-    if (_availableLecturers is EqualUnmodifiableListView)
-      return _availableLecturers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_availableLecturers);
-  }
-
+  final OptionsTreeNode<dynamic>? lecturersOptionsTree;
   final Map<String, StudyProgramExt> _cachedStudyPrograms;
   @override
   @JsonKey()
@@ -2027,9 +2047,30 @@ class _$ScheduleManagerStateImpl
     return EqualUnmodifiableMapView(_cachedLecturers);
   }
 
+  final Map<String, StudyProgramBase> _studyProgramsIndex;
+  @override
+  @JsonKey()
+  @HiveField(2, defaultValue: {})
+  Map<String, StudyProgramBase> get studyProgramsIndex {
+    if (_studyProgramsIndex is EqualUnmodifiableMapView)
+      return _studyProgramsIndex;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_studyProgramsIndex);
+  }
+
+  final Map<String, LecturerBase> _lecturersIndex;
+  @override
+  @JsonKey()
+  @HiveField(3, defaultValue: {})
+  Map<String, LecturerBase> get lecturersIndex {
+    if (_lecturersIndex is EqualUnmodifiableMapView) return _lecturersIndex;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_lecturersIndex);
+  }
+
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ScheduleManagerState(refreshingIndex: $refreshingIndex, refreshing: $refreshing, availableStudyPrograms: $availableStudyPrograms, availableLecturers: $availableLecturers, cachedStudyPrograms: $cachedStudyPrograms, cachedLecturers: $cachedLecturers)';
+    return 'ScheduleManagerState(refreshingIndex: $refreshingIndex, refreshing: $refreshing, studyProgramsOptionsTree: $studyProgramsOptionsTree, lecturersOptionsTree: $lecturersOptionsTree, cachedStudyPrograms: $cachedStudyPrograms, cachedLecturers: $cachedLecturers, studyProgramsIndex: $studyProgramsIndex, lecturersIndex: $lecturersIndex)';
   }
 
   @override
@@ -2039,11 +2080,13 @@ class _$ScheduleManagerStateImpl
       ..add(DiagnosticsProperty('type', 'ScheduleManagerState'))
       ..add(DiagnosticsProperty('refreshingIndex', refreshingIndex))
       ..add(DiagnosticsProperty('refreshing', refreshing))
-      ..add(
-          DiagnosticsProperty('availableStudyPrograms', availableStudyPrograms))
-      ..add(DiagnosticsProperty('availableLecturers', availableLecturers))
+      ..add(DiagnosticsProperty(
+          'studyProgramsOptionsTree', studyProgramsOptionsTree))
+      ..add(DiagnosticsProperty('lecturersOptionsTree', lecturersOptionsTree))
       ..add(DiagnosticsProperty('cachedStudyPrograms', cachedStudyPrograms))
-      ..add(DiagnosticsProperty('cachedLecturers', cachedLecturers));
+      ..add(DiagnosticsProperty('cachedLecturers', cachedLecturers))
+      ..add(DiagnosticsProperty('studyProgramsIndex', studyProgramsIndex))
+      ..add(DiagnosticsProperty('lecturersIndex', lecturersIndex));
   }
 
   @override
@@ -2055,14 +2098,19 @@ class _$ScheduleManagerStateImpl
                 other.refreshingIndex == refreshingIndex) &&
             const DeepCollectionEquality()
                 .equals(other._refreshing, _refreshing) &&
-            const DeepCollectionEquality().equals(
-                other._availableStudyPrograms, _availableStudyPrograms) &&
-            const DeepCollectionEquality()
-                .equals(other._availableLecturers, _availableLecturers) &&
+            (identical(
+                    other.studyProgramsOptionsTree, studyProgramsOptionsTree) ||
+                other.studyProgramsOptionsTree == studyProgramsOptionsTree) &&
+            (identical(other.lecturersOptionsTree, lecturersOptionsTree) ||
+                other.lecturersOptionsTree == lecturersOptionsTree) &&
             const DeepCollectionEquality()
                 .equals(other._cachedStudyPrograms, _cachedStudyPrograms) &&
             const DeepCollectionEquality()
-                .equals(other._cachedLecturers, _cachedLecturers));
+                .equals(other._cachedLecturers, _cachedLecturers) &&
+            const DeepCollectionEquality()
+                .equals(other._studyProgramsIndex, _studyProgramsIndex) &&
+            const DeepCollectionEquality()
+                .equals(other._lecturersIndex, _lecturersIndex));
   }
 
   @override
@@ -2070,10 +2118,12 @@ class _$ScheduleManagerStateImpl
       runtimeType,
       refreshingIndex,
       const DeepCollectionEquality().hash(_refreshing),
-      const DeepCollectionEquality().hash(_availableStudyPrograms),
-      const DeepCollectionEquality().hash(_availableLecturers),
+      studyProgramsOptionsTree,
+      lecturersOptionsTree,
       const DeepCollectionEquality().hash(_cachedStudyPrograms),
-      const DeepCollectionEquality().hash(_cachedLecturers));
+      const DeepCollectionEquality().hash(_cachedLecturers),
+      const DeepCollectionEquality().hash(_studyProgramsIndex),
+      const DeepCollectionEquality().hash(_lecturersIndex));
 
   @JsonKey(ignore: true)
   @override
@@ -2088,12 +2138,16 @@ abstract class _ScheduleManagerState implements ScheduleManagerState {
   factory _ScheduleManagerState(
           {final bool refreshingIndex,
           final Set<({String id, ScheduleType type})> refreshing,
-          final List<StudyProgramBase> availableStudyPrograms,
-          final List<LecturerBase> availableLecturers,
+          final OptionsTreeNode<dynamic>? studyProgramsOptionsTree,
+          final OptionsTreeNode<dynamic>? lecturersOptionsTree,
           @HiveField(0, defaultValue: {})
           final Map<String, StudyProgramExt> cachedStudyPrograms,
           @HiveField(1, defaultValue: {})
-          final Map<String, LecturerExt> cachedLecturers}) =
+          final Map<String, LecturerExt> cachedLecturers,
+          @HiveField(2, defaultValue: {})
+          final Map<String, StudyProgramBase> studyProgramsIndex,
+          @HiveField(3, defaultValue: {})
+          final Map<String, LecturerBase> lecturersIndex}) =
       _$ScheduleManagerStateImpl;
 
   @override
@@ -2101,15 +2155,21 @@ abstract class _ScheduleManagerState implements ScheduleManagerState {
   @override
   Set<({String id, ScheduleType type})> get refreshing;
   @override
-  List<StudyProgramBase> get availableStudyPrograms;
+  OptionsTreeNode<dynamic>? get studyProgramsOptionsTree;
   @override
-  List<LecturerBase> get availableLecturers;
+  OptionsTreeNode<dynamic>? get lecturersOptionsTree;
   @override
   @HiveField(0, defaultValue: {})
   Map<String, StudyProgramExt> get cachedStudyPrograms;
   @override
   @HiveField(1, defaultValue: {})
   Map<String, LecturerExt> get cachedLecturers;
+  @override
+  @HiveField(2, defaultValue: {})
+  Map<String, StudyProgramBase> get studyProgramsIndex;
+  @override
+  @HiveField(3, defaultValue: {})
+  Map<String, LecturerBase> get lecturersIndex;
   @override
   @JsonKey(ignore: true)
   _$$ScheduleManagerStateImplCopyWith<_$ScheduleManagerStateImpl>

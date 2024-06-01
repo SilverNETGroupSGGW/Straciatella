@@ -24,17 +24,27 @@ class ScheduleManagerStateImplAdapter
       cachedLecturers: fields[1] == null
           ? {}
           : (fields[1] as Map).cast<String, LecturerExt>(),
+      studyProgramsIndex: fields[2] == null
+          ? {}
+          : (fields[2] as Map).cast<String, StudyProgramBase>(),
+      lecturersIndex: fields[3] == null
+          ? {}
+          : (fields[3] as Map).cast<String, LecturerBase>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, _$ScheduleManagerStateImpl obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.cachedStudyPrograms)
       ..writeByte(1)
-      ..write(obj.cachedLecturers);
+      ..write(obj.cachedLecturers)
+      ..writeByte(2)
+      ..write(obj.studyProgramsIndex)
+      ..writeByte(3)
+      ..write(obj.lecturersIndex);
   }
 
   @override

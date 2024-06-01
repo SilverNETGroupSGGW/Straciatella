@@ -704,7 +704,7 @@ class __$$LecturerExtImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: HiveTypeIds.lecturer)
-class _$LecturerExtImpl extends LecturerExt with AsSchedulable {
+class _$LecturerExtImpl extends LecturerExt with FullSchedule {
   _$LecturerExtImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() this.created,
@@ -951,7 +951,7 @@ class _$LecturerExtImpl extends LecturerExt with AsSchedulable {
   }
 }
 
-abstract class LecturerExt extends Lecturer implements AsSchedulable {
+abstract class LecturerExt extends Lecturer implements FullSchedule {
   factory LecturerExt(
           {@HiveField(0) required final String id,
           @HiveField(1) @DateTimeConverter() final DateTime? created,

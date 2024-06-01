@@ -8,15 +8,33 @@ class ScheduleManagerState with _$ScheduleManagerState {
   factory ScheduleManagerState({
     @Default(false) bool refreshingIndex,
     @Default({}) Set<ScheduleKey> refreshing,
-    @Default([]) List<StudyProgramBase> availableStudyPrograms,
-    @Default([]) List<LecturerBase> availableLecturers,
+    OptionsTreeNode? studyProgramsOptionsTree,
+    OptionsTreeNode? lecturersOptionsTree,
     @HiveField(0, defaultValue: {})
     @Default({})
     Map<String, StudyProgramExt> cachedStudyPrograms,
     @HiveField(1, defaultValue: {})
     @Default({})
     Map<String, LecturerExt> cachedLecturers,
+    @HiveField(2, defaultValue: {})
+    @Default({})
+    Map<String, StudyProgramBase> studyProgramsIndex,
+    @HiveField(3, defaultValue: {})
+    @Default({})
+    Map<String, LecturerBase> lecturersIndex,
   }) = _ScheduleManagerState;
+
+  static bool didChange(
+      ScheduleManagerState prev, ScheduleManagerState next, ScheduleKey key) {
+    return switch (key.type) {
+      ScheduleType.lecturer =>
+        prev.lecturersIndex[key.id] != next.lecturersIndex[key.id] ||
+            prev.cachedLecturers[key.id] != next.cachedLecturers[key.id],
+      ScheduleType.studyProgram => prev.studyProgramsIndex[key.id] !=
+              next.studyProgramsIndex[key.id] ||
+          prev.cachedStudyPrograms[key.id] != next.cachedStudyPrograms[key.id],
+    };
+  }
 }
 
 // @freezed

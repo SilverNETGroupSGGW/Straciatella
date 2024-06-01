@@ -17,7 +17,7 @@ mixin ICalendarable {
   }
 }
 
-mixin AsSchedulable {
+mixin WithLessonsData {
   final Map<DayKey, List<LessonData>> _lessonsData = {};
   List<StudyProgramExt> get studyPrograms;
 
