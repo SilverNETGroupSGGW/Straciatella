@@ -745,7 +745,7 @@ class __$$StudyProgramExtImplCopyWithImpl<$Res>
 @JsonSerializable()
 @HiveType(typeId: HiveTypeIds.studyProgram)
 class _$StudyProgramExtImpl
-    with _AsSchedulableImpl, FullSchedule
+    with _AsSchedulableImpl, WithLessonsData
     implements StudyProgramExt {
   _$StudyProgramExtImpl(
       {@HiveField(0) required this.id,
@@ -1006,7 +1006,7 @@ class _$StudyProgramExtImpl
 }
 
 abstract class StudyProgramExt
-    implements StudyProgram, _AsSchedulableImpl, FullSchedule {
+    implements StudyProgram, _AsSchedulableImpl, WithLessonsData {
   factory StudyProgramExt(
           {@HiveField(0) required final String id,
           @HiveField(1) @DateTimeConverter() final DateTime? created,

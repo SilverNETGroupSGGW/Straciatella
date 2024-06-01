@@ -1,4 +1,4 @@
-part of 'schedule_event_tile.dart';
+part of 'lesson_data_tile.dart';
 
 class _EventTimeSpan extends StatelessWidget {
   final DateTime startTime;

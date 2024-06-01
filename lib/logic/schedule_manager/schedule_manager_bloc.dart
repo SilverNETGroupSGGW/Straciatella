@@ -23,12 +23,9 @@ part 'schedule_manager_bloc.g.dart';
 
 class ScheduleManagerBloc
     extends Bloc<ScheduleManagerEvent, ScheduleManagerState> {
-  static const boxKeyPrefix = "schedule_manager";
+  static const boxKey = "schedule_manager";
   late final SggwHubRepo _sggwHubRepo;
   final Box box = Hive.box(hiveBoxName);
-  final String orgId;
-
-  String get boxKey => "$boxKeyPrefix/$orgId";
 
   @override
   void onChange(Change<ScheduleManagerState> change) {
@@ -41,7 +38,7 @@ class ScheduleManagerBloc
     }
   }
 
-  ScheduleManagerBloc(this.orgId) : super(ScheduleManagerState()) {
+  ScheduleManagerBloc() : super(ScheduleManagerState()) {
     _sggwHubRepo = GetIt.instance.get<SggwHubRepo>();
 
     on<_Init>((event, emit) {
@@ -95,9 +92,9 @@ class ScheduleManagerBloc
         flagLoadingScheduleIndex(emit);
         try {
           final List<StudyProgramBase> studyPrograms =
-              await _sggwHubRepo.getStudyPrograms(orgId);
+              await _sggwHubRepo.getStudyPrograms();
           final List<LecturerBase> lecturers =
-              await _sggwHubRepo.getLecturers(orgId);
+              await _sggwHubRepo.getLecturers();
           if (emit.isDone) {
             unflagLoadingScheduleIndex(emit);
             return;

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/logic/faved_schedules/faved_schedules_cubit.dart';
-import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_lecturer_schedule.dart';
-import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_schedule.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/settings_icon_button.dart';
 
@@ -35,8 +33,6 @@ class NoFavedSchedule extends StatelessWidget {
           children: [
             Text("no faved schedule selected"),
             SettingsIconButton(),
-            ShowMockScheduleScreen(),
-            ShowMockLecturerScheduleScreen(),
           ],
         ),
       ),

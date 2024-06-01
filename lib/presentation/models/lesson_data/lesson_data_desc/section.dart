@@ -1,4 +1,4 @@
-part of 'schedule_event_desc.dart';
+part of 'lesson_data_desc.dart';
 
 class Section extends StatelessWidget {
   final Widget content;

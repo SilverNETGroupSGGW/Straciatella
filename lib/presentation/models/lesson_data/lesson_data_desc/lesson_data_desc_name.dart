@@ -1,9 +1,9 @@
-part of 'schedule_event_desc.dart';
+part of 'lesson_data_desc.dart';
 
 class _EventName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final event = ScheduleEventProvider.of(context)!.event;
+    final event = LessonDataProvider.of(context)!.event;
 
     return Text(
       event.subject.name.capitalize,

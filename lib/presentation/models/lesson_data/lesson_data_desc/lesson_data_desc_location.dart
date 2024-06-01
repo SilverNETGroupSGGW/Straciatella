@@ -1,9 +1,9 @@
-part of 'schedule_event_desc.dart';
+part of 'lesson_data_desc.dart';
 
 class _EventLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final event = ScheduleEventProvider.of(context)!.event;
+    final event = LessonDataProvider.of(context)!.event;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -29,7 +29,7 @@ class _EventLocation extends StatelessWidget {
 class _EventNavFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // final event = ScheduleEventProvider.of(context)!.event;
+    // final event = LessonDataProvider.of(context)!.event;
 
     return FloatingActionButton.extended(
       onPressed: () {},

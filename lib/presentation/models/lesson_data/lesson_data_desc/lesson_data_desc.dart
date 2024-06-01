@@ -6,31 +6,31 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/data/models/lesson_data/lesson_data.dart';
 import 'package:silvertimetable/presentation/models/group/group_chip.dart';
 import 'package:silvertimetable/presentation/models/lecturer/lecturer_chip.dart';
-import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_provider.dart';
+import 'package:silvertimetable/presentation/models/lesson_data/lesson_data_provider.dart';
 import 'package:silvertimetable/presentation/widgets/icon_text.dart';
 import 'package:silvertimetable/themes/extensions/schedule_event_theme.dart';
 
-part 'schedule_event_desc_comment.dart';
-part 'schedule_event_desc_groups.dart';
-part 'schedule_event_desc_lecturers.dart';
-part 'schedule_event_desc_location.dart';
-part 'schedule_event_desc_name.dart';
-part 'schedule_event_desc_schedule.dart';
-part 'schedule_event_desc_time_span.dart';
-part 'schedule_event_desc_type.dart';
+part 'lesson_data_desc_comment.dart';
+part 'lesson_data_desc_groups.dart';
+part 'lesson_data_desc_lecturers.dart';
+part 'lesson_data_desc_location.dart';
+part 'lesson_data_desc_name.dart';
+part 'lesson_data_desc_schedule.dart';
+part 'lesson_data_desc_time_span.dart';
+part 'lesson_data_desc_type.dart';
 part 'section.dart';
 
-class ScheduleEventDesc extends StatelessWidget {
-  final LessonData scheduleEvent;
-  const ScheduleEventDesc({
+class LessonDataDesc extends StatelessWidget {
+  final LessonData lessonData;
+  const LessonDataDesc({
     super.key,
-    required this.scheduleEvent,
+    required this.lessonData,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ScheduleEventProvider(
-      scheduleEvent,
+    return LessonDataProvider(
+      lessonData,
       child: Padding(
         padding:
             const EdgeInsets.only(top: 10.0, left: 12, right: 12, bottom: 12),
@@ -59,7 +59,7 @@ class ScheduleEventDesc extends StatelessWidget {
                 _EventSchedule(),
                 const Gap(8),
                 _EventGroups(),
-                if (scheduleEvent.subject.comment.isNotEmpty) ...[
+                if (lessonData.subject.comment.isNotEmpty) ...[
                   const Gap(8),
                   _EventComment(),
                 ],

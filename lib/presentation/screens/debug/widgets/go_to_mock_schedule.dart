@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:silvertimetable/data/fakes/mock_jsons.dart';
+import 'package:silvertimetable/data/types.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/router.dart';
 
 class ShowMockScheduleScreen extends StatelessWidget {
+  final ScheduleKey mockScheduleKey;
   const ShowMockScheduleScreen({
     super.key,
+    required this.mockScheduleKey,
   });
 
   @override
@@ -14,11 +16,11 @@ class ShowMockScheduleScreen extends StatelessWidget {
       onTap: () => Navigator.pushNamed(
         context,
         RouteNames.schedule,
-        arguments: const ScheduleScreenArgs(
+        arguments: ScheduleScreenArgs(
           mockScheduleKey,
         ),
       ),
-      title: const Text("go to test schedule"),
+      title: Text("go to test ${mockScheduleKey.type}"),
     );
   }
 }

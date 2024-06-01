@@ -7,29 +7,29 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/data/models/lesson_data/lesson_data.dart';
 import 'package:silvertimetable/helpers.dart';
-import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_desc/schedule_event_desc.dart';
-import 'package:silvertimetable/presentation/models/schedule_event/schedule_event_provider.dart';
+import 'package:silvertimetable/presentation/models/lesson_data/lesson_data_desc/lesson_data_desc.dart';
+import 'package:silvertimetable/presentation/models/lesson_data/lesson_data_provider.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/widgets/icon_text.dart';
 import 'package:silvertimetable/themes/extensions/schedule_event_theme.dart';
 
-part 'schedule_event_card.dart';
-part 'schedule_event_time_span.dart';
+part 'lesson_data_card.dart';
+part 'lesson_data_time_span.dart';
 
-class ScheduleEventTile extends StatefulWidget {
-  final LessonData event;
+class LessonDataTile extends StatefulWidget {
+  final LessonData lessonData;
   final ScheduleViewMode mode;
-  const ScheduleEventTile({
+  const LessonDataTile({
     super.key,
-    required this.event,
+    required this.lessonData,
     this.mode = ScheduleViewMode.student,
   });
 
   @override
-  State<ScheduleEventTile> createState() => _ScheduleEventTileState();
+  State<LessonDataTile> createState() => _LessonDataTileState();
 }
 
-class _ScheduleEventTileState extends State<ScheduleEventTile> {
+class _LessonDataTileState extends State<LessonDataTile> {
   late DateTime currentTime;
   late Timer _timer;
 
@@ -60,12 +60,12 @@ class _ScheduleEventTileState extends State<ScheduleEventTile> {
     // final startTime = DateTime.now().subtract(const Duration(minutes: 3));
     // final endTime = DateTime.now().add(const Duration(minutes: 3));
 
-    final startTime = widget.event.lesson.startTime;
-    final endTime =
-        widget.event.lesson.startTime.add(widget.event.lesson.duration);
+    final startTime = widget.lessonData.lesson.startTime;
+    final endTime = widget.lessonData.lesson.startTime
+        .add(widget.lessonData.lesson.duration);
 
-    return ScheduleEventProvider(
-      widget.event,
+    return LessonDataProvider(
+      widget.lessonData,
       child: IntrinsicHeight(
         child: Row(
           children: [

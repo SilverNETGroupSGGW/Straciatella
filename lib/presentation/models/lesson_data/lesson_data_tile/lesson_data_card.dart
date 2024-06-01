@@ -1,4 +1,4 @@
-part of 'schedule_event_tile.dart';
+part of 'lesson_data_tile.dart';
 
 class _EventCard extends StatelessWidget {
   final ScheduleViewMode mode;
@@ -23,7 +23,7 @@ class _EventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final event = ScheduleEventProvider.of(context)!.event;
+    final event = LessonDataProvider.of(context)!.event;
     final labelLarge = Theme.of(context).textTheme.labelLarge;
 
     return Card(
@@ -40,7 +40,7 @@ class _EventCard extends StatelessWidget {
               topRight: Radius.circular(10),
             ),
           ),
-          builder: (_) => ScheduleEventDesc(scheduleEvent: event),
+          builder: (_) => LessonDataDesc(lessonData: event),
         ),
         child: Container(
           decoration: BoxDecoration(
