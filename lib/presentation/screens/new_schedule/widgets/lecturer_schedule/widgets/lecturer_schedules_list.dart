@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
+import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
 import 'package:silvertimetable/presentation/screens/new_schedule/widgets/lecturer_schedule/cubits/search_input/search_input_cubit.dart';
 import 'package:silvertimetable/presentation/screens/new_schedule/widgets/lecturer_schedule/widgets/lecturer_tile.dart';
@@ -15,10 +15,8 @@ class LecturerSchedulesList extends StatelessWidget {
         final scheduleManagerState = context.watch<ScheduleManagerBloc>().state;
         final searchInputState = context.watch<SearchInputCubit>().state;
 
-        final List<LecturerBase> lecturers = scheduleManagerState
-            .schedulesIndex.values
-            .whereType<LecturerBase>()
-            .toList();
+        final List<LecturerBase> lecturers =
+            scheduleManagerState.lecturersIndex.values.toList();
 
         final List<LecturerBase> matchingLecturers =
             getMatchingLecturers(lecturers, searchInputState.searchInput);
@@ -34,7 +32,7 @@ class LecturerSchedulesList extends StatelessWidget {
   }
 
   String lecturerInfoString(LecturerBase lecturer) =>
-      '${lecturer.academicDegree} ${lecturer.firstName} ${lecturer.surname} ${lecturer.email}';
+      '${lecturer.academicDegree} ${lecturer.firstName} ${lecturer.surName} ${lecturer.email}';
 
   List<LecturerBase> getMatchingLecturers(
     List<LecturerBase> lecturers,

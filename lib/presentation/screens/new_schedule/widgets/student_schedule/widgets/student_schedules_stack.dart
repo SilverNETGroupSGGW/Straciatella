@@ -21,7 +21,7 @@ class _StudentSchedulesStackState extends State<StudentSchedulesStack> {
   void initState() {
     super.initState();
     final optionsRoot =
-        context.read<ScheduleManagerBloc>().state.schedulesOptionsTree;
+        context.read<ScheduleManagerBloc>().state.studyProgramsOptionsTree;
     _levels = [optionsRoot!];
   }
 
@@ -73,7 +73,7 @@ class _StudentSchedulesStackState extends State<StudentSchedulesStack> {
                 );
                 listRowsCount--;
               }
-              _levels = scheduleManagerState.schedulesOptionsTree!
+              _levels = scheduleManagerState.studyProgramsOptionsTree!
                   .getPath(userChoicesState.pickedKeys)!;
             },
             builder: (context, userChoicesState) {

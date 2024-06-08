@@ -7,6 +7,7 @@ class ScheduleEventsState with _$ScheduleEventsState {
     @Default(false) bool isFromCache,
     @Default(false) bool isLoading,
     Object? error,
+    required ScheduleKey key,
   }) = _ScheduleEventsState;
   const ScheduleEventsState._();
 

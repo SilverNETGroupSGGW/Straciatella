@@ -1,63 +1,25 @@
-import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
-import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
-import 'package:silvertimetable/data/models/mixins.dart';
-import 'package:silvertimetable/data/models/schedule/schedule.dart';
-import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
+import 'package:silvertimetable/data/models/study_program/study_program.dart';
 import 'package:silvertimetable/data/providers/sggw_hub_api.dart';
-import 'package:silvertimetable/data/types.dart';
 
 class SggwHubRepo {
   final sggwHubApi = SggwHubApi();
 
+  // gets list of lecturers for a user to choose from
   Future<List<LecturerBase>> getLecturers() async {
-    final List<LecturerBase> lecturers = [];
-    final response = await sggwHubApi.getLecturers();
-
-    for (final json in response.data as List) {
-      lecturers.add(LecturerBase.fromJson(json as Map<String, dynamic>));
-    }
-
-    return lecturers;
+    throw UnimplementedError();
   }
 
-  Future<List<ScheduleBase>> getSchedules() async {
-    final List<ScheduleBase> schedules = [];
-    final response = await sggwHubApi.getSchedules();
-
-    for (final json in response.data as List) {
-      schedules.add(ScheduleBase.fromJson(json as Map<String, dynamic>));
-    }
-
-    return schedules;
+  Future<LecturerExt> getLecturer(String lecturerId) async {
+    throw UnimplementedError();
   }
 
-  Future<List<BaseSchedule>> getSchedulesIndex() async {
-    return Future.wait([
-      getSchedules(),
-      getLecturers(),
-    ]).then(
-      (value) => [
-        ...value[0],
-        ...value[1],
-      ],
-    );
+  // gets list of studyprograms for a user to choose from
+  Future<List<StudyProgramBase>> getStudyPrograms() async {
+    throw UnimplementedError();
   }
 
-  Future<Schedule> getSchedule(String id) async {
-    final response = await sggwHubApi.getSchedule(id);
-    return Schedule.fromJson(response.data as Map<String, dynamic>);
-  }
-
-  Future<Lecturer> getLecturer(String id) async {
-    final response = await sggwHubApi.getLecturer(id);
-    return Lecturer.fromJson(response.data as Map<String, dynamic>);
-  }
-
-  Future<ExtendedSchedule> getScheduleByType(ScheduleKey key) async {
-    return switch (key.type) {
-      ScheduleType.lecturer => getLecturer(key.id),
-      ScheduleType.schedule => getSchedule(key.id),
-    };
+  Future<StudyProgramExt> getStudyProgram(String studyProgramId) async {
+    throw UnimplementedError();
   }
 }

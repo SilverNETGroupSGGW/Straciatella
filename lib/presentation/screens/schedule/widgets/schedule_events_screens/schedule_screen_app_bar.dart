@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:silvertimetable/helpers.dart';
+import 'package:silvertimetable/data/models/day/day.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/calendar_page_picker.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/day_dot.dart';
@@ -19,25 +19,38 @@ class ScheduleScreenAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ScheduleEventsCubit, ScheduleEventsState>(
-      buildWhen: (previous, current) => previous.events != current.events,
+      buildWhen: (previous, current) => previous.schedule != current.schedule,
       builder: (context, state) {
-        final timespan = state.events.keys.getTimeSpan();
+        final timespan = state.schedule?.getTimeSpan();
         return AppBar(
-          title: Text(state.fromSchedule?.toPrettyString() ?? "Schedule"),
+          title: Text(state.schedule?.toString() ?? "Schedule"),
           actions: const [
             ScheduleEventsRefreshingIndicator(),
             SettingsIconButton(),
           ],
           bottom: CalendarPagePicker(
-            firstDay: timespan.firstDay,
-            lastDay: timespan.lastDay,
+            firstDay: timespan != null
+                ? DateTime(timespan.$1.year, timespan.$1.month, timespan.$1.day)
+                : DateTime.now(),
+            lastDay: timespan != null
+                ? DateTime(timespan.$2.year, timespan.$2.month, timespan.$2.day)
+                : DateTime.now(),
             dayBuilder: (context, controller, day, page) {
               return PageAlignmentCoefficient(
                 builder: (context, t) {
                   return DayDot(
                     day: day,
                     t: t,
-                    hasEvents: state.events.containsKey(day),
+                    hasEvents: state.schedule
+                            ?.getLessonsDataForDay(
+                              Day(
+                                day: day.day,
+                                month: day.month,
+                                year: day.year,
+                              ),
+                            )
+                            .isNotEmpty ??
+                        false,
                   );
                 },
                 pageController: controller,
@@ -56,7 +69,16 @@ class ScheduleScreenAppBar extends StatelessWidget
                     child: DayDotLabel(
                       day: day,
                       t: t,
-                      hasEvents: state.events.containsKey(day),
+                      hasEvents: state.schedule
+                              ?.getLessonsDataForDay(
+                                Day(
+                                  day: day.day,
+                                  month: day.month,
+                                  year: day.year,
+                                ),
+                              )
+                              .isNotEmpty ??
+                          false,
                     ),
                   );
                 },

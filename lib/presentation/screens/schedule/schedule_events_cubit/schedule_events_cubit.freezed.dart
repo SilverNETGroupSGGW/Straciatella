@@ -20,6 +20,8 @@ mixin _$ScheduleEventsState {
   bool get isFromCache => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
+  ({String id, ScheduleType type}) get key =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ScheduleEventsStateCopyWith<ScheduleEventsState> get copyWith =>
@@ -36,7 +38,8 @@ abstract class $ScheduleEventsStateCopyWith<$Res> {
       {WithLessonsData? schedule,
       bool isFromCache,
       bool isLoading,
-      Object? error});
+      Object? error,
+      ({String id, ScheduleType type}) key});
 }
 
 /// @nodoc
@@ -56,6 +59,7 @@ class _$ScheduleEventsStateCopyWithImpl<$Res, $Val extends ScheduleEventsState>
     Object? isFromCache = null,
     Object? isLoading = null,
     Object? error = freezed,
+    Object? key = null,
   }) {
     return _then(_value.copyWith(
       schedule: freezed == schedule
@@ -71,6 +75,10 @@ class _$ScheduleEventsStateCopyWithImpl<$Res, $Val extends ScheduleEventsState>
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       error: freezed == error ? _value.error : error,
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as ({String id, ScheduleType type}),
     ) as $Val);
   }
 }
@@ -87,7 +95,8 @@ abstract class _$$ScheduleEventsStateImplCopyWith<$Res>
       {WithLessonsData? schedule,
       bool isFromCache,
       bool isLoading,
-      Object? error});
+      Object? error,
+      ({String id, ScheduleType type}) key});
 }
 
 /// @nodoc
@@ -105,6 +114,7 @@ class __$$ScheduleEventsStateImplCopyWithImpl<$Res>
     Object? isFromCache = null,
     Object? isLoading = null,
     Object? error = freezed,
+    Object? key = null,
   }) {
     return _then(_$ScheduleEventsStateImpl(
       schedule: freezed == schedule
@@ -120,6 +130,10 @@ class __$$ScheduleEventsStateImplCopyWithImpl<$Res>
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       error: freezed == error ? _value.error : error,
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as ({String id, ScheduleType type}),
     ));
   }
 }
@@ -131,7 +145,8 @@ class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
       {this.schedule,
       this.isFromCache = false,
       this.isLoading = false,
-      this.error})
+      this.error,
+      required this.key})
       : super._();
 
   @override
@@ -144,10 +159,12 @@ class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
   final bool isLoading;
   @override
   final Object? error;
+  @override
+  final ({String id, ScheduleType type}) key;
 
   @override
   String toString() {
-    return 'ScheduleEventsState(schedule: $schedule, isFromCache: $isFromCache, isLoading: $isLoading, error: $error)';
+    return 'ScheduleEventsState(schedule: $schedule, isFromCache: $isFromCache, isLoading: $isLoading, error: $error, key: $key)';
   }
 
   @override
@@ -161,12 +178,13 @@ class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
                 other.isFromCache == isFromCache) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other.error, error));
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.key, key) || other.key == key));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, schedule, isFromCache, isLoading,
-      const DeepCollectionEquality().hash(error));
+      const DeepCollectionEquality().hash(error), key);
 
   @JsonKey(ignore: true)
   @override
@@ -178,10 +196,12 @@ class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
 
 abstract class _ScheduleEventsState extends ScheduleEventsState {
   const factory _ScheduleEventsState(
-      {final WithLessonsData? schedule,
-      final bool isFromCache,
-      final bool isLoading,
-      final Object? error}) = _$ScheduleEventsStateImpl;
+          {final WithLessonsData? schedule,
+          final bool isFromCache,
+          final bool isLoading,
+          final Object? error,
+          required final ({String id, ScheduleType type}) key}) =
+      _$ScheduleEventsStateImpl;
   const _ScheduleEventsState._() : super._();
 
   @override
@@ -192,6 +212,8 @@ abstract class _ScheduleEventsState extends ScheduleEventsState {
   bool get isLoading;
   @override
   Object? get error;
+  @override
+  ({String id, ScheduleType type}) get key;
   @override
   @JsonKey(ignore: true)
   _$$ScheduleEventsStateImplCopyWith<_$ScheduleEventsStateImpl> get copyWith =>

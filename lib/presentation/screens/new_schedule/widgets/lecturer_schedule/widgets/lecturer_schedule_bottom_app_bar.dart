@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:silvertimetable/data/models/enums.dart';
-import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
+import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/types.dart';
 import 'package:silvertimetable/presentation/screens/new_schedule/widgets/lecturer_schedule/cubits/lecturer_picked/lecturer_picked_cubit.dart';
 
@@ -49,7 +49,7 @@ class LecturerScheduleBottomAppBar extends StatelessWidget {
 
   Text lecturerPickedText(LecturerBase lecturer) {
     final String text =
-        '${lecturer.academicDegree} ${lecturer.firstName} ${lecturer.surname}';
+        '${lecturer.academicDegree} ${lecturer.firstName} ${lecturer.surName}';
     return Text(text, style: const TextStyle(fontSize: 16));
   }
 }

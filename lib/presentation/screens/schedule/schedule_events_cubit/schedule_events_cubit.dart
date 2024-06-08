@@ -19,7 +19,7 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
   ScheduleEventsCubit(
     ScheduleManagerBloc scheduleManager,
     this.scheduleKey,
-  ) : super(const ScheduleEventsState()) {
+  ) : super(ScheduleEventsState(key: scheduleKey)) {
     _sggwHubRepo = GetIt.instance.get<SggwHubRepo>();
     _subscription = scheduleManager.stream.listen(_refresh);
     _refresh(scheduleManager.state);
@@ -38,6 +38,7 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
         ScheduleEventsState(
           schedule: desiredSchedule,
           isFromCache: true,
+          key: scheduleKey,
         ),
       );
     } else {
@@ -56,7 +57,7 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
 
     await apiReq.then((schedule) {
       emit(
-        ScheduleEventsState(schedule: schedule),
+        ScheduleEventsState(schedule: schedule, key: scheduleKey),
       );
     }).catchError((err) {
       emit(

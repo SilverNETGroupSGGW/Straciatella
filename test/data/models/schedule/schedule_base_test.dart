@@ -1,7 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
-import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
+import 'package:silvertimetable/data/models/organization/organization.dart';
+import 'package:silvertimetable/data/models/study_program/study_program.dart';
+import 'package:silvertimetable/data/models/tenant/tenant.dart';
 import 'package:silvertimetable/data/register_adapters.dart';
 
 void main() {
@@ -18,25 +20,37 @@ void main() {
     "studyMode": "Unknown",
     "degreeOfStudy": "AssociateDegree",
   };
-  final scheduleBase = ScheduleBase(
+  final Organization organization = Organization(
     id: "ba0d9a27-3078-4709-81e6-2d8b4e1c8a71",
     created: DateTime.parse("2023-11-27T00:00:06.6281617"),
     updated: DateTime.parse("2023-11-27T00:00:06.6281618"),
-    startDate: DateTime.parse("0001-01-01T00:00:00+00:00"),
+    name: "org",
+  );
+  final Tenant tenant = Tenant(
+    id: "ba0d9a27-3078-4709-81e6-2d8b4e1c8a71",
+    created: DateTime.parse("2023-11-27T00:00:06.6281617"),
+    updated: DateTime.parse("2023-11-27T00:00:06.6281618"),
+    name: "wydzial",
+    organization: organization,
+  );
+  final studyProgram = StudyProgramBase(
+    id: "ba0d9a27-3078-4709-81e6-2d8b4e1c8a71",
+    created: DateTime.parse("2023-11-27T00:00:06.6281617"),
+    updated: DateTime.parse("2023-11-27T00:00:06.6281618"),
+    startDate: "0001-01-01T00:00:00+00:00",
     name: "Informatyka R2S3 NONSTACIONARY MASTER",
-    year: 0,
-    semester: 0,
     faculty: "WZIM",
     fieldOfStudy: "Informatyka",
     studyMode: "Unknown",
     degreeOfStudy: "AssociateDegree",
+    tenant: tenant,
   );
-  group("ScheduleBase tests", () {
-    test('ScheduleBase json parsing', () {
-      expect(ScheduleBase.fromJson(json), scheduleBase);
+  group("StudyProgram tests", () {
+    test('StudyProgram json parsing', () {
+      expect(StudyProgram.fromJson(json), studyProgram);
     });
 
-    test('ScheduleBase hive save/load', () async {
+    test('StudyProgram hive save/load', () async {
       registerDataAdapters();
       await Hive.openBox(
         hiveBoxName,
@@ -45,9 +59,9 @@ void main() {
 
       final box = Hive.box(hiveBoxName);
 
-      box.put("test_scheduleBase", scheduleBase);
-      final scheduleBaseRead = box.get("test_scheduleBase");
-      expect(scheduleBaseRead, scheduleBase);
+      box.put("test_studyProgram", studyProgram);
+      final studyProgramRead = box.get("test_studyProgram");
+      expect(studyProgramRead, studyProgram);
 
       await Hive.box(hiveBoxName).clear();
     });

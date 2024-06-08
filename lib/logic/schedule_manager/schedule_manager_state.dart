@@ -25,7 +25,10 @@ class ScheduleManagerState with _$ScheduleManagerState {
   }) = _ScheduleManagerState;
 
   static bool didChange(
-      ScheduleManagerState prev, ScheduleManagerState next, ScheduleKey key) {
+    ScheduleManagerState prev,
+    ScheduleManagerState next,
+    ScheduleKey key,
+  ) {
     return switch (key.type) {
       ScheduleType.lecturer =>
         prev.lecturersIndex[key.id] != next.lecturersIndex[key.id] ||

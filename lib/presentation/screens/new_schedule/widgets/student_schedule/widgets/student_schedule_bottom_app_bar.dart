@@ -17,7 +17,7 @@ class StudentScheduleBottomAppBar extends StatelessWidget {
           return BlocBuilder<UserChoicesCubit, UserChoicesState>(
             builder: (context, state) {
               final OptionsTreeNode? lastLevel = scheduleManagerState
-                  .schedulesOptionsTree
+                  .studyProgramsOptionsTree
                   ?.getValue(state.pickedKeys);
 
               return Row(
@@ -36,7 +36,7 @@ class StudentScheduleBottomAppBar extends StatelessWidget {
                             Navigator.pop<ScheduleKey>(
                               context,
                               (
-                                type: ScheduleType.schedule,
+                                type: ScheduleType.studyProgram,
                                 id: lastLevel.leafValue,
                               ),
                             );

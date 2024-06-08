@@ -121,7 +121,8 @@ final mockLecturer = {
   ],
 };
 
-const mockScheduleKey = (id: "mockSchedule1", type: ScheduleType.schedule);
+const mockStudyProgramKey =
+    (id: "mockSchedule1", type: ScheduleType.studyProgram);
 final mockSchedule = {
   "id": "mockSchedule1",
   "created": "2024-01-06T21:52:07.1286274",

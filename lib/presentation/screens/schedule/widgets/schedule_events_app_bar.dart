@@ -30,7 +30,7 @@ class ScheduleEventsAppBar extends StatelessWidget
             style: const TextStyle(fontSize: 24),
           ),
           Text(
-            scheduleEventsCubit.state.fromSchedule!.toPrettyString(),
+            scheduleEventsCubit.state.schedule?.toString() ?? "Schedule",
             style: const TextStyle(fontSize: 12),
           ),
         ],
