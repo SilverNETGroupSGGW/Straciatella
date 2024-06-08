@@ -38,7 +38,7 @@ class Lecturer with _$Lecturer, ObjectBase {
     @HiveField(7) required String institute,
     @HiveField(8) required Organization organization,
     // extended data
-    @HiveField(9) required List<StudyProgram> studyPrograms,
+    @HiveField(9) required List<StudyProgramExt> studyPrograms,
   }) = LecturerExt;
   Lecturer._();
 

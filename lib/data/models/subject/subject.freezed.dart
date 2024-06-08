@@ -291,7 +291,7 @@ class __$$SubjectImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: HiveTypeIds.subject)
-class _$SubjectImpl implements _Subject {
+class _$SubjectImpl with ICalendarable, ParseLessons implements _Subject {
   _$SubjectImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() this.created,
@@ -433,7 +433,7 @@ class _$SubjectImpl implements _Subject {
   }
 }
 
-abstract class _Subject implements Subject {
+abstract class _Subject implements Subject, ICalendarable, ParseLessons {
   factory _Subject(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() final DateTime? created,

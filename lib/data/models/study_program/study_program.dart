@@ -27,8 +27,8 @@ class StudyProgram with _$StudyProgram, ObjectBase {
   }) = StudyProgramBase;
 
   @HiveType(typeId: HiveTypeIds.studyProgram)
-  @With<_AsSchedulableImpl>()
   @With<WithLessonsData>()
+  @With<_AsSchedulableImpl>()
   factory StudyProgram.ext({
     @HiveField(0) required String id,
     @HiveField(1) @DateTimeConverter() DateTime? created,

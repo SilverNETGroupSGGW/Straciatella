@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:silvertimetable/data/fakes/mock_jsons.dart';
+import 'package:silvertimetable/data/fakes/mock_objects.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/logic/notifier/notifier.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
@@ -35,7 +35,10 @@ class DebugScreen extends StatelessWidget {
                 builder: (context) => BlocProvider(
                   create: (context) => ScheduleEventsCubit(
                     context.read<ScheduleManagerBloc>(),
-                    mockStudyProgramKey,
+                    (
+                      id: mockStudyProgramsBase.first.id,
+                      type: ScheduleType.studyProgram
+                    ),
                   ),
                   child: const ScheduleEventsLoadingScreen(),
                 ),
@@ -50,7 +53,10 @@ class DebugScreen extends StatelessWidget {
                 builder: (context) => BlocProvider(
                   create: (context) => ScheduleEventsCubit(
                     context.read<ScheduleManagerBloc>(),
-                    mockStudyProgramKey,
+                    (
+                      id: mockStudyProgramsBase.first.id,
+                      type: ScheduleType.studyProgram
+                    ),
                   ),
                   child: const ScheduleEventsErrorScreen(),
                 ),
@@ -65,7 +71,10 @@ class DebugScreen extends StatelessWidget {
                 builder: (context) => BlocProvider(
                   create: (context) => ScheduleEventsCubit(
                     context.read<ScheduleManagerBloc>(),
-                    mockStudyProgramKey,
+                    (
+                      id: mockStudyProgramsBase.first.id,
+                      type: ScheduleType.studyProgram
+                    ),
                   ),
                   child: const ScheduleEventsEmptyScreen(),
                 ),
@@ -78,11 +87,17 @@ class DebugScreen extends StatelessWidget {
           const CategoryLabel(text: "Screens"),
           const ShowScheduleErrorScreen(),
           const ShowWelcomeScreen(),
-          const ShowMockScheduleScreen(
-            mockScheduleKey: mockStudyProgramKey,
+          ShowMockScheduleScreen(
+            mockScheduleKey: (
+              id: mockStudyProgramsBase.first.id,
+              type: ScheduleType.studyProgram
+            ),
           ),
-          const ShowMockScheduleScreen(
-            mockScheduleKey: mockLecturerKey,
+          ShowMockScheduleScreen(
+            mockScheduleKey: (
+              id: mockLecturersBase.first.id,
+              type: ScheduleType.lecturer
+            ),
           ),
           const CategoryLabel(text: "Cards"),
           const Text("Pierwszy concept by Kuba"),
@@ -323,7 +338,10 @@ class ShowScheduleErrorScreen extends StatelessWidget {
           builder: (context) => BlocProvider(
             create: (context) => ScheduleEventsCubit(
               context.read<ScheduleManagerBloc>(),
-              mockStudyProgramKey,
+              (
+                id: mockStudyProgramsBase.first.id,
+                type: ScheduleType.studyProgram
+              ),
             ),
             child: const ScheduleEventsErrorScreen(),
           ),

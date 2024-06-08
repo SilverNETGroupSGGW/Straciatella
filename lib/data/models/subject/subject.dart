@@ -15,6 +15,8 @@ part 'subject.g.dart';
 @freezed
 class Subject with _$Subject, ObjectBase, ICalendarable, ParseLessons {
   @HiveType(typeId: HiveTypeIds.subject)
+  @With<ICalendarable>()
+  @With<ParseLessons>()
   factory Subject({
     @HiveField(0) required String id,
     @HiveField(1) @DateTimeConverter() DateTime? created,

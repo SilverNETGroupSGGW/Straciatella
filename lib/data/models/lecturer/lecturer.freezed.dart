@@ -72,7 +72,7 @@ mixin _$Lecturer {
             @HiveField(6) String email,
             @HiveField(7) String institute,
             @HiveField(8) Organization organization,
-            @HiveField(9) List<StudyProgram> studyPrograms)
+            @HiveField(9) List<StudyProgramExt> studyPrograms)
         ext,
   }) =>
       throw _privateConstructorUsedError;
@@ -99,7 +99,7 @@ mixin _$Lecturer {
             @HiveField(6) String email,
             @HiveField(7) String institute,
             @HiveField(8) Organization organization,
-            @HiveField(9) List<StudyProgram> studyPrograms)?
+            @HiveField(9) List<StudyProgramExt> studyPrograms)?
         ext,
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +126,7 @@ mixin _$Lecturer {
             @HiveField(6) String email,
             @HiveField(7) String institute,
             @HiveField(8) Organization organization,
-            @HiveField(9) List<StudyProgram> studyPrograms)?
+            @HiveField(9) List<StudyProgramExt> studyPrograms)?
         ext,
     required TResult orElse(),
   }) =>
@@ -446,7 +446,7 @@ class _$LecturerBaseImpl extends LecturerBase {
             @HiveField(6) String email,
             @HiveField(7) String institute,
             @HiveField(8) Organization organization,
-            @HiveField(9) List<StudyProgram> studyPrograms)
+            @HiveField(9) List<StudyProgramExt> studyPrograms)
         ext,
   }) {
     return base(id, created, updated, firstName, surName, academicDegree, email,
@@ -477,7 +477,7 @@ class _$LecturerBaseImpl extends LecturerBase {
             @HiveField(6) String email,
             @HiveField(7) String institute,
             @HiveField(8) Organization organization,
-            @HiveField(9) List<StudyProgram> studyPrograms)?
+            @HiveField(9) List<StudyProgramExt> studyPrograms)?
         ext,
   }) {
     return base?.call(id, created, updated, firstName, surName, academicDegree,
@@ -508,7 +508,7 @@ class _$LecturerBaseImpl extends LecturerBase {
             @HiveField(6) String email,
             @HiveField(7) String institute,
             @HiveField(8) Organization organization,
-            @HiveField(9) List<StudyProgram> studyPrograms)?
+            @HiveField(9) List<StudyProgramExt> studyPrograms)?
         ext,
     required TResult orElse(),
   }) {
@@ -628,7 +628,7 @@ abstract class _$$LecturerExtImplCopyWith<$Res>
       @HiveField(6) String email,
       @HiveField(7) String institute,
       @HiveField(8) Organization organization,
-      @HiveField(9) List<StudyProgram> studyPrograms});
+      @HiveField(9) List<StudyProgramExt> studyPrograms});
 
   @override
   $OrganizationCopyWith<$Res> get organization;
@@ -696,7 +696,7 @@ class __$$LecturerExtImplCopyWithImpl<$Res>
       studyPrograms: null == studyPrograms
           ? _value._studyPrograms
           : studyPrograms // ignore: cast_nullable_to_non_nullable
-              as List<StudyProgram>,
+              as List<StudyProgramExt>,
     ));
   }
 }
@@ -715,7 +715,7 @@ class _$LecturerExtImpl extends LecturerExt with WithLessonsData {
       @HiveField(6) required this.email,
       @HiveField(7) required this.institute,
       @HiveField(8) required this.organization,
-      @HiveField(9) required final List<StudyProgram> studyPrograms,
+      @HiveField(9) required final List<StudyProgramExt> studyPrograms,
       final String? $type})
       : _studyPrograms = studyPrograms,
         $type = $type ?? 'ext',
@@ -754,11 +754,11 @@ class _$LecturerExtImpl extends LecturerExt with WithLessonsData {
   @HiveField(8)
   final Organization organization;
 // extended data
-  final List<StudyProgram> _studyPrograms;
+  final List<StudyProgramExt> _studyPrograms;
 // extended data
   @override
   @HiveField(9)
-  List<StudyProgram> get studyPrograms {
+  List<StudyProgramExt> get studyPrograms {
     if (_studyPrograms is EqualUnmodifiableListView) return _studyPrograms;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_studyPrograms);
@@ -839,7 +839,7 @@ class _$LecturerExtImpl extends LecturerExt with WithLessonsData {
             @HiveField(6) String email,
             @HiveField(7) String institute,
             @HiveField(8) Organization organization,
-            @HiveField(9) List<StudyProgram> studyPrograms)
+            @HiveField(9) List<StudyProgramExt> studyPrograms)
         ext,
   }) {
     return ext(id, created, updated, firstName, surName, academicDegree, email,
@@ -870,7 +870,7 @@ class _$LecturerExtImpl extends LecturerExt with WithLessonsData {
             @HiveField(6) String email,
             @HiveField(7) String institute,
             @HiveField(8) Organization organization,
-            @HiveField(9) List<StudyProgram> studyPrograms)?
+            @HiveField(9) List<StudyProgramExt> studyPrograms)?
         ext,
   }) {
     return ext?.call(id, created, updated, firstName, surName, academicDegree,
@@ -901,7 +901,7 @@ class _$LecturerExtImpl extends LecturerExt with WithLessonsData {
             @HiveField(6) String email,
             @HiveField(7) String institute,
             @HiveField(8) Organization organization,
-            @HiveField(9) List<StudyProgram> studyPrograms)?
+            @HiveField(9) List<StudyProgramExt> studyPrograms)?
         ext,
     required TResult orElse(),
   }) {
@@ -962,7 +962,7 @@ abstract class LecturerExt extends Lecturer implements WithLessonsData {
           @HiveField(6) required final String email,
           @HiveField(7) required final String institute,
           @HiveField(8) required final Organization organization,
-          @HiveField(9) required final List<StudyProgram> studyPrograms}) =
+          @HiveField(9) required final List<StudyProgramExt> studyPrograms}) =
       _$LecturerExtImpl;
   LecturerExt._() : super._();
 
@@ -999,7 +999,7 @@ abstract class LecturerExt extends Lecturer implements WithLessonsData {
   @HiveField(8)
   Organization get organization; // extended data
   @HiveField(9)
-  List<StudyProgram> get studyPrograms;
+  List<StudyProgramExt> get studyPrograms;
   @override
   @JsonKey(ignore: true)
   _$$LecturerExtImplCopyWith<_$LecturerExtImpl> get copyWith =>

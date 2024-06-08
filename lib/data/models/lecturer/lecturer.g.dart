@@ -84,7 +84,7 @@ class LecturerExtImplAdapter extends TypeAdapter<_$LecturerExtImpl> {
       email: fields[6] as String,
       institute: fields[7] as String,
       organization: fields[8] as Organization,
-      studyPrograms: (fields[9] as List).cast<StudyProgram>(),
+      studyPrograms: (fields[9] as List).cast<StudyProgramExt>(),
     );
   }
 
@@ -189,7 +189,7 @@ _$LecturerExtImpl _$$LecturerExtImplFromJson(Map<String, dynamic> json) =>
       organization:
           Organization.fromJson(json['organization'] as Map<String, dynamic>),
       studyPrograms: (json['studyPrograms'] as List<dynamic>)
-          .map((e) => StudyProgram.fromJson(e as Map<String, dynamic>))
+          .map((e) => StudyProgramExt.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['runtimeType'] as String?,
     );
