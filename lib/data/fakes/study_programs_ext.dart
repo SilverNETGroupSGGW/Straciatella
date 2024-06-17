@@ -16,7 +16,7 @@ final List<StudyProgramExt> fakeStudyProgramsExt = [
             lecturers: fakeLecturersBase,
             created: _now,
             updated: _now,
-            ice: "", // todo
+            ice: genICalendarDef(),
             isRemote: false,
             classroom: fakeClassrooms[0],
             comment: '',
@@ -25,7 +25,7 @@ final List<StudyProgramExt> fakeStudyProgramsExt = [
             lessons: [
               LessonDef(
                 id: "0",
-                ice: "", // todo
+                ice: genICalendarDef(),
                 created: _now,
                 updated: _now,
               ),

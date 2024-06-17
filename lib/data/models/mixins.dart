@@ -112,8 +112,9 @@ mixin ParseLessons {
     for (final lesson in lessons) {
       final events = lesson.calendar.data.where((e) => e["type"] == 'VEVENT');
       for (final event in events) {
-        final startTime = DateTime.parse(event['DTSTART'] as String);
-        final endTime = DateTime.parse(event['DTEND'] as String);
+        final startTime =
+            (event['dtstart'] as IcsDateTime).toDateTime()!.toUtc();
+        final endTime = (event['dtend'] as IcsDateTime).toDateTime()!.toUtc();
         final duration = endTime.difference(startTime);
 
         final eventDay = Day(
@@ -125,12 +126,12 @@ mixin ParseLessons {
         // Checking if the event starts on the specified date
         if (key == eventDay) {
           _lessonsCache[key]!.add(
-            Lesson(
-              startTime: startTime,
-              duration: duration,
-              classroom: lesson.classroom,
-            ),
-          );
+          Lesson(
+            startTime: startTime,
+            duration: duration,
+            classroom: lesson.classroom,
+          ),
+        );
         }
         start ??= eventDay;
         end ??= eventDay;
@@ -138,8 +139,8 @@ mixin ParseLessons {
         if (end.isBefore(eventDay)) end = eventDay;
 
         // For recurring events, check occurrences on the specified date
-        if (event.containsKey('RRULE')) {
-          final rrule = event['RRULE'] as String;
+        if (event.containsKey('rrule')) {
+          final rrule = event['rrule'] as String;
           final occurrences = getOccurrences(rrule, startTime);
 
           for (final occurrence in occurrences) {
@@ -150,12 +151,12 @@ mixin ParseLessons {
             );
             if (occurrenceDay == key) {
               _lessonsCache[key]!.add(
-                Lesson(
-                  startTime: occurrence,
-                  duration: duration,
-                  classroom: lesson.classroom,
-                ),
-              );
+              Lesson(
+                startTime: occurrence,
+                duration: duration,
+                classroom: lesson.classroom,
+              ),
+            );
             }
             start ??= occurrenceDay;
             end ??= occurrenceDay;
@@ -178,7 +179,7 @@ List<DateTime> getOccurrences(
   String rruleString,
   DateTime startDate,
 ) {
-  final rrule = RecurrenceRule.fromString(rruleString);
+  final rrule = RecurrenceRule.fromString("RRULE:$rruleString");
   final occurrences = rrule.getInstances(
     start: startDate,
   );
