@@ -126,12 +126,12 @@ mixin ParseLessons {
         // Checking if the event starts on the specified date
         if (key == eventDay) {
           _lessonsCache[key]!.add(
-          Lesson(
-            startTime: startTime,
-            duration: duration,
-            classroom: lesson.classroom,
-          ),
-        );
+            Lesson(
+              startTime: startTime,
+              duration: duration,
+              classroom: lesson.classroom,
+            ),
+          );
         }
         start ??= eventDay;
         end ??= eventDay;
@@ -141,7 +141,7 @@ mixin ParseLessons {
         // For recurring events, check occurrences on the specified date
         if (event.containsKey('rrule')) {
           final rrule = event['rrule'] as String;
-          final occurrences = getOccurrences(rrule, startTime);
+          final occurrences = getOccurrences(rrule, startTime).skip(1);
 
           for (final occurrence in occurrences) {
             final occurrenceDay = Day(
@@ -151,12 +151,12 @@ mixin ParseLessons {
             );
             if (occurrenceDay == key) {
               _lessonsCache[key]!.add(
-              Lesson(
-                startTime: occurrence,
-                duration: duration,
-                classroom: lesson.classroom,
-              ),
-            );
+                Lesson(
+                  startTime: occurrence,
+                  duration: duration,
+                  classroom: lesson.classroom,
+                ),
+              );
             }
             start ??= occurrenceDay;
             end ??= occurrenceDay;
@@ -167,8 +167,8 @@ mixin ParseLessons {
       }
     }
     _lessonsCache[key]!.sort((a, b) => a.startTime.compareTo(b.startTime));
-    if (start == null && end == null) {
-      _timeSpan = (start!, end!);
+    if (start != null && end != null) {
+      _timeSpan = (start, end);
     }
     _didParseTimeSpan = true;
     return _lessonsCache[key]!;
