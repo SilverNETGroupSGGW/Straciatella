@@ -42,6 +42,25 @@ class Lecturer with _$Lecturer, ObjectBase {
   }) = LecturerExt;
   Lecturer._();
 
+  // ignore: prefer_constructors_over_static_methods
+  static LecturerExt extWithBase({
+    required LecturerBase base,
+    required List<StudyProgramExt> studyPrograms,
+  }) {
+    return LecturerExt(
+      id: base.id,
+      created: base.created,
+      updated: base.updated,
+      firstName: base.firstName,
+      surName: base.surName,
+      academicDegree: base.academicDegree,
+      email: base.email,
+      institute: base.institute,
+      organization: base.organization,
+      studyPrograms: studyPrograms,
+    );
+  }
+
   factory Lecturer.fromJson(Map<String, dynamic> json) =>
       _$LecturerFromJson(json);
 }

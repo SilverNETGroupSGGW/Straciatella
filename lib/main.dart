@@ -1,5 +1,6 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -18,11 +19,15 @@ import 'package:silvertimetable/themes/themes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  GetIt.instance.registerSingleton<SggwHubRepo>(FakeSggwHubRepo());
+  GetIt.instance.registerSingleton<SggwHubRepo>(
+    kDebugMode ? FakeSggwHubRepo() : SggwHubRepo(),
+  );
 
   await Hive.initFlutter();
   registerLogicDataAdapters();
   registerDataAdapters();
+
+  Hive.deleteBoxFromDisk(hiveBoxName);
   await Hive.openBox(hiveBoxName);
 
   await EasyLocalization.ensureInitialized();

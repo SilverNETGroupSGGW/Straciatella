@@ -44,6 +44,26 @@ class StudyProgram with _$StudyProgram, ObjectBase {
     @HiveField(10) required List<StudySemester> semesters,
   }) = StudyProgramExt;
 
+  // ignore: prefer_constructors_over_static_methods
+  static StudyProgramExt extWithBase({
+    required StudyProgramBase base,
+    required List<StudySemester> semesters,
+  }) {
+    return StudyProgramExt(
+      id: base.id,
+      created: base.created,
+      updated: base.updated,
+      name: base.name,
+      faculty: base.faculty,
+      fieldOfStudy: base.fieldOfStudy,
+      studyMode: base.studyMode,
+      degreeOfStudy: base.degreeOfStudy,
+      startDate: base.startDate,
+      tenant: base.tenant,
+      semesters: semesters,
+    );
+  }
+
   factory StudyProgram.fromJson(Map<String, dynamic> json) =>
       _$StudyProgramFromJson(json);
 }
