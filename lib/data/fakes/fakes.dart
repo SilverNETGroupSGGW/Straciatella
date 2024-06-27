@@ -32,8 +32,7 @@ String genICalendarDef({
   start ??= _now;
   duration ??= const Duration(hours: 1, minutes: 30);
   final startStr = DateFormat("yyyyMMddTHHmmssZ").format(start.toUtc());
-  const durationStr =
-      "PT1H30M"; // todo parse duration to icalendar duration format
+  const durationStr = "PT1H30M";
   final endStr = DateFormat("yyyyMMddTHHmmssZ")
       .format(start.add(Duration(days: 7 * (count - 1)) + duration).toUtc());
   return """

@@ -10,6 +10,7 @@ import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/fakes/sggw_hub_repo_fake.dart';
 import 'package:silvertimetable/data/register_adapters.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
+import 'package:silvertimetable/icalendar_extra_fields.dart';
 import 'package:silvertimetable/logic/register_adapters.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/providers_tree.dart';
@@ -17,6 +18,8 @@ import 'package:silvertimetable/router.dart';
 import 'package:silvertimetable/themes/themes.dart';
 
 void main() async {
+  registerICalendarFields();
+
   WidgetsFlutterBinding.ensureInitialized();
 
   GetIt.instance.registerSingleton<SggwHubRepo>(
