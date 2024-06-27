@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:icalendar_parser/icalendar_parser.dart';
 import 'package:rrule/rrule.dart';
 import 'package:silvertimetable/data/models/day/day.dart';
@@ -22,7 +24,7 @@ mixin ICalendarable {
 /// _lessonsData is sorted
 mixin WithLessonsData {
   final Map<Day, List<LessonData>> _lessonsData = {};
-  // final HashSet<Day> sortedDays = HashSet();
+  final HashSet<Day> sortedDays = HashSet();
   bool _didCollect = false;
   (Day, Day)? _timeSpan;
   List<StudyProgramExt> get studyPrograms;
@@ -66,9 +68,13 @@ mixin WithLessonsData {
   List<LessonData> getLessonsDataForDay(Day day) {
     collectLessonsData();
 
-    _lessonsData[day]?.sort(
-      (a, b) => a.lesson.startTime.compareTo(b.lesson.startTime),
-    );
+    if (_lessonsData.containsKey(day) && !sortedDays.contains(day)) {
+      _lessonsData[day]!.sort(
+        (a, b) => a.lesson.startTime.compareTo(b.lesson.startTime),
+      );
+
+      sortedDays.add(day);
+    }
 
     return _lessonsData[day] ?? [];
   }
