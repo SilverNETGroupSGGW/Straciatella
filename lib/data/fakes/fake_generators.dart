@@ -195,6 +195,7 @@ sealed class FakeGenerators {
         subjects: subjects,
       );
 
+  ///! if [ice] is null, it will generate some garbage
   static Subject genSubject({
     String? id,
     DateTime? created,
@@ -204,12 +205,11 @@ sealed class FakeGenerators {
     String? comment,
     bool? isConditional,
     required List<StudentGroup> groups,
-    required List<SubjectType> subjectTypes,
     required List<LessonDef> lessons,
     required Classroom classroom,
     required List<LecturerBase> lecturers,
     required SubjectType type,
-    required String ice,
+    String? ice,
   }) =>
       Subject(
         id: id ?? UniqueInt.value.toString(),
@@ -223,7 +223,7 @@ sealed class FakeGenerators {
         comment: comment ?? "Comment ${random.nextInt(100)}",
         lecturers: lecturers,
         isConditional: isConditional ?? random.nextBool(),
-        ice: ice,
+        ice: ice ?? genICalendarDef(),
         type: type,
       );
 }

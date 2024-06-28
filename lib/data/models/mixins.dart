@@ -110,7 +110,6 @@ mixin ParseLessons {
         final startTime =
             (event['dtstart'] as IcsDateTime).toDateTime()!.toUtc();
         final endTime = (event['dtend'] as IcsDateTime).toDateTime()!.toUtc();
-        print("DURATION: ${event['duration']}"); // test what object this is
         final duration = event['duration'] as Duration? ?? Duration.zero;
         final rruleStr = event['rrule'] as String?;
 
