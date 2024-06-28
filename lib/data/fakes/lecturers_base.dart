@@ -1,10 +1,7 @@
 part of 'fakes.dart';
 
 final List<LecturerBase> fakeLecturersBase = [
-  LecturerBase(
-    id: "0",
-    created: _now,
-    updated: _now,
+  FakeGenerators.genLecturerBase(
     firstName: "Jan",
     surName: "Kowalski",
     academicDegree: "profesor",
@@ -12,10 +9,7 @@ final List<LecturerBase> fakeLecturersBase = [
     institute: "ISS",
     organization: fakeOrganizations[0],
   ),
-  LecturerBase(
-    id: "1",
-    created: _now,
-    updated: _now,
+  FakeGenerators.genLecturerBase(
     firstName: "Aleksandra",
     surName: "Nowak",
     academicDegree: "doktor",

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:silvertimetable/data/converters/ic_duration.dart';
+import 'package:silvertimetable/data/fakes/fake_generators.dart';
 import 'package:silvertimetable/data/models/classroom/classroom.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/lesson_def/lesson_def.dart';
@@ -22,6 +23,12 @@ part 'study_programs_base.dart';
 part 'study_programs_ext.dart';
 
 final _now = DateTime.now();
+
+sealed class UniqueInt {
+  static int _value = 0;
+
+  static int get value => _value++;
+}
 
 String genICalendarDef({
   int count = 15,

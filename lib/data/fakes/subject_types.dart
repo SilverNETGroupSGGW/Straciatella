@@ -1,25 +1,13 @@
 part of 'fakes.dart';
 
 final fakeSubjectTypes = (
-  lecture: SubjectType(
-    id: "0",
-    created: _now,
-    updated: _now,
+  lecture: FakeGenerators.genSubjectType(
     name: "wykład",
-    isPrimitiveType: true,
   ),
-  classs: SubjectType(
-    id: "1",
-    created: _now,
-    updated: _now,
+  classs: FakeGenerators.genSubjectType(
     name: "ćwiczenia",
-    isPrimitiveType: true,
   ),
-  laboratory: SubjectType(
-    id: "2",
-    created: _now,
-    updated: _now,
+  laboratory: FakeGenerators.genSubjectType(
     name: "laboratoria",
-    isPrimitiveType: true,
   ),
 );

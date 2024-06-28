@@ -1,31 +1,19 @@
 part of 'fakes.dart';
 
 final fakeClassroomTypes = (
-  normal: ClassroomType(
-    id: "0",
-    created: _now,
-    updated: _now,
+  normal: FakeGenerators.genClassroomType(
     name: "sala",
     isPrimitiveType: true,
   ),
-  auditorium: ClassroomType(
-    id: "1",
-    created: _now,
-    updated: _now,
+  auditorium: FakeGenerators.genClassroomType(
     name: "aula",
     isPrimitiveType: true,
   ),
-  computerLab: ClassroomType(
-    id: "2",
-    created: _now,
-    updated: _now,
+  computerLab: FakeGenerators.genClassroomType(
     name: "sala komputerowa",
     isPrimitiveType: true,
   ),
-  lab: ClassroomType(
-    id: "3",
-    created: _now,
-    updated: _now,
+  lab: FakeGenerators.genClassroomType(
     name: "laboratorium",
     isPrimitiveType: true,
   ),
