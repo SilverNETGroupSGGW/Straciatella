@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:silvertimetable/data/converters/ic_duration.dart';
 import 'package:silvertimetable/data/models/classroom/classroom.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/lesson_def/lesson_def.dart';
@@ -32,7 +33,7 @@ String genICalendarDef({
   start ??= _now;
   duration ??= const Duration(hours: 1, minutes: 30);
   final startStr = DateFormat("yyyyMMddTHHmmssZ").format(start.toUtc());
-  const durationStr = "PT1H30M";
+  final durationStr = DurationExt.toICalendar(duration);
   final endStr = DateFormat("yyyyMMddTHHmmssZ")
       .format(start.add(Duration(days: 7 * (count - 1)) + duration).toUtc());
   return """
