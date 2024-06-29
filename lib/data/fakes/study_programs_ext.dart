@@ -484,7 +484,6 @@ final List<StudyProgramExt> fakeStudyProgramsExt = [
             lecturers: fakeLecturersBase,
             created: _now,
             updated: _now,
-            ice: genICalendarDef(),
             isRemote: false,
             classroom: fakeClassrooms[0],
             comment: '',

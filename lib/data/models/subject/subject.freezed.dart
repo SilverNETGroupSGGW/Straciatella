@@ -31,22 +31,20 @@ mixin _$Subject {
   @HiveField(3)
   String get name => throw _privateConstructorUsedError;
   @HiveField(4)
-  String get ice => throw _privateConstructorUsedError;
-  @HiveField(5)
   bool get isRemote => throw _privateConstructorUsedError;
-  @HiveField(6)
+  @HiveField(5)
   String get comment => throw _privateConstructorUsedError;
-  @HiveField(7)
+  @HiveField(6)
   bool get isConditional => throw _privateConstructorUsedError;
-  @HiveField(8)
+  @HiveField(7)
   SubjectType get type => throw _privateConstructorUsedError;
-  @HiveField(9)
+  @HiveField(8)
   Classroom get classroom => throw _privateConstructorUsedError;
-  @HiveField(10)
+  @HiveField(9)
   List<LecturerBase> get lecturers => throw _privateConstructorUsedError;
-  @HiveField(11)
+  @HiveField(10)
   List<StudentGroup> get groups => throw _privateConstructorUsedError;
-  @HiveField(12)
+  @HiveField(11)
   List<LessonDef> get lessons => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -64,15 +62,14 @@ abstract class $SubjectCopyWith<$Res> {
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) String name,
-      @HiveField(4) String ice,
-      @HiveField(5) bool isRemote,
-      @HiveField(6) String comment,
-      @HiveField(7) bool isConditional,
-      @HiveField(8) SubjectType type,
-      @HiveField(9) Classroom classroom,
-      @HiveField(10) List<LecturerBase> lecturers,
-      @HiveField(11) List<StudentGroup> groups,
-      @HiveField(12) List<LessonDef> lessons});
+      @HiveField(4) bool isRemote,
+      @HiveField(5) String comment,
+      @HiveField(6) bool isConditional,
+      @HiveField(7) SubjectType type,
+      @HiveField(8) Classroom classroom,
+      @HiveField(9) List<LecturerBase> lecturers,
+      @HiveField(10) List<StudentGroup> groups,
+      @HiveField(11) List<LessonDef> lessons});
 
   $SubjectTypeCopyWith<$Res> get type;
   $ClassroomCopyWith<$Res> get classroom;
@@ -95,7 +92,6 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
     Object? created = freezed,
     Object? updated = freezed,
     Object? name = null,
-    Object? ice = null,
     Object? isRemote = null,
     Object? comment = null,
     Object? isConditional = null,
@@ -121,10 +117,6 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      ice: null == ice
-          ? _value.ice
-          : ice // ignore: cast_nullable_to_non_nullable
               as String,
       isRemote: null == isRemote
           ? _value.isRemote
@@ -190,15 +182,14 @@ abstract class _$$SubjectImplCopyWith<$Res> implements $SubjectCopyWith<$Res> {
       @HiveField(1) @DateTimeConverter() DateTime? created,
       @HiveField(2) @DateTimeConverter() DateTime? updated,
       @HiveField(3) String name,
-      @HiveField(4) String ice,
-      @HiveField(5) bool isRemote,
-      @HiveField(6) String comment,
-      @HiveField(7) bool isConditional,
-      @HiveField(8) SubjectType type,
-      @HiveField(9) Classroom classroom,
-      @HiveField(10) List<LecturerBase> lecturers,
-      @HiveField(11) List<StudentGroup> groups,
-      @HiveField(12) List<LessonDef> lessons});
+      @HiveField(4) bool isRemote,
+      @HiveField(5) String comment,
+      @HiveField(6) bool isConditional,
+      @HiveField(7) SubjectType type,
+      @HiveField(8) Classroom classroom,
+      @HiveField(9) List<LecturerBase> lecturers,
+      @HiveField(10) List<StudentGroup> groups,
+      @HiveField(11) List<LessonDef> lessons});
 
   @override
   $SubjectTypeCopyWith<$Res> get type;
@@ -221,7 +212,6 @@ class __$$SubjectImplCopyWithImpl<$Res>
     Object? created = freezed,
     Object? updated = freezed,
     Object? name = null,
-    Object? ice = null,
     Object? isRemote = null,
     Object? comment = null,
     Object? isConditional = null,
@@ -247,10 +237,6 @@ class __$$SubjectImplCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      ice: null == ice
-          ? _value.ice
-          : ice // ignore: cast_nullable_to_non_nullable
               as String,
       isRemote: null == isRemote
           ? _value.isRemote
@@ -291,21 +277,20 @@ class __$$SubjectImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 @HiveType(typeId: HiveTypeIds.subject)
-class _$SubjectImpl with ICalendarable, ParseLessons implements _Subject {
+class _$SubjectImpl with ParseLessons implements _Subject {
   _$SubjectImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) @DateTimeConverter() this.created,
       @HiveField(2) @DateTimeConverter() this.updated,
       @HiveField(3) required this.name,
-      @HiveField(4) required this.ice,
-      @HiveField(5) required this.isRemote,
-      @HiveField(6) required this.comment,
-      @HiveField(7) required this.isConditional,
-      @HiveField(8) required this.type,
-      @HiveField(9) required this.classroom,
-      @HiveField(10) required final List<LecturerBase> lecturers,
-      @HiveField(11) required final List<StudentGroup> groups,
-      @HiveField(12) required final List<LessonDef> lessons})
+      @HiveField(4) required this.isRemote,
+      @HiveField(5) required this.comment,
+      @HiveField(6) required this.isConditional,
+      @HiveField(7) required this.type,
+      @HiveField(8) required this.classroom,
+      @HiveField(9) required final List<LecturerBase> lecturers,
+      @HiveField(10) required final List<StudentGroup> groups,
+      @HiveField(11) required final List<LessonDef> lessons})
       : _lecturers = lecturers,
         _groups = groups,
         _lessons = lessons;
@@ -329,25 +314,22 @@ class _$SubjectImpl with ICalendarable, ParseLessons implements _Subject {
   final String name;
   @override
   @HiveField(4)
-  final String ice;
-  @override
-  @HiveField(5)
   final bool isRemote;
   @override
-  @HiveField(6)
+  @HiveField(5)
   final String comment;
   @override
-  @HiveField(7)
+  @HiveField(6)
   final bool isConditional;
   @override
-  @HiveField(8)
+  @HiveField(7)
   final SubjectType type;
   @override
-  @HiveField(9)
+  @HiveField(8)
   final Classroom classroom;
   final List<LecturerBase> _lecturers;
   @override
-  @HiveField(10)
+  @HiveField(9)
   List<LecturerBase> get lecturers {
     if (_lecturers is EqualUnmodifiableListView) return _lecturers;
     // ignore: implicit_dynamic_type
@@ -356,7 +338,7 @@ class _$SubjectImpl with ICalendarable, ParseLessons implements _Subject {
 
   final List<StudentGroup> _groups;
   @override
-  @HiveField(11)
+  @HiveField(10)
   List<StudentGroup> get groups {
     if (_groups is EqualUnmodifiableListView) return _groups;
     // ignore: implicit_dynamic_type
@@ -365,7 +347,7 @@ class _$SubjectImpl with ICalendarable, ParseLessons implements _Subject {
 
   final List<LessonDef> _lessons;
   @override
-  @HiveField(12)
+  @HiveField(11)
   List<LessonDef> get lessons {
     if (_lessons is EqualUnmodifiableListView) return _lessons;
     // ignore: implicit_dynamic_type
@@ -374,7 +356,7 @@ class _$SubjectImpl with ICalendarable, ParseLessons implements _Subject {
 
   @override
   String toString() {
-    return 'Subject(id: $id, created: $created, updated: $updated, name: $name, ice: $ice, isRemote: $isRemote, comment: $comment, isConditional: $isConditional, type: $type, classroom: $classroom, lecturers: $lecturers, groups: $groups, lessons: $lessons)';
+    return 'Subject(id: $id, created: $created, updated: $updated, name: $name, isRemote: $isRemote, comment: $comment, isConditional: $isConditional, type: $type, classroom: $classroom, lecturers: $lecturers, groups: $groups, lessons: $lessons)';
   }
 
   @override
@@ -386,7 +368,6 @@ class _$SubjectImpl with ICalendarable, ParseLessons implements _Subject {
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.ice, ice) || other.ice == ice) &&
             (identical(other.isRemote, isRemote) ||
                 other.isRemote == isRemote) &&
             (identical(other.comment, comment) || other.comment == comment) &&
@@ -409,7 +390,6 @@ class _$SubjectImpl with ICalendarable, ParseLessons implements _Subject {
       created,
       updated,
       name,
-      ice,
       isRemote,
       comment,
       isConditional,
@@ -433,21 +413,20 @@ class _$SubjectImpl with ICalendarable, ParseLessons implements _Subject {
   }
 }
 
-abstract class _Subject implements Subject, ICalendarable, ParseLessons {
+abstract class _Subject implements Subject, ParseLessons {
   factory _Subject(
       {@HiveField(0) required final String id,
       @HiveField(1) @DateTimeConverter() final DateTime? created,
       @HiveField(2) @DateTimeConverter() final DateTime? updated,
       @HiveField(3) required final String name,
-      @HiveField(4) required final String ice,
-      @HiveField(5) required final bool isRemote,
-      @HiveField(6) required final String comment,
-      @HiveField(7) required final bool isConditional,
-      @HiveField(8) required final SubjectType type,
-      @HiveField(9) required final Classroom classroom,
-      @HiveField(10) required final List<LecturerBase> lecturers,
-      @HiveField(11) required final List<StudentGroup> groups,
-      @HiveField(12) required final List<LessonDef> lessons}) = _$SubjectImpl;
+      @HiveField(4) required final bool isRemote,
+      @HiveField(5) required final String comment,
+      @HiveField(6) required final bool isConditional,
+      @HiveField(7) required final SubjectType type,
+      @HiveField(8) required final Classroom classroom,
+      @HiveField(9) required final List<LecturerBase> lecturers,
+      @HiveField(10) required final List<StudentGroup> groups,
+      @HiveField(11) required final List<LessonDef> lessons}) = _$SubjectImpl;
 
   factory _Subject.fromJson(Map<String, dynamic> json) = _$SubjectImpl.fromJson;
 
@@ -467,30 +446,27 @@ abstract class _Subject implements Subject, ICalendarable, ParseLessons {
   String get name;
   @override
   @HiveField(4)
-  String get ice;
-  @override
-  @HiveField(5)
   bool get isRemote;
   @override
-  @HiveField(6)
+  @HiveField(5)
   String get comment;
   @override
-  @HiveField(7)
+  @HiveField(6)
   bool get isConditional;
   @override
-  @HiveField(8)
+  @HiveField(7)
   SubjectType get type;
   @override
-  @HiveField(9)
+  @HiveField(8)
   Classroom get classroom;
   @override
-  @HiveField(10)
+  @HiveField(9)
   List<LecturerBase> get lecturers;
   @override
-  @HiveField(11)
+  @HiveField(10)
   List<StudentGroup> get groups;
   @override
-  @HiveField(12)
+  @HiveField(11)
   List<LessonDef> get lessons;
   @override
   @JsonKey(ignore: true)

@@ -13,24 +13,22 @@ part 'subject.freezed.dart';
 part 'subject.g.dart';
 
 @freezed
-class Subject with _$Subject, ObjectBase, ICalendarable, ParseLessons {
+class Subject with _$Subject, ObjectBase, ParseLessons {
   @HiveType(typeId: HiveTypeIds.subject)
-  @With<ICalendarable>()
   @With<ParseLessons>()
   factory Subject({
     @HiveField(0) required String id,
     @HiveField(1) @DateTimeConverter() DateTime? created,
     @HiveField(2) @DateTimeConverter() DateTime? updated,
     @HiveField(3) required String name,
-    @HiveField(4) required String ice,
-    @HiveField(5) required bool isRemote,
-    @HiveField(6) required String comment,
-    @HiveField(7) required bool isConditional,
-    @HiveField(8) required SubjectType type,
-    @HiveField(9) required Classroom classroom,
-    @HiveField(10) required List<LecturerBase> lecturers,
-    @HiveField(11) required List<StudentGroup> groups,
-    @HiveField(12) required List<LessonDef> lessons,
+    @HiveField(4) required bool isRemote,
+    @HiveField(5) required String comment,
+    @HiveField(6) required bool isConditional,
+    @HiveField(7) required SubjectType type,
+    @HiveField(8) required Classroom classroom,
+    @HiveField(9) required List<LecturerBase> lecturers,
+    @HiveField(10) required List<StudentGroup> groups,
+    @HiveField(11) required List<LessonDef> lessons,
   }) = _Subject;
 
   factory Subject.fromJson(Map<String, dynamic> json) =>

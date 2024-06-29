@@ -223,7 +223,6 @@ sealed class FakeGenerators {
         comment: comment ?? "Comment ${random.nextInt(100)}",
         lecturers: lecturers,
         isConditional: isConditional ?? random.nextBool(),
-        ice: ice ?? genICalendarDef(),
         type: type,
       );
 }

@@ -21,22 +21,21 @@ class SubjectImplAdapter extends TypeAdapter<_$SubjectImpl> {
       created: fields[1] as DateTime?,
       updated: fields[2] as DateTime?,
       name: fields[3] as String,
-      ice: fields[4] as String,
-      isRemote: fields[5] as bool,
-      comment: fields[6] as String,
-      isConditional: fields[7] as bool,
-      type: fields[8] as SubjectType,
-      classroom: fields[9] as Classroom,
-      lecturers: (fields[10] as List).cast<LecturerBase>(),
-      groups: (fields[11] as List).cast<StudentGroup>(),
-      lessons: (fields[12] as List).cast<LessonDef>(),
+      isRemote: fields[4] as bool,
+      comment: fields[5] as String,
+      isConditional: fields[6] as bool,
+      type: fields[7] as SubjectType,
+      classroom: fields[8] as Classroom,
+      lecturers: (fields[9] as List).cast<LecturerBase>(),
+      groups: (fields[10] as List).cast<StudentGroup>(),
+      lessons: (fields[11] as List).cast<LessonDef>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, _$SubjectImpl obj) {
     writer
-      ..writeByte(13)
+      ..writeByte(12)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -46,22 +45,20 @@ class SubjectImplAdapter extends TypeAdapter<_$SubjectImpl> {
       ..writeByte(3)
       ..write(obj.name)
       ..writeByte(4)
-      ..write(obj.ice)
-      ..writeByte(5)
       ..write(obj.isRemote)
-      ..writeByte(6)
+      ..writeByte(5)
       ..write(obj.comment)
-      ..writeByte(7)
+      ..writeByte(6)
       ..write(obj.isConditional)
-      ..writeByte(8)
+      ..writeByte(7)
       ..write(obj.type)
-      ..writeByte(9)
+      ..writeByte(8)
       ..write(obj.classroom)
-      ..writeByte(10)
+      ..writeByte(9)
       ..write(obj.lecturers)
-      ..writeByte(11)
+      ..writeByte(10)
       ..write(obj.groups)
-      ..writeByte(12)
+      ..writeByte(11)
       ..write(obj.lessons);
   }
 
@@ -134,7 +131,6 @@ _$SubjectImpl _$$SubjectImplFromJson(Map<String, dynamic> json) =>
       updated: _$JsonConverterFromJson<String, DateTime>(
           json['updated'], const DateTimeConverter().fromJson),
       name: json['name'] as String,
-      ice: json['ice'] as String,
       isRemote: json['isRemote'] as bool,
       comment: json['comment'] as String,
       isConditional: json['isConditional'] as bool,
@@ -159,7 +155,6 @@ Map<String, dynamic> _$$SubjectImplToJson(_$SubjectImpl instance) =>
       'updated': _$JsonConverterToJson<String, DateTime>(
           instance.updated, const DateTimeConverter().toJson),
       'name': instance.name,
-      'ice': instance.ice,
       'isRemote': instance.isRemote,
       'comment': instance.comment,
       'isConditional': instance.isConditional,
