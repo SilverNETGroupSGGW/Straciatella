@@ -26,7 +26,7 @@ class Lecturer with _$Lecturer, ObjectBase {
   }) = LecturerBase;
 
   @HiveType(typeId: HiveTypeIds.lecturer)
-  @With<WithLessonsData>()
+  @With<CollectLessonData>()
   factory Lecturer.ext({
     @HiveField(0) required String id,
     @HiveField(1) @DateTimeConverter() DateTime? created,

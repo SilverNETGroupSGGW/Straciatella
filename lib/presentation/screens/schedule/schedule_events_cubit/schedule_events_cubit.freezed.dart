@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ScheduleEventsState {
-  WithLessonsData? get schedule => throw _privateConstructorUsedError;
+  CollectLessonData? get schedule => throw _privateConstructorUsedError;
   bool get isFromCache => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $ScheduleEventsStateCopyWith<$Res> {
       _$ScheduleEventsStateCopyWithImpl<$Res, ScheduleEventsState>;
   @useResult
   $Res call(
-      {WithLessonsData? schedule,
+      {CollectLessonData? schedule,
       bool isFromCache,
       bool isLoading,
       Object? error,
@@ -65,7 +65,7 @@ class _$ScheduleEventsStateCopyWithImpl<$Res, $Val extends ScheduleEventsState>
       schedule: freezed == schedule
           ? _value.schedule
           : schedule // ignore: cast_nullable_to_non_nullable
-              as WithLessonsData?,
+              as CollectLessonData?,
       isFromCache: null == isFromCache
           ? _value.isFromCache
           : isFromCache // ignore: cast_nullable_to_non_nullable
@@ -92,7 +92,7 @@ abstract class _$$ScheduleEventsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {WithLessonsData? schedule,
+      {CollectLessonData? schedule,
       bool isFromCache,
       bool isLoading,
       Object? error,
@@ -120,7 +120,7 @@ class __$$ScheduleEventsStateImplCopyWithImpl<$Res>
       schedule: freezed == schedule
           ? _value.schedule
           : schedule // ignore: cast_nullable_to_non_nullable
-              as WithLessonsData?,
+              as CollectLessonData?,
       isFromCache: null == isFromCache
           ? _value.isFromCache
           : isFromCache // ignore: cast_nullable_to_non_nullable
@@ -150,7 +150,7 @@ class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
       : super._();
 
   @override
-  final WithLessonsData? schedule;
+  final CollectLessonData? schedule;
   @override
   @JsonKey()
   final bool isFromCache;
@@ -196,7 +196,7 @@ class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
 
 abstract class _ScheduleEventsState extends ScheduleEventsState {
   const factory _ScheduleEventsState(
-          {final WithLessonsData? schedule,
+          {final CollectLessonData? schedule,
           final bool isFromCache,
           final bool isLoading,
           final Object? error,
@@ -205,7 +205,7 @@ abstract class _ScheduleEventsState extends ScheduleEventsState {
   const _ScheduleEventsState._() : super._();
 
   @override
-  WithLessonsData? get schedule;
+  CollectLessonData? get schedule;
   @override
   bool get isFromCache;
   @override

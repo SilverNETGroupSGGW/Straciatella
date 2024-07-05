@@ -13,9 +13,9 @@ part 'subject.freezed.dart';
 part 'subject.g.dart';
 
 @freezed
-class Subject with _$Subject, ObjectBase, ParseLessons {
+class Subject with _$Subject, ObjectBase, CreateLessons {
   @HiveType(typeId: HiveTypeIds.subject)
-  @With<ParseLessons>()
+  @With<CreateLessons>()
   factory Subject({
     @HiveField(0) required String id,
     @HiveField(1) @DateTimeConverter() DateTime? created,

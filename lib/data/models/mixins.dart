@@ -8,7 +8,7 @@ import 'package:silvertimetable/data/models/lesson_data/lesson_data.dart';
 import 'package:silvertimetable/data/models/lesson_def/lesson_def.dart';
 import 'package:silvertimetable/data/models/study_program/study_program.dart';
 
-mixin ICalendarable {
+mixin ParseICalendar {
   ICalendar? _calendarCache;
   String get ice;
 
@@ -22,9 +22,9 @@ mixin ICalendarable {
 /// The lessons can be acceses via getLessonsDataForDay(day) method.
 ///
 /// _lessonsData is sorted
-mixin WithLessonsData {
+mixin CollectLessonData {
   final Map<Day, List<LessonData>> _lessonsData = {};
-  final HashSet<Day> sortedDays = HashSet();
+  final HashSet<Day> _sortedDays = HashSet();
   bool _didCollect = false;
   (Day, Day)? _timeSpan;
   List<StudyProgramExt> get studyPrograms;
@@ -68,23 +68,22 @@ mixin WithLessonsData {
   List<LessonData> getLessonsDataForDay(Day day) {
     collectLessonsData();
 
-    if (_lessonsData.containsKey(day) && !sortedDays.contains(day)) {
+    if (_lessonsData.containsKey(day) && !_sortedDays.contains(day)) {
       _lessonsData[day]!.sort(
         (a, b) => a.lesson.startTime.compareTo(b.lesson.startTime),
       );
 
-      sortedDays.add(day);
+      _sortedDays.add(day);
     }
 
     return _lessonsData[day] ?? [];
   }
 }
 
-/// Parses all found lessons with iCalendar data and adds them as Lesson objects to the _lessonsCache map.
-/// The lessons can be acceses via getLessonsForDay(day) method.
+/// Creates all found lessons with iCalendar data and adds them as Lesson objects to the lessonsCache map.
 ///
-/// _lessonsCache is not sorted
-mixin ParseLessons {
+/// lessonsCache is not sorted
+mixin CreateLessons {
   final Map<Day, List<Lesson>> lessonsCache = {};
   bool _didParse = false;
   (Day, Day)? _timeSpan;
@@ -111,15 +110,14 @@ mixin ParseLessons {
             (event['dtstart'] as IcsDateTime).toDateTime()!.toUtc();
         final endTime = (event['dtend'] as IcsDateTime).toDateTime()!.toUtc();
         final duration = event['duration'] as Duration? ?? Duration.zero;
-        final rruleStr = event['rrule'] as String?;
+        final rrule = event['rrule'] as RecurrenceRule?;
 
         _timeSpan = mergeTimespans(
           _timeSpan,
           (startTime.toDay(), endTime.toDay()),
         );
 
-        if (rruleStr != null) {
-          final rrule = RecurrenceRule.fromString("RRULE:$rruleStr");
+        if (rrule != null) {
           final occurrences = rrule.getInstances(
             start: startTime,
             before: endTime,

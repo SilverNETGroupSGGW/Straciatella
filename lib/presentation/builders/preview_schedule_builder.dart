@@ -8,7 +8,7 @@ import 'package:silvertimetable/data/types.dart';
 class PreviewScheduleBuilder extends StatelessWidget {
   final Widget Function(
     BuildContext context,
-    AsyncSnapshot<WithLessonsData> schedule,
+    AsyncSnapshot<CollectLessonData> schedule,
   ) builder;
   final ScheduleKey scheduleKey;
 
@@ -21,11 +21,11 @@ class PreviewScheduleBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final repo = GetIt.instance.get<SggwHubRepo>();
-    return FutureBuilder<WithLessonsData>(
+    return FutureBuilder<CollectLessonData>(
       future: switch (scheduleKey.type) {
         ScheduleType.studyProgram => repo.getStudyProgram(scheduleKey.id),
         ScheduleType.lecturer => repo.getLecturer(scheduleKey.id),
-      } as Future<WithLessonsData>,
+      } as Future<CollectLessonData>,
       builder: builder,
     );
   }

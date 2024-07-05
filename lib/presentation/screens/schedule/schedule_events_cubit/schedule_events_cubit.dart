@@ -32,7 +32,7 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
         scheduleManagerState.cachedLecturers[scheduleKey.id],
       ScheduleType.studyProgram =>
         scheduleManagerState.cachedStudyPrograms[scheduleKey.id],
-    } as WithLessonsData?;
+    } as CollectLessonData?;
     if (desiredSchedule != null) {
       emit(
         ScheduleEventsState(
@@ -53,7 +53,7 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
     final apiReq = switch (scheduleKey.type) {
       ScheduleType.lecturer => _sggwHubRepo.getLecturer(scheduleKey.id),
       ScheduleType.studyProgram => _sggwHubRepo.getStudyProgram(scheduleKey.id),
-    } as Future<WithLessonsData>;
+    } as Future<CollectLessonData>;
 
     await apiReq.then((schedule) {
       emit(

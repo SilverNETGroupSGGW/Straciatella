@@ -10,7 +10,7 @@ part 'lesson_def.freezed.dart';
 part 'lesson_def.g.dart';
 
 @freezed
-class LessonDef with _$LessonDef, ObjectBase, ICalendarable {
+class LessonDef with _$LessonDef, ObjectBase, ParseICalendar {
   @HiveType(typeId: HiveTypeIds.lessonDef)
   factory LessonDef({
     @HiveField(0) required String id,
