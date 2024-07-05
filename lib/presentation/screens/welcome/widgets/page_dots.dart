@@ -48,7 +48,7 @@ class PageDots extends StatelessWidget {
             effect: WormEffect(
               dotHeight: 8,
               dotWidth: 8,
-              dotColor: Theme.of(context).colorScheme.onBackground,
+              dotColor: Theme.of(context).colorScheme.onSurface,
               activeDotColor: Theme.of(context).colorScheme.primary,
             ),
           ),

@@ -34,7 +34,7 @@ class ScheduleScreen extends StatelessWidget {
       child: BlocBuilder<ScheduleEventsCubit, ScheduleEventsState>(
         builder: (context, state) {
           return switch ((
-            state.events.isEmpty,
+            state.schedule?.getTimeSpan() == null,
             state.isLoading,
             state.hasError
           )) {

@@ -1,5 +1,6 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -9,6 +10,7 @@ import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/fakes/sggw_hub_repo_fake.dart';
 import 'package:silvertimetable/data/register_adapters.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
+import 'package:silvertimetable/icalendar_extra_fields.dart';
 import 'package:silvertimetable/logic/register_adapters.dart';
 import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 import 'package:silvertimetable/providers_tree.dart';
@@ -16,13 +18,19 @@ import 'package:silvertimetable/router.dart';
 import 'package:silvertimetable/themes/themes.dart';
 
 void main() async {
+  registerICalendarFields();
+
   WidgetsFlutterBinding.ensureInitialized();
 
-  GetIt.instance.registerSingleton<SggwHubRepo>(FakeSggwHubRepo());
+  GetIt.instance.registerSingleton<SggwHubRepo>(
+    kDebugMode ? FakeSggwHubRepo() : SggwHubRepo(),
+  );
 
   await Hive.initFlutter();
   registerLogicDataAdapters();
   registerDataAdapters();
+
+  Hive.deleteBoxFromDisk(hiveBoxName);
   await Hive.openBox(hiveBoxName);
 
   await EasyLocalization.ensureInitialized();

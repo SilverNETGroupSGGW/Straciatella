@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:silvertimetable/data/fakes/mock_jsons.dart';
+import 'package:silvertimetable/data/fakes/fakes.dart';
 import 'package:silvertimetable/data/models/enums.dart';
-import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
-import 'package:silvertimetable/data/models/schedule/schedule.dart';
-import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
 import 'package:silvertimetable/logic/notifier/notifier.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
-import 'package:silvertimetable/presentation/models/schedule_event/schedule_event.dart';
-import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_lecturer_schedule.dart';
 import 'package:silvertimetable/presentation/screens/debug/widgets/go_to_mock_schedule.dart';
 import 'package:silvertimetable/presentation/screens/new_schedule/new_schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
-import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/lesson/lesson_tile.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_screens/schedule_events_empty_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_screens/schedule_events_error_screen.dart';
@@ -41,7 +35,10 @@ class DebugScreen extends StatelessWidget {
                 builder: (context) => BlocProvider(
                   create: (context) => ScheduleEventsCubit(
                     context.read<ScheduleManagerBloc>(),
-                    mockScheduleKey,
+                    (
+                      id: fakeStudyProgramsBase.first.id,
+                      type: ScheduleType.studyProgram
+                    ),
                   ),
                   child: const ScheduleEventsLoadingScreen(),
                 ),
@@ -56,7 +53,10 @@ class DebugScreen extends StatelessWidget {
                 builder: (context) => BlocProvider(
                   create: (context) => ScheduleEventsCubit(
                     context.read<ScheduleManagerBloc>(),
-                    mockScheduleKey,
+                    (
+                      id: fakeStudyProgramsBase.first.id,
+                      type: ScheduleType.studyProgram
+                    ),
                   ),
                   child: const ScheduleEventsErrorScreen(),
                 ),
@@ -71,7 +71,10 @@ class DebugScreen extends StatelessWidget {
                 builder: (context) => BlocProvider(
                   create: (context) => ScheduleEventsCubit(
                     context.read<ScheduleManagerBloc>(),
-                    mockScheduleKey,
+                    (
+                      id: fakeStudyProgramsBase.first.id,
+                      type: ScheduleType.studyProgram
+                    ),
                   ),
                   child: const ScheduleEventsEmptyScreen(),
                 ),
@@ -84,13 +87,23 @@ class DebugScreen extends StatelessWidget {
           const CategoryLabel(text: "Screens"),
           const ShowScheduleErrorScreen(),
           const ShowWelcomeScreen(),
-          const ShowMockScheduleScreen(),
-          const ShowMockLecturerScheduleScreen(),
+          ShowMockScheduleScreen(
+            mockScheduleKey: (
+              id: fakeStudyProgramsBase.first.id,
+              type: ScheduleType.studyProgram
+            ),
+          ),
+          ShowMockScheduleScreen(
+            mockScheduleKey: (
+              id: fakeLecturersBase.first.id,
+              type: ScheduleType.lecturer
+            ),
+          ),
           const CategoryLabel(text: "Cards"),
           const Text("Pierwszy concept by Kuba"),
           const TestOldLessonTile(),
-          const TestStudentEventTile(),
-          const TestLecturerEventTile(),
+          // const TestStudentEventTile(),
+          // const TestLecturerEventTile(),
           const ShowFilterNewScheduleScreen(),
           const ShowNewLecturerFilterScreen(),
           const CategoryLabel(text: "Toasts"),
@@ -200,36 +213,36 @@ class TestToast extends StatelessWidget {
   }
 }
 
-class TestLecturerEventTile extends StatelessWidget {
-  const TestLecturerEventTile({
-    super.key,
-  });
+// class TestLecturerEventTile extends StatelessWidget {
+//   const TestLecturerEventTile({
+//     super.key,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return ScheduleEventTile(
-      event: ScheduleEvent.convertFromSchedule(
-        Lecturer.fromJson(mockLecturer),
-      ).entries.first.value.first,
-      mode: ScheduleViewMode.lecturer,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return LessonDataTile(
+//       lessonData: LessonData.convertFromSchedule(
+//         Lecturer.fromJson(mockLecturer),
+//       ).entries.first.value.first,
+//       mode: ScheduleViewMode.lecturer,
+//     );
+//   }
+// }
 
-class TestStudentEventTile extends StatelessWidget {
-  const TestStudentEventTile({
-    super.key,
-  });
+// class TestStudentEventTile extends StatelessWidget {
+//   const TestStudentEventTile({
+//     super.key,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return ScheduleEventTile(
-      event: ScheduleEvent.convertFromSchedule(
-        Schedule.fromJson(mockSchedule),
-      ).entries.first.value.first,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return LessonDataTile(
+//       lessonData: LessonData.convertFromSchedule(
+//         StudyProgram.fromJson(mockSchedule),
+//       ).entries.first.value.first,
+//     );
+//   }
+// }
 
 class TestOldLessonTile extends StatelessWidget {
   const TestOldLessonTile({
@@ -287,7 +300,7 @@ class ShowFilterNewScheduleScreen extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => NewScheduleScreen(
-              filterType: ScheduleType.schedule,
+              filterType: ScheduleType.studyProgram,
             ),
           ),
         ).then((value) => Notifier.customNotification("Picked: $value"));
@@ -325,7 +338,10 @@ class ShowScheduleErrorScreen extends StatelessWidget {
           builder: (context) => BlocProvider(
             create: (context) => ScheduleEventsCubit(
               context.read<ScheduleManagerBloc>(),
-              mockScheduleKey,
+              (
+                id: fakeStudyProgramsBase.first.id,
+                type: ScheduleType.studyProgram
+              ),
             ),
             child: const ScheduleEventsErrorScreen(),
           ),

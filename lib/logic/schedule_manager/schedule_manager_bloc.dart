@@ -9,13 +9,10 @@ import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
-import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
-import 'package:silvertimetable/data/models/mixins.dart';
-import 'package:silvertimetable/data/models/options_tree/lecturers_tree.dart';
+import 'package:silvertimetable/data/models/options_tree/lecturer_tree.dart';
 import 'package:silvertimetable/data/models/options_tree/options_tree_node.dart';
-import 'package:silvertimetable/data/models/options_tree/schedules_tree.dart';
-import 'package:silvertimetable/data/models/schedule/schedule.dart';
-import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
+import 'package:silvertimetable/data/models/options_tree/study_program_tree.dart';
+import 'package:silvertimetable/data/models/study_program/study_program.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
 import 'package:silvertimetable/data/types.dart';
 
@@ -33,8 +30,11 @@ class ScheduleManagerBloc
   @override
   void onChange(Change<ScheduleManagerState> change) {
     super.onChange(change);
-    if (change.currentState.schedules != change.nextState.schedules) {
-      box.put(boxKey, change.nextState.asHivable());
+    if (change.currentState.cachedLecturers !=
+            change.nextState.cachedLecturers ||
+        change.currentState.cachedStudyPrograms !=
+            change.nextState.cachedStudyPrograms) {
+      box.put(boxKey, change.nextState);
     }
   }
 
@@ -43,10 +43,18 @@ class ScheduleManagerBloc
 
     on<_Init>((event, emit) {
       try {
-        final ScheduleManagerHiveState? loadedState =
-            box.get(boxKey) as ScheduleManagerHiveState?;
+        final ScheduleManagerState? loadedState =
+            box.get(boxKey) as ScheduleManagerState?;
         if (loadedState != null) {
-          emit(loadedState.asNormalState());
+          emit(
+            loadedState.copyWith(
+              studyProgramsOptionsTree: createStudyProgramOptionsTree(
+                loadedState.studyProgramsIndex.values,
+              ),
+              lecturersOptionsTree:
+                  createLecturerOptionsTree(loadedState.lecturersIndex.values),
+            ),
+          );
         }
       } catch (e) {
         if (kDebugMode) {
@@ -56,11 +64,15 @@ class ScheduleManagerBloc
       }
     });
     // * setters
-    on<_SetIndex>((event, emit) => setIndex(event.index, emit));
+    on<_SetIndex>(
+      (event, emit) => setIndex(event.studyPrograms, event.lecturers, emit),
+    );
 
-    on<_SetSchedule>((event, emit) => setSchedule(event.schedule, emit));
+    on<_CacheStudyProgram>(
+      (event, emit) => setStudyProgram(event.studyProgram, emit),
+    );
 
-    on<_SetLecturer>((event, emit) => setLecturer(event.lecturer, emit));
+    on<_CacheLecturer>((event, emit) => setLecturer(event.lecturer, emit));
 
     on<_RemoveSchedule>((event, emit) => removeSchedule(event.schedule, emit));
 
@@ -79,36 +91,22 @@ class ScheduleManagerBloc
 
         flagLoadingScheduleIndex(emit);
         try {
-          final Map<ScheduleKey, BaseSchedule> index =
-              await _sggwHubRepo.getSchedulesIndex().then(
-                    (value) => Map.fromIterable(
-                      value,
-                      key: (e) {
-                        if (e is LecturerBase) {
-                          return (type: ScheduleType.lecturer, id: e.id);
-                        }
-                        return (
-                          type: ScheduleType.schedule,
-                          id: (e as ScheduleBase).id
-                        );
-                      },
-                      value: (e) => e as BaseSchedule,
-                    ),
-                  );
+          final List<StudyProgramBase> studyPrograms =
+              await _sggwHubRepo.getStudyPrograms();
+          final List<LecturerBase> lecturers =
+              await _sggwHubRepo.getLecturers();
           if (emit.isDone) {
             unflagLoadingScheduleIndex(emit);
             return;
           }
           emit(
             state.copyWith(
-              schedulesIndex: index,
               refreshingIndex: false,
-              lecturersOptionsTree: createLecturerOptionsTree(
-                index.values.whereType<LecturerBase>(),
-              ),
-              schedulesOptionsTree: createScheduleOptionsTree(
-                index.values.whereType<ScheduleBase>(),
-              ),
+              studyProgramsIndex: {for (final v in studyPrograms) v.id: v},
+              lecturersIndex: {for (final v in lecturers) v.id: v},
+              studyProgramsOptionsTree:
+                  createStudyProgramOptionsTree(studyPrograms),
+              lecturersOptionsTree: createLecturerOptionsTree(lecturers),
             ),
           );
         } catch (ex) {
@@ -122,9 +120,9 @@ class ScheduleManagerBloc
       transformer: restartable(),
     );
 
-    on<_UpdateSchedule>(
+    on<_UpdateStudyProgram>(
       (event, emit) async {
-        final ScheduleKey key = (type: ScheduleType.schedule, id: event.id);
+        final ScheduleKey key = (type: ScheduleType.studyProgram, id: event.id);
         // TODO: move this if block to transformer
         if (state.refreshing.contains(key)) {
           // already fetching newest data for this schedule
@@ -133,16 +131,17 @@ class ScheduleManagerBloc
 
         flagLoadingSchedule(emit, key);
         try {
-          final Schedule schedule = await _sggwHubRepo.getSchedule(event.id);
+          final StudyProgramExt schedule =
+              await _sggwHubRepo.getStudyProgram(event.id);
           if (emit.isDone) {
             unflagLoadingSchedule(emit, key);
             return;
           }
           emit(
             state.copyWith(
-              schedules: Map.from(state.schedules)
+              cachedStudyPrograms: Map.from(state.cachedStudyPrograms)
                 ..update(
-                  (type: ScheduleType.schedule, id: schedule.id),
+                  schedule.id,
                   (value) => schedule,
                   ifAbsent: () => schedule,
                 ),
@@ -171,16 +170,16 @@ class ScheduleManagerBloc
 
         flagLoadingSchedule(emit, key);
         try {
-          final Lecturer lecturer = await _sggwHubRepo.getLecturer(event.id);
+          final LecturerExt lecturer = await _sggwHubRepo.getLecturer(event.id);
           if (emit.isDone) {
             unflagLoadingSchedule(emit, key);
             return;
           }
           emit(
             state.copyWith(
-              schedules: Map.from(state.schedules)
+              cachedLecturers: Map.from(state.cachedLecturers)
                 ..update(
-                  (type: ScheduleType.lecturer, id: lecturer.id),
+                  lecturer.id,
                   (value) => lecturer,
                   ifAbsent: () => lecturer,
                 ),
@@ -203,12 +202,22 @@ class ScheduleManagerBloc
     ScheduleKey schedule,
     Emitter<ScheduleManagerState> emit,
   ) {
-    emit(
-      state.copyWith(
-        schedules: Map.from(state.schedules)..remove(schedule),
-        refreshing: Set.from(state.refreshing)..remove(schedule),
-      ),
-    );
+    if (schedule.type == ScheduleType.lecturer) {
+      emit(
+        state.copyWith(
+          cachedLecturers: Map.from(state.cachedLecturers)..remove(schedule.id),
+          refreshing: Set.from(state.refreshing)..remove(schedule),
+        ),
+      );
+    } else if (schedule.type == ScheduleType.studyProgram) {
+      emit(
+        state.copyWith(
+          cachedStudyPrograms: Map.from(state.cachedStudyPrograms)
+            ..remove(schedule.id),
+          refreshing: Set.from(state.refreshing)..remove(schedule),
+        ),
+      );
+    }
   }
 
   void flagLoadingSchedule(
@@ -250,47 +259,45 @@ class ScheduleManagerBloc
   }
 
   FutureOr<void> setIndex(
-    BaseScheduleCacheMap index,
+    List<StudyProgramBase> studyPrograms,
+    List<LecturerBase> lecturers,
     Emitter<ScheduleManagerState> emit,
   ) {
     emit(
       state.copyWith(
-        schedulesIndex: index,
-        lecturersOptionsTree: createLecturerOptionsTree(
-          index.values.whereType<LecturerBase>(),
-        ),
-        schedulesOptionsTree: createScheduleOptionsTree(
-          index.values.whereType<ScheduleBase>(),
-        ),
+        studyProgramsIndex: {for (final v in studyPrograms) v.id: v},
+        lecturersIndex: {for (final v in lecturers) v.id: v},
+        studyProgramsOptionsTree: createStudyProgramOptionsTree(studyPrograms),
+        lecturersOptionsTree: createLecturerOptionsTree(lecturers),
       ),
     );
   }
 
-  FutureOr<void> setSchedule(
-    Schedule schedule,
+  FutureOr<void> setStudyProgram(
+    StudyProgramExt studyProgram,
     Emitter<ScheduleManagerState> emit,
   ) {
     emit(
       state.copyWith(
-        schedules: Map.from(state.schedules)
+        cachedStudyPrograms: Map.from(state.cachedStudyPrograms)
           ..update(
-            (type: ScheduleType.schedule, id: schedule.id),
-            (value) => schedule,
-            ifAbsent: () => schedule,
+            studyProgram.id,
+            (value) => studyProgram,
+            ifAbsent: () => studyProgram,
           ),
       ),
     );
   }
 
   FutureOr<void> setLecturer(
-    Lecturer lecturer,
+    LecturerExt lecturer,
     Emitter<ScheduleManagerState> emit,
   ) {
     emit(
       state.copyWith(
-        schedules: Map.from(state.schedules)
+        cachedLecturers: Map.from(state.cachedLecturers)
           ..update(
-            (type: ScheduleType.lecturer, id: lecturer.id),
+            lecturer.id,
             (value) => lecturer,
             ifAbsent: () => lecturer,
           ),

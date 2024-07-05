@@ -15,7 +15,7 @@ class UserChoicesCubit extends Cubit<UserChoicesState> {
         scheduleManagerBloc.stream.listen((event) {
       final newPickedKeys = [];
       if (state.pickedKeys.isNotEmpty) {
-        OptionsTreeNode? currentLevel = event.schedulesOptionsTree;
+        OptionsTreeNode? currentLevel = event.studyProgramsOptionsTree;
 
         while (currentLevel != null) {
           final levelChoice = state.pickedKeys[newPickedKeys.length];

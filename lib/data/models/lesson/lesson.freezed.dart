@@ -14,30 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Lesson _$LessonFromJson(Map<String, dynamic> json) {
-  return _Lesson.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Lesson {
-  @HiveField(0)
-  String get id => throw _privateConstructorUsedError;
-  @HiveField(1)
-  @DateTimeConverter()
-  DateTime? get created => throw _privateConstructorUsedError;
-  @HiveField(2)
-  @DateTimeConverter()
-  DateTime? get updated => throw _privateConstructorUsedError;
-  @HiveField(3)
-  int get numberOfLesson => throw _privateConstructorUsedError;
-  @HiveField(4)
-  @DateTimeConverter()
   DateTime get startTime => throw _privateConstructorUsedError;
-  @HiveField(5)
-  @ApiDurationConverter()
   Duration get duration => throw _privateConstructorUsedError;
+  Classroom? get classroom => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LessonCopyWith<Lesson> get copyWith => throw _privateConstructorUsedError;
 }
@@ -47,13 +29,9 @@ abstract class $LessonCopyWith<$Res> {
   factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
       _$LessonCopyWithImpl<$Res, Lesson>;
   @useResult
-  $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) @DateTimeConverter() DateTime? created,
-      @HiveField(2) @DateTimeConverter() DateTime? updated,
-      @HiveField(3) int numberOfLesson,
-      @HiveField(4) @DateTimeConverter() DateTime startTime,
-      @HiveField(5) @ApiDurationConverter() Duration duration});
+  $Res call({DateTime startTime, Duration duration, Classroom? classroom});
+
+  $ClassroomCopyWith<$Res>? get classroom;
 }
 
 /// @nodoc
@@ -69,30 +47,11 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = freezed,
-    Object? updated = freezed,
-    Object? numberOfLesson = null,
     Object? startTime = null,
     Object? duration = null,
+    Object? classroom = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: freezed == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updated: freezed == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      numberOfLesson: null == numberOfLesson
-          ? _value.numberOfLesson
-          : numberOfLesson // ignore: cast_nullable_to_non_nullable
-              as int,
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
@@ -101,7 +60,23 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      classroom: freezed == classroom
+          ? _value.classroom
+          : classroom // ignore: cast_nullable_to_non_nullable
+              as Classroom?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ClassroomCopyWith<$Res>? get classroom {
+    if (_value.classroom == null) {
+      return null;
+    }
+
+    return $ClassroomCopyWith<$Res>(_value.classroom!, (value) {
+      return _then(_value.copyWith(classroom: value) as $Val);
+    });
   }
 }
 
@@ -112,13 +87,10 @@ abstract class _$$LessonImplCopyWith<$Res> implements $LessonCopyWith<$Res> {
       __$$LessonImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) @DateTimeConverter() DateTime? created,
-      @HiveField(2) @DateTimeConverter() DateTime? updated,
-      @HiveField(3) int numberOfLesson,
-      @HiveField(4) @DateTimeConverter() DateTime startTime,
-      @HiveField(5) @ApiDurationConverter() Duration duration});
+  $Res call({DateTime startTime, Duration duration, Classroom? classroom});
+
+  @override
+  $ClassroomCopyWith<$Res>? get classroom;
 }
 
 /// @nodoc
@@ -132,30 +104,11 @@ class __$$LessonImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = freezed,
-    Object? updated = freezed,
-    Object? numberOfLesson = null,
     Object? startTime = null,
     Object? duration = null,
+    Object? classroom = freezed,
   }) {
     return _then(_$LessonImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: freezed == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updated: freezed == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      numberOfLesson: null == numberOfLesson
-          ? _value.numberOfLesson
-          : numberOfLesson // ignore: cast_nullable_to_non_nullable
-              as int,
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
@@ -164,52 +117,32 @@ class __$$LessonImplCopyWithImpl<$Res>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      classroom: freezed == classroom
+          ? _value.classroom
+          : classroom // ignore: cast_nullable_to_non_nullable
+              as Classroom?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-@HiveType(typeId: HiveTypeIds.lesson, adapterName: "LessonAdapter")
-class _$LessonImpl extends _Lesson {
+
+class _$LessonImpl implements _Lesson {
   _$LessonImpl(
-      {@HiveField(0) required this.id,
-      @HiveField(1) @DateTimeConverter() this.created,
-      @HiveField(2) @DateTimeConverter() this.updated,
-      @HiveField(3) required this.numberOfLesson,
-      @HiveField(4) @DateTimeConverter() required this.startTime,
-      @HiveField(5) @ApiDurationConverter() required this.duration})
-      : super._();
-
-  factory _$LessonImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LessonImplFromJson(json);
+      {required this.startTime,
+      required this.duration,
+      required this.classroom});
 
   @override
-  @HiveField(0)
-  final String id;
-  @override
-  @HiveField(1)
-  @DateTimeConverter()
-  final DateTime? created;
-  @override
-  @HiveField(2)
-  @DateTimeConverter()
-  final DateTime? updated;
-  @override
-  @HiveField(3)
-  final int numberOfLesson;
-  @override
-  @HiveField(4)
-  @DateTimeConverter()
   final DateTime startTime;
   @override
-  @HiveField(5)
-  @ApiDurationConverter()
   final Duration duration;
+  @override
+  final Classroom? classroom;
 
   @override
   String toString() {
-    return 'Lesson(id: $id, created: $created, updated: $updated, numberOfLesson: $numberOfLesson, startTime: $startTime, duration: $duration)';
+    return 'Lesson(startTime: $startTime, duration: $duration, classroom: $classroom)';
   }
 
   @override
@@ -217,72 +150,36 @@ class _$LessonImpl extends _Lesson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LessonImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.numberOfLesson, numberOfLesson) ||
-                other.numberOfLesson == numberOfLesson) &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
             (identical(other.duration, duration) ||
-                other.duration == duration));
+                other.duration == duration) &&
+            (identical(other.classroom, classroom) ||
+                other.classroom == classroom));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, created, updated, numberOfLesson, startTime, duration);
+  int get hashCode => Object.hash(runtimeType, startTime, duration, classroom);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>
       __$$LessonImplCopyWithImpl<_$LessonImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LessonImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _Lesson extends Lesson {
+abstract class _Lesson implements Lesson {
   factory _Lesson(
-      {@HiveField(0) required final String id,
-      @HiveField(1) @DateTimeConverter() final DateTime? created,
-      @HiveField(2) @DateTimeConverter() final DateTime? updated,
-      @HiveField(3) required final int numberOfLesson,
-      @HiveField(4) @DateTimeConverter() required final DateTime startTime,
-      @HiveField(5)
-      @ApiDurationConverter()
-      required final Duration duration}) = _$LessonImpl;
-  _Lesson._() : super._();
-
-  factory _Lesson.fromJson(Map<String, dynamic> json) = _$LessonImpl.fromJson;
+      {required final DateTime startTime,
+      required final Duration duration,
+      required final Classroom? classroom}) = _$LessonImpl;
 
   @override
-  @HiveField(0)
-  String get id;
-  @override
-  @HiveField(1)
-  @DateTimeConverter()
-  DateTime? get created;
-  @override
-  @HiveField(2)
-  @DateTimeConverter()
-  DateTime? get updated;
-  @override
-  @HiveField(3)
-  int get numberOfLesson;
-  @override
-  @HiveField(4)
-  @DateTimeConverter()
   DateTime get startTime;
   @override
-  @HiveField(5)
-  @ApiDurationConverter()
   Duration get duration;
+  @override
+  Classroom? get classroom;
   @override
   @JsonKey(ignore: true)
   _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>

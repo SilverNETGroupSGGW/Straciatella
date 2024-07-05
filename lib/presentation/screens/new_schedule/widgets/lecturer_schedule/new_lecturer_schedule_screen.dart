@@ -15,7 +15,7 @@ class NewLecturerScheduleScreen extends StatelessWidget {
       ),
       body: BlocBuilder<ScheduleManagerBloc, ScheduleManagerState>(
         builder: (context, state) {
-          if (state.schedulesIndex.isEmpty) {
+          if (state.studyProgramsIndex.isEmpty) {
             return SchedulesLoading();
           }
           if (state.refreshingIndex) {

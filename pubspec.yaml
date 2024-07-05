@@ -33,10 +33,12 @@ dependencies:
   hive: ^2.0.4
   hive_flutter: ^1.1.0
   hive_generator: ^2.0.1
-  json_annotation: ^4.8.1
+  icalendar_parser: ^2.0.0
+  json_annotation: ^4.9.0
   material_symbols_icons: ^4.2719.1
   mockito: ^5.4.4
   package_info_plus: ^8.0.0
+  rrule: ^0.2.16
   smooth_page_indicator: ^1.1.0
   url_launcher: ^6.2.2
   uuid: ^4.2.1

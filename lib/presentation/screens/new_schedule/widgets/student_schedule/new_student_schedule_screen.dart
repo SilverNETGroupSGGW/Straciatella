@@ -13,7 +13,7 @@ class NewStudentScheduleScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(title: Text('new_filter_title'.tr())),
-          body: state.schedulesOptionsTree == null
+          body: state.studyProgramsOptionsTree == null
               ? SchedulesLoading()
               : state.refreshingIndex
                   ? const Column(
@@ -24,7 +24,7 @@ class NewStudentScheduleScreen extends StatelessWidget {
                       ],
                     )
                   : const StudentSchedulesStack(),
-          bottomNavigationBar: state.schedulesOptionsTree != null
+          bottomNavigationBar: state.studyProgramsOptionsTree != null
               ? StudentScheduleBottomAppBar()
               : null,
         );

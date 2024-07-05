@@ -6,5 +6,5 @@ import 'package:silvertimetable/logic/settings/settings_cubit.dart';
 void registerLogicDataAdapters() {
   Hive.registerAdapter(FavedSchedulesStateAdapter());
   Hive.registerAdapter(SettingsStateAdapter());
-  Hive.registerAdapter(ScheduleManagerHiveStateAdapter());
+  Hive.registerAdapter(ScheduleManagerStateImplAdapter());
 }

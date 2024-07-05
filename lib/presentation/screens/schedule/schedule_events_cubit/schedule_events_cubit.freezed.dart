@@ -16,12 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ScheduleEventsState {
-  Map<DateTime, List<ScheduleEvent>> get events =>
-      throw _privateConstructorUsedError;
-  ExtendedSchedule? get fromSchedule => throw _privateConstructorUsedError;
+  CollectLessonData? get schedule => throw _privateConstructorUsedError;
   bool get isFromCache => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
+  ({String id, ScheduleType type}) get key =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ScheduleEventsStateCopyWith<ScheduleEventsState> get copyWith =>
@@ -35,11 +35,11 @@ abstract class $ScheduleEventsStateCopyWith<$Res> {
       _$ScheduleEventsStateCopyWithImpl<$Res, ScheduleEventsState>;
   @useResult
   $Res call(
-      {Map<DateTime, List<ScheduleEvent>> events,
-      ExtendedSchedule? fromSchedule,
+      {CollectLessonData? schedule,
       bool isFromCache,
       bool isLoading,
-      Object? error});
+      Object? error,
+      ({String id, ScheduleType type}) key});
 }
 
 /// @nodoc
@@ -55,21 +55,17 @@ class _$ScheduleEventsStateCopyWithImpl<$Res, $Val extends ScheduleEventsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? events = null,
-    Object? fromSchedule = freezed,
+    Object? schedule = freezed,
     Object? isFromCache = null,
     Object? isLoading = null,
     Object? error = freezed,
+    Object? key = null,
   }) {
     return _then(_value.copyWith(
-      events: null == events
-          ? _value.events
-          : events // ignore: cast_nullable_to_non_nullable
-              as Map<DateTime, List<ScheduleEvent>>,
-      fromSchedule: freezed == fromSchedule
-          ? _value.fromSchedule
-          : fromSchedule // ignore: cast_nullable_to_non_nullable
-              as ExtendedSchedule?,
+      schedule: freezed == schedule
+          ? _value.schedule
+          : schedule // ignore: cast_nullable_to_non_nullable
+              as CollectLessonData?,
       isFromCache: null == isFromCache
           ? _value.isFromCache
           : isFromCache // ignore: cast_nullable_to_non_nullable
@@ -79,6 +75,10 @@ class _$ScheduleEventsStateCopyWithImpl<$Res, $Val extends ScheduleEventsState>
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       error: freezed == error ? _value.error : error,
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as ({String id, ScheduleType type}),
     ) as $Val);
   }
 }
@@ -92,11 +92,11 @@ abstract class _$$ScheduleEventsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Map<DateTime, List<ScheduleEvent>> events,
-      ExtendedSchedule? fromSchedule,
+      {CollectLessonData? schedule,
       bool isFromCache,
       bool isLoading,
-      Object? error});
+      Object? error,
+      ({String id, ScheduleType type}) key});
 }
 
 /// @nodoc
@@ -110,21 +110,17 @@ class __$$ScheduleEventsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? events = null,
-    Object? fromSchedule = freezed,
+    Object? schedule = freezed,
     Object? isFromCache = null,
     Object? isLoading = null,
     Object? error = freezed,
+    Object? key = null,
   }) {
     return _then(_$ScheduleEventsStateImpl(
-      events: null == events
-          ? _value._events
-          : events // ignore: cast_nullable_to_non_nullable
-              as Map<DateTime, List<ScheduleEvent>>,
-      fromSchedule: freezed == fromSchedule
-          ? _value.fromSchedule
-          : fromSchedule // ignore: cast_nullable_to_non_nullable
-              as ExtendedSchedule?,
+      schedule: freezed == schedule
+          ? _value.schedule
+          : schedule // ignore: cast_nullable_to_non_nullable
+              as CollectLessonData?,
       isFromCache: null == isFromCache
           ? _value.isFromCache
           : isFromCache // ignore: cast_nullable_to_non_nullable
@@ -134,6 +130,10 @@ class __$$ScheduleEventsStateImplCopyWithImpl<$Res>
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       error: freezed == error ? _value.error : error,
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as ({String id, ScheduleType type}),
     ));
   }
 }
@@ -142,25 +142,15 @@ class __$$ScheduleEventsStateImplCopyWithImpl<$Res>
 
 class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
   const _$ScheduleEventsStateImpl(
-      {final Map<DateTime, List<ScheduleEvent>> events = const {},
-      this.fromSchedule,
+      {this.schedule,
       this.isFromCache = false,
       this.isLoading = false,
-      this.error})
-      : _events = events,
-        super._();
-
-  final Map<DateTime, List<ScheduleEvent>> _events;
-  @override
-  @JsonKey()
-  Map<DateTime, List<ScheduleEvent>> get events {
-    if (_events is EqualUnmodifiableMapView) return _events;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_events);
-  }
+      this.error,
+      required this.key})
+      : super._();
 
   @override
-  final ExtendedSchedule? fromSchedule;
+  final CollectLessonData? schedule;
   @override
   @JsonKey()
   final bool isFromCache;
@@ -169,10 +159,12 @@ class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
   final bool isLoading;
   @override
   final Object? error;
+  @override
+  final ({String id, ScheduleType type}) key;
 
   @override
   String toString() {
-    return 'ScheduleEventsState(events: $events, fromSchedule: $fromSchedule, isFromCache: $isFromCache, isLoading: $isLoading, error: $error)';
+    return 'ScheduleEventsState(schedule: $schedule, isFromCache: $isFromCache, isLoading: $isLoading, error: $error, key: $key)';
   }
 
   @override
@@ -180,24 +172,19 @@ class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ScheduleEventsStateImpl &&
-            const DeepCollectionEquality().equals(other._events, _events) &&
-            (identical(other.fromSchedule, fromSchedule) ||
-                other.fromSchedule == fromSchedule) &&
+            (identical(other.schedule, schedule) ||
+                other.schedule == schedule) &&
             (identical(other.isFromCache, isFromCache) ||
                 other.isFromCache == isFromCache) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other.error, error));
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.key, key) || other.key == key));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_events),
-      fromSchedule,
-      isFromCache,
-      isLoading,
-      const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, schedule, isFromCache, isLoading,
+      const DeepCollectionEquality().hash(error), key);
 
   @JsonKey(ignore: true)
   @override
@@ -209,23 +196,24 @@ class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
 
 abstract class _ScheduleEventsState extends ScheduleEventsState {
   const factory _ScheduleEventsState(
-      {final Map<DateTime, List<ScheduleEvent>> events,
-      final ExtendedSchedule? fromSchedule,
-      final bool isFromCache,
-      final bool isLoading,
-      final Object? error}) = _$ScheduleEventsStateImpl;
+          {final CollectLessonData? schedule,
+          final bool isFromCache,
+          final bool isLoading,
+          final Object? error,
+          required final ({String id, ScheduleType type}) key}) =
+      _$ScheduleEventsStateImpl;
   const _ScheduleEventsState._() : super._();
 
   @override
-  Map<DateTime, List<ScheduleEvent>> get events;
-  @override
-  ExtendedSchedule? get fromSchedule;
+  CollectLessonData? get schedule;
   @override
   bool get isFromCache;
   @override
   bool get isLoading;
   @override
   Object? get error;
+  @override
+  ({String id, ScheduleType type}) get key;
   @override
   @JsonKey(ignore: true)
   _$$ScheduleEventsStateImplCopyWith<_$ScheduleEventsStateImpl> get copyWith =>

@@ -29,7 +29,7 @@ class _NewScheduleScreenState extends State<NewScheduleScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.filterType == ScheduleType.schedule
+    return widget.filterType == ScheduleType.studyProgram
         ? BlocProvider<UserChoicesCubit>(
             create: (context) => UserChoicesCubit(
               scheduleManagerBloc: context.read<ScheduleManagerBloc>(),

@@ -18,15 +18,17 @@ void main() async {
 
   final Box box = Hive.box(hiveBoxName);
   box.clear();
-  const ScheduleKey testSchedule =
-      (type: ScheduleType.schedule, id: "ba0d9a27-3078-4709-81e6-2d8b4e1c8a71");
+  const ScheduleKey testSchedule = (
+    type: ScheduleType.studyProgram,
+    id: "ba0d9a27-3078-4709-81e6-2d8b4e1c8a71"
+  );
   const ScheduleKey testLecturer =
       (type: ScheduleType.lecturer, id: "abf9b897-9cbb-456d-0548-08dbeeaa6ca9");
 
   blocTest<FavedSchedulesCubit, FavedSchedulesState>(
     'add schedule to FavedSchedulestate',
     build: () => FavedSchedulesCubit(),
-    act: (bloc) => bloc.addSchedule(testSchedule),
+    act: (bloc) => bloc.addStudyProgram(testSchedule),
     expect: () => [
       FavedSchedulesState(
         favedSchedules: [testSchedule],
@@ -39,8 +41,8 @@ void main() async {
     'checks if there can be double schedule',
     build: () => FavedSchedulesCubit(),
     act: (bloc) {
-      bloc.addSchedule(testSchedule);
-      bloc.addSchedule(testSchedule);
+      bloc.addStudyProgram(testSchedule);
+      bloc.addStudyProgram(testSchedule);
     },
     expect: () => [
       FavedSchedulesState(
@@ -67,7 +69,7 @@ void main() async {
     'remove schedule from FavedSchedulestate',
     build: () => FavedSchedulesCubit(),
     act: (bloc) {
-      bloc.addSchedule(testSchedule);
+      bloc.addStudyProgram(testSchedule);
       bloc.removeSchedule(testSchedule);
     },
     skip: 1,
@@ -95,7 +97,7 @@ void main() async {
     'clear FavedSchedulestate',
     build: () => FavedSchedulesCubit(),
     act: (bloc) async {
-      bloc.addSchedule(testSchedule);
+      bloc.addStudyProgram(testSchedule);
       bloc.clearSchedules();
     },
     skip: 1,

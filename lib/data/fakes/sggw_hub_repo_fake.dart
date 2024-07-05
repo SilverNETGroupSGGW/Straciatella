@@ -1,28 +1,28 @@
 import 'package:mockito/mockito.dart';
-import 'package:silvertimetable/data/fakes/mock_jsons.dart';
+import 'package:silvertimetable/data/fakes/fakes.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
-import 'package:silvertimetable/data/models/lecturer/lecturer_base.dart';
-import 'package:silvertimetable/data/models/mixins.dart';
-import 'package:silvertimetable/data/models/schedule/schedule.dart';
-import 'package:silvertimetable/data/models/schedule/schedule_base.dart';
+import 'package:silvertimetable/data/models/study_program/study_program.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
 
 class FakeSggwHubRepo extends Fake implements SggwHubRepo {
   @override
-  Future<Schedule> getSchedule(String id) async {
-    return Schedule.fromJson(mockSchedule..["id"] = id);
+  Future<List<LecturerBase>> getLecturers() async {
+    return fakeLecturersBase;
   }
 
   @override
-  Future<Lecturer> getLecturer(String id) async {
-    return Lecturer.fromJson(mockLecturer..["id"] = id);
+  Future<LecturerExt> getLecturer(String lecturerId) async {
+    return fakeLecturersExt.first;
+  }
+
+  // gets list of studyprograms for a user to choose from
+  @override
+  Future<List<StudyProgramBase>> getStudyPrograms() async {
+    return fakeStudyProgramsBase;
   }
 
   @override
-  Future<List<BaseSchedule>> getSchedulesIndex() async {
-    return [
-      ...mockSchedulesIndex.map(ScheduleBase.fromJson),
-      ...mockLecturersIndex.map(LecturerBase.fromJson),
-    ];
+  Future<StudyProgramExt> getStudyProgram(String studyProgramId) async {
+    return fakeStudyProgramsExt.first;
   }
 }

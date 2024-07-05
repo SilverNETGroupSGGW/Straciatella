@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/mixins.dart';
-import 'package:silvertimetable/data/models/schedule_event/schedule_event.dart';
 import 'package:silvertimetable/data/repositories/sggw_hub_repo.dart';
 import 'package:silvertimetable/data/types.dart';
 import 'package:silvertimetable/logic/schedule_manager/schedule_manager_bloc.dart';
@@ -19,7 +19,7 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
   ScheduleEventsCubit(
     ScheduleManagerBloc scheduleManager,
     this.scheduleKey,
-  ) : super(const ScheduleEventsState()) {
+  ) : super(ScheduleEventsState(key: scheduleKey)) {
     _sggwHubRepo = GetIt.instance.get<SggwHubRepo>();
     _subscription = scheduleManager.stream.listen(_refresh);
     _refresh(scheduleManager.state);
@@ -27,14 +27,18 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
 
   void _refresh(ScheduleManagerState scheduleManagerState) {
     // refresh cached schedule
-    final schedules = scheduleManagerState.schedules;
-    if (schedules.containsKey(scheduleKey)) {
-      final schedule = schedules[scheduleKey]!;
+    final desiredSchedule = switch (scheduleKey.type) {
+      ScheduleType.lecturer =>
+        scheduleManagerState.cachedLecturers[scheduleKey.id],
+      ScheduleType.studyProgram =>
+        scheduleManagerState.cachedStudyPrograms[scheduleKey.id],
+    } as CollectLessonData?;
+    if (desiredSchedule != null) {
       emit(
         ScheduleEventsState(
-          events: ScheduleEvent.convertFromSchedule(schedule),
-          fromSchedule: schedules[scheduleKey],
+          schedule: desiredSchedule,
           isFromCache: true,
+          key: scheduleKey,
         ),
       );
     } else {
@@ -44,17 +48,16 @@ class ScheduleEventsCubit extends Cubit<ScheduleEventsState> {
 
   Future<void> refreshFromApi() async {
     if (state.isLoading) return;
+    emit(state.copyWith(isLoading: true));
 
-    if (state.fromSchedule != null) {
-      emit(state.copyWith(isLoading: true));
-    }
+    final apiReq = switch (scheduleKey.type) {
+      ScheduleType.lecturer => _sggwHubRepo.getLecturer(scheduleKey.id),
+      ScheduleType.studyProgram => _sggwHubRepo.getStudyProgram(scheduleKey.id),
+    } as Future<CollectLessonData>;
 
-    await _sggwHubRepo.getScheduleByType(scheduleKey).then((schedule) {
+    await apiReq.then((schedule) {
       emit(
-        ScheduleEventsState(
-          events: ScheduleEvent.convertFromSchedule(schedule),
-          fromSchedule: schedule,
-        ),
+        ScheduleEventsState(schedule: schedule, key: scheduleKey),
       );
     }).catchError((err) {
       emit(
