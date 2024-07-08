@@ -12,6 +12,9 @@ class LessonTile extends StatelessWidget {
   final Duration duration;
   final double elevation;
 
+  @Deprecated(
+    "Use LessonTile from presentation/models/lesson_data/lesson_data_tile instead",
+  )
   const LessonTile({
     super.key,
     required this.name,

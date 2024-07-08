@@ -5,6 +5,9 @@ class LessonVerticalTimeSpan extends StatelessWidget {
   final TimeOfDay startTime;
   final Duration duration;
 
+  @Deprecated(
+    "Use LessonTile from presentation/models/lesson_data/lesson_data_tile instead",
+  )
   const LessonVerticalTimeSpan({
     super.key,
     required this.startTime,

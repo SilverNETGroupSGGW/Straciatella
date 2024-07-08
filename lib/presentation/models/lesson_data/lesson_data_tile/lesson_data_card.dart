@@ -75,7 +75,9 @@ class _EventCard extends StatelessWidget {
                       switch (mode) {
                         ScheduleViewMode.student => IconText(
                             Symbols.person_outline_rounded,
-                            event.subject.lecturers.join(", "),
+                            event.subject.lecturers.join(
+                              ", ",
+                            ), // TODO: make pretty string for lecturers
                             style: labelLarge,
                           ),
                         ScheduleViewMode.lecturer => IconText(

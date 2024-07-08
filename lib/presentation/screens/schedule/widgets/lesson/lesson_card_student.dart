@@ -11,6 +11,9 @@ class LessonCardStudent extends StatelessWidget {
   final List<String> groups;
   final String? comment;
 
+  @Deprecated(
+    "Use LessonTile from presentation/models/lesson_data/lesson_data_tile instead",
+  )
   const LessonCardStudent({
     super.key,
     this.elevation = 0,
