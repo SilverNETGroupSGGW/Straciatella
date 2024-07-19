@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/day/day.dart';
+import 'package:silvertimetable/logic/schedule_events/schedule_events_cubit.dart';
 import 'package:silvertimetable/presentation/models/lesson_data/lesson_data_tile/lesson_data_tile.dart';
-import 'package:silvertimetable/presentation/screens/schedule/schedule_events_cubit/schedule_events_cubit.dart';
 import 'package:silvertimetable/presentation/screens/schedule/schedule_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/calendar_page_view.dart';
 
