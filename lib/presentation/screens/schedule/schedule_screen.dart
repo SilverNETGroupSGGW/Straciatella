@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/types.dart';
 import 'package:silvertimetable/logic/schedule_events/schedule_events_cubit.dart';
 import 'package:silvertimetable/logic/schedule_events/schedule_events_provider.dart';
+import 'package:silvertimetable/logic/schedule_filters/schedule_filters_provider.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_screens/schedule_events_empty_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_screens/schedule_events_error_screen.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/schedule_events_screens/schedule_events_loaded_screen.dart';
@@ -31,19 +32,22 @@ class ScheduleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScheduleEventsProvider(
       scheduleKey: scheduleKey,
-      child: BlocBuilder<ScheduleEventsCubit, ScheduleEventsState>(
-        builder: (context, state) {
-          return switch ((
-            state.schedule?.getTimeSpan() == null,
-            state.isLoading,
-            state.hasError
-          )) {
-            (true, false, false) => const ScheduleEventsEmptyScreen(),
-            (true, true, _) => const ScheduleEventsLoadingScreen(),
-            (false, _, _) => const ScheduleEventsLoadedScreen(),
-            (true, false, true) => const ScheduleEventsErrorScreen(),
-          };
-        },
+      child: ScheduleFiltersProvider(
+        scheduleKey: scheduleKey,
+        child: BlocBuilder<ScheduleEventsCubit, ScheduleEventsState>(
+          builder: (context, state) {
+            return switch ((
+              state.schedule?.getTimeSpan() == null,
+              state.isLoading,
+              state.hasError
+            )) {
+              (true, false, false) => const ScheduleEventsEmptyScreen(),
+              (true, true, _) => const ScheduleEventsLoadingScreen(),
+              (false, _, _) => const ScheduleEventsLoadedScreen(),
+              (true, false, true) => const ScheduleEventsErrorScreen(),
+            };
+          },
+        ),
       ),
     );
   }
