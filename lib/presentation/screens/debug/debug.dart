@@ -99,11 +99,6 @@ class DebugScreen extends StatelessWidget {
               type: ScheduleType.lecturer
             ),
           ),
-          const CategoryLabel(text: "Cards"),
-          const Text("Pierwszy concept by Kuba"),
-          const TestOldLessonTile(),
-          // const TestStudentEventTile(),
-          // const TestLecturerEventTile(),
           const ShowFilterNewScheduleScreen(),
           const ShowNewLecturerFilterScreen(),
           const CategoryLabel(text: "Toasts"),
@@ -251,6 +246,7 @@ class TestOldLessonTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use_from_same_package
     return const LessonTile(
       classroom: "3/77",
       comment:

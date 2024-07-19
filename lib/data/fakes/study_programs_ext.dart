@@ -1,5 +1,79 @@
 part of 'fakes.dart';
 
+const List<(String, String)> _mockLecturers = [
+  ("Marian", "Rejewski"),
+  ("Henryk", "Zygalski"),
+  ("Jerzy", "Różycki"),
+  ("Nicola", "Tesla"),
+  ("George", "Bool"),
+  ("Alan", "Turing"),
+];
+
+const List<String> _mockClassrooms = [
+  "3/77A",
+  "3/77B",
+  "Aula IV",
+];
+
+const List<String> _mockGroups = [
+  "ISI",
+  "ISK",
+  "SIAG",
+  "TM",
+  "ZM",
+];
+
+const List<String> _mockComments = [
+  "Every mistake is a lesson in disguise",
+  "Learn to question, question to learn",
+  "In learning, we find purpose",
+];
+
+final StudyProgramExt fakeFunnyStudyProgram = StudyProgram.extWithBase(
+  base: FakeGenerators.genStudyProgramBase(
+    tenant: FakeGenerators.genTenant(
+      organization: fakeOrganizations.first,
+    ),
+    name: LocaleKeys.lesson.tr().capitalize,
+  ),
+  semesters: [
+    FakeGenerators.genStudySemester(
+      subjects: [
+        FakeGenerators.genSubject(
+          groups: _mockGroups
+              .chooseMany(random.nextInt(4) + 1)
+              .map(
+                (g) => FakeGenerators.genStudentGroup(
+                  name: g,
+                ),
+              )
+              .toList(),
+          lessons: [
+            FakeGenerators.genLessonDef(ice: genICalendarDef(count: 1)),
+          ],
+          classroom: FakeGenerators.genClassroom(
+            type: FakeGenerators.genClassroomType(
+              name: _mockClassrooms.chooseOne(),
+            ),
+          ),
+          lecturers: () {
+            final l = _mockLecturers.chooseOne();
+            return [
+              FakeGenerators.genLecturerBase(
+                organization: fakeOrganizations.first,
+                firstName: l.$1,
+                surName: l.$2,
+              ),
+            ];
+          }(),
+          type: FakeGenerators.genSubjectType(name: "lecture"),
+          comment: _mockComments.chooseOne(),
+        ),
+      ],
+    ),
+  ],
+);
+
 final List<StudyProgramExt> fakeStudyProgramsExt = [
   StudyProgram.extWithBase(
     base: FakeGenerators.genStudyProgramBase(

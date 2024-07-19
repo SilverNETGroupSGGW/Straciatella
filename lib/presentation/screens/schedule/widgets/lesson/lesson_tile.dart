@@ -32,10 +32,12 @@ class LessonTile extends StatelessWidget {
     return IntrinsicHeight(
       child: Row(
         children: [
+          // ignore: deprecated_member_use_from_same_package
           LessonVerticalTimeSpan(
             duration: duration,
             startTime: startTime,
           ),
+          // ignore: deprecated_member_use_from_same_package
           LessonCardStudent(
             classroom: classroom,
             comment: comment,

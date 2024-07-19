@@ -65,6 +65,12 @@ mixin CollectLessonData {
     }
   }
 
+  LessonData getAnyLesson() {
+    collectLessonsData();
+
+    return _lessonsData.values.first.first;
+  }
+
   List<LessonData> getLessonsDataForDay(Day day) {
     collectLessonsData();
 

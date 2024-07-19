@@ -1,4 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flex_color_picker/flex_color_picker.dart';
+import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/converters/ic_duration.dart';
 import 'package:silvertimetable/data/fakes/fake_generators.dart';
 import 'package:silvertimetable/data/models/classroom/classroom.dart';
@@ -10,6 +12,8 @@ import 'package:silvertimetable/data/models/study_program/study_program.dart';
 import 'package:silvertimetable/data/models/study_semester/study_semester.dart';
 import 'package:silvertimetable/data/models/subject/subject.dart';
 import 'package:silvertimetable/data/models/tenant/tenant.dart';
+import 'package:silvertimetable/generated/locale_keys.g.dart';
+import 'package:silvertimetable/helpers.dart';
 
 part 'organizations.dart';
 part 'tenants.dart';
