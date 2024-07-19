@@ -19,7 +19,6 @@ import 'package:silvertimetable/themes/themes.dart';
 
 void main() async {
   registerICalendarFields();
-
   WidgetsFlutterBinding.ensureInitialized();
 
   GetIt.instance.registerSingleton<SggwHubRepo>(
@@ -27,11 +26,15 @@ void main() async {
   );
 
   await Hive.initFlutter();
+  if (kDebugMode) {
+    Hive.deleteBoxFromDisk(hiveBoxName);
+  }
+  GetIt.instance.registerSingleton<Box>(
+    await Hive.openBox(hiveBoxName),
+  );
+
   registerLogicDataAdapters();
   registerDataAdapters();
-
-  Hive.deleteBoxFromDisk(hiveBoxName);
-  await Hive.openBox(hiveBoxName);
 
   await EasyLocalization.ensureInitialized();
 

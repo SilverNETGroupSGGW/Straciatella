@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
-import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
@@ -24,8 +23,8 @@ part 'schedule_manager_bloc.g.dart';
 class ScheduleManagerBloc
     extends Bloc<ScheduleManagerEvent, ScheduleManagerState> {
   static const boxKey = "schedule_manager";
-  late final SggwHubRepo _sggwHubRepo;
-  final Box box = Hive.box(hiveBoxName);
+  final SggwHubRepo _sggwHubRepo = GetIt.instance.get<SggwHubRepo>();
+  final Box box = GetIt.instance.get<Box>();
 
   @override
   void onChange(Change<ScheduleManagerState> change) {
@@ -39,8 +38,6 @@ class ScheduleManagerBloc
   }
 
   ScheduleManagerBloc() : super(ScheduleManagerState()) {
-    _sggwHubRepo = GetIt.instance.get<SggwHubRepo>();
-
     on<_Init>((event, emit) {
       try {
         final ScheduleManagerState? loadedState =

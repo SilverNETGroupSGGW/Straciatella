@@ -10,13 +10,11 @@ import 'package:silvertimetable/logic/register_adapters.dart';
 void main() async {
   registerLogicDataAdapters();
   registerDataAdapters();
-
-  await Hive.openBox(
+  final box = await Hive.openBox(
     hiveBoxName,
     path: testingLocation,
   );
 
-  final Box box = Hive.box(hiveBoxName);
   box.clear();
   const ScheduleKey testSchedule = (
     type: ScheduleType.studyProgram,

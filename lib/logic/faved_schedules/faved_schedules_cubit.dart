@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
-import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/hive_type_ids.dart';
 import 'package:silvertimetable/data/models/enums.dart';
 import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
@@ -16,7 +16,7 @@ part 'faved_schedules_cubit.g.dart';
 
 class FavedSchedulesCubit extends Cubit<FavedSchedulesState> {
   static const boxKey = "favedSchedules";
-  final Box box = Hive.box(hiveBoxName);
+  final Box box = GetIt.instance.get<Box>();
 
   // invokes events on this if:
   // user added a schedule to favs

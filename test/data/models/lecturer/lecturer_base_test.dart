@@ -47,18 +47,16 @@ void main() {
 
     test('LecturerBase hive save/load', () async {
       registerDataAdapters();
-      await Hive.openBox(
+      final box = await Hive.openBox(
         hiveBoxName,
         path: testingLocation,
       );
-
-      final box = Hive.box(hiveBoxName);
 
       box.put("test_lecturerBase", lecturerBase);
       final lecturerBaseRead = box.get("test_lecturerBase");
       expect(lecturerBaseRead, lecturerBase);
 
-      await Hive.box(hiveBoxName).clear();
+      await box.clear();
     });
   });
 }

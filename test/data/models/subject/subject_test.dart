@@ -138,18 +138,16 @@ void main() {
 
   //   test('Subject hive save/load', () async {
   //     registerDataAdapters();
-  //     await Hive.openBox(
+  //     final box = await Hive.openBox(
   //       hiveBoxName,
   //       path: testingLocation,
   //     );
-
-  //     final box = Hive.box(hiveBoxName);
 
   //     box.put("test_subject", subject);
   //     final subjectRead = box.get("test_subject");
   //     expect(subjectRead, subject);
 
-  //     await Hive.box(hiveBoxName).clear();
+  //     await box.clear();
   //   });
   // });
 }

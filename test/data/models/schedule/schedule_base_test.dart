@@ -52,18 +52,16 @@ void main() {
 
     test('StudyProgram hive save/load', () async {
       registerDataAdapters();
-      await Hive.openBox(
+      final box = await Hive.openBox(
         hiveBoxName,
         path: testingLocation,
       );
-
-      final box = Hive.box(hiveBoxName);
 
       box.put("test_studyProgram", studyProgram);
       final studyProgramRead = box.get("test_studyProgram");
       expect(studyProgramRead, studyProgram);
 
-      await Hive.box(hiveBoxName).clear();
+      await box.clear();
     });
   });
 }
