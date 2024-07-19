@@ -1,4 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:silvertimetable/constants.dart';
 import 'package:silvertimetable/data/models/enums.dart';
@@ -10,10 +11,13 @@ import 'package:silvertimetable/logic/register_adapters.dart';
 void main() async {
   registerLogicDataAdapters();
   registerDataAdapters();
-  final box = await Hive.openBox(
-    hiveBoxName,
-    path: testingLocation,
+  GetIt.instance.registerSingleton<Box>(
+    await Hive.openBox(
+      hiveBoxName,
+      path: testingLocation,
+    ),
   );
+  final box = GetIt.instance.get<Box>();
 
   box.clear();
   const ScheduleKey testSchedule = (
