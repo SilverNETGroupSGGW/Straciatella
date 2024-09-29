@@ -1,5 +1,4 @@
 import 'dart:collection';
-import 'dart:developer';
 
 import 'package:icalendar_parser/icalendar_parser.dart';
 import 'package:rrule/rrule.dart';
@@ -78,7 +77,6 @@ mixin CollectLessonData {
         }
       }
     }
-    inspect(filters.byStudentGroups);
   }
 
   LessonData getAnyLesson() {
