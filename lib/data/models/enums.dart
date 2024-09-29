@@ -11,3 +11,5 @@ enum DayOfWeek {
 enum ThemeType { custom, retro, adaptive }
 
 enum ScheduleType { studyProgram, lecturer }
+
+enum ScheduleFilter { studyProgram, semester, group }
