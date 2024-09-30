@@ -28,7 +28,7 @@ dependencies:
   flutter_bloc: ^8.1.3
   freezed_annotation: ^2.4.1
   gap: ^3.0.1
-  get_it: ^7.6.7
+  get_it: ">=7.6.7 <9.0.0"
   google_fonts: ^6.1.0
   hive: ^2.0.4
   hive_flutter: ^1.1.0
@@ -47,8 +47,8 @@ dev_dependencies:
   bloc_test: ^9.1.5
   build_runner: ^2.4.6
   build_test: ^2.2.2
-  flutter_launcher_icons: ^0.13.1
-  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ">=0.13.1 <0.15.0"
+  flutter_lints: ">=4.0.0 <6.0.0"
   flutter_test:
     sdk: flutter
   freezed: ^2.4.5
