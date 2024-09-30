@@ -9,8 +9,6 @@ import 'package:silvertimetable/data/models/lesson_def/lesson_def.dart';
 import 'package:silvertimetable/data/models/schedule_filters_info.dart';
 import 'package:silvertimetable/data/models/study_program/study_program.dart';
 
-typedef FilterOptionsGroup<Key, Value> = Map<Key, Set<Value>>;
-
 mixin ParseICalendar {
   ICalendar? _calendarCache;
   String get ice;
