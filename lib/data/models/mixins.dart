@@ -6,6 +6,7 @@ import 'package:silvertimetable/data/models/day/day.dart';
 import 'package:silvertimetable/data/models/lesson/lesson.dart';
 import 'package:silvertimetable/data/models/lesson_data/lesson_data.dart';
 import 'package:silvertimetable/data/models/lesson_def/lesson_def.dart';
+import 'package:silvertimetable/data/models/schedule_filters_info.dart';
 import 'package:silvertimetable/data/models/study_program/study_program.dart';
 
 mixin ParseICalendar {
@@ -28,6 +29,7 @@ mixin CollectLessonData {
   bool _didCollect = false;
   (Day, Day)? _timeSpan;
   List<StudyProgramExt> get studyPrograms;
+  ScheduleFiltersInfo filters = ScheduleFiltersInfo();
 
   (Day, Day)? getTimeSpan() {
     collectLessonsData();
@@ -40,7 +42,17 @@ mixin CollectLessonData {
     _lessonsData.clear();
 
     for (final studyProgram in studyPrograms) {
+      filters.byStudentGroups[studyProgram] = {};
+
       for (final semester in studyProgram.semesters) {
+        final studentGroupsForSemester =
+            semester.subjects.expand((subject) => subject.groups).toSet();
+
+        filters.byStudentGroups.update(
+          studyProgram,
+          (value) => value..add({semester: studentGroupsForSemester}),
+        );
+
         for (final subject in semester.subjects) {
           subject.parseLessons();
           for (final dayEntry in subject.lessonsCache.entries) {
