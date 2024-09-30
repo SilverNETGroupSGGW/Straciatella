@@ -35,6 +35,15 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   }
 
   @override
+  void dispose() {
+    pageController.dispose();
+    for (final controller in animationControllers) {
+      controller.controller.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final pages = <Widget>[
       WelcomeStage(
