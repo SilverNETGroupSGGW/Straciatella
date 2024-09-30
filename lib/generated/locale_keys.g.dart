@@ -53,6 +53,7 @@ abstract class  LocaleKeys {
   static const language_desc = 'language_desc';
   static const lecturer = 'lecturer';
   static const lesson = 'lesson';
+  static const loading_schedule = 'loading_schedule';
   static const logged_in = 'logged_in';
   static const logged_in_as = 'logged_in_as';
   static const logged_out = 'logged_out';
@@ -72,6 +73,7 @@ abstract class  LocaleKeys {
   static const map_stage_text = 'map_stage_text';
   static const new_filter_title = 'new_filter_title';
   static const no = 'no';
+  static const no_events_in_schedule = 'no_events_in_schedule';
   static const notifications = 'notifications';
   static const notifications_desc = 'notifications_desc';
   static const notifications_stage_desc = 'notifications_stage_desc';
