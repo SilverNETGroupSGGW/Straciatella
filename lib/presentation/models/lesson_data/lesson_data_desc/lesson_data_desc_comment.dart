@@ -5,18 +5,24 @@ class _EventComment extends StatelessWidget {
   Widget build(BuildContext context) {
     final event = LessonDataProvider.of(context)!.event;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        IconText(
-          Symbols.comment_rounded,
-          "comment".tr(),
-          style: Theme.of(context).textTheme.bodyMedium,
+    return Card(
+      color: Theme.of(context).colorScheme.tertiaryContainer,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IconText(
+              Symbols.priority_high,
+              "comment".tr(),
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
+            const Gap(4),
+            Text(event.subject.comment),
+          ],
         ),
-        const Gap(4),
-        Text(event.subject.comment),
-      ],
+      ),
     );
   }
 }

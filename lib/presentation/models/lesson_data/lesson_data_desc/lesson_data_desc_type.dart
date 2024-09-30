@@ -7,11 +7,7 @@ class _EventType extends StatelessWidget {
 
     return Text(
       event.subject.type.name.tr(),
-      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-            color: Theme.of(context)
-                .extension<ScheduleEventTheme>()!
-                .getColor(event.subject.type.name),
-          ),
+      style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 }

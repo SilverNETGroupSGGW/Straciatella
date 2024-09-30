@@ -3,12 +3,11 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:silvertimetable/data/models/lecturer/lecturer.dart';
 import 'package:silvertimetable/data/models/lesson_data/lesson_data.dart';
 import 'package:silvertimetable/presentation/models/group/group_chip.dart';
-import 'package:silvertimetable/presentation/models/lecturer/lecturer_chip.dart';
 import 'package:silvertimetable/presentation/models/lesson_data/lesson_data_provider.dart';
 import 'package:silvertimetable/presentation/widgets/icon_text.dart';
-import 'package:silvertimetable/themes/extensions/schedule_event_theme.dart';
 
 part 'lesson_data_desc_comment.dart';
 part 'lesson_data_desc_groups.dart';
@@ -31,53 +30,45 @@ class LessonDataDesc extends StatelessWidget {
   Widget build(BuildContext context) {
     return LessonDataProvider(
       lessonData,
-      child: Padding(
-        padding:
-            const EdgeInsets.only(top: 10.0, left: 12, right: 12, bottom: 12),
-        child: Stack(
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: MediaQuery.sizeOf(context).height * 0.6,
+          minWidth: MediaQuery.sizeOf(context).width,
+          maxWidth: 640,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 22),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _EventName(),
+              _EventType(),
+              if (lessonData.subject.comment.isNotEmpty) ...[
+                const Gap(16),
+                _EventComment(),
+              ],
+              const Gap(24),
+              _EventTimeSpanText(),
+              const Divider(),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
-                      child: _EventName(),
-                    ),
-                    const Gap(10),
-                    _EventType(),
+                    _EventLocation(),
+                    _EventNavFab(),
                   ],
                 ),
-                const Divider(),
-                _EventTimeSpanText(),
-                const Gap(8),
-                _EventLecturers(),
-                const Gap(8),
-                _EventSchedule(),
-                const Gap(8),
-                _EventGroups(),
-                if (lessonData.subject.comment.isNotEmpty) ...[
-                  const Gap(8),
-                  _EventComment(),
-                ],
-                const Gap(8),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    minHeight: 60,
-                  ),
-                  child: _EventLocation(),
-                ),
-              ],
-            ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: _EventNavFab(),
-            ),
-          ],
+              ),
+              const Divider(),
+              _EventLecturers(),
+              // const Gap(8),
+              // _EventSchedule(),
+              // const Gap(8),
+              // _EventGroups(),
+            ],
+          ),
         ),
       ),
     );

@@ -5,17 +5,27 @@ class _EventLecturers extends StatelessWidget {
   Widget build(BuildContext context) {
     final event = LessonDataProvider.of(context)!.event;
 
-    return Section(
-      icon: Symbols.person,
-      title: "lecturers".tr(),
-      content: event.subject.lecturers.isEmpty
-          ? const Text("no lecturers")
-          : Wrap(
-              spacing: 2,
-              runSpacing: 2,
-              children:
-                  event.subject.lecturers.map((e) => LecturerChip(e)).toList(),
-            ),
+    return Column(
+      children: [
+        IconText(
+          Symbols.person,
+          "lecturers".tr(),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        if (event.subject.lecturers.isEmpty)
+          Text("no_lecturers".tr())
+        else
+          Column(
+            children: [
+              ...event.subject.lecturers.map(
+                (Lecturer l) => ListTile(
+                  title: Text("${l.firstName} ${l.surName}"),
+                  subtitle: Text(l.academicDegree.capitalize),
+                ),
+              ),
+            ],
+          ),
+      ],
     );
   }
 }

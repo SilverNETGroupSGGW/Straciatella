@@ -11,27 +11,36 @@ class _EventTimeSpanText extends StatelessWidget {
     );
     final duration = event.lesson.duration;
 
-    return Row(
+    return Column(
       children: [
-        Icon(
-          Symbols.timer,
-          size: Theme.of(context).textTheme.titleSmall?.fontSize,
+        Text(
+          "${duration.inHours}h ${duration.inMinutes % 60}min",
+          style: Theme.of(context).textTheme.bodySmall,
         ),
-        const Gap(8),
-        RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(
-                text: "${start.format(context)} - ${end.format(context)}",
-                style: Theme.of(context).textTheme.titleSmall,
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Symbols.timer,
+              size: Theme.of(context).textTheme.titleMedium?.fontSize,
+            ),
+            const Gap(6),
+            Text(
+              start.format(context),
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
+            const Gap(8),
+            const Expanded(
+              child: LinearProgressIndicator(
+                borderRadius: BorderRadius.all(Radius.circular(16)),
               ),
-              const TextSpan(text: "  "),
-              TextSpan(
-                text: "(${duration.inHours}:${duration.inMinutes % 60})",
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ],
-          ),
+            ),
+            const Gap(8),
+            Text(
+              end.format(context),
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
+          ],
         ),
       ],
     );

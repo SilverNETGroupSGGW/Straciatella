@@ -7,7 +7,7 @@ class _EventName extends StatelessWidget {
 
     return Text(
       event.subject.name.capitalize,
-      style: Theme.of(context).textTheme.titleLarge,
+      style: Theme.of(context).textTheme.headlineMedium,
     );
   }
 }
