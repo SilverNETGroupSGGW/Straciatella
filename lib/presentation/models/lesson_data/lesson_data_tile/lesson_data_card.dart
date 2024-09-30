@@ -24,22 +24,17 @@ class _EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final event = LessonDataProvider.of(context)!.event;
-    final labelLarge = Theme.of(context).textTheme.labelLarge;
+    final infoTextTheme = Theme.of(context).textTheme.labelMedium;
 
     return Card(
       elevation: getElevation(event),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () => showModalBottomSheet(
           isScrollControlled: true,
+          anchorPoint: Offset.zero,
+          showDragHandle: true,
           context: context,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10),
-              topRight: Radius.circular(10),
-            ),
-          ),
           builder: (_) => LessonDataDesc(lessonData: event),
         ),
         child: Container(
@@ -49,7 +44,7 @@ class _EventCard extends StatelessWidget {
                 color: Theme.of(context)
                     .extension<ScheduleEventTheme>()!
                     .getColor(event.subject.type.name),
-                width: 3,
+                width: 4,
               ),
             ),
           ),
@@ -62,12 +57,12 @@ class _EventCard extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 8.0),
+                        padding: const EdgeInsets.only(bottom: 6.0, left: 4),
                         child: Row(
                           children: [
                             Text(
                               event.subject.name.capitalize,
-                              style: Theme.of(context).textTheme.titleLarge,
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ],
                         ),
@@ -75,30 +70,34 @@ class _EventCard extends StatelessWidget {
                       switch (mode) {
                         ScheduleViewMode.student => IconText(
                             Symbols.person_outline_rounded,
-                            event.subject.lecturers.join(
-                              ", ",
-                            ), // TODO: make pretty string for lecturers
-                            style: labelLarge,
+                            event.subject.lecturers
+                                .map(
+                                  (e) => "${e.firstName} ${e.surName}",
+                                )
+                                .join(
+                                  ", ",
+                                ),
+                            style: infoTextTheme,
                           ),
                         ScheduleViewMode.lecturer => IconText(
                             Symbols.people_outline_rounded,
                             event.studyProgram
                                 .toString(), // TODO: make pretty string for a studyprogram
-                            style: labelLarge,
+                            style: infoTextTheme,
                           ),
                       },
                       IconText(
                         Symbols.place,
                         "b. ${event.subject.classroom.building}, ${event.subject.classroom.floor}/${event.subject.classroom.name}",
-                        style: labelLarge,
+                        style: infoTextTheme,
                       ),
                     ],
                   ),
                 ),
                 Icon(
-                  Symbols.comment_rounded,
+                  Symbols.priority_high,
                   fill: 1,
-                  size: Theme.of(context).textTheme.bodyMedium?.fontSize,
+                  size: Theme.of(context).textTheme.bodyLarge?.fontSize,
                 ),
               ],
             ),
