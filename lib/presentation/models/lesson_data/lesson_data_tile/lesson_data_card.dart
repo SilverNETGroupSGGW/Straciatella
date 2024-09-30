@@ -32,7 +32,6 @@ class _EventCard extends StatelessWidget {
       child: InkWell(
         onTap: () => showModalBottomSheet(
           isScrollControlled: true,
-          anchorPoint: Offset.zero,
           showDragHandle: true,
           context: context,
           builder: (_) => LessonDataDesc(lessonData: event),
