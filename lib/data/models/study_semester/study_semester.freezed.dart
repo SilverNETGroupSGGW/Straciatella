@@ -38,8 +38,12 @@ mixin _$StudySemester {
   @HiveField(6)
   List<Subject> get subjects => throw _privateConstructorUsedError;
 
+  /// Serializes this StudySemester to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StudySemester
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StudySemesterCopyWith<StudySemester> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -70,6 +74,8 @@ class _$StudySemesterCopyWithImpl<$Res, $Val extends StudySemester>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StudySemester
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,6 +146,8 @@ class __$$StudySemesterImplCopyWithImpl<$Res>
       _$StudySemesterImpl _value, $Res Function(_$StudySemesterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StudySemester
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -252,12 +260,14 @@ class _$StudySemesterImpl implements _StudySemester {
             const DeepCollectionEquality().equals(other._subjects, _subjects));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, created, updated, year,
       semester, startDate, const DeepCollectionEquality().hash(_subjects));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StudySemester
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StudySemesterImplCopyWith<_$StudySemesterImpl> get copyWith =>
@@ -309,8 +319,11 @@ abstract class _StudySemester implements StudySemester {
   @override
   @HiveField(6)
   List<Subject> get subjects;
+
+  /// Create a copy of StudySemester
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StudySemesterImplCopyWith<_$StudySemesterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

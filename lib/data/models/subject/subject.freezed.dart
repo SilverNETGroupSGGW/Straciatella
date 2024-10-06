@@ -47,8 +47,12 @@ mixin _$Subject {
   @HiveField(11)
   List<LessonDef> get lessons => throw _privateConstructorUsedError;
 
+  /// Serializes this Subject to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Subject
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SubjectCopyWith<Subject> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -85,6 +89,8 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Subject
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,6 +159,8 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
     ) as $Val);
   }
 
+  /// Create a copy of Subject
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SubjectTypeCopyWith<$Res> get type {
@@ -161,6 +169,8 @@ class _$SubjectCopyWithImpl<$Res, $Val extends Subject>
     });
   }
 
+  /// Create a copy of Subject
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClassroomCopyWith<$Res> get classroom {
@@ -205,6 +215,8 @@ class __$$SubjectImplCopyWithImpl<$Res>
       _$SubjectImpl _value, $Res Function(_$SubjectImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Subject
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -382,7 +394,7 @@ class _$SubjectImpl with CreateLessons implements _Subject {
             const DeepCollectionEquality().equals(other._lessons, _lessons));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -399,7 +411,9 @@ class _$SubjectImpl with CreateLessons implements _Subject {
       const DeepCollectionEquality().hash(_groups),
       const DeepCollectionEquality().hash(_lessons));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Subject
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SubjectImplCopyWith<_$SubjectImpl> get copyWith =>
@@ -468,8 +482,11 @@ abstract class _Subject implements Subject, CreateLessons {
   @override
   @HiveField(11)
   List<LessonDef> get lessons;
+
+  /// Create a copy of Subject
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SubjectImplCopyWith<_$SubjectImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -493,8 +510,12 @@ mixin _$SubjectType {
   @HiveField(4)
   bool get isPrimitiveType => throw _privateConstructorUsedError;
 
+  /// Serializes this SubjectType to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SubjectType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SubjectTypeCopyWith<SubjectType> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -523,6 +544,8 @@ class _$SubjectTypeCopyWithImpl<$Res, $Val extends SubjectType>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SubjectType
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -581,6 +604,8 @@ class __$$SubjectTypeImplCopyWithImpl<$Res>
       _$SubjectTypeImpl _value, $Res Function(_$SubjectTypeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SubjectType
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -665,12 +690,14 @@ class _$SubjectTypeImpl implements _SubjectType {
                 other.isPrimitiveType == isPrimitiveType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, created, updated, name, isPrimitiveType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SubjectType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SubjectTypeImplCopyWith<_$SubjectTypeImpl> get copyWith =>
@@ -712,8 +739,11 @@ abstract class _SubjectType implements SubjectType {
   @override
   @HiveField(4)
   bool get isPrimitiveType;
+
+  /// Create a copy of SubjectType
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SubjectTypeImplCopyWith<_$SubjectTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

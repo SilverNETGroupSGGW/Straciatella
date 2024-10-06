@@ -33,8 +33,12 @@ mixin _$StudentGroup {
   @HiveField(4)
   int get capacity => throw _privateConstructorUsedError;
 
+  /// Serializes this StudentGroup to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StudentGroup
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StudentGroupCopyWith<StudentGroup> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$StudentGroupCopyWithImpl<$Res, $Val extends StudentGroup>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StudentGroup
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -121,6 +127,8 @@ class __$$StudentGroupImplCopyWithImpl<$Res>
       _$StudentGroupImpl _value, $Res Function(_$StudentGroupImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StudentGroup
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -205,12 +213,14 @@ class _$StudentGroupImpl implements _StudentGroup {
                 other.capacity == capacity));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, created, updated, name, capacity);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StudentGroup
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StudentGroupImplCopyWith<_$StudentGroupImpl> get copyWith =>
@@ -252,8 +262,11 @@ abstract class _StudentGroup implements StudentGroup {
   @override
   @HiveField(4)
   int get capacity;
+
+  /// Create a copy of StudentGroup
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StudentGroupImplCopyWith<_$StudentGroupImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -70,10 +70,24 @@ class ScheduleFiltersCubit extends Cubit<ScheduleFiltersState> {
   }
 
   void _verifyFiltersWith(CollectLessonData schedule) {
-    // TODO: verify filters
+    final nextVisibleGroups = [...state.visibleGroups]
+        .where(
+          (group) => schedule.filters.containsStudentGroup(
+            group.studyProgramId,
+            group.studySemesterId,
+            group.groupId,
+          ),
+        )
+        .toList();
+    emit(
+      state.copyWith(
+        visibleGroups: nextVisibleGroups,
+      ),
+    );
   }
 
   void selectGroup(
+    String studyProgramId,
     String studySemesterId,
     String groupId,
   ) {
@@ -84,6 +98,7 @@ class ScheduleFiltersCubit extends Cubit<ScheduleFiltersState> {
         .toList()
       ..add(
         (
+          studyProgramId: studyProgramId,
           studySemesterId: studySemesterId,
           groupId: groupId,
         ),

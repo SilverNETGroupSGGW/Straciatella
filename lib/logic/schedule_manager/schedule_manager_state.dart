@@ -1,7 +1,7 @@
 part of 'schedule_manager_bloc.dart';
 
 @freezed
-class ScheduleManagerState with _$ScheduleManagerState {
+sealed class ScheduleManagerState with _$ScheduleManagerState {
   @HiveType(
     typeId: HiveTypeIds.scheduleManagerState,
   )

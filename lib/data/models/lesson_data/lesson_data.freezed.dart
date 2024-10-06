@@ -21,7 +21,9 @@ mixin _$LessonData {
   Subject get subject => throw _privateConstructorUsedError;
   Lesson get lesson => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LessonData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LessonDataCopyWith<LessonData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +56,8 @@ class _$LessonDataCopyWithImpl<$Res, $Val extends LessonData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LessonData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -82,6 +86,8 @@ class _$LessonDataCopyWithImpl<$Res, $Val extends LessonData>
     ) as $Val);
   }
 
+  /// Create a copy of LessonData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StudyProgramCopyWith<$Res> get studyProgram {
@@ -90,6 +96,8 @@ class _$LessonDataCopyWithImpl<$Res, $Val extends LessonData>
     });
   }
 
+  /// Create a copy of LessonData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StudySemesterCopyWith<$Res> get studySemester {
@@ -98,6 +106,8 @@ class _$LessonDataCopyWithImpl<$Res, $Val extends LessonData>
     });
   }
 
+  /// Create a copy of LessonData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SubjectCopyWith<$Res> get subject {
@@ -106,6 +116,8 @@ class _$LessonDataCopyWithImpl<$Res, $Val extends LessonData>
     });
   }
 
+  /// Create a copy of LessonData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LessonCopyWith<$Res> get lesson {
@@ -147,6 +159,8 @@ class __$$LessonDataImplCopyWithImpl<$Res>
       _$LessonDataImpl _value, $Res Function(_$LessonDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LessonData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,7 +230,9 @@ class _$LessonDataImpl implements _LessonData {
   int get hashCode =>
       Object.hash(runtimeType, studyProgram, studySemester, subject, lesson);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LessonData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LessonDataImplCopyWith<_$LessonDataImpl> get copyWith =>
@@ -238,8 +254,11 @@ abstract class _LessonData implements LessonData {
   Subject get subject;
   @override
   Lesson get lesson;
+
+  /// Create a copy of LessonData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LessonDataImplCopyWith<_$LessonDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

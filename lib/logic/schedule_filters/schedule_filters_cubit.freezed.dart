@@ -20,11 +20,15 @@ ScheduleFiltersState _$ScheduleFiltersStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ScheduleFiltersState {
-  List<({String groupId, String studySemesterId})> get visibleGroups =>
-      throw _privateConstructorUsedError;
+  List<({String groupId, String studyProgramId, String studySemesterId})>
+      get visibleGroups => throw _privateConstructorUsedError;
 
+  /// Serializes this ScheduleFiltersState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduleFiltersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ScheduleFiltersStateCopyWith<ScheduleFiltersState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -35,7 +39,9 @@ abstract class $ScheduleFiltersStateCopyWith<$Res> {
           $Res Function(ScheduleFiltersState) then) =
       _$ScheduleFiltersStateCopyWithImpl<$Res, ScheduleFiltersState>;
   @useResult
-  $Res call({List<({String groupId, String studySemesterId})> visibleGroups});
+  $Res call(
+      {List<({String groupId, String studyProgramId, String studySemesterId})>
+          visibleGroups});
 }
 
 /// @nodoc
@@ -49,6 +55,8 @@ class _$ScheduleFiltersStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ScheduleFiltersState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -58,7 +66,12 @@ class _$ScheduleFiltersStateCopyWithImpl<$Res,
       visibleGroups: null == visibleGroups
           ? _value.visibleGroups
           : visibleGroups // ignore: cast_nullable_to_non_nullable
-              as List<({String groupId, String studySemesterId})>,
+              as List<
+                  ({
+                    String groupId,
+                    String studyProgramId,
+                    String studySemesterId
+                  })>,
     ) as $Val);
   }
 }
@@ -71,7 +84,9 @@ abstract class _$$ScheduleFiltersStateImplCopyWith<$Res>
       __$$ScheduleFiltersStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<({String groupId, String studySemesterId})> visibleGroups});
+  $Res call(
+      {List<({String groupId, String studyProgramId, String studySemesterId})>
+          visibleGroups});
 }
 
 /// @nodoc
@@ -82,6 +97,8 @@ class __$$ScheduleFiltersStateImplCopyWithImpl<$Res>
       $Res Function(_$ScheduleFiltersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleFiltersState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,7 +108,12 @@ class __$$ScheduleFiltersStateImplCopyWithImpl<$Res>
       visibleGroups: null == visibleGroups
           ? _value._visibleGroups
           : visibleGroups // ignore: cast_nullable_to_non_nullable
-              as List<({String groupId, String studySemesterId})>,
+              as List<
+                  ({
+                    String groupId,
+                    String studyProgramId,
+                    String studySemesterId
+                  })>,
     ));
   }
 }
@@ -102,17 +124,20 @@ class _$ScheduleFiltersStateImpl
     with DiagnosticableTreeMixin
     implements _ScheduleFiltersState {
   const _$ScheduleFiltersStateImpl(
-      {final List<({String groupId, String studySemesterId})> visibleGroups =
-          const []})
+      {final List<
+              ({String groupId, String studyProgramId, String studySemesterId})>
+          visibleGroups = const []})
       : _visibleGroups = visibleGroups;
 
   factory _$ScheduleFiltersStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$ScheduleFiltersStateImplFromJson(json);
 
-  final List<({String groupId, String studySemesterId})> _visibleGroups;
+  final List<({String groupId, String studyProgramId, String studySemesterId})>
+      _visibleGroups;
   @override
   @JsonKey()
-  List<({String groupId, String studySemesterId})> get visibleGroups {
+  List<({String groupId, String studyProgramId, String studySemesterId})>
+      get visibleGroups {
     if (_visibleGroups is EqualUnmodifiableListView) return _visibleGroups;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_visibleGroups);
@@ -140,12 +165,14 @@ class _$ScheduleFiltersStateImpl
                 .equals(other._visibleGroups, _visibleGroups));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_visibleGroups));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleFiltersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ScheduleFiltersStateImplCopyWith<_$ScheduleFiltersStateImpl>
@@ -163,16 +190,21 @@ class _$ScheduleFiltersStateImpl
 
 abstract class _ScheduleFiltersState implements ScheduleFiltersState {
   const factory _ScheduleFiltersState(
-      {final List<({String groupId, String studySemesterId})>
+      {final List<
+              ({String groupId, String studyProgramId, String studySemesterId})>
           visibleGroups}) = _$ScheduleFiltersStateImpl;
 
   factory _ScheduleFiltersState.fromJson(Map<String, dynamic> json) =
       _$ScheduleFiltersStateImpl.fromJson;
 
   @override
-  List<({String groupId, String studySemesterId})> get visibleGroups;
+  List<({String groupId, String studyProgramId, String studySemesterId})>
+      get visibleGroups;
+
+  /// Create a copy of ScheduleFiltersState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScheduleFiltersStateImplCopyWith<_$ScheduleFiltersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

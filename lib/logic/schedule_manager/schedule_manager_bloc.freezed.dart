@@ -123,6 +123,9 @@ class _$ScheduleManagerEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -138,6 +141,9 @@ class __$$InitImplCopyWithImpl<$Res>
     implements _$$InitImplCopyWith<$Res> {
   __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -300,6 +306,8 @@ class __$$SetIndexImplCopyWithImpl<$Res>
       _$SetIndexImpl _value, $Res Function(_$SetIndexImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -374,7 +382,9 @@ class _$SetIndexImpl with DiagnosticableTreeMixin implements _SetIndex {
       const DeepCollectionEquality().hash(_studyPrograms),
       const DeepCollectionEquality().hash(_lecturers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SetIndexImplCopyWith<_$SetIndexImpl> get copyWith =>
@@ -499,7 +509,10 @@ abstract class _SetIndex implements ScheduleManagerEvent {
 
   List<StudyProgramBase> get studyPrograms;
   List<LecturerBase> get lecturers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetIndexImplCopyWith<_$SetIndexImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -518,6 +531,9 @@ class __$$UpdateIndexImplCopyWithImpl<$Res>
   __$$UpdateIndexImplCopyWithImpl(
       _$UpdateIndexImpl _value, $Res Function(_$UpdateIndexImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -680,6 +696,8 @@ class __$$CacheLecturerImplCopyWithImpl<$Res>
       _$CacheLecturerImpl _value, $Res Function(_$CacheLecturerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -729,7 +747,9 @@ class _$CacheLecturerImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(lecturer));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CacheLecturerImplCopyWith<_$CacheLecturerImpl> get copyWith =>
@@ -853,7 +873,10 @@ abstract class _CacheLecturer implements ScheduleManagerEvent {
       _$CacheLecturerImpl;
 
   LecturerExt get lecturer;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CacheLecturerImplCopyWith<_$CacheLecturerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -875,6 +898,8 @@ class __$$UpdateLecturerImplCopyWithImpl<$Res>
       _$UpdateLecturerImpl _value, $Res Function(_$UpdateLecturerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -923,7 +948,9 @@ class _$UpdateLecturerImpl
   @override
   int get hashCode => Object.hash(runtimeType, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateLecturerImplCopyWith<_$UpdateLecturerImpl> get copyWith =>
@@ -1047,7 +1074,10 @@ abstract class _UpdateLecturer implements ScheduleManagerEvent {
   const factory _UpdateLecturer(final String id) = _$UpdateLecturerImpl;
 
   String get id;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateLecturerImplCopyWith<_$UpdateLecturerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1069,6 +1099,8 @@ class __$$CacheStudyProgramImplCopyWithImpl<$Res>
       $Res Function(_$CacheStudyProgramImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1120,7 +1152,9 @@ class _$CacheStudyProgramImpl
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(studyProgram));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CacheStudyProgramImplCopyWith<_$CacheStudyProgramImpl> get copyWith =>
@@ -1245,7 +1279,10 @@ abstract class _CacheStudyProgram implements ScheduleManagerEvent {
       _$CacheStudyProgramImpl;
 
   StudyProgramExt get studyProgram;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CacheStudyProgramImplCopyWith<_$CacheStudyProgramImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1267,6 +1304,8 @@ class __$$UpdateStudyProgramImplCopyWithImpl<$Res>
       $Res Function(_$UpdateStudyProgramImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1316,7 +1355,9 @@ class _$UpdateStudyProgramImpl
   @override
   int get hashCode => Object.hash(runtimeType, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateStudyProgramImplCopyWith<_$UpdateStudyProgramImpl> get copyWith =>
@@ -1440,7 +1481,10 @@ abstract class _UpdateStudyProgram implements ScheduleManagerEvent {
   const factory _UpdateStudyProgram(final String id) = _$UpdateStudyProgramImpl;
 
   String get id;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateStudyProgramImplCopyWith<_$UpdateStudyProgramImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1462,6 +1506,8 @@ class __$$RemoveScheduleImplCopyWithImpl<$Res>
       _$RemoveScheduleImpl _value, $Res Function(_$RemoveScheduleImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1511,7 +1557,9 @@ class _$RemoveScheduleImpl
   @override
   int get hashCode => Object.hash(runtimeType, schedule);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RemoveScheduleImplCopyWith<_$RemoveScheduleImpl> get copyWith =>
@@ -1636,7 +1684,10 @@ abstract class _RemoveSchedule implements ScheduleManagerEvent {
       final ({String id, ScheduleType type}) schedule) = _$RemoveScheduleImpl;
 
   ({String id, ScheduleType type}) get schedule;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemoveScheduleImplCopyWith<_$RemoveScheduleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1655,6 +1706,9 @@ class __$$ClearImplCopyWithImpl<$Res>
   __$$ClearImplCopyWithImpl(
       _$ClearImpl _value, $Res Function(_$ClearImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ScheduleManagerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1821,7 +1875,9 @@ mixin _$ScheduleManagerState {
   Map<String, LecturerBase> get lecturersIndex =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ScheduleManagerStateCopyWith<ScheduleManagerState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1857,6 +1913,8 @@ class _$ScheduleManagerStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ScheduleManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1936,6 +1994,8 @@ class __$$ScheduleManagerStateImplCopyWithImpl<$Res>
       $Res Function(_$ScheduleManagerStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2125,7 +2185,9 @@ class _$ScheduleManagerStateImpl
       const DeepCollectionEquality().hash(_studyProgramsIndex),
       const DeepCollectionEquality().hash(_lecturersIndex));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleManagerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ScheduleManagerStateImplCopyWith<_$ScheduleManagerStateImpl>
@@ -2170,8 +2232,11 @@ abstract class _ScheduleManagerState implements ScheduleManagerState {
   @override
   @HiveField(3, defaultValue: {})
   Map<String, LecturerBase> get lecturersIndex;
+
+  /// Create a copy of ScheduleManagerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScheduleManagerStateImplCopyWith<_$ScheduleManagerStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

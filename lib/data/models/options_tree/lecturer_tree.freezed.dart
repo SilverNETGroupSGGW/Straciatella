@@ -20,7 +20,9 @@ mixin _$LecturerFullNameValue {
   String get surname => throw _privateConstructorUsedError;
   String get academicDegree => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of _LecturerFullNameValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$LecturerFullNameValueCopyWith<_LecturerFullNameValue> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class __$LecturerFullNameValueCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of _LecturerFullNameValue
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +95,8 @@ class __$$_LecturerFullNameValueImplCopyWithImpl<$Res>
       $Res Function(_$_LecturerFullNameValueImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of _LecturerFullNameValue
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +153,9 @@ class _$_LecturerFullNameValueImpl extends __LecturerFullNameValue {
   int get hashCode =>
       Object.hash(runtimeType, firstName, surname, academicDegree);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of _LecturerFullNameValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$_LecturerFullNameValueImplCopyWith<_$_LecturerFullNameValueImpl>
@@ -168,8 +176,11 @@ abstract class __LecturerFullNameValue extends _LecturerFullNameValue {
   String get surname;
   @override
   String get academicDegree;
+
+  /// Create a copy of _LecturerFullNameValue
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$_LecturerFullNameValueImplCopyWith<_$_LecturerFullNameValueImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

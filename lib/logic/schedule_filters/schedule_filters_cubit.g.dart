@@ -14,6 +14,7 @@ _$ScheduleFiltersStateImpl _$$ScheduleFiltersStateImplFromJson(
                     e,
                     ($jsonValue) => (
                       groupId: $jsonValue['groupId'] as String,
+                      studyProgramId: $jsonValue['studyProgramId'] as String,
                       studySemesterId: $jsonValue['studySemesterId'] as String,
                     ),
                   ))
@@ -27,6 +28,7 @@ Map<String, dynamic> _$$ScheduleFiltersStateImplToJson(
       'visibleGroups': instance.visibleGroups
           .map((e) => <String, dynamic>{
                 'groupId': e.groupId,
+                'studyProgramId': e.studyProgramId,
                 'studySemesterId': e.studySemesterId,
               })
           .toList(),

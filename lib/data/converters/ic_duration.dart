@@ -26,10 +26,11 @@ extension DurationExt on Duration {
       late final String value;
       try {
         value = durMatches
-                .firstWhere(
+                .where(
                   (element) => element.group(2)?.toUpperCase() == valueKey,
                 )
-                .group(1) ??
+                .firstOrNull
+                ?.group(1) ??
             "0";
       } catch (e) {
         value = "0";

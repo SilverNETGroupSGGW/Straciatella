@@ -23,7 +23,9 @@ mixin _$FavedSchedulesState {
   ({String id, ScheduleType type})? get selectedSchedule =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavedSchedulesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FavedSchedulesStateCopyWith<FavedSchedulesState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +51,8 @@ class _$FavedSchedulesStateCopyWithImpl<$Res, $Val extends FavedSchedulesState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FavedSchedulesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,6 +93,8 @@ class __$$FavedSchedulesStateImplCopyWithImpl<$Res>
       $Res Function(_$FavedSchedulesStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavedSchedulesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,7 +172,9 @@ class _$FavedSchedulesStateImpl extends _FavedSchedulesState
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_favedSchedules), selectedSchedule);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavedSchedulesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FavedSchedulesStateImplCopyWith<_$FavedSchedulesStateImpl> get copyWith =>
@@ -189,8 +197,11 @@ abstract class _FavedSchedulesState extends FavedSchedulesState {
   @override
   @HiveField(1)
   ({String id, ScheduleType type})? get selectedSchedule;
+
+  /// Create a copy of FavedSchedulesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FavedSchedulesStateImplCopyWith<_$FavedSchedulesStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

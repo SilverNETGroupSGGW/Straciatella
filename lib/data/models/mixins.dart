@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:icalendar_parser/icalendar_parser.dart';
 import 'package:rrule/rrule.dart';
 import 'package:silvertimetable/data/models/day/day.dart';
@@ -24,11 +25,22 @@ mixin ParseICalendar {
 ///
 /// _lessonsData is sorted
 mixin CollectLessonData {
+  @JsonKey(includeFromJson: false, includeToJson: false)
   final Map<Day, List<LessonData>> _lessonsData = {};
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
   final HashSet<Day> _sortedDays = HashSet();
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
   bool _didCollect = false;
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
   (Day, Day)? _timeSpan;
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
   List<StudyProgramExt> get studyPrograms;
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
   ScheduleFiltersInfo filters = ScheduleFiltersInfo();
 
   (Day, Day)? getTimeSpan() {
@@ -45,13 +57,8 @@ mixin CollectLessonData {
       filters.byStudentGroups[studyProgram] = {};
 
       for (final semester in studyProgram.semesters) {
-        final studentGroupsForSemester =
+        filters.byStudentGroups[studyProgram]![semester] =
             semester.subjects.expand((subject) => subject.groups).toSet();
-
-        filters.byStudentGroups.update(
-          studyProgram,
-          (value) => value..add({semester: studentGroupsForSemester}),
-        );
 
         for (final subject in semester.subjects) {
           subject.parseLessons();

@@ -150,8 +150,13 @@ mixin _$Lecturer {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this Lecturer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Lecturer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LecturerCopyWith<Lecturer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -185,6 +190,8 @@ class _$LecturerCopyWithImpl<$Res, $Val extends Lecturer>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Lecturer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -238,6 +245,8 @@ class _$LecturerCopyWithImpl<$Res, $Val extends Lecturer>
     ) as $Val);
   }
 
+  /// Create a copy of Lecturer
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrganizationCopyWith<$Res> get organization {
@@ -278,6 +287,8 @@ class __$$LecturerBaseImplCopyWithImpl<$Res>
       _$LecturerBaseImpl _value, $Res Function(_$LecturerBaseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Lecturer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -411,12 +422,14 @@ class _$LecturerBaseImpl extends LecturerBase {
                 other.organization == organization));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, created, updated, firstName,
       surName, academicDegree, email, institute, organization);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Lecturer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LecturerBaseImplCopyWith<_$LecturerBaseImpl> get copyWith =>
@@ -604,8 +617,11 @@ abstract class LecturerBase extends Lecturer {
   @override
   @HiveField(8)
   Organization get organization;
+
+  /// Create a copy of Lecturer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LecturerBaseImplCopyWith<_$LecturerBaseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -642,6 +658,8 @@ class __$$LecturerExtImplCopyWithImpl<$Res>
       _$LecturerExtImpl _value, $Res Function(_$LecturerExtImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Lecturer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -794,7 +812,7 @@ class _$LecturerExtImpl extends LecturerExt with CollectLessonData {
                 .equals(other._studyPrograms, _studyPrograms));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -809,7 +827,9 @@ class _$LecturerExtImpl extends LecturerExt with CollectLessonData {
       organization,
       const DeepCollectionEquality().hash(_studyPrograms));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Lecturer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LecturerExtImplCopyWith<_$LecturerExtImpl> get copyWith =>
@@ -1000,8 +1020,11 @@ abstract class LecturerExt extends Lecturer implements CollectLessonData {
   Organization get organization; // extended data
   @HiveField(9)
   List<StudyProgramExt> get studyPrograms;
+
+  /// Create a copy of Lecturer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LecturerExtImplCopyWith<_$LecturerExtImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

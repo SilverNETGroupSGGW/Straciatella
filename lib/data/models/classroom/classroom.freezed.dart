@@ -39,8 +39,12 @@ mixin _$Classroom {
   @HiveField(7)
   ClassroomType get type => throw _privateConstructorUsedError;
 
+  /// Serializes this Classroom to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Classroom
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClassroomCopyWith<Classroom> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -73,6 +77,8 @@ class _$ClassroomCopyWithImpl<$Res, $Val extends Classroom>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Classroom
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -121,6 +127,8 @@ class _$ClassroomCopyWithImpl<$Res, $Val extends Classroom>
     ) as $Val);
   }
 
+  /// Create a copy of Classroom
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClassroomTypeCopyWith<$Res> get type {
@@ -160,6 +168,8 @@ class __$$ClassroomImplCopyWithImpl<$Res>
       _$ClassroomImpl _value, $Res Function(_$ClassroomImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Classroom
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -275,12 +285,14 @@ class _$ClassroomImpl implements _Classroom {
             (identical(other.type, type) || other.type == type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, created, updated, name, floor, building, capacity, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Classroom
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClassroomImplCopyWith<_$ClassroomImpl> get copyWith =>
@@ -334,8 +346,11 @@ abstract class _Classroom implements Classroom {
   @override
   @HiveField(7)
   ClassroomType get type;
+
+  /// Create a copy of Classroom
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClassroomImplCopyWith<_$ClassroomImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -359,8 +374,12 @@ mixin _$ClassroomType {
   @HiveField(4)
   bool get isPrimitiveType => throw _privateConstructorUsedError;
 
+  /// Serializes this ClassroomType to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ClassroomType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ClassroomTypeCopyWith<ClassroomType> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -389,6 +408,8 @@ class _$ClassroomTypeCopyWithImpl<$Res, $Val extends ClassroomType>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ClassroomType
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -447,6 +468,8 @@ class __$$ClassroomTypeImplCopyWithImpl<$Res>
       _$ClassroomTypeImpl _value, $Res Function(_$ClassroomTypeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ClassroomType
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -531,12 +554,14 @@ class _$ClassroomTypeImpl implements _ClassroomType {
                 other.isPrimitiveType == isPrimitiveType));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, created, updated, name, isPrimitiveType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClassroomType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ClassroomTypeImplCopyWith<_$ClassroomTypeImpl> get copyWith =>
@@ -578,8 +603,11 @@ abstract class _ClassroomType implements ClassroomType {
   @override
   @HiveField(4)
   bool get isPrimitiveType;
+
+  /// Create a copy of ClassroomType
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClassroomTypeImplCopyWith<_$ClassroomTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

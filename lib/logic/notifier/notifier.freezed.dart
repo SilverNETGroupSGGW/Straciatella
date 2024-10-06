@@ -20,6 +20,7 @@ Notifier _$NotifierFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Notifier {
+  /// Serializes this Notifier to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -38,6 +39,9 @@ class _$NotifierCopyWithImpl<$Res, $Val extends Notifier>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of Notifier
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -54,6 +58,9 @@ class __$$NotifierImplCopyWithImpl<$Res>
   __$$NotifierImplCopyWithImpl(
       _$NotifierImpl _value, $Res Function(_$NotifierImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of Notifier
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -75,7 +82,7 @@ class _$NotifierImpl implements _Notifier {
         (other.runtimeType == runtimeType && other is _$NotifierImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 

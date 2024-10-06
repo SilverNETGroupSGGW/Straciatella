@@ -33,8 +33,12 @@ mixin _$Tenant {
   @HiveField(4)
   Organization get organization => throw _privateConstructorUsedError;
 
+  /// Serializes this Tenant to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Tenant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TenantCopyWith<Tenant> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -63,6 +67,8 @@ class _$TenantCopyWithImpl<$Res, $Val extends Tenant>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Tenant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,6 +102,8 @@ class _$TenantCopyWithImpl<$Res, $Val extends Tenant>
     ) as $Val);
   }
 
+  /// Create a copy of Tenant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrganizationCopyWith<$Res> get organization {
@@ -131,6 +139,8 @@ class __$$TenantImplCopyWithImpl<$Res>
       _$TenantImpl _value, $Res Function(_$TenantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Tenant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -215,12 +225,14 @@ class _$TenantImpl implements _Tenant {
                 other.organization == organization));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, created, updated, name, organization);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Tenant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TenantImplCopyWith<_$TenantImpl> get copyWith =>
@@ -261,8 +273,11 @@ abstract class _Tenant implements Tenant {
   @override
   @HiveField(4)
   Organization get organization;
+
+  /// Create a copy of Tenant
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TenantImplCopyWith<_$TenantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

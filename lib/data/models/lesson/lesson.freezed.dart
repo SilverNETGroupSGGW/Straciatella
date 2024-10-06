@@ -20,7 +20,9 @@ mixin _$Lesson {
   Duration get duration => throw _privateConstructorUsedError;
   Classroom? get classroom => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Lesson
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LessonCopyWith<Lesson> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -44,6 +46,8 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Lesson
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -67,6 +71,8 @@ class _$LessonCopyWithImpl<$Res, $Val extends Lesson>
     ) as $Val);
   }
 
+  /// Create a copy of Lesson
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClassroomCopyWith<$Res>? get classroom {
@@ -101,6 +107,8 @@ class __$$LessonImplCopyWithImpl<$Res>
       _$LessonImpl _value, $Res Function(_$LessonImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Lesson
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,7 +169,9 @@ class _$LessonImpl implements _Lesson {
   @override
   int get hashCode => Object.hash(runtimeType, startTime, duration, classroom);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Lesson
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>
@@ -180,8 +190,11 @@ abstract class _Lesson implements Lesson {
   Duration get duration;
   @override
   Classroom? get classroom;
+
+  /// Create a copy of Lesson
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LessonImplCopyWith<_$LessonImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

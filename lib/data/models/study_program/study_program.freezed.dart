@@ -158,8 +158,13 @@ mixin _$StudyProgram {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this StudyProgram to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StudyProgram
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StudyProgramCopyWith<StudyProgram> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -195,6 +200,8 @@ class _$StudyProgramCopyWithImpl<$Res, $Val extends StudyProgram>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StudyProgram
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -253,6 +260,8 @@ class _$StudyProgramCopyWithImpl<$Res, $Val extends StudyProgram>
     ) as $Val);
   }
 
+  /// Create a copy of StudyProgram
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TenantCopyWith<$Res> get tenant {
@@ -294,6 +303,8 @@ class __$$StudyProgramBaseImplCopyWithImpl<$Res>
       $Res Function(_$StudyProgramBaseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StudyProgram
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -436,12 +447,14 @@ class _$StudyProgramBaseImpl implements StudyProgramBase {
             (identical(other.tenant, tenant) || other.tenant == tenant));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, created, updated, name,
       faculty, fieldOfStudy, studyMode, degreeOfStudy, startDate, tenant);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StudyProgram
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StudyProgramBaseImplCopyWith<_$StudyProgramBaseImpl> get copyWith =>
@@ -638,8 +651,11 @@ abstract class StudyProgramBase implements StudyProgram {
   @override
   @HiveField(9)
   Tenant get tenant;
+
+  /// Create a copy of StudyProgram
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StudyProgramBaseImplCopyWith<_$StudyProgramBaseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -677,6 +693,8 @@ class __$$StudyProgramExtImplCopyWithImpl<$Res>
       _$StudyProgramExtImpl _value, $Res Function(_$StudyProgramExtImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StudyProgram
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -840,7 +858,7 @@ class _$StudyProgramExtImpl
                 .equals(other._semesters, _semesters));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -856,7 +874,9 @@ class _$StudyProgramExtImpl
       tenant,
       const DeepCollectionEquality().hash(_semesters));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StudyProgram
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StudyProgramExtImplCopyWith<_$StudyProgramExtImpl> get copyWith =>
@@ -1058,8 +1078,11 @@ abstract class StudyProgramExt
   Tenant get tenant; // extended info
   @HiveField(10)
   List<StudySemester> get semesters;
+
+  /// Create a copy of StudyProgram
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StudyProgramExtImplCopyWith<_$StudyProgramExtImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

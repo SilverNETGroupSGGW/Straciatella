@@ -1,6 +1,7 @@
 part of 'schedule_filters_cubit.dart';
 
 typedef _StudentGroupFilterProps = ({
+  String studyProgramId,
   String studySemesterId,
   String groupId,
 });

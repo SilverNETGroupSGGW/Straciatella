@@ -34,8 +34,12 @@ mixin _$LessonDef {
   @HiveField(4)
   String get ice => throw _privateConstructorUsedError;
 
+  /// Serializes this LessonDef to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LessonDef
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LessonDefCopyWith<LessonDef> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -65,6 +69,8 @@ class _$LessonDefCopyWithImpl<$Res, $Val extends LessonDef>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LessonDef
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class _$LessonDefCopyWithImpl<$Res, $Val extends LessonDef>
     ) as $Val);
   }
 
+  /// Create a copy of LessonDef
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ClassroomCopyWith<$Res>? get classroom {
@@ -138,6 +146,8 @@ class __$$LessonDefImplCopyWithImpl<$Res>
       _$LessonDefImpl _value, $Res Function(_$LessonDefImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LessonDef
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -224,12 +234,14 @@ class _$LessonDefImpl extends _LessonDef {
             (identical(other.ice, ice) || other.ice == ice));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, created, updated, classroom, ice);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LessonDef
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LessonDefImplCopyWith<_$LessonDefImpl> get copyWith =>
@@ -268,12 +280,15 @@ abstract class _LessonDef extends LessonDef {
   DateTime? get updated;
   @override
   @HiveField(3)
-  Classroom? get classroom;
-  @override // might be remote or same as subject
+  Classroom? get classroom; // might be remote or same as subject
+  @override
   @HiveField(4)
   String get ice;
+
+  /// Create a copy of LessonDef
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LessonDefImplCopyWith<_$LessonDefImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

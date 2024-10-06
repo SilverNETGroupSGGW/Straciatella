@@ -28,6 +28,7 @@ void main() async {
     setUp: () => box.put("scheduleFilters/${ScheduleType.lecturer.name}_0", {
       "visibleGroups": [
         {
+          "studyProgramId": "0",
           "studySemesterId": "0",
           "groupId": "0",
         }
@@ -38,6 +39,7 @@ void main() async {
       const ScheduleFiltersState(
         visibleGroups: [
           (
+            studyProgramId: "0",
             studySemesterId: "0",
             groupId: "0",
           ),
@@ -52,11 +54,12 @@ void main() async {
     build: () => ScheduleFiltersCubit(
       scheduleKey: (id: "0", type: ScheduleType.lecturer),
     ),
-    act: (bloc) => bloc.selectGroup("sem0", "gr0"),
+    act: (bloc) => bloc.selectGroup("stpr0", "sem0", "gr0"),
     expect: () => [
       const ScheduleFiltersState(
         visibleGroups: [
           (
+            studyProgramId: "stpr0",
             studySemesterId: "sem0",
             groupId: "gr0",
           ),
@@ -71,7 +74,7 @@ void main() async {
     build: () => ScheduleFiltersCubit(
       scheduleKey: (id: "0", type: ScheduleType.lecturer),
     ),
-    act: (bloc) => bloc.selectGroup("sem0", "gr0"),
+    act: (bloc) => bloc.selectGroup("stpr0", "sem0", "gr0"),
     verify: (bloc) =>
         bloc.box.get("scheduleFilters/${ScheduleType.lecturer.name}_0"),
     tearDown: () => box.clear(),
@@ -83,18 +86,20 @@ void main() async {
       scheduleKey: (id: "0", type: ScheduleType.lecturer),
     ),
     act: (bloc) => bloc
-      ..selectGroup("sem0", "gr0")
-      ..selectGroup("sem1", "gr0")
-      ..selectGroup("sem0", "gr1"),
+      ..selectGroup("stpr0", "sem0", "gr0")
+      ..selectGroup("stpr0", "sem1", "gr0")
+      ..selectGroup("stpr0", "sem0", "gr1"),
     skip: 2,
     expect: () => [
       const ScheduleFiltersState(
         visibleGroups: [
           (
+            studyProgramId: "stpr0",
             studySemesterId: "sem1",
             groupId: "gr0",
           ),
           (
+            studyProgramId: "stpr0",
             studySemesterId: "sem0",
             groupId: "gr1",
           ),

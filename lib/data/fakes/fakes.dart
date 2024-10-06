@@ -25,6 +25,7 @@ part 'lecturers_base.dart';
 part 'lecturers_ext.dart';
 part 'study_programs_base.dart';
 part 'study_programs_ext.dart';
+part 'study_semesters.dart';
 
 final _now = DateTime.now();
 

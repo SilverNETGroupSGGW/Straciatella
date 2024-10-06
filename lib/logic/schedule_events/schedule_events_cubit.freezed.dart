@@ -23,7 +23,9 @@ mixin _$ScheduleEventsState {
   ({String id, ScheduleType type}) get key =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleEventsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ScheduleEventsStateCopyWith<ScheduleEventsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +54,8 @@ class _$ScheduleEventsStateCopyWithImpl<$Res, $Val extends ScheduleEventsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ScheduleEventsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$ScheduleEventsStateImplCopyWithImpl<$Res>
       $Res Function(_$ScheduleEventsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleEventsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -186,7 +192,9 @@ class _$ScheduleEventsStateImpl extends _ScheduleEventsState {
   int get hashCode => Object.hash(runtimeType, schedule, isFromCache, isLoading,
       const DeepCollectionEquality().hash(error), key);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleEventsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ScheduleEventsStateImplCopyWith<_$ScheduleEventsStateImpl> get copyWith =>
@@ -214,8 +222,11 @@ abstract class _ScheduleEventsState extends ScheduleEventsState {
   Object? get error;
   @override
   ({String id, ScheduleType type}) get key;
+
+  /// Create a copy of ScheduleEventsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScheduleEventsStateImplCopyWith<_$ScheduleEventsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
