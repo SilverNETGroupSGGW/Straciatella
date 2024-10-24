@@ -192,7 +192,7 @@ class __$$LessonDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LessonDataImpl implements _LessonData {
+class _$LessonDataImpl with LessonDataMixin implements _LessonData {
   _$LessonDataImpl(
       {required this.studyProgram,
       required this.studySemester,
@@ -239,7 +239,7 @@ class _$LessonDataImpl implements _LessonData {
       __$$LessonDataImplCopyWithImpl<_$LessonDataImpl>(this, _$identity);
 }
 
-abstract class _LessonData implements LessonData {
+abstract class _LessonData implements LessonData, LessonDataMixin {
   factory _LessonData(
       {required final StudyProgram studyProgram,
       required final StudySemester studySemester,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:silvertimetable/data/models/day/day.dart';
 import 'package:silvertimetable/logic/schedule_events/schedule_events_cubit.dart';
+import 'package:silvertimetable/logic/schedule_filters/schedule_filters_cubit.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/calendar_page_picker.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/day_dot.dart';
 import 'package:silvertimetable/presentation/screens/schedule/widgets/calendar_page/day_dot_label.dart';
@@ -38,19 +39,25 @@ class ScheduleScreenAppBar extends StatelessWidget
             dayBuilder: (context, controller, day, page) {
               return PageAlignmentCoefficient(
                 builder: (context, t) {
-                  return DayDot(
-                    day: day,
-                    t: t,
-                    hasEvents: state.schedule
-                            ?.getLessonsDataForDay(
-                              Day(
-                                day: day.day,
-                                month: day.month,
-                                year: day.year,
-                              ),
-                            )
-                            .isNotEmpty ??
-                        false,
+                  return BlocBuilder<ScheduleFiltersCubit,
+                      ScheduleFiltersState>(
+                    builder: (context, filtersState) {
+                      return DayDot(
+                        day: day,
+                        t: t,
+                        hasEvents: state.schedule
+                                ?.getLessonsDataForDay(
+                                  Day(
+                                    day: day.day,
+                                    month: day.month,
+                                    year: day.year,
+                                  ),
+                                )
+                                .where((e) => e.isVisible(filtersState))
+                                .isNotEmpty ??
+                            false,
+                      );
+                    },
                   );
                 },
                 pageController: controller,
@@ -66,19 +73,25 @@ class ScheduleScreenAppBar extends StatelessWidget
                       horizontal: 10.0,
                       vertical: 2.0,
                     ),
-                    child: DayDotLabel(
-                      day: day,
-                      t: t,
-                      hasEvents: state.schedule
-                              ?.getLessonsDataForDay(
-                                Day(
-                                  day: day.day,
-                                  month: day.month,
-                                  year: day.year,
-                                ),
-                              )
-                              .isNotEmpty ??
-                          false,
+                    child:
+                        BlocBuilder<ScheduleFiltersCubit, ScheduleFiltersState>(
+                      builder: (context, filtersState) {
+                        return DayDotLabel(
+                          day: day,
+                          t: t,
+                          hasEvents: state.schedule
+                                  ?.getLessonsDataForDay(
+                                    Day(
+                                      day: day.day,
+                                      month: day.month,
+                                      year: day.year,
+                                    ),
+                                  )
+                                  .where((e) => e.isVisible(filtersState))
+                                  .isNotEmpty ??
+                              false,
+                        );
+                      },
                     ),
                   );
                 },
